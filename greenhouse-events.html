@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Greenhouse Events Dubai — Full-Service Event Production</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand palette — dark metallic green */
+  --green-deepest:  #080f0b;
+  --green-dark:     #0d1a12;
+  --green-mid:      #112016;
+  --green-surface:  #172b1e;
+  --green-muted:    #1e3827;
+  --green-accent:   #2a5038;
+
+  /* Gold from logo */
+  --gold:           #C9A84C;
+  --gold-light:     #E2CA82;
+  --gold-pale:      #F0E3BC;
+  --gold-dark:      #8B6914;
+
+  /* Pearl / neutral */
+  --pearl:          #D6CFC4;
+  --warm-white:     #F4F0E8;
+  --mid-text:       #7a8f82;
+
+  --border-gold:    rgba(201,168,76,0.2);
+  --border-green:   rgba(42,80,56,0.5);
+
+  --serif: 'Cormorant Garamond', serif;
+  --sans:  'Jost', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--green-deepest);
+  color: var(--warm-white);
+  overflow-x: hidden;
+}
+
+/* ─── METALLIC GREEN TEXTURE OVERLAY ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      120deg,
+      transparent,
+      transparent 80px,
+      rgba(201,168,76,0.015) 80px,
+      rgba(201,168,76,0.015) 81px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 5vw;
+  background: rgba(8,15,11,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 0.5px solid var(--border-gold);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+/* SVG greenhouse logo mark inline */
+.nav-logomark {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.nav-wordmark {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.nav-wordmark-top {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.nav-wordmark-bot {
+  font-family: var(--sans);
+  font-size: 0.55rem;
+  font-weight: 300;
+  letter-spacing: 0.35em;
+  color: var(--mid-text);
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--pearl);
+  text-decoration: none;
+  opacity: 0.65;
+  transition: opacity 0.2s, color 0.2s;
+  font-weight: 300;
+}
+.nav-links a:hover { opacity: 1; color: var(--gold); }
+
+.nav-cta {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: 0.5px solid var(--gold);
+  color: var(--gold);
+  padding: 0.55rem 1.3rem;
+  text-decoration: none;
+  font-weight: 400;
+  transition: background 0.25s, color 0.25s;
+}
+.nav-cta:hover { background: var(--gold); color: var(--green-deepest); }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 9rem 5vw 6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-glow {
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 900px;
+  background: radial-gradient(ellipse, rgba(201,168,76,0.09) 0%, rgba(17,32,22,0.4) 40%, transparent 70%);
+  pointer-events: none;
+}
+.hero-glow-2 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(ellipse, rgba(42,80,56,0.25) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-glow-3 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(42,80,56,0.2) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Big logo in hero */
+.hero-logo-wrap {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.2s forwards;
+}
+
+.hero-logo-circle {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 0.5px solid var(--border-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+  background: radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 70%);
+}
+
+.hero-wordblock {
+  margin-top: 1rem;
+  position: relative;
+  z-index: 1;
+}
+.hero-wordblock-name {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.45em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.hero-wordblock-sub {
+  font-size: 0.58rem;
+  letter-spacing: 0.38em;
+  color: var(--mid-text);
+  text-transform: uppercase;
+  font-weight: 300;
+  margin-top: 4px;
+}
+
+.hero-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin: 2rem auto;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.5s forwards;
+  position: relative;
+  z-index: 1;
+}
+.hero-divider::before, .hero-divider::after {
+  content: '';
+  width: 4rem;
+  height: 0.5px;
+  background: linear-gradient(to right, transparent, var(--gold));
+}
+.hero-divider::after { background: linear-gradient(to left, transparent, var(--gold)); }
+.hero-divider-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 7.5vw, 7rem);
+  font-weight: 300;
+  line-height: 1.07;
+  letter-spacing: -0.01em;
+  color: var(--warm-white);
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  animation: fadeUp 1s 0.6s forwards;
+}
+.hero h1 em { font-style: italic; color: var(--gold); }
+
+.hero-tagline {
+  margin-top: 1.5rem;
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: rgba(212,207,196,0.55);
+  letter-spacing: 0.06em;
+  line-height: 1.8;
+  max-width: 480px;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.8s forwards;
+}
+
+.hero-actions {
+  margin-top: 2.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  animation: fadeUp 0.9s 1s forwards;
+}
+
+.btn-gold {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: var(--gold);
+  color: var(--green-deepest);
+  padding: 0.9rem 2.2rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.25s, transform 0.2s;
+}
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+.btn-outline {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: 0.5px solid rgba(212,207,196,0.3);
+  color: var(--pearl);
+  padding: 0.9rem 2.2rem;
+  text-decoration: none;
+  font-weight: 300;
+  transition: border-color 0.25s, color 0.25s, transform 0.2s;
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-1px); }
+
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 1.4s forwards;
+}
+.hero-scroll-line {
+  width: 0.5px;
+  height: 2.5rem;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: pulse 2s infinite;
+}
+.hero-scroll-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--mid-text);
+}
+
+/* ─── MARQUEE ─── */
+.marquee-wrap {
+  border-top: 0.5px solid var(--border-gold);
+  border-bottom: 0.5px solid var(--border-gold);
+  background: var(--green-mid);
+  padding: 1rem 0;
+  overflow: hidden;
+}
+.marquee-track {
+  display: flex;
+  gap: 2.5rem;
+  animation: marquee 28s linear infinite;
+  white-space: nowrap;
+}
+.marquee-item {
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 400;
+}
+.marquee-pearl {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+/* ─── SHARED SECTION STYLES ─── */
+section { padding: 6rem 5vw; position: relative; z-index: 1; }
+
+.section-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+.section-eyebrow::before {
+  content: '';
+  width: 1.2rem;
+  height: 0.5px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+.section-eyebrow span {
+  font-size: 0.6rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 400;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--warm-white);
+}
+.section-title em { font-style: italic; color: var(--gold); }
+
+/* light bg variant */
+.section-title--dark { color: var(--green-deepest); }
+.section-title--dark em { color: var(--gold-dark); }
+
+/* ─── ABOUT BAND ─── */
+#about {
+  background: var(--green-mid);
+  border-top: 0.5px solid var(--border-gold);
+  border-bottom: 0.5px solid var(--border-gold);
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+.about-text p {
+  font-size: 0.9rem;
+  line-height: 1.9;
+  color: rgba(212,207,196,0.62);
+  font-weight: 300;
+  margin-bottom: 1.2rem;
+}
+.about-pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.pillar {
+  border-left: 0.5px solid var(--gold);
+  padding-left: 1rem;
+}
+.pillar-name {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  color: var(--warm-white);
+  margin-bottom: 0.3rem;
+}
+.pillar-desc {
+  font-size: 0.75rem;
+  color: var(--mid-text);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* ─── SERVICES ─── */
+#services { background: var(--green-dark); }
+
+.services-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: end;
+  margin-bottom: 3.5rem;
+}
+.services-intro-text {
+  font-size: 0.88rem;
+  line-height: 1.9;
+  color: rgba(212,207,196,0.55);
+  font-weight: 300;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 0.5px solid var(--border-gold);
+}
+.service-cell {
+  border-right: 0.5px solid var(--border-gold);
+  border-bottom: 0.5px solid var(--border-gold);
+  padding: 2.5rem 2rem;
+  transition: background 0.35s;
+  position: relative;
+  overflow: hidden;
+}
+.service-cell:nth-child(3n) { border-right: none; }
+.service-cell:nth-child(n+4) { border-bottom: none; }
+.service-cell:hover { background: rgba(201,168,76,0.06); }
+
+.service-num {
+  font-family: var(--serif);
+  font-size: 3.5rem;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(201,168,76,0.12);
+  line-height: 1;
+  margin-bottom: 1.5rem;
+  user-select: none;
+}
+.service-name {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--warm-white);
+  margin-bottom: 0.75rem;
+}
+.service-desc {
+  font-size: 0.8rem;
+  line-height: 1.8;
+  color: rgba(212,207,196,0.48);
+  font-weight: 300;
+}
+.service-tag {
+  display: inline-block;
+  margin-top: 1.2rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border-bottom: 0.5px solid var(--border-gold);
+  padding-bottom: 2px;
+}
+
+/* ─── PROCESS ─── */
+#process { background: var(--pearl); }
+#process .section-eyebrow span { color: var(--gold-dark); }
+#process .section-eyebrow::before { background: var(--gold-dark); }
+
+.process-timeline {
+  margin-top: 4rem;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+}
+.process-timeline::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: 10%;
+  right: 10%;
+  height: 0.5px;
+  background: linear-gradient(to right, transparent, var(--gold-dark) 20%, var(--gold-dark) 80%, transparent);
+}
+
+.p-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 0.8rem;
+  gap: 1.2rem;
+}
+.p-step-ring {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  border: 0.5px solid var(--gold-dark);
+  background: var(--pearl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+.p-step-ring span {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold-dark);
+}
+.p-step-name {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  color: var(--green-deepest);
+  font-weight: 400;
+}
+.p-step-desc {
+  font-size: 0.75rem;
+  line-height: 1.7;
+  color: #5a6e60;
+  font-weight: 300;
+}
+
+/* ─── STATS BAR ─── */
+.stats-bar {
+  background: var(--gold);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 2.5rem 5vw;
+}
+.stat {
+  text-align: center;
+  border-right: 0.5px solid rgba(8,15,11,0.18);
+  padding: 0 1rem;
+}
+.stat:last-child { border-right: none; }
+.stat-num {
+  font-family: var(--serif);
+  font-size: 3.2rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--green-deepest);
+  line-height: 1;
+}
+.stat-lbl {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(8,15,11,0.55);
+  margin-top: 0.5rem;
+  font-weight: 400;
+}
+
+/* ─── EVENT TYPES ─── */
+#events { background: var(--green-deepest); }
+
+.event-grid {
+  margin-top: 3.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border-gold);
+}
+.event-tile {
+  background: var(--green-deepest);
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.35s;
+}
+.event-tile:hover { background: var(--green-mid); }
+
+.event-tile-eyebrow {
+  font-size: 0.6rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.event-tile-title {
+  font-family: var(--serif);
+  font-size: 1.9rem;
+  font-weight: 300;
+  color: var(--warm-white);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.event-tile-desc {
+  font-size: 0.82rem;
+  line-height: 1.8;
+  color: rgba(212,207,196,0.48);
+  font-weight: 300;
+  max-width: 360px;
+}
+.event-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1.5rem;
+}
+.event-chip {
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  border: 0.5px solid rgba(201,168,76,0.2);
+  color: rgba(212,207,196,0.4);
+  padding: 0.28rem 0.7rem;
+  font-weight: 300;
+}
+
+/* ─── PORTFOLIO ─── */
+.portfolio-band {
+  background: var(--green-surface);
+  padding: 5rem 0;
+  border-top: 0.5px solid var(--border-gold);
+  border-bottom: 0.5px solid var(--border-gold);
+}
+.portfolio-top {
+  padding: 0 5vw;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.portfolio-row {
+  display: flex;
+  gap: 1.2rem;
+  padding: 0 5vw;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.portfolio-row::-webkit-scrollbar { display: none; }
+
+.portfolio-card {
+  flex-shrink: 0;
+  width: 20rem;
+  height: 13.5rem;
+  border: 0.5px solid var(--border-gold);
+  background: var(--green-dark);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.4rem;
+  transition: border-color 0.3s;
+}
+.portfolio-card:hover { border-color: rgba(201,168,76,0.5); }
+
+.portfolio-card-bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 5rem;
+  font-style: italic;
+  color: var(--gold);
+  opacity: 0.06;
+  user-select: none;
+}
+.portfolio-card-inner { position: relative; z-index: 1; }
+.portfolio-card-name {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--warm-white);
+}
+.portfolio-card-meta {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  margin-top: 0.3rem;
+  font-weight: 300;
+}
+
+/* ─── TESTIMONIALS ─── */
+#testimonials {
+  background: var(--green-muted);
+  border-top: 0.5px solid var(--border-gold);
+}
+.test-grid {
+  margin-top: 3.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.test-card {
+  background: rgba(8,15,11,0.5);
+  border: 0.5px solid var(--border-gold);
+  padding: 2rem;
+}
+.test-open-quote {
+  font-family: var(--serif);
+  font-size: 2.8rem;
+  color: var(--gold);
+  opacity: 0.4;
+  line-height: 0.6;
+  margin-bottom: 1rem;
+}
+.test-body {
+  font-family: var(--serif);
+  font-size: 0.88rem;
+  line-height: 1.85;
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(212,207,196,0.7);
+  margin-bottom: 1.5rem;
+}
+.test-author {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--warm-white);
+  font-weight: 500;
+}
+.test-role {
+  font-size: 0.68rem;
+  color: var(--mid-text);
+  margin-top: 0.2rem;
+  font-weight: 300;
+}
+
+/* ─── CONTACT ─── */
+#contact { background: var(--green-dark); }
+
+.contact-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  margin-top: 4rem;
+}
+.contact-left p {
+  font-size: 0.88rem;
+  line-height: 1.9;
+  color: rgba(212,207,196,0.5);
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+}
+.contact-detail {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+  align-items: flex-start;
+}
+.contact-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  width: 3.5rem;
+  flex-shrink: 0;
+  padding-top: 0.12rem;
+}
+.contact-value {
+  font-size: 0.88rem;
+  color: var(--warm-white);
+  font-weight: 300;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+.f-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.f-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 400;
+}
+.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.f-input, .f-select, .f-textarea {
+  background: rgba(212,207,196,0.04);
+  border: 0.5px solid rgba(212,207,196,0.12);
+  color: var(--warm-white);
+  padding: 0.8rem 1rem;
+  font-family: var(--sans);
+  font-size: 0.83rem;
+  font-weight: 300;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.2s;
+}
+.f-input::placeholder { color: rgba(212,207,196,0.25); }
+.f-input:focus, .f-select:focus, .f-textarea:focus { border-color: var(--gold); }
+.f-select { cursor: pointer; }
+.f-select option { background: #0d1a12; color: var(--warm-white); }
+.f-textarea { resize: vertical; min-height: 5.5rem; }
+
+.f-submit {
+  background: var(--gold);
+  color: var(--green-deepest);
+  border: none;
+  padding: 0.9rem 2rem;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background 0.25s, transform 0.2s;
+}
+.f-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--green-deepest);
+  border-top: 0.5px solid var(--border-gold);
+  padding: 2.5rem 5vw;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 2rem;
+}
+.footer-brand {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+.footer-brand small {
+  display: block;
+  font-size: 0.52rem;
+  letter-spacing: 0.3em;
+  color: var(--mid-text);
+  margin-top: 3px;
+  font-weight: 300;
+}
+.footer-copy {
+  font-size: 0.65rem;
+  color: var(--mid-text);
+  text-align: center;
+  letter-spacing: 0.08em;
+  font-weight: 300;
+}
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  justify-content: flex-end;
+  list-style: none;
+}
+.footer-links a {
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mid-text);
+  text-decoration: none;
+  transition: color 0.2s;
+  font-weight: 300;
+}
+.footer-links a:hover { color: var(--gold); }
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes pulse {
+  0%,100% { opacity: 0.35; }
+  50%      { opacity: 1; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal-delay { transition-delay: 0.15s; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 800px) {
+  .nav-links { display: none; }
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .services-header { grid-template-columns: 1fr; gap: 1.5rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  .service-cell { border-right: none !important; }
+  .process-timeline { grid-template-columns: 1fr; gap: 2rem; }
+  .process-timeline::before { display: none; }
+  .stats-bar { grid-template-columns: repeat(2, 1fr); }
+  .event-grid { grid-template-columns: 1fr; }
+  .test-grid { grid-template-columns: 1fr; }
+  .contact-wrap { grid-template-columns: 1fr; gap: 3rem; }
+  footer { grid-template-columns: 1fr; text-align: center; }
+  .footer-links { justify-content: center; }
+  .f-row { grid-template-columns: 1fr; }
+  .about-pillars { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <!-- Greenhouse geometric logomark SVG -->
+    <svg class="nav-logomark" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="40" cy="40" r="38.5" stroke="#C9A84C" stroke-width="0.8"/>
+      <!-- greenhouse frame -->
+      <polyline points="20,55 20,32 40,18 60,32 60,55" stroke="#C9A84C" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+      <line x1="20" y1="55" x2="60" y2="55" stroke="#C9A84C" stroke-width="1.5"/>
+      <!-- internal vertical panes -->
+      <line x1="32" y1="55" x2="32" y2="30" stroke="#C9A84C" stroke-width="0.8" opacity="0.7"/>
+      <line x1="40" y1="55" x2="40" y2="22" stroke="#C9A84C" stroke-width="0.8" opacity="0.7"/>
+      <line x1="48" y1="55" x2="48" y2="30" stroke="#C9A84C" stroke-width="0.8" opacity="0.7"/>
+      <!-- horizontal pane -->
+      <line x1="23" y1="40" x2="57" y2="40" stroke="#C9A84C" stroke-width="0.8" opacity="0.6"/>
+      <!-- pearl dots bottom -->
+      <circle cx="28" cy="59" r="1.5" fill="#D6CFC4" opacity="0.7"/>
+      <circle cx="40" cy="59" r="1.5" fill="#C9A84C"/>
+      <circle cx="52" cy="59" r="1.5" fill="#D6CFC4" opacity="0.7"/>
+    </svg>
+    <div class="nav-wordmark">
+      <span class="nav-wordmark-top">Greenhouse</span>
+      <span class="nav-wordmark-bot">Events · Dubai</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#testimonials">Clients</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Plan Your Event</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-glow-3"></div>
+
+  <!-- Logo reproduced via SVG matching the brand -->
+  <div class="hero-logo-wrap">
+    <div class="hero-logo-circle">
+      <svg width="120" height="110" viewBox="0 0 120 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- greenhouse structure -->
+        <polyline points="10,90 10,45 60,10 110,45 110,90" stroke="#C9A84C" stroke-width="2" fill="none" stroke-linejoin="round"/>
+        <line x1="10" y1="90" x2="110" y2="90" stroke="#C9A84C" stroke-width="2"/>
+        <!-- verticals -->
+        <line x1="35" y1="90" x2="35" y2="46" stroke="#C9A84C" stroke-width="1.2" opacity="0.65"/>
+        <line x1="60" y1="90" x2="60" y2="14" stroke="#C9A84C" stroke-width="1.2" opacity="0.65"/>
+        <line x1="85" y1="90" x2="85" y2="46" stroke="#C9A84C" stroke-width="1.2" opacity="0.65"/>
+        <!-- horizontal -->
+        <line x1="14" y1="63" x2="106" y2="63" stroke="#C9A84C" stroke-width="1" opacity="0.55"/>
+        <!-- inner frame -->
+        <polyline points="30,90 30,52 60,30 90,52 90,90" stroke="#C9A84C" stroke-width="1" fill="none" opacity="0.4" stroke-linejoin="round"/>
+        <!-- pearl row -->
+        <circle cx="38" cy="97" r="2.5" fill="#D6CFC4" opacity="0.6"/>
+        <circle cx="50" cy="97" r="2.5" fill="#D6CFC4" opacity="0.6"/>
+        <circle cx="60" cy="97" r="3" fill="#C9A84C"/>
+        <circle cx="70" cy="97" r="2.5" fill="#D6CFC4" opacity="0.6"/>
+        <circle cx="82" cy="97" r="2.5" fill="#D6CFC4" opacity="0.6"/>
+        <!-- radiant glow lines -->
+        <line x1="60" y1="40" x2="60" y2="5" stroke="#E2CA82" stroke-width="0.5" opacity="0.3"/>
+        <line x1="60" y1="40" x2="25" y2="12" stroke="#E2CA82" stroke-width="0.5" opacity="0.2"/>
+        <line x1="60" y1="40" x2="95" y2="12" stroke="#E2CA82" stroke-width="0.5" opacity="0.2"/>
+      </svg>
+    </div>
+    <div class="hero-wordblock">
+      <div class="hero-wordblock-name">Greenhouse Events</div>
+      <div class="hero-wordblock-sub">Dubai</div>
+    </div>
+  </div>
+
+  <div class="hero-divider">
+    <div class="hero-divider-dot"></div>
+  </div>
+
+  <h1>Where Vision<br />Becomes <em>Reality</em></h1>
+  <p class="hero-tagline">Full-service event production — from the first concept to the final curtain call. Décor, AV, entertainment, and everything in between.</p>
+  <div class="hero-actions">
+    <a href="#contact" class="btn-gold">Plan Your Event</a>
+    <a href="#services" class="btn-outline">Our Services</a>
+  </div>
+
+  <div class="hero-scroll-hint">
+    <div class="hero-scroll-line"></div>
+    <span class="hero-scroll-label">Discover</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item">Concept Creation <span class="marquee-pearl"></span></div>
+    <div class="marquee-item">Event Décor <span class="marquee-pearl"></span></div>
+    <div class="marquee-item">AV Production <span class="marquee-pearl"></span></div>
+    <div class="marquee-item">Entertainment <span class="marquee-pearl"></span></div>
+    <div class="marquee-item">Production Management <span class="marquee-pearl"></span></div>
+    <div class="marquee-item">Lighting & Sound <span class="marquee-pearl"></span></div>
+    <div class="marquee-item">Full Design <span class="marquee-pearl"></span></div>
+    <div class="marquee-item">Concept Creation <span class="marquee-pearl"></span></div>
+    <div class="marquee-item">Event Décor <span class="marquee-pearl"></span></div>
+    <div class="marquee-item">AV Production <span class="marquee-pearl"></span></div>
+    <div class="marquee-item">Entertainment <span class="marquee-pearl"></span></div>
+    <div class="marquee-item">Production Management <span class="marquee-pearl"></span></div>
+    <div class="marquee-item">Lighting & Sound <span class="marquee-pearl"></span></div>
+    <div class="marquee-item">Full Design <span class="marquee-pearl"></span></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="reveal">
+      <div class="section-eyebrow"><span>Who We Are</span></div>
+      <h2 class="section-title">Dubai's most <em>complete</em><br />event house</h2>
+    </div>
+    <div class="about-text reveal reveal-delay">
+      <p>Greenhouse Events is Dubai's premier full-service event production company. We bring together creative vision, technical mastery, and meticulous planning under one roof — so every event we produce feels effortless, and every moment is unforgettable.</p>
+      <p>From the very first conversation to the moment your guests leave, we handle every detail. Our in-house team of designers, AV engineers, production managers, and entertainment curators work as one seamless unit.</p>
+      <div class="about-pillars">
+        <div class="pillar">
+          <div class="pillar-name">Creative Direction</div>
+          <p class="pillar-desc">Bespoke concepts built around your story, brand, and audience.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-name">Technical Mastery</div>
+          <p class="pillar-desc">State-of-the-art AV, lighting rigs, and live broadcast capability.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-name">In-House Production</div>
+          <p class="pillar-desc">Our own décor, fabrication, and entertainment roster — no middlemen.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-name">On-the-Day Confidence</div>
+          <p class="pillar-desc">A dedicated crew so you can be fully present, worry-free.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header reveal">
+    <div>
+      <div class="section-eyebrow"><span>What We Offer</span></div>
+      <h2 class="section-title">End-to-end event<br /><em>production</em></h2>
+    </div>
+    <p class="services-intro-text">Every service is delivered in-house, giving us complete control over quality, timing, and creative cohesion — from concept through to teardown.</p>
+  </div>
+
+  <div class="services-grid reveal">
+    <div class="service-cell">
+      <div class="service-num">01</div>
+      <div class="service-name">Concept &amp; Design</div>
+      <p class="service-desc">We transform your brief into a full creative concept — moodboards, 3D renders, and a detailed run-of-show before anything is built.</p>
+      <span class="service-tag">Creative Strategy</span>
+    </div>
+    <div class="service-cell">
+      <div class="service-num">02</div>
+      <div class="service-name">Event Décor</div>
+      <p class="service-desc">Custom floral installations, bespoke furniture, fabric draping, centrepieces, and immersive ambient styling — all produced in-house.</p>
+      <span class="service-tag">Bespoke Fabrication</span>
+    </div>
+    <div class="service-cell">
+      <div class="service-num">03</div>
+      <div class="service-name">AV &amp; Production</div>
+      <p class="service-desc">LED walls, projection mapping, broadcast-grade audio, lighting design, and live-streaming. The technical backbone of every great event.</p>
+      <span class="service-tag">Technical Excellence</span>
+    </div>
+    <div class="service-cell">
+      <div class="service-num">04</div>
+      <div class="service-name">Entertainment</div>
+      <p class="service-desc">Curated talent — live bands, DJs, performing artists, MCs, and experiential activations — tailored to your audience and brand.</p>
+      <span class="service-tag">Talent & Experience</span>
+    </div>
+    <div class="service-cell">
+      <div class="service-num">05</div>
+      <div class="service-name">Production Management</div>
+      <p class="service-desc">A dedicated production manager leads every supplier, schedule, and crew member — ensuring your event runs with military precision.</p>
+      <span class="service-tag">End-to-End Ownership</span>
+    </div>
+    <div class="service-cell">
+      <div class="service-num">06</div>
+      <div class="service-name">On-Site Execution</div>
+      <p class="service-desc">Our full crew is on the ground from day one — load-in, live management, contingency handling, and seamless breakdown afterwards.</p>
+      <span class="service-tag">Day-of Excellence</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="reveal" style="text-align: center;">
+    <div class="section-eyebrow" style="justify-content: center;"><span>How It Works</span></div>
+    <h2 class="section-title section-title--dark">From <em style="color:var(--gold-dark)">first call</em> to<br />standing ovation</h2>
+  </div>
+  <div class="process-timeline reveal">
+    <div class="p-step">
+      <div class="p-step-ring"><span>1</span></div>
+      <div class="p-step-name">Discovery</div>
+      <p class="p-step-desc">We learn your vision, objectives, audience, and budget in a dedicated brief session.</p>
+    </div>
+    <div class="p-step">
+      <div class="p-step-ring"><span>2</span></div>
+      <div class="p-step-name">Concept</div>
+      <p class="p-step-desc">Our creative team develops a full concept — renders, moodboards, and run-of-show.</p>
+    </div>
+    <div class="p-step">
+      <div class="p-step-ring"><span>3</span></div>
+      <div class="p-step-name">Design</div>
+      <p class="p-step-desc">Décor, AV, lighting, and entertainment designed in detail and locked for production.</p>
+    </div>
+    <div class="p-step">
+      <div class="p-step-ring"><span>4</span></div>
+      <div class="p-step-name">Production</div>
+      <p class="p-step-desc">Build, rehearse, and install. Every element managed with precision and care.</p>
+    </div>
+    <div class="p-step">
+      <div class="p-step-ring"><span>5</span></div>
+      <div class="p-step-name">Execution</div>
+      <p class="p-step-desc">You enjoy every moment. We manage everything behind the scenes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">500+</div><div class="stat-lbl">Events Produced</div></div>
+  <div class="stat"><div class="stat-num">12</div><div class="stat-lbl">Years of Experience</div></div>
+  <div class="stat"><div class="stat-num">98%</div><div class="stat-lbl">Client Satisfaction</div></div>
+  <div class="stat"><div class="stat-num">40+</div><div class="stat-lbl">In-House Crew</div></div>
+</div>
+
+<!-- EVENT TYPES -->
+<section id="events">
+  <div class="reveal">
+    <div class="section-eyebrow"><span>Event Types</span></div>
+    <h2 class="section-title">Every occasion,<br /><em>elevated</em></h2>
+  </div>
+  <div class="event-grid reveal">
+    <div class="event-tile">
+      <div class="event-tile-eyebrow">Corporate</div>
+      <div class="event-tile-title">Corporate Events &amp; Conferences</div>
+      <p class="event-tile-desc">Product launches, annual galas, town halls, leadership summits, and investor days — produced to reflect your brand at its very finest.</p>
+      <div class="event-chips">
+        <span class="event-chip">Product Launches</span>
+        <span class="event-chip">Annual Galas</span>
+        <span class="event-chip">Conferences</span>
+        <span class="event-chip">Investor Days</span>
+      </div>
+    </div>
+    <div class="event-tile">
+      <div class="event-tile-eyebrow">Social</div>
+      <div class="event-tile-title">Weddings &amp; Private Celebrations</div>
+      <p class="event-tile-desc">From intimate affairs to grand ballroom celebrations, every detail curated to create memories that last a lifetime.</p>
+      <div class="event-chips">
+        <span class="event-chip">Weddings</span>
+        <span class="event-chip">Milestone Birthdays</span>
+        <span class="event-chip">Anniversaries</span>
+        <span class="event-chip">Private Parties</span>
+      </div>
+    </div>
+    <div class="event-tile">
+      <div class="event-tile-eyebrow">Brand</div>
+      <div class="event-tile-title">Brand Activations &amp; Experiential</div>
+      <p class="event-tile-desc">Immersive brand moments that stop people in their tracks — pop-ups, activations, and experiential marketing campaigns.</p>
+      <div class="event-chips">
+        <span class="event-chip">Pop-ups</span>
+        <span class="event-chip">Activations</span>
+        <span class="event-chip">Exhibitions</span>
+        <span class="event-chip">Roadshows</span>
+      </div>
+    </div>
+    <div class="event-tile">
+      <div class="event-tile-eyebrow">Live</div>
+      <div class="event-tile-title">Entertainment &amp; Live Shows</div>
+      <p class="event-tile-desc">Concert-level production for award ceremonies, fashion shows, live performances, and broadcast events.</p>
+      <div class="event-chips">
+        <span class="event-chip">Award Ceremonies</span>
+        <span class="event-chip">Fashion Shows</span>
+        <span class="event-chip">Concerts</span>
+        <span class="event-chip">Broadcasts</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<div class="portfolio-band">
+  <div class="portfolio-top">
+    <div>
+      <div class="section-eyebrow"><span>Our Work</span></div>
+      <h2 class="section-title">Selected <em>projects</em></h2>
+    </div>
+    <a href="#contact" class="btn-outline">View All Work</a>
+  </div>
+  <div class="portfolio-row">
+    <div class="portfolio-card"><div class="portfolio-card-bg">G</div><div class="portfolio-card-inner"><div class="portfolio-card-name">Al Maha Annual Gala</div><div class="portfolio-card-meta">Corporate · 800 guests · Jumeirah</div></div></div>
+    <div class="portfolio-card"><div class="portfolio-card-bg">W</div><div class="portfolio-card-inner"><div class="portfolio-card-name">Nour &amp; Khalid Wedding</div><div class="portfolio-card-meta">Social · 400 guests · Burj Al Arab</div></div></div>
+    <div class="portfolio-card"><div class="portfolio-card-bg">E</div><div class="portfolio-card-inner"><div class="portfolio-card-name">Emirates Brand Activation</div><div class="portfolio-card-meta">Brand · Dubai Mall · 5 days</div></div></div>
+    <div class="portfolio-card"><div class="portfolio-card-bg">S</div><div class="portfolio-card-inner"><div class="portfolio-card-name">Saffron Awards Night</div><div class="portfolio-card-meta">Live · 1,200 guests · Media City</div></div></div>
+    <div class="portfolio-card"><div class="portfolio-card-bg">R</div><div class="portfolio-card-inner"><div class="portfolio-card-name">Reem Luxury Launch</div><div class="portfolio-card-meta">Corporate · Armani Hotel · 350 guests</div></div></div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="reveal" style="text-align: center;">
+    <div class="section-eyebrow" style="justify-content: center;"><span>Client Voices</span></div>
+    <h2 class="section-title">Moments that<br /><em>moved people</em></h2>
+  </div>
+  <div class="test-grid reveal">
+    <div class="test-card">
+      <div class="test-open-quote">"</div>
+      <p class="test-body">Greenhouse transformed our annual gala into something extraordinary. The bespoke floral installations and choreographed AV sequences left our guests completely speechless.</p>
+      <div class="test-author">Sarah Al Mansoori</div>
+      <div class="test-role">Head of Events, Dubai Holdings</div>
+    </div>
+    <div class="test-card">
+      <div class="test-open-quote">"</div>
+      <p class="test-body">Our product launch needed to make a statement across the region. The team delivered production that rivalled any major international event — on time and beyond expectations.</p>
+      <div class="test-author">James Whitfield</div>
+      <div class="test-role">VP Marketing, MENA Tech Group</div>
+    </div>
+    <div class="test-card">
+      <div class="test-open-quote">"</div>
+      <p class="test-body">Working with Greenhouse for our wedding was the best decision we made. On the day, we were completely present — because we knew everything was in perfect hands.</p>
+      <div class="test-author">Fatima &amp; Omar Hassan</div>
+      <div class="test-role">Private Client</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="reveal">
+    <div class="section-eyebrow"><span>Get In Touch</span></div>
+    <h2 class="section-title">Let's create something<br /><em>unforgettable</em></h2>
+  </div>
+  <div class="contact-wrap reveal">
+    <div class="contact-left">
+      <p>Tell us about your event and we'll be in touch within 24 hours. Whether you have a detailed brief or just a feeling — we're here to help shape it into something remarkable.</p>
+      <div class="contact-detail">
+        <span class="contact-label">Studio</span>
+        <span class="contact-value">Business Bay, Dubai, UAE</span>
+      </div>
+      <div class="contact-detail">
+        <span class="contact-label">Email</span>
+        <span class="contact-value">hello@greenhouseevents.ae</span>
+      </div>
+      <div class="contact-detail">
+        <span class="contact-label">Phone</span>
+        <span class="contact-value">+971 4 000 0000</span>
+      </div>
+      <div class="contact-detail">
+        <span class="contact-label">Hours</span>
+        <span class="contact-value">Sun – Thu, 9am – 6pm GST</span>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="f-row">
+        <div class="f-group">
+          <label class="f-label">First Name</label>
+          <input type="text" class="f-input" placeholder="Sarah" />
+        </div>
+        <div class="f-group">
+          <label class="f-label">Last Name</label>
+          <input type="text" class="f-input" placeholder="Al Rashid" />
+        </div>
+      </div>
+      <div class="f-group">
+        <label class="f-label">Email Address</label>
+        <input type="email" class="f-input" placeholder="sarah@company.com" />
+      </div>
+      <div class="f-row">
+        <div class="f-group">
+          <label class="f-label">Event Type</label>
+          <select class="f-select f-input">
+            <option value="">Select type</option>
+            <option>Corporate Event</option>
+            <option>Wedding</option>
+            <option>Brand Activation</option>
+            <option>Private Celebration</option>
+            <option>Live Show / Entertainment</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="f-group">
+          <label class="f-label">Estimated Budget</label>
+          <select class="f-select f-input">
+            <option value="">Select range</option>
+            <option>AED 50k – 100k</option>
+            <option>AED 100k – 250k</option>
+            <option>AED 250k – 500k</option>
+            <option>AED 500k+</option>
+          </select>
+        </div>
+      </div>
+      <div class="f-group">
+        <label class="f-label">Tell Us About Your Event</label>
+        <textarea class="f-textarea" placeholder="Date, location, number of guests, your vision..."></textarea>
+      </div>
+      <button type="submit" class="f-submit">Send Enquiry →</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    Greenhouse Events
+    <small>Dubai · UAE</small>
+  </div>
+  <div class="footer-copy">© 2025 Greenhouse Events LLC. All rights reserved.</div>
+  <ul class="footer-links">
+    <li><a href="#">Instagram</a></li>
+    <li><a href="#">LinkedIn</a></li>
+    <li><a href="#">Privacy</a></li>
+  </ul>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.f-submit');
+    btn.textContent = 'Enquiry Sent ✓';
+    btn.style.background = 'var(--green-accent)';
+    btn.style.color = 'var(--gold-light)';
+    btn.disabled = true;
+  }
+</script>
+</body>
+</html>
