@@ -1,179 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Greenhouse Events Dubai — Luxury Event Production</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-dark: #536864; 
-            --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%);
-            --gold-solid: #C9A84C;
-            --white: #F4F0E8;
-            --black: #0b1a18;
-            --border: rgba(201,168,76,0.2);
-            --serif: 'Cormorant Garamond', serif;
-            --sans: 'DM Sans', sans-serif;
-        }
+<section id="clients">
+    <div class="client-container reveal">
+        <div class="client-sidebar">
+            <h2>Client History</h2>
+        </div>
 
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-        body { background: var(--bg-dark); color: var(--white); font-family: var(--sans); overflow-x: hidden; }
+        <div class="client-brand-grid">
+            <div class="brand-tile"><span>Waitrose</span></div>
+            <div class="brand-tile"><span>itv</span></div>
+            <div class="brand-tile"><span>bp</span></div>
+            <div class="brand-tile"><span>Four Seasons</span></div>
+            <div class="brand-tile"><span>Emmerdale</span></div>
 
-        .metallic { background: var(--gold-metallic); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; }
+            <div class="brand-tile"><span>Mandarin Oriental</span></div>
+            <div class="brand-tile"><span>Candypants</span></div>
+            <div class="brand-tile"><span>Sky Betting</span></div>
+            <div class="brand-tile"><span>Hits Radio</span></div>
+            <div class="brand-tile"><span>JD Sports</span></div>
 
-        /* NAVIGATION */
-        nav {
-            position: fixed; top: 0; width: 100%; z-index: 1000;
-            padding: 1.2rem 5vw; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(83, 104, 100, 0.9); backdrop-filter: blur(15px);
-            border-bottom: 0.5px solid var(--border);
-        }
-        .nav-logo { font-family: var(--serif); font-size: 1.5rem; color: var(--gold-solid); text-decoration: none; font-weight: 600; letter-spacing: 2px; }
-        .nav-cta { background: var(--gold-metallic); color: var(--black); padding: 0.75rem 1.8rem; text-decoration: none; font-weight: 600; font-size: 0.75rem; letter-spacing: 1px; }
+            <div class="brand-tile"><span>Remi Cachet</span></div>
+            <div class="brand-tile"><span>Burberry</span></div>
+            <div class="brand-tile"><span>PrettyLittleThing</span></div>
+            <div class="brand-tile"><span>Parklife</span></div>
+            <div class="brand-tile"><span>ghd</span></div>
 
-        /* HERO - FULL LOGO IMPACT */
-        .hero {
-            height: 100vh; position: relative; display: flex; align-items: center; justify-content: center;
-            background: url('logo.jpg') no-repeat center center;
-            background-size: cover; background-attachment: fixed;
-            overflow: hidden;
-        }
-        .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, transparent 20%, rgba(83, 104, 100, 0.5) 100%); }
+            <div class="brand-tile"><span>Jumeirah</span></div>
+            <div class="brand-tile"><span>G Casino</span></div>
+            <div class="brand-tile"><span>Wet Deck</span></div>
+            <div class="brand-tile"><span>Akira Back</span></div>
+            <div class="brand-tile"><span>W Dubai</span></div>
 
-        /* MARQUEE */
-        .marquee { background: var(--black); padding: 1.2rem 0; overflow: hidden; white-space: nowrap; border-top: 0.5px solid var(--gold-solid); border-bottom: 0.5px solid var(--gold-solid); }
-        .marquee-inner { display: inline-block; animation: scroll 40s linear infinite; font-family: var(--serif); color: var(--gold-solid); font-size: 1.1rem; letter-spacing: 5px; text-transform: uppercase; }
-
-        /* SECTIONS */
-        section { padding: 8rem 8vw; position: relative; }
-        .sec-title { font-family: var(--serif); font-size: 3.5rem; margin-bottom: 4rem; text-align: center; color: var(--gold-solid); font-weight: 300; }
-        
-        /* SERVICES GRID */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
-        .card { border: 0.5px solid var(--border); padding: 3.5rem; background: rgba(0,0,0,0.1); transition: 0.4s; }
-        .card:hover { border-color: var(--gold-solid); transform: translateY(-5px); }
-        .card h3 { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 1rem; color: var(--gold-solid); }
-
-        /* PROCESS */
-        .process-wrap { display: flex; justify-content: space-between; margin-top: 4rem; gap: 1rem; flex-wrap: wrap; }
-        .step { text-align: center; flex: 1; min-width: 150px; }
-        .step-num { font-family: var(--serif); font-size: 3.5rem; color: var(--gold-solid); opacity: 0.4; }
-
-        /* STATS */
-        .stats-bar { background: var(--black); padding: 5rem 5vw; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; border-top: 0.5px solid var(--gold-solid); }
-        .stat-item h2 { font-family: var(--serif); font-size: 3.5rem; color: var(--gold-solid); }
-
-        /* CLIENT LIST SECTION (NEW KNOWLEDGE ADDED) */
-        .client-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-        .client-tag { border: 0.5px solid var(--border); padding: 1.2rem; text-align: center; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-solid); }
-
-        /* CONTACT */
-        .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1100px; margin: 0 auto; }
-        .c-info p { margin-bottom: 2rem; opacity: 0.7; }
-        .c-detail { display: flex; gap: 1rem; margin-bottom: 1rem; }
-        .c-label { font-weight: 600; color: var(--gold-solid); width: 80px; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px; }
-        .c-form { display: grid; gap: 1.5rem; }
-        input, select, textarea { background: transparent; border: none; border-bottom: 1px solid var(--gold-solid); padding: 1rem; color: var(--white); outline: none; width: 100%; }
-
-        @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-        @media (max-width: 900px) {
-            .contact-wrap, .stats-bar, .process-wrap { grid-template-columns: 1fr; }
-        }
-    </style>
-</head>
-<body>
-
-    <nav>
-        <a href="#" class="nav-logo">GREENHOUSE</a>
-        <a href="#contact" class="nav-cta">ENQUIRE NOW</a>
-    </nav>
-
-    <header class="hero">
-        <div class="hero-overlay"></div>
-    </header>
-
-    <div class="marquee">
-        <div class="marquee-inner">
-            CONCEPT CREATION · EVENT DÉCOR · AV PRODUCTION · ENTERTAINMENT · PRODUCTION MANAGEMENT · Bespoke Design · 
-            CONCEPT CREATION · EVENT DÉCOR · AV PRODUCTION · ENTERTAINMENT · PRODUCTION MANAGEMENT · Bespoke Design · 
+            <div class="brand-tile"><span>Caesars Palace</span></div>
+            <div class="brand-tile"><span>Trafford Palazzo</span></div>
+            <div class="brand-tile"><span>Kate Spade</span></div>
+            <div class="brand-tile"><span>Victoria's Secret</span></div>
+            <div class="brand-tile"><span>John Lewis</span></div>
         </div>
     </div>
-
-    <section id="services">
-        <h2 class="sec-title">Luxury <em>Production</em></h2>
-        <div class="services-grid">
-            <div class="card"><h3>Concept & Design</h3><p>Translating initial vision into 3D floorplan renders and comprehensive creative strategy.</p></div>
-            <div class="card"><h3>Event Décor</h3><p>Full-scale supply of luxury furniture, bespoke fabrication, and intricate floral design.</p></div>
-            <div class="card"><h3>AV & Production</h3><p>State-of-the-art technical delivery including lighting, sound, and LED technology.</p></div>
-            <div class="card"><h3>Entertainment</h3><p>Curated rosters of talent specifically for high-end brand and social celebrations.</p></div>
-            <div class="card"><h3>Management</h3><p>20 years of production management covering every technical and logistical detail.</p></div>
-            <div class="card"><h3>Execution</h3><p>Flawless on-site delivery, managing every detail from load-in to final strike.</p></div>
-        </div>
-    </section>
-
-    <section id="clients" style="background: var(--black);">
-        <h2 class="sec-title">Trusted by <em>Excellence</em></h2>
-        <div class="client-grid">
-            <div class="client-tag">Four Seasons Dubai</div>
-            <div class="client-tag">Dubai Police</div>
-            <div class="client-tag">Burj Al Arab</div>
-            <div class="client-tag">Rolls Royce</div>
-            <div class="client-tag">MENA Tech Group</div>
-            <div class="client-tag">Palm Jumeirah Events</div>
-        </div>
-    </section>
-
-    <section id="process">
-        <h2 class="sec-title">The <em>Blueprint</em></h2>
-        <div class="process-wrap">
-            <div class="step"><div class="step-num">01</div><h4>Discovery</h4></div>
-            <div class="step"><div class="step-num">02</div><h4>Concept</h4></div>
-            <div class="step"><div class="step-num">03</div><h4>Design</h4></div>
-            <div class="step"><div class="step-num">04</div><h4>Production</h4></div>
-            <div class="step"><div class="step-num">05</div><h4>Execution</h4></div>
-        </div>
-    </section>
-
-    <div class="stats-bar">
-        <div class="stat-item"><h2>500+</h2><p style="font-size: 0.7rem; letter-spacing: 2px; opacity: 0.5;">Events Produced</p></div>
-        <div class="stat-item"><h2>20</h2><p style="font-size: 0.7rem; letter-spacing: 2px; opacity: 0.5;">Years Experience</p></div>
-        <div class="stat-item"><h2>98%</h2><p style="font-size: 0.7rem; letter-spacing: 2px; opacity: 0.5;">Satisfaction</p></div>
-        <div class="stat-item"><h2>40+</h2><p style="font-size: 0.7rem; letter-spacing: 2px; opacity: 0.5;">Professional Crew</p></div>
-    </div>
-
-    <section id="contact">
-        <div class="contact-wrap">
-            <div class="c-info">
-                <h2 style="font-family: var(--serif); font-size: 3rem; margin-bottom: 2rem;">Let's Create <em>Unforgettable</em></h2>
-                <p>Tell us about your event and we'll be in touch within 24 hours.</p>
-                <div class="c-detail"><span class="c-label">Email</span><span>Lili@greenhouseeventsuae.com</span></div>
-                <div class="c-detail"><span class="c-label">Phone</span><span>+971 55 253 7712</span></div>
-                <div class="c-detail"><span class="c-label">Location</span><span>Dubai, UAE</span></div>
-            </div>
-            <form class="c-form">
-                <input type="text" placeholder="FULL NAME">
-                <input type="email" placeholder="EMAIL ADDRESS">
-                <select>
-                    <option disabled selected>EVENT TYPE</option>
-                    <option>Corporate Gala</option>
-                    <option>Luxury Wedding</option>
-                    <option>Brand Activation</option>
-                    <option>Private Celebration</option>
-                </select>
-                <textarea rows="4" placeholder="YOUR VISION"></textarea>
-                <button type="submit" class="nav-cta" style="border:none; cursor:pointer;">SEND ENQUIRY</button>
-            </form>
-        </div>
-    </section>
-
-    <footer style="padding: 4rem; text-align: center; border-top: 0.5px solid var(--gold-solid); background: var(--black);">
-        <p style="font-family: var(--serif); font-size: 1.2rem; letter-spacing: 4px; color: var(--gold-solid);">GREENHOUSE EVENTS DUBAI</p>
-        <p style="font-size: 0.6rem; opacity: 0.3; margin-top: 2rem;">© 2026 GREENHOUSE EVENTS LLC. ALL RIGHTS RESERVED.</p>
-    </footer>
-
-</body>
-</html>
+</section>
