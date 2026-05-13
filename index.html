@@ -4,100 +4,213 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Greenhouse Events Dubai — Luxury Event Production</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Jost:wght@200;300;400&display=swap" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* These colors are sampled directly from your logo to ensure a "continuous" look */
-            --bg-deep: #0b1a18; 
-            --bg-glow: #1a3a34;
+            /* Exact brand tones from your Greenhouse logo */
+            --bg-dark: #536864; 
+            --bg-mid: #909e99;
+            --bg-shimmer: #b2c1ba;
             --gold: #C9A84C;
-            --warm-white: #F4F0E8;
+            --white: #F4F0E8;
+            --black: #0b1a18;
+            --serif: 'Cormorant Garamond', serif;
+            --sans: 'DM Sans', sans-serif;
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        
-        body, html { 
-            height: 100%; 
-            background-color: var(--bg-deep); 
-            color: var(--warm-white);
-            font-family: 'Jost', sans-serif;
-            overflow-x: hidden;
-        }
+        html { scroll-behavior: smooth; }
+        body { background: var(--bg-dark); color: var(--white); font-family: var(--sans); overflow-x: hidden; }
 
-        /* THE CONTINUOUS HERO BACKGROUND */
+        /* 1. FIXED NAVIGATION */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            padding: 1.2rem 5vw; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(83, 104, 100, 0.9); backdrop-filter: blur(15px);
+            border-bottom: 0.5px solid rgba(201, 168, 76, 0.2);
+        }
+        .nav-logo { font-family: var(--serif); font-size: 1.4rem; color: var(--gold); text-decoration: none; font-weight: 600; letter-spacing: 2px; }
+        .nav-cta { background: var(--gold); color: var(--black); padding: 0.7rem 1.8rem; text-decoration: none; font-weight: 500; font-size: 0.75rem; letter-spacing: 1px; transition: 0.3s; }
+        .nav-cta:hover { filter: brightness(1.1); transform: translateY(-2px); }
+
+        /* 2. HERO WITH CONTINUOUS LOGO */
         .hero {
-            height: 100vh;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            /* Blends the deep edges of the logo into the site background */
-            background: radial-gradient(circle at center, var(--bg-glow) 0%, var(--bg-deep) 100%);
-            text-align: center;
+            height: 100vh; position: relative; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; text-align: center;
+            background: radial-gradient(circle, var(--bg-shimmer) 0%, var(--bg-mid) 40%, var(--bg-dark) 100%);
         }
-
-        /* YOUR EXACT LOGO - NO BOXES */
-        .brand-image {
-            width: min(800px, 95vw);
-            height: auto;
-            z-index: 10;
-            display: block;
-            /* Animation to make it feel premium on load */
-            animation: softReveal 2.5s ease-out;
-            /* Removes any "boxed" feel by blending perfectly */
-            mix-blend-mode: lighten; 
+        .logo-main {
+            width: min(550px, 80vw); margin-bottom: 2.5rem;
+            animation: softReveal 2.5s ease-out; z-index: 10;
         }
+        .hero h1 { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 4.5rem); font-style: italic; font-weight: 300; line-height: 1.1; animation: fadeUp 2s ease-out forwards; }
+        
+        /* 3. MARQUEE STRIP */
+        .marquee { background: var(--black); padding: 1.2rem 0; overflow: hidden; white-space: nowrap; border-top: 0.5px solid var(--gold); border-bottom: 0.5px solid var(--gold); }
+        .marquee-inner { display: inline-block; animation: scroll 40s linear infinite; font-family: var(--serif); color: var(--gold); font-size: 1.1rem; letter-spacing: 5px; text-transform: uppercase; }
 
-        /* CONTENT BELOW THE LOGO */
-        .cta-container {
-            margin-top: -2rem; /* Pulls content up to overlap with the logo's bottom glow */
-            z-index: 20;
-            opacity: 0;
-            animation: fadeIn 1.5s 1.5s forwards;
+        /* SECTIONS GENERAL */
+        section { padding: 8rem 8vw; position: relative; }
+        .sec-title { font-family: var(--serif); font-size: 3.5rem; margin-bottom: 4rem; text-align: center; color: var(--gold); font-weight: 300; }
+        .sec-title em { font-style: italic; opacity: 0.8; }
+
+        /* 4. SERVICES GRID */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
+        .card { border: 0.5px solid rgba(201, 168, 76, 0.2); padding: 3.5rem; transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); background: rgba(0,0,0,0.05); }
+        .card:hover { border-color: var(--gold); transform: translateY(-10px); background: rgba(201, 168, 76, 0.05); }
+        .card h3 { font-family: var(--serif); font-size: 1.7rem; margin-bottom: 1.2rem; font-weight: 600; color: var(--gold); }
+        .card p { font-size: 0.95rem; line-height: 1.8; opacity: 0.7; font-weight: 300; }
+
+        /* 5. PROCESS TIMELINE */
+        .process-wrap { display: flex; justify-content: space-between; margin-top: 5rem; gap: 2rem; }
+        .step { text-align: center; flex: 1; position: relative; }
+        .step-num { font-family: var(--serif); font-size: 4rem; color: var(--gold); opacity: 0.3; line-height: 1; margin-bottom: 1rem; }
+        .step h4 { font-family: var(--serif); font-size: 1.4rem; letter-spacing: 1px; margin-bottom: 0.5rem; }
+        
+        /* 6. STATS BAR */
+        .stats-bar { background: var(--black); padding: 5rem 5vw; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; border-top: 0.5px solid var(--gold); }
+        .stat-item h2 { font-family: var(--serif); font-size: 3.5rem; color: var(--gold); margin-bottom: 0.5rem; }
+        .stat-item p { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.6; }
+
+        /* 7. EVENT TYPES GRID */
+        .event-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(201, 168, 76, 0.2); }
+        .event-item { background: var(--bg-dark); padding: 4rem; transition: 0.3s; }
+        .event-item:hover { background: #5d736e; }
+        .event-item h4 { font-family: var(--serif); font-size: 2rem; margin-bottom: 1rem; }
+
+        /* 8. TESTIMONIALS */
+        .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .test-card { font-style: italic; padding: 2rem; border-left: 1px solid var(--gold); }
+        .test-card p { font-family: var(--serif); font-size: 1.2rem; line-height: 1.6; margin-bottom: 1.5rem; }
+        .test-card span { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-style: normal; }
+
+        /* 9. CONTACT FORM */
+        .contact-wrap { max-width: 800px; margin: 0 auto; }
+        .c-form { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .full-w { grid-column: span 2; }
+        input, select, textarea { 
+            background: transparent; border: none; border-bottom: 0.5px solid rgba(201, 168, 76, 0.5); 
+            padding: 1.2rem 0.5rem; color: var(--white); font-family: var(--sans); width: 100%; outline: none; transition: 0.3s;
         }
-
-        .btn {
-            font-family: 'Cinzel', serif;
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-            color: var(--bg-deep);
-            background: linear-gradient(135deg, #8B6914 0%, #C9A84C 50%, #F5E9B8 100%);
-            padding: 1.2rem 3rem;
-            text-decoration: none;
-            font-weight: 700;
-            border-radius: 2px;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
+        input:focus, textarea:focus { border-bottom-color: var(--gold); }
+        .submit-btn { 
+            grid-column: span 2; background: var(--gold); border: none; padding: 1.2rem; 
+            font-family: var(--serif); font-size: 1.1rem; letter-spacing: 2px; cursor: pointer; transition: 0.3s; margin-top: 2rem;
         }
+        .submit-btn:hover { filter: brightness(1.1); letter-spacing: 4px; }
 
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(201, 168, 76, 0.6);
-        }
+        /* 10. FOOTER */
+        footer { padding: 5rem 5vw; text-align: center; background: var(--black); border-top: 0.5px solid var(--gold); }
+        .footer-logo { font-family: var(--serif); font-size: 2rem; color: var(--gold); margin-bottom: 1rem; }
+        .copy { font-size: 0.65rem; letter-spacing: 1px; opacity: 0.4; margin-top: 2rem; }
 
-        @keyframes softReveal {
-            from { opacity: 0; transform: scale(0.95); filter: blur(10px); }
-            to { opacity: 1; transform: scale(1); filter: blur(0); }
-        }
+        /* ANIMATIONS & RESPONSIVENESS */
+        @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        @keyframes softReveal { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        @keyframes fadeIn {
-            to { opacity: 1; }
+        @media (max-width: 900px) {
+            .process-wrap, .test-grid, .stats-bar, .c-form { grid-template-columns: 1fr; }
+            .full-w { grid-column: span 1; }
+            .c-form { display: block; }
+            .event-grid { grid-template-columns: 1fr; }
+            .step { margin-bottom: 3rem; }
         }
     </style>
 </head>
 <body>
 
-    <section class="hero">
-        <img src="logo.jpg" alt="Greenhouse Events Dubai Logo" class="brand-image">
-        
-        <div class="cta-container">
-            <a href="mailto:hello@greenhouseevents.ae" class="btn">ENQUIRE NOW</a>
+    <nav>
+        <a href="#" class="nav-logo">GREENHOUSE</a>
+        <a href="#contact" class="nav-cta">BOOK CONSULTATION</a>
+    </nav>
+
+    <header class="hero">
+        <img src="logo.jpg" alt="Greenhouse Events" class="logo-main">
+        <h1>Bespoke Design. <br><em>Flawless Execution.</em></h1>
+    </header>
+
+    <div class="marquee">
+        <div class="marquee-inner">
+            CONCEPT CREATION · EVENT DÉCOR · AV PRODUCTION · ENTERTAINMENT · PRODUCTION MANAGEMENT · ON-SITE EXECUTION · 
+            CONCEPT CREATION · EVENT DÉCOR · AV PRODUCTION · ENTERTAINMENT · PRODUCTION MANAGEMENT · ON-SITE EXECUTION · 
+        </div>
+    </div>
+
+    <section id="services">
+        <h2 class="sec-title">Full Service <em>Production</em></h2>
+        <div class="services-grid">
+            <div class="card"><h3>Concept & Design</h3><p>We transform your initial vision into a living concept through moodboards, 3D floorplan renders, and cohesive storytelling.</p></div>
+            <div class="card"><h3>Event Décor</h3><p>From luxury furniture and bespoke fabrication to intricate floral installations, we supply the full visual atmosphere.</p></div>
+            <div class="card"><h3>AV & Production</h3><p>State-of-the-art lighting design, broadcast-grade sound, and LED technology managed by our specialist technical crew.</p></div>
+            <div class="card"><h3>Entertainment</h3><p>Curated live acts, world-class DJs, and experiential performances tailored specifically to your brand or celebration.</p></div>
+            <div class="card"><h3>Management</h3><p>Expert production management covering timelines, logistics, and supplier coordination with 20 years of industry tenure.</p></div>
+            <div class="card"><h3>On-Site Execution</h3><p>Unrivaled peace of mind with our dedicated on-site crew managing every detail from load-in to final strike.</p></div>
         </div>
     </section>
+
+    <section id="process" style="background: var(--black);">
+        <h2 class="sec-title">The <em>Journey</em></h2>
+        <div class="process-wrap">
+            <div class="step"><div class="step-num">01</div><h4>Discovery</h4><p style="font-size: 0.8rem; opacity:0.6;">Defining vision and objectives.</p></div>
+            <div class="step"><div class="step-num">02</div><h4>Concept</h4><p style="font-size: 0.8rem; opacity:0.6;">Creative storytelling and renders.</p></div>
+            <div class="step"><div class="step-num">03</div><h4>Design</h4><p style="font-size: 0.8rem; opacity:0.6;">Finalizing technical and decor specs.</p></div>
+            <div class="step"><div class="step-num">04</div><h4>Production</h4><p style="font-size: 0.8rem; opacity:0.6;">Fabrication and rehearsal.</p></div>
+            <div class="step"><div class="step-num">05</div><h4>Execution</h4><p style="font-size: 0.8rem; opacity:0.6;">The flawless final delivery.</p></div>
+        </div>
+    </section>
+
+    <div class="stats-bar">
+        <div class="stat-item"><h2>500+</h2><p>Events Produced</p></div>
+        <div class="stat-item"><h2>20</h2><p>Years Experience</p></div>
+        <div class="stat-item"><h2>98%</h2><p>Client Satisfaction</p></div>
+        <div class="stat-item"><h2>40+</h2><p>Professional Crew</p></div>
+    </div>
+
+    <section id="events">
+        <h2 class="sec-title">Our <em>Specialties</em></h2>
+        <div class="event-grid">
+            <div class="event-item"><h4>Corporate Galas</h4><p>High-stakes production for global brands.</p></div>
+            <div class="event-item"><h4>Luxury Weddings</h4><p>Intimate storytelling on a grand scale.</p></div>
+            <div class="event-item"><h4>Brand Activations</h4><p>Immersive environments that drive engagement.</p></div>
+            <div class="event-item"><h4>Live Shows</h4><p>Concert-grade technical execution.</p></div>
+        </div>
+    </section>
+
+    <section id="testimonials" style="background: var(--black);">
+        <div class="test-grid">
+            <div class="test-card"><p>"The level of detail Greenhouse brings to production management is simply unrivaled in Dubai."</p><span>— Maryam Al Suwaidi</span></div>
+            <div class="test-card"><p>"A true 360-degree event partner. From the first render to the final teardown."</p><span>— VP Marketing, MENA Tech</span></div>
+            <div class="test-card"><p>"They took our vision and elevated it beyond anything we could have imagined."</p><span>— Private Client</span></div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-wrap">
+            <h2 class="sec-title">Start the <em>Conversation</em></h2>
+            <form class="c-form">
+                <input type="text" placeholder="FULL NAME" required>
+                <input type="email" placeholder="EMAIL ADDRESS" required>
+                <select class="full-w">
+                    <option disabled selected>EVENT TYPE</option>
+                    <option>Corporate Gala</option>
+                    <option>Luxury Wedding</option>
+                    <option>Brand Activation</option>
+                    <option>Live Show</option>
+                </select>
+                <input type="text" placeholder="BUDGET RANGE (AED)" class="full-w">
+                <textarea placeholder="TELL US ABOUT YOUR VISION" rows="5" class="full-w"></textarea>
+                <button type="submit" class="submit-btn">SEND ENQUIRY</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">GREENHOUSE EVENTS</div>
+        <p style="font-family: var(--serif); font-size: 1rem; color: var(--gold); letter-spacing: 3px;">DUBAI · EST. 2004</p>
+        <p class="copy">© 2026 GREENHOUSE EVENTS LLC. ALL RIGHTS RESERVED.</p>
+    </footer>
 
 </body>
 </html>
