@@ -1,4 +1,4 @@
-<section id="clients">
+<section id="clients" style="background: #F4F0E8; padding: 80px 5vw;">
     <div class="client-sheet-container">
         <div class="client-sidebar">
             <h2>Client History</h2>
@@ -11,53 +11,60 @@
 </section>
 
 <style>
-    #clients { background: #F4F0E8; padding: 6rem 5vw; }
-    
+    /* Framework for the image sheet */
     .client-sheet-container {
         display: flex;
         max-width: 1300px;
         margin: 0 auto;
         background: #fff;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+        border: 1px solid rgba(0,0,0,0.02);
     }
 
+    /* Rotated Sidebar styling */
     .client-sidebar {
-        background: #E8E8E6;
-        width: 100px;
+        background: #E8E8E6; /* Light grey bar to match mockup */
+        width: 110px;
         display: flex;
         align-items: center;
         justify-content: center;
         border-right: 1px solid rgba(0,0,0,0.05);
+        flex-shrink: 0;
     }
 
     .client-sidebar h2 {
         font-family: 'Cinzel', serif;
-        font-size: 2.2rem;
+        font-size: 2.4rem;
         color: #1a1a1a;
         writing-mode: vertical-rl;
         transform: rotate(180deg);
-        letter-spacing: 0.1em;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
+        margin: 0;
     }
 
+    /* Framing for your uploaded sheet */
     .client-image-wrap {
         flex-grow: 1;
-        padding: 30px;
+        padding: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #F4F0E8; 
+        background: #F4F0E8; /* Matches the background tone of your image */
     }
 
     .client-image-wrap img {
         width: 100%;
         height: auto;
         display: block;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.03);
     }
 
-    @media (max-width: 900px) {
+    /* Responsive: Stack vertically on mobile */
+    @media (max-width: 800px) {
         .client-sheet-container { flex-direction: column; }
-        .client-sidebar { width: 100%; padding: 30px 0; }
-        .client-sidebar h2 { writing-mode: horizontal-tb; transform: none; }
+        .client-sidebar { width: 100%; padding: 30px 0; border-right: none; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .client-sidebar h2 { writing-mode: horizontal-tb; transform: none; font-size: 1.8rem; }
+        .client-image-wrap { padding: 20px; }
     }
 </style>
