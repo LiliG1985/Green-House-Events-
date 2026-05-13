@@ -24,7 +24,7 @@
         html { scroll-behavior: smooth; }
         body { background: var(--bg-mid); color: var(--white); font-family: var(--sans); overflow-x: hidden; line-height: 1.6; }
 
-        /* REUSABLE METALLIC CLASS */
+        /* METALLIC GOLD SHIMMER */
         .metallic-gold {
             background: var(--gold-metallic);
             -webkit-background-clip: text;
@@ -46,35 +46,33 @@
         .nav-logo { font-family: var(--serif); font-size: 1.5rem; color: var(--gold-solid); text-decoration: none; font-weight: 600; letter-spacing: 2px; }
         .nav-cta { background: var(--gold-metallic); color: var(--black); padding: 0.75rem 1.8rem; text-decoration: none; font-weight: 600; font-size: 0.75rem; letter-spacing: 1px; transition: 0.3s; }
 
-        /* HERO */
+        /* HERO HEADER */
         .hero {
             height: 100vh; position: relative; display: flex; align-items: center; justify-content: center;
             background: url('logo.jpg') no-repeat center center;
             background-size: cover; background-attachment: fixed;
         }
-        .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, transparent 20%, rgba(83, 104, 100, 0.5) 100%); }
+        .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, transparent 20%, rgba(61, 79, 76, 0.5) 100%); }
 
         /* MARQUEE */
         .marquee { background: var(--black); padding: 1.2rem 0; overflow: hidden; white-space: nowrap; border-top: 0.5px solid var(--gold-solid); border-bottom: 0.5px solid var(--gold-solid); }
         .marquee-inner { display: inline-block; animation: scroll 40s linear infinite; font-family: var(--serif); color: var(--gold-solid); font-size: 1.1rem; letter-spacing: 5px; text-transform: uppercase; }
 
-        /* SECTIONS */
+        /* SERVICES GRID (6 CARDS) */
         section { padding: 8rem 8vw; position: relative; }
         .sec-title { font-family: var(--serif); font-size: 3.5rem; margin-bottom: 4rem; text-align: center; font-weight: 300; }
-        
-        /* SERVICES GRID */
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
         .card { border: 0.5px solid var(--border); padding: 3.5rem; background: rgba(0,0,0,0.1); transition: 0.4s; }
         .card:hover { border-color: var(--gold-solid); transform: translateY(-10px); }
         .card h3 { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 1rem; }
 
-        /* CLIENT HISTORY (CLEAN IMAGE ONLY) */
+        /* CLIENT HISTORY (DARK GREEN BACKING FIX) */
         #clients { background: var(--bg-dark); padding: 6rem 5vw; }
         .client-sheet-container { 
             max-width: 1200px; 
             margin: 0 auto; 
-            background: var(--bg-dark); 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            background: #90A299; /* Sage-Green from your brand tiles */
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
             border: 0.5px solid var(--border);
             overflow: hidden;
         }
@@ -83,14 +81,13 @@
             width: 100%; 
             height: auto; 
             display: block; 
-            /* White-out filter for luxury look */
-            filter: brightness(0) invert(1);
-            opacity: 0.9;
+            mix-blend-mode: multiply; /* Removes off-white image background */
+            opacity: 0.95;
         }
 
         /* STATS BAR */
         .stats-bar { background: var(--black); padding: 5rem 5vw; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; border-top: 0.5px solid var(--gold-solid); }
-        .stat-item h2 { font-family: var(--serif); font-size: 3.5rem; margin-bottom: 0.5rem; }
+        .stat-item h2 { font-family: var(--serif); font-size: 3.5rem; color: var(--gold-solid); margin-bottom: 0.5rem; }
         .stat-item p { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.6; }
 
         /* CONTACT SECTION */
@@ -102,6 +99,7 @@
 
         @media (max-width: 900px) {
             .contact-wrap, .stats-bar { grid-template-columns: 1fr; }
+            .stat-item { margin-bottom: 2rem; }
         }
     </style>
 </head>
