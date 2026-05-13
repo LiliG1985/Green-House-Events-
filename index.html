@@ -8,23 +8,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-deep: #2c3835; /* The deep dark green from your latest image */
-            --bg-mid: #536864;  
+            --bg-deep: #1a2421; /* Deepest green for background */
+            --bg-mid: #3d4f4c;  
             --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%);
             --gold-solid: #C9A84C;
-            --white-off: #F4F0E8; /* The professional off-white for logos */
+            --white-off: #F4F0E8;
             --border: rgba(201,168,76,0.15);
             --serif: 'Cormorant Garamond', serif;
             --display: 'Cinzel', serif;
             --sans: 'DM Sans', sans-serif;
-            --sage-tile: rgba(144, 162, 153, 0.4); /* Sophisticated sage glass look */
+            --sage-tile: #4e5f5a; /* The exact sage green from your mockup */
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body { background: var(--bg-mid); color: var(--white-off); font-family: var(--sans); overflow-x: hidden; line-height: 1.6; }
 
-        /* REUSABLE METALLIC GOLD */
+        /* MASTER METALLIC CLASS */
         .metallic-gold {
             background: var(--gold-metallic);
             -webkit-background-clip: text;
@@ -41,7 +41,7 @@
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             padding: 1.2rem 5vw; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(44, 56, 53, 0.95); backdrop-filter: blur(15px);
+            background: rgba(26, 36, 33, 0.95); backdrop-filter: blur(15px);
             border-bottom: 0.5px solid var(--border);
         }
         .nav-logo { font-family: var(--serif); font-size: 1.5rem; color: var(--gold-solid); text-decoration: none; font-weight: 600; letter-spacing: 2px; }
@@ -53,17 +53,25 @@
             background: url('logo.jpg') no-repeat center center;
             background-size: cover; background-attachment: fixed;
         }
-        .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, transparent 20%, rgba(44, 56, 53, 0.6) 100%); }
+        .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, transparent 20%, rgba(26, 36, 33, 0.6) 100%); }
 
         /* MARQUEE */
         .marquee { background: #0b1a18; padding: 1.2rem 0; overflow: hidden; white-space: nowrap; border-top: 0.5px solid var(--gold-solid); border-bottom: 0.5px solid var(--gold-solid); }
         .marquee-inner { display: inline-block; animation: scroll 40s linear infinite; font-family: var(--serif); color: var(--gold-solid); font-size: 1.1rem; letter-spacing: 5px; text-transform: uppercase; }
 
-        /* CLIENT HISTORY (GRID BUILD) */
+        /* SERVICES GRID */
+        section { padding: 8rem 8vw; position: relative; }
+        .sec-title { font-family: var(--serif); font-size: 3.5rem; margin-bottom: 4rem; text-align: center; font-weight: 300; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
+        .card { border: 0.5px solid var(--border); padding: 3.5rem; background: rgba(0,0,0,0.15); transition: 0.4s; }
+        .card:hover { border-color: var(--gold-solid); transform: translateY(-10px); }
+        .card h3 { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 1rem; }
+
+        /* --- CLIENT HISTORY: CLEAN CODE BUILD --- */
         #clients { background: var(--bg-deep); padding: 8rem 5vw; }
-        .client-container { display: flex; max-width: 1300px; margin: 0 auto; border: 0.5px solid var(--border); background: rgba(0,0,0,0.1); }
+        .client-container { display: flex; max-width: 1300px; margin: 0 auto; border: 0.5px solid var(--border); background: #161e1c; }
         .client-sidebar { 
-            background: rgba(0, 0, 0, 0.3); 
+            background: #111816; 
             width: 120px; 
             display: flex; 
             align-items: center; 
@@ -73,7 +81,7 @@
         }
         .client-sidebar h2 { 
             font-family: var(--display); 
-            font-size: 2.5rem; 
+            font-size: 2.4rem; 
             writing-mode: vertical-rl; 
             transform: rotate(180deg); 
             letter-spacing: 0.15em; 
@@ -87,35 +95,34 @@
             align-items: center; 
             justify-content: center; 
             padding: 20px; 
-            border: 0.5px solid rgba(255,255,255,0.05);
             transition: 0.4s;
         }
-        .brand-tile:hover { background: rgba(144, 162, 153, 0.6); transform: translateY(-3px); }
-        .brand-tile span { color: var(--white-off); font-family: var(--display); font-size: 0.75rem; text-align: center; text-transform: uppercase; letter-spacing: 1px; font-weight: 400; opacity: 0.9; }
+        .brand-tile:hover { filter: brightness(1.1); transform: translateY(-3px); }
+        .brand-tile span { 
+            color: var(--white-off); 
+            font-family: var(--display); 
+            font-size: 0.75rem; 
+            text-align: center; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            font-weight: 400; 
+        }
 
-        /* SERVICES GRID */
-        section { padding: 8rem 8vw; position: relative; }
-        .sec-title { font-family: var(--serif); font-size: 3.5rem; margin-bottom: 4rem; text-align: center; font-weight: 300; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
-        .card { border: 0.5px solid var(--border); padding: 3.5rem; background: rgba(0,0,0,0.15); transition: 0.4s; }
-        .card:hover { border-color: var(--gold-solid); transform: translateY(-10px); }
-        .card h3 { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 1rem; }
-
-        /* CONTACT & STATS */
+        /* STATS BAR */
         .stats-bar { background: #0b1a18; padding: 5rem 5vw; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; border-top: 0.5px solid var(--gold-solid); }
+        .stat-item h2 { font-family: var(--serif); font-size: 3.5rem; color: var(--gold-solid); margin-bottom: 0.5rem; }
+
+        /* CONTACT SECTION */
         .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1100px; margin: 0 auto; }
         .c-val { display: block; font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--white-off); text-decoration: none; }
         .c-label { color: var(--gold-solid); font-family: var(--display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
 
         @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-        @media (max-width: 1000px) {
-            .client-brand-grid { grid-template-columns: repeat(3, 1fr); }
-        }
         @media (max-width: 900px) {
             .client-container { flex-direction: column; }
-            .client-sidebar { width: 100%; padding: 30px 0; border-right: none; }
-            .client-sidebar h2 { writing-mode: horizontal-tb; transform: none; font-size: 1.8rem; }
+            .client-sidebar { width: 100%; padding: 40px 0; border-right: none; border-bottom: 0.5px solid var(--border); }
+            .client-sidebar h2 { writing-mode: horizontal-tb; transform: none; font-size: 2rem; }
             .client-brand-grid { grid-template-columns: repeat(2, 1fr); padding: 20px; }
             .contact-wrap, .stats-bar { grid-template-columns: 1fr; }
         }
@@ -152,7 +159,9 @@
 
 <section id="clients">
     <div class="client-container">
-        <div class="client-sidebar"><h2 class="metallic-gold">Client History</h2></div>
+        <div class="client-sidebar">
+            <h2 class="metallic-gold">Client History</h2>
+        </div>
         <div class="client-brand-grid">
             <div class="brand-tile"><span>Waitrose</span></div>
             <div class="brand-tile"><span>itv</span></div>
