@@ -9,9 +9,6 @@
     <style>
         :root {
             --bg-dark: #536864; 
-            --bg-mid: #909e99;
-            --bg-shimmer: #b2c1ba;
-            /* METALLIC GOLD GRADIENT DEFINITION */
             --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%);
             --gold-solid: #C9A84C;
             --white: #F4F0E8;
@@ -22,20 +19,19 @@
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
-        body { background: var(--bg-dark); color: var(--white); font-family: var(--sans); overflow-x: hidden; line-height: 1.6; }
+        body { background: var(--bg-dark); color: var(--white); font-family: var(--sans); overflow-x: hidden; }
 
-        /* APPLYING METALLIC GOLD TO ALL GOLD WRITING */
+        /* METALLIC GOLD TEXT */
         .gold-text {
             background: var(--gold-metallic);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-size: 200% auto;
-            animation: shine 4s linear infinite;
-            display: inline-block;
+            animation: shine 5s linear infinite;
         }
-
         @keyframes shine { to { background-position: 200% center; } }
 
+        /* NAVIGATION */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             padding: 1.2rem 5vw; display: flex; justify-content: space-between; align-items: center;
@@ -45,35 +41,57 @@
         .nav-logo { font-family: var(--serif); font-size: 1.5rem; color: var(--gold-solid); text-decoration: none; font-weight: 600; letter-spacing: 2px; }
         .nav-cta { background: var(--gold-metallic); color: var(--black); padding: 0.75rem 1.8rem; text-decoration: none; font-weight: 600; font-size: 0.75rem; letter-spacing: 1px; }
 
-        /* HERO WITH LIGHTHOUSE ANIMATION */
+        /* THE LIGHTHOUSE LOGO HERO */
         .hero {
             height: 100vh; position: relative; display: flex; align-items: center; justify-content: center;
-            background: url('logo.jpg') no-repeat center center;
-            background-size: cover;
-            background-attachment: fixed;
+            background: var(--bg-dark);
             overflow: hidden;
         }
-        
-        /* The Lighthouse Beam Canvas */
-        #lighthouseCanvas {
-            position: absolute; inset: 0; z-index: 5; pointer-events: none; mix-blend-mode: screen; opacity: 0.6;
+
+        .logo-bg {
+            position: absolute;
+            width: 100%; height: 100%;
+            background: url('logo.jpg') no-repeat center center;
+            background-size: cover;
+            z-index: 1;
         }
 
-        .marquee { background: var(--black); padding: 1.2rem 0; overflow: hidden; white-space: nowrap; border-top: 0.5px solid var(--gold-solid); border-bottom: 0.5px solid var(--gold-solid); position: relative; z-index: 10; }
+        /* LIGHTHOUSE SWEEP OVERLAY */
+        .lighthouse-sweep {
+            position: absolute;
+            inset: -50%;
+            z-index: 2;
+            background: conic-gradient(
+                from 0deg at 50% 50%,
+                transparent 0deg,
+                rgba(255, 255, 255, 0) 160deg,
+                rgba(255, 248, 220, 0.25) 180deg,
+                rgba(255, 255, 255, 0) 200deg,
+                transparent 360deg
+            );
+            animation: rotateSweep 8s linear infinite;
+            mix-blend-mode: overlay;
+        }
+
+        @keyframes rotateSweep {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .marquee { background: var(--black); padding: 1.2rem 0; overflow: hidden; white-space: nowrap; border-y: 0.5px solid var(--gold-solid); position: relative; z-index: 10; }
         .marquee-inner { display: inline-block; animation: scroll 40s linear infinite; font-family: var(--serif); color: var(--gold-solid); font-size: 1.1rem; letter-spacing: 5px; text-transform: uppercase; }
 
-        section { padding: 8rem 8vw; }
-        .sec-title { font-family: var(--serif); font-size: 3.5rem; margin-bottom: 4rem; text-align: center; font-weight: 300; }
+        /* SECTIONS */
+        section { padding: 8rem 8vw; position: relative; z-index: 10; background: var(--bg-dark); }
+        .sec-title { font-family: var(--serif); font-size: 3.5rem; margin-bottom: 4rem; text-align: center; }
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
-        .card { border: 0.5px solid rgba(201, 168, 76, 0.2); padding: 3.5rem; background: rgba(0,0,0,0.1); transition: 0.4s; }
+        .card { border: 0.5px solid rgba(201, 168, 76, 0.2); padding: 3.5rem; background: rgba(0,0,0,0.1); }
         .card h3 { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 1rem; }
 
         .stats-bar { background: var(--black); padding: 5rem 5vw; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; border-top: 0.5px solid var(--gold-solid); }
         .stat-item h2 { font-family: var(--serif); font-size: 3.5rem; margin-bottom: 0.5rem; }
 
         @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-        @media (max-width: 900px) { .stats-bar { grid-template-columns: 1fr 1fr; } }
     </style>
 </head>
 <body>
@@ -84,7 +102,8 @@
     </nav>
 
     <header class="hero">
-        <canvas id="lighthouseCanvas"></canvas>
+        <div class="logo-bg"></div>
+        <div class="lighthouse-sweep"></div>
     </header>
 
     <div class="marquee">
@@ -97,12 +116,12 @@
     <section id="services">
         <h2 class="sec-title">Luxury <em class="gold-text">Production</em></h2>
         <div class="services-grid">
-            <div class="card"><h3 class="gold-text">Concept & Design</h3><p>Translating initial vision into 3D floorplan renders and comprehensive creative strategy.</p></div>
-            <div class="card"><h3 class="gold-text">Event Décor</h3><p>Full-scale supply of luxury furniture, bespoke fabrication, and intricate floral design.</p></div>
+            <div class="card"><h3 class="gold-text">Concept & Design</h3><p>Translating initial vision into 3D renders and creative strategy.</p></div>
+            <div class="card"><h3 class="gold-text">Event Décor</h3><p>Full-scale supply of luxury furniture, bespoke fabrication, and floral design.</p></div>
             <div class="card"><h3 class="gold-text">AV & Production</h3><p>State-of-the-art technical delivery including lighting, sound, and LED technology.</p></div>
-            <div class="card"><h3 class="gold-text">Entertainment</h3><p>Curated rosters of talent specifically for high-end brand and social celebrations.</p></div>
-            <div class="card"><h3 class="gold-text">Management</h3><p>20 years of production management covering every technical and logistical detail.</p></div>
-            <div class="card"><h3 class="gold-text">Execution</h3><p>Flawless on-site delivery, managing every detail from load-in to final strike.</p></div>
+            <div class="card"><h3 class="gold-text">Entertainment</h3><p>Curated rosters of talent specifically for high-end celebrations.</p></div>
+            <div class="card"><h3 class="gold-text">Management</h3><p>20 years of production management covering every technical detail.</p></div>
+            <div class="card"><h3 class="gold-text">Execution</h3><p>Flawless on-site delivery from load-in to final strike.</p></div>
         </div>
     </section>
 
@@ -118,46 +137,5 @@
         <p style="font-size: 0.7rem; opacity: 0.4; margin-top: 1.5rem; letter-spacing: 2px;">DUBAI · EST. 2004</p>
     </footer>
 
-    <script>
-        const canvas = document.getElementById('lighthouseCanvas');
-        const ctx = canvas.getContext('2d');
-        let width, height, cx, cy;
-
-        function resize() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-            cx = width / 2;
-            cy = height / 2;
-        }
-
-        window.addEventListener('resize', resize);
-        resize();
-
-        let rotation = 0;
-        function drawBeams() {
-            ctx.clearRect(0, 0, width, height);
-            rotation += 0.005; // Speed of the lighthouse rotation
-
-            const beamCount = 4;
-            for (let i = 0; i < beamCount; i++) {
-                const angle = rotation + (i * Math.PI * 2) / beamCount;
-                const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, width * 0.8);
-                
-                // Colors sampled from your logo beams
-                grad.addColorStop(0, 'rgba(245, 233, 184, 0.4)'); // Light gold core
-                grad.addColorStop(0.5, 'rgba(201, 168, 76, 0.1)'); // Muted gold
-                grad.addColorStop(1, 'rgba(83, 104, 100, 0)');    // Fade into teal background
-
-                ctx.beginPath();
-                ctx.moveTo(cx, cy);
-                ctx.arc(cx, cy, width, angle, angle + 0.3); // Width of the beam
-                ctx.lineTo(cx, cy);
-                ctx.fillStyle = grad;
-                ctx.fill();
-            }
-            requestAnimationFrame(drawBeams);
-        }
-        drawBeams();
-    </script>
 </body>
 </html>
