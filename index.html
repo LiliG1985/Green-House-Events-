@@ -8,8 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #536864; 
-            /* THE MASTER METALLIC GRADIENT */
+            --bg-dark: #3d4f4c; /* The deeper signature green */
+            --bg-mid: #536864;  /* The original mid-tone green */
             --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%);
             --gold-solid: #C9A84C;
             --white: #F4F0E8;
@@ -22,7 +22,7 @@
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
-        body { background: var(--bg-dark); color: var(--white); font-family: var(--sans); overflow-x: hidden; line-height: 1.6; }
+        body { background: var(--bg-mid); color: var(--white); font-family: var(--sans); overflow-x: hidden; line-height: 1.6; }
 
         /* REUSABLE METALLIC CLASS */
         .metallic-gold {
@@ -40,7 +40,7 @@
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             padding: 1.2rem 5vw; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(83, 104, 100, 0.95); backdrop-filter: blur(15px);
+            background: rgba(61, 79, 76, 0.95); backdrop-filter: blur(15px);
             border-bottom: 0.5px solid var(--border);
         }
         .nav-logo { font-family: var(--serif); font-size: 1.5rem; color: var(--gold-solid); text-decoration: none; font-weight: 600; letter-spacing: 2px; }
@@ -52,12 +52,11 @@
             background: url('logo.jpg') no-repeat center center;
             background-size: cover; background-attachment: fixed;
         }
-        .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, transparent 20%, rgba(83, 104, 100, 0.5) 100%); }
+        .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, transparent 20%, rgba(61, 79, 76, 0.5) 100%); }
 
         /* MARQUEE */
         .marquee { background: var(--black); padding: 1.2rem 0; overflow: hidden; white-space: nowrap; border-top: 0.5px solid var(--gold-solid); border-bottom: 0.5px solid var(--gold-solid); }
         .marquee-inner { display: inline-block; animation: scroll 40s linear infinite; font-family: var(--serif); font-size: 1.1rem; letter-spacing: 5px; text-transform: uppercase; }
-        .marquee-inner span { margin: 0 20px; }
 
         /* SECTIONS */
         section { padding: 8rem 8vw; position: relative; }
@@ -69,16 +68,35 @@
         .card:hover { border-color: var(--gold-solid); transform: translateY(-10px); }
         .card h3 { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 1rem; }
 
-        /* CLIENT HISTORY (SINGLE IMAGE) */
-        #clients { background: var(--white); padding: 6rem 5vw; }
+        /* CLIENT HISTORY (UPDATED TO DARK GREEN & METALLIC) */
+        #clients { background: var(--bg-dark); padding: 6rem 5vw; }
         .client-sheet-container { 
+            display: flex;
             max-width: 1200px; 
             margin: 0 auto; 
-            background: #fff; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-            padding: 10px; 
+            background: var(--bg-dark); 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            border: 0.5px solid var(--border);
         }
-        .client-sheet-container img { width: 100%; height: auto; display: block; }
+        .client-sidebar { 
+            background: rgba(0, 0, 0, 0.2); 
+            width: 110px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            border-right: 0.5px solid var(--border);
+            flex-shrink: 0;
+        }
+        .client-sidebar h2 { 
+            font-family: var(--display); 
+            font-size: 2.4rem; 
+            writing-mode: vertical-rl; 
+            transform: rotate(180deg); 
+            letter-spacing: 0.12em; 
+            text-transform: uppercase; 
+        }
+        .client-image-wrap { flex-grow: 1; padding: 30px; display: flex; align-items: center; justify-content: center; }
+        .client-image-wrap img { width: 100%; height: auto; display: block; mix-blend-mode: multiply; }
 
         /* STATS BAR */
         .stats-bar { background: var(--black); padding: 5rem 5vw; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; border-top: 0.5px solid var(--gold-solid); }
@@ -93,8 +111,9 @@
         @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
         @media (max-width: 900px) {
-            .contact-wrap, .stats-bar { grid-template-columns: 1fr; }
-            .stat-item { margin-bottom: 2rem; }
+            .client-sheet-container, .contact-wrap, .stats-bar { grid-template-columns: 1fr; flex-direction: column; }
+            .client-sidebar { width: 100%; padding: 30px 0; border-right: none; border-bottom: 0.5px solid var(--border); }
+            .client-sidebar h2 { writing-mode: horizontal-tb; transform: none; font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -130,7 +149,12 @@
 
 <section id="clients">
     <div class="client-sheet-container">
-        <img src="client-list.jpg" alt="Greenhouse Events Client History">
+        <div class="client-sidebar">
+            <h2 class="metallic-gold">Client History</h2>
+        </div>
+        <div class="client-image-wrap">
+            <img src="client-list.jpg" alt="Greenhouse Events Client History">
+        </div>
     </div>
 </section>
 
