@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Greenhouse Events Dubai | Luxury Event Production</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+    <style>
+        :root {
+            --deep-teal: #3d4f4c;   
+            --gold-primary: #C9A84C;
+            --gold-light: #F5E9B8;
+            --pearl: #D6CFC4;
+            --warm-white: #F4F0E8;
+            --gold-grad: linear-gradient(135deg, #8B6914 0%, #C9A84C 50%, #F5E9B8 100%);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body, html { height: 100%; width: 100%; margin: 0; padding: 0; overflow: hidden; }
+
+        body { 
+            font-family: 'Jost', sans-serif; 
+            background-color: var(--deep-teal); 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: radial-gradient(circle at center, #536763 0%, #3d4f4c 100%);
+            text-align: center;
+        }
+
+        #lightBeams {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 1;
+            mix-blend-mode: screen;
+        }
+
+        .logo-container {
+            position: relative;
+            z-index: 10;
+            width: min(600px, 90vw);
+            animation: fadeIn 2s ease-out;
+        }
+
+        .logo-frame {
+            width: 240px;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 15px rgba(201,168,76,0.6));
+        }
+
+        .brand-name {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            letter-spacing: 0.2em;
+            font-weight: 700;
+            background: var(--gold-grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+
+        .brand-sub {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1rem, 3vw, 1.8rem);
+            letter-spacing: 0.5em;
+            color: var(--pearl);
+            border-top: 1px solid var(--gold-primary);
+            border-bottom: 1px solid var(--gold-primary);
+            padding: 0.5rem 2rem;
+            margin: 0.8rem 0;
+            display: inline-block;
+        }
+
+        .brand-location {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.8em;
+            color: var(--gold-light);
+            margin-top: 1rem;
+        }
+
+        .cta {
+            margin-top: 3rem;
+            z-index: 20;
+            padding: 1rem 3rem;
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-decoration: none;
+            color: var(--deep-teal);
+            background: var(--gold-grad);
+            font-weight: 700;
+            border-radius: 2px;
+            transition: transform 0.3s ease;
+        }
+
+        .cta:hover { transform: scale(1.05); }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <canvas id="lightBeams"></canvas>
+        
+        <div class="logo-container">
+            <svg class="logo-frame" viewBox="0 0 340 280">
+                <path d="M50 220 L50 120 L170 60 L290 120 L290 220" stroke="#C9A84C" stroke-width="3" fill="none"/>
+                <line x1="50" y1="220" x2="290" y2="220" stroke="#C9A84C" stroke-width="1.5"/>
+                <line x1="170" y1="220" x2="170" y2="62" stroke="#C9A84C" stroke-width="1.5"/>
+            </svg>
+
+            <h1 class="brand-name">GREENHOUSE</h1>
+            <h2 class="brand-sub">EVENTS</h2>
+            <div class="brand-location">DUBAI</div>
+        </div>
+
+        <a href="mailto:hello@greenhouseevents.ae" class="cta">ENQUIRE NOW</a>
+    </section>
+
+    <script>
+        const canvas = document.getElementById('lightBeams');
+        const ctx = canvas.getContext('2d');
+        let width, height, cx, cy;
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            cx = width / 2;
+            cy = height / 2;
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        const beams = Array.from({ length: 15 }, () => ({
+            angle: Math.random() * Math.PI * 2,
+            speed: 0.002 + Math.random() * 0.003,
+            spread: 0.2 + Math.random() * 0.4
+        }));
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            beams.forEach(b => {
+                b.angle += b.speed;
+                const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, width * 0.7);
+                g.addColorStop(0, 'rgba(245, 233, 184, 0.2)');
+                g.addColorStop(1, 'rgba(61, 79, 76, 0)');
+                ctx.beginPath();
+                ctx.moveTo(cx, cy);
+                ctx.arc(cx, cy, width, b.angle, b.angle + b.spread);
+                ctx.fillStyle = g;
+                ctx.fill();
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+</body>
+</html>
