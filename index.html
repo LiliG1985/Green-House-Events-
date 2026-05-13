@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
+            /* Tones sampled from your logo */
             --bg-dark: #536864; 
             --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%);
             --gold-solid: #C9A84C;
@@ -21,17 +22,17 @@
         html { scroll-behavior: smooth; }
         body { background: var(--bg-dark); color: var(--white); font-family: var(--sans); overflow-x: hidden; }
 
-        /* METALLIC GOLD TEXT */
+        /* METALLIC GOLD TEXT - Syncs with logo's premium feel */
         .gold-text {
             background: var(--gold-metallic);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-size: 200% auto;
             animation: shine 5s linear infinite;
+            display: inline-block;
         }
         @keyframes shine { to { background-position: 200% center; } }
 
-        /* NAVIGATION */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             padding: 1.2rem 5vw; display: flex; justify-content: space-between; align-items: center;
@@ -41,14 +42,14 @@
         .nav-logo { font-family: var(--serif); font-size: 1.5rem; color: var(--gold-solid); text-decoration: none; font-weight: 600; letter-spacing: 2px; }
         .nav-cta { background: var(--gold-metallic); color: var(--black); padding: 0.75rem 1.8rem; text-decoration: none; font-weight: 600; font-size: 0.75rem; letter-spacing: 1px; }
 
-        /* THE LIGHTHOUSE LOGO HERO */
+        /* HERO - THE LOGO IS THE HERO */
         .hero {
             height: 100vh; position: relative; display: flex; align-items: center; justify-content: center;
             background: var(--bg-dark);
             overflow: hidden;
         }
 
-        .logo-bg {
+        .logo-layer {
             position: absolute;
             width: 100%; height: 100%;
             background: url('logo.jpg') no-repeat center center;
@@ -56,42 +57,46 @@
             z-index: 1;
         }
 
-        /* LIGHTHOUSE SWEEP OVERLAY */
-        .lighthouse-sweep {
+        /* THE LIGHTHOUSE SWEEP - Animates the logo's internal beams */
+        .lighthouse-effect {
             position: absolute;
-            inset: -50%;
+            inset: -100%; /* Large enough to cover rotation */
             z-index: 2;
+            /* A single soft white/gold sweep that catches the logo's detail */
             background: conic-gradient(
                 from 0deg at 50% 50%,
-                transparent 0deg,
-                rgba(255, 255, 255, 0) 160deg,
-                rgba(255, 248, 220, 0.25) 180deg,
-                rgba(255, 255, 255, 0) 200deg,
-                transparent 360deg
+                transparent 150deg,
+                rgba(255, 255, 255, 0.15) 180deg,
+                transparent 210deg
             );
-            animation: rotateSweep 8s linear infinite;
-            mix-blend-mode: overlay;
+            animation: lighthouseRotation 10s linear infinite;
+            mix-blend-mode: overlay; /* This is the key: it only illuminates what's already there */
         }
 
-        @keyframes rotateSweep {
+        @keyframes lighthouseRotation {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
 
-        .marquee { background: var(--black); padding: 1.2rem 0; overflow: hidden; white-space: nowrap; border-y: 0.5px solid var(--gold-solid); position: relative; z-index: 10; }
+        /* MARQUEE SECTION */
+        .marquee { background: var(--black); padding: 1.2rem 0; overflow: hidden; white-space: nowrap; border-top: 0.5px solid var(--gold-solid); border-bottom: 0.5px solid var(--gold-solid); position: relative; z-index: 10; }
         .marquee-inner { display: inline-block; animation: scroll 40s linear infinite; font-family: var(--serif); color: var(--gold-solid); font-size: 1.1rem; letter-spacing: 5px; text-transform: uppercase; }
 
-        /* SECTIONS */
-        section { padding: 8rem 8vw; position: relative; z-index: 10; background: var(--bg-dark); }
+        /* SERVICE GRID */
+        section { padding: 8rem 8vw; background: var(--bg-dark); position: relative; z-index: 10; }
         .sec-title { font-family: var(--serif); font-size: 3.5rem; margin-bottom: 4rem; text-align: center; }
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
-        .card { border: 0.5px solid rgba(201, 168, 76, 0.2); padding: 3.5rem; background: rgba(0,0,0,0.1); }
+        .card { border: 0.5px solid rgba(201, 168, 76, 0.2); padding: 3.5rem; background: rgba(0,0,0,0.1); transition: 0.4s; }
+        .card:hover { border-color: var(--gold-solid); }
         .card h3 { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 1rem; }
 
+        /* STATS */
         .stats-bar { background: var(--black); padding: 5rem 5vw; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; border-top: 0.5px solid var(--gold-solid); }
-        .stat-item h2 { font-family: var(--serif); font-size: 3.5rem; margin-bottom: 0.5rem; }
+        .stat-item h2 { font-family: var(--serif); font-size: 3.5rem; color: var(--gold-solid); margin-bottom: 0.5rem; }
 
         @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        @media (max-width: 900px) { .stats-bar { grid-template-columns: 1fr 1fr; } }
     </style>
 </head>
 <body>
@@ -102,8 +107,8 @@
     </nav>
 
     <header class="hero">
-        <div class="logo-bg"></div>
-        <div class="lighthouse-sweep"></div>
+        <div class="logo-layer"></div>
+        <div class="lighthouse-effect"></div>
     </header>
 
     <div class="marquee">
@@ -114,7 +119,7 @@
     </div>
 
     <section id="services">
-        <h2 class="sec-title">Luxury <em class="gold-text">Production</em></h2>
+        <h2 class="sec-title">Luxury <span class="gold-text">Production</span></h2>
         <div class="services-grid">
             <div class="card"><h3 class="gold-text">Concept & Design</h3><p>Translating initial vision into 3D renders and creative strategy.</p></div>
             <div class="card"><h3 class="gold-text">Event Décor</h3><p>Full-scale supply of luxury furniture, bespoke fabrication, and floral design.</p></div>
