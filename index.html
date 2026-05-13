@@ -24,7 +24,7 @@
         html { scroll-behavior: smooth; }
         body { background: var(--bg-mid); color: var(--white); font-family: var(--sans); overflow-x: hidden; line-height: 1.6; }
 
-        /* METALLIC GOLD SHIMMER */
+        /* METALLIC GOLD SHIMMER FOR ALL HEADINGS */
         .metallic-gold {
             background: var(--gold-metallic);
             -webkit-background-clip: text;
@@ -33,6 +33,7 @@
             background-size: 200% auto;
             animation: shine 5s linear infinite;
             display: inline-block;
+            font-weight: 600;
         }
         @keyframes shine { to { background-position: 200% center; } }
 
@@ -52,7 +53,7 @@
             background: url('logo.jpg') no-repeat center center;
             background-size: cover; background-attachment: fixed;
         }
-        .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, transparent 20%, rgba(61, 79, 76, 0.5) 100%); }
+        .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, transparent 20%, rgba(83, 104, 100, 0.5) 100%); }
 
         /* MARQUEE */
         .marquee { background: var(--black); padding: 1.2rem 0; overflow: hidden; white-space: nowrap; border-top: 0.5px solid var(--gold-solid); border-bottom: 0.5px solid var(--gold-solid); }
@@ -66,22 +67,25 @@
         .card:hover { border-color: var(--gold-solid); transform: translateY(-10px); }
         .card h3 { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 1rem; }
 
-        /* CLIENT HISTORY (DARK GREEN BACKING FIX) */
+        /* CLIENT HISTORY - FIXING LOGO VISIBILITY */
         #clients { background: var(--bg-dark); padding: 6rem 5vw; }
         .client-sheet-container { 
             max-width: 1200px; 
             margin: 0 auto; 
-            background: #90A299; /* Sage-Green from your brand tiles */
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            background: var(--bg-dark); 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
             border: 0.5px solid var(--border);
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .client-image-wrap { width: 100%; display: flex; align-items: center; justify-content: center; }
         .client-image-wrap img { 
             width: 100%; 
             height: auto; 
             display: block; 
-            mix-blend-mode: multiply; /* Removes off-white image background */
+            /* THE FIX: Inverts dark logos to bright off-white and increases contrast */
+            filter: invert(0.9) brightness(1.2) contrast(1.2);
             opacity: 0.95;
         }
 
