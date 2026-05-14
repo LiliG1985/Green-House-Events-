@@ -63,9 +63,15 @@
         .card:hover { border-color: var(--gold-solid); transform: translateY(-10px); }
         .card h3 { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 1rem; }
 
-        /* CLIENT HISTORY: CUSTOM GRID BUILD */
+        /* --- THE FIXED CLIENT HISTORY SECTION --- */
         #clients { background: var(--bg-deep); padding: 8rem 5vw; }
-        .client-container { display: flex; max-width: 1300px; margin: 0 auto; border: 0.5px solid var(--border); background: #161e1c; }
+        .client-container { 
+            display: flex; 
+            max-width: 1300px; 
+            margin: 0 auto; 
+            border: 0.5px solid var(--border); 
+            background: #161e1c; 
+        }
         .client-sidebar { 
             background: #111816; 
             width: 120px; 
@@ -83,23 +89,19 @@
             letter-spacing: 0.15em; 
             text-transform: uppercase; 
         }
-        .client-brand-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; padding: 40px; flex-grow: 1; }
-        .brand-tile { 
-            background: var(--sage-tile); 
-            aspect-ratio: 1.4 / 1; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            padding: 20px; 
-            transition: 0.4s;
+        .client-image-wrap { 
+            flex-grow: 1; 
+            padding: 40px;
+            background: var(--bg-deep);
+            display: flex;
+            justify-content: center;
         }
-        .brand-tile span { 
-            color: var(--white-off); 
-            font-family: var(--display); 
-            font-size: 0.75rem; 
-            text-align: center; 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
+        /* This ensures your logos are visible and crispy */
+        .client-image-wrap img { 
+            width: 100%; 
+            height: auto; 
+            display: block; 
+            filter: contrast(1.1) brightness(1.1);
         }
 
         .stats-bar { background: #0b1a18; padding: 5rem 5vw; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; border-top: 0.5px solid var(--gold-solid); }
@@ -115,7 +117,6 @@
             .client-container { flex-direction: column; }
             .client-sidebar { width: 100%; padding: 40px 0; border-right: none; border-bottom: 0.5px solid var(--border); }
             .client-sidebar h2 { writing-mode: horizontal-tb; transform: none; font-size: 2rem; }
-            .client-brand-grid { grid-template-columns: repeat(2, 1fr); padding: 20px; }
             .contact-wrap, .stats-bar { grid-template-columns: 1fr; }
         }
     </style>
@@ -154,32 +155,8 @@
         <div class="client-sidebar">
             <h2 class="metallic-gold">Client History</h2>
         </div>
-        <div class="client-brand-grid">
-            <div class="brand-tile"><span>Waitrose</span></div>
-            <div class="brand-tile"><span>itv</span></div>
-            <div class="brand-tile"><span>bp</span></div>
-            <div class="brand-tile"><span>Four Seasons</span></div>
-            <div class="brand-tile"><span>Emmerdale</span></div>
-            <div class="brand-tile"><span>Mandarin Oriental</span></div>
-            <div class="brand-tile"><span>Candypants</span></div>
-            <div class="brand-tile"><span>Sky Betting</span></div>
-            <div class="brand-tile"><span>Hits Radio</span></div>
-            <div class="brand-tile"><span>JD Sports</span></div>
-            <div class="brand-tile"><span>Remi Cachet</span></div>
-            <div class="brand-tile"><span>Burberry</span></div>
-            <div class="brand-tile"><span>PrettyLittleThing</span></div>
-            <div class="brand-tile"><span>Parklife</span></div>
-            <div class="brand-tile"><span>ghd</span></div>
-            <div class="brand-tile"><span>Jumeirah</span></div>
-            <div class="brand-tile"><span>G Casino</span></div>
-            <div class="brand-tile"><span>Wet Deck</span></div>
-            <div class="brand-tile"><span>Akira Back</span></div>
-            <div class="brand-tile"><span>W Dubai</span></div>
-            <div class="brand-tile"><span>Caesars Palace</span></div>
-            <div class="brand-tile"><span>Trafford Palazzo</span></div>
-            <div class="brand-tile"><span>Kate Spade</span></div>
-            <div class="brand-tile"><span>Victoria's Secret</span></div>
-            <div class="brand-tile"><span>John Lewis</span></div>
+        <div class="client-image-wrap">
+            <img src="client-list.jpg" alt="Greenhouse Events Client History">
         </div>
     </div>
 </section>
