@@ -62,7 +62,7 @@
         .card:hover { border-color: var(--gold-solid); transform: translateY(-10px); }
         .card h3 { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 1rem; }
 
-        /* --- THE LOGO CONTAINER WITH INTEGRATED CROP --- */
+        /* --- LOGO WRAPPER WITH AUTOMATIC WATERMARK CROP --- */
         #clients { background: var(--bg-deep); padding: 8rem 5vw; }
         .client-container { 
             display: flex; 
@@ -71,7 +71,7 @@
             border: 0.5px solid var(--border); 
             background: #0b1a18; 
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            overflow: hidden; /* Cuts off anything pushed outside the boundaries */
+            overflow: hidden; /* Acts as the knife cutting out the star */
         }
         .client-sidebar { 
             background: #000; 
@@ -99,14 +99,13 @@
             align-items: center; 
             justify-content: center; 
             overflow: hidden;
-            position: relative;
         }
         .client-image-wrap img { 
-            width: 114.5%; /* Scale matches the original asset aspect ratio */
+            width: 114.5%; /* Enlarges the image layout slightly */
             height: auto; 
             display: block; 
-            margin-left: -12.5%; /* Slides left to hide the duplicate title panel */
-            margin-bottom: -4.5%; /* Pushes the bottom watermark out of the overflow box */
+            margin-left: -12.5%; /* Hides the duplicated vertical title text */
+            margin-bottom: -4.5%; /* Pushes the bottom watermark star outside the display box */
             margin-top: -0.5%;
         }
 
@@ -165,7 +164,7 @@
             <div class="sidebar-brand">G</div>
         </div>
         <div class="client-image-wrap">
-            <img src="final.jpg" alt="Greenhouse Events Client History">
+            <img src="https://googleusercontent.com/image_generation_content/6" alt="Greenhouse Events Client History">
         </div>
     </div>
 </section>
