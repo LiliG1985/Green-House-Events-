@@ -8,7 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-deep: #0b1a18; 
+            /* COLOR MATCHED TO YOUR EXACT LUXURY SLATE GREEN */
+            --bg-deep: #0e1c1a; 
             --bg-mid: #2c3835;  
             --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%);
             --gold-solid: #C9A84C;
@@ -38,7 +39,7 @@
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             padding: 0.8rem 5vw; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(11, 26, 24, 0.95); backdrop-filter: blur(15px);
+            background: rgba(14, 28, 26, 0.95); backdrop-filter: blur(15px);
             border-bottom: 0.5px solid var(--border);
         }
         
@@ -51,7 +52,7 @@
         }
         .nav-cta { 
             background: var(--gold-metallic); 
-            color: #0b1a18; 
+            color: #0e1c1a; 
             padding: 0.55rem 1.4rem; 
             text-decoration: none; 
             font-weight: 600; 
@@ -66,13 +67,12 @@
             display: flex; 
             align-items: center; 
             justify-content: center;
-            background: #0b1a18 url('logo.jpg') no-repeat center center;
+            background: var(--bg-deep) url('logo.jpg') no-repeat center center;
             background-size: contain; 
             padding: 10vh 10vw; 
         }
-        .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, transparent 40%, rgba(11, 26, 24, 0.4) 100%); }
+        .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, transparent 40%, rgba(14, 28, 26, 0.4) 100%); }
 
-        /* --- THE INFINITE LOOPING MARQUEE FIX --- */
         .marquee { 
             background: #000; 
             padding: 1.2rem 0; 
@@ -102,13 +102,14 @@
         .card:hover { border-color: var(--gold-solid); transform: translateY(-10px); }
         .card h3 { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 1rem; }
 
+        /* --- THE COLOR-MATCHED CLIENT BACKGROUND PANEL --- */
         #clients { background: var(--bg-deep); padding: 8rem 5vw; }
         .client-container { 
             display: flex; 
             max-width: 1300px; 
             margin: 0 auto; 
             border: 0.5px solid var(--border); 
-            background: #0b1a18; 
+            background: var(--bg-deep); 
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
             overflow: hidden;
         }
@@ -136,7 +137,7 @@
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            background: #0b1a18;
+            background: var(--bg-deep);
         }
         .client-image-wrap img { 
             width: 100%; 
