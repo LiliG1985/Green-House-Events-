@@ -8,8 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* COLOR MATCHED TO YOUR EXACT LUXURY SLATE GREEN */
-            --bg-deep: #0e1c1a; 
+            --bg-deep: #0b1a18; 
             --bg-mid: #2c3835;  
             --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%);
             --gold-solid: #C9A84C;
@@ -39,7 +38,7 @@
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             padding: 0.8rem 5vw; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(14, 28, 26, 0.95); backdrop-filter: blur(15px);
+            background: rgba(11, 26, 24, 0.95); backdrop-filter: blur(15px);
             border-bottom: 0.5px solid var(--border);
         }
         
@@ -52,7 +51,7 @@
         }
         .nav-cta { 
             background: var(--gold-metallic); 
-            color: #0e1c1a; 
+            color: #0b1a18; 
             padding: 0.55rem 1.4rem; 
             text-decoration: none; 
             font-weight: 600; 
@@ -67,11 +66,11 @@
             display: flex; 
             align-items: center; 
             justify-content: center;
-            background: var(--bg-deep) url('logo.jpg') no-repeat center center;
+            background: #0b1a18 url('logo.jpg') no-repeat center center;
             background-size: contain; 
             padding: 10vh 10vw; 
         }
-        .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, transparent 40%, rgba(14, 28, 26, 0.4) 100%); }
+        .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, transparent 40%, rgba(11, 26, 24, 0.4) 100%); }
 
         .marquee { 
             background: #000; 
@@ -97,19 +96,60 @@
         section { padding: 8rem 8vw; position: relative; }
         .sec-title { font-family: var(--serif); font-size: 3.5rem; margin-bottom: 4rem; text-align: center; font-weight: 300; }
         
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
-        .card { border: 0.5px solid var(--border); padding: 3.5rem; background: rgba(0,0,0,0.2); transition: 0.4s; }
-        .card:hover { border-color: var(--gold-solid); transform: translateY(-10px); }
-        .card h3 { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 1rem; }
+        /* --- 4-COLUMN LOGICAL GRID GRID FOR 8 SERVICES --- */
+        .services-grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 2rem; 
+        }
+        
+        /* STYLING CARDS AS PREMIUM, INTERACTIVE CLICKABLE TILES */
+        .card { 
+            text-decoration: none;
+            color: inherit;
+            border: 0.5px solid var(--border); 
+            padding: 3rem 2rem; 
+            background: rgba(0,0,0,0.2); 
+            transition: all 0.4s ease; 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+        .card:hover { 
+            border-color: var(--gold-solid); 
+            transform: translateY(-8px); 
+            background: rgba(11, 26, 24, 0.4);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        .card h3 { 
+            font-family: var(--serif); 
+            font-size: 1.5rem; 
+            margin-bottom: 1.5rem; 
+            line-height: 1.3;
+        }
+        .card .learn-more {
+            font-family: var(--display);
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            color: var(--gold-solid);
+            text-transform: uppercase;
+            margin-top: auto;
+            opacity: 0.6;
+            transition: 0.3s;
+        }
+        .card:hover .learn-more {
+            opacity: 1;
+            letter-spacing: 3px;
+        }
 
-        /* --- THE COLOR-MATCHED CLIENT BACKGROUND PANEL --- */
         #clients { background: var(--bg-deep); padding: 8rem 5vw; }
         .client-container { 
             display: flex; 
             max-width: 1300px; 
             margin: 0 auto; 
             border: 0.5px solid var(--border); 
-            background: var(--bg-deep); 
+            background: #0b1a18; 
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
             overflow: hidden;
         }
@@ -137,7 +177,7 @@
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            background: var(--bg-deep);
+            background: #0b1a18;
         }
         .client-image-wrap img { 
             width: 100%; 
@@ -157,7 +197,12 @@
             to { transform: translateX(-100%); } 
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 1100px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 700px) {
+            .services-grid { grid-template-columns: 1fr; }
             .client-container { flex-direction: column; }
             .client-sidebar { width: 100%; height: auto; padding: 40px 0; border-right: none; border-bottom: 0.5px solid var(--border); }
             .client-sidebar h2 { writing-mode: horizontal-tb; transform: none; font-size: 1.8rem; margin: 20px 0; }
@@ -202,12 +247,55 @@
 <section id="services">
     <h2 class="sec-title">Luxury <em class="metallic-gold">Production</em></h2>
     <div class="services-grid">
-        <div class="card"><h3 class="metallic-gold">Concept & Design</h3><p>Translating initial vision into 3D renders and bespoke creative strategy.</p></div>
-        <div class="card"><h3 class="metallic-gold">Event Décor</h3><p>Full-scale supply of luxury furniture, bespoke fabrication, and floral design.</p></div>
-        <div class="card"><h3 class="metallic-gold">AV & Production</h3><p>State-of-the-art technical delivery including lighting, sound, and LED.</p></div>
-        <div class="card"><h3 class="metallic-gold">Entertainment</h3><p>Curated rosters of talent specifically for high-end celebrations.</p></div>
-        <div class="card"><h3 class="metallic-gold">Management</h3><p>20 years of production masterclass covering every technical detail.</p></div>
-        <div class="card"><h3 class="metallic-gold">Execution</h3><p>Flawless on-site delivery from load-in to final strike.</p></div>
+        
+        <a href="event-production.html" class="card">
+            <h3 class="metallic-gold">Private & Corporate Event Production</h3>
+            <p style="font-size: 0.9rem; opacity: 0.7; margin-bottom: 1.5rem;">End-to-end masterclass delivery for bespoke brand activations and high-net-worth private gatherings.</p>
+            <span class="learn-more">View Project</span>
+        </a>
+
+        <a href="customised-decor.html" class="card">
+            <h3 class="metallic-gold">Customised Decor</h3>
+            <p style="font-size: 0.9rem; opacity: 0.7; margin-bottom: 1.5rem;">Bespoke interior execution, luxury floral styling, and cohesive environmental transformations.</p>
+            <span class="learn-more">View Project</span>
+        </a>
+
+        <a href="entertainment.html" class="card">
+            <h3 class="metallic-gold">Local & International Entertainment</h3>
+            <p style="font-size: 0.9rem; opacity: 0.7; margin-bottom: 1.5rem;">Direct curation of elite artist rosters, custom acts, and world-class performers globally.</p>
+            <span class="learn-more">View Project</span>
+        </a>
+
+        <a href="staging-av.html" class="card">
+            <h3 class="metallic-gold">Staging & AV Support</h3>
+            <p style="font-size: 0.9rem; opacity: 0.7; margin-bottom: 1.5rem;">State-of-the-art technical architecture encompassing lighting arrays, sonic engineering, and custom stage structures.</p>
+            <span class="learn-more">View Project</span>
+        </a>
+
+        <a href="fabrications.html" class="card">
+            <h3 class="metallic-gold">Customised Fabrications</h3>
+            <p style="font-size: 0.9rem; opacity: 0.7; margin-bottom: 1.5rem;">In-house build solutions bringing complex architectural sets and unique scenic pieces to life.</p>
+            <span class="learn-more">View Project</span>
+        </a>
+
+        <a href="furniture-rental.html" class="card">
+            <h3 class="metallic-gold">Furniture Rental</h3>
+            <p style="font-size: 0.9rem; opacity: 0.7; margin-bottom: 1.5rem;">Premium sourcing and pristine distribution of designer layout furniture configurations.</p>
+            <span class="learn-more">View Project</span>
+        </a>
+
+        <a href="wardrobe-costumes.html" class="card">
+            <h3 class="metallic-gold">Wardrobe & Costume Design</h3>
+            <p style="font-size: 0.9rem; opacity: 0.7; margin-bottom: 1.5rem;">Tailored high-fashion costuming and immersive styling arrays designed specifically for theatrical production themes.</p>
+            <span class="learn-more">View Project</span>
+        </a>
+
+        <a href="management.html" class="card">
+            <h3 class="metallic-gold">Project & Event Management</h3>
+            <p style="font-size: 0.9rem; opacity: 0.7; margin-bottom: 1.5rem;">Leveraging two decades of coordination masterclass to assure absolute structural on-site execution.</p>
+            <span class="learn-more">View Project</span>
+        </a>
+
     </div>
 </section>
 
