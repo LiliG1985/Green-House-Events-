@@ -62,22 +62,46 @@
         .card:hover { border-color: var(--gold-solid); transform: translateY(-10px); }
         .card h3 { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 1rem; }
 
-        /* --- THE LOGO-SHEET FIX --- */
+        /* --- THE FIXED CLIENT HISTORY SECTION --- */
         #clients { background: var(--bg-deep); padding: 8rem 5vw; }
         .client-container { 
+            display: flex; 
             max-width: 1300px; 
             margin: 0 auto; 
             border: 0.5px solid var(--border); 
-            background: #4e5f5a; /* Matches your brand green tiles */
-            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            background: #fff; /* White background for the logos sheet to show properly */
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .client-sidebar { 
+            background: #0b1a18; 
+            width: 120px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            border-right: 0.5px solid var(--border); 
+            flex-shrink: 0;
+        }
+        .client-sidebar h2 { 
+            font-family: var(--display); 
+            font-size: 2.2rem; 
+            writing-mode: vertical-rl; 
+            transform: rotate(180deg); 
+            letter-spacing: 0.15em; 
+            text-transform: uppercase; 
+        }
+        .client-image-wrap { 
+            flex-grow: 1; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
             overflow: hidden;
         }
-        .client-container img { 
-            width: 100%; 
+        .client-image-wrap img { 
+            width: 115%; /* Zoomed to hide the black title in the image */
             height: auto; 
-            display: block;
-            mix-blend-mode: multiply; /* THIS REMOVES THE WHITE BACKGROUND FROM THE LOGO SHEET */
-            filter: contrast(1.2) brightness(1.1);
+            display: block; 
+            margin-left: -12.5%; /* Shifted to hide the black title in the image */
         }
 
         .stats-bar { background: #0b1a18; padding: 5rem 5vw; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; border-top: 0.5px solid var(--gold-solid); }
@@ -90,6 +114,10 @@
         @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
         @media (max-width: 900px) {
+            .client-container { flex-direction: column; }
+            .client-sidebar { width: 100%; padding: 40px 0; border-right: none; border-bottom: 0.5px solid var(--border); }
+            .client-sidebar h2 { writing-mode: horizontal-tb; transform: none; font-size: 1.8rem; }
+            .client-image-wrap img { width: 100%; margin-left: 0; }
             .contact-wrap, .stats-bar { grid-template-columns: 1fr; }
         }
     </style>
@@ -125,7 +153,12 @@
 
 <section id="clients">
     <div class="client-container">
-        <img src="final.jpg" alt="Greenhouse Events Client History">
+        <div class="client-sidebar">
+            <h2 class="metallic-gold">Client History</h2>
+        </div>
+        <div class="client-image-wrap">
+            <img src="final.jpg" alt="Greenhouse Events Client History">
+        </div>
     </div>
 </section>
 
