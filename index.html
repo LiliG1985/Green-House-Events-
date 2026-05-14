@@ -8,8 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-deep: #1a2421; 
-            --bg-mid: #3d4f4c;  
+            --bg-deep: #0b1a18; 
+            --bg-mid: #2c3835;  
             --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%);
             --gold-solid: #C9A84C;
             --white-off: #F4F0E8;
@@ -17,7 +17,7 @@
             --serif: 'Cormorant Garamond', serif;
             --display: 'Cinzel', serif;
             --sans: 'DM Sans', sans-serif;
-            --sage-tile: #4e5f5a; 
+            --sage-tile: #4e5f5a;
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -39,7 +39,7 @@
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             padding: 1.2rem 5vw; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(26, 36, 33, 0.95); backdrop-filter: blur(15px);
+            background: rgba(11, 26, 24, 0.95); backdrop-filter: blur(15px);
             border-bottom: 0.5px solid var(--border);
         }
         .nav-logo { font-family: var(--serif); font-size: 1.5rem; color: var(--gold-solid); text-decoration: none; font-weight: 600; letter-spacing: 2px; }
@@ -50,48 +50,41 @@
             background: url('logo.jpg') no-repeat center center;
             background-size: cover; background-attachment: fixed;
         }
-        .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, transparent 20%, rgba(26, 36, 33, 0.6) 100%); }
+        .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, transparent 20%, rgba(11, 26, 24, 0.7) 100%); }
 
-        .marquee { background: #0b1a18; padding: 1.2rem 0; overflow: hidden; white-space: nowrap; border-top: 0.5px solid var(--gold-solid); border-bottom: 0.5px solid var(--gold-solid); }
+        .marquee { background: #000; padding: 1.2rem 0; overflow: hidden; white-space: nowrap; border-top: 0.5px solid var(--gold-solid); border-bottom: 0.5px solid var(--gold-solid); }
         .marquee-inner { display: inline-block; animation: scroll 40s linear infinite; font-family: var(--serif); color: var(--gold-solid); font-size: 1.1rem; letter-spacing: 5px; text-transform: uppercase; }
 
         section { padding: 8rem 8vw; position: relative; }
         .sec-title { font-family: var(--serif); font-size: 3.5rem; margin-bottom: 4rem; text-align: center; font-weight: 300; }
         
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
-        .card { border: 0.5px solid var(--border); padding: 3.5rem; background: rgba(0,0,0,0.15); transition: 0.4s; }
+        .card { border: 0.5px solid var(--border); padding: 3.5rem; background: rgba(0,0,0,0.2); transition: 0.4s; }
         .card:hover { border-color: var(--gold-solid); transform: translateY(-10px); }
         .card h3 { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 1rem; }
 
-        /* --- THE FIXED CLIENT HISTORY SECTION --- */
+        /* --- THE FIXED CLIENT GALLERY --- */
         #clients { background: var(--bg-deep); padding: 8rem 5vw; }
         .client-container { 
             display: flex; 
             max-width: 1300px; 
             margin: 0 auto; 
             border: 0.5px solid var(--border); 
-            background: #111816; 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            background: #0b1a18; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
         .client-sidebar { 
-            background: #0d1211; 
+            background: #000; 
             width: 140px; 
             display: flex; 
             flex-direction: column;
             align-items: center; 
-            justify-content: center; 
+            justify-content: space-between;
             border-right: 0.5px solid var(--border); 
             flex-shrink: 0;
             padding: 40px 0;
         }
-        .sidebar-logo {
-            font-family: var(--serif);
-            font-size: 1.4rem;
-            color: var(--gold-solid);
-            letter-spacing: 4px;
-            margin-bottom: auto;
-            text-transform: uppercase;
-        }
+        .sidebar-brand { font-family: var(--serif); color: var(--gold-solid); font-size: 1.5rem; letter-spacing: 4px; }
         .client-sidebar h2 { 
             font-family: var(--display); 
             font-size: 2.2rem; 
@@ -99,7 +92,6 @@
             transform: rotate(180deg); 
             letter-spacing: 0.15em; 
             text-transform: uppercase; 
-            margin-bottom: auto;
         }
         .brand-grid { 
             display: grid; 
@@ -114,17 +106,16 @@
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            color: #ffffff; /* Crisp white logos */
+            color: #ffffff; /* Crisp white logos only */
             font-family: var(--display); 
-            font-size: 0.7rem; 
+            font-size: 0.75rem; 
             text-align: center; 
             text-transform: uppercase; 
             letter-spacing: 2px; 
             padding: 10px;
-            transition: 0.4s;
         }
 
-        .stats-bar { background: #0b1a18; padding: 5rem 5vw; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; border-top: 0.5px solid var(--gold-solid); }
+        .stats-bar { background: #000; padding: 5rem 5vw; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; border-top: 0.5px solid var(--gold-solid); }
         .stat-item h2 { font-family: var(--serif); font-size: 3.5rem; color: var(--gold-solid); margin-bottom: 0.5rem; }
 
         .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1100px; margin: 0 auto; }
@@ -135,7 +126,7 @@
 
         @media (max-width: 900px) {
             .client-container { flex-direction: column; }
-            .client-sidebar { width: 100%; padding: 40px 0; border-right: none; border-bottom: 0.5px solid var(--border); }
+            .client-sidebar { width: 100%; padding: 30px 0; border-right: none; border-bottom: 0.5px solid var(--border); }
             .client-sidebar h2 { writing-mode: horizontal-tb; transform: none; font-size: 1.8rem; margin: 20px 0; }
             .brand-grid { grid-template-columns: repeat(2, 1fr); padding: 20px; }
             .contact-wrap, .stats-bar { grid-template-columns: 1fr; }
@@ -174,9 +165,9 @@
 <section id="clients">
     <div class="client-container">
         <div class="client-sidebar">
-            <div class="sidebar-logo">G</div>
+            <div class="sidebar-brand">G</div>
             <h2 class="metallic-gold">Client History</h2>
-            <div class="sidebar-logo" style="margin-top: auto; margin-bottom: 0;">G</div>
+            <div class="sidebar-brand">G</div>
         </div>
         <div class="brand-grid">
             <div class="brand-tile">Waitrose</div>
@@ -232,7 +223,7 @@
     </div>
 </section>
 
-<footer style="padding: 4rem; text-align: center; border-top: 0.5px solid var(--gold-solid); background: #0b1a18;">
+<footer style="padding: 4rem; text-align: center; border-top: 0.5px solid var(--gold-solid); background: #000;">
     <p class="metallic-gold" style="font-family: var(--serif); font-size: 1.2rem; letter-spacing: 4px;">GREENHOUSE EVENTS DUBAI</p>
     <p style="font-size: 0.6rem; opacity: 0.3; margin-top: 2rem;">© 2026 GREENHOUSE EVENTS LLC. ALL RIGHTS RESERVED.</p>
 </footer>
