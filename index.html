@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-deep: #1a2421; /* Deepest green for background */
+            --bg-deep: #1a2421; 
             --bg-mid: #3d4f4c;  
             --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%);
             --gold-solid: #C9A84C;
@@ -17,14 +17,13 @@
             --serif: 'Cormorant Garamond', serif;
             --display: 'Cinzel', serif;
             --sans: 'DM Sans', sans-serif;
-            --sage-tile: #4e5f5a; /* The exact sage green from your mockup */
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body { background: var(--bg-mid); color: var(--white-off); font-family: var(--sans); overflow-x: hidden; line-height: 1.6; }
 
-        /* MASTER METALLIC CLASS */
+        /* METALLIC GOLD ANIMATION */
         .metallic-gold {
             background: var(--gold-metallic);
             -webkit-background-clip: text;
@@ -47,7 +46,7 @@
         .nav-logo { font-family: var(--serif); font-size: 1.5rem; color: var(--gold-solid); text-decoration: none; font-weight: 600; letter-spacing: 2px; }
         .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.75rem 1.8rem; text-decoration: none; font-weight: 600; font-size: 0.75rem; letter-spacing: 1px; transition: 0.3s; }
 
-        /* HERO HEADER */
+        /* HERO SECTION */
         .hero {
             height: 100vh; position: relative; display: flex; align-items: center; justify-content: center;
             background: url('logo.jpg') no-repeat center center;
@@ -67,11 +66,19 @@
         .card:hover { border-color: var(--gold-solid); transform: translateY(-10px); }
         .card h3 { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 1rem; }
 
-        /* --- CLIENT HISTORY: CLEAN CODE BUILD --- */
+        /* CLIENT HISTORY SECTION */
         #clients { background: var(--bg-deep); padding: 8rem 5vw; }
-        .client-container { display: flex; max-width: 1300px; margin: 0 auto; border: 0.5px solid var(--border); background: #161e1c; }
-        .client-sidebar { 
+        .client-container { 
+            display: flex; 
+            max-width: 1300px; 
+            margin: 0 auto; 
+            border: 0.5px solid var(--border); 
             background: #111816; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+        .client-sidebar { 
+            background: #0d1211; 
             width: 120px; 
             display: flex; 
             align-items: center; 
@@ -87,32 +94,25 @@
             letter-spacing: 0.15em; 
             text-transform: uppercase; 
         }
-        .client-brand-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; padding: 40px; flex-grow: 1; }
-        .brand-tile { 
-            background: var(--sage-tile); 
-            aspect-ratio: 1.4 / 1; 
+        .client-image-wrap { 
+            flex-grow: 1; 
+            background: #1a2421; 
             display: flex; 
             align-items: center; 
-            justify-content: center; 
-            padding: 20px; 
-            transition: 0.4s;
+            justify-content: center;
+            overflow: hidden;
         }
-        .brand-tile:hover { filter: brightness(1.1); transform: translateY(-3px); }
-        .brand-tile span { 
-            color: var(--white-off); 
-            font-family: var(--display); 
-            font-size: 0.75rem; 
-            text-align: center; 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            font-weight: 400; 
+        .client-image-wrap img { 
+            width: 112%; 
+            height: auto; 
+            display: block; 
+            margin-left: -11.5%; /* This precisely crops the duplicate title out of the image */
+            filter: contrast(1.1) brightness(1.1);
         }
 
-        /* STATS BAR */
+        /* STATS & CONTACT */
         .stats-bar { background: #0b1a18; padding: 5rem 5vw; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; border-top: 0.5px solid var(--gold-solid); }
         .stat-item h2 { font-family: var(--serif); font-size: 3.5rem; color: var(--gold-solid); margin-bottom: 0.5rem; }
-
-        /* CONTACT SECTION */
         .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1100px; margin: 0 auto; }
         .c-val { display: block; font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--white-off); text-decoration: none; }
         .c-label { color: var(--gold-solid); font-family: var(--display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
@@ -123,7 +123,7 @@
             .client-container { flex-direction: column; }
             .client-sidebar { width: 100%; padding: 40px 0; border-right: none; border-bottom: 0.5px solid var(--border); }
             .client-sidebar h2 { writing-mode: horizontal-tb; transform: none; font-size: 2rem; }
-            .client-brand-grid { grid-template-columns: repeat(2, 1fr); padding: 20px; }
+            .client-image-wrap img { width: 100%; margin-left: 0; }
             .contact-wrap, .stats-bar { grid-template-columns: 1fr; }
         }
     </style>
@@ -162,32 +162,8 @@
         <div class="client-sidebar">
             <h2 class="metallic-gold">Client History</h2>
         </div>
-        <div class="client-brand-grid">
-            <div class="brand-tile"><span>Waitrose</span></div>
-            <div class="brand-tile"><span>itv</span></div>
-            <div class="brand-tile"><span>bp</span></div>
-            <div class="brand-tile"><span>Four Seasons</span></div>
-            <div class="brand-tile"><span>Emmerdale</span></div>
-            <div class="brand-tile"><span>Mandarin Oriental</span></div>
-            <div class="brand-tile"><span>Candypants</span></div>
-            <div class="brand-tile"><span>Sky Betting</span></div>
-            <div class="brand-tile"><span>Hits Radio</span></div>
-            <div class="brand-tile"><span>JD Sports</span></div>
-            <div class="brand-tile"><span>Remi Cachet</span></div>
-            <div class="brand-tile"><span>Burberry</span></div>
-            <div class="brand-tile"><span>PrettyLittleThing</span></div>
-            <div class="brand-tile"><span>Parklife</span></div>
-            <div class="brand-tile"><span>ghd</span></div>
-            <div class="brand-tile"><span>Jumeirah</span></div>
-            <div class="brand-tile"><span>G Casino</span></div>
-            <div class="brand-tile"><span>Wet Deck</span></div>
-            <div class="brand-tile"><span>Akira Back</span></div>
-            <div class="brand-tile"><span>W Dubai</span></div>
-            <div class="brand-tile"><span>Caesars Palace</span></div>
-            <div class="brand-tile"><span>Trafford Palazzo</span></div>
-            <div class="brand-tile"><span>Kate Spade</span></div>
-            <div class="brand-tile"><span>Victoria's Secret</span></div>
-            <div class="brand-tile"><span>John Lewis</span></div>
+        <div class="client-image-wrap">
+            <img src="client-list.jpg" alt="Greenhouse Events Client History">
         </div>
     </div>
 </section>
