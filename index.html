@@ -62,62 +62,47 @@
         .card:hover { border-color: var(--gold-solid); transform: translateY(-10px); }
         .card h3 { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 1rem; }
 
-        /* --- THE ADVANCED SVG VECTOR MASK GRID --- */
+        /* --- THE LUXURY LOGO SHOWCASE CONTAINER --- */
         #clients { background: var(--bg-deep); padding: 8rem 5vw; }
         .client-container { 
-            position: relative;
-            max-width: 1250px; 
+            display: flex; 
+            max-width: 1300px; 
             margin: 0 auto; 
             border: 0.5px solid var(--border); 
-            background: #000; 
+            background: #0b1a18; 
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
             overflow: hidden;
-            display: flex;
         }
-        
-        .gold-sidebar {
-            width: 140px;
-            background: #000;
-            display: flex;
+        .client-sidebar { 
+            background: #000; 
+            width: 140px; 
+            display: flex; 
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-right: 0.5px solid var(--border);
+            align-items: center; 
+            justify-content: center; 
+            border-right: 0.5px solid var(--border); 
             flex-shrink: 0;
-            padding: 40px 0;
-            z-index: 10;
+            padding: 50px 0;
         }
-        .gold-sidebar h2 {
-            font-family: var(--display);
-            font-size: 2.3rem;
-            writing-mode: vertical-rl;
-            transform: rotate(180deg);
-            letter-spacing: 0.20em;
-            text-transform: uppercase;
+        .client-sidebar h2 { 
+            font-family: var(--display); 
+            font-size: 2.4rem; 
+            writing-mode: vertical-rl; 
+            transform: rotate(180deg); 
+            letter-spacing: 0.22em; 
+            text-transform: uppercase; 
         }
-
-        .logo-display-window {
-            flex-grow: 1;
-            position: relative;
-            background: var(--bg-deep);
-            overflow: hidden;
+        .client-image-wrap { 
+            flex-grow: 1; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background: #0b1a18;
         }
-
-        /* Displays your uploaded image file perfectly */
-        .logo-display-window img {
-            width: 114.5%;
-            height: auto;
-            display: block;
-            margin-left: -12.5%; /* Cleanly hides the static image sidebar text */
-            filter: contrast(1.05) brightness(1.05);
-        }
-
-        /* SVG Mask Layer: Smoothly recolors the black block anomalies on the fly */
-        .svg-mask-overlay {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            pointer-events: none;
+        .client-image-wrap img { 
+            width: 100%; 
+            height: auto; 
+            display: block; 
         }
 
         .stats-bar { background: #000; padding: 5rem 5vw; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; border-top: 0.5px solid var(--gold-solid); }
@@ -131,9 +116,8 @@
 
         @media (max-width: 900px) {
             .client-container { flex-direction: column; }
-            .gold-sidebar { width: 100%; height: auto; padding: 40px 0; border-right: none; border-bottom: 0.5px solid var(--border); }
-            .gold-sidebar h2 { writing-mode: horizontal-tb; transform: none; font-size: 1.9rem; margin: 20px 0; }
-            .logo-display-window img { width: 100%; margin-left: 0; }
+            .client-sidebar { width: 100%; height: auto; padding: 40px 0; border-right: none; border-bottom: 0.5px solid var(--border); }
+            .client-sidebar h2 { writing-mode: horizontal-tb; transform: none; font-size: 1.8rem; margin: 20px 0; }
             .contact-wrap, .stats-bar { grid-template-columns: 1fr; }
         }
     </style>
@@ -169,17 +153,12 @@
 
 <section id="clients">
     <div class="client-container">
-        <div class="gold-sidebar">
+        <div class="client-sidebar">
             <h2 class="metallic-gold">Client History</h2>
         </div>
         
-        <div class="logo-display-window">
+        <div class="client-image-wrap">
             <img src="client-logos.jpg" alt="Greenhouse Events Client History Showcase">
-            
-            <svg class="svg-mask-overlay" viewBox="0 0 875 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="740" y="20" width="125" height="85" fill="#4e5f5a" mix-blend-mode="color-dodge" opacity="0.85"/>
-                <rect x="560" y="230" width="125" height="85" fill="#4e5f5a" mix-blend-mode="color-dodge" opacity="0.85"/>
-            </svg>
         </div>
     </div>
 </section>
