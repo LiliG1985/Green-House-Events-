@@ -51,7 +51,6 @@
         .nav-logo { font-family: var(--serif); font-size: 1.25rem; text-decoration: none; font-weight: 600; letter-spacing: 3px; }
         .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; }
 
-        /* --- CLEAN ARCHITECTURAL HEADER OVERLAY --- */
         .inner-hero {
             padding: 16rem 8vw 10rem 8vw;
             background: linear-gradient(rgba(11, 26, 24, 0.35), rgba(11, 26, 24, 0.4)), url('private-header-bg.jpg') no-repeat center center;
@@ -61,15 +60,21 @@
             text-align: center;
         }
         
-        /* REMOVED BALOONING BLACK SHADOW WALLS FOR CLEAN OPTICAL EDGE RENDERING */
         .inner-hero h1 { 
             font-family: var(--serif); 
             font-size: 4rem; 
             font-weight: 300; 
             margin-bottom: 1.5rem; 
             letter-spacing: 1px; 
-            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Softened to transparent ambient diffuser */
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
         }
+        
+        /* --- STYLESHEET OVERRIDE FIXED FORCE RULES --- */
+        .inner-hero h1 .metallic-gold {
+            text-shadow: none !important;
+            -webkit-text-stroke: 0px transparent !important;
+        }
+
         .inner-hero p { 
             font-size: 1.2rem; 
             max-width: 700px; 
@@ -145,7 +150,7 @@
 </nav>
 
 <header class="inner-hero">
-    <h1>Bespoke Private <em class="metallic-gold">Celebrations</em></h1>
+    <h1>Bespoke Private <span class="metallic-gold">Celebrations</span></h1>
     <p>Bringing meticulous operational logistics and breathtaking creative execution to life’s most significant milestones.</p>
 </header>
 
