@@ -21,7 +21,13 @@
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
-        body { background: var(--bg-mid); color: var(--white-off); font-family: var(--sans); overflow-x: hidden; line-height: 1.6; }
+        body { 
+            background: radial-gradient(circle at 50% 30%, #1c2725 0%, var(--bg-mid) 70%); 
+            color: var(--white-off); 
+            font-family: var(--sans); 
+            overflow-x: hidden; 
+            line-height: 1.6; 
+        }
 
         .metallic-gold {
             background: var(--gold-metallic);
@@ -45,19 +51,75 @@
         .nav-logo { font-family: var(--serif); font-size: 1.25rem; text-decoration: none; font-weight: 600; letter-spacing: 3px; }
         .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; }
 
-        /* --- MINI HEADER FOR INNER PAGES --- */
+        /* --- TOP TIER WELCOMING HERO --- */
         .inner-hero {
-            padding: 12rem 8vw 4rem 8vw;
+            padding: 14rem 8vw 6rem 8vw;
             background: var(--bg-deep);
             border-bottom: 0.5px solid var(--border);
             text-align: center;
         }
-        .inner-hero h1 { font-family: var(--serif); font-size: 3.5rem; font-weight: 300; margin-bottom: 1rem; }
+        .inner-hero h1 { font-family: var(--serif); font-size: 4rem; font-weight: 300; margin-bottom: 1.5rem; letter-spacing: 1px; }
+        .inner-hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.8; font-weight: 300; }
+
+        .editorial-section { padding: 6rem 8vw; max-width: 1200px; margin: 0 auto; }
         
-        .content-section { padding: 6rem 8vw; max-width: 1000px; margin: 0 auto; }
-        .content-section p { font-size: 1.1rem; opacity: 0.85; margin-bottom: 2rem; font-weight: 300; }
+        /* --- MAIN VIDEO SHOWCASE PLAYER --- */
+        .video-showcase-container {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            border: 0.5px solid var(--gold-solid);
+            margin: 3rem 0;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        .video-showcase-container video { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        /* --- TWO COLUMN EDITORIAL LAYOUT --- */
+        .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin: 6rem 0; }
+        .split-text h2 { font-family: var(--serif); font-size: 2.5rem; margin-bottom: 1.5rem; font-weight: 300; }
+        .split-text p { font-size: 1.05rem; opacity: 0.85; margin-bottom: 1.5rem; font-weight: 300; }
         
-        .back-link { font-family: var(--display); font-size: 0.75rem; color: var(--gold-solid); text-decoration: none; letter-spacing: 2px; display: inline-block; margin-top: 2rem; }
+        .media-placeholder {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: rgba(11, 26, 24, 0.4);
+            border: 0.5px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .media-placeholder img, .media-placeholder video { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- THE ALL-INCLUSIVE CAPABILITY LIST --- */
+        .capability-box {
+            background: rgba(11, 26, 24, 0.4);
+            border: 0.5px solid var(--border);
+            padding: 4rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            margin: 6rem 0;
+        }
+        .capability-box h2 { font-family: var(--serif); font-size: 2.5rem; text-align: center; margin-bottom: 3rem; font-weight: 300; }
+        .capability-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+        .cap-item h4 { font-family: var(--display); font-size: 0.85rem; color: var(--gold-solid); letter-spacing: 2px; margin-bottom: 0.5rem; }
+        .cap-item p { font-size: 0.95rem; opacity: 0.75; font-weight: 300; }
+
+        /* --- PHOTO GRID GALLERY SPACE --- */
+        .photo-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 4rem 0; }
+        .gallery-photo { aspect-ratio: 1/1; background: rgba(0,0,0,0.2); border: 0.5px solid var(--border); overflow: hidden; }
+        .gallery-photo img { width: 100%; height: 100%; object-fit: cover; transition: 0.4s; opacity: 0.7; }
+        .gallery-photo:hover img { opacity: 1; transform: scale(1.02); border-color: var(--gold-solid); }
+
+        .back-link { font-family: var(--display); font-size: 0.75rem; color: var(--gold-solid); text-decoration: none; letter-spacing: 2px; display: inline-block; margin-top: 2rem; transition: 0.3s; }
+        .back-link:hover { letter-spacing: 3px; }
+
+        @media (max-width: 900px) {
+            .split-grid, .capability-grid, .photo-gallery { grid-template-columns: 1fr; gap: 3rem; }
+            .capability-box { padding: 2rem; }
+            .inner-hero h1 { font-size: 2.8rem; }
+        }
     </style>
 </head>
 <body>
@@ -68,13 +130,73 @@
 </nav>
 
 <header class="inner-hero">
-    <h1>Private Party & <em class="metallic-gold">Event Planning</em></h1>
+    <h1>Bespoke Private <em class="metallic-gold">Celebrations</em></h1>
+    <p>Bringing meticulous operational logistics and breathtaking creative execution to life’s most significant milestones.</p>
 </header>
 
-<main class="content-section">
-    <p>This is where we will map out the deep logistics, bespoke design approach, and detailed curation for birthdays, engagements, proposals, and luxury private celebrations.</p>
+<main class="editorial-section">
+
+    <div class="split-grid">
+        <div class="split-text">
+            <h2>Tailored to Your <em class="metallic-gold">Exact Space</em></h2>
+            <p>We believe a truly premium event cannot be designed from a template. Every project we undertake begins with an immersive on site visit and a deep creative consultation.</p>
+            <p>By mapping your physical venue space alongside your specific operational requirements, we ensure that every design element integrates flawlessly and all structural and personal needs are perfectly met.</p>
+        </div>
+        <div class="media-placeholder">
+            <img src="private-consult.jpg" alt="Greenhouse Events Site Consultation Curation Placeholder" style="opacity: 0.4;">
+        </div>
+    </div>
+
+    <h2 style="font-family: var(--serif); font-size: 2.5rem; text-align: center; font-weight: 300; margin-top: 4rem;">Production <em class="metallic-gold">Showcase</em></h2>
+    <p style="text-align: center; max-width: 600px; margin: 0 auto 2rem auto; opacity: 0.7; font-weight: 300;">A curated look at our real world transformations, live show management, and fine technical detail builds.</p>
     
-    <a href="index.html" class="back-link">← BACK TO HOME</a>
+    <div class="video-showcase-container">
+        <video autoplay loop muted playsinline>
+            <source src="private-showcase.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="capability-box">
+        <h2>Absolute <em class="metallic-gold">Turnkey Execution</em></h2>
+        <div class="capability-grid">
+            <div class="cap-item">
+                <h4>Atmosphere & Styling</h4>
+                <p>From complex, bespoke luxury floral layouts to playful, custom high end balloon design installations that completely transform an environment.</p>
+            </div>
+            <div class="cap-item">
+                <h4>World Class Talent</h4>
+                <p>Direct coordination of international bands, solo acoustic performers, dramatic live show ensembles, and bespoke atmospheric entertainment.</p>
+            </div>
+            <div class="cap-item">
+                <h4>Pristine Operations</h4>
+                <p>Seamless on site delivery utilizing fully trained hospitality staff, silver service waiters, and dedicated technical crew managers.</p>
+            </div>
+            <div class="cap-item">
+                <h4>Immersive Children's Setups</h4>
+                <p>Sophisticated, imaginative, and highly secure temporary layouts designed specifically for children's celebrations and family experiences.</p>
+            </div>
+            <div class="cap-item">
+                <h4>Bespoke Fabrications</h4>
+                <p>Custom scenic set design construction, lighting infrastructure arrays, and pristine architectural styling pieces built entirely in house.</p>
+            </div>
+            <div class="cap-item">
+                <h4>Logistical Management</h4>
+                <p>Handling every single moving line piece behind the scenes, from initial safety permits to the final clean strike, allowing you to purely enjoy hosting.</p>
+            </div>
+        </div>
+    </div>
+
+    <h2 style="font-family: var(--serif); font-size: 2.5rem; text-align: center; font-weight: 300;">Visual <em class="metallic-gold">Curation Grid</em></h2>
+    <div class="photo-gallery">
+        <div class="gallery-photo"><img src="private1.jpg" alt="Bespoke Curation Slot 1 Placeholder"></div>
+        <div class="gallery-photo"><img src="private2.jpg" alt="Bespoke Curation Slot 2 Placeholder"></div>
+        <div class="gallery-photo"><img src="private3.jpg" alt="Bespoke Curation Slot 3 Placeholder"></div>
+    </div>
+
+    <div style="text-align: center;">
+        <a href="index.html" class="back-link">← RETURN TO CORE PRODUCTION</a>
+    </div>
+
 </main>
 
 <footer style="padding: 4rem; text-align: center; border-top: 0.5px solid var(--gold-solid); background: #000; margin-top: 6rem;">
