@@ -22,7 +22,6 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         
-        /* --- ADDED DEPTH TO BODY BACKGROUND --- */
         body { 
             background: radial-gradient(circle at 50% 30%, #1c2725 0%, var(--bg-mid) 70%); 
             color: var(--white-off); 
@@ -43,11 +42,14 @@
         }
         @keyframes shine { to { background-position: 200% center; } }
 
+        /* --- ANIMATED LUXURY NAVIGATION LOGO --- */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
-            padding: 0.8rem 5vw; display: flex; justify-content: space-between; align-items: center;
+            padding: 1.2rem 5vw; display: flex; justify-content: space-between; align-items: center;
             background: rgba(11, 26, 24, 0.95); backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border-bottom: 0.5px solid var(--border);
+            transition: padding 0.4s ease;
         }
         
         .nav-logo { 
@@ -56,251 +58,100 @@
             text-decoration: none; 
             font-weight: 600; 
             letter-spacing: 3px; 
+            position: relative;
+            padding-bottom: 4px;
+            transition: letter-spacing 0.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
+        .nav-logo:hover { letter-spacing: 6px; }
+        .nav-logo::after {
+            content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 0.5px; background: var(--gold-solid);
+            transition: width 0.5s cubic-bezier(0.25, 1, 0.5, 1), left 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .nav-logo:hover::after { width: 100%; left: 0; }
+
         .nav-cta { 
-            background: var(--gold-metallic); 
-            color: #0b1a18; 
-            padding: 0.55rem 1.4rem; 
-            text-decoration: none; 
-            font-weight: 600; 
-            font-size: 0.7rem; 
-            letter-spacing: 1px; 
-            transition: 0.3s; 
+            background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
         }
+        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 10px 20px rgba(201,168,76,0.15); }
 
         .hero {
-            height: 100vh; 
-            position: relative; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            background: #0b1a18 url('logo.jpg') no-repeat center center;
-            background-size: contain; 
-            padding: 10vh 10vw; 
+            height: 100vh; position: relative; display: flex; align-items: center; justify-content: center;
+            background: #0b1a18 url('logo.jpg') no-repeat center center; background-size: contain; padding: 10vh 10vw; 
         }
         .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, transparent 40%, rgba(11, 26, 24, 0.4) 100%); }
 
         .marquee { 
-            background: #000; 
-            padding: 1.2rem 0; 
-            overflow: hidden; 
-            white-space: nowrap; 
-            border-top: 0.5px solid var(--gold-solid); 
-            border-bottom: 0.5px solid var(--gold-solid); 
-            display: flex;
+            background: #000; padding: 1.2rem 0; overflow: hidden; white-space: nowrap; border-top: 0.5px solid var(--gold-solid); border-bottom: 0.5px solid var(--gold-solid); display: flex;
         }
         .marquee-inner { 
-            display: inline-block; 
-            animation: scroll-text 45s linear infinite; 
-            font-family: var(--serif); 
-            color: var(--gold-solid); 
-            font-size: 1.1rem; 
-            letter-spacing: 4px; 
-            text-transform: uppercase;
-            padding-right: 2rem;
-            flex-shrink: 0;
+            display: inline-block; animation: scroll-text 45s linear infinite; font-family: var(--serif); color: var(--gold-solid); font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; padding-right: 2rem; flex-shrink: 0;
         }
 
         section { padding: 8rem 8vw; position: relative; }
-        
-        /* --- ADDED DEPTH GRADIENT ON THE SERVICES WRAPPER --- */
-        #services { 
-            padding: 5rem 8vw 6rem 8vw; 
-            background: linear-gradient(to bottom, transparent 0%, rgba(11, 26, 24, 0.4) 100%);
-        } 
+        #services { padding: 5rem 8vw 6rem 8vw; background: linear-gradient(to bottom, transparent 0%, rgba(11, 26, 24, 0.4) 100%); } 
         .sec-title { font-family: var(--serif); font-size: 3.5rem; margin-bottom: 3rem; text-align: center; font-weight: 300; }
         
-        .services-grid { 
-            display: grid; 
-            grid-template-columns: repeat(4, 1fr); 
-            gap: 2rem; 
-        }
+        .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
         
-        /* --- PREMIUM FROSTED architectural CARD LAYERING --- */
         .card { 
-            text-decoration: none;
-            color: inherit;
-            border: 0.5px solid var(--border); 
-            padding: 3rem 2rem; 
-            background: rgba(11, 26, 24, 0.4); 
-            backdrop-filter: blur(10px); /* Gives beautiful glassy depth over body gradients */
-            -webkit-backdrop-filter: blur(10px);
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            cursor: pointer;
+            text-decoration: none; color: inherit; border: 0.5px solid var(--border); padding: 3rem 2rem; background: rgba(11, 26, 24, 0.4); 
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); display: flex; flex-direction: column; justify-content: space-between; cursor: pointer;
         }
-        .card:hover { 
-            border-color: var(--gold-solid); 
-            transform: translateY(-8px); 
-            background: rgba(11, 26, 24, 0.75);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-        .card h3 { 
-            font-family: var(--serif); 
-            font-size: 1.5rem; 
-            margin-bottom: 1.5rem; 
-            line-height: 1.3;
-        }
-        .card .learn-more {
-            font-family: var(--display);
-            font-size: 0.65rem;
-            letter-spacing: 2px;
-            color: var(--gold-solid);
-            text-transform: uppercase;
-            margin-top: auto;
-            opacity: 0.6;
-            transition: 0.3s;
-        }
-        .card:hover .learn-more {
-            opacity: 1;
-            letter-spacing: 3px;
-        }
+        .card:hover { border-color: var(--gold-solid); transform: translateY(-8px); background: rgba(11, 26, 24, 0.75); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); }
+        .card h3 { font-family: var(--serif); font-size: 1.5rem; margin-bottom: 1.5rem; line-height: 1.3; }
+        .card .learn-more { font-family: var(--display); font-size: 0.65rem; letter-spacing: 2px; color: var(--gold-solid); text-transform: uppercase; margin-top: auto; opacity: 0.6; transition: 0.3s; }
+        .card:hover .learn-more { opacity: 1; letter-spacing: 3px; }
 
-        .image-marquee {
-            width: 100%;
-            background: #000;
-            padding: 2.5rem 0;
-            overflow: hidden;
-            white-space: nowrap;
-            border-top: 0.5px solid var(--border);
-            border-bottom: 0.5px solid var(--border);
-            display: flex;
-        }
-        .image-marquee-track {
-            display: flex;
-            gap: 1.5rem;
-            animation: scroll-images 45s linear infinite; 
-            flex-shrink: 0;
-            padding-right: 1.5rem;
-        }
-        .image-marquee-track img {
-            width: 380px;
-            height: 240px;
-            object-fit: cover;
-            border: 0.5px solid var(--border);
-            transition: border-color 0.4s;
-        }
-        .image-marquee-track img:hover {
-            border-color: var(--gold-solid);
-        }
+        .image-marquee { width: 100%; background: #000; padding: 2.5rem 0; overflow: hidden; white-space: nowrap; display: flex; border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); }
+        .image-marquee-track { display: flex; gap: 1.5rem; animation: scroll-images 45s linear infinite; flex-shrink: 0; padding-right: 1.5rem; }
+        .image-marquee-track img { width: 380px; height: 240px; object-fit: cover; border: 0.5px solid var(--border); transition: border-color 0.4s; }
+        .image-marquee-track img:hover { border-color: var(--gold-solid); }
 
-        /* --- GRADIENT LIGHTING APPLIED TO CLIENT SECTION --- */
-        #clients { 
-            background: radial-gradient(circle at center, #112321 0%, var(--bg-deep) 100%); 
-            padding: 6rem 5vw 8rem 5vw; 
-        }
-        .client-container { 
-            display: flex; 
-            max-width: 1300px; 
-            margin: 0 auto; 
-            border: 0.5px solid var(--border); 
-            background: #0b1a18; 
-            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
-            overflow: hidden;
-        }
-        .client-sidebar { 
-            background: #000; 
-            width: 140px; 
-            display: flex; 
-            flex-direction: column;
-            align-items: center; 
-            justify-content: center; 
-            border-right: 0.5px solid var(--border); 
-            flex-shrink: 0;
-            padding: 50px 0;
-        }
-        .client-sidebar h2 { 
-            font-family: var(--display); 
-            font-size: 2.4rem; 
-            writing-mode: vertical-rl; 
-            transform: rotate(180deg); 
-            letter-spacing: 0.22em; 
-            text-transform: uppercase; 
-        }
-        .client-image-wrap { 
-            flex-grow: 1; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            background: #0b1a18;
-        }
-        .client-image-wrap img { 
-            width: 100%; 
-            height: auto; 
-            display: block; 
-        }
+        #clients { background: radial-gradient(circle at center, #112321 0%, var(--bg-deep) 100%); padding: 6rem 5vw 8rem 5vw; }
+        .client-container { display: flex; max-width: 1300px; margin: 0 auto; border: 0.5px solid var(--border); background: #0b1a18; box-shadow: 0 25px 50px rgba(0,0,0,0.6); overflow: hidden; }
+        .client-sidebar { background: #000; width: 140px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 0.5px solid var(--border); flex-shrink: 0; padding: 50px 0; }
+        .client-sidebar h2 { font-family: var(--display); font-size: 2.4rem; writing-mode: vertical-rl; transform: rotate(180deg); letter-spacing: 0.22em; text-transform: uppercase; }
+        .client-image-wrap { flex-grow: 1; display: flex; align-items: center; justify-content: center; background: #0b1a18; }
+        .client-image-wrap img { width: 100%; height: auto; display: block; }
 
         .stats-bar { background: #000; padding: 5rem 5vw; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; border-top: 0.5px solid var(--gold-solid); }
         .stat-item h2 { font-family: var(--serif); font-size: 3.5rem; color: var(--gold-solid); margin-bottom: 0.5rem; }
 
         #contact { 
             background: linear-gradient(rgba(11, 26, 24, 0.82), rgba(11, 26, 24, 0.82)), url('contact-bg.jpg') no-repeat center center; 
-            background-size: cover;
-            background-attachment: fixed; 
-            border-top: 0.5px solid var(--gold-solid);
-            padding: 10rem 8vw;
+            background-size: cover; background-attachment: fixed; border-top: 0.5px solid var(--gold-solid); padding: 10rem 8vw;
         }
         .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
         .c-val { display: block; font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--white-off); text-decoration: none; }
         .c-label { color: var(--gold-solid); font-family: var(--display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
 
-        @keyframes scroll-text { 
-            from { transform: translateX(0); } 
-            to { transform: translateX(-100%); } 
-        }
-        @keyframes scroll-images {
-            from { transform: translateX(0); }
-            to { transform: translateX(-100%); }
-        }
+        @keyframes scroll-text { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+        @keyframes scroll-images { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 
-        @media (max-width: 1100px) {
-            .services-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-
+        @media (max-width: 1100px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 700px) {
-            .services-grid { grid-template-columns: 1fr; }
-            .image-marquee-track img { width: 280px; height: 180px; }
-            .client-container { flex-direction: column; }
-            .client-sidebar { width: 100%; height: auto; padding: 40px 0; border-right: none; border-bottom: 0.5px solid var(--border); }
-            .client-sidebar h2 { writing-mode: horizontal-tb; transform: none; font-size: 1.8rem; margin: 20px 0; }
-            .contact-wrap, .stats-bar { grid-template-columns: 1fr; }
-            #contact { background-attachment: scroll; } 
+            .services-grid { grid-template-columns: 1fr; } .image-marquee-track img { width: 280px; height: 180px; }
+            .client-container { flex-direction: column; } .client-sidebar { width: 100%; height: auto; padding: 40px 0; border-right: none; border-bottom: 0.5px solid var(--border); }
+            .client-sidebar h2 { writing-mode: horizontal-tb; transform: none; font-size: 1.8rem; margin: 20px 0; } .contact-wrap, .stats-bar { grid-template-columns: 1fr; } #contact { background-attachment: scroll; } 
         }
     </style>
 </head>
 <body>
 
 <nav>
-    <a href="#" class="nav-logo metallic-gold">GREENHOUSE</a>
+    <a href="index.html" class="nav-logo metallic-gold">GREENHOUSE</a>
     <a href="#contact" class="nav-cta">ENQUIRE NOW</a>
 </nav>
 
-<header class="hero">
-    <div class="hero-overlay"></div>
-</header>
+<header class="hero"><div class="hero-overlay"></div></header>
 
 <div class="marquee">
     <div class="marquee-inner">
-        <span class="metallic-gold">Private Party & Event Planning</span> · 
-        <span class="metallic-gold">Customised Decor</span> · 
-        <span class="metallic-gold">Local & International Entertainment</span> · 
-        <span class="metallic-gold">Staging & AV Support</span> · 
-        <span class="metallic-gold">Customised Fabrications</span> · 
-        <span class="metallic-gold">Furniture Rental</span> · 
-        <span class="metallic-gold">Wardrobe & Costume Design</span> · 
-        <span class="metallic-gold">Corporate Event Management & Production</span> ·
+        <span class="metallic-gold">Private Party & Event Planning</span> · <span class="metallic-gold">Customised Decor</span> · <span class="metallic-gold">Local & International Entertainment</span> · <span class="metallic-gold">Staging & AV Support</span> · <span class="metallic-gold">Customised Fabrications</span> · <span class="metallic-gold">Furniture Rental</span> · <span class="metallic-gold">Wardrobe & Costume Design</span> · <span class="metallic-gold">Corporate Event Management & Production</span> ·
     </div>
     <div class="marquee-inner">
-        <span class="metallic-gold">Private Party & Event Planning</span> · 
-        <span class="metallic-gold">Customised Decor</span> · 
-        <span class="metallic-gold">Local & International Entertainment</span> · 
-        <span class="metallic-gold">Staging & AV Support</span> · 
-        <span class="metallic-gold">Customised Fabrications</span> · 
-        <span class="metallic-gold">Furniture Rental</span> · 
-        <span class="metallic-gold">Wardrobe & Costume Design</span> · 
-        <span class="metallic-gold">Corporate Event Management & Production</span> ·
+        <span class="metallic-gold">Private Party & Event Planning</span> · <span class="metallic-gold">Customised Decor</span> · <span class="metallic-gold">Local & International Entertainment</span> · <span class="metallic-gold">Staging & AV Support</span> · <span class="metallic-gold">Customised Fabrications</span> · <span class="metallic-gold">Furniture Rental</span> · <span class="metallic-gold">Wardrobe & Costume Design</span> · <span class="metallic-gold">Corporate Event Management & Production</span> ·
     </div>
 </div>
 
@@ -371,12 +222,8 @@
 
 <section id="clients">
     <div class="client-container">
-        <div class="client-sidebar">
-            <h2 class="metallic-gold">Client History</h2>
-        </div>
-        <div class="client-image-wrap">
-            <img src="client-logos.jpg" alt="Greenhouse Events Client History Showcase">
-        </div>
+        <div class="client-sidebar"><h2 class="metallic-gold">Client History</h2></div>
+        <div class="client-image-wrap"><img src="client-logos.jpg" alt="Greenhouse Events Client History Showcase"></div>
     </div>
 </section>
 
@@ -391,12 +238,9 @@
     <div class="contact-wrap">
         <div>
             <h2 class="metallic-gold" style="font-family: var(--serif); font-size: 3.5rem; margin-bottom: 2rem;">Contact</h2>
-            <span class="c-label metallic-gold">Email</span>
-            <a href="mailto:Lili@greenhouseeventsuae.com" class="c-val">Lili@greenhouseeventsuae.com</a>
-            <span class="c-label metallic-gold">Phone</span>
-            <a href="tel:+971552537712" class="c-val">+971 55 253 7712</a>
-            <span class="c-label metallic-gold">Location</span>
-            <span class="c-val">Dubai, UAE</span>
+            <span class="c-label metallic-gold">Email</span><a href="mailto:Lili@greenhouseeventsuae.com" class="c-val">Lili@greenhouseeventsuae.com</a>
+            <span class="c-label metallic-gold">Phone</span><a href="tel:+971552537712" class="c-val">+971 55 253 7712</a>
+            <span class="c-label metallic-gold">Location</span><span class="c-val">Dubai, UAE</span>
         </div>
         <div style="opacity: 0.9; display: flex; align-items: flex-end; padding-bottom: 1.5rem;">
             <p style="text-shadow: 0px 2px 10px rgba(0,0,0,0.8); font-weight: 400;">Leveraging two decades of industry experience, we specialize in delivering unrivaled event production for global brands and high-profile private events. Reach out to discuss your next project.</p>
