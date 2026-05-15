@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Private Party & Event Planning — Greenhouse Events</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #0b1a18; 
+            --bg-mid: #2c3835;  
+            --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%);
+            --gold-solid: #C9A84C;
+            --white-off: #F4F0E8;
+            --border: rgba(201,168,76,0.15);
+            --serif: 'Cormorant Garamond', serif;
+            --display: 'Cinzel', serif;
+            --sans: 'DM Sans', sans-serif;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--bg-mid); color: var(--white-off); font-family: var(--sans); overflow-x: hidden; line-height: 1.6; }
+
+        .metallic-gold {
+            background: var(--gold-metallic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
+            display: inline-block;
+            font-weight: 600;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            padding: 0.8rem 5vw; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(11, 26, 24, 0.95); backdrop-filter: blur(15px);
+            border-bottom: 0.5px solid var(--border);
+        }
+        
+        .nav-logo { font-family: var(--serif); font-size: 1.25rem; text-decoration: none; font-weight: 600; letter-spacing: 3px; }
+        .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; }
+
+        /* --- MINI HEADER FOR INNER PAGES --- */
+        .inner-hero {
+            padding: 12rem 8vw 4rem 8vw;
+            background: var(--bg-deep);
+            border-bottom: 0.5px solid var(--border);
+            text-align: center;
+        }
+        .inner-hero h1 { font-family: var(--serif); font-size: 3.5rem; font-weight: 300; margin-bottom: 1rem; }
+        
+        .content-section { padding: 6rem 8vw; max-width: 1000px; margin: 0 auto; }
+        .content-section p { font-size: 1.1rem; opacity: 0.85; margin-bottom: 2rem; font-weight: 300; }
+        
+        .back-link { font-family: var(--display); font-size: 0.75rem; color: var(--gold-solid); text-decoration: none; letter-spacing: 2px; display: inline-block; margin-top: 2rem; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="nav-logo metallic-gold">GREENHOUSE</a>
+    <a href="index.html#contact" class="nav-cta">ENQUIRE NOW</a>
+</nav>
+
+<header class="inner-hero">
+    <h1>Private Party & <em class="metallic-gold">Event Planning</em></h1>
+</header>
+
+<main class="content-section">
+    <p>This is where we will map out the deep logistics, bespoke design approach, and detailed curation for birthdays, engagements, proposals, and luxury private celebrations.</p>
+    
+    <a href="index.html" class="back-link">← BACK TO HOME</a>
+</main>
+
+<footer style="padding: 4rem; text-align: center; border-top: 0.5px solid var(--gold-solid); background: #000; margin-top: 6rem;">
+    <p class="metallic-gold" style="font-family: var(--serif); font-size: 1.2rem; letter-spacing: 4px;">GREENHOUSE EVENTS DUBAI</p>
+    <p style="font-size: 0.6rem; opacity: 0.3; margin-top: 2rem;">© 2026 GREENHOUSE EVENTS LLC. ALL RIGHTS RESERVED.</p>
+</footer>
+
+</body>
+</html>
