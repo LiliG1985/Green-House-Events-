@@ -114,37 +114,15 @@
             fill: currentColor;
         }
 
-        .hero {
-            height: 100vh; position: relative; display: flex; align-items: center; justify-content: center;
-            background: #030a09 url('logo.jpg') no-repeat center center; background-size: contain; padding: 10vh 10vw; 
-        }
-        .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, transparent 40%, rgba(3, 10, 9, 0.5) 100%); }
-
-        .marquee { 
-            background: #000; padding: 1.2rem 0; overflow: hidden; white-space: nowrap; border-top: 0.5px solid var(--gold-solid); border-bottom: 0.5px solid var(--gold-solid); display: flex;
-        }
-        .marquee-inner { 
-            display: inline-block; animation: scroll-text 45s linear infinite; font-family: var(--serif); color: var(--gold-solid); font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; padding-right: 2rem; flex-shrink: 0;
-        }
-
-        .image-marquee { width: 100%; background: #000; padding: 2.5rem 0; overflow: hidden; white-space: nowrap; display: flex; border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); }
-        .image-marquee-track { display: flex; gap: 1.5rem; animation: scroll-images 45s linear infinite; flex-shrink: 0; padding-right: 1.5rem; }
-        .image-marquee-track img { width: 380px; height: 240px; object-fit: cover; border: 0.5px solid var(--border); transition: border-color 0.4s; }
-        .image-marquee-track img:hover { border-color: var(--gold-solid); }
-
-        section { padding: 8rem 8vw; position: relative; }
-
-        /* --- ORGANIC FLUID LIFE BACKGROUND SYSTEM --- */
-        #services { 
-            padding: 8rem 8vw; 
+        /* --- GLOBAL ANIMATED FLUID LIFE BACKGROUND SYSTEM --- */
+        .fluid-bg-container {
             position: relative;
             background-color: var(--bg-deep);
             overflow: hidden;
-            border-bottom: 0.5px solid var(--border);
-        } 
+        }
 
         /* Interactive Ambient Wave Elements */
-        #services::before, #services::after {
+        .fluid-bg-container::before, .fluid-bg-container::after {
             content: "";
             position: absolute;
             width: 140vw;
@@ -152,42 +130,70 @@
             top: -20vh;
             left: -20vw;
             z-index: 1;
-            opacity: 0.45;
+            opacity: 0.55;
             pointer-events: none;
         }
 
         /* Fluid Wave Layer 1 */
-        #services::before {
-            background: radial-gradient(circle at 30% 20%, rgba(11, 35, 30, 0.7) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 70%, rgba(201, 168, 76, 0.05) 0%, transparent 45%);
+        .fluid-bg-container::before {
+            background: radial-gradient(circle at 30% 20%, rgba(15, 46, 40, 0.75) 0%, transparent 55%),
+                        radial-gradient(circle at 80% 70%, rgba(201, 168, 76, 0.06) 0%, transparent 50%);
             animation: fluidMovement 22s ease-in-out infinite alternate;
         }
 
         /* Fluid Wave Layer 2 */
-        #services::after {
-            background: radial-gradient(circle at 70% 15%, rgba(15, 46, 40, 0.6) 0%, transparent 55%),
-                        radial-gradient(circle at 20% 80%, rgba(11, 26, 24, 0.8) 0%, transparent 50%);
+        .fluid-bg-container::after {
+            background: radial-gradient(circle at 70% 15%, rgba(20, 61, 53, 0.65) 0%, transparent 60%),
+                        radial-gradient(circle at 20% 80%, rgba(11, 26, 24, 0.85) 0%, transparent 55%);
             animation: fluidMovement 28s ease-in-out infinite alternate-reverse;
         }
 
         @keyframes fluidMovement {
             0% { transform: scale(1) rotate(0deg) translate(0px, 0px); }
-            50% { transform: scale(1.1) rotate(3deg) translate(20px, -15px); }
-            100% { transform: scale(1.05) rotate(-2deg) translate(-15px, 25px); }
+            50% { transform: scale(1.15) rotate(4deg) translate(30px, -20px); }
+            100% { transform: scale(1.05) rotate(-3deg) translate(-20px, 30px); }
         }
-        
+
+        /* --- HERO BANNER --- */
+        .hero {
+            height: 100vh; position: relative; display: flex; align-items: center; justify-content: center;
+            background: transparent url('logo.jpg') no-repeat center center; background-size: contain; padding: 10vh 10vw; 
+            z-index: 5;
+        }
+        .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, transparent 30%, rgba(3, 10, 9, 0.6) 100%); z-index: -1; }
+
+        .marquee { 
+            background: #000; padding: 1.2rem 0; overflow: hidden; white-space: nowrap; border-top: 0.5px solid var(--gold-solid); border-bottom: 0.5px solid var(--gold-solid); display: flex;
+            position: relative; z-index: 10;
+        }
+        .marquee-inner { 
+            display: inline-block; animation: scroll-text 45s linear infinite; font-family: var(--serif); color: var(--gold-solid); font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; padding-right: 2rem; flex-shrink: 0;
+        }
+
+        .image-marquee { width: 100%; background: #000; padding: 2.5rem 0; overflow: hidden; white-space: nowrap; display: flex; border-bottom: 0.5px solid var(--border); position: relative; z-index: 10; }
+        .image-marquee-track { display: flex; gap: 1.5rem; animation: scroll-images 45s linear infinite; flex-shrink: 0; padding-right: 1.5rem; }
+        .image-marquee-track img { width: 380px; height: 240px; object-fit: cover; border: 0.5px solid var(--border); transition: border-color 0.4s; }
+        .image-marquee-track img:hover { border-color: var(--gold-solid); }
+
+        section { padding: 8rem 8vw; position: relative; }
+
+        /* --- SERVICES CONTAINER --- */
+        #services { 
+            padding: 8rem 8vw; 
+            border-bottom: 0.5px solid var(--border);
+        } 
         .sec-title { font-family: var(--serif); font-size: 3.5rem; margin-bottom: 3rem; text-align: center; font-weight: 300; position: relative; z-index: 5; }
         .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; position: relative; z-index: 5; }
         
         /* Glassmorphism Cards */
         .card { 
             text-decoration: none; color: inherit; border: 0.5px solid var(--border); padding: 2.5rem 1.8rem; 
-            background: rgba(5, 13, 12, 0.75);
+            background: rgba(3, 10, 9, 0.82);
             backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); 
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); display: flex; flex-direction: column; justify-content: flex-start; cursor: pointer;
             box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.02), 0 15px 35px rgba(0,0,0,0.4);
         }
-        .card:hover { border-color: var(--gold-solid); transform: translateY(-8px); background: rgba(11, 26, 24, 0.85); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6); }
+        .card:hover { border-color: var(--gold-solid); transform: translateY(-8px); background: rgba(11, 26, 24, 0.9); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6); }
         .card h3 { font-family: var(--serif); font-size: 1.4rem; margin-bottom: 1.2rem; line-height: 1.3; min-height: 4.4rem; }
         .card p { font-size: 0.88rem; opacity: 0.75; margin-bottom: 1.5rem; line-height: 1.6; min-height: 5.5rem; }
 
@@ -202,19 +208,19 @@
         .card .learn-more { font-family: var(--display); font-size: 0.65rem; letter-spacing: 2px; color: var(--gold-solid); text-transform: uppercase; opacity: 0.5; transition: 0.3s; }
         .card:hover .learn-more { opacity: 1; letter-spacing: 3px; }
 
-        #clients { background: radial-gradient(circle at center, #0b1a18 0%, var(--bg-deep) 100%); padding: 6rem 5vw 8rem 5vw; }
+        #clients { background: radial-gradient(circle at center, #0b1a18 0%, var(--bg-deep) 100%); padding: 6rem 5vw 8rem 5vw; position: relative; z-index: 10; }
         .client-container { display: flex; max-width: 1300px; margin: 0 auto; border: 0.5px solid var(--border); background: #050d0c; box-shadow: 0 25px 50px rgba(0,0,0,0.6); overflow: hidden; }
         .client-sidebar { background: #000; width: 140px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 0.5px solid var(--border); flex-shrink: 0; padding: 50px 0; }
         .client-sidebar h2 { font-family: var(--display); font-size: 2.4rem; writing-mode: vertical-rl; transform: rotate(180deg); letter-spacing: 0.22em; text-transform: uppercase; }
         .client-image-wrap { flex-grow: 1; display: flex; align-items: center; justify-content: center; background: #050d0c; }
         .client-image-wrap img { width: 100%; height: auto; display: block; }
 
-        .stats-bar { background: #000; padding: 5rem 5vw; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; border-top: 0.5px solid var(--gold-solid); }
+        .stats-bar { background: #000; padding: 5rem 5vw; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; border-top: 0.5px solid var(--gold-solid); position: relative; z-index: 10; }
         .stat-item h2 { font-family: var(--serif); font-size: 3.5rem; color: var(--gold-solid); margin-bottom: 0.5rem; }
 
         #contact { 
             background: linear-gradient(rgba(5, 13, 12, 0.85), rgba(5, 13, 12, 0.85)), url('contact-bg.jpg') no-repeat center center; 
-            background-size: cover; border-top: 0.5px solid var(--gold-solid); padding: 10rem 8vw;
+            background-size: cover; border-top: 0.5px solid var(--gold-solid); padding: 10rem 8vw; position: relative; z-index: 10;
         }
         .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
         .c-val { display: block; font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--white-off); text-decoration: none; }
@@ -251,79 +257,81 @@
     </div>
 </nav>
 
-<header class="hero"><div class="hero-overlay"></div></header>
+<div class="fluid-bg-container">
 
-<div class="marquee">
-    <div class="marquee-inner">
-        <span class="metallic-gold">Private Party & Event Planning</span> · <span class="metallic-gold">Corporate Event Management & Production</span> · <span class="metallic-gold">Permanent Space Transformations</span> · <span class="metallic-gold">Staging, Sound & AV Support</span> · <span class="metallic-gold">Local & International Entertainment</span> · <span class="metallic-gold">Wardrobe</span> ·
-    </div>
-    <div class="marquee-inner">
-        <span class="metallic-gold">Private Party & Event Planning</span> · <span class="metallic-gold">Corporate Event Management & Production</span> · <span class="metallic-gold">Permanent Space Transformations</span> · <span class="metallic-gold">Staging, Sound & AV Support</span> · <span class="metallic-gold">Local & International Entertainment</span> · <span class="metallic-gold">Wardrobe</span> ·
-    </div>
-</div>
+    <header class="hero"><div class="hero-overlay"></div></header>
 
-<div class="image-marquee">
-    <div class="image-marquee-track">
-        <img src="event1.jpg" alt="Production Showcase 1">
-        <img src="event2.jpg" alt="Production Showcase 2">
-        <img src="event3.jpg" alt="Production Showcase 3">
-        <img src="event4.jpg" alt="Production Showcase 4">
-        <img src="event5.jpg" alt="Production Showcase 5">
-        <img src="event6.jpg" alt="Production Showcase 6">
+    <div class="marquee">
+        <div class="marquee-inner">
+            <span class="metallic-gold">Private Party & Event Planning</span> · <span class="metallic-gold">Corporate Event Management & Production</span> · <span class="metallic-gold">Permanent Space Transformations</span> · <span class="metallic-gold">Staging, Sound & AV Support</span> · <span class="metallic-gold">Local & International Entertainment</span> · <span class="metallic-gold">Wardrobe</span> ·
+        </div>
+        <div class="marquee-inner">
+            <span class="metallic-gold">Private Party & Event Planning</span> · <span class="metallic-gold">Corporate Event Management & Production</span> · <span class="metallic-gold">Permanent Space Transformations</span> · <span class="metallic-gold">Staging, Sound & AV Support</span> · <span class="metallic-gold">Local & International Entertainment</span> · <span class="metallic-gold">Wardrobe</span> ·
+        </div>
     </div>
-    <div class="image-marquee-track">
-        <img src="event1.jpg" alt="Production Showcase 1 Repeat">
-        <img src="event2.jpg" alt="Production Showcase 2 Repeat">
-        <img src="event3.jpg" alt="Production Showcase 3 Repeat">
-        <img src="event4.jpg" alt="Production Showcase 4 Repeat">
-        <img src="event5.jpg" alt="Production Showcase 5 Repeat">
-        <img src="event6.jpg" alt="Production Showcase 6 Repeat">
-    </div>
-</div>
 
-<section id="services">
-    <h2 class="sec-title">Luxury <em class="metallic-gold">Production</em></h2>
-    <div class="services-grid">
-        <a href="private-events.html" class="card">
-            <h3 class="metallic-gold">Private Party & Event Planning</h3>
-            <p>Bespoke execution for birthday celebrations, engagements, weddings, anniversaries, proposals, and intimate high profile gatherings.</p>
-            <div class="card-img-space"><img src="card1.jpg" alt="Private Planning Preview"></div>
-            <span class="learn-more">View Projects</span>
-        </a>
-        <a href="corporate-events.html" class="card">
-            <h3 class="metallic-gold">Corporate Event Management & Production</h3>
-            <p>Full scale corporate production, high-profile business activations, dynamic brand launches, and complex large structural operations delivered with precision styling.</p>
-            <div class="card-img-space"><img src="card2.jpg" alt="Corporate Production Preview"></div>
-            <span class="learn-more">View Projects</span>
-        </a>
-        <a href="permanent-transformations.html" class="card">
-            <h3 class="metallic-gold">Permanent Space Transformations</h3>
-            <p>Architectural layout curation for premium restaurants, hospitality venues, and modern workspaces. Specializing in luxury artificial floral art, premium greenery installations, and highly shareable, custom engineered social media photo opportunities.</p>
-            <div class="card-img-space"><img src="card3.jpg" alt="Permanent Transformations Preview"></div>
-            <span class="learn-more">View Projects</span>
-        </a>
-        <a href="staging-av.html" class="card">
-            <h3 class="metallic-gold">Staging, Sound & AV Support</h3>
-            <p>Premium technical infrastructure covering absolute sound engineering, specialized lighting arrays, custom set fabrications, and rigid structural staging architecture.</p>
-            <div class="card-img-space"><img src="card4.jpg" alt="Staging & AV Preview"></div>
-            <span class="learn-more">View Projects</span>
-        </a>
-        <a href="entertainment.html" class="card">
-            <h3 class="metallic-gold">Local & International Entertainment</h3>
-            <p>Direct sourcing and flawless logistics management of high-tier performance talent, global acts, musicians, interactive characters, and dynamic custom show design.</p>
-            <div class="card-img-space"><img src="card5.jpg" alt="Entertainment Preview"></div>
-            <span class="learn-more">View Projects</span>
-        </a>
-        <a href="wardrobe-costumes.html" class="card">
-            <h3 class="metallic-gold">Wardrobe</h3>
-            <p>Bespoke costume design, extensive wardrobe hire configurations, alongside elite on-site event hair and makeup transformations.</p>
-            <div class="card-img-space"><img src="card6.jpg" alt="Wardrobe Curation Preview"></div>
-            <span class="learn-more">View Projects</span>
-        </a>
+    <div class="image-marquee">
+        <div class="image-marquee-track">
+            <img src="event1.jpg" alt="Production Showcase 1">
+            <img src="event2.jpg" alt="Production Showcase 2">
+            <img src="event3.jpg" alt="Production Showcase 3">
+            <img src="event4.jpg" alt="Production Showcase 4">
+            <img src="event5.jpg" alt="Production Showcase 5">
+            <img src="event6.jpg" alt="Production Showcase 6">
+        </div>
+        <div class="image-marquee-track">
+            <img src="event1.jpg" alt="Production Showcase 1 Repeat">
+            <img src="event2.jpg" alt="Production Showcase 2 Repeat">
+            <img src="event3.jpg" alt="Production Showcase 3 Repeat">
+            <img src="event4.jpg" alt="Production Showcase 4 Repeat">
+            <img src="event5.jpg" alt="Production Showcase 5 Repeat">
+            <img src="event6.jpg" alt="Production Showcase 6 Repeat">
+        </div>
     </div>
-</section>
 
-<section id="clients">
+    <section id="services">
+        <h2 class="sec-title">Luxury <em class="metallic-gold">Production</em></h2>
+        <div class="services-grid">
+            <a href="private-events.html" class="card">
+                <h3 class="metallic-gold">Private Party & Event Planning</h3>
+                <p>Bespoke execution for birthday celebrations, engagements, weddings, anniversaries, proposals, and intimate high profile gatherings.</p>
+                <div class="card-img-space"><img src="card1.jpg" alt="Private Planning Preview"></div>
+                <span class="learn-more">View Projects</span>
+            </a>
+            <a href="corporate-events.html" class="card">
+                <h3 class="metallic-gold">Corporate Event Management & Production</h3>
+                <p>Full scale corporate production, high-profile business activations, dynamic brand launches, and complex large structural operations delivered with precision styling.</p>
+                <div class="card-img-space"><img src="card2.jpg" alt="Corporate Production Preview"></div>
+                <span class="learn-more">View Projects</span>
+            </a>
+            <a href="permanent-transformations.html" class="card">
+                <h3 class="metallic-gold">Permanent Space Transformations</h3>
+                <p>Architectural layout curation for premium restaurants, hospitality venues, and modern workspaces. Specializing in luxury artificial floral art, premium greenery installations, and highly shareable, custom engineered social media photo opportunities.</p>
+                <div class="card-img-space"><img src="card3.jpg" alt="Permanent Transformations Preview"></div>
+                <span class="learn-more">View Projects</span>
+            </a>
+            <a href="staging-av.html" class="card">
+                <h3 class="metallic-gold">Staging, Sound & AV Support</h3>
+                <p>Premium technical infrastructure covering absolute sound engineering, specialized lighting arrays, custom set fabrications, and rigid structural staging architecture.</p>
+                <div class="card-img-space"><img src="card4.jpg" alt="Staging & AV Preview"></div>
+                <span class="learn-more">View Projects</span>
+            </a>
+            <a href="entertainment.html" class="card">
+                <h3 class="metallic-gold">Local & International Entertainment</h3>
+                <p>Direct sourcing and flawless logistics management of high-tier performance talent, global acts, musicians, interactive characters, and dynamic custom show design.</p>
+                <div class="card-img-space"><img src="card5.jpg" alt="Entertainment Preview"></div>
+                <span class="learn-more">View Projects</span>
+            </a>
+            <a href="wardrobe-costumes.html" class="card">
+                <h3 class="metallic-gold">Wardrobe</h3>
+                <p>Bespoke costume design, extensive wardrobe hire configurations, alongside elite on-site event hair and makeup transformations.</p>
+                <div class="card-img-space"><img src="card6.jpg" alt="Wardrobe Curation Preview"></div>
+                <span class="learn-more">View Projects</span>
+            </a>
+        </div>
+    </section>
+
+</div> <section id="clients">
     <div class="client-container">
         <div class="client-sidebar"><h2 class="metallic-gold">Client History</h2></div>
         <div class="client-image-wrap"><img src="client-logos.jpg" alt="Greenhouse Events Client History Showcase"></div>
