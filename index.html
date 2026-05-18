@@ -42,7 +42,7 @@
         }
         @keyframes shine { to { background-position: 200% center; } }
 
-        /* --- NAVIGATION STYLES --- */
+        /* --- NAVIGATION --- */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             padding: 1.2rem 5vw; display: flex; justify-content: space-between; align-items: center;
@@ -51,78 +51,23 @@
             border-bottom: 0.5px solid var(--border);
         }
         
-        .logo-wrap {
-            text-decoration: none;
-            display: inline-block;
-            position: relative;
-            padding-bottom: 4px;
-        }
+        .logo-wrap { text-decoration: none; display: inline-block; position: relative; padding-bottom: 4px; }
+        .nav-logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; letter-spacing: 3px; display: inline-block; white-space: nowrap; transition: 0.3s; }
+        .logo-wrap:hover .nav-logo { letter-spacing: 5px; }
 
-        .nav-logo { 
-            font-family: var(--serif); 
-            font-size: 1.15rem; 
-            font-weight: 600; 
-            letter-spacing: 3px; 
-            transition: letter-spacing 0.4s cubic-bezier(0.25, 1, 0.25, 1) !important;
-            display: inline-block;
-            white-space: nowrap;
-        }
-        
-        .logo-wrap:hover .nav-logo { 
-            letter-spacing: 5px !important; 
-        }
-        
-        .logo-wrap::after {
-            content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 1px; background: var(--gold-solid);
-            transition: width 0.4s ease, left 0.4s ease;
-        }
-        .logo-wrap:hover::after { width: 100%; left: 0; }
+        .nav-actions { display: flex; align-items: center; gap: 1rem; }
+        .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; }
 
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .nav-cta { 
-            background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; 
-            transition: transform 0.3s ease; 
-        }
-        .nav-cta:hover { transform: translateY(-1px); }
-
-        .nav-whatsapp {
-            background: transparent;
-            border: 0.5px solid var(--gold-solid);
-            color: var(--gold-solid);
-            padding: 0.5rem 1.1rem;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.7rem;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-        }
-        .nav-whatsapp:hover {
-            background: rgba(201, 168, 76, 0.1);
-            transform: translateY(-1px);
-        }
-        .nav-whatsapp svg {
-            width: 14px;
-            height: 14px;
-            fill: currentColor;
-        }
-
-        /* --- GLOBAL ANIMATED FLUID LIFE BACKGROUND SYSTEM --- */
+        /* --- ADVANCED ATMOPSHERIC BACKGROUND SYSTEM (APPLIED GLOBALLY) --- */
         .fluid-bg-container {
             position: relative;
             background-color: var(--bg-deep);
             overflow: hidden;
+            border-bottom: 0.5px solid var(--border);
         }
 
-        /* Interactive Ambient Wave Elements */
-        .fluid-bg-container::before, .fluid-bg-container::after {
+        /* Fluid Wave Layer 1 (Applied globally to all elements inside) */
+        .fluid-bg-container::before {
             content: "";
             position: absolute;
             width: 140vw;
@@ -131,21 +76,26 @@
             left: -20vw;
             z-index: 1;
             opacity: 0.55;
-            pointer-events: none;
-        }
-
-        /* Fluid Wave Layer 1 */
-        .fluid-bg-container::before {
             background: radial-gradient(circle at 30% 20%, rgba(15, 46, 40, 0.75) 0%, transparent 55%),
                         radial-gradient(circle at 80% 70%, rgba(201, 168, 76, 0.06) 0%, transparent 50%);
             animation: fluidMovement 22s ease-in-out infinite alternate;
+            pointer-events: none;
         }
 
-        /* Fluid Wave Layer 2 */
+        /* Fluid Wave Layer 2 (Applied globally to all elements inside) */
         .fluid-bg-container::after {
+            content: "";
+            position: absolute;
+            width: 140vw;
+            height: 140vh;
+            top: -20vh;
+            left: -20vw;
+            z-index: 1;
+            opacity: 0.55;
             background: radial-gradient(circle at 70% 15%, rgba(20, 61, 53, 0.65) 0%, transparent 60%),
                         radial-gradient(circle at 20% 80%, rgba(11, 26, 24, 0.85) 0%, transparent 55%);
             animation: fluidMovement 28s ease-in-out infinite alternate-reverse;
+            pointer-events: none;
         }
 
         @keyframes fluidMovement {
@@ -154,14 +104,80 @@
             100% { transform: scale(1.05) rotate(-3deg) translate(-20px, 30px); }
         }
 
-        /* --- HERO BANNER --- */
+        /* --- HERO BANNER (RE-DESIGNED FOR DIMENSIONAL TEXTURE) --- */
         .hero {
-            height: 100vh; position: relative; display: flex; align-items: center; justify-content: center;
-            background: transparent url('logo.jpg') no-repeat center center; background-size: contain; padding: 10vh 10vw; 
-            z-index: 5;
+            height: 100vh; 
+            position: relative; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            padding: 10vh 10vw; 
+            overflow: hidden; /* Important for limiting the growth animations */
         }
-        .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, transparent 30%, rgba(3, 10, 9, 0.6) 100%); z-index: -1; }
 
+        /* Hero Overlay: Logo image (logo.jpg) sits on its own level */
+        .hero-logo-canvas {
+            position: absolute;
+            inset: 0;
+            background: transparent url('logo.jpg') no-repeat center center;
+            background-size: contain;
+            opacity: 0.9;
+            z-index: 2; /* Sits above textures, but below UI */
+            transform: scale(1.0); /* Base state for parallax later */
+            transition: transform 0.5s ease-out;
+        }
+
+        /* 1. Organic Roots Texture Layer (Faint Growing Vines) */
+        .hero-texture-roots {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Sits behind everything */
+            background-image: linear-gradient(rgba(11, 35, 30, 0.1) 1.5px, transparent 1.5px),
+                              linear-gradient(90deg, rgba(11, 35, 30, 0.1) 1.5px, transparent 1.5px);
+            background-size: 100px 100px, 100px 100px;
+            opacity: 0.25; /* Highly faint and atmospheric */
+            animation: growRoots 18s ease-out infinite; /* Slowly "grows" from center */
+            filter: blur(2px); /* Soft organic edge */
+        }
+
+        /* 2. Technological Wires Texture Layer (Connecting Lines) */
+        .hero-texture-wires {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Sits behind everything */
+            background-image: 
+                linear-gradient(rgba(201, 168, 76, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201, 168, 76, 0.015) 1px, transparent 1px);
+            background-size: 40px 40px, 40px 40px;
+            opacity: 0.2; /* Minimal visibility */
+            animation: flashWires 12s linear infinite; /* Subtly triggers in parts */
+            transform: rotate(15deg); /* Distinct geometric angle from roots */
+        }
+
+        /* BASE ATMOSPHERIC MASK (Softens the logo canvas) */
+        .hero-overlay {
+            position: absolute; 
+            inset: 0; 
+            background: radial-gradient(circle, transparent 30%, rgba(3, 10, 9, 0.75) 100%); 
+            z-index: 3; /* Must mask everything for professional finish */
+        }
+
+        /* --- ANIMATION DEFINITIONS --- */
+        
+        /* Roots: Slowly expand from the center outwards like organic growth */
+        @keyframes growRoots {
+            0% { transform: scale(1.0) translate(0px, 0px); opacity: 0.15; }
+            100% { transform: scale(1.1) translate(-20px, 15px); opacity: 0.35; }
+        }
+
+        /* Wires: Maintain base visibility but subtly "pulse" key grid intersections on timecode */
+        @keyframes flashWires {
+            0%, 48%, 52%, 100% { opacity: 0.18; }
+            50% { opacity: 0.32; } /* Subtly catches light like a production connection */
+        }
+        
         .marquee { 
             background: #000; padding: 1.2rem 0; overflow: hidden; white-space: nowrap; border-top: 0.5px solid var(--gold-solid); border-bottom: 0.5px solid var(--gold-solid); display: flex;
             position: relative; z-index: 10;
@@ -229,16 +245,17 @@
         @keyframes scroll-text { from { transform: translateX(0); } to { transform: translateX(-100%); } }
         @keyframes scroll-images { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 
-        @media (max-width: 1200px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 900px) {
             nav { flex-direction: column; gap: 1rem; padding: 1rem 5vw; }
             .nav-actions { width: 100%; justify-content: center; }
-            .inner-hero h1 { font-size: 2.8rem; }
+            .hero { padding: 15vh 5vw; height: auto; min-height: 80vh; }
+            .sec-title { font-size: 2.8rem; }
         }
         @media (max-width: 700px) {
-            .services-grid { grid-template-columns: 1fr; } .image-marquee-track img { width: 280px; height: 180px; }
-            .client-container { flex-direction: column; } .client-sidebar { width: 100%; height: auto; padding: 40px 0; border-right: none; border-bottom: 0.5px solid var(--border); }
-            .client-sidebar h2 { writing-mode: horizontal-tb; transform: none; font-size: 1.8rem; margin: 20px 0; } .contact-wrap, .stats-bar { grid-template-columns: 1fr; } 
+            .services-grid { grid-template-columns: 1fr; } 
+            .client-container { flex-direction: column; } .client-sidebar { width: 100%; padding: 40px 0; border-right: none; border-bottom: 0.5px solid var(--border); }
+            .client-sidebar h2 { writing-mode: horizontal-tb; transform: none; font-size: 1.8rem; } 
+            .contact-wrap, .stats-bar { grid-template-columns: 1fr; } 
         }
     </style>
 </head>
@@ -250,7 +267,6 @@
     </a>
     <div class="nav-actions">
         <a href="https://wa.me/971552537712?text=Hello%20Greenhouse%20Events%2C%20I%20would%20like%20to%20enquire%20about%20your%20luxury%20production%20services." target="_blank" class="nav-whatsapp">
-            <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
             WHATSAPP
         </a>
         <a href="#contact" class="nav-cta">ENQUIRE NOW</a>
@@ -259,7 +275,8 @@
 
 <div class="fluid-bg-container">
 
-    <header class="hero"><div class="hero-overlay"></div></header>
+    <header class="hero">
+        <div class="hero-texture-roots"></div> <div class="hero-texture-wires"></div> <div class="hero-logo-canvas"></div>   <div class="hero-overlay"></div>       </header>
 
     <div class="marquee">
         <div class="marquee-inner">
@@ -294,37 +311,37 @@
         <div class="services-grid">
             <a href="private-events.html" class="card">
                 <h3 class="metallic-gold">Private Party & Event Planning</h3>
-                <p>Bespoke execution for birthday celebrations, engagements, weddings, anniversaries, proposals, and intimate high profile gatherings.</p>
+                <p>Bespoke execution for birthday celebrations, engagements, proposals, and high profile gatherings.</p>
                 <div class="card-img-space"><img src="card1.jpg" alt="Private Planning Preview"></div>
                 <span class="learn-more">View Projects</span>
             </a>
             <a href="corporate-events.html" class="card">
-                <h3 class="metallic-gold">Corporate Event Management & Production</h3>
-                <p>Full scale corporate production, high-profile business activations, dynamic brand launches, and complex large structural operations delivered with precision styling.</p>
+                <h3 class="metallic-gold">Corporate Event Management</h3>
+                <p>Full scale corporate production, business activations, brand launches, and structural operations.</p>
                 <div class="card-img-space"><img src="card2.jpg" alt="Corporate Production Preview"></div>
                 <span class="learn-more">View Projects</span>
             </a>
             <a href="permanent-transformations.html" class="card">
-                <h3 class="metallic-gold">Permanent Space Transformations</h3>
-                <p>Architectural layout curation for premium restaurants, hospitality venues, and modern workspaces. Specializing in luxury artificial floral art, premium greenery installations, and highly shareable, custom engineered social media photo opportunities.</p>
+                <h3 class="metallic-gold">Permanent Transformations</h3>
+                <p>Layout curation for restaurants, hospitality, and workspaces. Luxury floral art and greenery installations.</p>
                 <div class="card-img-space"><img src="card3.jpg" alt="Permanent Transformations Preview"></div>
                 <span class="learn-more">View Projects</span>
             </a>
             <a href="staging-av.html" class="card">
-                <h3 class="metallic-gold">Staging, Sound & AV Support</h3>
-                <p>Premium technical infrastructure covering absolute sound engineering, specialized lighting arrays, custom set fabrications, and rigid structural staging architecture.</p>
+                <h3 class="metallic-gold">Staging, Sound & AV</h3>
+                <p>Technical infrastructure, sound engineering, specialized lighting arrays, and rigid stage architecture.</p>
                 <div class="card-img-space"><img src="card4.jpg" alt="Staging & AV Preview"></div>
                 <span class="learn-more">View Projects</span>
             </a>
             <a href="entertainment.html" class="card">
                 <h3 class="metallic-gold">Local & International Entertainment</h3>
-                <p>Direct sourcing and flawless logistics management of high-tier performance talent, global acts, musicians, interactive characters, and dynamic custom show design.</p>
+                <p>Direct sourcing of talent, global acts, musicians, characters, and custom show design.</p>
                 <div class="card-img-space"><img src="card5.jpg" alt="Entertainment Preview"></div>
                 <span class="learn-more">View Projects</span>
             </a>
             <a href="wardrobe-costumes.html" class="card">
                 <h3 class="metallic-gold">Wardrobe</h3>
-                <p>Bespoke costume design, extensive wardrobe hire configurations, alongside elite on-site event hair and makeup transformations.</p>
+                <p>Bespoke costume design, extensive wardrobe hire, and elite on-site hair and makeup transformations.</p>
                 <div class="card-img-space"><img src="card6.jpg" alt="Wardrobe Curation Preview"></div>
                 <span class="learn-more">View Projects</span>
             </a>
@@ -351,21 +368,16 @@
             <h2 class="metallic-gold" style="font-family: var(--serif); font-size: 3.5rem; margin-bottom: 2rem;">Contact</h2>
             <span class="c-label metallic-gold">Email</span><a href="mailto:Lili@greenhouseeventsuae.com" class="c-val">Lili@greenhouseeventsuae.com</a>
             <span class="c-label metallic-gold">Phone</span><a href="tel:+971552537712" class="c-val">+971 55 253 7712</a>
-            
-            <span class="c-label metallic-gold">Instant Concierge</span>
-            <a href="https://wa.me/971552537712?text=Hello%20Greenhouse%20Events%2C%20I%20would%20like%20to%20enquire%20about%20your%20luxury%20production%20services." target="_blank" class="c-val" style="font-weight: 500;">Chat via WhatsApp →</a>
-            
-            <span class="c-label metallic-gold">Location</span><span class="c-val">Dubai, UAE</span>
+            <span class="c-label metallic-gold">Instant Concierge</span><a href="https://wa.me/971552537712" target="_blank" class="c-val">Chat via WhatsApp</a>
         </div>
-        <div style="opacity: 0.9; display: flex; align-items: flex-end; padding-bottom: 1.5rem;">
-            <p style="text-shadow: 0px 2px 10px rgba(0,0,0,0.8); font-weight: 400;">Leveraging two decades of industry experience, we specialize in delivering unrivaled event production for global brands and high-profile private events. Reach out to discuss your next project.</p>
+        <div>
+            <p>Leveraging two decades of industry experience, we specialize in unrivaled event production for global brands and private events.</p>
         </div>
     </div>
 </section>
 
 <footer style="padding: 4rem; text-align: center; border-top: 0.5px solid var(--gold-solid); background: #000;">
-    <p class="metallic-gold" style="font-family: var(--serif); font-size: 1.2rem; letter-spacing: 4px;">GREENHOUSE EVENTS DUBAI</p>
-    <p style="font-size: 0.6rem; opacity: 0.3; margin-top: 2rem;">© 2026 GREENHOUSE EVENTS LLC. ALL RIGHTS RESERVED.</p>
+    <p class="metallic-gold" style="font-family: var(--display); font-size: 1rem; letter-spacing: 4px;">GREENHOUSE EVENTS DUBAI</p>
 </footer>
 
 </body>
