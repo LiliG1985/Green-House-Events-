@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Permanent Space Transformations — Greenhouse Events Dubai</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #050d0c; 
+            --bg-mid: #0b1a18;  
+            --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%);
+            --gold-solid: #C9A84C;
+            --white-off: #F4F0E8;
+            --border: rgba(201,168,76,0.18);
+            --serif: 'Cormorant Garamond', serif;
+            --display: 'Cinzel', serif;
+            --sans: 'DM Sans', sans-serif;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        
+        body { 
+            background: radial-gradient(circle at 50% 30%, #1c2725 0%, var(--bg-deep) 70%); 
+            color: var(--white-off); 
+            font-family: var(--sans); 
+            overflow-x: hidden; 
+            line-height: 1.6; 
+        }
+
+        .metallic-gold {
+            background: var(--gold-metallic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
+            display: inline-block;
+            font-weight: 600;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            padding: 1.2rem 5vw; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(5, 13, 12, 0.96); backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 0.5px solid var(--border);
+        }
+        
+        .logo-wrap { text-decoration: none; display: inline-block; position: relative; padding-bottom: 4px; }
+        .nav-logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; letter-spacing: 3px; display: inline-block; white-space: nowrap; }
+        
+        .nav-actions { display: flex; align-items: center; gap: 1rem; }
+        .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; transition: transform 0.3s ease; }
+        .nav-cta:hover { transform: translateY(-1px); }
+
+        .nav-whatsapp {
+            background: transparent; border: 0.5px solid var(--gold-solid); color: var(--gold-solid); padding: 0.5rem 1.1rem; text-decoration: none; font-weight: 500; font-size: 0.7rem; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;
+        }
+        .nav-whatsapp:hover { background: rgba(201, 168, 76, 0.1); transform: translateY(-1px); }
+        .nav-whatsapp svg { width: 14px; height: 14px; fill: currentColor; }
+
+        /* --- INNER HERO BANNER --- */
+        .inner-hero {
+            height: 45vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; border-bottom: 0.5px solid var(--border); padding-top: 80px; position: relative; background: #050d0c;
+        }
+        .inner-hero h1 { font-family: var(--serif); font-size
