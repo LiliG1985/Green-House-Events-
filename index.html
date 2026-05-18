@@ -8,8 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-deep: #050d0c; 
-            --bg-mid: #0b1a18;  
+            --bg-deep: #030a09; 
+            --bg-mid: #091715;  
             --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%);
             --gold-solid: #C9A84C;
             --white-off: #F4F0E8;
@@ -46,7 +46,7 @@
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             padding: 1.2rem 5vw; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(5, 13, 12, 0.96); backdrop-filter: blur(15px);
+            background: rgba(3, 10, 9, 0.96); backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border-bottom: 0.5px solid var(--border);
         }
@@ -116,9 +116,9 @@
 
         .hero {
             height: 100vh; position: relative; display: flex; align-items: center; justify-content: center;
-            background: #050d0c url('logo.jpg') no-repeat center center; background-size: contain; padding: 10vh 10vw; 
+            background: #030a09 url('logo.jpg') no-repeat center center; background-size: contain; padding: 10vh 10vw; 
         }
-        .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, transparent 40%, rgba(5, 13, 12, 0.5) 100%); }
+        .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, transparent 40%, rgba(3, 10, 9, 0.5) 100%); }
 
         .marquee { 
             background: #000; padding: 1.2rem 0; overflow: hidden; white-space: nowrap; border-top: 0.5px solid var(--gold-solid); border-bottom: 0.5px solid var(--gold-solid); display: flex;
@@ -134,28 +134,58 @@
 
         section { padding: 8rem 8vw; position: relative; }
 
-        /* --- ADVANCED TEXTURED LUXURY BACKGROUND SYSTEM --- */
+        /* --- ORGANIC FLUID LIFE BACKGROUND SYSTEM --- */
         #services { 
             padding: 8rem 8vw; 
+            position: relative;
             background-color: var(--bg-deep);
-            background-image: 
-                radial-gradient(circle at 50% 30%, rgba(11, 26, 24, 0.85) 0%, rgba(5, 13, 12, 0.98) 75%),
-                linear-gradient(rgba(201, 168, 76, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(201, 168, 76, 0.02) 1px, transparent 1px);
-            background-size: auto, 45px 45px, 45px 45px;
+            overflow: hidden;
             border-bottom: 0.5px solid var(--border);
         } 
-        .sec-title { font-family: var(--serif); font-size: 3.5rem; margin-bottom: 3rem; text-align: center; font-weight: 300; }
+
+        /* Interactive Ambient Wave Elements */
+        #services::before, #services::after {
+            content: "";
+            position: absolute;
+            width: 140vw;
+            height: 140vh;
+            top: -20vh;
+            left: -20vw;
+            z-index: 1;
+            opacity: 0.45;
+            pointer-events: none;
+        }
+
+        /* Fluid Wave Layer 1 */
+        #services::before {
+            background: radial-gradient(circle at 30% 20%, rgba(11, 35, 30, 0.7) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(201, 168, 76, 0.05) 0%, transparent 45%);
+            animation: fluidMovement 22s ease-in-out infinite alternate;
+        }
+
+        /* Fluid Wave Layer 2 */
+        #services::after {
+            background: radial-gradient(circle at 70% 15%, rgba(15, 46, 40, 0.6) 0%, transparent 55%),
+                        radial-gradient(circle at 20% 80%, rgba(11, 26, 24, 0.8) 0%, transparent 50%);
+            animation: fluidMovement 28s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes fluidMovement {
+            0% { transform: scale(1) rotate(0deg) translate(0px, 0px); }
+            50% { transform: scale(1.1) rotate(3deg) translate(20px, -15px); }
+            100% { transform: scale(1.05) rotate(-2deg) translate(-15px, 25px); }
+        }
         
-        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .sec-title { font-family: var(--serif); font-size: 3.5rem; margin-bottom: 3rem; text-align: center; font-weight: 300; position: relative; z-index: 5; }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; position: relative; z-index: 5; }
         
-        /* Ultra-Premium Glassmorphism Card Definition */
+        /* Glassmorphism Cards */
         .card { 
             text-decoration: none; color: inherit; border: 0.5px solid var(--border); padding: 2.5rem 1.8rem; 
-            background: linear-gradient(135deg, rgba(11, 26, 24, 0.65) 0%, rgba(5, 13, 12, 0.8) 100%);
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); 
+            background: rgba(5, 13, 12, 0.75);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); 
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); display: flex; flex-direction: column; justify-content: flex-start; cursor: pointer;
-            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.03), 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.02), 0 15px 35px rgba(0,0,0,0.4);
         }
         .card:hover { border-color: var(--gold-solid); transform: translateY(-8px); background: rgba(11, 26, 24, 0.85); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6); }
         .card h3 { font-family: var(--serif); font-size: 1.4rem; margin-bottom: 1.2rem; line-height: 1.3; min-height: 4.4rem; }
