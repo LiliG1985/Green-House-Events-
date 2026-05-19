@@ -22,13 +22,9 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         
-        /* --- HARD OVERWRITE TO HIDE EXPERIMENTAL TEMPLATE BLOCKS --- */
+        /* HARD CSS LAYER PROTECTION */
         #bg-video, #video-bg, .video-background, .bg-text, .ghost-layer, canvas, [id*="benit"], [class*="benit"], [id*="cagna"], [class*="cagna"] {
-            display: none !important;
-            opacity: 0 !important;
-            visibility: hidden !important;
-            pointer-events: none !important;
-            z-index: -9999 !important;
+            display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important;
         }
 
         body { 
@@ -52,7 +48,7 @@
         }
         @keyframes shine { to { background-position: 200% center; } }
 
-        /* --- NAVIGATION STYLES --- */
+        /* --- NAVIGATION --- */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             padding: 1.2rem 5vw; display: flex; justify-content: space-between; align-items: center;
@@ -60,14 +56,12 @@
             -webkit-backdrop-filter: blur(15px);
             border-bottom: 0.5px solid var(--border);
         }
-        
         .logo-wrap { text-decoration: none; display: inline-block; position: relative; padding-bottom: 4px; }
         .nav-logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; letter-spacing: 3px; display: inline-block; white-space: nowrap; }
-        
         .nav-actions { display: flex; align-items: center; gap: 1rem; }
         .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; }
 
-        /* --- HERO AREA --- */
+        /* --- HERO --- */
         .hero {
             height: 100vh; position: relative; display: flex; align-items: center; justify-content: center;
             background: #010605 url('logo.jpg') no-repeat center center !important; background-size: contain !important; padding: 10vh 10vw; 
@@ -80,17 +74,14 @@
             background: #000; padding: 1.2rem 0; overflow: hidden; white-space: nowrap; border-top: 0.5px solid var(--gold-solid); border-bottom: 0.5px solid var(--gold-solid); display: flex;
             position: relative; z-index: 10;
         }
-        .marquee-inner { 
-            display: inline-block; animation: scroll-text 45s linear infinite; font-family: var(--serif); color: var(--gold-solid); font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; padding-right: 2rem; flex-shrink: 0;
-        }
-
+        .marquee-inner { display: inline-block; animation: scroll-text 45s linear infinite; font-family: var(--serif); color: var(--gold-solid); font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; padding-right: 2rem; flex-shrink: 0; }
         .image-marquee { width: 100%; background: #000; padding: 2.5rem 0; overflow: hidden; white-space: nowrap; display: flex; border-bottom: 0.5px solid var(--border); position: relative; z-index: 10; }
         .image-marquee-track { display: flex; gap: 1.5rem; animation: scroll-images 45s linear infinite; flex-shrink: 0; padding-right: 1.5rem; }
-        .image-marquee-track img { width: 380px; height: 240px; object-fit: cover; border: 0.5px solid var(--border); transition: border-color 0.4s; }
+        .image-marquee-track img { width: 380px; height: 240px; object-fit: cover; border: 0.5px solid var(--border); }
 
         section { padding: 8rem 8vw; position: relative; }
 
-        /* --- THE LUXURY VINE BACKGROUND LAYER --- */
+        /* --- BACKGROUND MANAGEMENT --- */
         .living-content-wall {
             position: relative;
             background-color: #010605 !important;
@@ -98,116 +89,59 @@
             width: 100%;
             z-index: 4;
         }
-
-        /* Pulls your 'vines-bg.png' directly into the background walls */
         .living-content-wall::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: 1;
+            content: ""; position: absolute; inset: 0; z-index: 1;
             background: transparent url('vines-bg.png') no-repeat center center !important;
-            background-size: cover !important;
-            opacity: 0.35; 
-            animation: organicBreathing 14s ease-in-out infinite alternate;
-            pointer-events: none;
+            background-size: cover !important; opacity: 0.35; 
+            animation: organicBreathing 14s ease-in-out infinite alternate; pointer-events: none;
         }
-
-        /* Slow drifting luxury flares */
         .living-content-wall::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: 2;
+            content: ""; position: absolute; inset: 0; z-index: 2;
             background-image: 
                 radial-gradient(2px 2px at 12% 28%, rgba(255, 255, 255, 0.6), transparent 100%),
                 radial-gradient(3px 3px at 88% 20%, rgba(201, 168, 76, 0.65), transparent 100%),
                 radial-gradient(2.5px 2.5px at 15% 68%, rgba(255, 255, 255, 0.5), transparent 100%),
                 radial-gradient(4px 4px at 84% 74%, rgba(201, 168, 76, 0.55), transparent 100%);
-            background-size: 100% 100%;
-            animation: floatingFlares 16s ease-in-out infinite alternate;
-            pointer-events: none;
+            background-size: 100% 100%; animation: floatingFlares 16s ease-in-out infinite alternate; pointer-events: none;
         }
 
-        @keyframes organicBreathing {
-            0% { transform: scale(1.0); opacity: 0.25; }
-            50% { transform: scale(1.03); opacity: 0.45; }
-            100% { transform: scale(1.01); opacity: 0.3; }
-        }
-
-        @keyframes floatingFlares {
-            0% { opacity: 0.2; transform: translateY(15px) translateX(-5px); }
-            50% { opacity: 0.75; transform: translateY(-10px) translateX(10px); }
-            100% { opacity: 0.3; transform: translateY(-20px) translateX(0px); }
-        }
-
+        @keyframes organicBreathing { 0% { transform: scale(1.0); opacity: 0.25; } 50% { transform: scale(1.03); opacity: 0.45; } 100% { transform: scale(1.01); opacity: 0.3; } }
+        @keyframes floatingFlares { 0% { opacity: 0.2; transform: translateY(15px) translateX(-5px); } 50% { opacity: 0.75; transform: translateY(-10px) translateX(10px); } 100% { opacity: 0.3; transform: translateY(-20px) translateX(0px); } }
         @keyframes scroll-text { from { transform: translateX(0); } to { transform: translateX(-100%); } }
         @keyframes scroll-images { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 
-        /* --- CONTENT CARD SYSTEM --- */
-        #services { 
-            padding: 8rem 8vw; 
-            border-bottom: 0.5px solid var(--border);
-            background: transparent !important;
-            position: relative;
-            z-index: 5;
-        } 
+        /* --- CONTENT CARDS --- */
+        #services { padding: 8rem 8vw; border-bottom: 0.5px solid var(--border); background: transparent !important; position: relative; z-index: 5; } 
         .sec-title { font-family: var(--serif); font-size: 3.5rem; margin-bottom: 3rem; text-align: center; font-weight: 300; position: relative; z-index: 5; }
         .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; position: relative; z-index: 5; }
         
         .card { 
             text-decoration: none; color: inherit; border: 0.5px solid var(--border); padding: 2.5rem 1.8rem; 
-            background: rgba(1, 6, 5, 0.94) !important; 
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); 
+            background: rgba(1, 6, 5, 0.94) !important; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); 
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); display: flex; flex-direction: column; justify-content: flex-start; cursor: pointer;
             box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.02), 0 15px 35px rgba(0,0,0,0.4);
         }
         .card:hover { border-color: var(--gold-solid); transform: translateY(-8px); background: rgba(4, 16, 13, 0.96) !important; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6); z-index: 10; }
         .card h3 { font-family: var(--serif); font-size: 1.4rem; margin-bottom: 1.2rem; line-height: 1.3; min-height: 4.4rem; }
         .card p { font-size: 0.88rem; opacity: 0.75; margin-bottom: 1.5rem; line-height: 1.6; min-height: 5.5rem; }
-
-        .card-img-space {
-            width: 100%; aspect-ratio: 16/11; background: rgba(1, 6, 5, 0.6); border: 0.5px solid rgba(201, 168, 76, 0.3); margin-bottom: 1.5rem; overflow: hidden; margin-top: auto; position: relative; display: flex; align-items: center; justify-content: center;
-        }
+        .card-img-space { width: 100%; aspect-ratio: 16/11; background: rgba(1, 6, 5, 0.6); border: 0.5px solid rgba(201, 168, 76, 0.3); margin-bottom: 1.5rem; overflow: hidden; margin-top: auto; position: relative; display: flex; align-items: center; justify-content: center; }
         .card-img-space::before { content: 'COMING SOON'; font-family: var(--display); font-size: 0.55rem; letter-spacing: 2px; color: var(--gold-solid); opacity: 0.4; position: absolute; }
-        .card-img-space img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 2; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
+        .card-img-space img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 2; }
 
-        #clients { 
-            padding: 8rem 5vw 8rem 5vw; 
-            background: transparent !important;
-            position: relative; 
-            z-index: 5; 
-        }
+        #clients { padding: 8rem 5vw 8rem 5vw; background: transparent !important; position: relative; z-index: 5; }
         .client-container { display: flex; max-width: 1300px; margin: 0 auto; border: 0.5px solid var(--border); background: rgba(1, 6, 5, 0.88) !important; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 25px 50px rgba(0,0,0,0.6); overflow: hidden; }
         .client-sidebar { background: #000; width: 140px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 0.5px solid var(--border); flex-shrink: 0; padding: 50px 0; }
         .client-sidebar h2 { font-family: var(--display); font-size: 2.4rem; writing-mode: vertical-rl; transform: rotate(180deg); letter-spacing: 0.22em; text-transform: uppercase; }
         .client-image-wrap { flex-grow: 1; display: flex; align-items: center; justify-content: center; background: transparent; }
         .client-image-wrap img { width: 100%; height: auto; display: block; }
 
-        /* --- STATS & FOOTER --- */
+        /* --- FOOTER BLOCKS --- */
         .stats-bar { background: #000; padding: 5rem 5vw; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; border-top: 0.5px solid var(--gold-solid); position: relative; z-index: 10; }
         .stat-item h2 { font-family: var(--serif); font-size: 3.5rem; color: var(--gold-solid); margin-bottom: 0.5rem; }
-
-        #contact { 
-            background: linear-gradient(rgba(1, 6, 5, 0.85), rgba(1, 6, 5, 0.85)), url('contact-bg.jpg') no-repeat center center; 
-            background-size: cover; border-top: 0.5px solid var(--gold-solid); padding: 10rem 8vw; position: relative; z-index: 10;
-        }
+        #contact { background: linear-gradient(rgba(1, 6, 5, 0.85), rgba(1, 6, 5, 0.85)), url('contact-bg.jpg') no-repeat center center; background-size: cover; border-top: 0.5px solid var(--gold-solid); padding: 10rem 8vw; position: relative; z-index: 10; }
         .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
         .c-val { display: block; font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--white-off); text-decoration: none; }
         .c-label { color: var(--gold-solid); font-family: var(--display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
-
-        @media (max-width: 1200px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 900px) {
-            nav { flex-direction: column; gap: 1rem; padding: 1rem 5vw; }
-            .nav-actions { width: 100%; justify-content: center; }
-            .hero { padding: 10vh 5vw; }
-            .sec-title { font-size: 2.8rem; }
-        }
-        @media (max-width: 700px) {
-            .services-grid { grid-template-columns: 1fr; } 
-            .client-container { flex-direction: column; } .client-sidebar { width: 100%; padding: 40px 0; border-right: none; border-bottom: 0.5px solid var(--border); }
-            .client-sidebar h2 { writing-mode: horizontal-tb; transform: none; font-size: 1.8rem; } 
-            .contact-wrap, .stats-bar { grid-template-columns: 1fr; } 
-        }
     </style>
 </head>
 <body>
@@ -217,21 +151,14 @@
         <span class="nav-logo metallic-gold">GREENHOUSE EVENTS — DUBAI</span>
     </a>
     <div class="nav-actions">
-        <a href="https://wa.me/971552537712?text=Hello%20Greenhouse%20Events%2C%20I%20would%20like%20to%20enquire%20about%20your%20luxury%20production%20services." target="_blank" class="nav-whatsapp">
-            WHATSAPP
-        </a>
+        <a href="https://wa.me/971552537712?text=Hello%20Greenhouse%20Events%2C%20I%20would%20like%20to%20enquire%20about%20your%20luxury%20production%20services." target="_blank" class="nav-whatsapp">WHATSAPP</a>
         <a href="#contact" class="nav-cta">ENQUIRE NOW</a>
     </div>
 </nav>
 
-<header class="hero">
-    <div class="hero-overlay"></div>
-</header>
+<header class="hero"><div class="hero-overlay"></div></header>
 
 <div class="marquee">
-    <div class="marquee-inner">
-        <span class="metallic-gold">Private Party & Event Planning</span> · <span class="metallic-gold">Corporate Event Management & Production</span> · <span class="metallic-gold">Permanent Space Transformations</span> · <span class="metallic-gold">Staging, Sound & AV Support</span> · <span class="metallic-gold">Local & International Entertainment</span> · <span class="metallic-gold">Wardrobe</span> ·
-    </div>
     <div class="marquee-inner">
         <span class="metallic-gold">Private Party & Event Planning</span> · <span class="metallic-gold">Corporate Event Management & Production</span> · <span class="metallic-gold">Permanent Space Transformations</span> · <span class="metallic-gold">Staging, Sound & AV Support</span> · <span class="metallic-gold">Local & International Entertainment</span> · <span class="metallic-gold">Wardrobe</span> ·
     </div>
@@ -239,63 +166,43 @@
 
 <div class="image-marquee">
     <div class="image-marquee-track">
-        <img src="event1.jpg" alt="Production Showcase 1">
-        <img src="event2.jpg" alt="Production Showcase 2">
-        <img src="event3.jpg" alt="Production Showcase 3">
-        <img src="event4.jpg" alt="Production Showcase 4">
-        <img src="event5.jpg" alt="Production Showcase 5">
-        <img src="event6.jpg" alt="Production Showcase 6">
-    </div>
-    <div class="image-marquee-track">
-        <img src="event1.jpg" alt="Production Showcase 1 Repeat">
-        <img src="event2.jpg" alt="Production Showcase 2 Repeat">
-        <img src="event3.jpg" alt="Production Showcase 3 Repeat">
-        <img src="event4.jpg" alt="Production Showcase 4 Repeat">
-        <img src="event5.jpg" alt="Production Showcase 5 Repeat">
-        <img src="event6.jpg" alt="Production Showcase 6 Repeat">
+        <img src="event1.jpg" alt="1"><img src="event2.jpg" alt="2"><img src="event3.jpg" alt="3"><img src="event4.jpg" alt="4"><img src="event5.jpg" alt="5"><img src="event6.jpg" alt="6">
     </div>
 </div>
 
 <div class="living-content-wall">
-
     <section id="services">
         <h2 class="sec-title">Luxury <em class="metallic-gold">Production</em></h2>
         <div class="services-grid">
             <a href="private-events.html" class="card">
                 <h3 class="metallic-gold">Private Party & Event Planning</h3>
                 <p>Bespoke execution for birthday celebrations, engagements, proposals, and high profile gatherings.</p>
-                <div class="card-img-space"><img src="card1.jpg" alt="Private Planning Preview"></div>
-                <span class="learn-more">View Projects</span>
+                <div class="card-img-space"><img src="card1.jpg" alt="1"></div>
             </a>
             <a href="corporate-events.html" class="card">
                 <h3 class="metallic-gold">Corporate Event Management</h3>
                 <p>Full scale corporate production, business activations, brand launches, and structural operations.</p>
-                <div class="card-img-space"><img src="card2.jpg" alt="Corporate Production Preview"></div>
-                <span class="learn-more">View Projects</span>
+                <div class="card-img-space"><img src="card2.jpg" alt="2"></div>
             </a>
             <a href="permanent-transformations.html" class="card">
                 <h3 class="metallic-gold">Permanent Transformations</h3>
                 <p>Layout curation for restaurants, hospitality, and workspaces. Luxury floral art and greenery installations.</p>
-                <div class="card-img-space"><img src="card3.jpg" alt="Permanent Transformations Preview"></div>
-                <span class="learn-more">View Projects</span>
+                <div class="card-img-space"><img src="card3.jpg" alt="3"></div>
             </a>
             <a href="staging-av.html" class="card">
                 <h3 class="metallic-gold">Staging, Sound & AV</h3>
                 <p>Technical infrastructure, sound engineering, specialized lighting arrays, and rigid stage architecture.</p>
-                <div class="card-img-space"><img src="card4.jpg" alt="Staging & AV Preview"></div>
-                <span class="learn-more">View Projects</span>
+                <div class="card-img-space"><img src="card4.jpg" alt="4"></div>
             </a>
             <a href="entertainment.html" class="card">
                 <h3 class="metallic-gold">Local & International Entertainment</h3>
                 <p>Direct sourcing of talent, global acts, musicians, characters, and custom show design.</p>
-                <div class="card-img-space"><img src="card5.jpg" alt="Entertainment Preview"></div>
-                <span class="learn-more">View Projects</span>
+                <div class="card-img-space"><img src="card5.jpg" alt="5"></div>
             </a>
             <a href="wardrobe-costumes.html" class="card">
                 <h3 class="metallic-gold">Wardrobe</h3>
                 <p>Bespoke costume design, extensive wardrobe hire, and elite on-site hair and makeup transformations.</p>
-                <div class="card-img-space"><img src="card6.jpg" alt="Wardrobe Curation Preview"></div>
-                <span class="learn-more">View Projects</span>
+                <div class="card-img-space"><img src="card6.jpg" alt="6"></div>
             </a>
         </div>
     </section>
@@ -303,10 +210,9 @@
     <section id="clients">
         <div class="client-container">
             <div class="client-sidebar"><h2 class="metallic-gold">Client History</h2></div>
-            <div class="client-image-wrap"><img src="client-logos.jpg" alt="Greenhouse Events Client History Showcase"></div>
+            <div class="client-image-wrap"><img src="client-logos.jpg" alt="Showcase"></div>
         </div>
     </section>
-
 </div>
 
 <div class="stats-bar">
@@ -322,10 +228,6 @@
             <h2 class="metallic-gold" style="font-family: var(--serif); font-size: 3.5rem; margin-bottom: 2rem;">Contact</h2>
             <span class="c-label metallic-gold">Email</span><a href="mailto:Lili@greenhouseeventsuae.com" class="c-val">Lili@greenhouseeventsuae.com</a>
             <span class="c-label metallic-gold">Phone</span><a href="tel:+971552537712" class="c-val">+971 55 253 7712</a>
-            <span class="c-label metallic-gold">Instant Concierge</span><a href="https://wa.me/971552537712" target="_blank" class="c-val">Chat via WhatsApp</a>
-        </div>
-        <div style="opacity: 0.9; display: flex; align-items: flex-end;">
-            <p>Leveraging two decades of industry experience, we specialize in unrivaled event production for global brands and private events.</p>
         </div>
     </div>
 </section>
@@ -333,6 +235,33 @@
 <footer style="padding: 4rem; text-align: center; border-top: 0.5px solid var(--gold-solid); background: #000;">
     <p class="metallic-gold" style="font-family: var(--display); font-size: 1rem; letter-spacing: 4px;">GREENHOUSE EVENTS DUBAI</p>
 </footer>
+
+<script>
+    function burnGhostLayers() {
+        const triggers = ["benit", "cagna", "private party", "party..."];
+        // Hunt through all text nodes on screen
+        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+        let node;
+        while(node = walker.nextNode()) {
+            let val = node.nodeValue.toLowerCase();
+            triggers.forEach(term => {
+                if(val.includes(term) && !node.parentElement.closest('.card') && !node.parentElement.closest('.sec-title') && !node.parentElement.closest('nav')) {
+                    node.nodeValue = ""; // Wipes out text content string matching the placeholders
+                }
+            });
+        }
+        // Hunt for loose background element nodes
+        document.querySelectorAll('div, section, p, h1, h2, h3, span, canvas').forEach(el => {
+            let bg = window.getComputedStyle(el).backgroundImage;
+            if (bg && (bg.includes('benit') || bg.includes('cagna'))) {
+                el.style.display = 'none';
+            }
+        });
+    }
+    window.addEventListener('DOMContentLoaded', burnGhostLayers);
+    window.addEventListener('load', burnGhostLayers);
+    setInterval(burnGhostLayers, 1000); // Continuous system sweep
+</script>
 
 </body>
 </html>
