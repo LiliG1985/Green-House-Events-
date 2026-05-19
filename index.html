@@ -87,6 +87,7 @@
         }
         .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, transparent 40%, rgba(2, 8, 7, 0.5) 100%); }
 
+        /* --- MARQUEE & MARQUEE IMAGE TRACKS --- */
         .marquee { 
             background: #000; padding: 1.2rem 0; overflow: hidden; white-space: nowrap; border-top: 0.5px solid var(--gold-solid); border-bottom: 0.5px solid var(--gold-solid); display: flex;
             position: relative; z-index: 10;
@@ -102,62 +103,65 @@
 
         section { padding: 8rem 8vw; position: relative; }
 
-        /* --- LIVING CONTENT ENGINE (SERVICES & CLIENT WALLS) --- */
+        /* --- LIVING CONTENT ENGINE (SERVICES & CLIENT WALLS BACKGROUND) --- */
         .living-content-wall {
             position: relative;
             background-color: var(--bg-deep);
             overflow: hidden;
         }
 
-        /* The Subtle Growing Wire & Vine Network Matrix */
+        /* Subtle Slow-Growing Vine Network & Geometric AV Wires Matrix */
         .living-content-wall::before {
             content: "";
             position: absolute;
             inset: -5%;
             z-index: 1;
             background-image: 
-                radial-gradient(rgba(11, 35, 30, 0.4) 1.5px, transparent 1.5px),
-                linear-gradient(rgba(201, 168, 76, 0.015) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(201, 168, 76, 0.015) 1px, transparent 1px);
+                radial-gradient(rgba(11, 35, 30, 0.45) 1.5px, transparent 1.5px),
+                linear-gradient(rgba(201, 168, 76, 0.018) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201, 168, 76, 0.018) 1px, transparent 1px);
             background-size: 70px 70px, 35px 35px, 35px 35px;
-            opacity: 0.7;
+            opacity: 0.75;
             animation: slowGrowthMatrix 40s ease-in-out infinite alternate;
             pointer-events: none;
         }
 
-        /* The Slow Drifting Sparks (Gold Energy Particles) */
+        /* Subtle Slow Drifting Golden Sparks (Energy Particles) */
         .living-content-wall::after {
             content: "";
             position: absolute;
             inset: 0;
             z-index: 2;
             background-image: 
-                radial-gradient(2px 2px at 20% 30%, rgba(245, 233, 184, 0.35), transparent),
-                radial-gradient(3px 3px at 75% 20%, rgba(201, 168, 76, 0.4), transparent),
-                radial-gradient(2px 2px at 40% 70%, rgba(245, 233, 184, 0.3), transparent),
-                radial-gradient(3.5px 3px at 85% 75%, rgba(201, 168, 76, 0.45), transparent),
-                radial-gradient(2.5px 2.5px at 10% 85%, rgba(245, 233, 184, 0.35), transparent);
+                radial-gradient(2px 2px at 20% 30%, rgba(245, 233, 184, 0.4), transparent),
+                radial-gradient(3px 3px at 75% 20%, rgba(201, 168, 76, 0.45), transparent),
+                radial-gradient(2px 2px at 40% 70%, rgba(245, 233, 184, 0.35), transparent),
+                radial-gradient(3.5px 3px at 85% 75%, rgba(201, 168, 76, 0.5), transparent),
+                radial-gradient(2.5px 2.5px at 10% 85%, rgba(245, 233, 184, 0.4), transparent);
             background-size: 100% 100%;
-            opacity: 0.5;
+            opacity: 0.55;
             animation: floatingSparks 14s ease-in-out infinite alternate;
             pointer-events: none;
             filter: drop-shadow(0 0 4px rgba(201, 168, 76, 0.4));
         }
 
-        /* --- CORE CONTENT WALL ANIMATIONS --- */
+        /* --- ANIMATIONS ENGINE --- */
         @keyframes slowGrowthMatrix {
             0% { transform: scale(1) rotate(0deg) translate(0px, 0px); opacity: 0.5; }
-            50% { transform: scale(1.05) rotate(1deg) translate(15px, -10px); opacity: 0.85; }
+            50% { transform: scale(1.05) rotate(1deg) translate(15px, -10px); opacity: 0.9; }
             100% { transform: scale(1.02) rotate(-1deg) translate(-10px, 15px); opacity: 0.6; }
         }
 
         @keyframes floatingSparks {
             0% { opacity: 0.2; transform: translateY(15px) scale(0.95); }
-            50% { opacity: 0.7; transform: translateY(-10px) translateX(10px) scale(1.05); }
+            50% { opacity: 0.75; transform: translateY(-10px) translateX(10px) scale(1.05); }
             100% { opacity: 0.3; transform: translateY(-25px) translateX(-5px) scale(0.98); }
         }
 
-        /* --- SERVICES PRODUCTION --- */
+        @keyframes scroll-text { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+        @keyframes scroll-images { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+
+        /* --- SERVICES PRODUCTION SECTION --- */
         #services { 
             padding: 8rem 8vw; 
             border-bottom: 0.5px solid var(--border);
@@ -189,7 +193,7 @@
         .card .learn-more { font-family: var(--display); font-size: 0.65rem; letter-spacing: 2px; color: var(--gold-solid); text-transform: uppercase; opacity: 0.5; transition: 0.3s; }
         .card:hover .learn-more { opacity: 1; letter-spacing: 3px; }
 
-        /* --- CLIENT HISTORY SECTION (NOW EMBEDDED INSIDE ATMOPSHERIC CANVAS) --- */
+        /* --- CLIENT HISTORY SECTION --- */
         #clients { padding: 8rem 5vw 8rem 5vw; position: relative; z-index: 5; }
         .client-container { display: flex; max-width: 1300px; margin: 0 auto; border: 0.5px solid var(--border); background: rgba(2, 8, 7, 0.75); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 25px 50px rgba(0,0,0,0.6); overflow: hidden; }
         .client-sidebar { background: #000; width: 140px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 0.5px solid var(--border); flex-shrink: 0; padding: 50px 0; }
@@ -197,6 +201,7 @@
         .client-image-wrap { flex-grow: 1; display: flex; align-items: center; justify-content: center; background: transparent; }
         .client-image-wrap img { width: 100%; height: auto; display: block; }
 
+        /* --- STATS & FOOTER BLOCKS --- */
         .stats-bar { background: #000; padding: 5rem 5vw; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; border-top: 0.5px solid var(--gold-solid); position: relative; z-index: 10; }
         .stat-item h2 { font-family: var(--serif); font-size: 3.5rem; color: var(--gold-solid); margin-bottom: 0.5rem; }
 
@@ -207,9 +212,6 @@
         .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
         .c-val { display: block; font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--white-off); text-decoration: none; }
         .c-label { color: var(--gold-solid); font-family: var(--display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
-
-        @keyframes scroll-text { from { transform: translateX(0); } to { transform: translateX(-100%); } }
-        @keyframes scroll-images { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 
         @media (max-width: 1200px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 900px) {
