@@ -103,63 +103,61 @@
 
         section { padding: 8rem 8vw; position: relative; }
 
-        /* --- LIVING CONTENT ENGINE (SERVICES & CLIENT WALLS BACKGROUND) --- */
+        /* --- THE LIVING CONTENT WALL SYSTEM --- */
         .living-content-wall {
             position: relative;
             background-color: var(--bg-deep);
             overflow: hidden;
         }
 
-        /* Subtle Slow-Growing Vine Network & Geometric AV Wires Matrix */
+        /* Thicker, Highly Sharp Golden Vine & AV Wire Matrix Overlay */
         .living-content-wall::before {
             content: "";
             position: absolute;
-            inset: -5%;
+            inset: -10%;
             z-index: 1;
+            /* Brightened the color profile to a distinct gold line network so it cuts through screens */
             background-image: 
-                radial-gradient(rgba(11, 35, 30, 0.45) 1.5px, transparent 1.5px),
-                linear-gradient(rgba(201, 168, 76, 0.018) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(201, 168, 76, 0.018) 1px, transparent 1px);
-            background-size: 70px 70px, 35px 35px, 35px 35px;
-            opacity: 0.75;
-            animation: slowGrowthMatrix 40s ease-in-out infinite alternate;
+                radial-gradient(rgba(201, 168, 76, 0.25) 2px, transparent 2px),
+                linear-gradient(rgba(201, 168, 76, 0.05) 1.5px, transparent 1.5px),
+                linear-gradient(90deg, rgba(201, 168, 76, 0.05) 1.5px, transparent 1.5px);
+            background-size: 80px 80px, 40px 40px, 40px 40px;
+            opacity: 0.9;
+            animation: slowGrowthMatrix 35s ease-in-out infinite alternate;
             pointer-events: none;
         }
 
-        /* Subtle Slow Drifting Golden Sparks (Energy Particles) */
+        /* High-Definition Slow Flashing Sparks / Flare Dots */
         .living-content-wall::after {
             content: "";
             position: absolute;
             inset: 0;
             z-index: 2;
             background-image: 
-                radial-gradient(2px 2px at 20% 30%, rgba(245, 233, 184, 0.4), transparent),
-                radial-gradient(3px 3px at 75% 20%, rgba(201, 168, 76, 0.45), transparent),
-                radial-gradient(2px 2px at 40% 70%, rgba(245, 233, 184, 0.35), transparent),
-                radial-gradient(3.5px 3px at 85% 75%, rgba(201, 168, 76, 0.5), transparent),
-                radial-gradient(2.5px 2.5px at 10% 85%, rgba(245, 233, 184, 0.4), transparent);
+                radial-gradient(4px 4px at 15% 25%, rgba(255, 233, 184, 0.7), transparent 100%),
+                radial-gradient(5px 5px at 70% 15%, rgba(201, 168, 76, 0.8), transparent 100%),
+                radial-gradient(4px 4px at 35% 65%, rgba(255, 233, 184, 0.65), transparent 100%),
+                radial-gradient(6px 6px at 80% 80%, rgba(201, 168, 76, 0.85), transparent 100%),
+                radial-gradient(5px 5px at 10% 75%, rgba(255, 233, 184, 0.7), transparent 100%);
             background-size: 100% 100%;
-            opacity: 0.55;
-            animation: floatingSparks 14s ease-in-out infinite alternate;
+            opacity: 0.8;
+            animation: floatingSparks 12s ease-in-out infinite alternate;
             pointer-events: none;
-            filter: drop-shadow(0 0 4px rgba(201, 168, 76, 0.4));
+            filter: drop-shadow(0 0 6px rgba(201, 168, 76, 0.8));
         }
 
-        /* --- ANIMATIONS ENGINE --- */
+        /* --- CONTENT WALL ANIMATIONS --- */
         @keyframes slowGrowthMatrix {
-            0% { transform: scale(1) rotate(0deg) translate(0px, 0px); opacity: 0.5; }
-            50% { transform: scale(1.05) rotate(1deg) translate(15px, -10px); opacity: 0.9; }
-            100% { transform: scale(1.02) rotate(-1deg) translate(-10px, 15px); opacity: 0.6; }
+            0% { transform: scale(1) rotate(0deg) translate(0px, 0px); opacity: 0.6; }
+            50% { transform: scale(1.06) rotate(1.5deg) translate(20px, -15px); opacity: 1; }
+            100% { transform: scale(1.02) rotate(-1deg) translate(-15px, 20px); opacity: 0.7; }
         }
 
         @keyframes floatingSparks {
-            0% { opacity: 0.2; transform: translateY(15px) scale(0.95); }
-            50% { opacity: 0.75; transform: translateY(-10px) translateX(10px) scale(1.05); }
-            100% { opacity: 0.3; transform: translateY(-25px) translateX(-5px) scale(0.98); }
+            0% { opacity: 0.15; transform: translateY(20px) scale(0.9); }
+            50% { opacity: 0.95; transform: translateY(-15px) translateX(15px) scale(1.1); }
+            100% { opacity: 0.3; transform: translateY(-30px) translateX(-5px) scale(0.95); }
         }
-
-        @keyframes scroll-text { from { transform: translateX(0); } to { transform: translateX(-100%); } }
-        @keyframes scroll-images { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 
         /* --- SERVICES PRODUCTION SECTION --- */
         #services { 
@@ -174,7 +172,7 @@
         /* Glassmorphism Cards */
         .card { 
             text-decoration: none; color: inherit; border: 0.5px solid var(--border); padding: 2.5rem 1.8rem; 
-            background: rgba(2, 8, 7, 0.85);
+            background: rgba(2, 8, 7, 0.88); /* Marginally darker fill to make the glowing lines behind pop more */
             backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); 
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); display: flex; flex-direction: column; justify-content: flex-start; cursor: pointer;
             box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.02), 0 15px 35px rgba(0,0,0,0.4);
@@ -195,7 +193,7 @@
 
         /* --- CLIENT HISTORY SECTION --- */
         #clients { padding: 8rem 5vw 8rem 5vw; position: relative; z-index: 5; }
-        .client-container { display: flex; max-width: 1300px; margin: 0 auto; border: 0.5px solid var(--border); background: rgba(2, 8, 7, 0.75); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 25px 50px rgba(0,0,0,0.6); overflow: hidden; }
+        .client-container { display: flex; max-width: 1300px; margin: 0 auto; border: 0.5px solid var(--border); background: rgba(2, 8, 7, 0.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 25px 50px rgba(0,0,0,0.6); overflow: hidden; }
         .client-sidebar { background: #000; width: 140px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 0.5px solid var(--border); flex-shrink: 0; padding: 50px 0; }
         .client-sidebar h2 { font-family: var(--display); font-size: 2.4rem; writing-mode: vertical-rl; transform: rotate(180deg); letter-spacing: 0.22em; text-transform: uppercase; }
         .client-image-wrap { flex-grow: 1; display: flex; align-items: center; justify-content: center; background: transparent; }
@@ -212,6 +210,9 @@
         .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
         .c-val { display: block; font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--white-off); text-decoration: none; }
         .c-label { color: var(--gold-solid); font-family: var(--display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
+
+        @keyframes scroll-text { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+        @keyframes scroll-images { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 
         @media (max-width: 1200px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 900px) {
@@ -325,7 +326,9 @@
         </div>
     </section>
 
-</div> <div class="stats-bar">
+</div>
+
+<div class="stats-bar">
     <div class="stat-item"><h2 class="metallic-gold">500+</h2><p>Events Produced</p></div>
     <div class="stat-item"><h2 class="metallic-gold">20</h2><p>Years Experience</p></div>
     <div class="stat-item"><h2 class="metallic-gold">98%</h2><p>Satisfaction</p></div>
