@@ -79,7 +79,7 @@
         .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; }
         .nav-cta:hover { transform: translateY(-1px); }
 
-        /* --- HERO AREA (ORIGINAL WIDESCREEN ASPECT FOCUS) --- */
+        /* --- HERO AREA --- */
         .hero {
             height: 100vh; position: relative; display: flex; align-items: center; justify-content: center;
             background: #010605 url('logo.jpg') no-repeat center center; background-size: contain; padding: 10vh 10vw; 
@@ -103,7 +103,7 @@
 
         section { padding: 8rem 8vw; position: relative; }
 
-        /* --- THE ORGANIC VINE ATOMOSPHERIC FRAMEWORK --- */
+        /* --- CLEAN ORGANIC BACKGROUND WRAPPER --- */
         .living-content-wall {
             position: relative;
             background-color: #010605;
@@ -111,43 +111,39 @@
             width: 100%;
         }
 
-        /* Pulling and positioning your custom 'vines-bg.png' directly into the gutters */
+        /* Displays ONLY your vines graphic frame */
         .living-content-wall::before {
             content: "";
             position: absolute;
             inset: 0;
             z-index: 1;
-            /* Anchors your vine asset as a seamless widescreen background mask */
             background: transparent url('vines-bg.png') no-repeat center center;
             background-size: cover;
-            opacity: 0.35; /* Faint, elegant baseline execution */
+            opacity: 0.35; 
             animation: organicBreathing 12s ease-in-out infinite alternate;
             pointer-events: none;
         }
 
-        /* Soft Drifting Bioluminescent Sparks to overlay across the vine frame */
+        /* Faint luxury background flares */
         .living-content-wall::after {
             content: "";
             position: absolute;
             inset: 0;
             z-index: 2;
             background-image: 
-                radial-gradient(2px 2px at 12% 28%, rgba(255, 255, 255, 0.75), transparent 100%),
-                radial-gradient(3px 3px at 88% 20%, rgba(201, 168, 76, 0.8), transparent 100%),
-                radial-gradient(2.5px 2.5px at 15% 68%, rgba(255, 255, 255, 0.65), transparent 100%),
-                radial-gradient(4px 4px at 84% 74%, rgba(201, 168, 76, 0.7), transparent 100%),
-                radial-gradient(3px 3px at 50% 50%, rgba(201, 168, 76, 0.35), transparent 100%);
+                radial-gradient(2px 2px at 12% 28%, rgba(255, 255, 255, 0.65), transparent 100%),
+                radial-gradient(3px 3px at 88% 20%, rgba(201, 168, 76, 0.7), transparent 100%),
+                radial-gradient(2.5px 2.5px at 15% 68%, rgba(255, 255, 255, 0.55), transparent 100%),
+                radial-gradient(4px 4px at 84% 74%, rgba(201, 168, 76, 0.6), transparent 100%);
             background-size: 100% 100%;
             animation: floatingFlares 16s ease-in-out infinite alternate;
             pointer-events: none;
-            filter: drop-shadow(0 0 4px rgba(201, 168, 76, 0.4));
         }
 
-        /* --- DRIVING THE LUXURY MOVEMENT --- */
         @keyframes organicBreathing {
-            0% { transform: scale(1.0); opacity: 0.25; filter: saturate(0.9); }
-            50% { transform: scale(1.02); opacity: 0.45; filter: saturate(1.1) drop-shadow(0 0 8px rgba(15, 46, 40, 0.3)); }
-            100% { transform: scale(1.01); opacity: 0.3; filter: saturate(0.95); }
+            0% { transform: scale(1.0); opacity: 0.25; }
+            50% { transform: scale(1.02); opacity: 0.45; }
+            100% { transform: scale(1.01); opacity: 0.3; }
         }
 
         @keyframes floatingFlares {
@@ -159,7 +155,7 @@
         @keyframes scroll-text { from { transform: translateX(0); } to { transform: translateX(-100%); } }
         @keyframes scroll-images { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 
-        /* --- STRUCTURE OVERLAYS --- */
+        /* --- CONTENT SYSTEM STYLING --- */
         #services { 
             padding: 8rem 8vw; 
             border-bottom: 0.5px solid var(--border);
@@ -203,7 +199,7 @@
         .client-image-wrap { flex-grow: 1; display: flex; align-items: center; justify-content: center; background: transparent; }
         .client-image-wrap img { width: 100%; height: auto; display: block; }
 
-        /* --- STATS & FOOTERS --- */
+        /* --- FOOTERS --- */
         .stats-bar { background: #000; padding: 5rem 5vw; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; border-top: 0.5px solid var(--gold-solid); position: relative; z-index: 10; }
         .stat-item h2 { font-family: var(--serif); font-size: 3.5rem; color: var(--gold-solid); margin-bottom: 0.5rem; }
 
