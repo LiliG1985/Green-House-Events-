@@ -22,13 +22,22 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         
+        /* --- HARD OVERWRITE TO HIDE EXPERIMENTAL TEMPLATE BLOCKS --- */
+        #bg-video, #video-bg, .video-background, .bg-text, .ghost-layer, canvas, [id*="benit"], [class*="benit"], [id*="cagna"], [class*="cagna"] {
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+            z-index: -9999 !important;
+        }
+
         body { 
             background: var(--bg-deep) !important; 
-            color: var(--white-off); 
+            color: var(--white-off) !important; 
             font-family: var(--sans); 
             overflow-x: hidden; 
             line-height: 1.6; 
-            text-shadow: none !important; /* Wipes out any weird background ghost text shadows globally */
+            text-shadow: none !important;
         }
 
         .metallic-gold {
@@ -87,9 +96,10 @@
             background-color: #010605 !important;
             overflow: hidden;
             width: 100%;
+            z-index: 4;
         }
 
-        /* Pulls your 'vines-bg.png' beautifully into the background walls */
+        /* Pulls your 'vines-bg.png' directly into the background walls */
         .living-content-wall::before {
             content: "";
             position: absolute;
