@@ -8,8 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-deep: #030a09; 
-            --bg-mid: #091715;  
+            --bg-deep: #020807; 
+            --bg-mid: #061211;  
             --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%);
             --gold-solid: #C9A84C;
             --white-off: #F4F0E8;
@@ -46,7 +46,7 @@
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             padding: 1.2rem 5vw; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(3, 10, 9, 0.96); backdrop-filter: blur(15px);
+            background: rgba(2, 8, 7, 0.96); backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border-bottom: 0.5px solid var(--border);
         }
@@ -58,7 +58,7 @@
         .nav-actions { display: flex; align-items: center; gap: 1rem; }
         .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; }
 
-        /* --- ADVANCED ATMOPSHERIC BACKGROUND SYSTEM (APPLIED GLOBALLY) --- */
+        /* --- GLOBAL BACKGROUND CONTAINER SYSTEM --- */
         .fluid-bg-container {
             position: relative;
             background-color: var(--bg-deep);
@@ -66,8 +66,8 @@
             border-bottom: 0.5px solid var(--border);
         }
 
-        /* Fluid Wave Layer 1 (Applied globally to all elements inside) */
-        .fluid-bg-container::before {
+        /* Ambient Fluid Waves */
+        .fluid-bg-container::before, .fluid-bg-container::after {
             content: "";
             position: absolute;
             width: 140vw;
@@ -75,36 +75,27 @@
             top: -20vh;
             left: -20vw;
             z-index: 1;
-            opacity: 0.55;
-            background: radial-gradient(circle at 30% 20%, rgba(15, 46, 40, 0.75) 0%, transparent 55%),
-                        radial-gradient(circle at 80% 70%, rgba(201, 168, 76, 0.06) 0%, transparent 50%);
-            animation: fluidMovement 22s ease-in-out infinite alternate;
+            opacity: 0.5;
             pointer-events: none;
         }
-
-        /* Fluid Wave Layer 2 (Applied globally to all elements inside) */
+        .fluid-bg-container::before {
+            background: radial-gradient(circle at 30% 20%, rgba(15, 46, 40, 0.65) 0%, transparent 55%),
+                        radial-gradient(circle at 80% 70%, rgba(201, 168, 76, 0.05) 0%, transparent 50%);
+            animation: fluidMovement 22s ease-in-out infinite alternate;
+        }
         .fluid-bg-container::after {
-            content: "";
-            position: absolute;
-            width: 140vw;
-            height: 140vh;
-            top: -20vh;
-            left: -20vw;
-            z-index: 1;
-            opacity: 0.55;
-            background: radial-gradient(circle at 70% 15%, rgba(20, 61, 53, 0.65) 0%, transparent 60%),
-                        radial-gradient(circle at 20% 80%, rgba(11, 26, 24, 0.85) 0%, transparent 55%);
+            background: radial-gradient(circle at 70% 15%, rgba(20, 61, 53, 0.55) 0%, transparent 60%),
+                        radial-gradient(circle at 20% 80%, rgba(11, 26, 24, 0.75) 0%, transparent 55%);
             animation: fluidMovement 28s ease-in-out infinite alternate-reverse;
-            pointer-events: none;
         }
 
         @keyframes fluidMovement {
             0% { transform: scale(1) rotate(0deg) translate(0px, 0px); }
-            50% { transform: scale(1.15) rotate(4deg) translate(30px, -20px); }
-            100% { transform: scale(1.05) rotate(-3deg) translate(-20px, 30px); }
+            50% { transform: scale(1.12) rotate(3deg) translate(25px, -15px); }
+            100% { transform: scale(1.03) rotate(-2deg) translate(-15px, 25px); }
         }
 
-        /* --- HERO BANNER (RE-DESIGNED FOR DIMENSIONAL TEXTURE) --- */
+        /* --- HERO SPACE WITH FREE-FLOWING TEXTURE LINES --- */
         .hero {
             height: 100vh; 
             position: relative; 
@@ -112,70 +103,80 @@
             align-items: center; 
             justify-content: center;
             padding: 10vh 10vw; 
-            overflow: hidden; /* Important for limiting the growth animations */
+            overflow: hidden;
         }
 
-        /* Hero Overlay: Logo image (logo.jpg) sits on its own level */
-        .hero-logo-canvas {
-            position: absolute;
-            inset: 0;
-            background: transparent url('logo.jpg') no-repeat center center;
-            background-size: contain;
-            opacity: 0.9;
-            z-index: 2; /* Sits above textures, but below UI */
-            transform: scale(1.0); /* Base state for parallax later */
-            transition: transform 0.5s ease-out;
-        }
-
-        /* 1. Organic Roots Texture Layer (Faint Growing Vines) */
+        /* 1. Creeping Vine Roots Pattern (Faint Organic Geometry) */
         .hero-texture-roots {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 1; /* Sits behind everything */
-            background-image: linear-gradient(rgba(11, 35, 30, 0.1) 1.5px, transparent 1.5px),
-                              linear-gradient(90deg, rgba(11, 35, 30, 0.1) 1.5px, transparent 1.5px);
-            background-size: 100px 100px, 100px 100px;
-            opacity: 0.25; /* Highly faint and atmospheric */
-            animation: growRoots 18s ease-out infinite; /* Slowly "grows" from center */
-            filter: blur(2px); /* Soft organic edge */
+            inset: -10%;
+            z-index: 2;
+            background-image: radial-gradient(rgba(11, 35, 30, 0.3) 2px, transparent 2px),
+                              linear-gradient(rgba(11, 35, 30, 0.15) 1px, transparent 1px);
+            background-size: 60px 60px, 120px 120px;
+            opacity: 0.4;
+            animation: driftRoots 25s linear infinite;
+            filter: blur(1px);
         }
 
-        /* 2. Technological Wires Texture Layer (Connecting Lines) */
+        /* 2. Precision AV Wires Matrix (Geometric Connection Lines) */
         .hero-texture-wires {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 1; /* Sits behind everything */
-            background-image: 
-                linear-gradient(rgba(201, 168, 76, 0.015) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(201, 168, 76, 0.015) 1px, transparent 1px);
-            background-size: 40px 40px, 40px 40px;
-            opacity: 0.2; /* Minimal visibility */
-            animation: flashWires 12s linear infinite; /* Subtly triggers in parts */
-            transform: rotate(15deg); /* Distinct geometric angle from roots */
+            inset: -10%;
+            z-index: 2;
+            background-image: linear-gradient(rgba(201, 168, 76, 0.02) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(201, 168, 76, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.3;
+            transform: rotate(-10deg);
+            animation: pulseWires 8s ease-in-out infinite alternate;
         }
 
-        /* BASE ATMOSPHERIC MASK (Softens the logo canvas) */
+        /* 3. Floating Brand Canvas Centerpiece */
+        .hero-logo-canvas {
+            width: 85%;
+            max-width: 750px;
+            aspect-ratio: 16/10;
+            background: #030a09 url('logo.jpg') no-repeat center center;
+            background-size: contain;
+            z-index: 4;
+            position: relative;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85), 
+                        inset 0 0 40px rgba(5, 13, 12, 0.9);
+            border: 0.5px solid rgba(201, 168, 76, 0.12);
+            animation: hoverCanvas 6s ease-in-out infinite;
+        }
+
+        /* Softens edges of the center logo card so it bleeds away gracefully */
+        .hero-logo-canvas::after {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            box-shadow: inset 0 0 30px 20px #030a09;
+            pointer-events: none;
+        }
+
         .hero-overlay {
             position: absolute; 
             inset: 0; 
-            background: radial-gradient(circle, transparent 30%, rgba(3, 10, 9, 0.75) 100%); 
-            z-index: 3; /* Must mask everything for professional finish */
+            background: radial-gradient(circle at center, transparent 20%, rgba(2, 8, 7, 0.85) 95%); 
+            z-index: 3; 
+            pointer-events: none;
         }
 
-        /* --- ANIMATION DEFINITIONS --- */
-        
-        /* Roots: Slowly expand from the center outwards like organic growth */
-        @keyframes growRoots {
-            0% { transform: scale(1.0) translate(0px, 0px); opacity: 0.15; }
-            100% { transform: scale(1.1) translate(-20px, 15px); opacity: 0.35; }
+        /* --- ANIMATIONS ENGINE --- */
+        @keyframes driftRoots {
+            0% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.06) rotate(2deg); }
+            100% { transform: scale(1) rotate(0deg); }
         }
-
-        /* Wires: Maintain base visibility but subtly "pulse" key grid intersections on timecode */
-        @keyframes flashWires {
-            0%, 48%, 52%, 100% { opacity: 0.18; }
-            50% { opacity: 0.32; } /* Subtly catches light like a production connection */
+        @keyframes pulseWires {
+            0% { opacity: 0.15; transform: scale(0.98) rotate(-10deg); }
+            100% { opacity: 0.45; transform: scale(1.02) rotate(-8deg); }
+        }
+        @keyframes hoverCanvas {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-10px) scale(1.01); }
         }
         
         .marquee { 
@@ -193,7 +194,7 @@
 
         section { padding: 8rem 8vw; position: relative; }
 
-        /* --- SERVICES CONTAINER --- */
+        /* --- SERVICES GRID --- */
         #services { 
             padding: 8rem 8vw; 
             border-bottom: 0.5px solid var(--border);
@@ -204,38 +205,37 @@
         /* Glassmorphism Cards */
         .card { 
             text-decoration: none; color: inherit; border: 0.5px solid var(--border); padding: 2.5rem 1.8rem; 
-            background: rgba(3, 10, 9, 0.82);
+            background: rgba(3, 10, 9, 0.85);
             backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); 
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); display: flex; flex-direction: column; justify-content: flex-start; cursor: pointer;
             box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.02), 0 15px 35px rgba(0,0,0,0.4);
         }
-        .card:hover { border-color: var(--gold-solid); transform: translateY(-8px); background: rgba(11, 26, 24, 0.9); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6); }
+        .card:hover { border-color: var(--gold-solid); transform: translateY(-8px); background: rgba(6, 18, 17, 0.92); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6); }
         .card h3 { font-family: var(--serif); font-size: 1.4rem; margin-bottom: 1.2rem; line-height: 1.3; min-height: 4.4rem; }
         .card p { font-size: 0.88rem; opacity: 0.75; margin-bottom: 1.5rem; line-height: 1.6; min-height: 5.5rem; }
 
         .card-img-space {
             width: 100%; aspect-ratio: 16/11; background: rgba(5, 13, 12, 0.6); border: 0.5px solid rgba(201, 168, 76, 0.3); margin-bottom: 1.5rem; overflow: hidden; margin-top: auto; position: relative; display: flex; align-items: center; justify-content: center;
         }
-        .card-img-space::before { content: 'COMING SOON'; font-family: var(--display); font-size: 0.55rem; letter-spacing: 2px; color: var(--gold-solid); opacity: 0.4; position: absolute; }
+        .card-img-space::before { content: 'COMING SOON'; font-family: var(--display); font-size: 0.55rem; letter-spacing: 2px; color: var(--gold-solid); opacity: 0.4; position: absolute; z-index: 1; }
         .card-img-space img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 2; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
-        .card-img-space img { opacity: 1; }
         .card:hover .card-img-space img { transform: scale(1.04); }
 
         .card .learn-more { font-family: var(--display); font-size: 0.65rem; letter-spacing: 2px; color: var(--gold-solid); text-transform: uppercase; opacity: 0.5; transition: 0.3s; }
         .card:hover .learn-more { opacity: 1; letter-spacing: 3px; }
 
-        #clients { background: radial-gradient(circle at center, #0b1a18 0%, var(--bg-deep) 100%); padding: 6rem 5vw 8rem 5vw; position: relative; z-index: 10; }
-        .client-container { display: flex; max-width: 1300px; margin: 0 auto; border: 0.5px solid var(--border); background: #050d0c; box-shadow: 0 25px 50px rgba(0,0,0,0.6); overflow: hidden; }
+        #clients { background: radial-gradient(circle at center, #061211 0%, var(--bg-deep) 100%); padding: 6rem 5vw 8rem 5vw; position: relative; z-index: 10; }
+        .client-container { display: flex; max-width: 1300px; margin: 0 auto; border: 0.5px solid var(--border); background: #020807; box-shadow: 0 25px 50px rgba(0,0,0,0.6); overflow: hidden; }
         .client-sidebar { background: #000; width: 140px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 0.5px solid var(--border); flex-shrink: 0; padding: 50px 0; }
         .client-sidebar h2 { font-family: var(--display); font-size: 2.4rem; writing-mode: vertical-rl; transform: rotate(180deg); letter-spacing: 0.22em; text-transform: uppercase; }
-        .client-image-wrap { flex-grow: 1; display: flex; align-items: center; justify-content: center; background: #050d0c; }
+        .client-image-wrap { flex-grow: 1; display: flex; align-items: center; justify-content: center; background: #020807; }
         .client-image-wrap img { width: 100%; height: auto; display: block; }
 
         .stats-bar { background: #000; padding: 5rem 5vw; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; border-top: 0.5px solid var(--gold-solid); position: relative; z-index: 10; }
         .stat-item h2 { font-family: var(--serif); font-size: 3.5rem; color: var(--gold-solid); margin-bottom: 0.5rem; }
 
         #contact { 
-            background: linear-gradient(rgba(5, 13, 12, 0.85), rgba(5, 13, 12, 0.85)), url('contact-bg.jpg') no-repeat center center; 
+            background: linear-gradient(rgba(2, 8, 7, 0.85), rgba(2, 8, 7, 0.85)), url('contact-bg.jpg') no-repeat center center; 
             background-size: cover; border-top: 0.5px solid var(--gold-solid); padding: 10rem 8vw; position: relative; z-index: 10;
         }
         .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
@@ -245,10 +245,12 @@
         @keyframes scroll-text { from { transform: translateX(0); } to { transform: translateX(-100%); } }
         @keyframes scroll-images { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 
+        @media (max-width: 1200px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 900px) {
             nav { flex-direction: column; gap: 1rem; padding: 1rem 5vw; }
             .nav-actions { width: 100%; justify-content: center; }
-            .hero { padding: 15vh 5vw; height: auto; min-height: 80vh; }
+            .hero { padding: 12vh 4vw; height: auto; min-height: 70vh; }
+            .hero-logo-canvas { width: 100%; }
             .sec-title { font-size: 2.8rem; }
         }
         @media (max-width: 700px) {
@@ -276,7 +278,7 @@
 <div class="fluid-bg-container">
 
     <header class="hero">
-        <div class="hero-texture-roots"></div> <div class="hero-texture-wires"></div> <div class="hero-logo-canvas"></div>   <div class="hero-overlay"></div>       </header>
+        <div class="hero-texture-roots"></div>  <div class="hero-texture-wires"></div>  <div class="hero-overlay"></div>        <div class="hero-logo-canvas"></div>    </header>
 
     <div class="marquee">
         <div class="marquee-inner">
@@ -370,7 +372,7 @@
             <span class="c-label metallic-gold">Phone</span><a href="tel:+971552537712" class="c-val">+971 55 253 7712</a>
             <span class="c-label metallic-gold">Instant Concierge</span><a href="https://wa.me/971552537712" target="_blank" class="c-val">Chat via WhatsApp</a>
         </div>
-        <div>
+        <div style="opacity: 0.9; display: flex; align-items: flex-end;">
             <p>Leveraging two decades of industry experience, we specialize in unrivaled event production for global brands and private events.</p>
         </div>
     </div>
