@@ -126,4 +126,125 @@
         .client-image-wrap img { width: 100%; height: auto; display: block; }
 
         /* --- STATS & DATA COUNTERS --- */
-        .stats-bar { background
+        .stats-bar { background: #000a08; padding: 5rem 5vw; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; border-top: 0.5px solid var(--gold-solid); position: relative; z-index: 10; }
+        .stat-item h2 { font-family: var(--serif); font-size: 3.5rem; color: var(--gold-solid); margin-bottom: 0.5rem; }
+
+        /* --- RESTORED CONTACT BLOCK WITH IMAGE BACKGROUND --- */
+        #contact { 
+            background: linear-gradient(rgba(2, 22, 18, 0.85), rgba(2, 22, 18, 0.85)), url('contact-bg.jpg') no-repeat center center; 
+            background-size: cover; 
+            border-top: 0.5px solid var(--gold-solid); 
+            padding: 10rem 8vw; 
+            position: relative; 
+            z-index: 10;
+        }
+        .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
+        .c-val { display: block; font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--white-off); text-decoration: none; }
+        .c-label { color: var(--gold-solid); font-family: var(--display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo-wrap">
+        <span class="nav-logo metallic-gold">GREENHOUSE EVENTS — DUBAI</span>
+    </a>
+    <div class="nav-actions">
+        <a href="https://wa.me/971552537712?text=Hello%20Greenhouse%20Events%2C%20I%20would%20like%20to%20enquire%20about%20your%20luxury%20production%20services." target="_blank" class="nav-whatsapp">
+            WHATSAPP
+        </a>
+        <a href="#contact" class="nav-cta">ENQUIRE NOW</a>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="hero-overlay"></div>
+</header>
+
+<div class="marquee">
+    <div class="marquee-inner">
+        <span class="metallic-gold">Private Party & Event Planning</span> · <span class="metallic-gold">Corporate Event Management & Production</span> · <span class="metallic-gold">Permanent Space Transformations</span> · <span class="metallic-gold">Staging, Sound & AV Support</span> · <span class="metallic-gold">Local & International Entertainment</span> · <span class="metallic-gold">Wardrobe</span> ·
+    </div>
+</div>
+
+<div class="image-marquee">
+    <div class="image-marquee-track">
+        <img src="event1.jpg" alt="1">
+        <img src="event2.jpg" alt="2">
+        <img src="event3.jpg" alt="3">
+        <img src="event4.jpg" alt="4">
+        <img src="event5.jpg" alt="5">
+        <img src="event6.jpg" alt="6">
+    </div>
+</div>
+
+<div class="living-content-wall">
+
+    <section id="services">
+        <h2 class="sec-title">Luxury <em class="metallic-gold">Production</em></h2>
+        <div class="services-grid">
+            <a href="private-events.html" class="card">
+                <h3 class="metallic-gold">Private Party & Event Planning</h3>
+                <p>Bespoke execution for birthday celebrations, engagements, proposals, and high profile gatherings.</p>
+                <div class="card-img-space"><img src="card1.jpg" alt="1"></div>
+            </a>
+            <a href="corporate-events.html" class="card">
+                <h3 class="metallic-gold">Corporate Event Management</h3>
+                <p>Full scale corporate production, business activations, brand launches, and structural operations.</p>
+                <div class="card-img-space"><img src="card2.jpg" alt="2"></div>
+            </a>
+            <a href="permanent-transformations.html" class="card">
+                <h3 class="metallic-gold">Permanent Transformations</h3>
+                <p>Layout curation for restaurants, hospitality, and workspaces. Luxury floral art and greenery installations.</p>
+                <div class="card-img-space"><img src="card3.jpg" alt="3"></div>
+            </a>
+            <a href="staging-av.html" class="card">
+                <h3 class="metallic-gold">Staging, Sound & AV</h3>
+                <p>Technical infrastructure, sound engineering, specialized lighting arrays, and rigid stage architecture.</p>
+                <div class="card-img-space"><img src="card4.jpg" alt="4"></div>
+            </a>
+            <a href="entertainment.html" class="card">
+                <h3 class="metallic-gold">Local & International Entertainment</h3>
+                <p>Direct sourcing of talent, global acts, musicians, characters, and custom show design.</p>
+                <div class="card-img-space"><img src="card5.jpg" alt="5"></div>
+            </a>
+            <a href="wardrobe-costumes.html" class="card">
+                <h3 class="metallic-gold">Wardrobe</h3>
+                <p>Bespoke costume design, extensive wardrobe hire, and elite on-site hair and makeup transformations.</p>
+                <div class="card-img-space"><img src="card6.jpg" alt="6"></div>
+            </a>
+        </div>
+    </section>
+
+    <section id="clients">
+        <div class="client-container">
+            <div class="client-sidebar"><h2 class="metallic-gold">Client History</h2></div>
+            <div class="client-image-wrap"><img src="client-logos.jpg" alt="Showcase"></div>
+        </div>
+    </section>
+
+</div>
+
+<div class="stats-bar">
+    <div class="stat-item"><h2 class="metallic-gold">500+</h2><p>Events Produced</p></div>
+    <div class="stat-item"><h2 class="metallic-gold">20</h2><p>Years Experience</p></div>
+    <div class="stat-item"><h2 class="metallic-gold">98%</h2><p>Satisfaction</p></div>
+    <div class="stat-item"><h2 class="metallic-gold">40+</h2><p>Professional Crew</p></div>
+</div>
+
+<section id="contact">
+    <div class="contact-wrap">
+        <div>
+            <h2 class="metallic-gold" style="font-family: var(--serif); font-size: 3.5rem; margin-bottom: 2rem;">Contact</h2>
+            <span class="c-label metallic-gold">Email</span><a href="mailto:Lili@greenhouseeventsuae.com" class="c-val">Lili@greenhouseeventsuae.com</a>
+            <span class="c-label metallic-gold">Phone</span><a href="tel:+971552537712" class="c-val">+971 55 253 7712</a>
+        </div>
+    </div>
+</section>
+
+<footer style="padding: 4rem; text-align: center; border-top: 0.5px solid var(--gold-solid); background: #000;">
+    <p class="metallic-gold" style="font-family: var(--display); font-size: 1rem; letter-spacing: 4px;">GREENHOUSE EVENTS DUBAI</p>
+</footer>
+
+</body>
+</html>
