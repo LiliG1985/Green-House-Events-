@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Greenhouse Events Dubai — High-End Production & Luxury Delivery</title>
+    <title>Private Party and Event Planning — Greenhouse Events</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
@@ -61,94 +61,132 @@
         .nav-whatsapp { color: var(--white-off); text-decoration: none; font-size: 0.75rem; letter-spacing: 1.5px; opacity: 0.8; }
         .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; }
 
-        /* --- MAIN HERO HEADER --- */
-        .hero {
-            height: 100vh; 
-            position: relative; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            background: linear-gradient(rgba(2, 22, 18, 0.4) 0%, rgba(2, 22, 18, 0.9) 100%), url('private-header-bg.jpg') no-repeat center center; 
-            background-size: cover; 
-            padding: 0 8vw; 
-            z-index: 5;
-        }
-        .hero-content {
+        /* --- HEADER --- */
+        .page-header {
+            padding: 12rem 8vw 4rem 8vw;
             text-align: center;
-            max-width: 900px;
-            z-index: 10;
+            background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-mid) 100%);
         }
-        .hero-content h1 {
+        .page-header h1 {
             font-family: var(--serif);
-            font-size: 5rem;
+            font-size: 3.5rem;
             font-weight: 300;
-            margin-bottom: 2rem;
-            letter-spacing: 4px;
-            line-height: 1.1;
+            margin-bottom: 1.5rem;
         }
-        .hero-content p {
-            font-size: 1.4rem;
-            opacity: 0.9;
-            font-weight: 300;
-            letter-spacing: 1px;
-            max-width: 800px;
+        .page-header p {
+            max-width: 700px;
             margin: 0 auto;
+            font-size: 1.1rem;
+            opacity: 0.8;
+            font-weight: 300;
         }
 
-        /* --- SECTIONS LINK MATRIX --- */
-        #portfolio-sectors {
-            padding: 10rem 8vw;
-            background: linear-gradient(180deg, var(--bg-deep) 0%, #010a08 100%);
+        /* --- SHOWCASE VIDEO CONTAINER --- */
+        .showcase-container {
+            max-width: 1100px;
+            margin: 0 auto 5rem auto;
+            padding: 0 4vw;
         }
-        .sectors-grid {
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border: 0.5px solid var(--border);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+            background: #000;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* --- DEEPER BESPOKE STORY OVERVIEW SECTION --- */
+        #party-story {
+            padding: 2rem 8vw 5rem 8vw;
+            position: relative;
+        }
+        .story-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 3rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
             max-width: 1100px;
             margin: 0 auto;
         }
-        .sector-link-card {
-            border: 0.5px solid var(--border);
-            background: rgba(4, 36, 30, 0.3);
-            padding: 4rem 3rem;
-            text-decoration: none;
-            color: var(--white-off);
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 350px;
-        }
-        .sector-link-card:hover {
-            border-color: var(--gold-solid);
-            transform: translateY(-5px);
-            background: rgba(4, 36, 30, 0.6);
-        }
-        .sector-link-card h2 {
+        .story-manifesto {
             font-family: var(--serif);
             font-size: 2.2rem;
             font-weight: 300;
-            margin-bottom: 1rem;
+            line-height: 1.3;
         }
-        .sector-link-card p {
-            font-size: 0.95rem;
-            opacity: 0.7;
+        .story-narrative p {
+            font-size: 1rem;
+            opacity: 0.85;
             font-weight: 300;
-        }
-        .action-arrow {
-            color: var(--gold-solid);
-            font-family: var(--display);
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            margin-top: 2rem;
-            display: block;
+            letter-spacing: 0.5px;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
         }
 
-        /* --- CONTACT BRIDGE --- */
-        #contact {
-            background: #000;
-            padding: 8rem 8vw;
+        /* --- RESTORED INCLUSION DETAIL CARDS --- */
+        #party-inclusions {
+            padding: 4rem 8vw 8rem 8vw;
+        }
+        .inclusions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .inc-card {
+            border: 0.5px solid var(--border);
+            padding: 2.5rem 2rem;
+            background: rgba(1, 10, 8, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        .inc-card h3 {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+        .inc-card p {
+            font-size: 0.9rem;
+            opacity: 0.75;
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        .inc-img-frame {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            background: rgba(1, 10, 8, 0.6);
+            border: 0.5px solid rgba(201, 168, 76, 0.2);
+            position: relative;
+            overflow: hidden;
+            margin-top: auto;
+        }
+        .inc-img-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            inset: 0;
+        }
+
+        /* --- CONTACT CONNECT --- */
+        #contact-bridge {
+            background: #000a08;
             border-top: 0.5px solid var(--border);
+            padding: 8rem 8vw;
         }
         .contact-wrap { 
             display: grid; 
@@ -168,8 +206,8 @@
         }
 
         @media (max-width: 900px) {
-            .hero-content h1 { font-size: 3rem; }
-            .sectors-grid, .contact-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+            .page-header h1 { font-size: 2.5rem; }
+            .story-grid, .inclusions-grid, .contact-wrap { grid-template-columns: 1fr; gap: 3rem; }
         }
     </style>
 </head>
@@ -179,80 +217,84 @@
     <a href="index.html" class="logo-wrap"><span class="nav-logo metallic-gold">GREENHOUSE EVENTS DUBAI</span></a>
     <div class="nav-actions">
         <a href="https://wa.me/971552537712" target="_blank" class="nav-whatsapp">WHATSAPP</a>
-        <a href="#contact" class="nav-cta">ENQUIRE NOW</a>
+        <a href="#contact-bridge" class="nav-cta">ENQUIRE NOW</a>
     </div>
 </nav>
 
-<header class="hero">
-    <div class="hero-content">
-        <h1 class="metallic-gold">Greenhouse Events</h1>
-        <p>Twenty years of elite project management, experiential architecture, and executive entertainment engineering across the UAE.</p>
-    </div>
+<header class="page-header">
+    <h1 class="metallic-gold">Private Party and Event Planning</h1>
+    <p>Bespoke execution for birthday celebrations, engagements, proposals, and exclusive high profile gatherings.</p>
 </header>
 
-<section id="portfolio-sectors">
-    <div class="sectors-grid">
+<div class="showcase-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="https://www.youtube.com/embed/CxEelYzlBhE?autoplay=1&mute=1&loop=1&playlist=CxEelYzlBhE&controls=1&rel=0" 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
+<section id="party-story">
+    <div class="story-grid">
+        <div class="story-manifesto">
+            We convert personal landmarks into magnificent, immersive <span class="metallic-gold">visual stories</span>.
+        </div>
+        <div class="story-narrative">
+            <p>From milestone birthdays and intimate garden engagements to elaborate luxury children's wonderlands, our private party division is centered around unrivaled aesthetics. We design spaces that don't just feel decorated—they feel entirely transformed.</p>
+            <p>By blending architectural backdrops, elite culinary displays, and customized installation features, our team maps out your layout completely from structural foundations to the final lighting cue, ensuring a flawless experiential flow for your guests.</p>
+        </div>
+    </div>
+</section>
+
+<section id="party-inclusions">
+    <div class="inclusions-grid">
         
-        <a href="private-events.html" class="sector-link-card">
-            <div>
-                <h2 class="metallic-gold">Private Celebrations</h2>
-                <p>Bespoke milestone anniversaries, luxury proposals, weddings, and immersive multi-thematic children wonderlands built from scratch.</p>
+        <div class="inc-card">
+            <h3 class="metallic-gold">Bespoke Structural Castles</h3>
+            <p>Custom scale themed structural layouts, fairytale castle backdrops, and interactive play architecture engineered safely for elite children celebrations.</p>
+            <div class="inc-img-frame">
+                <img src="party-castle.jpg" alt="Structural Castle Setup">
             </div>
-            <span class="action-arrow">EXPLORE DIRECTORY &rarr;</span>
-        </a>
+        </div>
 
-        <a href="corporate-events.html" class="sector-link-card">
-            <div>
-                <h2>Corporate Operations</h2>
-                <p>High-end corporate galas, pristine brand activations, product rollouts, and experiential networking staging environments.</p>
+        <div class="inc-card">
+            <h3 class="metallic-gold">Monochromatic Balloon Art</h3>
+            <p>Organic, high density balloon styling cascades meticulously matched to your custom tone profile, flowing around portals, entry gates, and seating arrangements.</p>
+            <div class="inc-img-frame">
+                <img src="party-balloons.jpg" alt="Luxury Balloon Styling">
             </div>
-            <span class="action-arrow">EXPLORE DIRECTORY &rarr;</span>
-        </a>
+        </div>
 
-        <a href="customised-decor.html" class="sector-link-card">
-            <div>
-                <h2>Customised Decor</h2>
-                <p>Architectural installations, high-density floral artistry blueprints, organic balloon styling, and complete aesthetic space styling.</p>
+        <div class="inc-card">
+            <h3 class="metallic-gold">Artisanal Sweet Tables</h3>
+            <p>Delicate dessert curation featuring custom multi tier cakes, matching macarons, and tower displays designed as a functional center piece asset.</p>
+            <div class="inc-img-frame">
+                <img src="party-sweets.jpg" alt="Artisanal Dessert Curation">
             </div>
-            <span class="action-arrow">EXPLORE DIRECTORY &rarr;</span>
-        </a>
+        </div>
 
-        <a href="entertainment.html" class="sector-link-card">
-            <div>
-                <h2>Entertainment Sourcing</h2>
-                <p>Direct premium curation of international artists, customized character production ensembles, stage talent, and master open-format DJs.</p>
+        <div class="inc-card">
+            <h3 class="metallic-gold">Low Level Table Curations</h3>
+            <p>Premium low seating picnic banquets, plush white fur rugs, architectural floral center pieces, and luxury glass settings designed for complete guest comfort.</p>
+            <div class="inc-img-frame">
+                <img src="party-tables.jpg" alt="Luxury Banquet Table Setting">
             </div>
-            <span class="action-arrow">EXPLORE DIRECTORY &rarr;</span>
-        </a>
-
-        <a href="permanent-transformations.html" class="sector-link-card">
-            <div>
-                <h2>Permanent Transformations</h2>
-                <p>Residential property styling transformations, luxury playground architecture installations, and structural environment design blueprints.</p>
-            </div>
-            <span class="action-arrow">EXPLORE DIRECTORY &rarr;</span>
-        </a>
-
-        <a href="staging-av.html" class="sector-link-card">
-            <div>
-                <h2>Staging, Sound & AV</h2>
-                <p>Rigid custom staging decks, clear pro audio point distribution arrays, and architectural environment mood lighting design systems.</p>
-            </div>
-            <span class="action-arrow">EXPLORE DIRECTORY &rarr;</span>
-        </a>
+        </div>
 
     </div>
 </section>
 
-<section id="contact">
+<section id="contact-bridge">
     <div class="contact-wrap">
         <div>
-            <h2 class="metallic-gold" style="font-family: var(--serif); font-size: 3.5rem; margin-bottom: 2rem;">Connect Directly</h2>
-            <span class="c-label">Email</span><a href="mailto:Lili@greenhouseeventsuae.com" class="c-val">Lili@greenhouseeventsuae.com</a>
-            <span class="c-label">Phone</span><a href="tel:+971552537712" class="c-val">+971 55 253 7712</a>
+            <h2 class="metallic-gold" style="font-family: var(--serif); font-size: 3.5rem; margin-bottom: 2rem;">Start Planning</h2>
+            <span class="c-label metallic-gold">Email</span><a href="mailto:Lili@greenhouseeventsuae.com" class="c-val">Lili@greenhouseeventsuae.com</a>
+            <span class="c-label metallic-gold">Phone</span><a href="tel:+971552537712" class="c-val">+971 55 253 7712</a>
         </div>
-        <div style="opacity: 0.8; display: flex; align-items: flex-end;">
-            <p>Our production office handles your layout execution from early staging permits to final architectural cues. Reach out to coordinate your next activation frame in Dubai.</p>
+        <div style="opacity: 0.9; display: flex; align-items: flex-end;">
+            <p>Let us take care of everything. Contact our team directly to book a consultation for your next elite luxury celebration or private transformation in Dubai.</p>
         </div>
     </div>
 </section>
