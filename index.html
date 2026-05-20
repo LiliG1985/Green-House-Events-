@@ -82,7 +82,7 @@
 
         section { padding: 6rem 8vw; position: relative; }
 
-        /* --- ABOUT US PROFILE LAYOUT --- */
+        /* --- ABOUT US LAYOUT --- */
         #about-profile {
             padding: 8rem 8vw 4rem 8vw;
             position: relative;
@@ -124,7 +124,7 @@
             overflow: hidden;
         }
 
-        /* --- HARDWARE-ACCELERATED ULTRA SMOOTH VIDEO LAYER --- */
+        /* --- VIDEO LAYER CONTAINER --- */
         .video-bg-container {
             position: absolute;
             top: 0;
@@ -146,9 +146,9 @@
             -webkit-filter: contrast(1.15) brightness(0.95);
         }
 
-        /* --- SERVICES GRIDS (GAP CLOSED BELOW) --- */
+        /* --- SERVICES SECTIONS --- */
         #services { 
-            padding: 5rem 8vw 3rem 8vw; /* Shaved bottom padding from 8rem to 3rem */
+            padding: 5rem 8vw 3rem 8vw; 
             position: relative; 
             z-index: 5; 
             background: transparent !important; 
@@ -173,9 +173,9 @@
         .card .learn-more { font-family: var(--display); font-size: 0.65rem; letter-spacing: 2px; color: var(--gold-solid); text-transform: uppercase; opacity: 0.5; transition: 0.3s; margin-top: 0.5rem; }
         .card:hover .learn-more { opacity: 1; letter-spacing: 3px; }
 
-        /* --- CLIENTS LIST (GAP CLOSED ABOVE) --- */
+        /* --- CLIENT HISTORY SECT --- */
         #clients { 
-            padding: 1rem 5vw 6rem 5vw; /* Squeezed top padding tightly from 8rem to 1rem */
+            padding: 1rem 5vw 6rem 5vw; 
             position: relative; 
             z-index: 5; 
             background: transparent !important; 
@@ -233,11 +233,11 @@
     <section id="about-profile">
         <div class="about-grid">
             <div class="about-manifesto">
-                Architecting elite, high-end <span class="metallic-gold">production structures</span> and experiential delivery across Dubai.
+                Bringing premium, high-impact <span class="metallic-gold">event architecture</span> and absolute experiential delivery to life.
             </div>
             <div class="about-narrative">
-                <p>Welcome to Greenhouse Events. Rooted in twenty years of international industry experience, we function as a premier destination for high-profile executive deliveries, bespoke brand activations, and elite private transformations.</p>
-                <p>From structural stage architectures and precise spatial styling to world-class talent acquisition and international entertainment curation, we curate every layout node from concept inception through pristine structural operation.</p>
+                <p>Welcome to Greenhouse Events. Backed by 20 years of expert project engineering and entertainment mastery, we specialize in staging unforgettable brand experiences, luxury celebrations, and complete environment overhauls across the UAE.</p>
+                <p>We approach event creation as a functional network—weaving crystal-clear sound engineering, custom stage architecture, and top-tier global talent seamlessly together. We don't just coordinate timelines; we build the literal spaces where moments happen.</p>
             </div>
         </div>
     </section>
@@ -315,10 +315,7 @@
     document.addEventListener("DOMContentLoaded", function() {
         const video = document.getElementById("creationVideoBackdrop");
         if (video) {
-            // Drop playback velocity to an ultra-smooth 0.45x 
             video.playbackRate = 0.45;
-            
-            // Native fail-safe loop listener to avoid jittering at loop termination
             video.addEventListener('ended', function() {
                 video.currentTime = 0;
                 video.play();
