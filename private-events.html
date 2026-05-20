@@ -84,7 +84,7 @@
         /* --- SHOWCASE VIDEO CONTAINER --- */
         .showcase-container {
             max-width: 1100px;
-            margin: 0 auto 6rem auto;
+            margin: 0 auto 5rem auto;
             padding: 0 4vw;
         }
         .video-wrapper {
@@ -104,11 +104,11 @@
             border: none;
         }
 
-        /* --- FEATURES --- */
+        /* --- EDITORIAL FEATURES --- */
         .features-section {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 0 4vw 8rem 4vw;
+            padding: 0 4vw 6rem 4vw;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
@@ -126,6 +126,22 @@
             line-height: 1.7;
         }
 
+        /* --- INNER PAGE CONTACT BRIDGE --- */
+        #contact-bridge {
+            background: #000a08;
+            border-top: 0.5px solid var(--border);
+            padding: 8rem 8vw;
+        }
+        .contact-wrap { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 4rem; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+        }
+        .c-val { display: block; font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--white-off); text-decoration: none; }
+        .c-label { color: var(--gold-solid); font-family: var(--display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
+
         footer {
             padding: 5rem 5vw;
             text-align: center;
@@ -135,7 +151,7 @@
 
         @media (max-width: 900px) {
             .page-header h1 { font-size: 2.5rem; }
-            .features-section { grid-template-columns: 1fr; gap: 3rem; }
+            .features-section, .contact-wrap { grid-template-columns: 1fr; gap: 3rem; }
         }
     </style>
 </head>
@@ -145,7 +161,7 @@
     <a href="index.html" class="logo-wrap"><span class="nav-logo metallic-gold">GREENHOUSE EVENTS DUBAI</span></a>
     <div class="nav-actions">
         <a href="https://wa.me/971552537712" target="_blank" class="nav-whatsapp">WHATSAPP</a>
-        <a href="index.html#contact" class="nav-cta">ENQUIRE NOW</a>
+        <a href="#contact-bridge" class="nav-cta">ENQUIRE NOW</a>
     </div>
 </nav>
 
@@ -172,6 +188,19 @@
     <div class="feature-item">
         <h3 class="metallic-gold">Immersive Craftsmanship</h3>
         <p>Every detail is handled with absolute care. We coordinate premium floor seating arrangements, customized sweet table displays with artisanal delicacies, and architectural room lighting to form a perfect atmosphere.</p>
+    </div>
+</section>
+
+<section id="contact-bridge">
+    <div class="contact-wrap">
+        <div>
+            <h2 class="metallic-gold" style="font-family: var(--serif); font-size: 3.5rem; margin-bottom: 2rem;">Start Planning</h2>
+            <span class="c-label metallic-gold">Email</span><a href="mailto:Lili@greenhouseeventsuae.com" class="c-val">Lili@greenhouseeventsuae.com</a>
+            <span class="c-label metallic-gold">Phone</span><a href="tel:+971552537712" class="c-val">+971 55 253 7712</a>
+        </div>
+        <div style="opacity: 0.9; display: flex; align-items: flex-end;">
+            <p>Let us take care of everything. Contact our team directly to book a consultation for your next elite luxury celebration or private transformation in Dubai.</p>
+        </div>
     </div>
 </section>
 
