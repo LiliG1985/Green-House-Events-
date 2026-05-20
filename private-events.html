@@ -61,31 +61,80 @@
         .nav-whatsapp { color: var(--white-off); text-decoration: none; font-size: 0.75rem; letter-spacing: 1.5px; opacity: 0.8; }
         .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; }
 
-        /* --- HEADER --- */
-        .page-header {
-            padding: 12rem 8vw 4rem 8vw;
-            text-align: center;
-            background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-mid) 100%);
+        /* --- RESTORED FULL HERO HEADER BACKGROUND --- */
+        .hero {
+            height: 70vh; 
+            position: relative; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            background: linear-gradient(rgba(2, 22, 18, 0.5), rgba(2, 22, 18, 0.85)), url('card1.jpg') no-repeat center center; 
+            background-size: cover; 
+            padding: 0 10vw; 
+            z-index: 5;
+            border-bottom: 0.5px solid var(--border);
         }
-        .page-header h1 {
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            z-index: 10;
+        }
+        .hero-content h1 {
             font-family: var(--serif);
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 300;
             margin-bottom: 1.5rem;
+            letter-spacing: 2px;
         }
-        .page-header p {
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-            opacity: 0.8;
+        .hero-content p {
+            font-size: 1.2rem;
+            opacity: 0.9;
             font-weight: 300;
+            letter-spacing: 0.5px;
         }
 
-        /* --- SHOWCASE VIDEO CONTAINER --- */
+        /* --- RESTORED ABOUT SECTION FOR PARTY PLANNING --- */
+        #about-party {
+            padding: 6rem 8vw 4rem 8vw;
+            position: relative;
+            z-index: 5;
+            border-bottom: 0.5px solid var(--border);
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .about-manifesto {
+            font-family: var(--serif);
+            font-size: 2.5rem;
+            font-weight: 300;
+            line-height: 1.25;
+        }
+        .about-narrative {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+        .about-narrative p {
+            font-size: 1rem;
+            opacity: 0.85;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            line-height: 1.8;
+        }
+
+        /* --- CINEMATIC SHOWCASE VIDEO --- */
+        #video-showcase {
+            padding: 4rem 8vw 2rem 8vw;
+            position: relative;
+        }
         .showcase-container {
             max-width: 1100px;
-            margin: 0 auto 5rem auto;
-            padding: 0 4vw;
+            margin: 0 auto;
         }
         .video-wrapper {
             position: relative;
@@ -104,29 +153,68 @@
             border: none;
         }
 
-        /* --- EDITORIAL FEATURES --- */
-        .features-section {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 4vw 6rem 4vw;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+        /* --- ORIGINAL SERVICE CARDS / BOXES SECTION --- */
+        #services-inclusions { 
+            padding: 4rem 8vw 8rem 8vw; 
+            position: relative; 
+        } 
+        .services-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 2.5rem; 
+            max-width: 1100px; 
+            margin: 0 auto; 
         }
-        .feature-item h3 {
-            font-family: var(--serif);
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            font-weight: 400;
+        .card { 
+            border: 0.5px solid var(--border); 
+            padding: 2.5rem 2rem; 
+            background: rgba(1, 10, 8, 0.94); 
+            backdrop-filter: blur(25px); 
+            -webkit-backdrop-filter: blur(25px); 
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: flex-start;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.6);
         }
-        .feature-item p {
-            opacity: 0.75;
-            font-size: 0.95rem;
-            font-weight: 300;
-            line-height: 1.7;
+        .card:hover { 
+            border-color: var(--gold-solid); 
+            transform: translateY(-8px); 
+            background: rgba(3, 23, 19, 0.96); 
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8); 
         }
+        .card h3 { 
+            font-family: var(--serif); 
+            font-size: 1.5rem; 
+            margin-bottom: 1rem; 
+            line-height: 1.3; 
+        }
+        .card p { 
+            font-size: 0.9rem; 
+            opacity: 0.75; 
+            margin-bottom: 2rem; 
+            line-height: 1.6; 
+        }
+        .card-img-space { 
+            width: 100%; 
+            aspect-ratio: 16 / 10; 
+            background: rgba(1, 10, 8, 0.6); 
+            border: 0.5px solid rgba(201, 168, 76, 0.3); 
+            margin-top: auto; 
+            overflow: hidden; 
+            position: relative; 
+        }
+        .card-img-space img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            position: absolute; 
+            inset: 0; 
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+        }
+        .card:hover .card-img-space img { transform: scale(1.04); }
 
-        /* --- INNER PAGE CONTACT BRIDGE --- */
+        /* --- CONTACT SECTION --- */
         #contact-bridge {
             background: #000a08;
             border-top: 0.5px solid var(--border);
@@ -150,8 +238,8 @@
         }
 
         @media (max-width: 900px) {
-            .page-header h1 { font-size: 2.5rem; }
-            .features-section, .contact-wrap { grid-template-columns: 1fr; gap: 3rem; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .about-grid, .services-grid, .contact-wrap { grid-template-columns: 1fr; gap: 3rem; }
         }
     </style>
 </head>
@@ -165,29 +253,72 @@
     </div>
 </nav>
 
-<header class="page-header">
-    <h1 class="metallic-gold">Private Party and Event Planning</h1>
-    <p>Bespoke execution for birthday celebrations, engagements, proposals, and exclusive high profile gatherings.</p>
+<header class="hero">
+    <div class="hero-content">
+        <h1 class="metallic-gold">Private Party and Event Planning</h1>
+        <p>Bespoke execution for birthday celebrations, engagements, proposals, and exclusive high profile gatherings.</p>
+    </div>
 </header>
 
-<div class="showcase-container">
-    <div class="video-wrapper">
-        <iframe 
-            src="https://www.youtube.com/embed/CxEelYzlBhE?autoplay=1&mute=1&loop=1&playlist=CxEelYzlBhE&controls=1&rel=0" 
-            allow="autoplay; encrypted-media" 
-            allowfullscreen>
-        </iframe>
+<section id="about-party">
+    <div class="about-grid">
+        <div class="about-manifesto">
+            Converting personal milestones into magnificent, immersive <span class="metallic-gold">visual stories</span>.
+        </div>
+        <div class="about-narrative">
+            <p>Welcome to Greenhouse Events. Backed by twenty years of expert project engineering and entertainment mastery, we specialize in staging unforgettable brand experiences, luxury celebrations, and complete environment overhauls across the UAE.</p>
+            <p>We approach event creation as a functional network, weaving crystal clear sound engineering, custom stage architecture, and top tier global talent seamlessly together. We do not just coordinate timelines; we build the literal spaces where moments happen.</p>
+        </div>
     </div>
-</div>
+</section>
 
-<section class="features-section">
-    <div class="feature-item">
-        <h3 class="metallic-gold">Bespoke Structural Styling</h3>
-        <p>From towering fairy tale castles to luxury monochromatic balloon architectures and pristine floral steps, we build complete custom backdrops customized precisely to your signature theme.</p>
+<section id="video-showcase">
+    <div class="showcase-container">
+        <div class="video-wrapper">
+            <iframe 
+                src="https://www.youtube.com/embed/CxEelYzlBhE?autoplay=1&mute=1&loop=1&playlist=CxEelYzlBhE&controls=1&rel=0" 
+                allow="autoplay; encrypted-media" 
+                allowfullscreen>
+            </iframe>
+        </div>
     </div>
-    <div class="feature-item">
-        <h3 class="metallic-gold">Immersive Craftsmanship</h3>
-        <p>Every detail is handled with absolute care. We coordinate premium floor seating arrangements, customized sweet table displays with artisanal delicacies, and architectural room lighting to form a perfect atmosphere.</p>
+</section>
+
+<section id="services-inclusions">
+    <div class="services-grid">
+        
+        <div class="card">
+            <h3 class="metallic-gold">Bespoke Structural Castles</h3>
+            <p>Custom scale themed structural layouts, fairytale castle backdrops, and interactive play architecture engineered safely for elite children celebrations.</p>
+            <div class="card-img-space">
+                <img src="party-castle.jpg" alt="Structural Castle Setup">
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 class="metallic-gold">Monochromatic Balloon Art</h3>
+            <p>Organic, high density balloon styling cascades meticulously matched to your custom tone profile, flowing around portals, entry gates, and seating arrangements.</p>
+            <div class="card-img-space">
+                <img src="party-balloons.jpg" alt="Luxury Balloon Styling">
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 class="metallic-gold">Artisanal Sweet Tables</h3>
+            <p>Delicate dessert curation featuring custom multi tier cakes, matching macarons, and tower displays designed as a functional center piece asset.</p>
+            <div class="card-img-space">
+                <img src="party-sweets.jpg" alt="Artisanal Dessert Curation">
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 class="metallic-gold">Low Level Table Curations</h3>
+            <p>Premium low seating picnic banquets, plush white fur rugs, architectural floral center pieces, and luxury glass settings designed for complete guest comfort.</p>
+            <div class="card-img-space">
+                <img src="party-tables.jpg" alt="Luxury Banquet Table Setting">
+            </div>
+        </div>
+
     </div>
 </section>
 
