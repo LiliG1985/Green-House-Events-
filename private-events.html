@@ -22,8 +22,9 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         
+        /* Deep luxury gradient background layout */
         body { 
-            background: var(--bg-deep); 
+            background: linear-gradient(180deg, #021612 0%, #04241e 40%, #010a08 100%); 
             color: var(--white-off); 
             font-family: var(--sans); 
             overflow-x: hidden; 
@@ -61,7 +62,7 @@
         .nav-whatsapp { color: var(--white-off); text-decoration: none; font-size: 0.75rem; letter-spacing: 1.5px; opacity: 0.8; }
         .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; }
 
-        /* --- HERO AREA --- */
+        /* --- HERO HEADER COVER AREA --- */
         .hero {
             height: 100vh; 
             position: relative; 
@@ -96,12 +97,14 @@
             margin: 0 auto;
         }
 
-        /* --- ABOUT PARTY SECTION --- */
+        /* --- ABOUT WITH AMBIENT BACKDROP LIGHTING GLOW --- */
         #about-party {
             padding: 8rem 8vw 4rem 8vw;
             position: relative;
             z-index: 5;
             border-bottom: 0.5px solid var(--border);
+            background: radial-gradient(circle at 80% 50%, rgba(201, 168, 76, 0.04), transparent 50%),
+                        radial-gradient(circle at 20% 50%, rgba(4, 36, 30, 0.6), transparent 60%);
         }
         .about-grid {
             display: grid;
@@ -130,7 +133,7 @@
             line-height: 1.8;
         }
 
-        /* --- VISUAL SHOWCASE MODULE --- */
+        /* --- COMPACT VISUAL VIDEO MODULE --- */
         #video-showcase {
             padding: 2rem 8vw;
             position: relative;
@@ -156,7 +159,7 @@
             border: none;
         }
 
-        /* --- ORIGINAL SERVICE GRIDS --- */
+        /* --- THEMED SERVICE CARD GRIDS --- */
         #services-inclusions { 
             padding: 4rem 8vw 8rem 8vw; 
             position: relative; 
@@ -269,8 +272,8 @@
             Tailoring landmark celebrations into completely unique <span class="metallic-gold">visual realities</span>.
         </div>
         <div class="about-narrative">
-            <p>From milestone adult birthdays, high end luxury proposals, and bespoke weddings to entirely custom experiential children wonderlands, we design environments that reflect your individual style profile. No matter the concept or scaling requirements, we deliver unmatched production value across the UAE.</p>
-            <p>We work closely with you to map out custom thematic concepts, matching high density floral installations, signature table curation, and architectural backdrops perfectly together to guarantee an incredible experience for your guests.</p>
+            <p>Welcome to Greenhouse Events. Backed by twenty years of expert project engineering and entertainment mastery, we specialize in staging unforgettable brand experiences, luxury celebrations, and complete environment overhauls across the UAE.</p>
+            <p>We approach event creation as a functional network, weaving crystal clear sound engineering, custom stage architecture, and top tier global talent seamlessly together. We do not just coordinate timelines; we build the literal spaces where moments happen.</p>
         </div>
     </div>
 </section>
@@ -344,4 +347,20 @@
 <section id="contact-bridge">
     <div class="contact-wrap">
         <div>
-            <h2 class="metallic-gold" style="font-family: var(--serif); font-size: 3.5rem; margin-bottom: 2rem;">
+            <h2 class="metallic-gold" style="font-family: var(--serif); font-size: 3.5rem; margin-bottom: 2rem;">Start Planning</h2>
+            <span class="c-label metallic-gold">Email</span><a href="mailto:Lili@greenhouseeventsuae.com" class="c-val">Lili@greenhouseeventsuae.com</a>
+            <span class="c-label metallic-gold">Phone</span><a href="tel:+971552537712" class="c-val">+971 55 253 7712</a>
+        </div>
+        <div style="opacity: 0.9; display: flex; align-items: flex-end;">
+            <p>Let us take care of everything. Contact our team directly to book a consultation for your next elite luxury celebration or private transformation in Dubai.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p class="metallic-gold" style="font-family: var(--display); font-size: 1.1rem; letter-spacing: 5px; font-weight: 700; margin-bottom: 0.5rem;">GREENHOUSE EVENTS DUBAI</p>
+    <p style="font-size: 0.75rem; opacity: 0.4; letter-spacing: 1px;">&copy; 2026 Greenhouse Events UAE. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
