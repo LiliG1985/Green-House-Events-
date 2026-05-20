@@ -69,7 +69,7 @@
         }
         .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, transparent 40%, rgba(2, 22, 18, 0.6) 100%); }
 
-        /* --- CAROUSELS --- */
+        /* --- INFINITE CAROUSELS --- */
         .marquee { 
             background: #00120f; padding: 1.2rem 0; overflow: hidden; white-space: nowrap; border-top: 0.5px solid var(--gold-solid); border-bottom: 0.5px solid var(--gold-solid); display: flex;
             position: relative; z-index: 10;
@@ -148,7 +148,7 @@
 
         /* --- SERVICES GRIDS --- */
         #services { 
-            padding: 5rem 8vw 6rem 8vw; /* Restored elegant spacing here */
+            padding: 5rem 8vw 6rem 8vw; 
             position: relative; 
             z-index: 5; 
             background: transparent !important; 
@@ -173,28 +173,52 @@
         .card .learn-more { font-family: var(--display); font-size: 0.65rem; letter-spacing: 2px; color: var(--gold-solid); text-transform: uppercase; opacity: 0.5; transition: 0.3s; margin-top: 0.5rem; }
         .card:hover .learn-more { opacity: 1; letter-spacing: 3px; }
 
-        /* --- CLIENTS SECTION GAP ADJUSTMENT --- */
+        /* --- CLIENTS SECTION SHUTDOWN GAP PATCH --- */
         #clients { 
-            padding: 4rem 5vw 6rem 5vw; 
+            padding: 4rem 8vw 6rem 8vw; 
             position: relative; 
             z-index: 5; 
             background: transparent !important; 
         }
-        .client-container { display: flex; max-width: 1300px; margin: 0 auto; border: 0.5px solid var(--border); background: rgba(1, 10, 8, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 25px 50px rgba(0,0,0,0.6); overflow: hidden; }
         
-        /* Shaved sidebar width down and pulled padding tighter to lock writing next to list */
+        /* Using automatic grid columns with a microscopic horizontal gap */
+        .client-container { 
+            display: grid; 
+            grid-template-columns: auto 1fr; 
+            column-gap: 0px; 
+            max-width: 1300px; 
+            margin: 0 auto; 
+            border: 0.5px solid var(--border); 
+            background: rgba(1, 10, 8, 0.85); 
+            backdrop-filter: blur(10px); 
+            -webkit-backdrop-filter: blur(10px); 
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6); 
+            overflow: hidden; 
+        }
+        
+        /* Brought width back up, set explicit small padding to snap letters close to border line */
         .client-sidebar { 
             background: #000c0a; 
-            width: 80px; 
+            width: 110px; 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
             justify-content: center; 
             border-right: 0.5px solid var(--border); 
             flex-shrink: 0; 
-            padding: 40px 0; 
+            padding: 50px 0; 
         }
-        .client-sidebar h2 { font-family: var(--display); font-size: 1.8rem; writing-mode: vertical-rl; transform: rotate(180deg); letter-spacing: 0.22em; text-transform: uppercase; }
+        
+        /* Kept large, bold, luxurious display size */
+        .client-sidebar h2 { 
+            font-family: var(--display); 
+            font-size: 2.3rem; 
+            font-weight: 700;
+            writing-mode: vertical-rl; 
+            transform: rotate(180deg); 
+            letter-spacing: 0.25em; 
+            text-transform: uppercase; 
+        }
         
         .client-image-wrap { flex-grow: 1; display: flex; align-items: center; justify-content: center; }
         .client-image-wrap img { width: 100%; height: auto; display: block; }
@@ -208,7 +232,7 @@
         .c-label { color: var(--gold-solid); font-family: var(--display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
 
         @media (max-width: 1200px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 900px) { nav { flex-direction: column; gap: 1rem; } .about-grid { grid-template-columns: 1fr; gap: 2rem; } .services-grid { grid-template-columns: 1fr; } .client-container { flex-direction: column; } .client-sidebar { width: 100%; writing-mode: horizontal-tb; transform: none; padding: 30px 0; } .client-sidebar h2 { writing-mode: horizontal-tb; transform: none; font-size: 1.8rem; } .contact-wrap, .stats-bar { grid-template-columns: 1fr; } }
+        @media (max-width: 900px) { nav { flex-direction: column; gap: 1rem; } .about-grid { grid-template-columns: 1fr; gap: 2rem; } .services-grid { grid-template-columns: 1fr; } .client-container { grid-template-columns: 1fr; } .client-sidebar { width: 100%; writing-mode: horizontal-tb; transform: none; padding: 30px 0; border-right: none; border-bottom: 0.5px solid var(--border); } .client-sidebar h2 { writing-mode: horizontal-tb; transform: none; font-size: 1.8rem; } .contact-wrap, .stats-bar { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
