@@ -22,6 +22,7 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         
+        /* Deep luxury gradient background layout */
         body { 
             background: linear-gradient(180deg, #021612 0%, #04241e 40%, #010a08 100%); 
             color: var(--white-off); 
@@ -53,11 +54,15 @@
         
         .logo-wrap { text-decoration: none; display: inline-block; position: relative; padding-bottom: 4px; }
         .nav-logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; letter-spacing: 3px; transition: letter-spacing 0.4s; display: inline-block; white-space: nowrap; }
+        .logo-wrap:hover .nav-logo { letter-spacing: 5px; }
+        .logo-wrap::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 1px; background: var(--gold-solid); transition: width 0.4s, left 0.4s; }
+        .logo-wrap:hover::after { width: 100%; left: 0; }
+
         .nav-actions { display: flex; align-items: center; gap: 1.5rem; }
         .nav-whatsapp { color: var(--white-off); text-decoration: none; font-size: 0.75rem; letter-spacing: 1.5px; opacity: 0.8; }
         .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; }
 
-        /* --- HERO BANNER WITH UPDATED REAL CATEGORIES TEXT --- */
+        /* --- HERO HEADER COVER AREA --- */
         .hero {
             height: 100vh; 
             position: relative; 
@@ -72,7 +77,7 @@
         }
         .hero-content {
             text-align: center;
-            max-width: 950px;
+            max-width: 900px;
             z-index: 10;
         }
         .hero-content h1 {
@@ -88,7 +93,7 @@
             opacity: 0.95;
             font-weight: 300;
             letter-spacing: 1px;
-            max-width: 850px;
+            max-width: 750px;
             margin: 0 auto;
         }
 
@@ -128,83 +133,9 @@
             line-height: 1.8;
         }
 
-        /* --- DYNAMIC SLIDING CAROUSEL SYSTEM --- */
-        .carousel-section {
-            padding: 3rem 8vw;
-            position: relative;
-            z-index: 10;
-        }
-        .carousel-heading {
-            font-family: var(--serif);
-            font-size: 1.8rem;
-            letter-spacing: 2px;
-            margin-bottom: 1.5rem;
-            color: var(--gold-solid);
-        }
-        .carousel-outer {
-            position: relative;
-            width: 100%;
-            display: flex;
-            align-items: center;
-        }
-        .carousel-track-container {
-            overflow-x: auto;
-            width: 100%;
-            scroll-behavior: smooth;
-            scroll-snap-type: x mandatory;
-        }
-        .carousel-track-container::-webkit-scrollbar {
-            height: 4px;
-        }
-        .carousel-track-container::-webkit-scrollbar-thumb {
-            background: var(--gold-solid);
-            border-radius: 4px;
-        }
-        .carousel-track {
-            display: flex;
-            gap: 1.5rem;
-            padding: 1rem 0;
-        }
-        .carousel-slide {
-            flex: 0 0 380px;
-            scroll-snap-align: start;
-            border: 0.5px solid var(--border);
-            aspect-ratio: 4 / 3;
-            background: #000;
-            overflow: hidden;
-            transition: border-color 0.4s;
-        }
-        .carousel-slide:hover {
-            border-color: var(--gold-solid);
-        }
-        .carousel-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        .carousel-slide:hover img {
-            transform: scale(1.03);
-        }
-        .carousel-btn {
-            background: rgba(2, 22, 18, 0.85);
-            border: 0.5px solid var(--gold-solid);
-            color: var(--white-off);
-            font-size: 1.2rem;
-            width: 45px;
-            height: 45px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 20;
-            transition: background 0.3s;
-        }
-        .carousel-btn:hover { background: var(--gold-solid); color: #000; }
-
         /* --- COMPACT VISUAL VIDEO MODULE --- */
         #video-showcase {
-            padding: 4rem 8vw 2rem 8vw;
+            padding: 2rem 8vw;
             position: relative;
         }
         .showcase-container {
@@ -315,7 +246,6 @@
         @media (max-width: 900px) {
             .hero-content h1 { font-size: 2.8rem; }
             .about-grid, .services-grid, .contact-wrap { grid-template-columns: 1fr; gap: 3rem; }
-            .carousel-slide { flex: 0 0 280px; }
         }
     </style>
 </head>
@@ -332,7 +262,7 @@
 <header class="hero">
     <div class="hero-content">
         <h1 class="metallic-gold">Private Party and Event Planning</h1>
-        <p>Bespoke Themes for Adult Milestones & Children Wonderlands — Custom Ballons, High-Density Floral Designs, Tailored Table Layouts, Interactive Photo Opportunities & Luxury Private Weddings.</p>
+        <p>Bespoke execution for birthday celebrations, engagements, proposals, and exclusive high profile gatherings.</p>
     </div>
 </header>
 
@@ -342,42 +272,9 @@
             Tailoring landmark celebrations into completely unique <span class="metallic-gold">visual realities</span>.
         </div>
         <div class="about-narrative">
-            <p>We believe that life’s most meaningful milestones deserve to be celebrated in settings that feel completely magical and deeply personal. Our private party division specializes in bringing custom thematic visions to life, turning adult birthdays, proposals, intimate weddings, and family occasions into breathtaking experiences.</p>
-            <p>Whether you are styling an elegant milestone dinner featuring luxury custom tablescapes and high-density floral installations, or staging an imaginative, whimsical fantasy theme for children with custom backdrops and organic balloon architecture, we handle every detail. From immersive photo opportunities to flawless atmosphere execution, your theme is delivered beautifully.</p>
+            <p>Welcome to Greenhouse Events. Backed by twenty years of expert project engineering and entertainment mastery, we specialize in staging unforgettable brand experiences, luxury celebrations, and complete environment overhauls across the UAE.</p>
+            <p>We approach event creation as a functional network, weaving crystal clear sound engineering, custom stage architecture, and top tier global talent seamlessly together. We do not just coordinate timelines; we build the literal spaces where moments happen.</p>
         </div>
-    </div>
-</section>
-
-<section class="carousel-section">
-    <h2 class="carousel-heading">Adult Celebrations, Weddings & Curated Tablescapes</h2>
-    <div class="carousel-outer">
-        <button class="carousel-btn" onclick="document.getElementById('track1').scrollBy({left: -300, behavior: 'smooth'})">&larr;</button>
-        <div class="carousel-track-container" id="track1">
-            <div class="carousel-track">
-                <div class="carousel-slide"><img src="event1.jpg" alt="Adult Celebration"></div>
-                <div class="carousel-slide"><img src="event2.jpg" alt="Luxury Tablescape"></div>
-                <div class="carousel-slide"><img src="event3.jpg" alt="Private Wedding Setup"></div>
-                <div class="carousel-slide"><img src="event4.jpg" alt="Floral Presentation"></div>
-                <div class="carousel-slide"><img src="event5.jpg" alt="Premium Decor Layout"></div>
-            </div>
-        </div>
-        <button class="carousel-btn" onclick="document.getElementById('track1').scrollBy({left: 300, behavior: 'smooth'})">&rarr;</button>
-    </div>
-</section>
-
-<section class="carousel-section">
-    <h2 class="carousel-heading">Children Wonderlands, Balloon Art & Photo Opportunities</h2>
-    <div class="carousel-outer">
-        <button class="carousel-btn" onclick="document.getElementById('track2').scrollBy({left: -300, behavior: 'smooth'})">&larr;</button>
-        <div class="carousel-track-container" id="track2">
-            <div class="carousel-track">
-                <div class="carousel-slide"><img src="private-header-bg.jpg" alt="Castle & Balloon Wonderland"></div>
-                <div class="carousel-slide"><img src="event6.jpg" alt="Whimsical Thematic Setting"></div>
-                <div class="carousel-slide"><img src="logo.jpg" alt="Brand Feature Display"></div>
-                <div class="carousel-slide"><img src="private-header-bg.jpg" alt="Interactive Photo Opportunity Area"></div>
-            </div>
-        </div>
-        <button class="carousel-btn" onclick="document.getElementById('track2').scrollBy({left: 300, behavior: 'smooth'})">&rarr;</button>
     </div>
 </section>
 
