@@ -82,7 +82,7 @@
 
         section { padding: 8rem 8vw; position: relative; }
 
-        /* --- LIVING CONTENT WALL BACKDROP WRAPPER --- */
+        /* --- LIVING CONTENT WALL BACKDROP --- */
         .living-content-wall {
             position: relative;
             background: transparent;
@@ -90,7 +90,7 @@
             overflow: hidden;
         }
 
-        /* --- FIXED SLOW-MOTION VIDEO CANVAS LAYER --- */
+        /* --- HARDWARE-ACCELERATED ULTRA SMOOTH VIDEO LAYER --- */
         .video-bg-container {
             position: absolute;
             top: 0;
@@ -100,16 +100,18 @@
             z-index: 1; 
             pointer-events: none;
             background: var(--bg-deep);
+            will-change: transform; /* Forces device GPU focus */
+            transform: translate3d(0,0,0);
         }
 
         .video-bg-container video {
             width: 100%;
             height: 100%;
             object-fit: cover; 
-            /* Enhanced Fainted Veil Control - Set to 0.12 (12%) opacity for absolute elegance */
-            opacity: 0.12; 
-            filter: brightness(0.9) contrast(1.1);
-            -webkit-filter: brightness(0.9) contrast(1.1);
+            /* Visually enhanced visibility from 0.12 bumped right up to a balanced 0.35 opacity */
+            opacity: 0.35; 
+            filter: contrast(1.15) brightness(0.95);
+            -webkit-filter: contrast(1.15) brightness(0.95);
         }
 
         @keyframes scroll-text { from { transform: translateX(0); } to { transform: translateX(-100%); } }
@@ -122,11 +124,11 @@
         
         .card { 
             text-decoration: none; color: inherit; border: 0.5px solid var(--border); padding: 2.5rem 1.8rem; 
-            background: rgba(1, 10, 8, 0.93); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); 
+            background: rgba(1, 10, 8, 0.94); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); 
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); display: flex; flex-direction: column; justify-content: flex-start; cursor: pointer;
             box-shadow: 0 20px 45px rgba(0,0,0,0.6);
         }
-        .card:hover { border-color: var(--gold-solid); transform: translateY(-8px); background: rgba(3, 23, 19, 0.95); box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8); z-index: 10; }
+        .card:hover { border-color: var(--gold-solid); transform: translateY(-8px); background: rgba(3, 23, 19, 0.96); box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8); z-index: 10; }
         .card h3 { font-family: var(--serif); font-size: 1.4rem; margin-bottom: 1.2rem; line-height: 1.3; min-height: 4.4rem; }
         .card p { font-size: 0.88rem; opacity: 0.75; margin-bottom: 1.5rem; line-height: 1.6; min-height: 5.5rem; }
 
@@ -183,7 +185,7 @@
 <div class="living-content-wall">
 
     <div class="video-bg-container">
-        <video autoplay muted loop playsinline id="creationVideoBackdrop">
+        <video autoplay muted loop playsinline preload="auto">
             <source src="background-creation.mp4" type="video/mp4">
         </video>
     </div>
@@ -256,23 +258,6 @@
     <p class="metallic-gold" style="font-family: var(--display); font-size: 1.1rem; letter-spacing: 5px; font-weight: 700; margin-bottom: 0.5rem;">GREENHOUSE EVENTS DUBAI</p>
     <p style="font-size: 0.75rem; opacity: 0.4; letter-spacing: 1px;">&copy; 2026 Greenhouse Events UAE. All Rights Reserved.</p>
 </footer>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const video = document.getElementById("creationVideoBackdrop");
-        
-        if (video) {
-            // Cuts playback velocity down significantly (0.35x speed) to make the animation feel deeply luxurious
-            video.playbackRate = 0.35;
-            
-            // Hardwired fail-safe loop verification engine to force replay execution instantly upon video cycle finalization
-            video.addEventListener('ended', function() {
-                video.currentTime = 0;
-                video.play();
-            }, false);
-        }
-    });
-</script>
 
 </body>
 </html>
