@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Private Party & Event Planning — Greenhouse Events</title>
+    <title>Private Party and Event Planning — Greenhouse Events</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-deep: #0b1a18; 
-            --bg-mid: #2c3835;  
+            --bg-deep: #021612; 
+            --bg-mid: #04241e;  
             --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%);
             --gold-solid: #C9A84C;
             --white-off: #F4F0E8;
-            --border: rgba(201,168,76,0.15);
+            --border: rgba(201,168,76,0.18);
             --serif: 'Cormorant Garamond', serif;
             --display: 'Cinzel', serif;
             --sans: 'DM Sans', sans-serif;
@@ -21,8 +21,9 @@
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
+        
         body { 
-            background: radial-gradient(circle at 50% 30%, #1c2725 0%, var(--bg-mid) 70%); 
+            background: var(--bg-deep); 
             color: var(--white-off); 
             font-family: var(--sans); 
             overflow-x: hidden; 
@@ -41,187 +42,142 @@
         }
         @keyframes shine { to { background-position: 200% center; } }
 
+        /* --- NAVIGATION --- */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
-            padding: 0.8rem 5vw; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(11, 26, 24, 0.95); backdrop-filter: blur(15px);
+            padding: 1.2rem 5vw; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(2, 22, 18, 0.96); backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border-bottom: 0.5px solid var(--border);
         }
         
-        .nav-logo { font-family: var(--serif); font-size: 1.25rem; text-decoration: none; font-weight: 600; letter-spacing: 3px; }
+        .logo-wrap { text-decoration: none; display: inline-block; position: relative; padding-bottom: 4px; }
+        .nav-logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; letter-spacing: 3px; transition: letter-spacing 0.4s; display: inline-block; white-space: nowrap; }
+        .logo-wrap:hover .nav-logo { letter-spacing: 5px; }
+        .logo-wrap::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 1px; background: var(--gold-solid); transition: width 0.4s, left 0.4s; }
+        .logo-wrap:hover::after { width: 100%; left: 0; }
+
+        .nav-actions { display: flex; align-items: center; gap: 1.5rem; }
+        .nav-whatsapp { color: var(--white-off); text-decoration: none; font-size: 0.75rem; letter-spacing: 1.5px; opacity: 0.8; }
         .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; }
 
-        .inner-hero {
-            padding: 16rem 8vw 10rem 8vw;
-            background: linear-gradient(rgba(11, 26, 24, 0.35), rgba(11, 26, 24, 0.4)), url('private-header-bg.jpg') no-repeat center center;
-            background-size: cover;
-            background-attachment: fixed; 
-            border-bottom: 0.5px solid var(--gold-solid);
+        /* --- HEADER --- */
+        .page-header {
+            padding: 12rem 8vw 4rem 8vw;
             text-align: center;
+            background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-mid) 100%);
         }
-        
-        .inner-hero h1 { 
-            font-family: var(--serif); 
-            font-size: 4rem; 
-            font-weight: 300; 
-            margin-bottom: 1.5rem; 
-            letter-spacing: 1px; 
-            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
+        .page-header h1 {
+            font-family: var(--serif);
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
         }
-        
-        /* --- STYLESHEET OVERRIDE FIXED FORCE RULES --- */
-        .inner-hero h1 .metallic-gold {
-            text-shadow: none !important;
-            -webkit-text-stroke: 0px transparent !important;
-        }
-
-        .inner-hero p { 
-            font-size: 1.2rem; 
-            max-width: 700px; 
-            margin: 0 auto; 
-            opacity: 1; 
-            font-weight: 400; 
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); 
+        .page-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            opacity: 0.8;
+            font-weight: 300;
         }
 
-        .editorial-section { padding: 6rem 8vw; max-width: 1200px; margin: 0 auto; }
-        
-        .video-showcase-container {
-            width: 100%;
-            aspect-ratio: 16/9;
-            background: #000;
-            border: 0.5px solid var(--gold-solid);
-            margin: 3rem 0;
+        /* --- SHOWCASE VIDEO CONTAINER --- */
+        .showcase-container {
+            max-width: 1100px;
+            margin: 0 auto 6rem auto;
+            padding: 0 4vw;
+        }
+        .video-wrapper {
             position: relative;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-        }
-        .video-showcase-container video { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-        .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin: 6rem 0; }
-        .split-text h2 { font-family: var(--serif); font-size: 2.5rem; margin-bottom: 1.5rem; font-weight: 300; }
-        .split-text p { font-size: 1.05rem; opacity: 0.85; margin-bottom: 1.5rem; font-weight: 300; }
-        
-        .media-placeholder {
             width: 100%;
-            aspect-ratio: 4/3;
-            background: rgba(11, 26, 24, 0.4);
+            aspect-ratio: 16 / 9;
             border: 0.5px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+            background: #000;
         }
-        .media-placeholder img, .media-placeholder video { width: 100%; height: 100%; object-fit: cover; }
-
-        .capability-box {
-            background: rgba(11, 26, 24, 0.4);
-            border: 0.5px solid var(--border);
-            padding: 4rem;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            margin: 6rem 0;
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
         }
-        .capability-box h2 { font-family: var(--serif); font-size: 2.5rem; text-align: center; margin-bottom: 3rem; font-weight: 300; }
-        .capability-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
-        .cap-item h4 { font-family: var(--display); font-size: 0.85rem; color: var(--gold-solid); letter-spacing: 2px; margin-bottom: 0.5rem; }
-        .cap-item p { font-size: 0.95rem; opacity: 0.75; font-weight: 300; }
 
-        .photo-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 4rem 0; }
-        .gallery-photo { aspect-ratio: 1/1; background: rgba(0,0,0,0.2); border: 0.5px solid var(--border); overflow: hidden; }
-        .gallery-photo img { width: 100%; height: 100%; object-fit: cover; transition: 0.4s; opacity: 0.7; }
-        .gallery-photo:hover img { opacity: 1; transform: scale(1.02); border-color: var(--gold-solid); }
+        /* --- FEATURES --- */
+        .features-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 4vw 8rem 4vw;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+        .feature-item h3 {
+            font-family: var(--serif);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+        .feature-item p {
+            opacity: 0.75;
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.7;
+        }
 
-        .back-link { font-family: var(--display); font-size: 0.75rem; color: var(--gold-solid); text-decoration: none; letter-spacing: 2px; display: inline-block; margin-top: 2rem; transition: 0.3s; }
-        .back-link:hover { letter-spacing: 3px; }
+        footer {
+            padding: 5rem 5vw;
+            text-align: center;
+            border-top: 0.5px solid var(--gold-solid);
+            background: #000;
+        }
 
         @media (max-width: 900px) {
-            .split-grid, .capability-grid, .photo-gallery { grid-template-columns: 1fr; gap: 3rem; }
-            .capability-box { padding: 2rem; }
-            .inner-hero h1 { font-size: 2.8rem; }
-            .inner-hero { background-attachment: scroll; padding: 12rem 5vw 6rem 5vw; }
+            .page-header h1 { font-size: 2.5rem; }
+            .features-section { grid-template-columns: 1fr; gap: 3rem; }
         }
     </style>
 </head>
 <body>
 
 <nav>
-    <a href="index.html" class="nav-logo metallic-gold">GREENHOUSE</a>
-    <a href="index.html#contact" class="nav-cta">ENQUIRE NOW</a>
+    <a href="index.html" class="logo-wrap"><span class="nav-logo metallic-gold">GREENHOUSE EVENTS DUBAI</span></a>
+    <div class="nav-actions">
+        <a href="https://wa.me/971552537712" target="_blank" class="nav-whatsapp">WHATSAPP</a>
+        <a href="index.html#contact" class="nav-cta">ENQUIRE NOW</a>
+    </div>
 </nav>
 
-<header class="inner-hero">
-    <h1>Bespoke Private <span class="metallic-gold">Celebrations</span></h1>
-    <p>Bringing meticulous operational logistics and breathtaking creative execution to life’s most significant milestones.</p>
+<header class="page-header">
+    <h1 class="metallic-gold">Private Party and Event Planning</h1>
+    <p>Bespoke execution for birthday celebrations, engagements, proposals, and exclusive high profile gatherings.</p>
 </header>
 
-<main class="editorial-section">
-
-    <div class="split-grid">
-        <div class="split-text">
-            <h2>Tailored to Your <em class="metallic-gold">Exact Space</em></h2>
-            <p>We believe a truly premium event cannot be designed from a template. Every project we undertake begins with an immersive on site visit and a deep creative consultation.</p>
-            <p>By mapping your physical venue space alongside your specific operational requirements, we ensure that every design element integrates flawlessly and all structural and personal needs are perfectly met.</p>
-        </div>
-        <div class="media-placeholder">
-            <img src="private-consult.jpg" alt="Greenhouse Events Site Consultation Curation Placeholder" style="opacity: 0.4;">
-        </div>
+<div class="showcase-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="https://www.youtube.com/embed/CxEelYzlBhE?autoplay=1&mute=1&loop=1&playlist=CxEelYzlBhE&controls=1&rel=0" 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen>
+        </iframe>
     </div>
+</div>
 
-    <h2 style="font-family: var(--serif); font-size: 2.5rem; text-align: center; font-weight: 300; margin-top: 4rem;">Production <em class="metallic-gold">Showcase</em></h2>
-    <p style="text-align: center; max-width: 600px; margin: 0 auto 2rem auto; opacity: 0.7; font-weight: 300;">A curated look at our real world transformations, live show management, and fine technical detail builds.</p>
-    
-    <div class="video-showcase-container">
-        <video autoplay loop muted playsinline>
-            <source src="private-showcase.mp4" type="video/mp4">
-        </video>
+<section class="features-section">
+    <div class="feature-item">
+        <h3 class="metallic-gold">Bespoke Structural Styling</h3>
+        <p>From towering fairy tale castles to luxury monochromatic balloon architectures and pristine floral steps, we build complete custom backdrops customized precisely to your signature theme.</p>
     </div>
-
-    <div class="capability-box">
-        <h2>Absolute <em class="metallic-gold">Turnkey Execution</em></h2>
-        <div class="capability-grid">
-            <div class="cap-item">
-                <h4>Atmosphere & Styling</h4>
-                <p>From complex, bespoke luxury floral layouts to playful, custom high end balloon design installations that completely transform an environment.</p>
-            </div>
-            <div class="cap-item">
-                <h4>World Class Talent</h4>
-                <p>Direct sourcing and coordination of international bands, solo acoustic performers, dynamic live show ensembles, and bespoke atmospheric entertainment.</p>
-            </div>
-            <div class="cap-item">
-                <h4>Pristine Operations</h4>
-                <p>Seamless on site delivery utilizing fully trained hospitality staff, silver service waiters, and dedicated technical crew managers.</p>
-            </div>
-            <div class="cap-item">
-                <h4>Immersive Children's Setups</h4>
-                <p>Sophisticated, imaginative, and highly secure temporary layouts designed specifically for children's celebrations and family experiences.</p>
-            </div>
-            <div class="cap-item">
-                <h4>Bespoke Fabrications</h4>
-                <p>Custom scenic set design construction, lighting infrastructure arrays, and pristine architectural styling pieces built entirely in house.</p>
-            </div>
-            <div class="cap-item">
-                <h4>Logistical Management</h4>
-                <p>Handling every single moving line piece behind the scenes, from initial safety permits to the final clean strike, allowing you to purely enjoy hosting.</p>
-            </div>
-        </div>
+    <div class="feature-item">
+        <h3 class="metallic-gold">Immersive Craftsmanship</h3>
+        <p>Every detail is handled with absolute care. We coordinate premium floor seating arrangements, customized sweet table displays with artisanal delicacies, and architectural room lighting to form a perfect atmosphere.</p>
     </div>
+</section>
 
-    <h2 style="font-family: var(--serif); font-size: 2.5rem; text-align: center; font-weight: 300;">Visual <em class="metallic-gold">Curation Grid</em></h2>
-    <div class="photo-gallery">
-        <div class="gallery-photo"><img src="private1.jpg" alt="Bespoke Curation Slot 1 Placeholder"></div>
-        <div class="gallery-photo"><img src="private2.jpg" alt="Bespoke Curation Slot 2 Placeholder"></div>
-        <div class="gallery-photo"><img src="private3.jpg" alt="Bespoke Curation Slot 3 Placeholder"></div>
-    </div>
-
-    <div style="text-align: center;">
-        <a href="index.html" class="back-link">← RETURN TO CORE PRODUCTION</a>
-    </div>
-
-</main>
-
-<footer style="padding: 4rem; text-align: center; border-top: 0.5px solid var(--gold-solid); background: #000; margin-top: 6rem;">
-    <p class="metallic-gold" style="font-family: var(--serif); font-size: 1.2rem; letter-spacing: 4px;">GREENHOUSE EVENTS DUBAI</p>
-    <p style="font-size: 0.6rem; opacity: 0.3; margin-top: 2rem;">© 2026 GREENHOUSE EVENTS LLC. ALL RIGHTS RESERVED.</p>
+<footer>
+    <p class="metallic-gold" style="font-family: var(--display); font-size: 1.1rem; letter-spacing: 5px; font-weight: 700; margin-bottom: 0.5rem;">GREENHOUSE EVENTS DUBAI</p>
+    <p style="font-size: 0.75rem; opacity: 0.4; letter-spacing: 1px;">&copy; 2026 Greenhouse Events UAE. All Rights Reserved.</p>
 </footer>
 
 </body>
