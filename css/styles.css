@@ -1,0 +1,31 @@
+:root {
+    --bg-deep: #07110f;
+    --bg-mid: #10201d;
+    --gold: #C9A84C;
+    --gold-light: #F5E9B8;
+    --white: #F4F0E8;
+
+    --serif: 'Cormorant Garamond', serif;
+    --display: 'Cinzel', serif;
+    --sans: 'DM Sans', sans-serif;
+
+    --section-spacing: 8rem;
+    --border: rgba(201,168,76,0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: radial-gradient(circle at top, #1a2a26 0%, #07110f 70%);
+    color: var(--white);
+    font-family: var(--sans);
+    overflow-x: hidden;
+}
