@@ -92,6 +92,31 @@
             margin: 0 auto;
         }
 
+        /* --- BRAND ABOUT INTRODUCTION --- */
+        .entertainment-about {
+            padding: 8rem 8vw 4rem 8vw;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            border-bottom: 0.5px solid var(--border);
+        }
+        .about-left h2 {
+            font-family: var(--serif);
+            font-size: 2.8rem;
+            font-weight: 300;
+            line-height: 1.2;
+            letter-spacing: 1px;
+        }
+        .about-right p {
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.8;
+            opacity: 0.85;
+            color: var(--white-off);
+        }
+
         /* --- SECTION HEADINGS --- */
         .section-category-title {
             text-align: center;
@@ -120,10 +145,12 @@
         
         @media (max-width: 1024px) {
             .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .entertainment-about { grid-template-columns: 1fr; gap: 2rem; padding-top: 6rem; }
         }
         @media (max-width: 768px) {
             .services-grid { grid-template-columns: 1fr; }
             .hero-content h1 { font-size: 2.8rem; }
+            .about-left h2 { font-size: 2rem; }
             .section-category-title { font-size: 2.2rem; }
         }
 
@@ -217,6 +244,15 @@
     </div>
 </header>
 
+<section class="entertainment-about">
+    <div class="about-left">
+        <h2 class="metallic-gold">Bespoke Talent & Immersive Curation</h2>
+    </div>
+    <div class="about-right">
+        <p>At Greenhouse Events, we treat entertainment as an elite spatial discipline rather than a background element. Our entertainment showcase serves as a comprehensive portfolio designed to map premium artistic curation perfectly against high-tier corporate galas, intimate private milestones, and luxury hospitality activations across Dubai. Explore our signature modules across Live Music, Live Performances, and high-poise Atmosphere configurations to program your next masterclass experience.</p>
+    </div>
+</section>
+
 <section id="entertainment-portfolio">
 
     <h2 class="section-category-title metallic-gold">Live Music</h2>
@@ -283,6 +319,7 @@
             <p>Complete custom scripted stage events and masterfully directed main-tier visual programs.</p>
             <div class="card-img-space"><img src="ent-shows.jpg" alt="Shows"></div>
         </div>
+        
         <div class="card">
             <h3 class="metallic-gold">Acrobats</h3>
             <p>Breathtaking balancing routines and elite physical artists displaying perfect technical symmetry.</p>
