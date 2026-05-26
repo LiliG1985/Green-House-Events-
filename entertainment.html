@@ -57,18 +57,38 @@
         .nav-whatsapp { color: var(--white-off); text-decoration: none; font-size: 0.75rem; letter-spacing: 1.5px; opacity: 0.8; }
         .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; }
 
-        /* --- HERO HEADER COVER AREA --- */
+        /* --- LUXURY HIGH-PRODUCTION VIDEO HERO COVER AREA --- */
         .hero {
             height: 100vh; 
             position: relative; 
             display: flex; 
             align-items: center; 
             justify-content: center;
-            background: linear-gradient(rgba(2, 22, 18, 0.2) 0%, rgba(2, 22, 18, 0.85) 100%), url('entertainment-header-bg.jpg') no-repeat center top; 
-            background-size: cover; 
             padding: 0 8vw; 
             z-index: 5;
+            overflow: hidden;
             border-bottom: 0.5px solid var(--border);
+            background: var(--bg-deep);
+        }
+        /* Dynamic full-screen video layer container */
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: -2;
+        }
+        /* Gradient protective overlay block over top of video background */
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(2, 22, 18, 0.25) 0%, rgba(2, 22, 18, 0.9) 100%);
+            z-index: -1;
         }
         .hero-content {
             text-align: center;
@@ -146,14 +166,13 @@
         @media (max-width: 1024px) {
             .services-grid { grid-template-columns: repeat(2, 1fr); }
             .entertainment-about { grid-template-columns: 1fr; gap: 2rem; padding-top: 6rem; }
-            .contact-wrap { grid-template-columns: 1fr !fr; gap: 3rem; }
+            .contact-wrap { grid-template-columns: 1fr; gap: 2rem; }
         }
         @media (max-width: 768px) {
             .services-grid { grid-template-columns: 1fr; }
             .hero-content h1 { font-size: 2.8rem; }
             .about-left h2 { font-size: 2rem; }
             .section-category-title { font-size: 2.2rem; }
-            .contact-wrap { grid-template-columns: 1fr; }
         }
 
         .card { 
@@ -205,7 +224,7 @@
         }
         .card:hover .card-img-space img { transform: scale(1.04); }
 
-        /* --- CONTACT SECTION STYLE --- */
+        /* --- CLEAN DARK LUXURY CONTACT ZONE --- */
         #contact-bridge {
             background: #000a08;
             border-top: 0.5px solid var(--border);
@@ -220,23 +239,6 @@
         }
         .c-val { display: block; font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--white-off); text-decoration: none; }
         .c-label { color: var(--gold-solid); font-family: var(--display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
-
-        /* CONTACT RIGHT COLUMN LOGO BLOCK */
-        .contact-logo-box {
-            max-width: 280px;
-            margin-top: 2rem;
-            display: block;
-        }
-        .contact-logo-box img {
-            width: 100%;
-            height: auto;
-            display: block;
-            opacity: 0.55; /* Fainted look inside contact panel */
-            transition: opacity 0.3s ease;
-        }
-        .contact-logo-box img:hover {
-            opacity: 0.85;
-        }
 
         /* --- FOOTER --- */
         footer {
@@ -258,6 +260,11 @@
 </nav>
 
 <header class="hero">
+    <video class="hero-video" autoplay loop muted playsinline poster="index-hero-bg.jpg">
+        <source src="index-hero-bg.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    
     <div class="hero-content">
         <h1 class="metallic-gold">Exclusive Entertainment</h1>
         <p>A comprehensive roster of elite artists, bespoke spatial acts, and world-class live performance productions.</p>
@@ -416,12 +423,8 @@
             <span class="c-label metallic-gold">Email</span><a href="mailto:Lili@greenhouseeventsuae.com" class="c-val">Lili@greenhouseeventsuae.com</a>
             <span class="c-label metallic-gold">Phone</span><a href="tel:+971552537712" class="c-val">+971 55 253 7712</a>
         </div>
-        <div style="opacity: 0.9; display: flex; flex-direction: column; justify-content: flex-end;">
+        <div style="opacity: 0.9; display: flex; align-items: flex-end;">
             <p>Let us program the unforgettable. Reach out directly to our curation and artist placement division to begin building your entertainment blueprint for upcoming Dubai events.</p>
-            
-            <div class="contact-logo-box">
-                <img src="footer-logo.jpg" alt="Greenhouse Events Decorative Placement">
-            </div>
         </div>
     </div>
 </section>
