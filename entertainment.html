@@ -23,7 +23,7 @@
         html { scroll-behavior: smooth; }
         
         body { 
-            background: linear-gradient(180deg, #021612 0%, #04241e 40%, #010a08 100%); 
+            background: #021612; 
             color: var(--white-off); 
             font-family: var(--sans); 
             overflow-x: hidden; 
@@ -57,36 +57,18 @@
         .nav-whatsapp { color: var(--white-off); text-decoration: none; font-size: 0.75rem; letter-spacing: 1.5px; opacity: 0.8; }
         .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; }
 
-        /* --- LUXURY HIGH-PRODUCTION VIDEO HERO COVER AREA --- */
+        /* --- STATIC HERO HEADER COVER AREA --- */
         .hero {
             height: 100vh; 
             position: relative; 
             display: flex; 
             align-items: center; 
             justify-content: center;
+            background: linear-gradient(rgba(2, 22, 18, 0.2) 0%, rgba(2, 22, 18, 0.85) 100%), url('entertainment-header-bg.jpg') no-repeat center top; 
+            background-size: cover; 
             padding: 0 8vw; 
             z-index: 5;
-            overflow: hidden;
             border-bottom: 0.5px solid var(--border);
-            background: var(--bg-deep);
-        }
-        .hero-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-            z-index: -2;
-        }
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(rgba(2, 22, 18, 0.35) 0%, rgba(2, 22, 18, 0.9) 100%);
-            z-index: -1;
         }
         .hero-content {
             text-align: center;
@@ -112,6 +94,8 @@
 
         /* --- BRAND ABOUT INTRODUCTION --- */
         .entertainment-about {
+            position: relative;
+            background: #021612;
             padding: 8rem 8vw 4rem 8vw;
             max-width: 1200px;
             margin: 0 auto;
@@ -119,6 +103,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             border-bottom: 0.5px solid var(--border);
+            z-index: 10;
         }
         .about-left h2 {
             font-family: var(--serif);
@@ -148,17 +133,39 @@
             padding-bottom: 1.5rem;
         }
 
-        /* --- ENTERTAINMENT GRID CONTAINER --- */
+        /* --- IMMERSIVE VIDEO BACKDROP GRID ARCHITECTURE --- */
         #entertainment-portfolio { 
+            position: relative;
             padding: 2rem 8vw 8rem 8vw; 
-            position: relative; 
+            z-index: 5;
+            overflow: hidden;
         } 
+        /* The video layer locked strictly inside and behind the grid wrapper */
+        .portfolio-video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+        /* Gradient protective overlay block across the background video */
+        .portfolio-video-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, #021612 0%, rgba(2, 22, 18, 0.88) 15%, rgba(2, 22, 18, 0.88) 85%, #000a08 100%);
+            z-index: -1;
+        }
+        
         .services-grid { 
+            position: relative;
             display: grid; 
             grid-template-columns: repeat(3, 1fr); 
             gap: 2rem; 
             max-width: 1200px; 
             margin: 0 auto; 
+            z-index: 2;
         }
         
         @media (max-width: 1024px) {
@@ -224,9 +231,11 @@
 
         /* --- CLEAN DARK LUXURY CONTACT ZONE --- */
         #contact-bridge {
+            position: relative;
             background: #000a08;
             border-top: 0.5px solid var(--border);
             padding: 8rem 8vw;
+            z-index: 10;
         }
         .contact-wrap { 
             display: grid; 
@@ -240,10 +249,12 @@
 
         /* --- FOOTER --- */
         footer {
+            position: relative;
             padding: 5rem 5vw;
             text-align: center;
             border-top: 0.5px solid var(--border);
             background: #000000;
+            z-index: 10;
         }
     </style>
 </head>
@@ -258,11 +269,6 @@
 </nav>
 
 <header class="hero">
-    <video class="hero-video" autoplay loop muted playsinline poster="index-hero-bg.jpg">
-        <source src="index-hero-bg.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
-    
     <div class="hero-content">
         <h1 class="metallic-gold">Exclusive Entertainment</h1>
         <p>A comprehensive roster of elite artists, bespoke spatial acts, and world-class live performance productions.</p>
@@ -279,6 +285,10 @@
 </section>
 
 <section id="entertainment-portfolio">
+    <video class="portfolio-video-bg" autoplay loop muted playsinline>
+        <source src="index-hero-bg.mp4" type="video/mp4">
+    </video>
+    <div class="portfolio-video-overlay"></div>
 
     <h2 class="section-category-title metallic-gold">Live Music</h2>
     <div class="services-grid">
@@ -411,7 +421,6 @@
             <div class="card-img-space"><img src="ent-magicians.jpg" alt="Magicians & Illusionists"></div>
         </div>
     </div>
-
 </section>
 
 <section id="contact-bridge">
