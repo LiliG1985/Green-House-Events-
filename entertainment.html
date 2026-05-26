@@ -219,27 +219,27 @@
         .c-val { display: block; font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--white-off); text-decoration: none; }
         .c-label { color: var(--gold-solid); font-family: var(--display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
 
-        /* --- FOOTER MAIN CONTAINER --- */
+        /* --- CLEAN RESOLVED FOOTER CONTAINER --- */
         footer {
-            padding: 5rem 5vw 4rem 5vw;
+            padding: 6rem 5vw 4rem 5vw;
             text-align: center;
             border-top: 0.5px solid var(--border);
             background: #000000;
         }
         .footer-image-wrap {
-            max-width: 150px; /* Perfectly scales the footer image width */
-            margin: 0 auto 2.5rem auto;
+            max-width: 130px; /* Luxury profile constraint */
+            margin: 0 auto 2rem auto;
+            display: block;
         }
         .footer-image-wrap img {
             width: 100%;
             height: auto;
             display: block;
-            opacity: 0.45; /* Clean fainted style, matching luxury minimalism */
-            mix-blend-mode: luminosity;
-            transition: opacity 0.4s ease;
+            opacity: 0.65; /* Elegant transparency instead of layout blending options */
+            transition: opacity 0.3s ease;
         }
         .footer-image-wrap img:hover {
-            opacity: 0.85;
+            opacity: 0.95;
         }
     </style>
 </head>
@@ -420,10 +420,11 @@
 
 <footer>
     <div class="footer-image-wrap">
-        <picture>
-            <source srcset="footer-logo.png" type="image/png">
-            <img src="footer-logo.jpg" alt="Greenhouse Events Branding Footer Element" onerror="this.style.display='none';">
-        </picture>
+        <img src="footer-logo.jpg" alt="Greenhouse Events Logo Element">
     </div>
     <p class="metallic-gold" style="font-family: var(--display); font-size: 1.1rem; letter-spacing: 5px; font-weight: 700; margin-bottom: 0.5rem;">GREENHOUSE EVENTS DUBAI</p>
-    <p style="font-size: 0.75rem; opacity:
+    <p style="font-size: 0.75rem; opacity: 0.4; letter-spacing: 1px;">&copy; 2026 Greenhouse Events UAE. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
