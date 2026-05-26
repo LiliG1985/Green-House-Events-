@@ -146,12 +146,14 @@
         @media (max-width: 1024px) {
             .services-grid { grid-template-columns: repeat(2, 1fr); }
             .entertainment-about { grid-template-columns: 1fr; gap: 2rem; padding-top: 6rem; }
+            .contact-wrap { grid-template-columns: 1fr !fr; gap: 3rem; }
         }
         @media (max-width: 768px) {
             .services-grid { grid-template-columns: 1fr; }
             .hero-content h1 { font-size: 2.8rem; }
             .about-left h2 { font-size: 2rem; }
             .section-category-title { font-size: 2.2rem; }
+            .contact-wrap { grid-template-columns: 1fr; }
         }
 
         .card { 
@@ -203,7 +205,7 @@
         }
         .card:hover .card-img-space img { transform: scale(1.04); }
 
-        /* --- CONTACT --- */
+        /* --- CONTACT SECTION STYLE --- */
         #contact-bridge {
             background: #000a08;
             border-top: 0.5px solid var(--border);
@@ -219,27 +221,29 @@
         .c-val { display: block; font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--white-off); text-decoration: none; }
         .c-label { color: var(--gold-solid); font-family: var(--display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
 
-        /* --- CLEAN RESOLVED FOOTER CONTAINER --- */
-        footer {
-            padding: 6rem 5vw 4rem 5vw;
-            text-align: center;
-            border-top: 0.5px solid var(--border);
-            background: #000000;
-        }
-        .footer-image-wrap {
-            max-width: 130px; /* Luxury profile constraint */
-            margin: 0 auto 2rem auto;
+        /* CONTACT RIGHT COLUMN LOGO BLOCK */
+        .contact-logo-box {
+            max-width: 280px;
+            margin-top: 2rem;
             display: block;
         }
-        .footer-image-wrap img {
+        .contact-logo-box img {
             width: 100%;
             height: auto;
             display: block;
-            opacity: 0.65; /* Elegant transparency instead of layout blending options */
+            opacity: 0.55; /* Fainted look inside contact panel */
             transition: opacity 0.3s ease;
         }
-        .footer-image-wrap img:hover {
-            opacity: 0.95;
+        .contact-logo-box img:hover {
+            opacity: 0.85;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 5rem 5vw;
+            text-align: center;
+            border-top: 0.5px solid var(--border);
+            background: #000000;
         }
     </style>
 </head>
@@ -412,16 +416,17 @@
             <span class="c-label metallic-gold">Email</span><a href="mailto:Lili@greenhouseeventsuae.com" class="c-val">Lili@greenhouseeventsuae.com</a>
             <span class="c-label metallic-gold">Phone</span><a href="tel:+971552537712" class="c-val">+971 55 253 7712</a>
         </div>
-        <div style="opacity: 0.9; display: flex; align-items: flex-end;">
+        <div style="opacity: 0.9; display: flex; flex-direction: column; justify-content: flex-end;">
             <p>Let us program the unforgettable. Reach out directly to our curation and artist placement division to begin building your entertainment blueprint for upcoming Dubai events.</p>
+            
+            <div class="contact-logo-box">
+                <img src="footer-logo.jpg" alt="Greenhouse Events Decorative Placement">
+            </div>
         </div>
     </div>
 </section>
 
 <footer>
-    <div class="footer-image-wrap">
-        <img src="footer-logo.jpg" alt="Greenhouse Events Logo Element">
-    </div>
     <p class="metallic-gold" style="font-family: var(--display); font-size: 1.1rem; letter-spacing: 5px; font-weight: 700; margin-bottom: 0.5rem;">GREENHOUSE EVENTS DUBAI</p>
     <p style="font-size: 0.75rem; opacity: 0.4; letter-spacing: 1px;">&copy; 2026 Greenhouse Events UAE. All Rights Reserved.</p>
 </footer>
