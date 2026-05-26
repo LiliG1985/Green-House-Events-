@@ -64,12 +64,22 @@
         .nav-whatsapp:hover { background: rgba(201, 168, 76, 0.1); transform: translateY(-1px); }
         .nav-whatsapp svg { width: 14px; height: 14px; fill: currentColor; }
 
-        /* --- INNER HERO BANNER --- */
+        /* --- INNER HERO BANNER WITH STUNNING LIVING WALL GRAPHIC --- */
         .inner-hero {
-            height: 45vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; border-bottom: 0.5px solid var(--border); padding-top: 80px; position: relative; background: #050d0c;
+            height: 65vh; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            border-bottom: 0.5px solid var(--border); 
+            padding-top: 80px; 
+            position: relative; 
+            background: linear-gradient(rgba(5, 13, 12, 0.4) 0%, rgba(5, 13, 12, 0.85) 100%), url('transform-header.jpg') no-repeat center center;
+            background-size: cover;
         }
-        .inner-hero h1 { font-family: var(--serif); font-size: 3.5rem; font-weight: 300; margin-bottom: 0.5rem; }
-        .inner-hero p { font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.6; color: var(--gold-solid); }
+        .inner-hero h1 { font-family: var(--serif); font-size: 3.5rem; font-weight: 300; margin-bottom: 0.5rem; text-shadow: 0 4px 12px rgba(0,0,0,0.6); }
+        .inner-hero p { font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.9; color: var(--gold-solid); font-weight: 500; text-shadow: 0 2px 8px rgba(0,0,0,0.8); }
 
         /* --- SERVICE SHOWCASE SECTIONS --- */
         .showcase-container { max-width: 1200px; margin: 0 auto; padding: 6rem 5vw; }
