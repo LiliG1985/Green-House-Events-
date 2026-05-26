@@ -42,7 +42,7 @@
         }
         @keyframes shine { to { background-position: 200% center; } }
 
-        /* --- NAVIGATION --- */
+        /* --- UPDATED FULL-WIDTH NAVIGATION --- */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             padding: 1.2rem 5vw; display: flex; justify-content: space-between; align-items: center;
@@ -54,7 +54,7 @@
         .logo-wrap { text-decoration: none; display: inline-block; position: relative; padding-bottom: 4px; }
         .nav-logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; letter-spacing: 3px; display: inline-block; white-space: nowrap; }
         
-        .nav-actions { display: flex; align-items: center; gap: 1rem; }
+        .nav-actions { display: flex; align-items: center; gap: 1.5rem; }
         .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; transition: transform 0.3s ease; }
         .nav-cta:hover { transform: translateY(-1px); }
 
@@ -64,22 +64,23 @@
         .nav-whatsapp:hover { background: rgba(201, 168, 76, 0.1); transform: translateY(-1px); }
         .nav-whatsapp svg { width: 14px; height: 14px; fill: currentColor; }
 
-        /* --- INNER HERO BANNER WITH STUNNING LIVING WALL GRAPHIC --- */
+        /* --- WIDENED SCREEN-FIT HERO COVER --- */
         .inner-hero {
-            height: 65vh; 
+            height: 100vh; 
+            width: 100%;
             display: flex; 
             flex-direction: column; 
             align-items: center; 
             justify-content: center; 
             text-align: center; 
             border-bottom: 0.5px solid var(--border); 
-            padding-top: 80px; 
+            padding: 0 8vw; 
             position: relative; 
-            background: linear-gradient(rgba(5, 13, 12, 0.4) 0%, rgba(5, 13, 12, 0.85) 100%), url('transform-header.jpg') no-repeat center center;
+            background: linear-gradient(rgba(5, 13, 12, 0.35) 0%, rgba(5, 13, 12, 0.9) 100%), url('transform-header.jpg') no-repeat center center;
             background-size: cover;
         }
-        .inner-hero h1 { font-family: var(--serif); font-size: 3.5rem; font-weight: 300; margin-bottom: 0.5rem; text-shadow: 0 4px 12px rgba(0,0,0,0.6); }
-        .inner-hero p { font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.9; color: var(--gold-solid); font-weight: 500; text-shadow: 0 2px 8px rgba(0,0,0,0.8); }
+        .inner-hero h1 { font-family: var(--serif); font-size: 4.5rem; font-weight: 300; margin-bottom: 1.5rem; letter-spacing: 3px; line-height: 1.15; text-shadow: 0 4px 12px rgba(0,0,0,0.6); }
+        .inner-hero p { font-size: 1.3rem; letter-spacing: 1px; text-transform: none; opacity: 0.95; color: var(--white-off); font-weight: 300; text-shadow: 0 2px 8px rgba(0,0,0,0.8); max-width: 750px; margin: 0 auto; }
 
         /* --- SERVICE SHOWCASE SECTIONS --- */
         .showcase-container { max-width: 1200px; margin: 0 auto; padding: 6rem 5vw; }
@@ -109,9 +110,8 @@
         .footer-buttons { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem; }
 
         @media (max-width: 900px) {
-            nav { flex-direction: column; gap: 1rem; padding: 1rem 5vw; }
-            .nav-actions { width: 100%; justify-content: center; }
-            .inner-hero h1 { font-size: 2.5rem; }
+            nav { padding: 1.2rem 5vw; }
+            .inner-hero h1 { font-size: 2.8rem; }
             .showcase-row { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 4rem; }
             .showcase-row:nth-child(even) { direction: ltr; }
             .footer-buttons { flex-direction: column; align-items: center; }
