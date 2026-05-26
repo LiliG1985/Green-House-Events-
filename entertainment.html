@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Exclusive Entertainment — Greenhouse Events</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght=0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-deep: #021612; 
@@ -92,34 +92,31 @@
             margin: 0 auto;
         }
 
-        /* --- CONTINUOUS VIDEO BACKDROP CONTAINER (ABOUT + PORTFOLIO) --- */
-        .video-content-wrapper {
-            position: relative;
-            width: 100%;
-            z-index: 5;
-            overflow: hidden;
-        }
-
-        /* Video spans the background of this entire combined zone perfectly */
+        /* --- THE FIXED FULLSCREEN ECOSYSTEM BACKGROUND --- */
+        /* By stripping away section-specific wraps, the video sits on the screen exactly as it does on the index main page */
         .portfolio-video-bg {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             object-fit: cover;
             z-index: -2;
+            pointer-events: none;
         }
         
+        /* The dark green background is removed here. Only a clean gradient overlays the MP4 directly */
         .portfolio-video-overlay {
-            position: absolute;
+            position: fixed;
             inset: 0;
-            background: linear-gradient(180deg, #021612 0%, rgba(2, 22, 18, 0.92) 8%, rgba(2, 22, 18, 0.92) 92%, #000a08 100%);
+            background: linear-gradient(180deg, rgba(2, 22, 18, 0.4) 0%, rgba(2, 22, 18, 0.85) 50%, rgba(0, 10, 8, 0.95) 100%);
             z-index: -1;
+            pointer-events: none;
         }
 
         /* --- BRAND ABOUT INTRODUCTION --- */
         .entertainment-about {
+            position: relative;
             padding: 8rem 8vw 4rem 8vw;
             max-width: 1200px;
             margin: 0 auto;
@@ -127,6 +124,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             border-bottom: 0.5px solid var(--border);
+            z-index: 2;
         }
         .about-left h2 {
             font-family: var(--serif);
@@ -160,6 +158,7 @@
         #entertainment-portfolio { 
             position: relative;
             padding: 2rem 8vw 8rem 8vw; 
+            z-index: 2;
         } 
         
         .services-grid { 
@@ -279,155 +278,154 @@
     </div>
 </header>
 
-<div class="video-content-wrapper">
-    <video class="portfolio-video-bg" autoplay loop muted playsinline>
-        <source src="index-hero-bg.mp4" type="video/mp4">
-    </video>
-    <div class="portfolio-video-overlay"></div>
+<video class="portfolio-video-bg" autoplay loop muted playsinline>
+    <source src="index-hero-bg.mp4" type="video/mp4">
+</video>
+<div class="portfolio-video-overlay"></div>
 
-    <section class="entertainment-about">
-        <div class="about-left">
-            <h2 class="metallic-gold">Bespoke Talent & Immersive Curation</h2>
+<section class="entertainment-about">
+    <div class="about-left">
+        <h2 class="metallic-gold">Bespoke Talent & Immersive Curation</h2>
+    </div>
+    <div class="about-right">
+        <p>At Greenhouse Events, we treat entertainment as an elite spatial discipline rather than a background element. Our entertainment showcase serves as a comprehensive portfolio designed to map premium artistic curation perfectly against high-tier corporate galas, intimate private milestones, and luxury hospitality activations across Dubai. Explore our signature modules across Live Music, Live Performances, and high-poise Atmosphere configurations to program your next masterclass experience.</p>
+    </div>
+</section>
+
+<section id="entertainment-portfolio">
+    <h2 class="section-category-title metallic-gold">Live Music</h2>
+    <div class="services-grid">
+        
+        <div class="card">
+            <h3 class="metallic-gold">DJs</h3>
+            <p>Premium open-format sound curation framing the absolute ideal mood lines for upscale gatherings.</p>
+            <div class="card-img-space"><img src="ent-djs.jpg" alt="DJs"></div>
         </div>
-        <div class="about-right">
-            <p>At Greenhouse Events, we treat entertainment as an elite spatial discipline rather than a background element. Our entertainment showcase serves as a comprehensive portfolio designed to map premium artistic curation perfectly against high-tier corporate galas, intimate private milestones, and luxury hospitality activations across Dubai. Explore our signature modules across Live Music, Live Performances, and high-poise Atmosphere configurations to program your next masterclass experience.</p>
+        
+        <div class="card">
+            <h3 class="metallic-gold">Singers</h3>
+            <p>World-class live vocalists delivering profound artistic presence across diverse repertoires.</p>
+            <div class="card-img-space"><img src="ent-singers.jpg" alt="Singers"></div>
         </div>
-    </section>
-
-    <section id="entertainment-portfolio">
-        <h2 class="section-category-title metallic-gold">Live Music</h2>
-        <div class="services-grid">
-            
-            <div class="card">
-                <h3 class="metallic-gold">DJs</h3>
-                <p>Premium open-format sound curation framing the absolute ideal mood lines for upscale gatherings.</p>
-                <div class="card-img-space"><img src="ent-djs.jpg" alt="DJs"></div>
-            </div>
-            
-            <div class="card">
-                <h3 class="metallic-gold">Singers</h3>
-                <p>World-class live vocalists delivering profound artistic presence across diverse repertoires.</p>
-                <div class="card-img-space"><img src="ent-singers.jpg" alt="Singers"></div>
-            </div>
-            
-            <div class="card">
-                <h3 class="metallic-gold">Bands</h3>
-                <p>Full-scale live musical ensembles performing curated orchestrations for high-energy milestones.</p>
-                <div class="card-img-space"><img src="ent-bands.jpg" alt="Bands"></div>
-            </div>
-            
-            <div class="card">
-                <h3 class="metallic-gold">Instrumental</h3>
-                <p>Sophisticated live instrumentalists featuring elegant soloists for an unmatched ambient texture.</p>
-                <div class="card-img-space"><img src="ent-instrumental.jpg" alt="Instrumental"></div>
-            </div>
-            
-            <div class="card">
-                <h3 class="metallic-gold">Arabic</h3>
-                <p>Traditional and contemporary regional musicians bringing authentic oriental melodies to local events.</p>
-                <div class="card-img-space"><img src="ent-arabic.jpg" alt="Arabic"></div>
-            </div>
+        
+        <div class="card">
+            <h3 class="metallic-gold">Bands</h3>
+            <p>Full-scale live musical ensembles performing curated orchestrations for high-energy milestones.</p>
+            <div class="card-img-space"><img src="ent-bands.jpg" alt="Bands"></div>
         </div>
+        
+        <div class="card">
+            <h3 class="metallic-gold">Instrumental</h3>
+            <p>Sophisticated live instrumentalists featuring elegant soloists for an unmatched ambient texture.</p>
+            <div class="card-img-space"><img src="ent-instrumental.jpg" alt="Instrumental"></div>
+        </div>
+        
+        <div class="card">
+            <h3 class="metallic-gold">Arabic</h3>
+            <p>Traditional and contemporary regional musicians bringing authentic oriental melodies to local events.</p>
+            <div class="card-img-space"><img src="ent-arabic.jpg" alt="Arabic"></div>
+        </div>
+    </div>
 
-        <h2 class="section-category-title metallic-gold">Live Performances & Shows</h2>
-        <div class="services-grid">
-            
-            <div class="card">
-                <h3 class="metallic-gold">Specialists Acts</h3>
-                <p>Highly specialized variety talents and conceptual performers introducing unique visual elements.</p>
-                <div class="card-img-space"><img src="ent-specialist-acts.jpg" alt="Specialists Acts"></div>
-            </div>
-            
-            <div class="card">
-                <h3 class="metallic-gold">Circus Acts</h3>
-                <p>Dazzling high-skill circus arts choreographed carefully within your event architecture.</p>
-                <div class="card-img-space"><img src="ent-circus-acts.jpg" alt="Circus Acts"></div>
-            </div>
-            
-            <div class="card">
-                <h3 class="metallic-gold">Roaming Acts</h3>
-                <p>Immersive, interactive structural walkabout talent seamlessly engaging your guests.</p>
-                <div class="card-img-space"><img src="ent-roaming-acts.jpg" alt="Roaming Acts"></div>
-            </div>
-            
-            <div class="card">
-                <h3 class="metallic-gold">Dancers</h3>
-                <p>Elite professional dance troupes and background formations tailored precisely to theme.</p>
-                <div class="card-img-space"><img src="ent-dancers.jpg" alt="Dancers"></div>
-            </div>
-            
-            <div class="card">
-                <h3 class="metallic-gold">Shows</h3>
-                <p>Complete custom scripted stage events and masterfully directed main-tier visual programs.</p>
-                <div class="card-img-space"><img src="ent-shows.jpg" alt="Shows"></div>
-            </div>
-            
-            <div class="card">
-                <h3 class="metallic-gold">Acrobats</h3>
-                <p>Breathtaking balancing routines and elite physical artists displaying perfect technical symmetry.</p>
-                <div class="card-img-space"><img src="ent-acrobats.jpg" alt="Acrobats"></div>
-            </div>
-
-            <div class="card">
-                <h3 class="metallic-gold">Stationed Acts</h3>
-                <p>Bespoke living statues and thematic human installations framing greeting zones uniquely.</p>
-                <div class="card-img-space"><img src="ent-stationary-acts.jpg" alt="Stationed Acts"></div>
-            </div>
-
-            <div class="card">
-                <h3 class="metallic-gold">Fire & L.E.D Shows</h3>
-                <p>High-impact, illuminated specialty performance blocks and dramatic synchronized object engineering.</p>
-                <div class="card-img-space"><img src="ent-fire-led.jpg" alt="Fire & L.E.D Shows"></div>
-            </div>
-
-            <div class="card">
-                <h3 class="metallic-gold">Children's</h3>
-                <p>Imaginative luxury kids interactive installations and whimsical custom fantasy layouts.</p>
-                <div class="card-img-space"><img src="ent-childrens.jpg" alt="Children's"></div>
-            </div>
+    <h2 class="section-category-title metallic-gold">Live Performances & Shows</h2>
+    <div class="services-grid">
+        
+        <div class="card">
+            <h3 class="metallic-gold">Specialists Acts</h3>
+            <p>Highly specialized variety talents and conceptual performers introducing unique visual elements.</p>
+            <div class="card-img-space"><img src="ent-specialist-acts.jpg" alt="Specialists Acts"></div>
+        </div>
+        
+        <div class="card">
+            <h3 class="metallic-gold">Circus Acts</h3>
+            <p>Dazzling high-skill circus arts choreographed carefully within your event architecture.</p>
+            <div class="card-img-space"><img src="ent-circus-acts.jpg" alt="Circus Acts"></div>
+        </div>
+        
+        <div class="card">
+            <h3 class="metallic-gold">Roaming Acts</h3>
+            <p>Immersive, interactive structural walkabout talent seamlessly engaging your guests.</p>
+            <div class="card-img-space"><img src="ent-roaming-acts.jpg" alt="Roaming Acts"></div>
+        </div>
+        
+        <div class="card">
+            <h3 class="metallic-gold">Dancers</h3>
+            <p>Elite professional dance troupes and background formations tailored precisely to theme.</p>
+            <div class="card-img-space"><img src="ent-dancers.jpg" alt="Dancers"></div>
+        </div>
+        
+        <div class="card">
+            <h3 class="metallic-gold">Shows</h3>
+            <p>Complete custom scripted stage events and masterfully directed main-tier visual programs.</p>
+            <div class="card-img-space"><img src="ent-shows.jpg" alt="Shows"></div>
+        </div>
+        
+        <div class="card">
+            <h3 class="metallic-gold">Acrobats</h3>
+            <p>Breathtaking balancing routines and elite physical artists displaying perfect technical symmetry.</p>
+            <div class="card-img-space"><img src="ent-acrobats.jpg" alt="Acrobats"></div>
         </div>
 
-        <h2 class="section-category-title metallic-gold">Atmosphere & Media</h2>
-        <div class="services-grid">
-            
-            <div class="card">
-                <h3 class="metallic-gold">Hostesses</h3>
-                <p>High-fashion representatives managing guest experience with absolute poise and elegance.</p>
-                <div class="card-img-space"><img src="ent-hostesses.jpg" alt="Hostesses"></div>
-            </div>
-            
-            <div class="card">
-                <h3 class="metallic-gold">MC / Host / Comedian</h3>
-                <p>Articulate presenters and charismatic masters of ceremonies driving the programming timeline.</p>
-                <div class="card-img-space"><img src="ent-mc-hosts.jpg" alt="MC / Host / Comedian"></div>
-            </div>
-            
-            <div class="card">
-                <h3 class="metallic-gold">Live Art</h3>
-                <p>Dynamic experimental art forms adapting to the room—ranging from high-impact speed painting and sand storytelling to completely bespoke, unscripted living creations.</p>
-                <div class="card-img-space"><img src="ent-live-art.jpg" alt="Live Art"></div>
-            </div>
-
-            <div class="card">
-                <h3 class="metallic-gold">Photographers & Videographers</h3>
-                <p>Elite visual media teams capturing production elements and milestones with high-art precision.</p>
-                <div class="card-img-space"><img src="ent-media-team.jpg" alt="Photographers & Videographers"></div>
-            </div>
-
-            <div class="card">
-                <h3 class="metallic-gold">Photo Booths</h3>
-                <p>Luxury interactive photo installations and bespoke custom layouts for experiential take-aways.</p>
-                <div class="card-img-space"><img src="ent-photobooths.jpg" alt="Photo Booths"></div>
-            </div>
-            
-            <div class="card">
-                <h3 class="metallic-gold">Magicians & Illusionists</h3>
-                <p>Elite sleight-of-hand operators and fascinating close-up micro-magic setups for guests.</p>
-                <div class="card-img-space"><img src="ent-magicians.jpg" alt="Magicians & Illusionists"></div>
-            </div>
+        <div class="card">
+            <h3 class="metallic-gold">Stationed Acts</h3>
+            <p>Bespoke living statues and thematic human installations framing greeting zones uniquely.</p>
+            <div class="card-img-space"><img src="ent-stationary-acts.jpg" alt="Stationed Acts"></div>
         </div>
-    </section>
-</div>
+
+        <div class="card">
+            <h3 class="metallic-gold">Fire & L.E.D Shows</h3>
+            <p>High-impact, illuminated specialty performance blocks and dramatic synchronized object engineering.</p>
+            <div class="card-img-space"><img src="ent-fire-led.jpg" alt="Fire & L.E.D Shows"></div>
+        </div>
+
+        <div class="card">
+            <h3 class="metallic-gold">Children's</h3>
+            <p>Imaginative luxury kids interactive installations and whimsical custom fantasy layouts.</p>
+            <div class="card-img-space"><img src="ent-childrens.jpg" alt="Children's"></div>
+        </div>
+    </div>
+
+    <h2 class="section-category-title metallic-gold">Atmosphere & Media</h2>
+    <div class="services-grid">
+        
+        <div class="card">
+            <h3 class="metallic-gold">Hostesses</h3>
+            <p>High-fashion representatives managing guest experience with absolute poise and elegance.</p>
+            <div class="card-img-space"><img src="ent-hostesses.jpg" alt="Hostesses"></div>
+        </div>
+        
+        <div class="card">
+            <h3 class="metallic-gold">MC / Host / Comedian</h3>
+            <p>Articulate presenters and charismatic masters of ceremonies driving the programming timeline.</p>
+            <div class="card-img-space"><img src="ent-mc-hosts.jpg" alt="MC / Host / Comedian"></div>
+        </div>
+        
+        <div class="card">
+            <h3 class="metallic-gold">Live Art</h3>
+            <p>Dynamic experimental art forms adapting to the room—ranging from high-impact speed painting and sand storytelling to completely bespoke, unscripted living creations.</p>
+            <div class="card-img-space"><img src="ent-live-art.jpg" alt="Live Art"></div>
+        </div>
+
+        <div class="card">
+            <h3 class="metallic-gold">Photographers & Videographers</h3>
+            <p>Elite visual media teams capturing production elements and milestones with high-art precision.</p>
+            <div class="card-img-space"><img src="ent-media-team.jpg" alt="Photographers & Videographers"></div>
+        </div>
+
+        <div class="card">
+            <h3 class="metallic-gold">Photo Booths</h3>
+            <p>Luxury interactive photo installations and bespoke custom layouts for experiential take-aways.</p>
+            <div class="card-img-space"><img src="ent-photobooths.jpg" alt="Photo Booths"></div>
+        </div>
+        
+        <div class="card">
+            <h3 class="metallic-gold">Magicians & Illusionists</h3>
+            <p>Elite sleight-of-hand operators and fascinating close-up micro-magic setups for guests.</p>
+            <div class="card-img-space"><img src="ent-magicians.jpg" alt="Magicians & Illusionists"></div>
+        </div>
+    </div>
+</section>
+
 <section id="contact-bridge">
     <div class="contact-wrap">
         <div>
