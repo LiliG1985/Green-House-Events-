@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Exclusive Entertainment — Greenhouse Events</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght=0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-deep: #021612; 
@@ -57,7 +57,7 @@
         .nav-whatsapp { color: var(--white-off); text-decoration: none; font-size: 0.75rem; letter-spacing: 1.5px; opacity: 0.8; }
         .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; }
 
-        /* --- SOLID COVER HERO HEADER (BLOCKS OUT THE MP4 COMPLETELY) --- */
+        /* --- HEADER ZONE (SOLID BACKDROP OVERRIDES THE MP4 CONTAINER) --- */
         .hero {
             height: 100vh; 
             position: relative; 
@@ -67,7 +67,7 @@
             background: linear-gradient(rgba(2, 22, 18, 0.2) 0%, #021612 100%), url('entertainment-header-bg.jpg') no-repeat center top; 
             background-size: cover; 
             padding: 0 8vw; 
-            z-index: 20; /* High index pops it completely over fixed layout rules */
+            z-index: 20; 
             border-bottom: 0.5px solid var(--border);
         }
         .hero-content {
@@ -92,44 +92,45 @@
             margin: 0 auto;
         }
 
-        /* --- GLOBAL MP4 BACKDROP (SITS PERFECTLY SCALED AND IN THE BACKGROUND) --- */
-        .global-portfolio-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            z-index: -2;
-            pointer-events: none;
-        }
-        .global-portfolio-overlay {
-            position: fixed;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(2, 22, 18, 0.4) 0%, rgba(2, 22, 18, 0.9) 50%, rgba(2, 22, 18, 0.95) 100%);
-            z-index: -1;
-            pointer-events: none;
+        /* --- THE MASTER FLOW WRAPPER FOR BOTH ABOUT & PORTFOLIO GRIDS --- */
+        /* This wrapper handles the video layout exactly how index handles it, letting elements pass over natively */
+        .dynamic-video-flow-container {
+            position: relative;
+            width: 100%;
+            z-index: 10;
+            overflow: hidden;
+            background: transparent;
         }
 
-        /* --- MIDDLE CONTINUOUS TRANSPARENT FLOW ZONE --- */
-        .main-scrolling-content-box {
-            position: relative;
-            background: transparent;
-            z-index: 10;
+        /* Video element tracking rules mapped directly to index.html logic */
+        .dynamic-flow-video {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+        
+        .dynamic-flow-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(2, 22, 18, 0.3) 0%, rgba(2, 22, 18, 0.88) 30%, rgba(0, 10, 8, 0.96) 100%);
+            z-index: -1;
         }
 
         /* --- BRAND ABOUT INTRODUCTION --- */
         .entertainment-about {
             position: relative;
-            padding: 8rem 8vw 4rem 8vw;
+            padding: 10rem 8vw 4rem 8vw;
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             border-bottom: 0.5px solid var(--border);
-            z-index: 10;
+            z-index: 12;
         }
         .about-left h2 {
             font-family: var(--serif);
@@ -163,7 +164,7 @@
         #entertainment-portfolio { 
             position: relative;
             padding: 2rem 8vw 8rem 8vw; 
-            z-index: 10;
+            z-index: 12;
         } 
         
         .services-grid { 
@@ -173,7 +174,7 @@
             gap: 2rem; 
             max-width: 1200px; 
             margin: 0 auto; 
-            z-index: 12;
+            z-index: 15;
         }
         
         @media (max-width: 1024px) {
@@ -237,13 +238,13 @@
         }
         .card:hover .card-img-space img { transform: scale(1.04); }
 
-        /* --- SOLID DARK CONTACT BLOCK (FORCES VIDEO OUT OF EYE LINE) --- */
+        /* --- CONTACT BLOCK ZONE (SOLID LAYER COVERS FLOW STACK CLEANLY) --- */
         #contact-bridge {
             background: #000a08;
             border-top: 0.5px solid var(--border);
             padding: 8rem 8vw;
             position: relative;
-            z-index: 20; /* High index covers background panels clean */
+            z-index: 20; 
         }
         .contact-wrap { 
             display: grid; 
@@ -283,12 +284,12 @@
     </div>
 </header>
 
-<video class="global-portfolio-video" autoplay loop muted playsinline>
-    <source src="index-hero-bg.mp4" type="video/mp4">
-</video>
-<div class="global-portfolio-overlay"></div>
-
-<div class="main-scrolling-content-box">
+<div class="dynamic-video-flow-container">
+    
+    <video class="dynamic-flow-video" autoplay loop muted playsinline>
+        <source src="index-hero-bg.mp4" type="video/mp4">
+    </video>
+    <div class="dynamic-flow-overlay"></div>
 
     <section class="entertainment-about">
         <div class="about-left">
