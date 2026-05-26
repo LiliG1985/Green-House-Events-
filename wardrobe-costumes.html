@@ -42,13 +42,13 @@
         }
         @keyframes shine { to { background-position: 200% center; } }
 
-        /* --- THE METALLIC GOLD LINE STYLE --- */
+        /* --- IMMACULATE SOLID GOLD THIN DIVIDER LINE --- */
         .gold-line {
-            width: 80px;
-            height: 1.5px;
-            background: var(--gold-metallic);
-            margin: 0.8rem 0 1.8rem 0;
-            opacity: 0.85;
+            width: 90px;
+            height: 1px;
+            background-color: var(--gold-solid);
+            margin: 1rem 0 2rem 0;
+            display: block;
         }
 
         /* --- NAVIGATION --- */
@@ -73,7 +73,7 @@
         .nav-whatsapp:hover { background: rgba(201, 168, 76, 0.1); transform: translateY(-1px); }
         .nav-whatsapp svg { width: 14px; height: 14px; fill: currentColor; }
 
-        /* --- LUXURY HERO COVER HEADER --- */
+        /* --- HERO COVER TITLE AREA --- */
         .inner-hero {
             height: 100vh; 
             width: 100%;
@@ -91,7 +91,7 @@
         .inner-hero h1 { font-family: var(--serif); font-size: 4.5rem; font-weight: 300; margin-bottom: 1.5rem; letter-spacing: 3px; line-height: 1.15; text-shadow: 0 4px 12px rgba(0,0,0,0.6); }
         .inner-hero p { font-size: 1.3rem; letter-spacing: 1px; text-transform: none; opacity: 0.95; color: var(--white-off); font-weight: 300; text-shadow: 0 2px 8px rgba(0,0,0,0.8); max-width: 800px; margin: 0 auto; }
 
-        /* --- SERVICE SHOWCASE SECTIONS --- */
+        /* --- SHOWCASE PANEL ROW GRAPHICS --- */
         .showcase-container { max-width: 1200px; margin: 0 auto; padding: 6rem 5vw; }
         
         .showcase-row {
@@ -100,19 +100,15 @@
         .showcase-row:nth-child(even) { direction: rtl; }
         .showcase-row:nth-child(even) .showcase-text { direction: ltr; }
 
-        .showcase-text h2 { font-family: var(--serif); font-size: 2.2rem; margin-bottom: 0.5rem; font-weight: 400; }
-        .showcase-text p { opacity: 0.8; font-size: 0.95rem; margin-bottom: 2rem; line-height: 1.7; }
-        
-        .feature-tags { display: flex; flex-wrap: wrap; gap: 0.8rem; }
-        .tag { border: 0.5px solid var(--border); padding: 0.4rem 1rem; font-size: 0.75rem; letter-spacing: 1px; background: rgba(255,255,255,0.03); color: var(--white-off); }
+        .showcase-text h2 { font-family: var(--serif); font-size: 2.2rem; margin-bottom: 0px; font-weight: 400; }
+        .showcase-text p { opacity: 0.8; font-size: 0.95rem; margin-bottom: 0px; line-height: 1.7; }
 
-        /* --- IMAGE STRUCTURAL BLOCKS --- */
         .showcase-img-space {
             width: 100%; aspect-ratio: 16/11; background: rgba(5, 13, 12, 0.6); border: 0.5px solid rgba(201, 168, 76, 0.3); overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
         .showcase-img-space img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 2; }
 
-        /* --- FOOTER INLINE CONNECTION --- */
+        /* --- CONNECTOR CONCIERGE FOOTER --- */
         #contact-footer { background: #000; border-top: 0.5px solid var(--gold-solid); padding: 6rem 5vw; text-align: center; }
         .footer-cta-wrap { max-width: 800px; margin: 0 auto; }
         .footer-cta-wrap h3 { font-family: var(--serif); font-size: 2.5rem; margin-bottom: 1.5rem; font-weight: 300; }
@@ -142,9 +138,6 @@
     </div>
 </nav>
 
-<nav>
-    </nav>
-
 <header class="inner-hero">
     <h1 class="metallic-gold">Bespoke Wardrobe & Costume Design</h1>
     <p>High End Theatrical Tailoring, Elite Costume Hire & Professional Hair and Makeup Curation</p>
@@ -157,12 +150,6 @@
             <h2 class="metallic-gold">Costume Hire</h2>
             <div class="gold-line"></div>
             <p>Greenhouse Events partners directly with Dubais leading costume designers and elite costume hire networks to bring you the absolute pinnacle of premium character creations. Whether sourcing vintage high fashion elements, grand structural show sets, or specialty performance attire, our extensive partner network guarantees unmatched access to world class wardrobe collections tailored perfectly for high profile entertainment footprint requirements.</p>
-            <div class="feature-tags">
-                <span class="tag">Premium Agency Networks</span>
-                <span class="tag">Luxury Wardrobe Sourcing</span>
-                <span class="tag">Dubai Design Partners</span>
-                <span class="tag">Elite Performance Attire</span>
-            </div>
         </div>
         <div class="showcase-img-space"><img src="wardrobe1.jpg" alt="Costume Hire"></div>
     </div>
@@ -171,12 +158,6 @@
             <h2 class="metallic-gold">Tailoring</h2>
             <div class="gold-line"></div>
             <p>When off the rack collections fall short, our dedicated atelier network steps in. We collaborate closely with premier bespoke tailors and advanced pattern makers across Dubai to sketch, draft, and assemble completely customized performance garments. From high tech reflective fabrics and complex inner construction frameworks to hand stitched embellishments, every garment is expertly engineered for comfort, agility, and massive visual impact under intense stage lighting configurations.</p>
-            <div class="feature-tags">
-                <span class="tag">Custom Atelier Curation</span>
-                <span class="tag">Bespoke Pattern Engineering</span>
-                <span class="tag">Premium Hand Stitching</span>
-                <span class="tag">Stage Framework Design</span>
-            </div>
         </div>
         <div class="showcase-img-space"><img src="wardrobe2.jpg" alt="Tailoring"></div>
     </div>
@@ -186,12 +167,6 @@
             <h2 class="metallic-gold">Hair and Makeup</h2>
             <div class="gold-line"></div>
             <p>Complete entertainment characterization requires absolute aesthetic perfection. Greenhouse Events brings together Dubais premier editorial hair stylists and avant garde makeup artists to deliver flawless look execution backstage. Utilizing ultra high definition, camera ready application techniques, our elite beauty teams specialize in intricate theatrical cosmetics, prosthetics coordination, and high glam styling engineered to look immaculate under blinding spotlights and close up production lenses.</p>
-            <div class="feature-tags">
-                <span class="tag">Editorial Hair Styling</span>
-                <span class="tag">High Definition Cosmetics</span>
-                <span class="tag">Backstage Beauty Curation</span>
-                <span class="tag">Avant Garde Artistry</span>
-            </div>
         </div>
         <div class="showcase-img-space"><img src="wardrobe3.jpg" alt="Hair and Makeup"></div>
     </div>
