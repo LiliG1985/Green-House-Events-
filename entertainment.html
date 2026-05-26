@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Exclusive Entertainment — Greenhouse Events</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght=0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-deep: #021612; 
@@ -92,53 +92,57 @@
             margin: 0 auto;
         }
 
-        /* --- THE FIXED FULLSCREEN ECOSYSTEM BACKGROUND --- */
-        /* By stripping away section-specific wraps, the video sits on the screen exactly as it does on the index main page */
-        .portfolio-video-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            z-index: -2;
-            pointer-events: none;
-        }
-        
-        /* The dark green background is removed here. Only a clean gradient overlays the MP4 directly */
-        .portfolio-video-overlay {
-            position: fixed;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(2, 22, 18, 0.4) 0%, rgba(2, 22, 18, 0.85) 50%, rgba(0, 10, 8, 0.95) 100%);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* --- BRAND ABOUT INTRODUCTION --- */
+        /* --- NATURAL SCROLLING ABOUT SECTION HOUSING THE MP4 (MATCHES INDEX LAYOUT) --- */
         .entertainment-about {
             position: relative;
-            padding: 8rem 8vw 4rem 8vw;
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: 10rem 8vw;
+            width: 100%;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             border-bottom: 0.5px solid var(--border);
             z-index: 2;
+            overflow: hidden;
         }
+        
+        /* Video behaves as a normal page element, scaling beautifully and moving when you scroll */
+        .about-video-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: -2;
+        }
+        
+        .about-video-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(2, 22, 18, 0.4) 0%, rgba(2, 22, 18, 0.85) 100%);
+            z-index: -1;
+        }
+
         .about-left h2 {
             font-family: var(--serif);
-            font-size: 2.8rem;
+            font-size: 3.5rem;
             font-weight: 300;
-            line-height: 1.2;
+            line-height: 1.15;
             letter-spacing: 1px;
+            position: relative;
+            z-index: 5;
         }
         .about-right p {
-            font-size: 1.05rem;
+            font-size: 1.15rem;
             font-weight: 300;
             line-height: 1.8;
             opacity: 0.85;
             color: var(--white-off);
+            position: relative;
+            z-index: 5;
         }
 
         /* --- SECTION HEADINGS --- */
@@ -154,11 +158,12 @@
             padding-bottom: 1.5rem;
         }
 
-        /* --- THE PORTFOLIO BLOCK --- */
+        /* --- THE PORTFOLIO BLOCK (CLEAN BACKDROP TRANSITION FROM VIDEO ABOVE) --- */
         #entertainment-portfolio { 
             position: relative;
             padding: 2rem 8vw 8rem 8vw; 
             z-index: 2;
+            background: linear-gradient(180deg, #021612 0%, #04241e 40%, #010a08 100%);
         } 
         
         .services-grid { 
@@ -173,13 +178,13 @@
         
         @media (max-width: 1024px) {
             .services-grid { grid-template-columns: repeat(2, 1fr); }
-            .entertainment-about { grid-template-columns: 1fr; gap: 2rem; padding-top: 6rem; }
+            .entertainment-about { grid-template-columns: 1fr; gap: 3rem; padding: 6rem 8vw; }
+            .about-left h2 { font-size: 2.8rem; }
             .contact-wrap { grid-template-columns: 1fr; gap: 2rem; }
         }
         @media (max-width: 768px) {
             .services-grid { grid-template-columns: 1fr; }
             .hero-content h1 { font-size: 2.8rem; }
-            .about-left h2 { font-size: 2rem; }
             .section-category-title { font-size: 2.2rem; }
         }
 
@@ -278,12 +283,12 @@
     </div>
 </header>
 
-<video class="portfolio-video-bg" autoplay loop muted playsinline>
-    <source src="index-hero-bg.mp4" type="video/mp4">
-</video>
-<div class="portfolio-video-overlay"></div>
-
 <section class="entertainment-about">
+    <video class="about-video-bg" autoplay loop muted playsinline>
+        <source src="index-hero-bg.mp4" type="video/mp4">
+    </video>
+    <div class="about-video-overlay"></div>
+
     <div class="about-left">
         <h2 class="metallic-gold">Bespoke Talent & Immersive Curation</h2>
     </div>
