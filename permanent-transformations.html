@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Permanent Space Transformations — Greenhouse Events</title>
+    <title>Permanent Space Transformations — Greenhouse Events Dubai</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-deep: #021612; 
-            --bg-mid: #04241e;  
+            --bg-deep: #050d0c; 
+            --bg-mid: #0b1a18;  
             --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%);
             --gold-solid: #C9A84C;
             --white-off: #F4F0E8;
@@ -23,7 +23,7 @@
         html { scroll-behavior: smooth; }
         
         body { 
-            background: linear-gradient(180deg, #021612 0%, #04241e 40%, #010a08 100%); 
+            background: radial-gradient(circle at 50% 30%, #1c2725 0%, var(--bg-deep) 70%); 
             color: var(--white-off); 
             font-family: var(--sans); 
             overflow-x: hidden; 
@@ -40,214 +40,157 @@
             display: inline-block;
             font-weight: 600;
         }
-        @keyframes shine { to { background-position: center bottom; } }
+        @keyframes shine { to { background-position: 200% center; } }
 
         /* --- NAVIGATION --- */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             padding: 1.2rem 5vw; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(2, 22, 18, 0.96); backdrop-filter: blur(15px);
+            background: rgba(5, 13, 12, 0.96); backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border-bottom: 0.5px solid var(--border);
         }
         
         .logo-wrap { text-decoration: none; display: inline-block; position: relative; padding-bottom: 4px; }
-        .nav-logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; letter-spacing: 3px; transition: letter-spacing 0.4s; display: inline-block; white-space: nowrap; }
-        .nav-actions { display: flex; align-items: center; gap: 1.5rem; }
-        .nav-whatsapp { color: var(--white-off); text-decoration: none; font-size: 0.75rem; letter-spacing: 1.5px; opacity: 0.8; }
-        .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; }
-
-        /* --- HERO HEADER COVER AREA --- */
-        .hero {
-            height: 100vh; 
-            position: relative; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            background: linear-gradient(rgba(2, 22, 18, 0.2) 0%, rgba(2, 22, 18, 0.85) 100%), url('transformations-header-bg.jpg') no-repeat center top; 
-            background-size: cover; 
-            padding: 0 8vw; 
-            z-index: 5;
-            border-bottom: 0.5px solid var(--border);
-        }
-        .hero-content {
-            text-align: center;
-            max-width: 900px;
-            z-index: 10;
-        }
-        .hero-content h1 {
-            font-family: var(--serif);
-            font-size: 4.5rem;
-            font-weight: 300;
-            margin-bottom: 2rem;
-            letter-spacing: 3px;
-            line-height: 1.15;
-        }
-        .hero-content p {
-            font-size: 1.3rem;
-            opacity: 0.95;
-            font-weight: 300;
-            letter-spacing: 1px;
-            max-width: 750px;
-            margin: 0 auto;
-        }
-
-        /* --- BRAND ABOUT INTRODUCTION --- */
-        .transformations-about {
-            padding: 8rem 8vw 4rem 8vw;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            border-bottom: 0.5px solid var(--border);
-        }
-        .about-left h2 {
-            font-family: var(--serif);
-            font-size: 2.8rem;
-            font-weight: 300;
-            line-height: 1.2;
-            letter-spacing: 1px;
-        }
-        .about-right p {
-            font-size: 1.05rem;
-            font-weight: 300;
-            line-height: 1.8;
-            opacity: 0.85;
-            color: var(--white-off);
-        }
-
-        /* --- SECTION HEADINGS --- */
-        .section-category-title {
-            text-align: center;
-            font-family: var(--serif);
-            font-size: 3rem;
-            font-weight: 300;
-            letter-spacing: 2px;
-            margin: 8rem auto 3rem auto;
-            max-width: 1100px;
-            border-bottom: 0.5px solid var(--border);
-            padding-bottom: 1.5rem;
-        }
-
-        /* --- PORTFOLIO GRID CONTAINER --- */
-        #transformations-portfolio { 
-            padding: 2rem 8vw 8rem 8vw; 
-            position: relative; 
-        } 
-        .services-grid { 
-            display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 2rem; 
-            max-width: 1200px; 
-            margin: 0 auto; 
-        }
+        .nav-logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; letter-spacing: 3px; display: inline-block; white-space: nowrap; }
         
-        @media (max-width: 1024px) {
-            .services-grid { grid-template-columns: repeat(2, 1fr); }
-            .transformations-about { grid-template-columns: 1fr; gap: 2rem; padding-top: 6rem; }
-        }
-        @media (max-width: 768px) {
-            .services-grid { grid-template-columns: 1fr; }
-            .hero-content h1 { font-size: 2.8rem; }
-            .about-left h2 { font-size: 2rem; }
-            .section-category-title { font-size: 2.2rem; }
-        }
+        .nav-actions { display: flex; align-items: center; gap: 1rem; }
+        .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; transition: transform 0.3s ease; }
+        .nav-cta:hover { transform: translateY(-1px); }
 
-        .card { 
-            border: 0.5px solid var(--border); 
-            padding: 2rem 1.8rem; 
-            background: rgba(1, 10, 8, 0.94); 
-            backdrop-filter: blur(25px); 
-            -webkit-backdrop-filter: blur(25px); 
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: flex-start;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        .nav-whatsapp {
+            background: transparent; border: 0.5px solid var(--gold-solid); color: var(--gold-solid); padding: 0.5rem 1.1rem; text-decoration: none; font-weight: 500; font-size: 0.7rem; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;
         }
-        .card:hover { 
-            border-color: var(--gold-solid); 
-            transform: translateY(-5px); 
-            background: rgba(3, 23, 19, 0.96); 
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7); 
-        }
-        .card h3 { 
-            font-family: var(--serif); 
-            font-size: 1.35rem; 
-            margin-bottom: 0.75rem; 
-            line-height: 1.3; 
-        }
-        .card p { 
-            font-size: 0.85rem; 
-            opacity: 0.75; 
-            margin-bottom: 1.5rem; 
-            line-height: 1.6; 
-        }
-        .card-img-space { 
-            width: 100%; 
-            aspect-ratio: 11 / 14; 
-            background: rgba(1, 10, 8, 0.6); 
-            border: 0.5px solid rgba(201, 168, 76, 0.2); 
-            margin-top: auto; 
-            overflow: hidden; 
-            position: relative; 
-        }
-        .card-img-space img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            position: absolute; 
-            inset: 0; 
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
-        }
-        .card:hover .card-img-space img { transform: scale(1.04); }
+        .nav-whatsapp:hover { background: rgba(201, 168, 76, 0.1); transform: translateY(-1px); }
+        .nav-whatsapp svg { width: 14px; height: 14px; fill: currentColor; }
 
-        /* --- CONTACT --- */
-        #contact-bridge {
-            background: #000a08;
-            border-top: 0.5px solid var(--border);
-            padding: 8rem 8vw;
+        /* --- INNER HERO BANNER --- */
+        .inner-hero {
+            height: 45vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; border-bottom: 0.5px solid var(--border); padding-top: 80px; position: relative; background: #050d0c;
         }
-        .contact-wrap { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 4rem; 
-            max-width: 1100px; 
-            margin: 0 auto; 
-        }
-        .c-val { display: block; font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--white-off); text-decoration: none; }
-        .c-label { color: var(--gold-solid); font-family: var(--display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
+        .inner-hero h1 { font-family: var(--serif); font-size: 3.5rem; font-weight: 300; margin-bottom: 0.5rem; }
+        .inner-hero p { font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.6; color: var(--gold-solid); }
 
-        /* --- FOOTER --- */
-        footer {
-            padding: 5rem 5vw;
-            text-align: center;
-            border-top: 0.5px solid var(--border);
-            background: #000000;
+        /* --- SERVICE SHOWCASE SECTIONS --- */
+        .showcase-container { max-width: 1200px; margin: 0 auto; padding: 6rem 5vw; }
+        
+        .showcase-row {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 8rem; position: relative;
+        }
+        .showcase-row:nth-child(even) { direction: rtl; }
+        .showcase-row:nth-child(even) .showcase-text { direction: ltr; }
+
+        .showcase-text h2 { font-family: var(--serif); font-size: 2.2rem; margin-bottom: 1.5rem; font-weight: 400; }
+        .showcase-text p { opacity: 0.8; font-size: 0.95rem; margin-bottom: 2rem; line-height: 1.7; }
+        
+        .feature-tags { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+        .tag { border: 0.5px solid var(--border); padding: 0.4rem 1rem; font-size: 0.75rem; letter-spacing: 1px; background: rgba(255,255,255,0.03); color: var(--white-off); }
+
+        /* --- IMAGE STRUCTURAL BLOCKS --- */
+        .showcase-img-space {
+            width: 100%; aspect-ratio: 16/11; background: rgba(5, 13, 12, 0.6); border: 0.5px solid rgba(201, 168, 76, 0.3); overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .showcase-img-space img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 2; }
+
+        /* --- FOOTER INLINE CONNECTION --- */
+        #contact-footer { background: #000; border-top: 0.5px solid var(--gold-solid); padding: 6rem 5vw; text-align: center; }
+        .footer-cta-wrap { max-width: 800px; margin: 0 auto; }
+        .footer-cta-wrap h3 { font-family: var(--serif); font-size: 2.5rem; margin-bottom: 1.5rem; font-weight: 300; }
+        .footer-buttons { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem; }
+
+        @media (max-width: 900px) {
+            nav { flex-direction: column; gap: 1rem; padding: 1rem 5vw; }
+            .nav-actions { width: 100%; justify-content: center; }
+            .inner-hero h1 { font-size: 2.5rem; }
+            .showcase-row { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 4rem; }
+            .showcase-row:nth-child(even) { direction: ltr; }
+            .footer-buttons { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
 <body>
 
 <nav>
-    <a href="index.html" class="logo-wrap"><span class="nav-logo metallic-gold">GREENHOUSE EVENTS DUBAI</span></a>
+    <a href="index.html" class="logo-wrap">
+        <span class="nav-logo metallic-gold">GREENHOUSE EVENTS — DUBAI</span>
+    </a>
     <div class="nav-actions">
-        <a href="https://wa.me/971552537712" target="_blank" class="nav-whatsapp">WHATSAPP</a>
-        <a href="#contact-bridge" class="nav-cta">ENQUIRE NOW</a>
+        <a href="https://wa.me/971552537712?text=Hello%20Greenhouse%20Events%2C%20I%20would%20like%20to%20enquire%20about%20your%20permanent%20space%20transformation%20services." target="_blank" class="nav-whatsapp">
+            <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+            WHATSAPP
+        </a>
+        <a href="index.html#contact" class="nav-cta">ENQUIRE NOW</a>
     </div>
 </nav>
 
-<header class="hero">
-    <div class="hero-content">
-        <h1 class="metallic-gold">Permanent Space Transformations</h1>
-        <p>Architectural execution, premium spatial curation, and enduring luxury environments designed for elite hospitality and residential footprints.</p>
-    </div>
+<header class="inner-hero">
+    <h1 class="metallic-gold">Permanent Space Transformations</h1>
+    <p>Bespoke Botanical Artistry, Custom Fabrications & Commercial Curations</p>
 </header>
 
-<section class="transformations-about">
-    <div class="about-left">
-        <h2 class="metallic-gold">Bespoke Spatial Architecture</h2>
+<main class="showcase-container">
+
+    <div class="showcase-row">
+        <div class="showcase-text">
+            <h2 class="metallic-gold">Luxury Artificial Floral & Greenery Walls</h2>
+            <p>We engineer ultra-premium, zero-maintenance architectural greenery installations tailored for upscale commercial properties. By blending rich faux botanical textures, dense foliage layering, and delicate cascading florals, we build grand statement features that retain their lush, immaculate precision permanently. Ideal for transforming large structural columns, restaurant dividing walls, and expansive corporate atriums.</p>
+            <div class="feature-tags">
+                <span class="tag">Grand Botanical Walls</span>
+                <span class="tag">Premium Artificial Foliage</span>
+                <span class="tag">Zero-Maintenance Carpeting</span>
+                <span class="tag">Hospitality Greenscapes</span>
+            </div>
+        </div>
+        <div class="showcase-img-space"><img src="transform1.jpg" alt="Luxury Greenery Installation"></div>
     </div>
-    <div class="about-right">
-        <p>At Greenhouse Events, we translate temporary environmental poise into long-term architectural legacies. Our permanent
+
+    <div class="showcase-row">
+        <div class="showcase-text">
+            <h2 class="metallic-gold">Bespoke Custom Fit-Out and Designs</h2>
+            <p>Ambiance determines venue retention. Our specialty construction team designs and installs custom floating botanical canopies, overhead restaurant pergolas, and immersive ceiling greenery wrapped around light configurations. Tailored strictly for high-end bars, rooftop lounges, and dining rooms looking to cement a distinct, high-end visual narrative.</p>
+            <div class="feature-tags">
+                <span class="tag">Restaurant Canopies</span>
+                <span class="tag">Bar Installations</span>
+                <span class="tag">Overhead Greenery</span>
+                <span class="tag">Moody Lounge Accents</span>
+            </div>
+        </div>
+        <div class="showcase-img-space"><img src="transform2.jpg" alt="Restaurant Space Transformation"></div>
+    </div>
+
+    <div class="showcase-row">
+        <div class="showcase-text">
+            <h2 class="metallic-gold">Social Media Photo Opportunities & Workspaces</h2>
+            <p>We bridge physical architecture with digital amplification. Our designs integrate bespoke structural fabrications, custom velvet seating pods, and integrated neon or metallic highlights to create premium, highly shareable photo moments at entrance foyers or corporate reception zones. For workspaces, these installations soften rigid office lines, establishing high-end corporate lifestyle spots that boost team energy and impress international clients.</p>
+            <div class="feature-tags">
+                <span class="tag">Entrance Photo Pods</span>
+                <span class="tag">Social Media Moments</span>
+                <span class="tag">Corporate Workspace Styling</span>
+                <span class="tag">Custom Structural Frames</span>
+            </div>
+        </div>
+        <div class="showcase-img-space"><img src="transform3.jpg" alt="Bespoke Photo Opportunity Design"></div>
+    </div>
+
+</main>
+
+<section id="contact-footer">
+    <div class="footer-cta-wrap">
+        <h3 class="metallic-gold">Transform Your Commercial Venue Space Permanently</h3>
+        <p style="opacity: 0.7; max-width: 600px; margin: 0 auto;">Connect directly with our commercial design division today via email or instant concierge lines to organize an architectural site evaluation, mood board curation, and full fabrication scope analysis.</p>
+        <div class="footer-buttons">
+            <a href="https://wa.me/971552537712?text=Hello%20Greenhouse%20Events%2C%20I%20would%20like%20to%20enquire%20about%20your%20permanent%20space%20transformation%20services." target="_blank" class="nav-whatsapp" style="font-size: 0.8rem; padding: 0.7rem 1.8rem;">
+                <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+                BOOK VIA TRANSFORMATION CONCIERGE
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer style="padding: 4rem; text-align: center; border-top: 0.5px solid var(--gold-solid); background: #000;">
+    <p class="metallic-gold" style="font-family: var(--serif); font-size: 1.2rem; letter-spacing: 4px;">GREENHOUSE EVENTS DUBAI</p>
+    <p style="font-size: 0.6rem; opacity: 0.3; margin-top: 2rem;">© 2026 GREENHOUSE EVENTS LLC. ALL RIGHTS RESERVED.</p>
+</footer>
+
+</body>
+</html>
