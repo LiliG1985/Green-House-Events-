@@ -51,7 +51,7 @@
             display: block;
         }
 
-        /* --- NAVIGATION (UPDATED TO SOLID GOLD BORDER) --- */
+        /* --- NAVIGATION --- */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             padding: 1.2rem 5vw; display: flex; justify-content: space-between; align-items: center;
@@ -224,10 +224,10 @@
         }
         .card:hover .card-img-space img { transform: scale(1.04); }
 
-        /* --- CONTACT WITH FAINT BACKGROUND IMAGE --- */
+        /* --- CONTACT (BRIGHTER BACKGROUND VISIBILITY) --- */
         #contact-bridge {
             position: relative;
-            background: linear-gradient(rgba(0, 10, 8, 0.85) 0%, rgba(1, 10, 8, 0.95) 100%), url('party-footer-bg.jpg') no-repeat center center;
+            background: linear-gradient(rgba(0, 10, 8, 0.45) 0%, rgba(1, 10, 8, 0.55) 100%), url('party-footer-bg.jpg') no-repeat center center;
             background-size: cover;
             border-top: 0.5px solid var(--border);
             padding: 8rem 8vw;
@@ -240,8 +240,9 @@
             margin: 0 auto; 
             position: relative;
             z-index: 5;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.9); /* Keeps text perfectly readable over brighter image */
         }
-        .c-val { display: block; font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--white-off); text-decoration: none; }
+        .c-val { display: block; font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--white-off); text-decoration: none; font-weight: 500; }
         .c-val:hover { color: var(--gold-solid); }
         .c-label { color: var(--gold-solid); font-family: var(--display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
 
@@ -355,7 +356,7 @@
         <div class="card">
             <h3 class="metallic-gold">Private Weddings & Proposals</h3>
             <div class="gold-line"></div>
-            <p>Bespoke coordination for luxury proposals and intimate private weddings. We craft deeply personal environments from custom structural lighting to pristine stage layouts for your special moments.</p>
+            <p>Bespoke coordination for luxury proposals and i̇ntimate private weddings. We craft deeply personal environments from custom structural lighting to pristine stage layouts for your special moments.</p>
             <div class="card-img-space"><img src="luxury-proposal.jpg" alt="Private Weddings & Proposals"></div>
         </div>
 
@@ -369,7 +370,7 @@
             <span class="c-label metallic-gold">Email</span><a href="mailto:Lili@greenhouseeventsuae.com" class="c-val">Lili@greenhouseeventsuae.com</a>
             <span class="c-label metallic-gold">Phone</span><a href="tel:+971552537712" class="c-val">+971 55 253 7712</a>
         </div>
-        <div style="opacity: 0.9; display: flex; align-items: flex-end;">
+        <div style="opacity: 0.95; display: flex; align-items: flex-end;">
             <p>Let us take care of everything. Contact our team directly to book a consultation for your next elite luxury celebration or private transformation in Dubai.</p>
         </div>
     </div>
