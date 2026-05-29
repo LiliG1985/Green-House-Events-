@@ -101,38 +101,42 @@
             margin: 0 auto;
         }
 
-        /* --- INFINITE ROTATING TICKER BANNER --- */
+        /* --- ADJUSTED HIGH-END ROTATING TICKER BANNER --- */
         .ticker-container {
             width: 100vw;
             position: absolute;
             bottom: 0;
             left: 0;
-            background: rgba(1, 10, 8, 0.9);
-            border-top: 0.5px solid var(--border);
+            background: rgba(1, 10, 8, 0.95);
+            border-top: 1px solid rgba(201, 168, 76, 0.4);
             border-bottom: 1px solid var(--gold-solid);
             overflow: hidden;
-            padding: 1.2rem 0;
+            padding: 1.6rem 0; /* Expanded padding for prominent text display */
             display: flex;
+            align-items: center;
         }
         .ticker-wrap {
             display: flex;
             white-space: nowrap;
-            animation: loop-ticker 25s linear infinite;
+            animation: loop-ticker 30s linear infinite;
         }
         .ticker-wrap span {
-            font-family: var(--display);
-            font-size: 0.8rem;
-            letter-spacing: 3px;
+            font-family: var(--serif); /* Applied beautiful serif family matching home bar */
+            font-size: 1.35rem; /* Upgraded text scale for high-end legibility */
+            font-style: italic; /* Clean elegant slanting */
+            font-weight: 400;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            padding: 0 2.5rem;
+            padding: 0 3rem;
             display: flex;
             align-items: center;
             color: var(--white-off);
         }
         .ticker-wrap span::after {
             content: "•";
-            margin-left: 5rem;
+            margin-left: 6rem;
             color: var(--gold-solid);
+            font-style: normal;
         }
         @keyframes loop-ticker {
             0% { transform: translateX(0); }
