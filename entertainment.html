@@ -78,14 +78,14 @@
         .nav-email-btn:hover { background: rgba(244, 240, 232, 0.05); transform: translateY(-1px); }
         .nav-email-btn svg { width: 14px; height: 14px; fill: currentColor; }
 
-        /* --- HEADER ZONE (SOLID BACKGROUND) --- */
+        /* --- CLEAN HEADER ZONE WITH PERFECT CENTERING (REMOVED BACKGROUND SCROLL CONFLICT) --- */
         .hero {
             height: 100vh; 
             position: relative; 
             display: flex; 
             align-items: center; 
             justify-content: center;
-            background: linear-gradient(rgba(2, 22, 18, 0.2) 0%, #021612 100%), url('entertainment-header-bg.jpg') no-repeat center top; 
+            background: linear-gradient(rgba(2, 22, 18, 0.4) 0%, rgba(2, 22, 18, 0.95) 100%), url('entertainment-header-bg.jpg') no-repeat center center; 
             background-size: cover; 
             padding: 0 8vw; 
             z-index: 20; 
@@ -164,39 +164,15 @@
             100% { transform: translateX(-33.3333%); }
         }
 
-        /* --- THE MASTER FLOW WRAPPER --- */
+        /* --- THE SOLID DEEP CLEAN BACKGROUND FLOW (REMOVED STICKY TIMELINE SCRUB) --- */
         .dynamic-video-flow-container {
             position: relative;
             width: 100%;
             z-index: 10;
-            background: transparent;
+            background: radial-gradient(circle at 50% 30%, #1c2725 0%, #021612 80%);
         }
 
-        .dynamic-flow-video {
-            position: -webkit-sticky;
-            position: sticky;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            z-index: -2;
-            margin-bottom: -100vh; 
-        }
-        
-        .dynamic-flow-overlay {
-            position: -webkit-sticky;
-            position: sticky;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: linear-gradient(180deg, rgba(2, 22, 18, 0.35) 0%, rgba(2, 22, 18, 0.88) 30%, rgba(0, 10, 8, 0.96) 100%);
-            z-index: -1;
-            margin-bottom: -100vh;
-        }
-
-        /* --- CONTENT LAYER PASSING OVER THE VIDEO --- */
+        /* --- CONTENT LAYER --- */
         .scroll-content-over-video {
             position: relative;
             z-index: 5;
@@ -430,12 +406,6 @@
 </header>
 
 <div class="dynamic-video-flow-container">
-    
-    <video class="dynamic-flow-video" autoplay loop muted playsinline>
-        <source src="index-hero-bg.mp4" type="video/mp4">
-    </video>
-    <div class="dynamic-flow-overlay"></div>
-
     <div class="scroll-content-over-video">
         <section class="entertainment-about">
             <div class="about-left">
