@@ -61,7 +61,7 @@
         }
         
         .logo-wrap { text-decoration: none; display: inline-block; position: relative; padding-bottom: 4px; }
-        .nav-logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; letter-spacing: 3px; transition: letter-spacing 0.4s; display: inline-block; white-space: nowrap; }
+        .nav-logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; letter-spacing: 3px; display: inline-block; white-space: nowrap; }
         .nav-actions { display: flex; align-items: center; gap: 1.5rem; }
         .nav-whatsapp { color: var(--white-off); text-decoration: none; font-size: 0.75rem; letter-spacing: 1.5px; opacity: 0.8; }
         .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; }
@@ -99,6 +99,56 @@
             letter-spacing: 1px;
             max-width: 750px;
             margin: 0 auto;
+        }
+
+        /* --- FAST, METALLIC METRIC SHINE TICKER BAR (EXACT STYLE MATCH) --- */
+        .ticker-container {
+            width: 100vw;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: rgba(5, 13, 12, 0.96);
+            border-top: 0.5px solid rgba(201, 168, 76, 0.18);
+            border-bottom: 1px solid var(--gold-solid);
+            overflow: hidden;
+            padding: 0.9rem 0;
+            display: flex;
+            align-items: center;
+        }
+        .ticker-wrap {
+            display: flex;
+            white-space: nowrap;
+            animation: loop-ticker 18s linear infinite; 
+        }
+        .ticker-wrap span {
+            font-family: var(--display);
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-style: normal;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            
+            background: var(--gold-metallic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
+        }
+        .ticker-wrap span::after {
+            content: "•";
+            margin-left: 2rem;
+            background: var(--gold-metallic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        @keyframes loop-ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-33.3333%); }
         }
 
         /* --- ABOUT SECTION --- */
@@ -274,6 +324,39 @@
     <div class="hero-content">
         <h1 class="metallic-gold">Private Party and Event Planning</h1>
         <p>Bespoke execution for birthday celebrations, engagements, proposals, and exclusive high profile gatherings.</p>
+    </div>
+
+    <div class="ticker-container">
+        <div class="ticker-wrap">
+            <span>Bespoke Concept & Theme Design</span>
+            <span>Luxury Adult Celebrations</span>
+            <span>Immersive Kids Wonderlands</span>
+            <span>High Density Floral Installations</span>
+            <span>Organic Balloon Architecture</span>
+            <span>Bespoke Baby Showers</span>
+            <span>Interactive Photo Opportunities</span>
+            <span>Private Weddings & Proposals</span>
+        </div>
+        <div class="ticker-wrap">
+            <span>Bespoke Concept & Theme Design</span>
+            <span>Luxury Adult Celebrations</span>
+            <span>Immersive Kids Wonderlands</span>
+            <span>High Density Floral Installations</span>
+            <span>Organic Balloon Architecture</span>
+            <span>Bespoke Baby Showers</span>
+            <span>Interactive Photo Opportunities</span>
+            <span>Private Weddings & Proposals</span>
+        </div>
+        <div class="ticker-wrap">
+            <span>Bespoke Concept & Theme Design</span>
+            <span>Luxury Adult Celebrations</span>
+            <span>Immersive Kids Wonderlands</span>
+            <span>High Density Floral Installations</span>
+            <span>Organic Balloon Architecture</span>
+            <span>Bespoke Baby Showers</span>
+            <span>Interactive Photo Opportunities</span>
+            <span>Private Weddings & Proposals</span>
+        </div>
     </div>
 </header>
 
