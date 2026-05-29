@@ -78,15 +78,15 @@
         .nav-email-btn:hover { background: rgba(244, 240, 232, 0.15); transform: translateY(-1px); }
         .nav-email-btn svg { width: 14px; height: 14px; fill: currentColor; }
 
-        /* --- HEADER ZONE WITH SHIFTED ALIGNMENT FOR BETTER FRAMING --- */
+        /* --- HEADER ZONE OPTIMIZED TO PREVENT CROP CONFLICTS --- */
         .hero {
             height: 100vh; 
             position: relative; 
             display: flex; 
             align-items: center; 
             justify-content: center;
-            /* Changed background position from center top to center center */
-            background: linear-gradient(rgba(2, 22, 18, 0.2) 0%, #021612 100%), url('entertainment-header-bg.jpg') no-repeat center center; 
+            /* Anchored vertical composition to 20% down from top border so performers' heads remain safe */
+            background: linear-gradient(rgba(2, 22, 18, 0.2) 0%, #021612 100%), url('entertainment-header-bg.jpg') no-repeat center 20%; 
             background-size: cover; 
             padding: 0 8vw; 
             z-index: 20; 
@@ -298,7 +298,6 @@
         /* --- LIGHTENED BRIDGE FOOTER SECTION WITH SUBTLE SHADOW REINFORCEMENTS --- */
         #contact-bridge {
             position: relative;
-            /* Dropped gradient opacities down to 0.35 / 0.55 so the backdrop shows up beautifully bright */
             background: linear-gradient(rgba(0, 10, 8, 0.35) 0%, rgba(2, 22, 18, 0.55) 100%), url('entertainment-footer-bg.jpg') no-repeat center center;
             background-size: cover;
             border-top: 1px solid var(--gold-solid);
