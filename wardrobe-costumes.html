@@ -91,6 +91,56 @@
         .inner-hero h1 { font-family: var(--serif); font-size: 4.5rem; font-weight: 300; margin-bottom: 1.5rem; letter-spacing: 3px; line-height: 1.15; text-shadow: 0 4px 12px rgba(0,0,0,0.6); }
         .inner-hero p { font-size: 1.3rem; letter-spacing: 1px; text-transform: none; opacity: 0.95; color: var(--white-off); font-weight: 300; text-shadow: 0 2px 8px rgba(0,0,0,0.8); max-width: 800px; margin: 0 auto; }
 
+        /* --- FAST, METALLIC SHINING TICKER BAR (EXACT UNIFORM STYLE) --- */
+        .ticker-container {
+            width: 100vw;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: rgba(5, 13, 12, 0.96);
+            border-top: 0.5px solid rgba(201, 168, 76, 0.18);
+            border-bottom: 1px solid var(--gold-solid);
+            overflow: hidden;
+            padding: 0.9rem 0;
+            display: flex;
+            align-items: center;
+        }
+        .ticker-wrap {
+            display: flex;
+            white-space: nowrap;
+            animation: loop-ticker 18s linear infinite; 
+        }
+        .ticker-wrap span {
+            font-family: var(--display);
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-style: normal;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            
+            background: var(--gold-metallic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
+        }
+        .ticker-wrap span::after {
+            content: "•";
+            margin-left: 2rem;
+            background: var(--gold-metallic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        @keyframes loop-ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-33.3333%); }
+        }
+
         /* --- SERVICE SHOWCASE SECTIONS --- */
         .showcase-container { max-width: 1200px; margin: 0 auto; padding: 6rem 5vw; }
         
@@ -148,6 +198,24 @@
 <header class="inner-hero">
     <h1 class="metallic-gold">Bespoke Wardrobe & Costume Design</h1>
     <p>High End Theatrical Tailoring, Elite Costume Hire & Professional Hair and Makeup Curation</p>
+
+    <div class="ticker-container">
+        <div class="ticker-wrap">
+            <span>Costume Hire</span>
+            <span>Bespoke Tailoring</span>
+            <span>Hair and Makeup Curation</span>
+        </div>
+        <div class="ticker-wrap">
+            <span>Costume Hire</span>
+            <span>Bespoke Tailoring</span>
+            <span>Hair and Makeup Curation</span>
+        </div>
+        <div class="ticker-wrap">
+            <span>Costume Hire</span>
+            <span>Bespoke Tailoring</span>
+            <span>Hair and Makeup Curation</span>
+        </div>
+    </div>
 </header>
 
 <main class="showcase-container">
@@ -156,7 +224,7 @@
         <div class="showcase-text">
             <h2 class="metallic-gold">Costume Hire</h2>
             <div class="gold-line"></div>
-            <p>Greenhouse Events partners directly with Dubais leading costume designers and elite costume hire networks to bring you the absolute pinnacle of premium character creations. Whether sourcing vintage high fashion elements, grand structural show sets, or specialty performance attire, our extensive partner network guarantees unmatched access to world class wardrobe collections tailored perfectly for high profile entertainment footprint requirements.</p>
+            <p>Greenhouse Events partners directly with Dubai's leading costume designers and elite costume hire networks to bring you the absolute pinnacle of premium character creations. Whether sourcing vintage high fashion elements, grand structural show sets, or specialty performance attire, our extensive partner network guarantees unmatched access to world class wardrobe collections tailored perfectly for high profile entertainment footprint requirements.</p>
         </div>
         <div class="showcase-img-space"><img src="wardrobe1.jpg" alt="Costume Hire"></div>
     </div>
@@ -174,7 +242,7 @@
         <div class="showcase-text">
             <h2 class="metallic-gold">Hair and Makeup</h2>
             <div class="gold-line"></div>
-            <p>Complete entertainment characterization requires absolute aesthetic perfection. Greenhouse Events brings together Dubais premier editorial hair stylists and avant garde makeup artists to deliver flawless look execution backstage. Utilizing ultra high definition, camera ready application techniques, our elite beauty teams specialize in intricate theatrical cosmetics, prosthetics coordination, and high glam styling engineered to look immaculate under blinding spotlights and close up production lenses.</p>
+            <p>Complete entertainment characterization requires absolute aesthetic perfection. Greenhouse Events brings together Dubai's premier editorial hair stylists and avant garde makeup artists to deliver flawless look execution backstage. Utilizing ultra high definition, camera ready application techniques, our elite beauty teams specialize in intricate theatrical cosmetics, prosthetics coordination, and high glam styling engineered to look immaculate under blinding spotlights and close up production lenses.</p>
         </div>
         <div class="showcase-img-space"><img src="wardrobe3.jpg" alt="Hair and Makeup"></div>
     </div>
