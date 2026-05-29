@@ -101,7 +101,7 @@
             margin: 0 auto;
         }
 
-        /* --- ADJUSTED HIGH-END ROTATING TICKER BANNER --- */
+        /* --- EXACT MATCH HOMEPAGE TICKER STYLE (SOLID GOLD & TIGHT) --- */
         .ticker-container {
             width: 100vw;
             position: absolute;
@@ -111,30 +111,30 @@
             border-top: 1px solid rgba(201, 168, 76, 0.4);
             border-bottom: 1px solid var(--gold-solid);
             overflow: hidden;
-            padding: 1.6rem 0; /* Expanded padding for prominent text display */
+            padding: 1.2rem 0;
             display: flex;
             align-items: center;
         }
         .ticker-wrap {
             display: flex;
             white-space: nowrap;
-            animation: loop-ticker 30s linear infinite;
+            animation: loop-ticker 25s linear infinite;
         }
         .ticker-wrap span {
-            font-family: var(--serif); /* Applied beautiful serif family matching home bar */
-            font-size: 1.35rem; /* Upgraded text scale for high-end legibility */
-            font-style: italic; /* Clean elegant slanting */
+            font-family: var(--serif);
+            font-size: 1.25rem;
+            font-style: italic;
             font-weight: 400;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            padding: 0 3rem;
+            padding: 0 1.5rem; /* Tighter padding for closer flow */
             display: flex;
             align-items: center;
-            color: var(--white-off);
+            color: var(--gold-solid); /* Changed to your exact solid website gold */
         }
         .ticker-wrap span::after {
             content: "•";
-            margin-left: 6rem;
+            margin-left: 3rem; /* Brought dot divider closer */
             color: var(--gold-solid);
             font-style: normal;
         }
