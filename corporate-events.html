@@ -101,17 +101,17 @@
             margin: 0 auto;
         }
 
-        /* --- EXACT MATCH HOMEPAGE TICKER STYLE (SOLID GOLD & TIGHT) --- */
+        /* --- FIXED HOMEPAGE TICKER STYLE (SOLID GOLD & TIGHT) --- */
         .ticker-container {
             width: 100vw;
             position: absolute;
             bottom: 0;
             left: 0;
-            background: rgba(1, 10, 8, 0.95);
-            border-top: 1px solid rgba(201, 168, 76, 0.4);
+            background: rgba(5, 13, 12, 0.96);
+            border-top: 0.5px solid rgba(201, 168, 76, 0.18);
             border-bottom: 1px solid var(--gold-solid);
             overflow: hidden;
-            padding: 1.2rem 0;
+            padding: 0.9rem 0;
             display: flex;
             align-items: center;
         }
@@ -121,22 +121,21 @@
             animation: loop-ticker 25s linear infinite;
         }
         .ticker-wrap span {
-            font-family: var(--serif);
-            font-size: 1.25rem;
-            font-style: italic;
+            font-family: var(--display);
+            font-size: 0.75rem;
             font-weight: 400;
+            font-style: normal;
             letter-spacing: 3px;
             text-transform: uppercase;
-            padding: 0 1.5rem; /* Tighter padding for closer flow */
+            padding: 0 1rem;
             display: flex;
             align-items: center;
-            color: var(--gold-solid); /* Changed to your exact solid website gold */
+            color: var(--gold-solid);
         }
         .ticker-wrap span::after {
             content: "•";
-            margin-left: 3rem; /* Brought dot divider closer */
+            margin-left: 2rem;
             color: var(--gold-solid);
-            font-style: normal;
         }
         @keyframes loop-ticker {
             0% { transform: translateX(0); }
