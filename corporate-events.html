@@ -101,7 +101,7 @@
             margin: 0 auto;
         }
 
-        /* --- FIXED HOMEPAGE TICKER STYLE (SOLID GOLD & TIGHT) --- */
+        /* --- FAST, METALLIC METRIC SHINE TICKER BAR --- */
         .ticker-container {
             width: 100vw;
             position: absolute;
@@ -118,24 +118,36 @@
         .ticker-wrap {
             display: flex;
             white-space: nowrap;
-            animation: loop-ticker 25s linear infinite;
+            /* Increased speed slightly from 25s down to 18s */
+            animation: loop-ticker 18s linear infinite; 
         }
         .ticker-wrap span {
             font-family: var(--display);
             font-size: 0.75rem;
-            font-weight: 400;
+            font-weight: 600;
             font-style: normal;
             letter-spacing: 3px;
             text-transform: uppercase;
             padding: 0 1rem;
             display: flex;
             align-items: center;
-            color: var(--gold-solid);
+            
+            /* Applied your core moving metallic gold animation directly onto text items */
+            background: var(--gold-metallic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
         }
         .ticker-wrap span::after {
             content: "•";
             margin-left: 2rem;
-            color: var(--gold-solid);
+            /* Ensures dot matches gradient background mask setup */
+            background: var(--gold-metallic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         @keyframes loop-ticker {
             0% { transform: translateX(0); }
