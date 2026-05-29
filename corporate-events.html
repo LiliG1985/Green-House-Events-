@@ -22,12 +22,11 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         
-        /* --- BRAND NEW ARCHITECTURAL OVERLAY BACKGROUND --- */
         body { 
             background: linear-gradient(180deg, rgba(2, 22, 18, 0.95) 0%, rgba(4, 36, 30, 0.92) 40%, rgba(1, 10, 8, 0.97) 100%), 
                         url('corporate-body-bg.jpg') repeat center center;
             background-size: cover;
-            background-attachment: fixed; /* Keeps background fixed elegantly as you scroll */
+            background-attachment: fixed;
             color: var(--white-off); 
             font-family: var(--sans); 
             overflow-x: hidden; 
@@ -102,7 +101,45 @@
             font-weight: 300;
             letter-spacing: 1px;
             max-width: 750px;
-            margin: 0 auto;
+            margin: 0 auto 3rem auto;
+        }
+
+        /* --- INFINITE ROTATING TICKER BANNER --- */
+        .ticker-container {
+            width: 100vw;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: rgba(1, 10, 8, 0.9);
+            border-top: 0.5px solid var(--border);
+            border-bottom: 1px solid var(--gold-solid);
+            overflow: hidden;
+            padding: 1.2rem 0;
+            display: flex;
+        }
+        .ticker-wrap {
+            display: flex;
+            white-space: nowrap;
+            animation: loop-ticker 25s linear infinite;
+        }
+        .ticker-wrap span {
+            font-family: var(--display);
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 0 2.5rem;
+            display: flex;
+            align-items: center;
+            color: var(--white-off);
+        }
+        .ticker-wrap span::after {
+            content: "•";
+            margin-left: 5rem;
+            color: var(--gold-solid);
+        }
+        @keyframes loop-ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-33.3333%); }
         }
 
         /* --- CORPORATE ABOUT SECTION --- */
@@ -245,6 +282,33 @@
     <div class="hero-content">
         <h1 class="metallic-gold">Corporate Events & Activations</h1>
         <p>Flawless brand execution, high-profile corporate galas, and bespoke experiential environments in Dubai.</p>
+    </div>
+    
+    <div class="ticker-container">
+        <div class="ticker-wrap">
+            <span>Brand Activations</span>
+            <span>Corporate Galas & Dinners</span>
+            <span>Conferences & Seminars</span>
+            <span>Product Launches</span>
+            <span>Team Building Experiences</span>
+            <span>Exhibition Stand Curation</span>
+        </div>
+        <div class="ticker-wrap">
+            <span>Brand Activations</span>
+            <span>Corporate Galas & Dinners</span>
+            <span>Conferences & Seminars</span>
+            <span>Product Launches</span>
+            <span>Team Building Experiences</span>
+            <span>Exhibition Stand Curation</span>
+        </div>
+        <div class="ticker-wrap">
+            <span>Brand Activations</span>
+            <span>Corporate Galas & Dinners</span>
+            <span>Conferences & Seminars</span>
+            <span>Product Launches</span>
+            <span>Team Building Experiences</span>
+            <span>Exhibition Stand Curation</span>
+        </div>
     </div>
 </header>
 
