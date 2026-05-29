@@ -48,7 +48,7 @@
             padding: 1.2rem 5vw; display: flex; justify-content: space-between; align-items: center;
             background: rgba(5, 13, 12, 0.96); backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border-bottom: 0.5px solid var(--border);
+            border-bottom: 1px solid var(--gold-solid);
         }
         
         .logo-wrap { text-decoration: none; display: inline-block; position: relative; padding-bottom: 4px; }
@@ -82,6 +82,57 @@
         .inner-hero h1 { font-family: var(--serif); font-size: 4.5rem; font-weight: 300; margin-bottom: 1.5rem; letter-spacing: 3px; line-height: 1.15; text-shadow: 0 4px 12px rgba(0,0,0,0.6); }
         .inner-hero p { font-size: 1.3rem; letter-spacing: 1px; text-transform: none; opacity: 0.95; color: var(--white-off); font-weight: 300; text-shadow: 0 2px 8px rgba(0,0,0,0.8); max-width: 750px; margin: 0 auto; }
 
+        /* --- FAST, METALLIC SHINING TICKER BAR (EXACT UNIFORM STYLE) --- */
+        .ticker-container {
+            width: 100vw;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: rgba(5, 13, 12, 0.96);
+            border-top: 0.5px solid rgba(201, 168, 76, 0.18);
+            border-bottom: 1px solid var(--gold-solid);
+            overflow: hidden;
+            padding: 0.9rem 0;
+            display: flex;
+            align-items: center;
+            z-index: 30;
+        }
+        .ticker-wrap {
+            display: flex;
+            white-space: nowrap;
+            animation: loop-ticker 18s linear infinite; 
+        }
+        .ticker-wrap span {
+            font-family: var(--display);
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-style: normal;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            
+            background: var(--gold-metallic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
+        }
+        .ticker-wrap span::after {
+            content: "•";
+            margin-left: 2rem;
+            background: var(--gold-metallic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        @keyframes loop-ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-33.3333%); }
+        }
+
         /* --- SERVICE SHOWCASE SECTIONS --- */
         .showcase-container { max-width: 1200px; margin: 0 auto; padding: 6rem 5vw; }
         
@@ -96,6 +147,15 @@
         
         .feature-tags { display: flex; flex-wrap: wrap; gap: 0.8rem; }
         .tag { border: 0.5px solid var(--border); padding: 0.4rem 1rem; font-size: 0.75rem; letter-spacing: 1px; background: rgba(255,255,255,0.03); color: var(--white-off); }
+
+        /* --- IMMACULATE SOLID GOLD THIN DIVIDER LINE --- */
+        .gold-line {
+            width: 90px;
+            height: 1px;
+            background-color: var(--gold-solid);
+            margin: 1rem 0 2rem 0;
+            display: block;
+        }
 
         /* --- IMAGE STRUCTURAL BLOCKS --- */
         .showcase-img-space {
@@ -136,6 +196,24 @@
 <header class="inner-hero">
     <h1 class="metallic-gold">Permanent Space Transformations</h1>
     <p>Bespoke Botanical Artistry, Custom Fabrications & Commercial Curations</p>
+
+    <div class="ticker-container">
+        <div class="ticker-wrap">
+            <span>Luxury Artificial Floral & Greenery Walls</span>
+            <span>Bespoke Custom Fit-Out and Designs</span>
+            <span>Social Media Photo Opportunities & Workspaces</span>
+        </div>
+        <div class="ticker-wrap">
+            <span>Luxury Artificial Floral & Greenery Walls</span>
+            <span>Bespoke Custom Fit-Out and Designs</span>
+            <span>Social Media Photo Opportunities & Workspaces</span>
+        </div>
+        <div class="ticker-wrap">
+            <span>Luxury Artificial Floral & Greenery Walls</span>
+            <span>Bespoke Custom Fit-Out and Designs</span>
+            <span>Social Media Photo Opportunities & Workspaces</span>
+        </div>
+    </div>
 </header>
 
 <main class="showcase-container">
@@ -143,6 +221,7 @@
     <div class="showcase-row">
         <div class="showcase-text">
             <h2 class="metallic-gold">Luxury Artificial Floral & Greenery Walls</h2>
+            <div class="gold-line"></div>
             <p>We engineer ultra-premium, zero-maintenance architectural greenery installations tailored for upscale commercial properties. By blending rich faux botanical textures, dense foliage layering, and delicate cascading florals, we build grand statement features that retain their lush, immaculate precision permanently. Ideal for transforming large structural columns, restaurant dividing walls, and expansive corporate atriums.</p>
             <div class="feature-tags">
                 <span class="tag">Grand Botanical Walls</span>
@@ -153,9 +232,11 @@
         </div>
         <div class="showcase-img-space"><img src="transform1.jpg" alt="Luxury Artificial Floral & Greenery Walls"></div>
     </div>
+    
     <div class="showcase-row">
         <div class="showcase-text">
             <h2 class="metallic-gold">Bespoke Custom Fit-Out and Designs</h2>
+            <div class="gold-line"></div>
             <p>Ambiance determines venue retention. Our specialty construction team designs and installs custom floating botanical canopies, overhead restaurant pergolas, and immersive ceiling greenery wrapped around light configurations. Tailored strictly for high-end bars, rooftop lounges, and dining rooms looking to cement a distinct, high-end visual narrative.</p>
             <div class="feature-tags">
                 <span class="tag">Restaurant Canopies</span>
@@ -170,6 +251,7 @@
     <div class="showcase-row">
         <div class="showcase-text">
             <h2 class="metallic-gold">Social Media Photo Opportunities & Workspaces</h2>
+            <div class="gold-line"></div>
             <p>We bridge physical architecture with digital amplification. Our designs integrate bespoke structural fabrications, custom velvet seating pods, and integrated neon or metallic highlights to create premium, highly shareable photo moments at entrance foyers or corporate reception zones. For workspaces, these installations soften rigid office lines, establishing high-end corporate lifestyle spots that boost team energy and impress international clients.</p>
             <div class="feature-tags">
                 <span class="tag">Entrance Photo Pods</span>
