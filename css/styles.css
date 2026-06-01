@@ -29,3 +29,12 @@ body {
     font-family: var(--sans);
     overflow-x: hidden;
 }
+/* --- GLOBAL LUXURY CANVAS BACKGROUND FOR ALL PAGES --- */
+.inner-page-bg { 
+    background: 
+        linear-gradient(180deg, rgba(2, 22, 18, 0.88) 0%, rgba(4, 36, 30, 0.92) 40%, rgba(1, 10, 8, 0.96) 100%),
+        repeating-linear-gradient(45deg, rgba(201, 168, 76, 0.04) 0px, rgba(201, 168, 76, 0.04) 1px, transparent 1px, transparent 5px),
+        repeating-linear-gradient(-45deg, rgba(254, 254, 254, 0.03) 0px, rgba(254, 254, 254, 0.03) 1px, transparent 1px, transparent 5px),
+        #021612 !important;
+    background-attachment: fixed !important;
+}
