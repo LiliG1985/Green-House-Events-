@@ -6,10 +6,11 @@
     <title>Audio Visual Production & Structural Engineering — Greenhouse Events Dubai</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/styles.css">
+    
     <style>
         :root {
-            --bg-deep: #021612; 
-            --bg-mid: #04241e;  
             --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%);
             --gold-solid: #C9A84C;
             --white-off: #F4F0E8;
@@ -22,17 +23,7 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         
-        /* --- HIGH-CONTRAST HEAVIER LUXURY CANVAS TEXTURE --- */
         body { 
-            background: 
-                /* Layer 1: Smooth Home Page Color Mask */
-                linear-gradient(180deg, rgba(2, 22, 18, 0.88) 0%, rgba(4, 36, 30, 0.92) 40%, rgba(1, 10, 8, 0.96) 100%),
-                /* Layer 2: Deepened Tactile Grain Lines */
-                repeating-linear-gradient(45deg, rgba(201, 168, 76, 0.04) 0px, rgba(201, 168, 76, 0.04) 1px, transparent 1px, transparent 5px),
-                repeating-linear-gradient(-45deg, rgba(254, 254, 254, 0.03) 0px, rgba(254, 254, 254, 0.03) 1px, transparent 1px, transparent 5px),
-                /* Layer 3: Base Solid Color */
-                #021612;
-            background-attachment: fixed;
             color: var(--white-off); 
             font-family: var(--sans); 
             overflow-x: hidden; 
@@ -209,7 +200,8 @@
         }
     </style>
 </head>
-<body>
+
+<body class="inner-page-bg">
 
 <nav>
     <a href="index.html" class="logo-wrap">
@@ -288,7 +280,6 @@
                 <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2(Rest of SVG Truncated)"></path></svg>
                 CONTACT US VIA WHATSAPP
             </a>
-
             <a href="mailto:Lili@greenhouseeventsuae.com?subject=Audio%20Visual%20Production%20Inquiry" class="nav-email-btn">
                 <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                 CONTACT US VIA EMAIL
