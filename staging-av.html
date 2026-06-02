@@ -175,8 +175,48 @@
             100% { transform: translateX(-33.3333%); }
         }
 
+        /* --- UNIFORM GLASSMORPHIC ABOUT BOX FRAME (MATCHED DESIGN SYSTEM) --- */
+        #about-staging {
+            padding: 6rem 6vw;
+            max-width: 1140px;
+            margin: 8rem auto 4rem auto;
+            position: relative;
+            z-index: 5;
+            background: rgba(4, 24, 20, 0.65);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 0.5px solid var(--border);
+            box-shadow: 0 30px 60px rgba(1, 10, 8, 0.4);
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            filter: drop-shadow(0 10px 30px rgba(201, 168, 76, 0.06));
+        }
+        .about-manifesto {
+            font-family: var(--serif);
+            font-size: 2.5rem;
+            font-weight: 300;
+            line-height: 1.25;
+        }
+        .about-narrative {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+        .about-narrative p {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            line-height: 1.75;
+        }
+
         /* --- SERVICE SHOWCASE SECTIONS WITH BRAND BOXES --- */
-        .showcase-container { max-width: 1200px; margin: 0 auto; padding: 6rem 5vw; }
+        .showcase-container { max-width: 1200px; margin: 0 auto; padding: 4rem 5vw 8rem 5vw; }
         
         .showcase-row {
             display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 8rem; position: relative;
@@ -225,6 +265,7 @@
         @media (max-width: 900px) {
             nav { padding: 1.2rem 5vw; }
             .inner-hero h1 { font-size: 2.5rem; }
+            #about-staging { margin: 4rem 4vw 2rem 4vw; padding: 3rem 4vw; }
             .showcase-row { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 4rem; }
             .showcase-row:nth-child(even) { direction: ltr; }
             .footer-buttons { flex-direction: column; align-items: center; gap: 1rem; }
@@ -269,6 +310,18 @@
         </div>
     </div>
 </header>
+
+<section id="about-staging">
+    <div class="about-grid">
+        <div class="about-manifesto">
+            Fusing world-class acoustics with structural <span class="metallic-gold">production masterclasses</span>.
+        </div>
+        <div class="about-narrative">
+            <p>True sensory transformation requires raw technical precision. Our audio-visual and technical staging division handles the complex physics behind high-profile music entertainment setups, corporate keynote speakers, and experiential dance environments.</p>
+            <p>From complex ceiling line arrays to perfectly calculated structural scaffolding platforms, our team coordinates the technical blueprint, safe architectural boundaries, and lighting layers. We transform high-end regional venues into immersive, distortion-free event landscapes.</p>
+        </div>
+    </div>
+</section>
 
 <main class="showcase-container">
 
