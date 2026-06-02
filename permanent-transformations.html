@@ -73,7 +73,7 @@
         .nav-whatsapp-btn svg { width: 14px; height: 14px; fill: currentColor; }
 
         .nav-email-btn {
-            background: transparent; border: 0.5px solid rgba(244, 240, 232, 0.2); color: var(--white-off); padding: 0.75rem 2rem; text-decoration: none; font-weight: 500; font-size: 0.8rem; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease;
+            background: rgba(5, 13, 12, 0.85); border: 0.5px solid rgba(244, 240, 232, 0.2); color: var(--white-off); padding: 0.75rem 2rem; text-decoration: none; font-weight: 500; font-size: 0.8rem; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease;
         }
         .nav-email-btn:hover { background: rgba(244, 240, 232, 0.05); transform: translateY(-1px); }
         .nav-email-btn svg { width: 14px; height: 14px; fill: currentColor; }
@@ -96,7 +96,7 @@
         .inner-hero h1 { font-family: var(--serif); font-size: 4.5rem; font-weight: 300; margin-bottom: 1.5rem; letter-spacing: 3px; line-height: 1.15; text-shadow: 0 4px 12px rgba(0,0,0,0.6); }
         .inner-hero p { font-size: 1.3rem; letter-spacing: 1px; text-transform: none; opacity: 0.95; color: var(--white-off); font-weight: 300; text-shadow: 0 2px 8px rgba(0,0,0,0.8); max-width: 750px; margin: 0 auto; }
 
-        /* --- FAST, METALLIC SHINING TICKER BAR (EXACT UNIFORM STYLE) --- */
+        /* --- FAST, METALLIC SHINING TICKER BAR --- */
         .ticker-container {
             width: 100vw;
             position: absolute;
@@ -147,17 +147,33 @@
             100% { transform: translateX(-33.3333%); }
         }
 
-        /* --- SERVICE SHOWCASE SECTIONS --- */
+        /* --- SERVICE SHOWCASE SECTIONS WITH BRAND MATCHING OBSIDIAN BOX COATING --- */
         .showcase-container { max-width: 1200px; margin: 0 auto; padding: 6rem 5vw; }
         
         .showcase-row {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 8rem; position: relative;
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 0rem; /* Flawless card connection */
+            align-items: stretch; 
+            margin-bottom: 6rem; 
+            position: relative;
+            box-shadow: 0 25px 55px rgba(0,0,0,0.4);
         }
         .showcase-row:nth-child(even) { direction: rtl; }
         .showcase-row:nth-child(even) .showcase-text { direction: ltr; }
 
-        .showcase-text h2 { font-family: var(--serif); font-size: 2.2rem; margin-bottom: 1.5rem; font-weight: 400; }
-        .showcase-text p { opacity: 0.8; font-size: 0.95rem; margin-bottom: 2rem; line-height: 1.7; }
+        .showcase-text {
+            background: rgba(5, 13, 12, 0.95);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 0.5px solid var(--border);
+            padding: 3.5rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .showcase-text h2 { font-family: var(--serif); font-size: 2.2rem; margin-bottom: 0.5rem; font-weight: 400; }
+        .showcase-text p { opacity: 0.85; font-size: 0.95rem; margin-bottom: 2rem; line-height: 1.7; color: var(--white-off); }
         
         .feature-tags { display: flex; flex-wrap: wrap; gap: 0.8rem; }
         .tag { border: 0.5px solid var(--border); padding: 0.4rem 1rem; font-size: 0.75rem; letter-spacing: 1px; background: rgba(255,255,255,0.03); color: var(--white-off); }
@@ -173,11 +189,11 @@
 
         /* --- IMAGE STRUCTURAL BLOCKS --- */
         .showcase-img-space {
-            width: 100%; aspect-ratio: 16/11; background: rgba(5, 13, 12, 0.6); border: 0.5px solid rgba(201, 168, 76, 0.3); overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            width: 100%; background: rgba(5, 13, 12, 0.6); border: 0.5px solid var(--border); overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center;
         }
         .showcase-img-space img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 2; }
 
-        /* --- LUXURY CONTACT FOOTER WITH PERFECT DUAL GRADIENT FADE TINT --- */
+        /* --- LUXURY CONTACT FOOTER --- */
         #contact-bridge {
             position: relative;
             background: linear-gradient(rgba(5, 13, 12, 0.65) 0%, rgba(1, 10, 8, 0.85) 100%), url('transform-footer-bg.jpg') no-repeat center center;
@@ -201,7 +217,7 @@
         @media (max-width: 900px) {
             nav { padding: 1.2rem 5vw; }
             .inner-hero h1 { font-size: 2.8rem; }
-            .showcase-row { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 4rem; }
+            .showcase-row { grid-template-columns: 1fr; gap: 0rem; margin-bottom: 4rem; }
             .showcase-row:nth-child(even) { direction: ltr; }
             .footer-buttons { flex-direction: column; align-items: center; gap: 1rem; }
         }
