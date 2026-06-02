@@ -237,8 +237,81 @@
         .c-val { display: block; font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--white-off); text-decoration: none; }
         .c-label { color: var(--gold-solid); font-family: var(--display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
 
+        /* --- NEW DIRECTORY MEGA FOOTER ARCHITECTURE --- */
+        .mega-footer {
+            background: #000000;
+            padding: 5rem 8vw 3rem 8vw;
+            border-top: 0.5px solid var(--gold-solid);
+            position: relative;
+            z-index: 15;
+        }
+        .footer-directory-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            padding-bottom: 4rem;
+        }
+        .directory-col h4 {
+            font-family: var(--serif);
+            font-size: 1.15rem;
+            letter-spacing: 2px;
+            color: var(--gold-solid);
+            margin-bottom: 1.8rem;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+        .directory-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+        .directory-col ul li a {
+            color: var(--white-off);
+            text-decoration: none;
+            font-size: 0.88rem;
+            opacity: 0.65;
+            transition: all 0.3s ease;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+        .directory-col ul li a:hover {
+            opacity: 1;
+            color: var(--white-off);
+            padding-left: 4px;
+        }
+        .footer-bottom-bar {
+            max-width: 1300px;
+            margin: 0 auto;
+            border-top: 0.5px solid rgba(201, 168, 76, 0.15);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-bottom-bar p {
+            font-size: 0.75rem;
+            opacity: 0.4;
+            letter-spacing: 1px;
+        }
+
         @media (max-width: 1200px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 900px) { nav { flex-direction: column; gap: 1rem; } .about-grid { grid-template-columns: 1fr; gap: 2rem; } .services-grid { grid-template-columns: 1fr; } .client-container { grid-template-columns: 1fr; } .client-sidebar { width: 100%; writing-mode: horizontal-tb; transform: none; padding: 30px 0; border-right: none; border-bottom: 0.5px solid var(--border); } .client-sidebar h2 { writing-mode: horizontal-tb; transform: none; font-size: 1.8rem; } .contact-wrap, .stats-bar { grid-template-columns: 1fr; } }
+        @media (max-width: 900px) { 
+            nav { flex-direction: column; gap: 1rem; } 
+            .about-grid { grid-template-columns: 1fr; gap: 2rem; } 
+            .services-grid { grid-template-columns: 1fr; } 
+            .client-container { grid-template-columns: 1fr; } 
+            .client-sidebar { width: 100%; writing-mode: horizontal-tb; transform: none; padding: 30px 0; border-right: none; border-bottom: 0.5px solid var(--border); } 
+            .client-sidebar h2 { writing-mode: horizontal-tb; transform: none; font-size: 1.8rem; } 
+            .contact-wrap, .stats-bar { grid-template-columns: 1fr; } 
+            .footer-directory-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+            .footer-bottom-bar { flex-direction: column; gap: 1rem; text-align: center; }
+        }
+        @media (max-width: 500px) {
+            .footer-directory-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -355,9 +428,60 @@
     </div>
 </section>
 
-<footer style="padding: 5rem 5vw; text-align: center; border-top: 0.5px solid var(--gold-solid); background: #000;">
-    <p class="metallic-gold" style="font-family: var(--display); font-size: 1.1rem; letter-spacing: 5px; font-weight: 700; margin-bottom: 0.5rem;">GREENHOUSE EVENTS DUBAI</p>
-    <p style="font-size: 0.75rem; opacity: 0.4; letter-spacing: 1px;">&copy; 2026 Greenhouse Events UAE. All Rights Reserved.</p>
+<footer class="mega-footer">
+    <div class="footer-directory-grid">
+        
+        <div class="directory-col">
+            <h4>Main Directory</h4>
+            <ul>
+                <li><a href="index.html">Home Base</a></li>
+                <li><a href="index.html#about-profile">Our Profile</a></li>
+                <li><a href="index.html#services">Production Capabilities</a></li>
+                <li><a href="index.html#clients">Client Portfolio</a></li>
+                <li><a href="#contact">Contact Desk</a></li>
+            </ul>
+        </div>
+
+        <div class="directory-col">
+            <h4>Talent Roster</h4>
+            <ul>
+                <li><a href="entertainment.html">DJs & Sound Curation</a></li>
+                <li><a href="entertainment.html">Live Singers & Vocalists</a></li>
+                <li><a href="entertainment.html">Full Musical Bands</a></li>
+                <li><a href="entertainment.html">Bespoke Roaming Acts</a></li>
+                <li><a href="entertainment.html">Acrobats & Circus Arts</a></li>
+                <li><a href="entertainment.html">Fire & LED Visual Shows</a></li>
+            </ul>
+        </div>
+
+        <div class="directory-col">
+            <h4>Production Services</h4>
+            <ul>
+                <li><a href="private-events.html">Private Party Planning</a></li>
+                <li><a href="corporate-events.html">Corporate Events & Activations</a></li>
+                <li><a href="permanent-transformations.html">Permanent Greenscapes</a></li>
+                <li><a href="staging-av.html">Rigid Structural Staging</a></li>
+                <li><a href="staging-av.html">Audio Visual Engineering</a></li>
+                <li><a href="wardrobe-costumes.html">Bespoke Wardrobe & Styling</a></li>
+            </ul>
+        </div>
+
+        <div class="directory-col">
+            <h4>Inquiries desk</h4>
+            <ul>
+                <li><a href="https://wa.me/971552537712" target="_blank">Direct Concierge WhatsApp</a></li>
+                <li><a href="mailto:info@greenhouseeventsuae.com">Executive Email Placement</a></li>
+                <li><a href="tel:+971552537712">Hotline Coordination Office</a></li>
+                <li><a href="index.html#contact">Book Design Brief Evaluation</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom-bar">
+        <p class="metallic-gold" style="font-family: var(--display); font-size: 1rem; letter-spacing: 4px; font-weight: 700;">GREENHOUSE EVENTS DUBAI</p>
+        <p>&copy; 2026 Greenhouse Events UAE. All Rights Reserved.</p>
+    </div>
 </footer>
 
 <script>
