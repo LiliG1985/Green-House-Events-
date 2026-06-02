@@ -182,51 +182,33 @@
             100% { transform: translateX(-33.3333%); }
         }
 
-        /* --- LUXURY GLASSMORPHIC ABOUT BLOCK FRAME WITH GOLD SHIMMER FLARE --- */
+        /* --- ABOUT SECTION WITH DEEP BACKGROUND GOLD SHIMMER ANCHOR --- */
         #about-party {
-            padding: 6rem 6vw;
-            max-width: 1140px;
-            margin: 8rem auto 4rem auto;
+            padding: 8rem 8vw 4rem 8vw;
             position: relative;
             z-index: 5;
-            background: rgba(4, 24, 20, 0.65);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 0.5px solid var(--border);
-            box-shadow: 0 30px 60px rgba(1, 10, 8, 0.4);
-            overflow: hidden; /* Contains the internal shimmer */
+            border-bottom: 0.5px solid var(--border);
+            
+            /* Pure background shift casting a luxury custom shimmer under your original blocks */
+            background: radial-gradient(circle at 30% 50%, rgba(201, 168, 76, 0.08) 0%, transparent 45%),
+                        radial-gradient(circle at 80% 50%, rgba(201, 168, 76, 0.04) 0%, transparent 50%),
+                        radial-gradient(circle at 20% 50%, rgba(4, 36, 30, 0.6) 0%, transparent 60%);
         }
-        
-        /* Animated Gold Shimmer Layer Backing */
-        #about-party::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            z-index: -1;
-            background: radial-gradient(circle at 35% 40%, rgba(201, 168, 76, 0.12) 0%, rgba(201, 168, 76, 0.03) 35%, transparent 70%);
-            animation: shimmer-flow 12s ease-in-out infinite alternate;
-            pointer-events: none;
-        }
-
-        @keyframes shimmer-flow {
-            0% { transform: translate(-5%, -5%) scale(0.95); opacity: 0.7; }
-            100% { transform: translate(5%, 5%) scale(1.05); opacity: 1; }
-        }
-
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            gap: 5rem;
+            max-width: 1100px;
+            margin: 0 auto;
         }
         .about-manifesto {
             font-family: var(--serif);
             font-size: 2.5rem;
             font-weight: 300;
             line-height: 1.25;
+            
+            /* Soft gold illumination behind the layout headers */
+            filter: drop-shadow(0 0 25px rgba(201, 168, 76, 0.15));
         }
         .about-narrative {
             display: flex;
@@ -235,11 +217,11 @@
             justify-content: center;
         }
         .about-narrative p {
-            font-size: 0.95rem;
+            font-size: 1rem;
             opacity: 0.85;
             font-weight: 300;
             letter-spacing: 0.5px;
-            line-height: 1.75;
+            line-height: 1.8;
         }
 
         /* --- COMPACT VISUAL VIDEO MODULE --- */
@@ -353,8 +335,7 @@
         @media (max-width: 900px) {
             nav { padding: 1.2rem 5vw; }
             .hero-content h1 { font-size: 2.8rem; }
-            #about-party { margin: 4rem 4vw 2rem 4vw; padding: 3rem 4vw; }
-            .about-grid, .services-grid, .footer-buttons { grid-template-columns: 1fr; gap: 2rem; flex-direction: column; align-items: center; }
+            .about-grid, .services-grid, .footer-buttons { grid-template-columns: 1fr; gap: 1rem; flex-direction: column; align-items: center; }
         }
     </style>
 </head>
