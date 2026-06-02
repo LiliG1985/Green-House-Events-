@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Greenhouse Events Dubai Luxury Event Production</title>
+    <title>Greenhouse Events Dubai — Luxury Event Production & Brand Activations</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
@@ -22,8 +22,27 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         
+        /* --- MOLDED LIGHT & SHADOW LUXURY EMERALD BASE --- */
         body { 
-            background: var(--bg-deep); 
+            background: 
+                /* Layer 1: Subtle luxury micro canvas grid overlay */
+                repeating-linear-gradient(45deg, rgba(201, 168, 76, 0.02) 0px, rgba(201, 168, 76, 0.02) 1px, transparent 1px, transparent 6px),
+                repeating-linear-gradient(-45deg, rgba(254, 254, 254, 0.02) 0px, rgba(254, 254, 254, 0.02) 1px, transparent 1px, transparent 6px),
+                
+                /* Layer 2: Light sage mint highlight molded behind your top layout elements */
+                radial-gradient(circle at 20% 25%, rgba(164, 185, 181, 0.25) 0%, transparent 45%),
+                
+                /* Layer 3: Soft fluid green glow curving behind your service grid cards to lift them */
+                radial-gradient(circle at 85% 65%, rgba(164, 185, 181, 0.22) 0%, transparent 50%),
+                
+                /* Layer 4: Deep obsidian shadow contours molding the edges of the page */
+                radial-gradient(circle at 50% 0%, rgba(5, 13, 12, 0.3) 0%, rgba(2, 22, 18, 0.95) 75%),
+                
+                /* Layer 5: Base Solid Luxury Dark Forest Green Foundation */
+                #021612 !important;
+                
+            background-size: cover;
+            background-attachment: fixed !important;
             color: var(--white-off); 
             font-family: var(--sans); 
             overflow-x: hidden; 
@@ -42,69 +61,146 @@
         }
         @keyframes shine { to { background-position: 200% center; } }
 
+        /* --- IMMACULATE SOLID GOLD THIN DIVIDER LINE --- */
+        .gold-line {
+            width: 90px;
+            height: 1px;
+            background-color: var(--gold-solid);
+            margin: 1rem 0 2rem 0;
+            display: block;
+        }
+
         /* --- NAVIGATION --- */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             padding: 1.2rem 5vw; display: flex; justify-content: space-between; align-items: center;
             background: rgba(2, 22, 18, 0.96); backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border-bottom: 0.5px solid var(--border);
+            border-bottom: 1px solid var(--gold-solid);
         }
         
         .logo-wrap { text-decoration: none; display: inline-block; position: relative; padding-bottom: 4px; }
-        .nav-logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; letter-spacing: 3px; transition: letter-spacing 0.4s; display: inline-block; white-space: nowrap; }
-        .logo-wrap:hover .nav-logo { letter-spacing: 5px; }
-        .logo-wrap::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 1px; background: var(--gold-solid); transition: width 0.4s, left 0.4s; }
-        .logo-wrap:hover::after { width: 100%; left: 0; }
-
+        .nav-logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; letter-spacing: 3px; display: inline-block; white-space: nowrap; }
         .nav-actions { display: flex; align-items: center; gap: 1.5rem; }
-        .nav-whatsapp { color: var(--white-off); text-decoration: none; font-size: 0.75rem; letter-spacing: 1.5px; opacity: 0.8; }
         .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; }
 
-        /* --- HERO AREA --- */
+        /* --- CONCIERGE BUTTON DESIGN FOR FOOTER LAYOUT --- */
+        .nav-whatsapp-btn {
+            background: rgba(5, 13, 12, 0.85); border: 0.5px solid var(--gold-solid); color: var(--gold-solid); padding: 0.75rem 2rem; text-decoration: none; font-weight: 500; font-size: 0.8rem; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+        }
+        .nav-whatsapp-btn:hover { background: rgba(201, 168, 76, 0.2); transform: translateY(-1px); }
+        .nav-whatsapp-btn svg { width: 14px; height: 14px; fill: currentColor; }
+
+        .nav-email-btn {
+            background: rgba(5, 13, 12, 0.85); border: 0.5px solid rgba(244, 240, 232, 0.4); color: var(--white-off); padding: 0.75rem 2rem; text-decoration: none; font-weight: 500; font-size: 0.8rem; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+        }
+        .nav-email-btn:hover { background: rgba(244, 240, 232, 0.15); transform: translateY(-1px); }
+        .nav-email-btn svg { width: 14px; height: 14px; fill: currentColor; }
+
+        /* --- HERO HEADER MAIN AREA --- */
         .hero {
-            height: 100vh; position: relative; display: flex; align-items: center; justify-content: center;
-            background: transparent url('logo.jpg') no-repeat center center; background-size: contain; padding: 10vh 10vw; 
-            z-index: 5;
-        }
-        .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle, transparent 40%, rgba(2, 22, 18, 0.6) 100%); }
-
-        /* --- CAROUSELS ENGINE FIXED --- */
-        .marquee { 
-            background: #00120f; padding: 1.2rem 0; overflow: hidden; white-space: nowrap; border-top: 0.5px solid var(--gold-solid); border-bottom: 0.5px solid var(--gold-solid); display: flex;
-            position: relative; z-index: 10;
-        }
-        .marquee-inner { display: inline-block; animation: scroll-text 35s linear infinite; font-family: var(--serif); color: var(--gold-solid); font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; padding-right: 2rem; flex-shrink: 0; }
-        
-        .image-marquee { width: 100%; background: #00120f; padding: 2.5rem 0; overflow: hidden; white-space: nowrap; display: flex; border-bottom: 0.5px solid var(--border); position: relative; z-index: 10; }
-        .image-marquee-track { display: flex; gap: 1.5rem; animation: scroll-images 30s linear infinite; flex-shrink: 0; padding-right: 1.5rem; }
-        .image-marquee-track img { width: 380px; height: 240px; object-fit: cover; border: 0.5px solid var(--border); }
-
-        /* RESTORED MOTION DIRECTION TRANSLATION VECTORS */
-        @keyframes scroll-text { 
-            from { transform: translate3d(0, 0, 0); } 
-            to { transform: translate3d(-100%, 0, 0); } 
-        }
-        @keyframes scroll-images { 
-            from { transform: translate3d(0, 0, 0); } 
-            to { transform: translate3d(-100%, 0, 0); } 
-        }
-
-        section { padding: 6rem 8vw; position: relative; }
-
-        /* --- ABOUT US --- */
-        #about-profile {
-            padding: 8rem 8vw 4rem 8vw;
-            position: relative;
+            height: 100vh; 
+            position: relative; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            background: linear-gradient(rgba(2, 22, 18, 0.1) 0%, rgba(2, 22, 18, 0.85) 100%), url('home-header-bg.jpg') no-repeat center center; 
+            background-size: cover; 
+            padding: 0 8vw; 
             z-index: 5;
             border-bottom: 0.5px solid var(--border);
+        }
+        .hero-content {
+            text-align: center;
+            max-width: 950px;
+            z-index: 10;
+        }
+        .hero-content h1 {
+            font-family: var(--serif);
+            font-size: 5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            letter-spacing: 4px;
+            line-height: 1.15;
+        }
+        .hero-content p {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            font-weight: 300;
+            letter-spacing: 1.5px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* --- FAST, METALLIC SHINING TICKER BAR --- */
+        .ticker-container {
+            width: 100vw;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: rgba(5, 13, 12, 0.96);
+            border-top: 0.5px solid rgba(201, 168, 76, 0.18);
+            border-bottom: 1px solid var(--gold-solid);
+            overflow: hidden;
+            padding: 0.9rem 0;
+            display: flex;
+            align-items: center;
+        }
+        .ticker-wrap {
+            display: flex;
+            white-space: nowrap;
+            animation: loop-ticker 18s linear infinite; 
+        }
+        .ticker-wrap span {
+            font-family: var(--display);
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-style: normal;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            
+            background: var(--gold-metallic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
+        }
+        .ticker-wrap span::after {
+            content: "•";
+            margin-left: 2rem;
+            background: var(--gold-metallic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        @keyframes loop-ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-33.3333%); }
+        }
+
+        /* --- LUXURY GLASSMORPHIC HOME ABOUT BLOCK FRAME --- */
+        #home-about {
+            padding: 6rem 6vw;
+            max-width: 1140px;
+            margin: 8rem auto 0 auto;
+            position: relative;
+            z-index: 5;
+            background: rgba(4, 24, 20, 0.65);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 0.5px solid var(--border);
+            box-shadow: 0 30px 60px rgba(1, 10, 8, 0.4);
         }
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            max-width: 1300px;
-            margin: 0 auto;
+            gap: 4rem;
+            align-items: center;
+            filter: drop-shadow(0 10px 30px rgba(201, 168, 76, 0.06));
         }
         .about-manifesto {
             font-family: var(--serif);
@@ -119,127 +215,116 @@
             justify-content: center;
         }
         .about-narrative p {
-            font-size: 1rem;
+            font-size: 0.95rem;
             opacity: 0.85;
             font-weight: 300;
             letter-spacing: 0.5px;
-            line-height: 1.8;
+            line-height: 1.75;
         }
 
-        /* --- LIVING CONTENT WALL BACKDROP --- */
-        .living-content-wall {
+        /* --- HOMEPAGE CAPABILITIES SERVICES SECTIONS --- */
+        #capabilities-portfolio { 
             position: relative;
-            background: transparent;
-            width: 100%;
-            overflow: hidden;
+            padding: 4rem 8vw 8rem 8vw; 
         }
-
-        /* --- VIDEO LAYER --- */
-        .video-bg-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1; 
-            pointer-events: none;
-            background: var(--bg-deep);
-            will-change: transform; 
-            transform: translate3d(0,0,0);
-        }
-        .video-bg-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; 
-            opacity: 0.35; 
-            filter: contrast(1.15) brightness(0.95);
-            -webkit-filter: contrast(1.15) brightness(0.95);
-        }
-
-        /* --- SERVICES GRIDS --- */
-        #services { 
-            padding: 5rem 8vw 6rem 8vw; 
-            position: relative; 
-            z-index: 5; 
-            background: transparent !important; 
-        } 
-        .sec-title { font-family: var(--serif); font-size: 3.5rem; margin-bottom: 3rem; text-align: center; font-weight: 300; position: relative; z-index: 5; }
-        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; position: relative; z-index: 5; }
-        
-        .card { 
-            text-decoration: none; color: inherit; border: 0.5px solid var(--border); padding: 2.5rem 1.8rem; 
-            background: rgba(1, 10, 8, 0.94); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); 
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); display: flex; flex-direction: column; justify-content: flex-start; cursor: pointer;
-            box-shadow: 0 20px 45px rgba(0,0,0,0.6);
-        }
-        .card:hover { border-color: var(--gold-solid); transform: translateY(-8px); background: rgba(3, 23, 19, 0.96); box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8); z-index: 10; }
-        .card h3 { font-family: var(--serif); font-size: 1.4rem; margin-bottom: 1.2rem; line-height: 1.3; min-height: 4.4rem; }
-        .card p { font-size: 0.88rem; opacity: 0.75; margin-bottom: 1.5rem; line-height: 1.6; min-height: 5.5rem; }
-
-        .card-img-space { width: 100%; aspect-ratio: 16/11; background: rgba(1, 10, 8, 0.6); border: 0.5px solid rgba(201, 168, 76, 0.3); margin-bottom: 1.5rem; overflow: hidden; margin-top: auto; position: relative; display: flex; align-items: center; justify-content: center; }
-        .card-img-space::before { content: 'COMING SOON'; font-family: var(--display); font-size: 0.55rem; letter-spacing: 2px; color: var(--gold-solid); opacity: 0.4; position: absolute; }
-        .card-img-space img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 2; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
-        .card:hover .card-img-space img { transform: scale(1.04); }
-        .card .learn-more { font-family: var(--display); font-size: 0.65rem; letter-spacing: 2px; color: var(--gold-solid); text-transform: uppercase; opacity: 0.5; transition: 0.3s; margin-top: 0.5rem; }
-        .card:hover .learn-more { opacity: 1; letter-spacing: 3px; }
-
-        /* --- CLIENTS SECTION --- */
-        #clients { 
-            padding: 4rem 8vw 6rem 8vw; 
-            position: relative; 
-            z-index: 5; 
-            background: transparent !important; 
+        .section-main-title {
+            text-align: center;
+            font-family: var(--serif);
+            font-size: 3rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin: 4rem auto 3rem auto;
+            max-width: 1100px;
+            border-bottom: 0.5px solid var(--border);
+            padding-bottom: 1.5rem;
         }
         
-        .client-container { 
+        .services-grid { 
             display: grid; 
-            grid-template-columns: auto 1fr; 
-            column-gap: 0px; 
-            max-width: 1300px; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 2.5rem; 
+            max-width: 1100px; 
             margin: 0 auto; 
-            border: 0.5px solid var(--border); 
-            background: rgba(1, 10, 8, 0.85); 
-            backdrop-filter: blur(10px); 
-            -webkit-backdrop-filter: blur(10px); 
-            box-shadow: 0 25px 50px rgba(0,0,0,0.6); 
-            overflow: hidden; 
         }
-        
-        .client-sidebar { 
-            background: #000c0a; 
-            width: 110px; 
+        .card { 
+            border: 0.5px solid var(--border); 
+            padding: 2.5rem 2rem; 
+            background: rgba(1, 10, 8, 0.94); 
+            backdrop-filter: blur(25px); 
+            -webkit-backdrop-filter: blur(25px); 
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
             display: flex; 
             flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            border-right: 0.5px solid var(--border); 
-            flex-shrink: 0; 
-            padding: 50px 0; 
+            justify-content: flex-start;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.6);
         }
-        
-        .client-sidebar h2 { 
-            font-family: var(--display); 
-            font-size: 2.3rem; 
-            font-weight: 700;
-            writing-mode: vertical-rl; 
-            transform: rotate(180deg); 
-            letter-spacing: 0.25em; 
-            text-transform: uppercase; 
+        .card:hover { 
+            border-color: var(--gold-solid); 
+            transform: translateY(-8px); 
+            background: rgba(3, 23, 19, 0.96); 
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8); 
         }
-        
-        .client-image-wrap { flex-grow: 1; display: flex; align-items: center; justify-content: center; }
-        .client-image-wrap img { width: 100%; height: auto; display: block; }
+        .card h3 { 
+            font-family: var(--serif); 
+            font-size: 1.6rem; 
+            margin-bottom: 0px; 
+            line-height: 1.3; 
+        }
+        .card p { 
+            font-size: 0.95rem; 
+            opacity: 0.75; 
+            margin-bottom: 2rem; 
+            line-height: 1.6; 
+            margin-top: 1rem;
+        }
+        .card-img-space { 
+            width: 100%; 
+            aspect-ratio: 16 / 10; 
+            background: rgba(1, 10, 8, 0.6); 
+            border: 0.5px solid rgba(201, 168, 76, 0.3); 
+            margin-top: auto; 
+            overflow: hidden; 
+            position: relative; 
+        }
+        .card-img-space img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            position: absolute; 
+            inset: 0; 
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+        }
+        .card:hover .card-img-space img { transform: scale(1.04); }
 
-        .stats-bar { background: #000a08; padding: 5rem 5vw; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; border-top: 0.5px solid var(--gold-solid); position: relative; z-index: 10; }
-        .stat-item h2 { font-family: var(--serif); font-size: 3.5rem; color: var(--gold-solid); margin-bottom: 0.5rem; }
+        /* --- CORE ANCHOR CONTACT SECTION --- */
+        #contact-bridge {
+            position: relative;
+            background: linear-gradient(rgba(0, 10, 8, 0.50) 0%, rgba(1, 10, 8, 0.70) 100%), url('home-footer-bg.jpg') no-repeat center center;
+            background-size: cover;
+            border-top: 1px solid var(--gold-solid);
+            padding: 8rem 8vw;
+            text-align: center;
+        }
+        .footer-cta-wrap { max-width: 800px; margin: 0 auto; position: relative; z-index: 5; }
+        .footer-cta-wrap h3 { font-family: var(--serif); font-size: 2.5rem; margin-bottom: 1.5rem; font-weight: 300; text-shadow: 0 4px 15px rgba(0,0,0,0.95); }
+        .footer-cta-wrap p { font-size: 1.05rem; text-shadow: 0 2px 10px rgba(0,0,0,0.95); }
+        .footer-buttons { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2.5rem; }
 
-        #contact { background: linear-gradient(rgba(2, 22, 18, 0.85), rgba(2, 22, 18, 0.85)), url('contact-bg.jpg') no-repeat center center; background-size: cover; border-top: 0.5px solid var(--gold-solid); padding: 10rem 8vw; position: relative; z-index: 10; }
-        .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
-        .c-val { display: block; font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--white-off); text-decoration: none; }
-        .c-label { color: var(--gold-solid); font-family: var(--display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
+        footer {
+            padding: 5rem 5vw;
+            text-align: center;
+            border-top: 0.5px solid var(--gold-solid);
+            background: #000;
+        }
 
-        @media (max-width: 1200px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 900px) { nav { flex-direction: column; gap: 1rem; } .about-grid { grid-template-columns: 1fr; gap: 2rem; } .services-grid { grid-template-columns: 1fr; } .client-container { grid-template-columns: 1fr; } .client-sidebar { width: 100%; writing-mode: horizontal-tb; transform: none; padding: 30px 0; border-right: none; border-bottom: 0.5px solid var(--border); } .client-sidebar h2 { writing-mode: horizontal-tb; transform: none; font-size: 1.8rem; } .contact-wrap, .stats-bar { grid-template-columns: 1fr; } }
+        @media (max-width: 900px) {
+            nav { padding: 1.2rem 5vw; }
+            .hero-content h1 { font-size: 2.8rem; }
+            #home-about { margin: 4rem 4vw 0 4vw; padding: 3rem 4vw; }
+            .about-grid, .services-grid, .footer-buttons { grid-template-columns: 1fr; gap: 2rem; flex-direction: column; align-items: center; }
+        }
     </style>
 </head>
 <body>
@@ -247,132 +332,121 @@
 <nav>
     <a href="index.html" class="logo-wrap"><span class="nav-logo metallic-gold">GREENHOUSE EVENTS DUBAI</span></a>
     <div class="nav-actions">
-        <a href="https://wa.me/971552537712" target="_blank" class="nav-whatsapp">WHATSAPP</a>
-        <a href="#contact" class="nav-cta">ENQUIRE NOW</a>
+        <a href="https://wa.me/971552537712" target="_blank" class="nav-cta" style="background: transparent; border: 0.5px solid var(--gold-solid); color: var(--gold-solid); padding: 0.55rem 1.2rem;">WHATSAPP</a>
+        <a href="#contact-bridge" class="nav-cta">ENQUIRE NOW</a>
     </div>
 </nav>
 
-<header class="hero"><div class="hero-overlay"></div></header>
-
-<div class="marquee">
-    <div class="marquee-inner">
-        <span class="metallic-gold">Private Party and Event Planning</span> · <span class="metallic-gold">Corporate Event Management and Production</span> · <span class="metallic-gold">Permanent Space Transformations</span> · <span class="metallic-gold">Staging, Sound and AV Support</span> · <span class="metallic-gold">Local and International Entertainment</span> · <span class="metallic-gold">Wardrobe Curation</span> ·
-    </div>
-    <div class="marquee-inner">
-        <span class="metallic-gold">Private Party and Event Planning</span> · <span class="metallic-gold">Corporate Event Management and Production</span> · <span class="metallic-gold">Permanent Space Transformations</span> · <span class="metallic-gold">Staging, Sound and AV Support</span> · <span class="metallic-gold">Local and International Entertainment</span> · <span class="metallic-gold">Wardrobe Curation</span> ·
-    </div>
-</div>
-
-<div class="image-marquee">
-    <div class="image-marquee-track">
-        <img src="event1.jpg" alt="1"><img src="event2.jpg" alt="2"><img src="event3.jpg" alt="3"><img src="event4.jpg" alt="4"><img src="event5.jpg" alt="5"><img src="event6.jpg" alt="6">
-    </div>
-    <div class="image-marquee-track">
-        <img src="event1.jpg" alt="1"><img src="event2.jpg" alt="2"><img src="event3.jpg" alt="3"><img src="event4.jpg" alt="4"><img src="event5.jpg" alt="5"><img src="event6.jpg" alt="6">
-    </div>
-</div>
-
-<div class="living-content-wall">
-
-    <div class="video-bg-container">
-        <video autoplay muted loop playsinline preload="auto" id="creationVideoBackdrop">
-            <source src="background-creation.mp4" type="video/mp4">
-        </video>
+<header class="hero">
+    <div class="hero-content">
+        <h1 class="metallic-gold">Bespoke Event Engineering & Design</h1>
+        <p>Turning premier commercial blueprints, milestone private galas, and experiential visions into iconic visual realities.</p>
     </div>
 
-    <section id="about-profile">
-        <div class="about-grid">
-            <div class="about-manifesto">
-                Bringing premium, high impact <span class="metallic-gold">event architecture</span> and absolute experiential delivery to life.
-            </div>
-            <div class="about-narrative">
-                <p>Welcome to Greenhouse Events. Backed by twenty years of expert project engineering and entertainment mastery, we specialize in staging unforgettable brand experiences, luxury celebrations, and complete environment overhauls across the UAE.</p>
-                <p>We approach event creation as a functional network, weaving crystal clear sound engineering, custom stage architecture, and top tier global talent seamlessly together. We do not just coordinate timelines; we build the literal spaces where moments happen.</p>
-            </div>
+    <div class="ticker-container">
+        <div class="ticker-wrap">
+            <span>Private Party and Event Planning</span>
+            <span>Corporate Events & Activations</span>
+            <span>Permanent Space Transformations</span>
+            <span>Audio Visual & Technical Staging</span>
+            <span>Exclusive Entertainment Roster</span>
+            <span>Bespoke Wardrobe & Costume Design</span>
         </div>
-    </section>
-
-    <section id="services">
-        <h2 class="sec-title">Luxury <em class="metallic-gold">Production</em></h2>
-        <div class="services-grid">
-            <a href="private-events.html" class="card">
-                <h3 class="metallic-gold">Private Party and Event Planning</h3>
-                <p>Bespoke execution for birthday celebrations, engagements, proposals, and high profile gatherings.</p>
-                <div class="card-img-space"><img src="card1.jpg" alt="1"></div><span class="learn-more">View Projects</span>
-            </a>
-            <a href="corporate-events.html" class="card">
-                <h3 class="metallic-gold">Corporate Event Management</h3>
-                <p>Full scale corporate production, business activations, brand launches, and structural operations.</p>
-                <div class="card-img-space"><img src="card2.jpg" alt="2"></div><span class="learn-more">View Projects</span>
-            </a>
-            <a href="permanent-transformations.html" class="card">
-                <h3 class="metallic-gold">Permanent Transformations</h3>
-                <p>Layout curation for restaurants, hospitality, and workspaces. Luxury floral art and greenery installations.</p>
-                <div class="card-img-space"><img src="card3.jpg" alt="3"></div><span class="learn-more">View Projects</span>
-            </a>
-            <a href="staging-av.html" class="card">
-                <h3 class="metallic-gold">Staging, Sound and AV</h3>
-                <p>Technical infrastructure, sound engineering, specialized lighting arrays, and rigid stage architecture.</p>
-                <div class="card-img-space"><img src="card4.jpg" alt="4"></div><span class="learn-more">View Projects</span>
-            </a>
-            <a href="entertainment.html" class="card">
-                <h3 class="metallic-gold">Local and International Entertainment</h3>
-                <p>Direct sourcing of talent, global acts, musicians, characters, and custom show design.</p>
-                <div class="card-img-space"><img src="card5.jpg" alt="5"></div><span class="learn-more">View Projects</span>
-            </a>
-            <a href="wardrobe-costumes.html" class="card">
-                <h3 class="metallic-gold">Wardrobe</h3>
-                <p>Bespoke costume design, extensive wardrobe hire, and elite on-site hair and makeup transformations.</p>
-                <div class="card-img-space"><img src="card6.jpg" alt="6"></div><span class="learn-more">View Projects</span>
-            </a>
+        <div class="ticker-wrap">
+            <span>Private Party and Event Planning</span>
+            <span>Corporate Events & Activations</span>
+            <span>Permanent Space Transformations</span>
+            <span>Audio Visual & Technical Staging</span>
+            <span>Exclusive Entertainment Roster</span>
+            <span>Bespoke Wardrobe & Costume Design</span>
         </div>
-    </section>
+    </div>
+</header>
 
-    <section id="clients">
-        <div class="client-container">
-            <div class="client-sidebar"><h2 class="metallic-gold">Clients</h2></div>
-            <div class="client-image-wrap"><img src="client-logos.jpg" alt="Showcase"></div>
+<section id="home-about">
+    <div class="about-grid">
+        <div class="about-manifesto">
+            Fusing strict architectural precision with elite <span class="metallic-gold">experiential luxury</span>.
         </div>
-    </section>
-</div>
-
-<div class="stats-bar">
-    <div class="stat-item"><h2 class="metallic-gold">500+</h2><p>Events Produced</p></div>
-    <div class="stat-item"><h2 class="metallic-gold">20</h2><p>Years Experience</p></div>
-    <div class="stat-item"><h2 class="metallic-gold">98%</h2><p>Satisfaction</p></div>
-    <div class="stat-item"><h2 class="metallic-gold">40+</h2><p>Professional Crew</p></div>
-</div>
-
-<section id="contact">
-    <div class="contact-wrap">
-        <div>
-            <h2 class="metallic-gold" style="font-family: var(--serif); font-size: 3.5rem; margin-bottom: 2rem;">Contact</h2>
-            <span class="c-label metallic-gold">Email</span><a href="mailto:Lili@greenhouseeventsuae.com" class="c-val">Lili@greenhouseeventsuae.com</a>
-            <span class="c-label metallic-gold">Phone</span><a href="tel:+971552537712" class="c-val">+971 55 253 7712</a>
-        </div>
-        <div style="opacity: 0.9; display: flex; align-items: flex-end;">
-            <p>Leveraging two decades of industry experience, we specialize in unrivaled event production for global brands and private events.</p>
+        <div class="about-narrative">
+            <p>Welcome to Greenhouse Events Dubai. Backed by over two decades of high-caliber operational management across the event and luxury entertainment sectors, we design immersive spaces that captivate audiences and elevate experiential execution benchmarks.</p>
+            <p>From highly technical audio-visual scaffolding fits and corporate activation assemblies to high-density botanical installations, custom theatrical wardrobe tailoring, and live talent placement, we execute your vision perfectly from brief to launch.</p>
         </div>
     </div>
 </section>
 
-<footer style="padding: 5rem 5vw; text-align: center; border-top: 0.5px solid var(--gold-solid); background: #000;">
+<section id="capabilities-portfolio">
+    <h2 class="section-main-title metallic-gold">Core Capabilities</h2>
+    <div class="services-grid">
+        
+        <a href="private-parties.html" class="card">
+            <h3 class="metallic-gold">Private Parties & Milestones</h3>
+            <div class="gold-line"></div>
+            <p>Bespoke concept design and complete atmosphere coordination for milestone adult celebrations, private weddings, and highly imaginative children's fantasy wonderlands.</p>
+            <div class="card-img-space"><img src="home-private.jpg" alt="Private Party Planning"></div>
+        </a>
+
+        <a href="corporate-events.html" class="card">
+            <h3 class="metallic-gold">Corporate & Brand Activations</h3>
+            <div class="gold-line"></div>
+            <p>High-impact brand experiences, premier executive dinner galas, international product launches, and custom trade show exhibition build-outs handled with operational precision.</p>
+            <div class="card-img-space"><img src="home-corporate.jpg" alt="Corporate Events"></div>
+        </a>
+
+        <a href="permanent-transformations.html" class="card">
+            <h3 class="metallic-gold">Permanent Space Transformations</h3>
+            <div class="gold-line"></div>
+            <p>Premium maintenance-free artificial greenery walls, overhead botanical canopies, custom structural fabrications, and social media photo pods for elite commercial locations.</p>
+            <div class="card-img-space"><img src="home-transformations.jpg" alt="Permanent Spaces"></div>
+        </a>
+
+        <a href="staging-av.html" class="card">
+            <h3 class="metallic-gold">Audio Visual & Staging Pods</h3>
+            <div class="gold-line"></div>
+            <p>Concert-grade sound reinforcement systems, technical multiline array engineering, heavy structural truss rigging, and high-end geometric or LED glass event dance floors.</p>
+            <div class="card-img-space"><img src="home-av.jpg" alt="Audio Visual Production"></div>
+        </a>
+
+        <a href="entertainment.html" class="card">
+            <h3 class="metallic-gold">Exclusive Entertainment Curation</h3>
+            <div class="gold-line"></div>
+            <p>Direct placement connectivity for an international roster of premier open-format DJs, specialty circus acts, human roaming installations, acrobatics, and live musicians.</p>
+            <div class="card-img-space"><img src="home-entertainment.jpg" alt="Entertainment Roster"></div>
+        </a>
+
+        <a href="wardrobe.html" class="card">
+            <h3 class="metallic-gold">Bespoke Wardrobe & Costume Design</h3>
+            <div class="gold-line"></div>
+            <p>High-end costume hire coordination, custom character design drafting, backstage theatrical tailoring, and avant-garde hair and makeup artist curation packages.</p>
+            <div class="card-img-space"><img src="home-wardrobe.jpg" alt="Costume Design & Styling"></div>
+        </a>
+
+    </div>
+</section>
+
+<section id="contact-bridge">
+    <div class="footer-cta-wrap">
+        <h3 class="metallic-gold">Begin Custom Space Conception</h3>
+        <p style="opacity: 0.7; max-width: 600px; margin: 0 auto; margin-bottom: 2.5rem;">Connect with our executive coordination office today to arrange an on-site evaluation, outline technical requirements, or schedule a design brief evaluation.</p>
+        
+        <div class="footer-buttons">
+            <a href="https://wa.me/971552537712?text=Hello%20Greenhouse%20Events%2C%20I%20am%20inquiring%20about%20your%20luxury%20production%20and%20event%20design%20services." target="_blank" class="nav-whatsapp-btn">
+                <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+                CONTACT US VIA WHATSAPP
+            </a>
+
+            <a href="mailto:info@greenhouseeventsuae.com?subject=General%20Event%20Production%20Inquiry" class="nav-email-btn">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                CONTACT US VIA EMAIL
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer>
     <p class="metallic-gold" style="font-family: var(--display); font-size: 1.1rem; letter-spacing: 5px; font-weight: 700; margin-bottom: 0.5rem;">GREENHOUSE EVENTS DUBAI</p>
     <p style="font-size: 0.75rem; opacity: 0.4; letter-spacing: 1px;">&copy; 2026 Greenhouse Events UAE. All Rights Reserved.</p>
 </footer>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const video = document.getElementById("creationVideoBackdrop");
-        if (video) {
-            video.playbackRate = 0.45;
-            video.addEventListener('ended', function() {
-                video.currentTime = 0;
-                video.play();
-            }, false);
-        }
-    });
-</script>
 
 </body>
 </html>
