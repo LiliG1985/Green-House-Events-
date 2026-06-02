@@ -22,14 +22,16 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         
-        /* --- ACCURATE SAGE MINT PLASTER BACKGROUND CANVAS ONLY --- */
+        /* --- HARDCODED HOMEPAGE COLORS & HEAVY CANVAS GRAIN TEXTURE --- */
         body { 
             background: 
-                radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.4) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(2, 22, 18, 0.05) 0%, transparent 60%),
-                repeating-radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.12) 0px, rgba(255, 255, 255, 0.12) 2px, transparent 4px, transparent 10px),
-                #a4b9b5 !important;
-            background-size: cover;
+                /* Layer 1: Smooth Home Page Color Mask */
+                linear-gradient(180deg, rgba(2, 22, 18, 0.88) 0%, rgba(4, 36, 30, 0.92) 40%, rgba(1, 10, 8, 0.96) 100%),
+                /* Layer 2: Deepened Tactile Grain Lines */
+                repeating-linear-gradient(45deg, rgba(201, 168, 76, 0.04) 0px, rgba(201, 168, 76, 0.04) 1px, transparent 1px, transparent 5px),
+                repeating-linear-gradient(-45deg, rgba(254, 254, 254, 0.03) 0px, rgba(254, 254, 254, 0.03) 1px, transparent 1px, transparent 5px),
+                /* Layer 3: Base Solid Color */
+                #021612 !important;
             background-attachment: fixed !important;
             color: var(--white-off); 
             font-family: var(--sans); 
@@ -58,7 +60,7 @@
             display: block;
         }
 
-        /* --- NAVIGATION (RESTORED SIGNATURE DARK EMERALD COATING) --- */
+        /* --- NAVIGATION --- */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             padding: 1.2rem 5vw; display: flex; justify-content: space-between; align-items: center;
@@ -70,7 +72,6 @@
         .logo-wrap { text-decoration: none; display: inline-block; position: relative; padding-bottom: 4px; }
         .nav-logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; letter-spacing: 3px; display: inline-block; white-space: nowrap; }
         .nav-actions { display: flex; align-items: center; gap: 1.5rem; }
-        .nav-actions a.nav-whatsapp { color: var(--white-off); text-decoration: none; font-size: 0.8rem; letter-spacing: 1px; font-weight: 500; }
         .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; }
 
         /* --- CONCIERGE FOOTER BUTTON DESIGN SHAPES --- */
@@ -192,7 +193,6 @@
             font-size: 2.5rem;
             font-weight: 300;
             line-height: 1.25;
-            text-shadow: 0 2px 10px rgba(1, 10, 8, 0.3);
         }
         .about-narrative {
             display: flex;
@@ -202,11 +202,10 @@
         }
         .about-narrative p {
             font-size: 1rem;
-            opacity: 0.95;
+            opacity: 0.85;
             font-weight: 300;
             letter-spacing: 0.5px;
             line-height: 1.8;
-            text-shadow: 0 2px 8px rgba(1, 10, 8, 0.3);
         }
 
         /* --- COMPACT VISUAL VIDEO MODULE --- */
@@ -235,7 +234,7 @@
             border: none;
         }
 
-        /* --- THEMED SERVICE CARD GRIDS (RESTORED SHARP DEEP OBSIDIAN FINISH) --- */
+        /* --- THEMED SERVICE CARD GRIDS --- */
         #services-inclusions { 
             padding: 4rem 8vw 8rem 8vw; 
             position: relative; 
@@ -296,7 +295,7 @@
         }
         .card:hover .card-img-space img { transform: scale(1.04); }
 
-        /* --- CONTACT INLINE CONFIGURATION (RESTORED CLEAN GRADIENT FINISH) --- */
+        /* --- CONTACT INLINE CONFIGURATION (BRIGHTENED IMAGE BACKGROUND BACKDROP) --- */
         #contact-bridge {
             position: relative;
             background: linear-gradient(rgba(0, 10, 8, 0.50) 0%, rgba(1, 10, 8, 0.70) 100%), url('party-footer-bg.jpg') no-repeat center center;
