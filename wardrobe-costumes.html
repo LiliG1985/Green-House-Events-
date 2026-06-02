@@ -8,8 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-deep: #050d0c; 
-            --bg-mid: #0b1a18;  
+            --bg-deep: #021612; 
+            --bg-mid: #04241e;  
             --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%);
             --gold-solid: #C9A84C;
             --white-off: #F4F0E8;
@@ -22,8 +22,27 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         
+        /* --- MOLDED LIGHT & SHADOW LUXURY EMERALD BASE --- */
         body { 
-            background: radial-gradient(circle at 50% 30%, #1c2725 0%, var(--bg-deep) 70%); 
+            background: 
+                /* Layer 1: Subtle luxury micro canvas grid overlay */
+                repeating-linear-gradient(45deg, rgba(201, 168, 76, 0.02) 0px, rgba(201, 168, 76, 0.02) 1px, transparent 1px, transparent 6px),
+                repeating-linear-gradient(-45deg, rgba(254, 254, 254, 0.02) 0px, rgba(254, 254, 254, 0.02) 1px, transparent 1px, transparent 6px),
+                
+                /* Layer 2: Light sage mint highlight molded behind your top layout elements */
+                radial-gradient(circle at 20% 25%, rgba(164, 185, 181, 0.25) 0%, transparent 45%),
+                
+                /* Layer 3: Soft fluid green glow curving behind your showcase grid rows */
+                radial-gradient(circle at 85% 65%, rgba(164, 185, 181, 0.22) 0%, transparent 50%),
+                
+                /* Layer 4: Deep obsidian shadow contours molding the edges of the page */
+                radial-gradient(circle at 50% 0%, rgba(5, 13, 12, 0.3) 0%, rgba(2, 22, 18, 0.95) 75%),
+                
+                /* Layer 5: Base Solid Luxury Dark Forest Green Foundation */
+                #021612 !important;
+                
+            background-size: cover;
+            background-attachment: fixed !important;
             color: var(--white-off); 
             font-family: var(--sans); 
             overflow-x: hidden; 
@@ -55,7 +74,7 @@
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             padding: 1.2rem 5vw; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(5, 13, 12, 0.96); backdrop-filter: blur(15px);
+            background: rgba(2, 22, 18, 0.96); backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--gold-solid);
         }
@@ -154,8 +173,48 @@
             100% { transform: translateX(-33.3333%); }
         }
 
-        /* --- SERVICE SHOWCASE SECTIONS --- */
-        .showcase-container { max-width: 1200px; margin: 0 auto; padding: 6rem 5vw; }
+        /* --- LUXURY GLASSMORPHIC ABOUT BOX FRAME --- */
+        #about-wardrobe {
+            padding: 6rem 6vw;
+            max-width: 1140px;
+            margin: 8rem auto 0 auto; /* Closed up bottom margin to manage spacing gap */
+            position: relative;
+            z-index: 5;
+            background: rgba(4, 24, 20, 0.65);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 0.5px solid var(--border);
+            box-shadow: 0 30px 60px rgba(1, 10, 8, 0.4);
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            filter: drop-shadow(0 10px 30px rgba(201, 168, 76, 0.06));
+        }
+        .about-manifesto {
+            font-family: var(--serif);
+            font-size: 2.5rem;
+            font-weight: 300;
+            line-height: 1.25;
+        }
+        .about-narrative {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+        .about-narrative p {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            line-height: 1.75;
+        }
+
+        /* --- SERVICE SHOWCASE SECTIONS WITH BRAND BOXES --- */
+        .showcase-container { max-width: 1200px; margin: 0 auto; padding: 4rem 5vw 8rem 5vw; } /* Tightened top padding */
         
         .showcase-row {
             display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 8rem; position: relative;
@@ -163,18 +222,26 @@
         .showcase-row:nth-child(even) { direction: rtl; }
         .showcase-row:nth-child(even) .showcase-text { direction: ltr; }
 
+        /* --- UNIFORM HIGHLIGHTED BRAND BOX STYLE --- */
+        .showcase-text {
+            border: 0.5px solid var(--border); 
+            padding: 2.5rem 2rem; 
+            background: rgba(1, 10, 8, 0.94); 
+            backdrop-filter: blur(25px); 
+            -webkit-backdrop-filter: blur(25px); 
+            box-shadow: 0 20px 45px rgba(0,0,0,0.6);
+        }
         .showcase-text h2 { font-family: var(--serif); font-size: 2.2rem; margin-bottom: 0px; font-weight: 400; }
-        .showcase-text p { opacity: 0.8; font-size: 0.95rem; margin-bottom: 0px; line-height: 1.7; }
+        .showcase-text p { opacity: 0.8; font-size: 0.95rem; margin-bottom: 0px; line-height: 1.7; margin-top: 1.5rem; }
 
         .showcase-img-space {
             width: 100%; aspect-ratio: 16/11; background: rgba(5, 13, 12, 0.6); border: 0.5px solid rgba(201, 168, 76, 0.3); overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
         .showcase-img-space img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 2; }
 
-        /* --- CONNECTOR FOOTER (SLIGHTLY BRIGHTENED TO 0.50 / 0.70 ALIGNMENT) --- */
+        /* --- CONNECTOR FOOTER --- */
         #contact-footer { 
             position: relative;
-            /* Lightened layer gradient mix cleanly illuminates wardrobe-footer-bg.jpg */
             background: linear-gradient(rgba(0, 10, 8, 0.50) 0%, rgba(1, 10, 8, 0.70) 100%), url('wardrobe-footer-bg.jpg') no-repeat center center; 
             background-size: cover;
             border-top: 0.5px solid var(--gold-solid); 
@@ -189,6 +256,7 @@
         @media (max-width: 900px) {
             nav { padding: 1.2rem 5vw; }
             .inner-hero h1 { font-size: 2.5rem; }
+            #about-wardrobe { margin: 4rem 4vw 0 4vw; padding: 3rem 4vw; }
             .showcase-row { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 4rem; }
             .showcase-row:nth-child(even) { direction: ltr; }
             .footer-buttons { flex-direction: column; align-items: center; gap: 1rem; }
@@ -203,7 +271,7 @@
     </a>
     <div class="nav-actions">
         <a href="https://wa.me/971552537712?text=Hello%20Greenhouse%20Events%2C%20I%20would%20like%20to%20enquire%20about%20your%20bespoke%20wardrobe%20and%20costume%20services." target="_blank" class="nav-whatsapp">
-            <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2(Rest of path truncated for brevity)"></path></svg>
+            <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2"></path></svg>
             WHATSAPP
         </a>
         <a href="index.html#contact" class="nav-cta">ENQUIRE NOW</a>
@@ -232,6 +300,18 @@
         </div>
     </div>
 </header>
+
+<section id="about-wardrobe">
+    <div class="about-grid">
+        <div class="about-manifesto">
+            Weaving aesthetic masterpiece narratives into high-end <span class="metallic-gold">character realism</span>.
+        </div>
+        <div class="about-narrative">
+            <p>Immersive spatial environments require flawlessly integrated living details. Our wardrobe and costume design division operates behind the scenes to curate, craft, and tailor luxury performance wear, bespoke thematic looks, and elite styling layouts across Dubai.</p>
+            <p>From strategic partner access for high-tier costume rental networks to dedicated atelier craftsmanship and meticulous cosmetic art coordination, we handle the complete visual transformation. We guarantee that your entertainment roster looks immaculate under the stage lights.</p>
+        </div>
+    </div>
+</section>
 
 <main class="showcase-container">
 
@@ -284,9 +364,4 @@
 </section>
 
 <footer style="padding: 4rem; text-align: center; border-top: 0.5px solid var(--gold-solid); background: #000;">
-    <p class="metallic-gold" style="font-family: var(--serif); font-size: 1.2rem; letter-spacing: 4px;">GREENHOUSE EVENTS DUBAI</p>
-    <p style="font-size: 0.6rem; opacity: 0.3; margin-top: 2rem;">&copy; 2026 GREENHOUSE EVENTS LLC. ALL RIGHTS RESERVED.</p>
-</footer>
-
-</body>
-</html>
+    <p class="metallic-gold" style="font-family: var(--serif); font-size: 1.2rem; letter-spacing: 4px;">GREENHOUSE
