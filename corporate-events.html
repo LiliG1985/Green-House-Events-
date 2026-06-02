@@ -22,8 +22,15 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         
+        /* --- ACCURATE SAGE MINT PLASTER BACKGROUND CANVAS ONLY --- */
         body { 
-            background: linear-gradient(180deg, #021612 0%, #04241e 40%, #010a08 100%); 
+            background: 
+                radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(2, 22, 18, 0.05) 0%, transparent 60%),
+                repeating-radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.12) 0px, rgba(255, 255, 255, 0.12) 2px, transparent 4px, transparent 10px),
+                #a4b9b5 !important;
+            background-size: cover;
+            background-attachment: fixed !important;
             color: var(--white-off); 
             font-family: var(--sans); 
             overflow-x: hidden; 
@@ -63,6 +70,7 @@
         .logo-wrap { text-decoration: none; display: inline-block; position: relative; padding-bottom: 4px; }
         .nav-logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; letter-spacing: 3px; display: inline-block; white-space: nowrap; }
         .nav-actions { display: flex; align-items: center; gap: 1.5rem; }
+        .nav-actions a.nav-whatsapp { color: var(--white-off); text-decoration: none; font-size: 0.8rem; letter-spacing: 1px; font-weight: 500; }
         .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; }
 
         /* --- CONCIERGE FOOTER BUTTON DESIGN SHAPES --- */
@@ -184,6 +192,7 @@
             font-size: 2.5rem;
             font-weight: 300;
             line-height: 1.25;
+            text-shadow: 0 2px 10px rgba(1, 10, 8, 0.3);
         }
         .about-narrative {
             display: flex;
@@ -197,6 +206,7 @@
             font-weight: 300;
             letter-spacing: 0.5px;
             line-height: 1.8;
+            text-shadow: 0 2px 8px rgba(1, 10, 8, 0.3);
         }
 
         /* --- CORPORATE SERVICES GRID --- */
@@ -260,7 +270,7 @@
         }
         .card:hover .card-img-space img { transform: scale(1.04); }
 
-        /* --- CONTACT INLINE CONFIGURATION (MATCHED UNIFORM BRIGHTER FAINT BACKDROP STYLE) --- */
+        /* --- CONTACT INLINE CONFIGURATION --- */
         #contact-bridge {
             position: relative;
             background: linear-gradient(rgba(0, 10, 8, 0.50) 0%, rgba(1, 10, 8, 0.70) 100%), url('corporate-footer-bg.jpg') no-repeat center center;
