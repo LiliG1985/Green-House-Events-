@@ -176,7 +176,6 @@
         .card p { font-size: 0.88rem; opacity: 0.75; margin-bottom: 1.5rem; line-height: 1.6; min-height: 5.5rem; }
 
         .card-img-space { width: 100%; aspect-ratio: 16/11; background: rgba(1, 10, 8, 0.6); border: 0.5px solid rgba(201, 168, 76, 0.3); margin-bottom: 1.5rem; overflow: hidden; margin-top: auto; position: relative; display: flex; align-items: center; justify-content: center; }
-        .card-img-space::before { content: 'COMING SOON'; font-family: var(--display); font-size: 0.55rem; letter-spacing: 2px; color: var(--gold-solid); opacity: 0.4; position: absolute; }
         .card-img-space img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 2; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
         .card:hover .card-img-space img { transform: scale(1.04); }
         .card .learn-more { font-family: var(--display); font-size: 0.65rem; letter-spacing: 2px; color: var(--gold-solid); text-transform: uppercase; opacity: 0.5; transition: 0.3s; margin-top: 0.5rem; }
@@ -237,7 +236,7 @@
         .c-val { display: block; font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--white-off); text-decoration: none; }
         .c-label { color: var(--gold-solid); font-family: var(--display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
 
-        /* --- DIRECTORY MEGA FOOTER ARCHITECTURE --- */
+        /* --- THE MASTER DIRECTORY MEGA FOOTER BLOCKS --- */
         .mega-footer {
             background: #000000;
             padding: 5rem 8vw 3rem 8vw;
@@ -458,4 +457,61 @@
             <h4>Production Services</h4>
             <ul>
                 <li><a href="private-events.html">Private Party Planning</a></li>
-                <li><a href="corporate-events.html">Corporate
+                <li><a href="corporate-events.html">Corporate Events & Activations</a></li>
+                <li><a href="permanent-transformations.html">Permanent Greenscapes</a></li>
+                <li><a href="staging-av.html">Rigid Structural Staging</a></li>
+                <li><a href="staging-av.html">Audio Visual Engineering</a></li>
+                <li><a href="wardrobe-costumes.html">Bespoke Wardrobe & Styling</a></li>
+            </ul>
+        </div>
+
+        <div class="directory-col">
+            <h4>Capabilities</h4>
+            <ul>
+                <li><a href="private-events.html">Private Party and Event Planning</a></li>
+                <li><a href="corporate-events.html">Corporate Event Management</a></li>
+                <li><a href="permanent-transformations.html">Permanent Transformations</a></li>
+                <li><a href="staging-av.html">Staging, Sound and AV</a></li>
+                <li><a href="entertainment.html">Local and International Entertainment</a></li>
+                <li><a href="wardrobe-costumes.html">Wardrobe</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="footer-directory-grid" style="border-top: 0.5px solid rgba(201, 168, 76, 0.15); padding-top: 3rem; margin-top: 1rem;">
+        <div class="directory-col">
+            <h4>Hotline Desk</h4>
+            <ul>
+                <li><a href="tel:+971552537712" style="font-weight: 500; opacity: 0.95;">+971 55 253 7712</a></li>
+                <li><a href="mailto:info@greenhouseeventsuae.com" style="font-weight: 500; opacity: 0.95;">info@greenhouseeventsuae.com</a></li>
+            </ul>
+        </div>
+        <div class="directory-col" style="grid-column: span 3; display: flex; align-items: center; justify-content: flex-end;">
+            <p style="font-size: 0.88rem; font-weight: 300; opacity: 0.5; max-width: 550px; text-align: right; line-height: 1.7;">
+                Leveraging two decades of industry experience, we specialize in unrivaled event production for global brands and private events.
+            </p>
+        </div>
+    </div>
+
+    <div class="footer-bottom-bar">
+        <p class="metallic-gold" style="font-family: var(--display); font-size: 1rem; letter-spacing: 4px; font-weight: 700;">GREENHOUSE EVENTS DUBAI</p>
+        <p>&copy; 2026 Greenhouse Events UAE. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const video = document.getElementById("creationVideoBackdrop");
+        if (video) {
+            video.playbackRate = 0.45;
+            video.addEventListener('ended', function() {
+                video.currentTime = 0;
+                video.play();
+            }, false);
+        }
+    });
+</script>
+
+</body>
+</html>
