@@ -22,15 +22,8 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         
-        /* --- ACCURATE SAGE MINT PLASTER BACKGROUND CANVAS ONLY --- */
         body { 
-            background: 
-                radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.4) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(2, 22, 18, 0.05) 0%, transparent 60%),
-                repeating-radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.12) 0px, rgba(255, 255, 255, 0.12) 2px, transparent 4px, transparent 10px),
-                #a4b9b5 !important;
-            background-size: cover;
-            background-attachment: fixed !important;
+            background: radial-gradient(circle at 50% 30%, #1c2725 0%, var(--bg-deep) 70%); 
             color: var(--white-off); 
             font-family: var(--sans); 
             overflow-x: hidden; 
@@ -96,7 +89,7 @@
         .inner-hero h1 { font-family: var(--serif); font-size: 4.5rem; font-weight: 300; margin-bottom: 1.5rem; letter-spacing: 3px; line-height: 1.15; text-shadow: 0 4px 12px rgba(0,0,0,0.6); }
         .inner-hero p { font-size: 1.3rem; letter-spacing: 1px; text-transform: none; opacity: 0.95; color: var(--white-off); font-weight: 300; text-shadow: 0 2px 8px rgba(0,0,0,0.8); max-width: 750px; margin: 0 auto; }
 
-        /* --- FAST, METALLIC SHINING TICKER BAR --- */
+        /* --- FAST, METALLIC SHINING TICKER BAR (EXACT UNIFORM STYLE) --- */
         .ticker-container {
             width: 100vw;
             position: absolute;
@@ -147,7 +140,7 @@
             100% { transform: translateX(-33.3333%); }
         }
 
-        /* --- ORIGINAL SERVICE SHOWCASE LAYOUT CONFIGURATION --- */
+        /* --- SERVICE SHOWCASE SECTIONS --- */
         .showcase-container { max-width: 1200px; margin: 0 auto; padding: 6rem 5vw; }
         
         .showcase-row {
@@ -156,17 +149,8 @@
         .showcase-row:nth-child(even) { direction: rtl; }
         .showcase-row:nth-child(even) .showcase-text { direction: ltr; }
 
-        /* --- ORIGINAL SCALED TEXT BOX CONTEXT CONTAINERS --- */
-        .showcase-text {
-            background: rgba(5, 13, 12, 0.94);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 0.5px solid var(--border);
-            padding: 2.5rem 2rem;
-            box-shadow: 0 20px 45px rgba(0,0,0,0.5);
-        }
         .showcase-text h2 { font-family: var(--serif); font-size: 2.2rem; margin-bottom: 1.5rem; font-weight: 400; }
-        .showcase-text p { opacity: 0.85; font-size: 0.95rem; margin-bottom: 2rem; line-height: 1.7; color: var(--white-off); }
+        .showcase-text p { opacity: 0.8; font-size: 0.95rem; margin-bottom: 2rem; line-height: 1.7; }
         
         .feature-tags { display: flex; flex-wrap: wrap; gap: 0.8rem; }
         .tag { border: 0.5px solid var(--border); padding: 0.4rem 1rem; font-size: 0.75rem; letter-spacing: 1px; background: rgba(255,255,255,0.03); color: var(--white-off); }
@@ -180,13 +164,13 @@
             display: block;
         }
 
-        /* --- ORIGINAL IMAGE STRUCTURAL DIMENSIONS --- */
+        /* --- IMAGE STRUCTURAL BLOCKS --- */
         .showcase-img-space {
             width: 100%; aspect-ratio: 16/11; background: rgba(5, 13, 12, 0.6); border: 0.5px solid rgba(201, 168, 76, 0.3); overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
         .showcase-img-space img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 2; }
 
-        /* --- LUXURY CONTACT FOOTER --- */
+        /* --- LUXURY CONTACT FOOTER WITH PERFECT DUAL GRADIENT FADE TINT --- */
         #contact-bridge {
             position: relative;
             background: linear-gradient(rgba(5, 13, 12, 0.65) 0%, rgba(1, 10, 8, 0.85) 100%), url('transform-footer-bg.jpg') no-repeat center center;
