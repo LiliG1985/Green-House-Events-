@@ -231,6 +231,7 @@
         .stats-bar { background: #000a08; padding: 5rem 5vw; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; border-top: 0.5px solid var(--gold-solid); position: relative; z-index: 10; }
         .stat-item h2 { font-family: var(--serif); font-size: 3.5rem; color: var(--gold-solid); margin-bottom: 0.5rem; }
 
+        /* --- CONSOLIDATED CONTACT BLOCK (HOTLINE, HOURS, EMAIL) --- */
         #contact { background: linear-gradient(rgba(2, 22, 18, 0.85), rgba(2, 22, 18, 0.85)), url('contact-bg.jpg') no-repeat center center; background-size: cover; border-top: 0.5px solid var(--gold-solid); padding: 10rem 8vw; position: relative; z-index: 10; }
         .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
         .c-val { display: block; font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--white-off); text-decoration: none; }
@@ -282,12 +283,12 @@
             padding-left: 4px;
         }
         
-        /* --- BRAND SOCIALS SYSTEM STYLING --- */
+        /* --- BRAND SOCIALS UPSCALED --- */
         .footer-social-row {
             display: flex;
             align-items: center;
-            gap: 1.25rem;
-            margin-top: 1.2rem;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
         }
         .social-icon-link {
             color: var(--white-off);
@@ -300,11 +301,11 @@
         .social-icon-link:hover {
             opacity: 1;
             color: var(--gold-solid);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
         .social-icon-link svg {
-            width: 20px;
-            height: 20px;
+            width: 32px; /* Increased to high density icon focus */
+            height: 32px;
             fill: currentColor;
         }
 
@@ -446,8 +447,9 @@
     <div class="contact-wrap">
         <div>
             <h2 class="metallic-gold" style="font-family: var(--serif); font-size: 3.5rem; margin-bottom: 2rem;">Contact</h2>
-            <span class="c-label metallic-gold">Email</span><a href="mailto:info@greenhouseeventsuae.com" class="c-val">info@greenhouseeventsuae.com</a>
-            <span class="c-label metallic-gold">Phone</span><a href="tel:+971552537712" class="c-val">+971 55 253 7712</a>
+            <span class="c-label metallic-gold">Hotline Placement</span><a href="tel:+971552537712" class="c-val">+971 55 253 7712</a>
+            <span class="c-label metallic-gold">Email Desk</span><a href="mailto:info@greenhouseeventsuae.com" class="c-val">info@greenhouseeventsuae.com</a>
+            <span class="c-label metallic-gold">Office Hours</span><span class="c-val" style="margin-bottom:0px;">9:00 AM — 6:00 PM <br><span style="opacity:0.6; font-size:0.85rem;">Monday through Saturday</span></span>
         </div>
         <div style="opacity: 0.9; display: flex; align-items: flex-end;">
             <p>Leveraging two decades of industry experience, we specialize in unrivaled event production for global brands and private events.</p>
@@ -509,11 +511,7 @@
 
     <div class="footer-directory-grid" style="border-top: 0.5px solid rgba(201, 168, 76, 0.15); padding-top: 3rem; margin-top: 1rem;">
         <div class="directory-col">
-            <h4>Hotline Desk</h4>
-            <ul>
-                <li><a href="tel:+971552537712" style="font-weight: 500; opacity: 0.95;">+971 55 253 7712</a></li>
-                <li><a href="mailto:info@greenhouseeventsuae.com" style="font-weight: 500; opacity: 0.95;">info@greenhouseeventsuae.com</a></li>
-            </ul>
+            <h4>Social Channels</h4>
             
             <div class="footer-social-row">
                 <a href="https://wa.me/971552537712" target="_blank" class="social-icon-link" title="WhatsApp Concierge">
