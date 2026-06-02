@@ -13,7 +13,7 @@
             --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%);
             --gold-solid: #C9A84C;
             --white-off: #F4F0E8;
-            --border: rgba(201,168,76,0.3);
+            --border: rgba(201,168,76,0.18);
             --serif: 'Cormorant Garamond', serif;
             --display: 'Cinzel', serif;
             --sans: 'DM Sans', sans-serif;
@@ -22,16 +22,16 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         
-        /* --- ACCURATE SAGE MINT PLASTER BACKGROUND & BRAND TEXTURE --- */
+        /* --- ACCURATE SAGE MINT PLASTER BACKGROUND CANVAS ONLY --- */
         body { 
             background: 
                 radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.4) 0%, transparent 50%),
                 radial-gradient(circle at 80% 70%, rgba(2, 22, 18, 0.05) 0%, transparent 60%),
-                repeating-radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.15) 0px, rgba(255, 255, 255, 0.15) 2px, transparent 4px, transparent 10px),
+                repeating-radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.12) 0px, rgba(255, 255, 255, 0.12) 2px, transparent 4px, transparent 10px),
                 #a4b9b5 !important;
             background-size: cover;
             background-attachment: fixed !important;
-            color: #021612 !important; 
+            color: var(--white-off); 
             font-family: var(--sans); 
             overflow-x: hidden; 
             line-height: 1.6; 
@@ -58,11 +58,11 @@
             display: block;
         }
 
-        /* --- NAVIGATION --- */
+        /* --- NAVIGATION (RESTORED SIGNATURE DARK EMERALD COATING) --- */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             padding: 1.2rem 5vw; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(164, 185, 181, 0.96); backdrop-filter: blur(15px);
+            background: rgba(2, 22, 18, 0.96); backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--gold-solid);
         }
@@ -70,23 +70,21 @@
         .logo-wrap { text-decoration: none; display: inline-block; position: relative; padding-bottom: 4px; }
         .nav-logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; letter-spacing: 3px; display: inline-block; white-space: nowrap; }
         .nav-actions { display: flex; align-items: center; gap: 1.5rem; }
-        .nav-actions a.nav-whatsapp { color: #021612; text-decoration: none; font-size: 0.8rem; letter-spacing: 1px; font-weight: 500; }
+        .nav-actions a.nav-whatsapp { color: var(--white-off); text-decoration: none; font-size: 0.8rem; letter-spacing: 1px; font-weight: 500; }
         .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; }
 
         /* --- CONCIERGE FOOTER BUTTON DESIGN SHAPES --- */
         .nav-whatsapp-btn {
-            background: rgba(255, 255, 255, 0.85); border: 0.5px solid var(--gold-solid); color: #021612; padding: 0.75rem 2rem; text-decoration: none; font-weight: 500; font-size: 0.8rem; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 5px 15px rgba(2, 22, 18, 0.05);
+            background: rgba(5, 13, 12, 0.85); border: 0.5px solid var(--gold-solid); color: var(--gold-solid); padding: 0.75rem 2rem; text-decoration: none; font-weight: 500; font-size: 0.8rem; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
         }
-        .nav-whatsapp-btn:hover { background: rgba(201, 168, 76, 0.1); transform: translateY(-1px); }
-        .nav-whatsapp-btn svg { width: 14px; height: 14px; fill: #021612; }
+        .nav-whatsapp-btn:hover { background: rgba(201, 168, 76, 0.2); transform: translateY(-1px); }
+        .nav-whatsapp-btn svg { width: 14px; height: 14px; fill: currentColor; }
 
         .nav-email-btn {
-            background: rgba(255, 255, 255, 0.85); border: 0.5px solid rgba(2, 22, 18, 0.3); color: #021612; padding: 0.75rem 2rem; text-decoration: none; font-weight: 500; font-size: 0.8rem; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 5px 15px rgba(2, 22, 18, 0.05);
+            background: rgba(5, 13, 12, 0.85); border: 0.5px solid rgba(244, 240, 232, 0.4); color: var(--white-off); padding: 0.75rem 2rem; text-decoration: none; font-weight: 500; font-size: 0.8rem; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
         }
-        .nav-email-btn:hover { background: rgba(2, 22, 18, 0.05); transform: translateY(-1px); }
-        .nav-email-btn svg { width: 14px; height: 14px; fill: #021612; }
+        .nav-email-btn:hover { background: rgba(244, 240, 232, 0.15); transform: translateY(-1px); }
+        .nav-email-btn svg { width: 14px; height: 14px; fill: currentColor; }
 
         /* --- HERO HEADER COVER AREA --- */
         .hero {
@@ -95,7 +93,7 @@
             display: flex; 
             align-items: center; 
             justify-content: center;
-            background: linear-gradient(rgba(164, 185, 181, 0.1) 0%, rgba(164, 185, 181, 0.6) 100%), url('private-header-bg.jpg') no-repeat center center; 
+            background: linear-gradient(rgba(2, 22, 18, 0.2) 0%, rgba(2, 22, 18, 0.85) 100%), url('private-header-bg.jpg') no-repeat center center; 
             background-size: cover; 
             padding: 0 8vw; 
             z-index: 5;
@@ -116,7 +114,6 @@
         }
         .hero-content p {
             font-size: 1.3rem;
-            color: #021612;
             opacity: 0.95;
             font-weight: 300;
             letter-spacing: 1px;
@@ -130,8 +127,8 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            background: rgba(164, 185, 181, 0.96);
-            border-top: 0.5px solid rgba(201, 168, 76, 0.3);
+            background: rgba(5, 13, 12, 0.96);
+            border-top: 0.5px solid rgba(201, 168, 76, 0.18);
             border-bottom: 1px solid var(--gold-solid);
             overflow: hidden;
             padding: 0.9rem 0;
@@ -180,6 +177,8 @@
             position: relative;
             z-index: 5;
             border-bottom: 0.5px solid var(--border);
+            background: radial-gradient(circle at 80% 50%, rgba(201, 168, 76, 0.04), transparent 50%),
+                        radial-gradient(circle at 20% 50%, rgba(4, 36, 30, 0.6), transparent 60%);
         }
         .about-grid {
             display: grid;
@@ -193,7 +192,7 @@
             font-size: 2.5rem;
             font-weight: 300;
             line-height: 1.25;
-            color: #021612;
+            text-shadow: 0 2px 10px rgba(1, 10, 8, 0.3);
         }
         .about-narrative {
             display: flex;
@@ -203,11 +202,11 @@
         }
         .about-narrative p {
             font-size: 1rem;
-            color: #021612 !important;
-            opacity: 0.9;
+            opacity: 0.95;
             font-weight: 300;
             letter-spacing: 0.5px;
             line-height: 1.8;
+            text-shadow: 0 2px 8px rgba(1, 10, 8, 0.3);
         }
 
         /* --- COMPACT VISUAL VIDEO MODULE --- */
@@ -224,7 +223,7 @@
             width: 100%;
             aspect-ratio: 16 / 9;
             border: 0.5px solid var(--border);
-            box-shadow: 0 15px 40px rgba(2, 22, 18, 0.1);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
             background: #000;
         }
         .video-wrapper iframe {
@@ -236,7 +235,7 @@
             border: none;
         }
 
-        /* --- THEMED SERVICE CARD GRIDS --- */
+        /* --- THEMED SERVICE CARD GRIDS (RESTORED SHARP DEEP OBSIDIAN FINISH) --- */
         #services-inclusions { 
             padding: 4rem 8vw 8rem 8vw; 
             position: relative; 
@@ -249,22 +248,22 @@
             margin: 0 auto; 
         }
         .card { 
-            border: 1px solid rgba(201, 168, 76, 0.3) !important; 
+            border: 0.5px solid var(--border); 
             padding: 2.5rem 2rem; 
-            background: rgba(255, 255, 255, 0.85) !important; 
+            background: rgba(1, 10, 8, 0.94); 
             backdrop-filter: blur(25px); 
             -webkit-backdrop-filter: blur(25px); 
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
             display: flex; 
             flex-direction: column; 
             justify-content: flex-start;
-            box-shadow: 0 15px 35px rgba(2, 22, 18, 0.08) !important;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.6);
         }
         .card:hover { 
-            border-color: var(--gold-solid) !important; 
+            border-color: var(--gold-solid); 
             transform: translateY(-8px); 
-            background: rgba(255, 255, 255, 0.95) !important; 
-            box-shadow: 0 25px 50px rgba(2, 22, 18, 0.15) !important; 
+            background: rgba(3, 23, 19, 0.96); 
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8); 
         }
         .card h3 { 
             font-family: var(--serif); 
@@ -274,16 +273,15 @@
         }
         .card p { 
             font-size: 0.9rem; 
-            color: #021612 !important;
-            opacity: 0.85; 
+            opacity: 0.75; 
             margin-bottom: 2rem; 
             line-height: 1.6; 
         }
         .card-img-space { 
             width: 100%; 
             aspect-ratio: 16 / 10; 
-            background: rgba(164, 185, 181, 0.2); 
-            border: 0.5px solid rgba(201, 168, 76, 0.4); 
+            background: rgba(1, 10, 8, 0.6); 
+            border: 0.5px solid rgba(201, 168, 76, 0.3); 
             margin-top: auto; 
             overflow: hidden; 
             position: relative; 
@@ -298,27 +296,26 @@
         }
         .card:hover .card-img-space img { transform: scale(1.04); }
 
-        /* --- CONTACT INLINE CONFIGURATION --- */
+        /* --- CONTACT INLINE CONFIGURATION (RESTORED CLEAN GRADIENT FINISH) --- */
         #contact-bridge {
             position: relative;
-            background: linear-gradient(rgba(164, 185, 181, 0.40) 0%, rgba(164, 185, 181, 0.70) 100%), url('party-footer-bg.jpg') no-repeat center center;
+            background: linear-gradient(rgba(0, 10, 8, 0.50) 0%, rgba(1, 10, 8, 0.70) 100%), url('party-footer-bg.jpg') no-repeat center center;
             background-size: cover;
             border-top: 1px solid var(--gold-solid);
             padding: 8rem 8vw;
             text-align: center;
         }
         .footer-cta-wrap { max-width: 800px; margin: 0 auto; position: relative; z-index: 5; }
-        .footer-cta-wrap h3 { font-family: var(--serif); font-size: 2.5rem; margin-bottom: 1.5rem; font-weight: 300; color: #021612; }
-        .footer-cta-wrap p { font-size: 1.05rem; color: #021612; font-weight: 400; }
+        .footer-cta-wrap h3 { font-family: var(--serif); font-size: 2.5rem; margin-bottom: 1.5rem; font-weight: 300; text-shadow: 0 4px 15px rgba(0,0,0,0.95); }
+        .footer-cta-wrap p { font-size: 1.05rem; text-shadow: 0 2px 10px rgba(0,0,0,0.95); }
         .footer-buttons { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2.5rem; }
 
         footer {
             padding: 5rem 5vw;
             text-align: center;
             border-top: 0.5px solid var(--gold-solid);
-            background: #a4b9b5;
+            background: #000;
         }
-        footer p { color: #021612 !important; }
 
         @media (max-width: 900px) {
             nav { padding: 1.2rem 5vw; }
@@ -466,7 +463,7 @@
 <section id="contact-bridge">
     <div class="footer-cta-wrap">
         <h3 class="metallic-gold">Start Planning Your Celebration</h3>
-        <p style="max-width: 600px; margin: 0 auto; margin-bottom: 2.5rem; opacity:0.85;">Connect with us today to discuss your vision, layout preferences, or to book a personal design brief evaluation.</p>
+        <p style="opacity: 0.7; max-width: 600px; margin: 0 auto; margin-bottom: 2.5rem;">Connect with us today to discuss your vision, layout preferences, or to book a personal design brief evaluation.</p>
         
         <div class="footer-buttons">
             <a href="https://wa.me/971552537712?text=Hello%20Greenhouse%20Events%2C%20I%20am%20inquiring%20about%20your%20private%20party%20and%20event%20planning%20services." target="_blank" class="nav-whatsapp-btn">
@@ -484,7 +481,7 @@
 
 <footer>
     <p class="metallic-gold" style="font-family: var(--display); font-size: 1.1rem; letter-spacing: 5px; font-weight: 700; margin-bottom: 0.5rem;">GREENHOUSE EVENTS DUBAI</p>
-    <p style="font-size: 0.75rem; opacity: 0.5; letter-spacing: 1px;">&copy; 2026 Greenhouse Events UAE. All Rights Reserved.</p>
+    <p style="font-size: 0.75rem; opacity: 0.4; letter-spacing: 1px;">&copy; 2026 Greenhouse Events UAE. All Rights Reserved.</p>
 </footer>
 
 </body>
