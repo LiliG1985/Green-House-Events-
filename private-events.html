@@ -71,13 +71,20 @@
         }
 
         /* --- NAVIGATION --- */
-       <nav>
-    <a href="index.html" class="logo-wrap"><span class="nav-logo metallic-gold">GREENHOUSE EVENTS DUBAI</span></a>
-    <div class="nav-actions">
-        <a href="https://wa.me/971552537712" target="_blank" class="nav-cta">WHATSAPP</a>
-        <a href="#contact-bridge" class="nav-cta">ENQUIRE NOW</a>
-    </div>
-</nav>        /* --- CONCIERGE FOOTER BUTTON DESIGN SHAPES --- */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            padding: 1.2rem 5vw; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(2, 22, 18, 0.96); backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--gold-solid);
+        }
+        
+        .logo-wrap { text-decoration: none; display: inline-block; position: relative; padding-bottom: 4px; }
+        .nav-logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; letter-spacing: 3px; display: inline-block; white-space: nowrap; }
+        .nav-actions { display: flex; align-items: center; gap: 1.5rem; }
+        .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; }
+
+        /* --- CONCIERGE FOOTER BUTTON DESIGN SHAPES --- */
         .nav-whatsapp-btn {
             background: rgba(5, 13, 12, 0.85); border: 0.5px solid var(--gold-solid); color: var(--gold-solid); padding: 0.75rem 2rem; text-decoration: none; font-weight: 500; font-size: 0.8rem; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
         }
