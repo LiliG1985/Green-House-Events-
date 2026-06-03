@@ -462,6 +462,7 @@
         </div>
     </div>
 </section>
+
 <footer style="background: #000; padding: 5rem 8vw 3rem 8vw; border-top: 0.5px solid var(--gold-solid);">
     <div style="max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem; padding-bottom: 3rem;">
         <div class="directory-col"><h4 style="color: var(--gold-solid); font-family: var(--display); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 1.5rem;">MAIN DIRECTORY</h4><ul style="list-style: none;"><li><a href="index.html" style="color: var(--white-off); text-decoration: none; opacity: 0.6; font-size: 0.9rem;">Home Base</a></li><li><a href="#about-profile" style="color: var(--white-off); text-decoration: none; opacity: 0.6; font-size: 0.9rem;">Our Profile</a></li><li><a href="#services" style="color: var(--white-off); text-decoration: none; opacity: 0.6; font-size: 0.9rem;">Services</a></li><li><a href="#clients" style="color: var(--white-off); text-decoration: none; opacity: 0.6; font-size: 0.9rem;">Portfolio</a></li></ul></div>
@@ -473,18 +474,16 @@
         <p class="metallic-gold" style="font-family: var(--display); font-size: 0.9rem; letter-spacing: 4px; font-weight: 700; margin-bottom: 1rem;">GREENHOUSE EVENTS DUBAI</p>
         <p style="font-size: 0.7rem; opacity: 0.4; letter-spacing: 1px;">&copy; 2026 Greenhouse Events UAE. All Rights Reserved.</p>
     </div>
-</footer><script>
+</footer>
+
+<script>
     document.addEventListener("DOMContentLoaded", function() {
         const video = document.getElementById("creationVideoBackdrop");
         if (video) {
             video.playbackRate = 0.45;
-            video.addEventListener('ended', function() {
-                video.currentTime = 0;
-                video.play();
-            }, false);
+            video.addEventListener('ended', function() { video.currentTime = 0; video.play(); }, false);
         }
     });
 </script>
-
 </body>
 </html>
