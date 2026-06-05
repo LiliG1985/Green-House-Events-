@@ -91,17 +91,40 @@
 
         section { padding: 6rem 8vw; position: relative; }
 
- <section id="about-profile">
-        <div class="about-grid">
-            <div class="about-manifesto">
-                Bringing premium, high impact <span class="metallic-gold">event architecture</span> and absolute experiential delivery to life.
-            </div>
-            <div class="about-narrative">
-                <p>Welcome to Greenhouse Events. With over two decades of hands-on experience in project engineering and entertainment, I founded this business to turn complex visions into seamless, unforgettable realities. From global brand activations to intimate luxury celebrations, we specialize in building the spaces where your best moments happen.</p>
-                <p>We see event planning as more than just a timeline; it's a functional network. Whether it’s crystal-clear sound engineering, custom stage architecture, or sourcing world-class talent, I personally ensure that every element is woven together with precision. We handle the logistical heavy lifting so you can focus on being present for the experience.</p>
-            </div>
-        </div>
-    </section>
+        /* --- ABOUT US --- */
+        #about-profile {
+            padding: 8rem 8vw 4rem 8vw;
+            position: relative;
+            z-index: 5;
+            border-bottom: 0.5px solid var(--border);
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .about-manifesto {
+            font-family: var(--serif);
+            font-size: 2.5rem;
+            font-weight: 300;
+            line-height: 1.25;
+        }
+        .about-narrative {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+        .about-narrative p {
+            font-size: 1rem;
+            opacity: 0.85;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            line-height: 1.8;
+        }
+
         /* --- LIVING CONTENT WALL BACKDROP --- */
         .living-content-wall {
             position: relative;
