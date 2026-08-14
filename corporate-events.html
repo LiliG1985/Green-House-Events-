@@ -2,8 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Corporate Events & Brand Activations — Greenhouse Events</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
+    <title>Corporate Events &amp; Brand Activations Dubai | Greenhouse Events UAE</title>
+    <meta name="description" content="Corporate event management and brand activations in Dubai. Corporate galas, product launches, conferences, exhibition stands and experiential environments across the UAE."/>
+    <meta name="keywords" content="corporate events Dubai, brand activations UAE, corporate gala Dubai, product launch Dubai, exhibition stand Dubai, conference management UAE, corporate event planner Dubai"/>
+    <meta name="robots" content="index, follow"/>
+    <link rel="canonical" href="https://greenhouseeventsuae.com/corporate-events.html"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://greenhouseeventsuae.com/corporate-events.html"/>
+    <meta property="og:title" content="Corporate Events &amp; Brand Activations Dubai | Greenhouse Events"/>
+    <meta property="og:description" content="Corporate event management and brand activations in Dubai — galas, product launches, conferences and exhibition stands."/>
+    <meta property="og:image" content="https://greenhouseeventsuae.com/corporate-header-bg.jpg"/>
+    <meta property="og:site_name" content="Greenhouse Events Dubai"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Corporate Events &amp; Brand Activations Dubai | Greenhouse Events"/>
+    <meta name="twitter:image" content="https://greenhouseeventsuae.com/corporate-header-bg.jpg"/>
+    <meta name="geo.region" content="AE-DU"/>
+    <meta name="geo.placename" content="Dubai, United Arab Emirates"/>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Service","name":"Corporate Events and Brand Activations Dubai","provider":{"@type":"LocalBusiness","name":"Greenhouse Events Dubai","url":"https://greenhouseeventsuae.com","telephone":"+971552537712","email":"info@greenhouseeventsuae.com","address":{"@type":"PostalAddress","addressLocality":"Dubai","addressCountry":"AE"}},"description":"Corporate event management and brand activations in Dubai including galas, product launches, conferences and exhibition stands.","areaServed":"United Arab Emirates","url":"https://greenhouseeventsuae.com/corporate-events.html"}
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
@@ -21,6 +39,31 @@
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
+        a { color: inherit; text-decoration: none; }
+
+        /* --- HAMBURGER --- */
+        .hamburger {
+            display: none; flex-direction: column; gap: 5px;
+            cursor: pointer; background: none; border: none;
+            padding: 4px; flex-shrink: 0;
+        }
+        .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--gold-solid); transition: all 0.3s; }
+        .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+        /* --- MOBILE FULL SCREEN MENU --- */
+        .mobile-menu {
+            display: none; position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            background: rgba(2,22,18,0.98); backdrop-filter: blur(20px);
+            z-index: 999; flex-direction: column;
+            align-items: center; justify-content: center; gap: 2.5rem;
+        }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a { font-family: var(--serif); font-size: 1.6rem; color: var(--white-off); text-decoration: none; letter-spacing: 3px; opacity: 0.85; transition: opacity 0.3s; }
+        .mobile-menu a:hover { opacity: 1; color: var(--gold-solid); }
+        .mobile-menu .mobile-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.8rem 2.5rem; font-family: var(--display); font-size: 0.8rem; letter-spacing: 2px; font-weight: 700; }
         
         /* --- MOLDED LIGHT & SHADOW LUXURY EMERALD BASE --- */
         body { 
@@ -79,9 +122,9 @@
             border-bottom: 1px solid var(--gold-solid);
         }
         
-        .logo-wrap { text-decoration: none; display: inline-block; position: relative; padding-bottom: 4px; }
-        .nav-logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; letter-spacing: 3px; display: inline-block; white-space: nowrap; }
-        .nav-actions { display: flex; align-items: center; gap: 1.5rem; }
+        .logo-wrap { text-decoration: none; display: inline-block; position: relative; padding-bottom: 4px; flex-shrink: 1; min-width: 0; }
+        .nav-logo { font-family: var(--serif); font-size: clamp(0.7rem, 2.2vw, 1.15rem); font-weight: 600; letter-spacing: 3px; display: inline-block; white-space: nowrap; }
+        .nav-actions { display: flex; align-items: center; gap: 1.5rem; flex-shrink: 0; }
         .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; }
 
         /* --- CONCIERGE FOOTER BUTTON DESIGN SHAPES --- */
@@ -305,19 +348,53 @@
         }
 
         @media (max-width: 900px) {
-            .hero-content h1 { font-size: 2.8rem; }
-            #about-corporate { margin: 4rem 4vw 2rem 4vw; padding: 3rem 4vw; }
-            .about-grid, .services-grid, .footer-buttons { grid-template-columns: 1fr; gap: 2rem; flex-direction: column; align-items: center; }
+            /* Nav */
+            nav { padding: 1rem 5vw; gap: 1rem; }
+            .nav-cta { display: none; }
+            .hamburger { display: flex; }
+
+            /* Hero */
+            .hero { height: auto; min-height: 70vh; padding: 120px 6vw 80px; }
+            .hero-content h1 { font-size: clamp(2rem, 7vw, 2.8rem); letter-spacing: 1px; }
+            .hero-content p { font-size: clamp(0.9rem, 2.5vw, 1.1rem); }
+
+            /* About */
+            #about-corporate { margin: 3rem 4vw 2rem 4vw; padding: 3rem 4vw; }
+            .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+            /* Services */
+            #corporate-services { padding: 3rem 4vw 4rem; }
+            .services-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .card:hover { transform: none; }
+
+            /* Contact */
+            #contact-bridge { padding: 5rem 6vw; }
+            .footer-buttons { flex-direction: column; align-items: center; gap: 1rem; }
+        }
+
+        @media (max-width: 500px) {
+            .hero { padding: 100px 5vw 60px; }
         }
     </style>
 </head>
 <body>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="index.html#services" onclick="closeMobileMenu()">Services</a>
+    <a href="index.html#clients" onclick="closeMobileMenu()">Portfolio</a>
+    <a href="#contact-bridge" onclick="closeMobileMenu()" class="mobile-cta">Enquire Now</a>
+</div>
 
 <nav>
     <a href="index.html" class="logo-wrap"><span class="nav-logo metallic-gold">GREENHOUSE EVENTS DUBAI</span></a>
     <div class="nav-actions">
         <a href="https://wa.me/971552537712" target="_blank" class="nav-whatsapp">WHATSAPP</a>
         <a href="#contact-bridge" class="nav-cta">ENQUIRE NOW</a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
     </div>
 </nav>
 
@@ -425,5 +502,24 @@
     <p style="font-size: 0.75rem; opacity: 0.4; letter-spacing: 1px;">&copy; 2026 Greenhouse Events UAE. All Rights Reserved.</p>
 </footer>
 
+<script>
+    const hamburger = document.getElementById("hamburger");
+    const mobileMenu = document.getElementById("mobileMenu");
+    hamburger.addEventListener("click", function () {
+        const isOpen = mobileMenu.classList.toggle("open");
+        hamburger.classList.toggle("open");
+        hamburger.setAttribute("aria-expanded", isOpen);
+        document.body.style.overflow = isOpen ? "hidden" : "";
+    });
+    function closeMobileMenu() {
+        hamburger.classList.remove("open");
+        mobileMenu.classList.remove("open");
+        hamburger.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+    }
+    window.addEventListener("resize", function () {
+        if (window.innerWidth > 900) closeMobileMenu();
+    });
+</script>
 </body>
 </html>
