@@ -103,26 +103,42 @@
         .nav-actions { display: flex; align-items: center; gap: 1.5rem; }
         .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; }
 
-        /* --- CONTACT BUTTONS --- */
+        /* --- CONTACT BUTTONS - BOXED STYLE --- */
         .nav-whatsapp-btn {
-            color: var(--white-off); text-decoration: none;
-            font-size: 0.8rem; letter-spacing: 2px;
-            display: inline-flex; align-items: center; gap: 8px;
-            opacity: 0.8; transition: opacity 0.3s;
-            background: none; border: none; padding: 0;
+            background: rgba(5, 13, 12, 0.85);
+            border: 0.5px solid var(--gold-solid);
+            color: var(--gold-solid);
+            padding: 0.75rem 2rem;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
-        .nav-whatsapp-btn:hover { opacity: 1; }
-        .nav-whatsapp-btn svg { display: none; }
+        .nav-whatsapp-btn:hover { background: rgba(201, 168, 76, 0.2); transform: translateY(-1px); }
+        .nav-whatsapp-btn svg { width: 14px; height: 14px; fill: currentColor; display: inline; }
 
         .nav-email-btn {
-            color: var(--white-off); text-decoration: none;
-            font-size: 0.8rem; letter-spacing: 2px;
-            display: inline-flex; align-items: center; gap: 8px;
-            opacity: 0.8; transition: opacity 0.3s;
-            background: none; border: none; padding: 0;
+            background: rgba(5, 13, 12, 0.85);
+            border: 0.5px solid rgba(244, 240, 232, 0.4);
+            color: var(--white-off);
+            padding: 0.75rem 2rem;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
         }
-        .nav-email-btn:hover { opacity: 1; }
-        .nav-email-btn svg { display: none; }
+        .nav-email-btn:hover { background: rgba(244, 240, 232, 0.05); transform: translateY(-1px); }
+        .nav-email-btn svg { width: 14px; height: 14px; fill: currentColor; display: inline; }
 
         /* --- HERO HEADER COVER AREA --- */
         .hero {
