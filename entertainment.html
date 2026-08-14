@@ -2,8 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Exclusive Entertainment — Greenhouse Events</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
+    <title>Entertainment Booking Dubai | DJs, Singers, Live Acts | Greenhouse Events UAE</title>
+    <meta name="description" content="Book exclusive entertainment in Dubai — DJs, singers, bands, circus acts, dancers, magicians, hostesses and more. Premium talent for corporate and private events across the UAE."/>
+    <meta name="keywords" content="entertainment booking Dubai, DJ hire Dubai, singer hire UAE, live band Dubai, circus acts Dubai, dancers Dubai, magicians Dubai, event entertainment UAE, hostess hire Dubai"/>
+    <meta name="robots" content="index, follow"/>
+    <link rel="canonical" href="https://greenhouseeventsuae.com/entertainment.html"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://greenhouseeventsuae.com/entertainment.html"/>
+    <meta property="og:title" content="Entertainment Booking Dubai | Greenhouse Events UAE"/>
+    <meta property="og:description" content="Book exclusive entertainment in Dubai — DJs, singers, bands, circus acts, dancers, magicians and more for corporate and private events."/>
+    <meta property="og:image" content="https://greenhouseeventsuae.com/entertainment-header-bg.jpg"/>
+    <meta property="og:site_name" content="Greenhouse Events Dubai"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Entertainment Booking Dubai | Greenhouse Events UAE"/>
+    <meta name="twitter:image" content="https://greenhouseeventsuae.com/entertainment-header-bg.jpg"/>
+    <meta name="geo.region" content="AE-DU"/>
+    <meta name="geo.placename" content="Dubai, United Arab Emirates"/>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Service","name":"Entertainment Booking Dubai","provider":{"@type":"LocalBusiness","name":"Greenhouse Events Dubai","url":"https://greenhouseeventsuae.com","telephone":"+971552537712","email":"info@greenhouseeventsuae.com","address":{"@type":"PostalAddress","addressLocality":"Dubai","addressCountry":"AE"}},"description":"Premium entertainment booking in Dubai including DJs, singers, bands, circus acts, dancers, magicians and hostesses for corporate and private events.","areaServed":"United Arab Emirates","url":"https://greenhouseeventsuae.com/entertainment.html"}
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
@@ -21,6 +39,31 @@
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
+        a { color: inherit; text-decoration: none; }
+
+        /* --- HAMBURGER --- */
+        .hamburger {
+            display: none; flex-direction: column; gap: 5px;
+            cursor: pointer; background: none; border: none;
+            padding: 4px; flex-shrink: 0;
+        }
+        .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--gold-solid); transition: all 0.3s; }
+        .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+        /* --- MOBILE FULL SCREEN MENU --- */
+        .mobile-menu {
+            display: none; position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            background: rgba(2,22,18,0.98); backdrop-filter: blur(20px);
+            z-index: 999; flex-direction: column;
+            align-items: center; justify-content: center; gap: 2.5rem;
+        }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a { font-family: var(--serif); font-size: 1.6rem; color: var(--white-off); text-decoration: none; letter-spacing: 3px; opacity: 0.85; transition: opacity 0.3s; }
+        .mobile-menu a:hover { opacity: 1; color: var(--gold-solid); }
+        .mobile-menu .mobile-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.8rem 2.5rem; font-family: var(--display); font-size: 0.8rem; letter-spacing: 2px; font-weight: 700; }
         
         /* --- MOLDED LIGHT & SHADOW LUXURY EMERALD BASE --- */
         body { 
@@ -79,9 +122,9 @@
             border-bottom: 1px solid var(--gold-solid);
         }
         
-        .logo-wrap { text-decoration: none; display: inline-block; position: relative; padding-bottom: 4px; }
-        .nav-logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; letter-spacing: 3px; transition: letter-spacing 0.4s; display: inline-block; white-space: nowrap; }
-        .nav-actions { display: flex; align-items: center; gap: 1.5rem; }
+        .logo-wrap { text-decoration: none; display: inline-block; position: relative; padding-bottom: 4px; flex-shrink: 1; min-width: 0; }
+        .nav-logo { font-family: var(--serif); font-size: clamp(0.7rem, 2.2vw, 1.15rem); font-weight: 600; letter-spacing: 3px; transition: letter-spacing 0.4s; display: inline-block; white-space: nowrap; }
+        .nav-actions { display: flex; align-items: center; gap: 1.5rem; flex-shrink: 0; }
         .nav-whatsapp { color: var(--white-off); text-decoration: none; font-size: 0.75rem; letter-spacing: 1.5px; opacity: 0.8; display: flex; align-items: center; gap: 8px; }
         .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; }
 
@@ -334,21 +377,56 @@
             .entertainment-about { grid-template-columns: 1fr; gap: 2rem; margin: 4rem 4vw 0 4vw; padding: 3rem 4vw; }
             .footer-buttons { flex-direction: column; align-items: center; gap: 1rem; }
         }
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
+            /* Nav */
+            nav { padding: 1rem 5vw; gap: 1rem; }
+            .nav-whatsapp { display: none; }
+            .nav-cta { display: none; }
+            .hamburger { display: flex; }
+
+            /* Hero */
+            .hero { height: auto; min-height: 70vh; padding: 120px 6vw 80px; }
+            .hero-content h1 { font-size: clamp(2rem, 7vw, 2.8rem); letter-spacing: 1px; }
+            .hero-content p { font-size: clamp(0.9rem, 2.5vw, 1.1rem); }
+
+            /* About */
+            .entertainment-about { grid-template-columns: 1fr; gap: 2rem; margin: 3rem 4vw 0 4vw; padding: 3rem 4vw; }
+            .about-left h2 { font-size: clamp(1.6rem, 5vw, 2rem); }
+
+            /* Portfolio */
+            #entertainment-portfolio { padding: 2rem 4vw 4rem; }
+            .services-grid { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+            .section-category-title { font-size: clamp(1.6rem, 5vw, 2.2rem); margin-top: 3rem; }
+
+            /* Contact */
+            #contact-bridge { padding: 5rem 6vw; }
+            .footer-buttons { flex-direction: column; align-items: center; gap: 1rem; }
+            .card:hover { transform: none; }
+        }
+        @media (max-width: 500px) {
             .services-grid { grid-template-columns: 1fr; }
-            .hero-content h1 { font-size: 2.8rem; }
-            .about-left h2 { font-size: 2rem; }
-            .section-category-title { font-size: 2.2rem; margin-top: 3rem; }
+            .hero { padding: 100px 5vw 60px; }
         }
     </style>
 </head>
 <body>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="index.html#services" onclick="closeMobileMenu()">Services</a>
+    <a href="index.html#clients" onclick="closeMobileMenu()">Portfolio</a>
+    <a href="#contact-bridge" onclick="closeMobileMenu()" class="mobile-cta">Enquire Now</a>
+</div>
 
 <nav>
     <a href="index.html" class="logo-wrap"><span class="nav-logo metallic-gold">GREENHOUSE EVENTS DUBAI</span></a>
     <div class="nav-actions">
         <a href="https://wa.me/971552537712" target="_blank" class="nav-whatsapp">WHATSAPP</a>
         <a href="#contact-bridge" class="nav-cta">ENQUIRE NOW</a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
     </div>
 </nav>
 
@@ -599,5 +677,24 @@
     <p style="font-size: 0.75rem; opacity: 0.4; letter-spacing: 1px;">&copy; 2026 Greenhouse Events UAE. All Rights Reserved.</p>
 </footer>
 
+<script>
+    const hamburger = document.getElementById("hamburger");
+    const mobileMenu = document.getElementById("mobileMenu");
+    hamburger.addEventListener("click", function () {
+        const isOpen = mobileMenu.classList.toggle("open");
+        hamburger.classList.toggle("open");
+        hamburger.setAttribute("aria-expanded", isOpen);
+        document.body.style.overflow = isOpen ? "hidden" : "";
+    });
+    function closeMobileMenu() {
+        hamburger.classList.remove("open");
+        mobileMenu.classList.remove("open");
+        hamburger.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+    }
+    window.addEventListener("resize", function () {
+        if (window.innerWidth > 900) closeMobileMenu();
+    });
+</script>
 </body>
 </html>
