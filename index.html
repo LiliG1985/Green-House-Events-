@@ -294,7 +294,7 @@
         }
 
         section { padding: 6rem 8vw; position: relative; }
-        section#clients { padding: 0 0 2rem 0; margin: 0; }
+        section#clients { padding: 0; margin: 0; }
 
         /* =====================================================
            ABOUT
@@ -320,7 +320,7 @@
            SERVICES
         ====================================================== */
         #services {
-            padding: 5rem 8vw 2rem 8vw;
+            padding: 5rem 8vw 0 8vw;
             position: relative; z-index: 5;
             background: transparent !important;
         }
@@ -331,12 +331,15 @@
             font-weight: 300; position: relative; z-index: 5;
         }
         #clients .sec-title {
-            margin-top: 1rem;
-            margin-bottom: 1.2rem;
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+            padding-top: 1rem;
         }
+        /* Remove any bottom margin from the last service card */
         .services-grid {
             display: grid; grid-template-columns: repeat(3, 1fr);
             gap: 2rem; position: relative; z-index: 5;
+            margin-bottom: 0;
         }
         .card {
             text-decoration: none; color: inherit;
@@ -512,7 +515,7 @@
             .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
 
             /* Services */
-            #services { padding: 4rem 6vw 5rem; }
+            #services { padding: 3rem 6vw 0; }
             .services-grid { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
             .card { padding: 1.6rem 1.2rem; }
             .card h3 { font-size: 1.1rem; min-height: unset; }
@@ -520,7 +523,7 @@
             .card:hover { transform: none; }
 
             /* Clients */
-            #clients { padding: 3rem 6vw 4rem; }
+            #clients { padding: 0; }
 
             /* Stats */
             .stats-bar { padding: 2.5rem 4vw; gap: 1.5rem; }
