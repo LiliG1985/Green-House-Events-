@@ -280,7 +280,7 @@
         ====================================================== */
         .living-content-wall {
             position: relative; background: transparent;
-            width: 100%; overflow: hidden;
+            width: 100%; overflow: visible;
         }
         .video-bg-container {
             position: absolute; top: 0; left: 0;
@@ -374,13 +374,19 @@
            CLIENTS
         ====================================================== */
         #clients {
-            padding: 4rem 0 6rem 0;
+            padding: 3rem 0 !important;
+            margin: 0 !important;
             position: relative; z-index: 5;
             background: transparent !important;
+            width: 100%;
         }
         .client-container {
-            width: 100%;
-            max-width: 100%;
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
             overflow: hidden;
             background: rgba(1, 10, 8, 0.85);
         }
