@@ -253,12 +253,12 @@
             margin-top: 2rem;
         }
         .photobooth-inner { max-width: 1300px; margin: 0 auto; }
-        .photobooth-heading-gold {
+        .gold-heading {
             font-style: normal;
             letter-spacing: 3px;
             text-transform: uppercase;
         }
-        .photobooth-heading-gold .metallic-gold { font-weight: 600; }
+        .gold-heading .metallic-gold { font-weight: 600; }
             font-family: var(--display);
             font-size: clamp(0.7rem, 1.6vw, 0.95rem);
             letter-spacing: 3px; text-transform: uppercase;
@@ -274,7 +274,7 @@
             width: 100%; height: auto; display: block;
         }
         .photobooth-copy {
-            max-width: 680px; margin: 0 auto 2.2rem;
+            max-width: 680px; margin: 1.4rem auto 2.2rem;
             font-size: 1rem; opacity: 0.85;
             line-height: 1.8; font-weight: 300;
         }
@@ -395,11 +395,6 @@
             margin-bottom: 3rem; text-align: center;
             font-weight: 300; position: relative; z-index: 5;
         }
-        #clients .sec-title {
-            margin-top: 0;
-            margin-bottom: 0.8rem;
-            padding-top: 1rem;
-        }
         /* Remove any bottom margin from the last service card */
         .services-grid {
             display: grid; grid-template-columns: repeat(3, 1fr);
@@ -448,7 +443,6 @@
         ====================================================== */
         #clients {
             position: relative; z-index: 5;
-            background: transparent !important;
             width: 100%;
         }
         .client-container {
@@ -460,8 +454,19 @@
             margin-right: -50vw;
             overflow: hidden;
             background: rgba(1, 10, 8, 0.85);
+            padding: 4rem 2rem 3rem;
         }
-        .client-image-wrap { display: block; width: 100%; }
+        .client-container .sec-title {
+            margin-top: 0;
+            margin-bottom: 2rem;
+            padding-top: 0;
+        }
+        .client-image-wrap {
+            display: block;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
         .client-image-wrap img {
             width: 100%;
             height: auto;
@@ -678,7 +683,7 @@
 <!-- 360 PHOTOBOOTHS -->
 <section id="photobooth" class="photobooth-section" aria-labelledby="photobooth-heading">
     <div class="photobooth-inner">
-        <h2 class="sec-title photobooth-heading-gold" id="photobooth-heading"><span class="metallic-gold">360&deg; Photobooths</span></h2>
+        <h2 class="sec-title gold-heading" id="photobooth-heading"><span class="metallic-gold">360&deg; Photobooths</span></h2>
         <p class="photobooth-tagline">360 Photo Booth Rental in Dubai and Across the UAE</p>
         <div class="photobooth-img-wrap">
             <img src="360-photobooth.jpg" alt="360 degree photobooth and photo booth rental for parties, weddings and corporate events in Dubai, Abu Dhabi and across the UAE" loading="lazy"/>
@@ -759,8 +764,8 @@
 
     <!-- CLIENTS -->
     <section id="clients" aria-label="Our clients">
-        <h2 class="sec-title">Our <em class="metallic-gold">Clients</em></h2>
         <div class="client-container">
+            <h2 class="sec-title gold-heading"><span class="metallic-gold">Our Clients</span></h2>
             <div class="client-image-wrap">
                 <img src="client-logos.jpg" alt="Our luxury event clients in Dubai and UAE" loading="lazy">
             </div>
