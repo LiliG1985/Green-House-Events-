@@ -293,30 +293,6 @@
         .photobooth-cta svg { width: 18px; height: 18px; flex-shrink: 0; }
 
         /* =====================================================
-           BOOTH TYPE MARQUEE
-        ====================================================== */
-        .booth-marquee {
-            width: 100%;
-            background: #000 url('booth-marquee-bg.jpg') no-repeat center center;
-            background-size: cover;
-            padding: 2.2rem 0;
-            overflow: hidden; white-space: nowrap; display: flex;
-            border-top: 0.5px solid var(--gold-solid);
-            border-bottom: 0.5px solid var(--gold-solid);
-            position: relative; z-index: 10;
-        }
-        .booth-marquee-inner {
-            display: inline-block;
-            animation: scroll-text 28s linear infinite;
-            font-family: var(--display); color: var(--gold-solid);
-            font-size: clamp(0.85rem, 2.2vw, 1.3rem);
-            font-weight: 700;
-            letter-spacing: 4px; text-transform: uppercase;
-            padding-right: 3rem; flex-shrink: 0;
-            text-shadow: 0 0 20px rgba(0,0,0,0.8);
-        }
-
-        /* =====================================================
            TEXT MARQUEE
         ====================================================== */
         .marquee {
@@ -713,9 +689,13 @@
 </section>
 
 <!-- BOOTH TYPES MARQUEE -->
-<div class="booth-marquee" aria-hidden="true">
-    <div class="booth-marquee-inner">360&deg; Photobooths &nbsp;I&nbsp; Magic Mirror Booth &nbsp;I&nbsp; Vintage &nbsp;I&nbsp; Glam Booth &nbsp;I&nbsp; Tailored Backdrops &nbsp;I&nbsp;</div>
-    <div class="booth-marquee-inner">360&deg; Photobooths &nbsp;I&nbsp; Magic Mirror Booth &nbsp;I&nbsp; Vintage &nbsp;I&nbsp; Glam Booth &nbsp;I&nbsp; Tailored Backdrops &nbsp;I&nbsp;</div>
+<div class="marquee" aria-hidden="true">
+    <div class="marquee-inner">
+        <span class="metallic-gold">360&deg; Photobooths</span> I <span class="metallic-gold">Magic Mirror Booth</span> I <span class="metallic-gold">Vintage</span> I <span class="metallic-gold">Glam Booth</span> I <span class="metallic-gold">Tailored Backdrops</span> I&nbsp;
+    </div>
+    <div class="marquee-inner">
+        <span class="metallic-gold">360&deg; Photobooths</span> I <span class="metallic-gold">Magic Mirror Booth</span> I <span class="metallic-gold">Vintage</span> I <span class="metallic-gold">Glam Booth</span> I <span class="metallic-gold">Tailored Backdrops</span> I&nbsp;
+    </div>
 </div>
 
 
