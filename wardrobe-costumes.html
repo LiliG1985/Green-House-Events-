@@ -26,8 +26,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-deep: #0a1a14; 
-            --bg-mid: #123024;  
+            --bg-deep: #04100c; 
+            --bg-mid: #0a1f18;  
             --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%);
             --gold-solid: #C9A84C;
             --white-off: #F4F0E8;
@@ -68,10 +68,13 @@
         /* --- MOLDED LIGHT & SHADOW LUXURY EMERALD BASE --- */
         body {
             background-color: var(--bg-deep);
-            background-image: url('leaf-shadows.png'), url('wall-texture.jpg');
-            background-repeat: no-repeat, repeat;
-            background-position: top center, top left;
-            background-size: 100% auto, 300px 300px;
+            background-image:
+                radial-gradient(ellipse 55% 30% at 50% 0%, rgba(201,168,76,0.10), transparent 60%),
+                url('leaf-shadows.png'),
+                url('wall-texture.jpg');
+            background-repeat: no-repeat, no-repeat, repeat;
+            background-position: top center, top center, top left;
+            background-size: 100% auto, 100% auto, 300px 300px;
             color: var(--white-off);
             font-family: var(--sans);
             overflow-x: hidden;
