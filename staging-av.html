@@ -69,30 +69,14 @@
         .mobile-menu .mobile-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.8rem 2.5rem; font-family: var(--display); font-size: 0.8rem; letter-spacing: 2px; font-weight: 700; }
         
         /* --- MOLDED LIGHT & SHADOW LUXURY EMERALD BASE --- */
-        body { 
-            background: 
-                /* Layer 1: Subtle luxury micro canvas grid overlay */
-                repeating-linear-gradient(45deg, rgba(201, 168, 76, 0.02) 0px, rgba(201, 168, 76, 0.02) 1px, transparent 1px, transparent 6px),
-                repeating-linear-gradient(-45deg, rgba(254, 254, 254, 0.02) 0px, rgba(254, 254, 254, 0.02) 1px, transparent 1px, transparent 6px),
-                
-                /* Layer 2: Light sage mint highlight molded behind your top layout elements */
-                radial-gradient(circle at 20% 25%, rgba(164, 185, 181, 0.25) 0%, transparent 45%),
-                
-                /* Layer 3: Soft fluid green glow curving behind your showcase grid rows */
-                radial-gradient(circle at 85% 65%, rgba(164, 185, 181, 0.22) 0%, transparent 50%),
-                
-                /* Layer 4: Deep obsidian shadow contours molding the edges of the page */
-                radial-gradient(circle at 50% 0%, rgba(5, 13, 12, 0.3) 0%, rgba(2, 22, 18, 0.95) 75%),
-                
-                /* Layer 5: Base Solid Luxury Dark Forest Green Foundation */
-                #021612 !important;
-                
-            background-size: cover;
-            background-attachment: fixed !important;
-            color: var(--white-off); 
-            font-family: var(--sans); 
-            overflow-x: hidden; 
-            line-height: 1.6; 
+        body {
+            background: var(--bg-deep) url('content-bg.jpg') no-repeat top center;
+            background-size: 100% auto;
+            background-color: #021612;
+            color: var(--white-off);
+            font-family: var(--sans);
+            overflow-x: hidden;
+            line-height: 1.6;
         }
 
         .metallic-gold {
