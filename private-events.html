@@ -26,8 +26,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-deep: #021612; 
-            --bg-mid: #04241e;  
+            --bg-deep: #010806; 
+            --bg-mid: #01120d;  
             --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%);
             --gold-solid: #C9A84C;
             --white-off: #F4F0E8;
@@ -43,9 +43,7 @@
         
         /* --- MOLDED LIGHT & SHADOW LUXURY EMERALD BASE --- */
         body {
-            background: var(--bg-deep) url('content-bg.jpg') no-repeat top center;
-            background-size: 100% auto;
-            background-color: #021612;
+            background: var(--bg-deep);
             color: var(--white-off);
             font-family: var(--sans);
             overflow-x: hidden;
@@ -165,7 +163,7 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            background: rgba(5, 13, 12, 0.96);
+            background: rgba(2, 6, 5, 0.96);
             border-top: 0.5px solid rgba(201, 168, 76, 0.18);
             border-bottom: 1px solid var(--gold-solid);
             overflow: hidden;
@@ -216,11 +214,11 @@
             margin: 8rem auto 4rem auto;
             position: relative;
             z-index: 5;
-            background: rgba(4, 24, 20, 0.65);
+            background: rgba(1, 10, 8, 0.65);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border: 0.5px solid var(--border);
-            box-shadow: 0 30px 60px rgba(1, 10, 8, 0.4);
+            box-shadow: 0 30px 60px rgba(0, 5, 4, 0.4);
         }
         .about-grid {
             display: grid;
@@ -289,7 +287,7 @@
         .card { 
             border: 0.5px solid var(--border); 
             padding: 2.5rem 2rem; 
-            background: rgba(1, 10, 8, 0.94); 
+            background: rgba(0, 5, 4, 0.94); 
             backdrop-filter: blur(25px); 
             -webkit-backdrop-filter: blur(25px); 
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
@@ -301,7 +299,7 @@
         .card:hover { 
             border-color: var(--gold-solid); 
             transform: translateY(-8px); 
-            background: rgba(3, 23, 19, 0.96); 
+            background: rgba(1, 9, 7, 0.96); 
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8); 
         }
         .card h3 { 
@@ -319,7 +317,7 @@
         .card-img-space { 
             width: 100%; 
             aspect-ratio: 16 / 10; 
-            background: rgba(1, 10, 8, 0.6); 
+            background: rgba(0, 5, 4, 0.6); 
             border: 0.5px solid rgba(201, 168, 76, 0.3); 
             margin-top: auto; 
             overflow: hidden; 
@@ -338,7 +336,7 @@
         /* --- CONTACT INLINE CONFIGURATION --- */
         #contact-bridge {
             position: relative;
-            background: linear-gradient(rgba(0, 10, 8, 0.50) 0%, rgba(1, 10, 8, 0.70) 100%), url('party-footer-bg.jpg') no-repeat center center;
+            background: linear-gradient(rgba(1, 10, 8, 0.50) 0%, rgba(1, 10, 8, 0.70) 100%), url('party-footer-bg.jpg') no-repeat center center;
             background-size: cover;
             border-top: 1px solid var(--gold-solid);
             padding: 8rem 8vw;
@@ -371,7 +369,7 @@
         .mobile-menu {
             display: none; position: fixed;
             top: 0; left: 0; width: 100%; height: 100vh;
-            background: rgba(2,22,18,0.98); backdrop-filter: blur(20px);
+            background: rgba(2, 22, 18, 0.98); backdrop-filter: blur(20px);
             z-index: 999; flex-direction: column;
             align-items: center; justify-content: center; gap: 2.5rem;
         }

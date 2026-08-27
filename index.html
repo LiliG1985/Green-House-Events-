@@ -100,8 +100,8 @@
            CSS VARIABLES
         ====================================================== */
         :root {
-            --bg-deep: #021612;
-            --bg-mid: #04241e;
+            --bg-deep: #010806;
+            --bg-mid: #01120d;
             --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%);
             --gold-solid: #C9A84C;
             --white-off: #F4F0E8;
@@ -199,7 +199,7 @@
         .mobile-menu {
             display: none; position: fixed;
             top: 0; left: 0; width: 100%; height: 100vh;
-            background: rgba(2,22,18,0.98); backdrop-filter: blur(20px);
+            background: rgba(2, 22, 18, 0.98); backdrop-filter: blur(20px);
             z-index: 999; flex-direction: column;
             align-items: center; justify-content: center; gap: 2.5rem;
         }
@@ -235,7 +235,7 @@
         }
         .hero-overlay {
             position: absolute; inset: 0;
-            background: radial-gradient(circle, transparent 40%, rgba(2, 22, 18, 0.4) 100%);
+            background: radial-gradient(circle, transparent 40%, rgba(1, 8, 6, 0.4) 100%);
             z-index: 1;
             pointer-events: none;
         }
@@ -280,7 +280,7 @@
         }
         .photobooth-cta {
             display: inline-flex; align-items: center; gap: 0.65rem;
-            background: var(--gold-metallic); color: #0b1a18;
+            background: var(--gold-metallic); color: #020e0c;
             padding: 1rem 2.6rem; text-decoration: none;
             font-family: var(--sans); font-weight: 600;
             font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase;
@@ -296,7 +296,7 @@
            TEXT MARQUEE
         ====================================================== */
         .marquee {
-            background: #00120f; padding: 1.2rem 0; overflow: hidden;
+            background: #010806; padding: 1.2rem 0; overflow: hidden;
             white-space: nowrap; border-top: 0.5px solid var(--gold-solid);
             border-bottom: 0.5px solid var(--gold-solid); display: flex;
             position: relative; z-index: 10;
@@ -314,7 +314,7 @@
            IMAGE MARQUEE
         ====================================================== */
         .image-marquee {
-            width: 100%; background: #00120f; padding: 2.5rem 0;
+            width: 100%; background: #010806; padding: 2.5rem 0;
             overflow: hidden; white-space: nowrap; display: flex;
             border-bottom: 0.5px solid var(--border);
             position: relative; z-index: 10;
@@ -345,8 +345,7 @@
         ====================================================== */
         .living-content-wall {
             position: relative;
-            background: var(--bg-deep) url('content-bg.jpg') no-repeat top center;
-            background-size: 100% auto;
+            background: var(--bg-deep);
             width: 100%; overflow: visible;
         }
 
@@ -396,7 +395,7 @@
         .card {
             text-decoration: none; color: inherit;
             border: 0.5px solid var(--border); padding: 2.5rem 1.8rem;
-            background: rgba(1, 10, 8, 0.94);
+            background: rgba(0, 5, 4, 0.94);
             backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             display: flex; flex-direction: column; justify-content: flex-start;
@@ -404,14 +403,14 @@
         }
         .card:hover {
             border-color: var(--gold-solid); transform: translateY(-8px);
-            background: rgba(3, 23, 19, 0.96);
+            background: rgba(1, 9, 7, 0.96);
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8); z-index: 10;
         }
         .card h3 { font-family: var(--serif); font-size: 1.4rem; margin-bottom: 1.2rem; line-height: 1.3; min-height: 4.4rem; }
         .card p { font-size: 0.88rem; opacity: 0.75; margin-bottom: 1.5rem; line-height: 1.6; min-height: 5.5rem; }
         .card-img-space {
             width: 100%; aspect-ratio: 16/11;
-            background: rgba(1, 10, 8, 0.6);
+            background: rgba(0, 5, 4, 0.6);
             border: 0.5px solid rgba(201, 168, 76, 0.3);
             margin-bottom: 1.5rem; overflow: hidden; margin-top: auto;
             position: relative; display: flex; align-items: center; justify-content: center;
@@ -469,7 +468,7 @@
            STATS BAR
         ====================================================== */
         .stats-bar {
-            background: #000a08;
+            background: #000503;
             padding: 3rem 4vw;
             display: flex;
             flex-wrap: wrap;
@@ -492,7 +491,7 @@
            CONTACT
         ====================================================== */
         #contact {
-            background: linear-gradient(135deg, rgba(2,22,18,0.4), rgba(2,22,18,0.4)), url('contact-bg.jpg') no-repeat center center;
+            background: linear-gradient(135deg, rgba(2, 22, 18, 0.4), rgba(2, 22, 18, 0.4)), url('contact-bg.jpg') no-repeat center center;
             background-size: cover;
             border-top: 0.5px solid var(--gold-solid);
             padding: 6rem 8vw; position: relative; z-index: 10;
