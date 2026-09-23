@@ -346,15 +346,25 @@
         .living-content-wall {
             position: relative;
             background-color: var(--bg-deep);
-            background-image:
-                radial-gradient(ellipse 65% 45% at 50% 0%, rgba(201,168,76,0.28), transparent 65%),
-                url('leaf-shadows.png'),
-                url('wall-texture.jpg');
-            background-repeat: no-repeat, no-repeat, repeat;
-            background-position: top center, top center, top left;
-            background-size: 100% auto, 100% auto, 300px 300px;
             width: 100%; overflow: visible;
         }
+        .greenery-wrap {
+            position: relative;
+            overflow: hidden;
+            background-color: var(--bg-deep);
+        }
+        .greenery-band {
+            position: absolute;
+            left: 0; right: 0;
+            height: 34%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .greenery-band-1 { top: 0;   background-image: url('wall-panel-1.jpg'); background-position: center top; }
+        .greenery-band-2 { top: 33%; background-image: url('wall-panel-2.jpg'); background-position: center center; }
+        .greenery-band-3 { top: 66%; background-image: url('wall-panel-3.jpg'); background-position: center bottom; }
 
         section { padding: 6rem 8vw; position: relative; }
         section#clients { padding: 0; margin: 0; }
@@ -367,6 +377,7 @@
             position: relative; z-index: 5;
             border-bottom: 0.5px solid var(--border);
         }
+        #about-profile > * { position: relative; z-index: 5; }
         .about-grid {
             display: grid; grid-template-columns: 1fr 1fr;
             gap: 5rem; max-width: 1300px; margin: 0 auto;
@@ -385,8 +396,8 @@
         #services {
             padding: 2rem 8vw 0 8vw;
             position: relative; z-index: 5;
-            background: transparent !important;
         }
+        #services > * { position: relative; z-index: 5; }
         .sec-title {
             font-family: var(--serif);
             font-size: clamp(2rem, 5vw, 3.5rem);
@@ -586,6 +597,17 @@
             #about-profile { padding: 6rem 6vw 1.5rem; }
             .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
 
+            /* Greenery wrap - dedicated portrait image on mobile instead of the landscape panels */
+            .greenery-band-2, .greenery-band-3 { display: none; }
+            .greenery-band-1 {
+                position: absolute;
+                top: 0; height: auto;
+                aspect-ratio: 882 / 1784;
+                background-image: url('wall-panel-mobile.jpg');
+                background-size: 100% auto;
+                background-position: top center;
+            }
+
             /* Services */
             #services { padding: 1.5rem 6vw 0; }
             .services-grid { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
@@ -711,6 +733,11 @@
 <!-- LIVING CONTENT WALL -->
 <div class="living-content-wall">
 
+    <div class="greenery-wrap">
+    <div class="greenery-band greenery-band-1"></div>
+    <div class="greenery-band greenery-band-2"></div>
+    <div class="greenery-band greenery-band-3"></div>
+
     <!-- ABOUT -->
     <section id="about-profile" aria-labelledby="about-heading">
         <div class="about-grid">
@@ -766,6 +793,7 @@
             </a>
         </div>
     </section>
+    </div><!-- /greenery-wrap -->
 
     <!-- CLIENTS -->
     <section id="clients" aria-label="Our clients">
