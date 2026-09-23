@@ -539,11 +539,25 @@
             background: #000000; padding: 5rem 8vw 3rem 8vw;
             border-top: 0.5px solid var(--gold-solid);
             position: relative; z-index: 15;
+            overflow: hidden;
+        }
+        .mega-footer::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.9)), url('wall-panel-3.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.4;
+            z-index: 0;
+            pointer-events: none;
         }
         .footer-directory-grid {
             max-width: 1300px; margin: 0 auto;
             display: grid; grid-template-columns: repeat(4, 1fr);
             gap: 3rem; padding-bottom: 3rem;
+            position: relative; z-index: 1;
         }
         .directory-col h4 {
             color: var(--gold-solid); font-family: var(--display);
@@ -563,6 +577,7 @@
             padding-top: 2rem; display: flex;
             justify-content: space-between; align-items: center;
             flex-wrap: wrap; gap: 1rem;
+            position: relative; z-index: 1;
         }
         .footer-bottom-bar p { font-size: 0.75rem; opacity: 0.4; letter-spacing: 1px; }
 
