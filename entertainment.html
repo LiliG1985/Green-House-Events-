@@ -245,16 +245,10 @@
 
         /* --- LUXURY GLASSMORPHIC ABOUT BOX FRAME --- */
         .entertainment-about {
-            padding: 6rem 6vw;
-            max-width: 1140px;
-            margin: 8rem auto 0 auto; /* Removed bottom margin completely to close up layout gap */
+            padding: 5rem 8vw 2rem 8vw;
             position: relative;
             z-index: 5;
-            background: rgba(1, 10, 8, 0.65);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 0.5px solid var(--border);
-            box-shadow: 0 30px 60px rgba(0, 5, 4, 0.4);
+            border-bottom: 0.5px solid var(--border);
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
@@ -393,7 +387,7 @@
 
         @media (max-width: 1024px) {
             .services-grid { grid-template-columns: repeat(2, 1fr); }
-            .entertainment-about { grid-template-columns: 1fr; gap: 2rem; margin: 4rem 4vw 0 4vw; padding: 3rem 4vw; }
+            .entertainment-about { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 6vw 1rem 6vw; }
             .footer-buttons { flex-direction: column; align-items: center; gap: 1rem; }
         }
         @media (max-width: 900px) {
@@ -421,7 +415,7 @@
             .hero-content p { font-size: clamp(0.9rem, 2.5vw, 1.1rem); }
 
             /* About */
-            .entertainment-about { grid-template-columns: 1fr; gap: 2rem; margin: 3rem 4vw 0 4vw; padding: 3rem 4vw; }
+            .entertainment-about { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 6vw 1rem 6vw; }
             .about-left h2 { font-size: clamp(1.6rem, 5vw, 2rem); }
 
             /* Portfolio */
