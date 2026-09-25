@@ -359,6 +359,61 @@
         @media (max-width: 500px) {
             .inner-hero { padding: 100px 5vw 60px; }
         }
+
+        /* --- ALL PAGES NAV DROPDOWN --- */
+        .nav-pages { position: relative; }
+        .nav-pages-btn {
+            background: rgba(5, 13, 12, 0.85);
+            border: 0.5px solid var(--gold-solid);
+            color: var(--gold-solid);
+            padding: 0.55rem 1.1rem;
+            font-family: var(--sans);
+            font-weight: 600;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .nav-pages-btn:hover { background: rgba(201, 168, 76, 0.2); }
+        .nav-pages-chevron { width: 12px; height: 12px; fill: currentColor; transition: transform 0.25s ease; flex-shrink: 0; }
+        .nav-pages.open .nav-pages-chevron { transform: rotate(180deg); }
+        .nav-pages-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 12px);
+            right: 0;
+            min-width: 260px;
+            background: rgba(2, 22, 18, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 0.5px solid var(--border);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            padding: 0.5rem 0;
+            z-index: 1001;
+        }
+        .nav-pages.open .nav-pages-menu { display: block; }
+        .nav-pages-menu a {
+            display: block;
+            padding: 0.7rem 1.4rem;
+            font-family: var(--serif);
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            color: var(--white-off);
+            opacity: 0.85;
+            border-left: 2px solid transparent;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+        .nav-pages-menu a:hover { opacity: 1; color: var(--gold-solid); background: rgba(201,168,76,0.08); border-left-color: var(--gold-solid); }
+        .nav-pages-menu a.current-page,
+        .mobile-menu a.current-page { color: var(--gold-solid); opacity: 1; }
+        .nav-pages-menu a.current-page { border-left-color: var(--gold-solid); }
+        @media (max-width: 900px) {
+            .nav-pages { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -366,6 +421,13 @@
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
     <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="private-events.html" onclick="closeMobileMenu()">Private Party &amp; Event Planning</a>
+    <a href="corporate-events.html" onclick="closeMobileMenu()">Corporate Event Management</a>
+    <a href="permanent-transformations.html" onclick="closeMobileMenu()">Permanent Transformations</a>
+    <a href="staging-av.html" onclick="closeMobileMenu()">Staging, Sound &amp; AV</a>
+    <a href="entertainment.html" onclick="closeMobileMenu()">Entertainment</a>
+    <a href="wardrobe-costumes.html" onclick="closeMobileMenu()">Wardrobe</a>
+    <a href="customised-decor.html" onclick="closeMobileMenu()">Customised Decor</a>
     <a href="index.html#services" onclick="closeMobileMenu()">Services</a>
     <a href="index.html#clients" onclick="closeMobileMenu()">Portfolio</a>
     <a href="#contact-footer" onclick="closeMobileMenu()" class="mobile-cta">Enquire Now</a>
@@ -378,6 +440,22 @@
     <div class="nav-actions">
         <a href="https://wa.me/971552537712?text=Hello%20Greenhouse%20Events%2C%20I%20would%20like%20to%20enquire%20about%20your%20bespoke%20wardrobe%20and%20costume%20services." target="_blank" class="nav-whatsapp">WHATSAPP</a>
         <a href="index.html#contact" class="nav-cta">ENQUIRE NOW</a>
+        <div class="nav-pages" id="navPages">
+            <button class="nav-pages-btn" id="navPagesBtn" type="button" aria-haspopup="true" aria-expanded="false">
+                ALL PAGES
+                <svg class="nav-pages-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="nav-pages-menu" id="navPagesMenu">
+                <a href="index.html">Home</a>
+                <a href="private-events.html">Private Party &amp; Event Planning</a>
+                <a href="corporate-events.html">Corporate Event Management</a>
+                <a href="permanent-transformations.html">Permanent Transformations</a>
+                <a href="staging-av.html">Staging, Sound &amp; AV</a>
+                <a href="entertainment.html">Entertainment</a>
+                <a href="wardrobe-costumes.html">Wardrobe</a>
+                <a href="customised-decor.html">Customised Decor</a>
+            </div>
+        </div>
         <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
             <span></span><span></span><span></span>
         </button>
@@ -492,6 +570,30 @@
         hamburger.setAttribute("aria-expanded", "false");
         document.body.style.overflow = "";
     }
+
+    // ALL PAGES dropdown
+    var navPages = document.getElementById("navPages");
+    var navPagesBtn = document.getElementById("navPagesBtn");
+    if (navPages && navPagesBtn) {
+        navPagesBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            var isOpen = navPages.classList.toggle("open");
+            navPagesBtn.setAttribute("aria-expanded", isOpen);
+        });
+        document.addEventListener("click", function (e) {
+            if (!navPages.contains(e.target)) {
+                navPages.classList.remove("open");
+                navPagesBtn.setAttribute("aria-expanded", "false");
+            }
+        });
+        var currentFile = window.location.pathname.split("/").pop() || "index.html";
+        document.querySelectorAll(".nav-pages-menu a, .mobile-menu a").forEach(function (a) {
+            if (a.getAttribute("href") === currentFile) {
+                a.classList.add("current-page");
+            }
+        });
+    }
+
     window.addEventListener("resize", function () {
         if (window.innerWidth > 900) closeMobileMenu();
     });
