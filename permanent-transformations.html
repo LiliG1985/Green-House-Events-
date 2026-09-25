@@ -274,19 +274,20 @@
             position: relative;
             overflow: hidden;
             background-color: var(--bg-deep);
+            --band-h: min(34%, 58vw);
         }
         .greenery-band {
             position: absolute;
             left: 0; right: 0;
-            height: 34%;
+            height: var(--band-h);
             background-repeat: no-repeat;
             background-size: cover;
             z-index: 0;
             pointer-events: none;
         }
         .greenery-band-1 { top: 0;   background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('wall-panel-1.jpg'); background-position: center top; }
-        .greenery-band-2 { top: 33%; background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('wall-panel-2.jpg'); background-position: center center; }
-        .greenery-band-3 { top: 66%; background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('wall-panel-3.jpg'); background-position: center bottom; }
+        .greenery-band-2 { top: calc(var(--band-h) - 2px); background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('wall-panel-2.jpg'); background-position: center center; }
+        .greenery-band-3 { top: calc(var(--band-h) * 2 - 4px); background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('wall-panel-3.jpg'); background-position: center bottom; }
         main.showcase-container { position: relative; z-index: 1; }
 
         @media (max-width: 900px) {
