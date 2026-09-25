@@ -411,8 +411,8 @@
             position: absolute;
             left: 0; right: 0;
             height: 34%;
-            background-repeat: repeat-y;
-            background-size: 100% auto;
+            background-repeat: no-repeat;
+            background-size: cover;
             z-index: 0;
             pointer-events: none;
         }
@@ -464,7 +464,7 @@
             #contact-bridge { padding: 5rem 5vw; }
         }
 
-        /* --- ALL PAGES NAV DROPDOWN --- */
+        /* --- EXPLORE NAV DROPDOWN --- */
         .nav-pages { position: relative; }
         .nav-pages-btn {
             background: rgba(5, 13, 12, 0.85);
@@ -544,7 +544,7 @@
         <a href="#contact-bridge" class="nav-cta">ENQUIRE NOW</a>
         <div class="nav-pages" id="navPages">
             <button class="nav-pages-btn" id="navPagesBtn" type="button" aria-haspopup="true" aria-expanded="false">
-                ALL PAGES
+                EXPLORE
                 <svg class="nav-pages-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5z"/></svg>
             </button>
             <div class="nav-pages-menu" id="navPagesMenu">
@@ -736,7 +736,7 @@
         document.body.style.overflow = "";
     }
 
-    // ALL PAGES dropdown
+    // EXPLORE dropdown
     var navPages = document.getElementById("navPages");
     var navPagesBtn = document.getElementById("navPagesBtn");
     if (navPages && navPagesBtn) {
