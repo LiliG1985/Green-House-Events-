@@ -235,7 +235,10 @@
         .greenery-band-1 { top: 0;   background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('wall-panel-1.jpg'); background-position: center top; }
         .greenery-band-2 { top: calc(var(--band-h) - 2px); background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('wall-panel-2.jpg'); background-position: center center; }
         .greenery-band-3 { top: calc(var(--band-h) * 2 - 4px); background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('wall-panel-3.jpg'); background-position: center bottom; }
-        .greenery-band-4 { top: calc(var(--band-h) * 3 - 4px); height: calc(100% - (var(--band-h) * 3 - 4px)); background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('wall-panel-2.jpg'); background-position: center center; }
+        .greenery-band-4 { top: calc(var(--band-h) * 3 - 4px); background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('wall-panel-2.jpg'); background-position: center top; }
+        .greenery-band-5 { top: calc(var(--band-h) * 4 - 6px); background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('wall-panel-2.jpg'); background-position: center center; }
+        .greenery-band-6 { top: calc(var(--band-h) * 5 - 8px); background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('wall-panel-2.jpg'); background-position: center bottom; }
+        .greenery-band-7 { top: calc(var(--band-h) * 6 - 10px); height: calc(100% - (var(--band-h) * 6 - 10px)); background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('wall-panel-2.jpg'); background-position: center center; }
 
 
         .scroll-content-over-video {
@@ -394,7 +397,7 @@
         @media (max-width: 900px) {
 
             /* Greenery wrap - dedicated portrait image on mobile */
-            .greenery-band-2, .greenery-band-3, .greenery-band-4 { display: none; }
+            .greenery-band-2, .greenery-band-3, .greenery-band-4, .greenery-band-5, .greenery-band-6, .greenery-band-7 { display: none; }
             .greenery-band-1 {
                 position: absolute;
                 top: 0; height: auto;
@@ -615,6 +618,9 @@
 <div class="greenery-band greenery-band-2"></div>
 <div class="greenery-band greenery-band-3"></div>
 <div class="greenery-band greenery-band-4"></div>
+<div class="greenery-band greenery-band-5"></div>
+<div class="greenery-band greenery-band-6"></div>
+<div class="greenery-band greenery-band-7"></div>
     <div class="scroll-content-over-video">
         <section class="entertainment-about">
             <div class="about-left">
