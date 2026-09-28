@@ -510,14 +510,14 @@
            TESTIMONIALS
         ====================================================== */
         #testimonials {
-            padding: 6rem 8vw 7rem 8vw;
+            padding: 4.5rem 8vw 5rem 8vw;
             position: relative; z-index: 10;
             background: var(--bg-deep);
         }
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.4rem;
             max-width: 1300px;
             margin: 0 auto;
         }
@@ -525,7 +525,7 @@
             border: 0.5px solid var(--border);
             background: rgba(0, 5, 4, 0.94);
             backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-            padding: 2.5rem 2.2rem;
+            padding: 1.5rem 1.4rem;
             display: flex; flex-direction: column;
             box-shadow: 0 20px 45px rgba(0,0,0,0.6);
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
@@ -534,35 +534,35 @@
             border-color: var(--gold-solid);
             background: rgba(1, 9, 7, 0.96);
         }
-        .testimonial-card:nth-child(5) { grid-column: 1 / -1; max-width: 720px; margin: 0 auto; width: 100%; }
+        .testimonial-card:nth-child(5) { grid-column: 2 / 3; max-width: 100%; margin: 0; width: 100%; }
         .testimonial-mark {
-            font-family: var(--serif); font-size: 3rem;
+            font-family: var(--serif); font-size: 1.8rem;
             color: var(--gold-solid); line-height: 1;
-            margin-bottom: 0.5rem; opacity: 0.85;
+            margin-bottom: 0.2rem; opacity: 0.85;
         }
         .testimonial-stars {
-            color: var(--gold-solid); font-size: 0.85rem;
-            letter-spacing: 3px; margin-bottom: 1.2rem;
+            color: var(--gold-solid); font-size: 0.65rem;
+            letter-spacing: 2px; margin-bottom: 0.7rem;
         }
         .testimonial-text { margin: 0; }
         .testimonial-text p {
-            font-family: var(--serif); font-size: 1.05rem;
+            font-family: var(--serif); font-size: 0.85rem;
             font-weight: 300; font-style: italic;
-            line-height: 1.75; opacity: 0.9;
-            margin-bottom: 1.1rem;
+            line-height: 1.55; opacity: 0.9;
+            margin-bottom: 0.7rem;
         }
         .testimonial-text p:last-child { margin-bottom: 0; }
         .testimonial-attribution {
-            margin-top: 1.5rem; padding-top: 1.3rem;
+            margin-top: 0.9rem; padding-top: 0.8rem;
             border-top: 0.5px solid var(--border);
         }
         .testimonial-name {
-            font-family: var(--display); font-size: 0.72rem;
-            letter-spacing: 2px; text-transform: uppercase;
+            font-family: var(--display); font-size: 0.62rem;
+            letter-spacing: 1.5px; text-transform: uppercase;
             color: var(--gold-solid); font-style: normal;
-            display: block; margin-bottom: 0.3rem;
+            display: block; margin-bottom: 0.25rem;
         }
-        .testimonial-role { font-size: 0.82rem; opacity: 0.6; letter-spacing: 0.3px; }
+        .testimonial-role { font-size: 0.72rem; opacity: 0.6; letter-spacing: 0.3px; }
 
         /* =====================================================
            CONTACT
@@ -698,11 +698,10 @@
             .stat-item { flex: 1 1 40%; }
 
             /* Testimonials */
-            #testimonials { padding: 4rem 6vw 4.5rem; }
-            .testimonials-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-            .testimonial-card:nth-child(5) { max-width: 100%; }
-            .testimonial-card { padding: 2rem 1.6rem; }
-            .testimonial-text p { font-size: 1rem; }
+            #testimonials { padding: 3.5rem 6vw 4rem; }
+            .testimonials-grid { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+            .testimonial-card:nth-child(5) { grid-column: 1 / -1; max-width: 100%; }
+            .testimonial-card { padding: 1.4rem 1.3rem; }
 
             /* Contact */
             #contact { padding: 5rem 6vw; }
@@ -725,6 +724,8 @@
             .hero { padding-top: 52px; }
             .sec-title { margin-bottom: 2rem; }
             .card { padding: 1.4rem 1rem; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .testimonial-card:nth-child(5) { grid-column: 1 / -1; }
         }
 
         /* --- EXPLORE NAV DROPDOWN --- */
@@ -1037,7 +1038,7 @@
                 <p>We always know exactly what we&rsquo;re going to get. Everything is delivered on time, finished to a high standard and the quality is consistently spot on.</p>
             </blockquote>
             <footer class="testimonial-attribution">
-                <cite class="testimonial-name">Alex</cite>
+                <cite class="testimonial-name">Jo</cite>
                 <span class="testimonial-role">Brand Activations &amp; Product Launches</span>
             </footer>
         </article>
