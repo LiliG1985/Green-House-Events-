@@ -507,6 +507,64 @@
         .stat-item p { font-size: clamp(0.72rem, 2vw, 0.9rem); opacity: 0.7; line-height: 1.4; white-space: nowrap; }
 
         /* =====================================================
+           TESTIMONIALS
+        ====================================================== */
+        #testimonials {
+            padding: 6rem 8vw 7rem 8vw;
+            position: relative; z-index: 10;
+            background: var(--bg-deep);
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .testimonial-card {
+            border: 0.5px solid var(--border);
+            background: rgba(0, 5, 4, 0.94);
+            backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            padding: 2.5rem 2.2rem;
+            display: flex; flex-direction: column;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.6);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .testimonial-card:hover {
+            border-color: var(--gold-solid);
+            background: rgba(1, 9, 7, 0.96);
+        }
+        .testimonial-card:nth-child(5) { grid-column: 1 / -1; max-width: 720px; margin: 0 auto; width: 100%; }
+        .testimonial-mark {
+            font-family: var(--serif); font-size: 3rem;
+            color: var(--gold-solid); line-height: 1;
+            margin-bottom: 0.5rem; opacity: 0.85;
+        }
+        .testimonial-stars {
+            color: var(--gold-solid); font-size: 0.85rem;
+            letter-spacing: 3px; margin-bottom: 1.2rem;
+        }
+        .testimonial-text { margin: 0; }
+        .testimonial-text p {
+            font-family: var(--serif); font-size: 1.05rem;
+            font-weight: 300; font-style: italic;
+            line-height: 1.75; opacity: 0.9;
+            margin-bottom: 1.1rem;
+        }
+        .testimonial-text p:last-child { margin-bottom: 0; }
+        .testimonial-attribution {
+            margin-top: 1.5rem; padding-top: 1.3rem;
+            border-top: 0.5px solid var(--border);
+        }
+        .testimonial-name {
+            font-family: var(--display); font-size: 0.72rem;
+            letter-spacing: 2px; text-transform: uppercase;
+            color: var(--gold-solid); font-style: normal;
+            display: block; margin-bottom: 0.3rem;
+        }
+        .testimonial-role { font-size: 0.82rem; opacity: 0.6; letter-spacing: 0.3px; }
+
+        /* =====================================================
            CONTACT
         ====================================================== */
         #contact {
@@ -639,6 +697,13 @@
             .stats-bar { padding: 2.5rem 4vw; gap: 1.5rem; }
             .stat-item { flex: 1 1 40%; }
 
+            /* Testimonials */
+            #testimonials { padding: 4rem 6vw 4.5rem; }
+            .testimonials-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .testimonial-card:nth-child(5) { max-width: 100%; }
+            .testimonial-card { padding: 2rem 1.6rem; }
+            .testimonial-text p { font-size: 1rem; }
+
             /* Contact */
             #contact { padding: 5rem 6vw; }
             .contact-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -733,6 +798,7 @@
     <a href="#photobooth" onclick="closeMobileMenu()">360&deg; Photobooths</a>
     <a href="#services" onclick="closeMobileMenu()">Services</a>
     <a href="#clients" onclick="closeMobileMenu()">Portfolio</a>
+    <a href="#testimonials" onclick="closeMobileMenu()">Testimonials</a>
     <a href="entertainment.html" onclick="closeMobileMenu()">Entertainment</a>
     <a href="#contact" onclick="closeMobileMenu()" class="mobile-cta">Enquire Now</a>
 </div>
@@ -911,6 +977,88 @@
     <div class="stat-item"><h2 class="metallic-gold">40+</h2><p>Professional Crew</p></div>
 </div>
 
+<!-- TESTIMONIALS -->
+<section id="testimonials" aria-labelledby="testimonials-heading">
+    <h2 class="sec-title" id="testimonials-heading">Kind Words <em class="metallic-gold">From Our Clients</em></h2>
+    <div class="testimonials-grid">
+
+        <article class="testimonial-card">
+            <span class="testimonial-mark" aria-hidden="true">&ldquo;</span>
+            <div class="testimonial-stars" role="img" aria-label="Rated 5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <blockquote class="testimonial-text">
+                <p>Greenhouse Events brought my 40th birthday celebration to life in the most incredible way. From the initial planning through to the final details on the night, everything was beautifully thought out and executed.</p>
+                <p>The transformation of my home was amazing, including building a stage over the swimming pool for the singer and DJ to perform, something I never imagined could look so spectacular.</p>
+                <p>The d&eacute;cor, entertainment and attention to detail were incredible from start to finish, and the whole evening felt really special.</p>
+                <p>Lili was an absolute pleasure to work with throughout. She made the entire process feel easy and took care of everything, allowing me to simply enjoy the celebration with my family and friends.</p>
+                <p>It was a night I&rsquo;ll never forget, and I couldn&rsquo;t recommend Greenhouse Events enough.</p>
+            </blockquote>
+            <footer class="testimonial-attribution">
+                <cite class="testimonial-name">Private Client</cite>
+                <span class="testimonial-role">40th Birthday Celebration &amp; Pool Stage Build</span>
+            </footer>
+        </article>
+
+        <article class="testimonial-card">
+            <span class="testimonial-mark" aria-hidden="true">&ldquo;</span>
+            <div class="testimonial-stars" role="img" aria-label="Rated 5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <blockquote class="testimonial-text">
+                <p>We brought Greenhouse Events on board with just two weeks to pull everything together, and Lili and her team were incredible from start to finish.</p>
+                <p>They stepped in, took control of the entire event and immediately made us feel like everything was in safe hands. From coordinating suppliers and managing the logistics to overseeing the setup and running the event itself, nothing was overlooked.</p>
+                <p>Considering the incredibly short turnaround, the level of organisation, creativity and attention to detail was exceptional. The team remained calm, professional and completely on top of everything throughout.</p>
+                <p>What could have been a very stressful two weeks became an amazing event that ran seamlessly.</p>
+                <p>We genuinely couldn&rsquo;t have done it without them and would absolutely work with Greenhouse Events again.</p>
+            </blockquote>
+            <footer class="testimonial-attribution">
+                <cite class="testimonial-name">Private Client</cite>
+                <span class="testimonial-role">Two-Week Turnaround Event</span>
+            </footer>
+        </article>
+
+        <article class="testimonial-card">
+            <span class="testimonial-mark" aria-hidden="true">&ldquo;</span>
+            <blockquote class="testimonial-text">
+                <p>Greenhouse Events has become our go to partner for anything event related.</p>
+                <p>Over the last few years, Lili and her team have supported us with everything from booking a single singer for an event, to our weekly 360 photo booth requirements, right through to the planning and production of our annual staff party.</p>
+                <p>No request ever feels too big or too small. Having one trusted team we can call who already understands us, our venues and the standard we expect makes such a difference.</p>
+                <p>Lili is always responsive, reliable and incredibly easy to work with, and her team consistently delivers.</p>
+                <p>It&rsquo;s become much more than using an events supplier. Greenhouse Events feels like an extension of our own team, and we genuinely value the relationship we&rsquo;ve built over the last few years.</p>
+            </blockquote>
+            <footer class="testimonial-attribution">
+                <cite class="testimonial-name">Corporate Client</cite>
+                <span class="testimonial-role">Ongoing Partnership</span>
+            </footer>
+        </article>
+
+        <article class="testimonial-card">
+            <span class="testimonial-mark" aria-hidden="true">&ldquo;</span>
+            <blockquote class="testimonial-text">
+                <p>We always use Greenhouse Events for our bespoke fabrications, especially for our brand activations and product launches.</p>
+                <p>We can give them an idea and they just get it. The creativity, quality and finish are always unreal, and they somehow manage to bring even our more ambitious concepts to life.</p>
+                <p>We always know exactly what we&rsquo;re going to get. Everything is delivered on time, finished to a high standard and the quality is consistently spot on.</p>
+            </blockquote>
+            <footer class="testimonial-attribution">
+                <cite class="testimonial-name">Alex</cite>
+                <span class="testimonial-role">Brand Activations &amp; Product Launches</span>
+            </footer>
+        </article>
+
+        <article class="testimonial-card">
+            <span class="testimonial-mark" aria-hidden="true">&ldquo;</span>
+            <blockquote class="testimonial-text">
+                <p>I came to Greenhouse Events with a date, a venue and a very rough idea of what I wanted. The rest, I genuinely left to them.</p>
+                <p>Lili completely understood the feeling I was trying to create and came back with ideas I would never have thought of myself. Seeing the space transform on the day was incredible. Every detail felt considered and everything worked together beautifully.</p>
+                <p>What I loved most was that I didn&rsquo;t have to manage ten different people or worry about what was happening behind the scenes. The Greenhouse team handled it all.</p>
+                <p>I got to walk into my own event and actually be surprised by it. That was pretty special.</p>
+            </blockquote>
+            <footer class="testimonial-attribution">
+                <cite class="testimonial-name">Hali</cite>
+                <span class="testimonial-role">Full Event Handover</span>
+            </footer>
+        </article>
+
+    </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact" aria-labelledby="contact-heading">
     <div class="contact-wrap">
@@ -943,6 +1091,7 @@
                 <li><a href="#photobooth">360&deg; Photobooths</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#clients">Portfolio</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#contact">Contact Desk</a></li>
             </ul>
         </div>
