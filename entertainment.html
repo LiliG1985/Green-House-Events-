@@ -261,16 +261,20 @@
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
+            background: linear-gradient(135deg, rgba(2,22,18,0.45) 0%, rgba(2,22,18,0.80) 100%), url('about-banner.jpg') no-repeat center center;
+            background-size: cover;
         }
+        .entertainment-about > * { position: relative; z-index: 5; }
         .about-left h2 {
             font-family: var(--serif);
             font-size: 2.8rem;
             font-weight: 300;
             line-height: 1.2;
             letter-spacing: 1px;
+            color: var(--white-off);
         }
         .entertainment-about .metallic-gold {
-            background: var(--gold-metallic-nude);
+            background: var(--gold-metallic);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -281,8 +285,8 @@
             font-size: 1.05rem;
             font-weight: 300;
             line-height: 1.8;
-            opacity: 0.85;
-            color: var(--bg-deep);
+            opacity: 0.9;
+            color: var(--white-off);
         }
 
         /* --- SECTION HEADINGS OPTIMIZED DIRECTION GAP CLOSE --- */
