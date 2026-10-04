@@ -98,9 +98,8 @@
         }
         @keyframes shine { to { background-position: 200% center; } }
 
-        /* --- deep gold for legible headings on nude/light backgrounds --- */
         .service-intro .metallic-gold {
-            background: var(--gold-metallic-nude);
+            background: var(--gold-metallic);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -172,9 +171,13 @@
 
         /* --- INTRO --- */
         .service-intro {
-            padding: 5rem 8vw 1rem 8vw;
+            padding: 4rem 8vw;
+            min-height: 50vh;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
             position: relative; z-index: 5;
             text-align: center;
+            background: linear-gradient(135deg, rgba(2,22,18,0.45) 0%, rgba(2,22,18,0.80) 100%), url('about-banner.jpg') no-repeat center center;
+            background-size: cover;
         }
         .service-intro h2 { font-family: var(--serif); font-size: clamp(2rem, 5vw, 3rem); font-weight: 300; max-width: 820px; margin: 0 auto 1.2rem; line-height: 1.3; }
         .service-intro p { max-width: 680px; margin: 0 auto; opacity: 0.75; font-size: 1rem; line-height: 1.75; }

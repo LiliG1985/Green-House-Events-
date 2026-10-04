@@ -338,6 +338,60 @@
         }
         main.showcase-container { position: relative; z-index: 1; }
 
+        /* =====================================================
+           ABOUT
+        ====================================================== */
+        #about-transform {
+            padding: 4rem 8vw;
+            min-height: 65vh;
+            display: grid; align-items: center;
+            position: relative; z-index: 5;
+            border-bottom: 0.5px solid var(--border);
+            background: linear-gradient(135deg, rgba(2,22,18,0.45) 0%, rgba(2,22,18,0.80) 100%), url('about-banner.jpg') no-repeat center center;
+            background-size: cover;
+        }
+        #about-transform > * { position: relative; z-index: 5; }
+        #about-transform .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1300px; margin: 0 auto;
+        }
+        #about-transform .about-manifesto {
+            font-family: var(--serif);
+            font-size: 2.5rem;
+            font-weight: 300;
+            line-height: 1.25;
+            color: var(--white-off);
+        }
+        #about-transform .metallic-gold {
+            background: var(--gold-metallic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
+        }
+        #about-transform .about-narrative {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+        #about-transform .about-narrative p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            line-height: 1.75;
+            color: var(--white-off);
+        }
+        @media (max-width: 900px) {
+            #about-transform { padding: 3rem 6vw 1.5rem 6vw; min-height: unset; }
+            #about-transform .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+        }
+
         @media (max-width: 900px) {
 
             /* Nav */
@@ -524,12 +578,17 @@
 
 <div class="greenery-wrap">
 
-<a href="our-services.html" class="about-banner">
-    <img src="about-banner.jpg" alt="Explore Greenhouse Events luxury production services" loading="lazy">
-    <div class="about-banner-overlay">
-        <h3>Explore Our Services</h3>
+<section id="about-transform" aria-labelledby="about-transform-heading">
+    <div class="about-grid">
+        <h1 class="about-manifesto" id="about-transform-heading">
+            Turning blank spaces into <span class="metallic-gold">permanent works of art</span>.
+        </h1>
+        <div class="about-narrative">
+            <p>At Greenhouse Events, we specialise in architectural transformations that live far beyond a single event. From ultra premium artificial floral walls to bespoke structural fit outs, we engineer permanent installations that elevate restaurants, offices, and hospitality venues into immersive, branded environments.</p>
+            <p>Every installation is built for zero maintenance and maximum impact, blending rich botanical textures, custom carpentry, and lighting design to create a signature look your space will be known for, long after the final photo is taken.</p>
+        </div>
     </div>
-</a>
+</section>
 
 <main class="showcase-container">
 
