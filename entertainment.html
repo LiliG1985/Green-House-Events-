@@ -290,29 +290,25 @@
             color: var(--white-off);
         }
 
-        /* --- SECTION HEADINGS OPTIMIZED DIRECTION GAP CLOSE --- */
+        /* --- SECTION HEADINGS: TEXT HIGHLIGHTED OVER A THIN PHOTO BANNER --- */
+        .section-headline-banner {
+            max-width: 1100px;
+            margin: 4rem auto 3rem auto;
+            position: relative;
+            border-top: 0.5px solid var(--gold-solid);
+            border-bottom: 0.5px solid var(--gold-solid);
+            background: linear-gradient(90deg, rgba(2,22,18,0.72) 0%, rgba(2,22,18,0.4) 50%, rgba(2,22,18,0.72) 100%), url('about-banner.jpg') no-repeat center 55%;
+            background-size: cover;
+            padding: 2.2rem 2rem;
+        }
         .section-category-title {
             text-align: center;
             font-family: var(--serif);
             font-size: 3rem;
             font-weight: 300;
             letter-spacing: 2px;
-            margin: 4rem auto 0 auto; /* Tightened top margin from 8rem to 4rem */
+            margin: 0;
             max-width: 1100px;
-        }
-
-        /* --- THIN PHOTO BANNER STRIP UNDER EACH SECTION HEADLINE --- */
-        .section-thin-banner {
-            width: 100%;
-            max-width: 1100px;
-            height: 100px;
-            margin: 1.5rem auto 3rem auto;
-            position: relative;
-            overflow: hidden;
-            border-top: 0.5px solid var(--gold-solid);
-            border-bottom: 0.5px solid var(--gold-solid);
-            background: linear-gradient(90deg, rgba(2,22,18,0.7) 0%, rgba(2,22,18,0.25) 50%, rgba(2,22,18,0.7) 100%), url('about-banner.jpg') no-repeat center 55%;
-            background-size: cover;
         }
 
         /* --- THE PORTFOLIO BLOCK --- */
@@ -492,7 +488,7 @@
                 background: linear-gradient(0deg, rgba(2,22,18,0.92) 0%, rgba(2,22,18,0.65) 45%, rgba(2,22,18,0.1) 100%);
             }
             .section-category-title { font-size: clamp(1.6rem, 5vw, 2.2rem); margin-top: 3rem; }
-            .section-thin-banner { height: 60px; margin: 1rem auto 2rem auto; }
+            .section-headline-banner { padding: 1.4rem 1.2rem; margin: 3rem auto 2rem auto; }
 
             /* Contact */
             #contact-bridge { padding: 5rem 6vw; }
@@ -723,8 +719,7 @@
 
 
         <section id="entertainment-portfolio">
-            <h2 class="section-category-title metallic-gold">Live Music</h2>
-            <div class="section-thin-banner" aria-hidden="true"></div>
+            <div class="section-headline-banner"><h2 class="section-category-title metallic-gold">Live Music</h2></div>
             <div class="services-grid">
                 
                 <div class="card">
@@ -768,8 +763,7 @@
                 </div>
             </div>
 
-            <h2 class="section-category-title metallic-gold">Live Performances & Shows</h2>
-            <div class="section-thin-banner" aria-hidden="true"></div>
+            <div class="section-headline-banner"><h2 class="section-category-title metallic-gold">Live Performances & Shows</h2></div>
             <div class="services-grid">
                 
                 <div class="card">
@@ -845,8 +839,7 @@
                 </div>
             </div>
 
-            <h2 class="section-category-title metallic-gold">Atmosphere & Media</h2>
-            <div class="section-thin-banner" aria-hidden="true"></div>
+            <div class="section-headline-banner"><h2 class="section-category-title metallic-gold">Atmosphere & Media</h2></div>
             <div class="services-grid">
 
                 <div class="card">
