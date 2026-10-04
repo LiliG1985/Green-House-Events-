@@ -562,6 +562,18 @@
             position: relative; z-index: 5;
         }
         #entertainment-strip .sec-title { padding: 0 8vw; }
+        /* Photo banner behind the roster heading, matching entertainment.html */
+        .ent-strip-banner {
+            width: 100vw;
+            margin: 1rem calc(50% - 50vw) 3rem calc(50% - 50vw);
+            position: relative;
+            border-top: 0.5px solid var(--gold-solid);
+            border-bottom: 0.5px solid var(--gold-solid);
+            background: linear-gradient(90deg, rgba(2,22,18,0.72) 0%, rgba(2,22,18,0.4) 50%, rgba(2,22,18,0.72) 100%), url('about-banner.jpg') no-repeat center 55%;
+            background-size: cover;
+            padding: 2.2rem 2rem;
+        }
+        .ent-strip-banner .sec-title { padding: 0; margin-bottom: 0; }
         .ent-strip-scroll {
             display: flex;
             gap: 1.3rem;
@@ -604,7 +616,7 @@
             font-family: var(--serif);
             font-size: 1rem;
             font-weight: 400;
-            color: var(--bg-deep);
+            color: var(--gold-deep);
             text-align: center;
             letter-spacing: 0.4px;
         }
@@ -961,6 +973,8 @@
 
             /* Entertainment strip */
             #entertainment-strip { padding: 0.5rem 0 3rem 0; }
+            .ent-strip-banner { padding: 1.4rem 1.2rem; margin: 0.5rem calc(50% - 50vw) 2rem calc(50% - 50vw); }
+            .ent-strip-banner .sec-title { font-size: clamp(1.6rem, 6vw, 2.2rem); }
             .ent-strip-card, .ent-strip-card .ent-strip-img { width: 138px; }
             .ent-strip-card .ent-strip-img { height: 178px; }
             .ent-strip-card span { font-size: 0.88rem; }
@@ -1234,7 +1248,9 @@
 
     <!-- ENTERTAINMENT ROSTER STRIP -->
     <section id="entertainment-strip" aria-labelledby="entertainment-strip-heading">
-        <h2 class="sec-title" id="entertainment-strip-heading">Our <em class="metallic-gold">Entertainment</em> Roster</h2>
+        <div class="ent-strip-banner">
+            <h2 class="sec-title" id="entertainment-strip-heading">Our <em class="metallic-gold">Entertainment</em> Roster</h2>
+        </div>
         <div class="ent-strip-scroll">
             <a href="entertainment.html#entertainment-portfolio" class="ent-strip-card">
                 <span class="ent-strip-img"><img src="ent-djs.jpg" alt="DJs" loading="lazy"></span>
