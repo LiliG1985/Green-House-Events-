@@ -555,6 +555,75 @@
         .card:hover .learn-more { opacity: 1; letter-spacing: 3px; }
 
         /* =====================================================
+           ENTERTAINMENT ROSTER STRIP
+        ====================================================== */
+        #entertainment-strip {
+            padding: 1rem 0 5rem 0;
+            position: relative; z-index: 5;
+        }
+        #entertainment-strip .sec-title { padding: 0 8vw; }
+        .ent-strip-scroll {
+            display: flex;
+            gap: 1.3rem;
+            overflow-x: auto;
+            padding: 0.5rem 8vw 1.6rem 8vw;
+            scroll-snap-type: x proximity;
+            -webkit-overflow-scrolling: touch;
+        }
+        .ent-strip-scroll::-webkit-scrollbar { height: 6px; }
+        .ent-strip-scroll::-webkit-scrollbar-track { background: rgba(122,90,22,0.12); }
+        .ent-strip-scroll::-webkit-scrollbar-thumb { background: var(--gold-solid); border-radius: 10px; }
+        .ent-strip-card {
+            flex: 0 0 auto;
+            width: 180px;
+            scroll-snap-align: start;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.85rem;
+            transition: transform 0.3s ease;
+        }
+        .ent-strip-card:hover { transform: translateY(-5px); }
+        .ent-strip-card .ent-strip-img {
+            width: 180px;
+            height: 230px;
+            border-radius: 3px;
+            overflow: hidden;
+            border: 0.5px solid var(--gold-solid);
+            box-shadow: 0 14px 30px rgba(60,45,20,0.18);
+        }
+        .ent-strip-card img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .ent-strip-card:hover img { transform: scale(1.06); }
+        .ent-strip-card span {
+            font-family: var(--serif);
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--bg-deep);
+            text-align: center;
+            letter-spacing: 0.4px;
+        }
+        .ent-strip-more .ent-strip-img {
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(201,168,76,0.1);
+            border-style: dashed;
+        }
+        .ent-strip-more .ent-strip-img span {
+            font-family: var(--display);
+            font-size: 0.72rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold-deep);
+            padding: 0 1rem;
+            text-align: center;
+        }
+
+        /* =====================================================
            CLIENTS
         ====================================================== */
         #clients {
@@ -890,6 +959,12 @@
             .discover-banner-eyebrow { display: none; }
             .discover-banner-overlay h3 { font-size: 1.6rem; }
 
+            /* Entertainment strip */
+            #entertainment-strip { padding: 0.5rem 0 3rem 0; }
+            .ent-strip-card, .ent-strip-card .ent-strip-img { width: 138px; }
+            .ent-strip-card .ent-strip-img { height: 178px; }
+            .ent-strip-card span { font-size: 0.88rem; }
+
             /* Clients */
             #clients { padding: 0; }
 
@@ -1155,6 +1230,96 @@
                 <p class="discover-banner-eyebrow">Private Events &middot; Corporate Production &middot; Entertainment &middot; Staging &amp; AV &middot; Wardrobe &middot; Transformations</p>
             </div>
         </a>
+    </section>
+
+    <!-- ENTERTAINMENT ROSTER STRIP -->
+    <section id="entertainment-strip" aria-labelledby="entertainment-strip-heading">
+        <h2 class="sec-title" id="entertainment-strip-heading">Our <em class="metallic-gold">Entertainment</em> Roster</h2>
+        <div class="ent-strip-scroll">
+            <a href="entertainment.html#entertainment-portfolio" class="ent-strip-card">
+                <span class="ent-strip-img"><img src="ent-djs.jpg" alt="DJs" loading="lazy"></span>
+                <span>DJs</span>
+            </a>
+            <a href="entertainment.html#entertainment-portfolio" class="ent-strip-card">
+                <span class="ent-strip-img"><img src="ent-singers.jpg" alt="Singers" loading="lazy"></span>
+                <span>Singers</span>
+            </a>
+            <a href="entertainment.html#entertainment-portfolio" class="ent-strip-card">
+                <span class="ent-strip-img"><img src="ent-bands.jpg" alt="Bands" loading="lazy"></span>
+                <span>Bands</span>
+            </a>
+            <a href="entertainment.html#entertainment-portfolio" class="ent-strip-card">
+                <span class="ent-strip-img"><img src="ent-instrumental.jpg" alt="Instrumental" loading="lazy"></span>
+                <span>Instrumental</span>
+            </a>
+            <a href="entertainment.html#entertainment-portfolio" class="ent-strip-card">
+                <span class="ent-strip-img"><img src="ent-arabic.jpg" alt="Arabic" loading="lazy"></span>
+                <span>Arabic</span>
+            </a>
+            <a href="entertainment.html#entertainment-portfolio" class="ent-strip-card">
+                <span class="ent-strip-img"><img src="ent-specialist-acts.jpg" alt="Specialist Acts" loading="lazy"></span>
+                <span>Specialist Acts</span>
+            </a>
+            <a href="entertainment.html#entertainment-portfolio" class="ent-strip-card">
+                <span class="ent-strip-img"><img src="ent-circus-acts.jpg" alt="Circus Acts" loading="lazy"></span>
+                <span>Circus Acts</span>
+            </a>
+            <a href="entertainment.html#entertainment-portfolio" class="ent-strip-card">
+                <span class="ent-strip-img"><img src="ent-roaming-acts.jpg" alt="Roaming Acts" loading="lazy"></span>
+                <span>Roaming Acts</span>
+            </a>
+            <a href="entertainment.html#entertainment-portfolio" class="ent-strip-card">
+                <span class="ent-strip-img"><img src="ent-dancers.jpg" alt="Dancers" loading="lazy"></span>
+                <span>Dancers</span>
+            </a>
+            <a href="entertainment.html#entertainment-portfolio" class="ent-strip-card">
+                <span class="ent-strip-img"><img src="ent-shows.jpg" alt="Shows" loading="lazy"></span>
+                <span>Shows</span>
+            </a>
+            <a href="entertainment.html#entertainment-portfolio" class="ent-strip-card">
+                <span class="ent-strip-img"><img src="ent-acrobats.jpg" alt="Acrobats" loading="lazy"></span>
+                <span>Acrobats</span>
+            </a>
+            <a href="entertainment.html#entertainment-portfolio" class="ent-strip-card">
+                <span class="ent-strip-img"><img src="ent-stationary-acts.jpg" alt="Stationary Acts" loading="lazy"></span>
+                <span>Stationary Acts</span>
+            </a>
+            <a href="entertainment.html#entertainment-portfolio" class="ent-strip-card">
+                <span class="ent-strip-img"><img src="ent-fire-led.jpg" alt="Fire & LED Shows" loading="lazy"></span>
+                <span>Fire & LED</span>
+            </a>
+            <a href="entertainment.html#entertainment-portfolio" class="ent-strip-card">
+                <span class="ent-strip-img"><img src="ent-childrens.jpg" alt="Children's Entertainment" loading="lazy"></span>
+                <span>Children's</span>
+            </a>
+            <a href="entertainment.html#entertainment-portfolio" class="ent-strip-card">
+                <span class="ent-strip-img"><img src="ent-hostesses.jpg" alt="Hostesses" loading="lazy"></span>
+                <span>Hostesses</span>
+            </a>
+            <a href="entertainment.html#entertainment-portfolio" class="ent-strip-card">
+                <span class="ent-strip-img"><img src="ent-live-art.jpg" alt="Live Art" loading="lazy"></span>
+                <span>Live Art</span>
+            </a>
+            <a href="entertainment.html#entertainment-portfolio" class="ent-strip-card">
+                <span class="ent-strip-img"><img src="ent-magicians.jpg" alt="Magicians" loading="lazy"></span>
+                <span>Magicians</span>
+            </a>
+            <a href="entertainment.html#entertainment-portfolio" class="ent-strip-card">
+                <span class="ent-strip-img"><img src="ent-mc-hosts.jpg" alt="MC & Hosts" loading="lazy"></span>
+                <span>MC & Hosts</span>
+            </a>
+            <a href="entertainment.html#entertainment-portfolio" class="ent-strip-card">
+                <span class="ent-strip-img"><img src="ent-media-team.jpg" alt="Media Team" loading="lazy"></span>
+                <span>Media Team</span>
+            </a>
+            <a href="entertainment.html#entertainment-portfolio" class="ent-strip-card">
+                <span class="ent-strip-img"><img src="ent-photobooths.jpg" alt="Photobooths" loading="lazy"></span>
+                <span>Photobooths</span>
+            </a>
+            <a href="entertainment.html" class="ent-strip-card ent-strip-more">
+                <span class="ent-strip-img"><span>View Full<br>Roster →</span></span>
+            </a>
+        </div>
     </section>
     </div><!-- /greenery-wrap -->
 
