@@ -1,5 +1,10 @@
 {
   "redirects": [
-    { "source": "/((?!maintenance.html).*)", "destination": "/maintenance.html", "permanent": false }
+    {
+      "source": "/((?!maintenance.html).*)",
+      "has": [{ "type": "host", "value": "greenhouseeventsuae.com" }],
+      "destination": "/maintenance.html",
+      "permanent": false
+    }
   ]
 }
