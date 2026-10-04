@@ -29,6 +29,7 @@
             --bg-deep: #04100c; 
             --bg-mid: #0a1f18;  
             --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%);
+            --gold-metallic-nude: linear-gradient(135deg, #7A5A16 0%, #C9A84C 25%, #E8CC7A 50%, #C9A84C 75%, #7A5A16 100%);
             --gold-solid: #C9A84C;
             --white-off: #F4F0E8;
             --border: rgba(201,168,76,0.18);
@@ -99,10 +100,12 @@
 
         /* --- LUXURY REVAMP: solid deep gold for legible headings on nude/light backgrounds --- */
         .showcase-container .metallic-gold {
-            background: none;
-            -webkit-text-fill-color: var(--gold-deep);
-            color: var(--gold-deep);
-            animation: none;
+            background: var(--gold-metallic-nude);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
         }
         .showcase-text { position: relative; }
         .showcase-text::before {
@@ -212,26 +215,41 @@
         }
 
         /* --- SERVICE SHOWCASE SECTIONS --- */
-        .showcase-container { max-width: 1200px; margin: 0 auto; padding: 6rem 5vw; }
+        .showcase-container { max-width: 1200px; margin: 0 auto; padding: 6rem 5vw; position: relative; }
+        .showcase-container::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 30;
+            background: linear-gradient(90deg, transparent 0%, var(--gold-solid) 15%, #F5E9B8 50%, var(--gold-solid) 85%, transparent 100%);
+        }
+        .showcase-container::after {
+            content: '';
+            position: absolute; top: -6px; left: 50%; z-index: 31;
+            width: 13px; height: 13px;
+            transform: translateX(-50%) rotate(45deg);
+            background: var(--gold-solid);
+            border: 1.5px solid var(--nude-card);
+            box-shadow: 0 0 10px rgba(201,168,76,0.7);
+        }
         
         .showcase-row {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 8rem; position: relative;
+            display: flex; align-items: stretch; margin-bottom: 2.4rem; position: relative;
+            border: 0.5px solid var(--gold-solid);
+            overflow: hidden;
+            box-shadow: 0 20px 45px rgba(60,45,20,0.16);
         }
-        .showcase-row:nth-child(even) { direction: rtl; }
-        .showcase-row:nth-child(even) .showcase-text { direction: ltr; }
+        .showcase-row:nth-child(even) { flex-direction: row-reverse; }
+        .showcase-text::before { display: none; }
 
         /* --- UNIFORM BRAND CARDS FOR VISUAL LEGIBILITY --- */
         .showcase-text {
-            border: 0.5px solid var(--gold-solid);
-            padding: 3.2rem 2.8rem;
+            flex: 1;
+            padding: 2.8rem 3rem;
             background: linear-gradient(160deg, var(--nude-card) 0%, #FFFDF8 100%);
             color: var(--bg-deep);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            box-shadow: 0 20px 45px rgba(60,45,20,0.16);
+            display: flex; flex-direction: column; justify-content: center;
         }
-        .showcase-text h2 { font-family: var(--serif); font-size: 2.3rem; margin-bottom: 1.5rem; font-weight: 400; }
-        .showcase-text p { color: var(--bg-deep); opacity: 0.75; font-size: 1rem; margin-bottom: 2rem; line-height: 1.75; }
+        .showcase-text h2 { font-family: var(--serif); font-size: 2.1rem; margin-bottom: 1rem; font-weight: 400; }
+        .showcase-text p { color: var(--bg-deep); opacity: 0.75; font-size: 0.95rem; margin-bottom: 1.4rem; line-height: 1.7; }
 
         .feature-tags { display: flex; flex-wrap: wrap; gap: 0.8rem; }
         .tag { border: 0.5px solid rgba(201,168,76,0.45); padding: 0.4rem 1rem; font-size: 0.75rem; letter-spacing: 1px; background: rgba(201,168,76,0.1); color: var(--bg-deep); }
@@ -247,9 +265,20 @@
 
         /* --- IMAGE STRUCTURAL BLOCKS --- */
         .showcase-img-space {
-            width: 100%; aspect-ratio: 16/11; background: rgba(4, 16, 12, 0.05); border: 0.5px solid rgba(201, 168, 76, 0.35); overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 40px rgba(60,45,20,0.14);
+            position: relative;
+            width: 44%; flex-shrink: 0;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
         }
         .showcase-img-space img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 2; }
+        .showcase-img-space::after {
+            content: '';
+            position: absolute; inset: 0; z-index: 3;
+            background: linear-gradient(90deg, transparent 55%, var(--nude-card) 100%);
+        }
+        .showcase-row:nth-child(even) .showcase-img-space::after {
+            background: linear-gradient(270deg, transparent 55%, var(--nude-card) 100%);
+        }
 
         /* --- LUXURY CONTACT FOOTER WITH PERFECT DUAL GRADIENT FADE TINT --- */
         #contact-bridge {
@@ -324,8 +353,8 @@
 
             /* Showcase */
             .showcase-container { padding: 3rem 4vw 4rem; }
-            .showcase-row { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 3rem; }
-            .showcase-row:nth-child(even) { direction: ltr; }
+            .showcase-row, .showcase-row:nth-child(even) { flex-direction: column; margin-bottom: 1.6rem; }
+            .showcase-img-space { width: 100%; aspect-ratio: 16 / 10; }
             .showcase-text h2 { font-size: clamp(1.4rem, 4vw, 2.2rem); }
 
             /* Contact */
@@ -397,6 +426,7 @@
             position: relative; display: block;
             width: 100vw; left: 50%; right: 50%;
             margin-left: -50vw; margin-right: -50vw;
+            margin-top: 2.2rem;
             aspect-ratio: 21 / 9; overflow: hidden;
             border-top: 0.5px solid var(--gold-solid);
             border-bottom: 0.5px solid var(--gold-solid);

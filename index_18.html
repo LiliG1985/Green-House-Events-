@@ -103,6 +103,7 @@
             --bg-deep: #04100c;
             --bg-mid: #0a1f18;
             --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%);
+            --gold-metallic-nude: linear-gradient(135deg, #7A5A16 0%, #C9A84C 25%, #E8CC7A 50%, #C9A84C 75%, #7A5A16 100%);
             --gold-solid: #C9A84C;
             --white-off: #F4F0E8;
             --border: rgba(201,168,76,0.18);
@@ -143,10 +144,12 @@
 
         /* --- LUXURY REVAMP: solid deep gold for legible headings on nude/light backgrounds --- */
         #services .metallic-gold {
-            background: none;
-            -webkit-text-fill-color: var(--gold-deep);
-            color: var(--gold-deep);
-            animation: none;
+            background: var(--gold-metallic-nude);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
         }
         .card { position: relative; }
         .card::before {
@@ -463,10 +466,12 @@
             color: var(--bg-deep);
         }
         #about-profile .metallic-gold {
-            background: none;
-            -webkit-text-fill-color: var(--gold-deep);
-            color: var(--gold-deep);
-            animation: none;
+            background: var(--gold-metallic-nude);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
         }
         .about-narrative { display: flex; flex-direction: column; gap: 1.5rem; justify-content: flex-start; }
         .about-narrative p { font-size: 1rem; opacity: 0.85; font-weight: 300; letter-spacing: 0.5px; line-height: 1.8; color: var(--bg-deep); }
@@ -636,10 +641,12 @@
         }
         #testimonials .sec-title { color: var(--bg-deep); }
         #testimonials .metallic-gold {
-            background: none;
-            -webkit-text-fill-color: var(--gold-deep);
-            color: var(--gold-deep);
-            animation: none;
+            background: var(--gold-metallic-nude);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
         }
         .testimonials-carousel {
             position: relative;
@@ -964,6 +971,7 @@
             position: relative; display: block;
             width: 100vw; left: 50%; right: 50%;
             margin-left: -50vw; margin-right: -50vw;
+            margin-top: 2.2rem;
             aspect-ratio: 21 / 9; overflow: hidden;
             border-top: 0.5px solid var(--gold-solid);
             border-bottom: 0.5px solid var(--gold-solid);
@@ -1098,7 +1106,7 @@
     <!-- 360 PHOTOBOOTHS -->
     <section id="photobooth" class="photobooth-section" aria-labelledby="photobooth-heading">
         <div class="photobooth-inner">
-            <h2 class="sec-title gold-heading" id="photobooth-heading"><span class="metallic-gold">360&deg; Photobooths</span></h2>
+            <h2 class="sec-title gold-heading" id="photobooth-heading"><span class="metallic-gold">Photobooths</span></h2>
             <p class="photobooth-tagline">Photo Booth Rental in Dubai and Across the UAE</p>
             <div class="photobooth-img-wrap">
                 <img src="360-photobooth.jpg" alt="360 degree photobooth and photo booth rental for parties, weddings and corporate events in Dubai, Abu Dhabi and across the UAE" loading="lazy"/>

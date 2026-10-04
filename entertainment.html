@@ -29,6 +29,7 @@
             --bg-deep: #04100c; 
             --bg-mid: #0a1f18;  
             --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%);
+            --gold-metallic-nude: linear-gradient(135deg, #7A5A16 0%, #C9A84C 25%, #E8CC7A 50%, #C9A84C 75%, #7A5A16 100%);
             --gold-solid: #C9A84C;
             --white-off: #F4F0E8;
             --border: rgba(201,168,76,0.18);
@@ -99,10 +100,12 @@
 
         /* --- LUXURY REVAMP: solid deep gold for legible headings on nude/light backgrounds --- */
         #entertainment-portfolio .metallic-gold {
-            background: none;
-            -webkit-text-fill-color: var(--gold-deep);
-            color: var(--gold-deep);
-            animation: none;
+            background: var(--gold-metallic-nude);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
         }
         .card { position: relative; }
         .card::before {
@@ -267,10 +270,12 @@
             letter-spacing: 1px;
         }
         .entertainment-about .metallic-gold {
-            background: none;
-            -webkit-text-fill-color: var(--gold-deep);
-            color: var(--gold-deep);
-            animation: none;
+            background: var(--gold-metallic-nude);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
         }
         .about-right p {
             font-size: 1.05rem;
@@ -316,53 +321,55 @@
 
         .services-grid {
             position: relative;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.4rem;
-            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.3rem;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
         .card {
             border: 0.5px solid var(--gold-solid);
-            padding: 2.4rem 2.1rem;
             background: linear-gradient(160deg, var(--nude-card) 0%, #FFFDF8 100%);
             color: var(--bg-deep);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
+            align-items: stretch;
+            overflow: hidden;
             box-shadow: 0 15px 35px rgba(60,45,20,0.14);
         }
+        .card::before { display: none; }
+        .card:nth-child(even) { flex-direction: row-reverse; }
         .card:hover {
             border-color: var(--gold-solid);
-            transform: translateY(-5px);
-            background: #FFFDF8;
             box-shadow: 0 25px 50px rgba(60,45,20,0.24);
+        }
+        .card-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 1.5rem 2rem;
         }
         .card h3 {
             font-family: var(--serif);
-            font-size: 1.45rem;
-            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+            margin-bottom: 0;
             line-height: 1.3;
         }
         .card p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--bg-deep);
             opacity: 0.72;
-            margin-bottom: 1.6rem;
-            line-height: 1.65;
+            margin-bottom: 0;
+            margin-top: 0.5rem;
+            line-height: 1.6;
         }
         .card-img-space {
-            width: 100%;
-            aspect-ratio: 11 / 14;
-            background: rgba(4, 16, 12, 0.05);
-            border: 0.5px solid rgba(201, 168, 76, 0.3);
-            margin-top: auto;
-            overflow: hidden;
             position: relative;
+            width: 38%; flex-shrink: 0;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
         }
         .card-img-space img { 
             width: 100%; 
@@ -371,6 +378,14 @@
             position: absolute; 
             inset: 0; 
             transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+        }
+        .card-img-space::after {
+            content: '';
+            position: absolute; inset: 0; z-index: 1;
+            background: linear-gradient(90deg, transparent 55%, var(--nude-card) 100%);
+        }
+        .card:nth-child(even) .card-img-space::after {
+            background: linear-gradient(270deg, transparent 55%, var(--nude-card) 100%);
         }
         .card:hover .card-img-space img { transform: scale(1.04); }
 
@@ -427,7 +442,6 @@
         footer p { position: relative; z-index: 1; }
 
         @media (max-width: 1024px) {
-            .services-grid { grid-template-columns: repeat(2, 1fr); }
             .entertainment-about { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 6vw 1rem 6vw; }
             .footer-buttons { flex-direction: column; align-items: center; gap: 1rem; }
         }
@@ -450,16 +464,16 @@
 
             /* Portfolio */
             #entertainment-portfolio { padding: 2rem 4vw 4rem; }
-            .services-grid { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+            .services-grid { gap: 1.2rem; }
+            .card, .card:nth-child(even) { flex-direction: column; }
+            .card-img-space { width: 100%; aspect-ratio: 16 / 10; }
             .section-category-title { font-size: clamp(1.6rem, 5vw, 2.2rem); margin-top: 3rem; }
 
             /* Contact */
             #contact-bridge { padding: 5rem 6vw; }
             .footer-buttons { flex-direction: column; align-items: center; gap: 1rem; }
-            .card:hover { transform: none; }
         }
         @media (max-width: 500px) {
-            .services-grid { grid-template-columns: 1fr; }
             .hero { padding: 100px 5vw 60px; }
         }
 
@@ -523,6 +537,7 @@
             position: relative; display: block;
             width: 100vw; left: 50%; right: 50%;
             margin-left: -50vw; margin-right: -50vw;
+            margin-top: 2.2rem;
             aspect-ratio: 21 / 9; overflow: hidden;
             border-top: 0.5px solid var(--gold-solid);
             border-bottom: 0.5px solid var(--gold-solid);
@@ -693,33 +708,43 @@
             <div class="services-grid">
                 
                 <div class="card">
-                    <h3 class="metallic-gold">DJs</h3>
-                    <p>Premium open-format sound curation framing the absolute ideal mood lines for upscale gatherings.</p>
-                    <div class="card-img-space"><img src="ent-djs.jpg" alt="DJs"></div>
+                    <div class="card-img-space"><img src="ent-djs.jpg" alt="DJs" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="metallic-gold">DJs</h3>
+                        <p>Premium open-format sound curation framing the absolute ideal mood lines for upscale gatherings.</p>
+                    </div>
                 </div>
                 
                 <div class="card">
-                    <h3 class="metallic-gold">Singers</h3>
-                    <p>World class live vocalists delivering profound artistic presence across diverse repertoires.</p>
-                    <div class="card-img-space"><img src="ent-singers.jpg" alt="Singers"></div>
+                    <div class="card-img-space"><img src="ent-singers.jpg" alt="Singers" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="metallic-gold">Singers</h3>
+                        <p>World class live vocalists delivering profound artistic presence across diverse repertoires.</p>
+                    </div>
                 </div>
                 
                 <div class="card">
-                    <h3 class="metallic-gold">Bands</h3>
-                    <p>Full scale live musical ensembles performing curated orchestrations for high energy milestones.</p>
-                    <div class="card-img-space"><img src="ent-bands.jpg" alt="Bands"></div>
+                    <div class="card-img-space"><img src="ent-bands.jpg" alt="Bands" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="metallic-gold">Bands</h3>
+                        <p>Full scale live musical ensembles performing curated orchestrations for high energy milestones.</p>
+                    </div>
                 </div>
                 
                 <div class="card">
-                    <h3 class="metallic-gold">Instrumental</h3>
-                    <p>Sophisticated live instrumentalists featuring elegant soloists for an unmatched ambient texture.</p>
-                    <div class="card-img-space"><img src="ent-instrumental.jpg" alt="Instrumental"></div>
+                    <div class="card-img-space"><img src="ent-instrumental.jpg" alt="Instrumental" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="metallic-gold">Instrumental</h3>
+                        <p>Sophisticated live instrumentalists featuring elegant soloists for an unmatched ambient texture.</p>
+                    </div>
                 </div>
                 
                 <div class="card">
-                    <h3 class="metallic-gold">Arabic</h3>
-                    <p>Traditional and contemporary regional musicians bringing authentic oriental melodies to local events.</p>
-                    <div class="card-img-space"><img src="ent-arabic.jpg" alt="Arabic"></div>
+                    <div class="card-img-space"><img src="ent-arabic.jpg" alt="Arabic" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="metallic-gold">Arabic</h3>
+                        <p>Traditional and contemporary regional musicians bringing authentic oriental melodies to local events.</p>
+                    </div>
                 </div>
             </div>
 
@@ -727,57 +752,75 @@
             <div class="services-grid">
                 
                 <div class="card">
-                    <h3 class="metallic-gold">Specialists Acts</h3>
-                    <p>Highly specialized variety talents and conceptual performers introducing unique visual elements.</p>
-                    <div class="card-img-space"><img src="ent-specialist-acts.jpg" alt="Specialists Acts"></div>
+                    <div class="card-img-space"><img src="ent-specialist-acts.jpg" alt="Specialists Acts" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="metallic-gold">Specialists Acts</h3>
+                        <p>Highly specialized variety talents and conceptual performers introducing unique visual elements.</p>
+                    </div>
                 </div>
                 
                 <div class="card">
-                    <h3 class="metallic-gold">Circus Acts</h3>
-                    <p>Dazzling high skill circus arts choreographed carefully within your event space.</p>
-                    <div class="card-img-space"><img src="ent-circus-acts.jpg" alt="Circus Acts"></div>
+                    <div class="card-img-space"><img src="ent-circus-acts.jpg" alt="Circus Acts" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="metallic-gold">Circus Acts</h3>
+                        <p>Dazzling high skill circus arts choreographed carefully within your event space.</p>
+                    </div>
                 </div>
                 
                 <div class="card">
-                    <h3 class="metallic-gold">Roaming Acts</h3>
-                    <p>Immersive, interactive walkabout talent, seamlessly engaging with your guests.</p>
-                    <div class="card-img-space"><img src="ent-roaming-acts.jpg" alt="Roaming Acts"></div>
+                    <div class="card-img-space"><img src="ent-roaming-acts.jpg" alt="Roaming Acts" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="metallic-gold">Roaming Acts</h3>
+                        <p>Immersive, interactive walkabout talent, seamlessly engaging with your guests.</p>
+                    </div>
                 </div>
                 
                 <div class="card">
-                    <h3 class="metallic-gold">Dancers</h3>
-                    <p>Professional dance troupes and background formations tailored precisely to theme.</p>
-                    <div class="card-img-space"><img src="ent-dancers.jpg" alt="Dancers"></div>
+                    <div class="card-img-space"><img src="ent-dancers.jpg" alt="Dancers" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="metallic-gold">Dancers</h3>
+                        <p>Professional dance troupes and background formations tailored precisely to theme.</p>
+                    </div>
                 </div>
                 
                 <div class="card">
-                    <h3 class="metallic-gold">Shows</h3>
-                    <p>Top tier scripted stage shows, engineered with bespoke concepts and fully customized production elements.</p>
-                    <div class="card-img-space"><img src="ent-shows.jpg" alt="Shows"></div>
+                    <div class="card-img-space"><img src="ent-shows.jpg" alt="Shows" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="metallic-gold">Shows</h3>
+                        <p>Top tier scripted stage shows, engineered with bespoke concepts and fully customized production elements.</p>
+                    </div>
                 </div>
                 
                 <div class="card">
-                    <h3 class="metallic-gold">Acrobats</h3>
-                    <p>Breathtaking balancing routines and elite physical artists displaying unmatched acts .</p>
-                    <div class="card-img-space"><img src="ent-acrobats.jpg" alt="Acrobats"></div>
+                    <div class="card-img-space"><img src="ent-acrobats.jpg" alt="Acrobats" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="metallic-gold">Acrobats</h3>
+                        <p>Breathtaking balancing routines and elite physical artists displaying unmatched acts .</p>
+                    </div>
                 </div>
 
                 <div class="card">
-                    <h3 class="metallic-gold">Stationed Acts</h3>
-                    <p>Bespoke living statues and thematic human installations and acts.</p>
-                    <div class="card-img-space"><img src="ent-stationary-acts.jpg" alt="Stationed Acts"></div>
+                    <div class="card-img-space"><img src="ent-stationary-acts.jpg" alt="Stationed Acts" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="metallic-gold">Stationed Acts</h3>
+                        <p>Bespoke living statues and thematic human installations and acts.</p>
+                    </div>
                 </div>
 
                 <div class="card">
-                    <h3 class="metallic-gold">Fire & L.E.D Shows</h3>
-                    <p>High impact fireand L.E.D performances and dramatic, synchronized flame choreography..</p>
-                    <div class="card-img-space"><img src="ent-fire-led.jpg" alt="Fire & L.E.D Shows"></div>
+                    <div class="card-img-space"><img src="ent-fire-led.jpg" alt="Fire & L.E.D Shows" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="metallic-gold">Fire & L.E.D Shows</h3>
+                        <p>High impact fireand L.E.D performances and dramatic, synchronized flame choreography..</p>
+                    </div>
                 </div>
 
                 <div class="card">
-                    <h3 class="metallic-gold">Children's</h3>
-                    <p>Premium, imaginative experiences curated for children. We provide top tier character artists, professional face painting, whimsical stage acts, and interactive entertainment, all delivered with the care and creative detail your private event deserves.</p>
-                    <div class="card-img-space"><img src="ent-childrens.jpg" alt="Children's"></div>
+                    <div class="card-img-space"><img src="ent-childrens.jpg" alt="Children's" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="metallic-gold">Children's</h3>
+                        <p>Premium, imaginative experiences curated for children. We provide top tier character artists, professional face painting, whimsical stage acts, and interactive entertainment, all delivered with the care and creative detail your private event deserves.</p>
+                    </div>
                 </div>
             </div>
 
@@ -785,39 +828,51 @@
             <div class="services-grid">
                 
                 <div class="card">
-                    <h3 class="metallic-gold">Hostesses</h3>
-                    <p>High fashion representatives managing guest experience with absolute poise and elegance.</p>
-                    <div class="card-img-space"><img src="ent-hostesses.jpg" alt="Hostesses"></div>
+                    <div class="card-img-space"><img src="ent-hostesses.jpg" alt="Hostesses" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="metallic-gold">Hostesses</h3>
+                        <p>High fashion representatives managing guest experience with absolute poise and elegance.</p>
+                    </div>
                 </div>
                 
                 <div class="card">
-                    <h3 class="metallic-gold">MC / Host / Comedian</h3>
-                    <p>Articulate presenters and charismatic masters of ceremonies driving the programming timeline.</p>
-                    <div class="card-img-space"><img src="ent-mc-hosts.jpg" alt="MC / Host / Comedian"></div>
+                    <div class="card-img-space"><img src="ent-mc-hosts.jpg" alt="MC / Host / Comedian" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="metallic-gold">MC / Host / Comedian</h3>
+                        <p>Articulate presenters and charismatic masters of ceremonies driving the programming timeline.</p>
+                    </div>
                 </div>
                 
                 <div class="card">
-                    <h3 class="metallic-gold">Live Art</h3>
-                    <p>Dynamic experimental art forms adapting to the room ranging from high impact speed painting and sand storytelling to completely bespoke, unscripted living creations.</p>
-                    <div class="card-img-space"><img src="ent-live-art.jpg" alt="Live Art"></div>
+                    <div class="card-img-space"><img src="ent-live-art.jpg" alt="Live Art" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="metallic-gold">Live Art</h3>
+                        <p>Dynamic experimental art forms adapting to the room ranging from high impact speed painting and sand storytelling to completely bespoke, unscripted living creations.</p>
+                    </div>
                 </div>
 
                 <div class="card">
-                    <h3 class="metallic-gold">Photographers & Videographers</h3>
-                    <p>Elite visual media teams capturing production elements and milestones with high art precision.</p>
-                    <div class="card-img-space"><img src="ent-media-team.jpg" alt="Photographers & Videographers"></div>
+                    <div class="card-img-space"><img src="ent-media-team.jpg" alt="Photographers & Videographers" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="metallic-gold">Photographers & Videographers</h3>
+                        <p>Elite visual media teams capturing production elements and milestones with high art precision.</p>
+                    </div>
                 </div>
 
                 <div class="card">
-                    <h3 class="metallic-gold">Photo Booths</h3>
-                    <p>Luxury interactive photobooth installations, from 360 phtoto booths, to magic mirrors. A fabulous way to market your event and let your guests take home a piece of the party. </p>
-                    <div class="card-img-space"><img src="ent-photobooths.jpg" alt="Photo Booths"></div>
+                    <div class="card-img-space"><img src="ent-photobooths.jpg" alt="Photo Booths" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="metallic-gold">Photo Booths</h3>
+                        <p>Luxury interactive photobooth installations, from 360 phtoto booths, to magic mirrors. A fabulous way to market your event and let your guests take home a piece of the party. </p>
+                    </div>
                 </div>
                 
                 <div class="card">
-                    <h3 class="metallic-gold">Magicians & Illusionists</h3>
-                    <p>Elite sleight of hand operators and fascinating close up micro magic setups for guests.</p>
-                    <div class="card-img-space"><img src="ent-magicians.jpg" alt="Magicians & Illusionists"></div>
+                    <div class="card-img-space"><img src="ent-magicians.jpg" alt="Magicians & Illusionists" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="metallic-gold">Magicians & Illusionists</h3>
+                        <p>Elite sleight of hand operators and fascinating close up micro magic setups for guests.</p>
+                    </div>
                 </div>
             </div>
         </section>

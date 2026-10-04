@@ -29,6 +29,7 @@
             --bg-deep: #04100c; 
             --bg-mid: #0a1f18;  
             --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%);
+            --gold-metallic-nude: linear-gradient(135deg, #7A5A16 0%, #C9A84C 25%, #E8CC7A 50%, #C9A84C 75%, #7A5A16 100%);
             --gold-solid: #C9A84C;
             --white-off: #F4F0E8;
             --border: rgba(201,168,76,0.18);
@@ -75,10 +76,12 @@
 
         /* --- LUXURY REVAMP: solid deep gold for legible headings on nude/light backgrounds --- */
         #services-inclusions .metallic-gold {
-            background: none;
-            -webkit-text-fill-color: var(--gold-deep);
-            color: var(--gold-deep);
-            animation: none;
+            background: var(--gold-metallic-nude);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
         }
         .card { position: relative; }
         .card::before {
@@ -253,10 +256,12 @@
             color: var(--bg-deep);
         }
         #about-party .metallic-gold {
-            background: none;
-            -webkit-text-fill-color: var(--gold-deep);
-            color: var(--gold-deep);
-            animation: none;
+            background: var(--gold-metallic-nude);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
         }
         .about-narrative {
             display: flex;
@@ -320,30 +325,34 @@
             box-shadow: 0 0 10px rgba(201,168,76,0.7);
         }
         .services-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2.2rem;
             max-width: 1100px;
             margin: 0 auto;
         }
         .card {
             border: 0.5px solid var(--gold-solid);
-            padding: 3.2rem 2.6rem;
             background: linear-gradient(160deg, var(--nude-card) 0%, #FFFDF8 100%);
             color: var(--bg-deep);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
+            align-items: stretch;
+            overflow: hidden;
             box-shadow: 0 20px 45px rgba(60,45,20,0.16);
         }
+        .card::before { display: none; }
+        .card:nth-child(even) { flex-direction: row-reverse; }
         .card:hover {
             border-color: var(--gold-solid);
-            transform: translateY(-8px);
-            background: #FFFDF8;
             box-shadow: 0 30px 60px rgba(60,45,20,0.26);
+        }
+        .card-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2.6rem 2.8rem;
         }
         .card h3 {
             font-family: var(--serif);
@@ -355,17 +364,15 @@
             font-size: 0.95rem;
             color: var(--bg-deep);
             opacity: 0.72;
-            margin-bottom: 2rem;
+            margin-bottom: 0;
+            margin-top: 0.8rem;
             line-height: 1.65;
         }
         .card-img-space {
-            width: 100%;
-            aspect-ratio: 16 / 10;
-            background: rgba(4, 16, 12, 0.05);
-            border: 0.5px solid rgba(201, 168, 76, 0.35);
-            margin-top: auto;
-            overflow: hidden;
             position: relative;
+            width: 46%; flex-shrink: 0;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
         }
         .card-img-space img { 
             width: 100%; 
@@ -374,6 +381,14 @@
             position: absolute; 
             inset: 0; 
             transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+        }
+        .card-img-space::after {
+            content: '';
+            position: absolute; inset: 0; z-index: 1;
+            background: linear-gradient(90deg, transparent 55%, var(--nude-card) 100%);
+        }
+        .card:nth-child(even) .card-img-space::after {
+            background: linear-gradient(270deg, transparent 55%, var(--nude-card) 100%);
         }
         .card:hover .card-img-space img { transform: scale(1.04); }
 
@@ -477,8 +492,9 @@
             .about-grid { grid-template-columns: 1fr; gap: 2rem; }
 
             /* Services */
-            .services-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-            .card:hover { transform: none; }
+            .services-grid { gap: 1.5rem; }
+            .card, .card:nth-child(even) { flex-direction: column; }
+            .card-img-space { width: 100%; aspect-ratio: 16 / 10; }
 
             /* Contact buttons */
             .footer-buttons { flex-direction: column; align-items: center; gap: 1rem; }
@@ -551,6 +567,7 @@
             position: relative; display: block;
             width: 100vw; left: 50%; right: 50%;
             margin-left: -50vw; margin-right: -50vw;
+            margin-top: 2.2rem;
             aspect-ratio: 21 / 9; overflow: hidden;
             border-top: 0.5px solid var(--gold-solid);
             border-bottom: 0.5px solid var(--gold-solid);
@@ -698,60 +715,76 @@
     <div class="services-grid">
         
         <div class="card">
-            <h3 class="metallic-gold">Bespoke Concept & Theme Design</h3>
-            <div class="gold-line"></div>
-            <p>Custom visual blueprints for luxury adult milestones and premium children's celebrations. We design cohesive, high-end thematic aesthetics and immersive event environments from scratch.</p>
-            <div class="card-img-space"><img src="party-themes.jpg" alt="Bespoke Concept & Theme Design"></div>
-        </div>
+                    <div class="card-img-space"><img src="party-themes.jpg" alt="Bespoke Concept & Theme Design" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="metallic-gold">Bespoke Concept & Theme Design</h3>
+                    <div class="gold-line"></div>
+                        <p>Custom visual blueprints for luxury adult milestones and premium children's celebrations. We design cohesive, high-end thematic aesthetics and immersive event environments from scratch.</p>
+                    </div>
+                </div>
 
         <div class="card">
-            <h3 class="metallic-gold">Luxury Adult Celebrations</h3>
-            <div class="gold-line"></div>
-            <p>Milestone birthdays, engagements, anniversary galas, and high profile private cocktail gatherings executed with sophisticated styling, luxury finishes, and top tier hospitality management.</p>
-            <div class="card-img-space"><img src="luxury-adults.jpg" alt="Luxury Adult Celebrations"></div>
-        </div>
+                    <div class="card-img-space"><img src="luxury-adults.jpg" alt="Luxury Adult Celebrations" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="metallic-gold">Luxury Adult Celebrations</h3>
+                    <div class="gold-line"></div>
+                        <p>Milestone birthdays, engagements, anniversary galas, and high profile private cocktail gatherings executed with sophisticated styling, luxury finishes, and top tier hospitality management.</p>
+                    </div>
+                </div>
 
         <div class="card">
-            <h3 class="metallic-gold">Immersive Kids Wonderlands</h3>
-            <div class="gold-line"></div>
-            <p>Whimsical, high concept children celebrations designed to tell an incredible story. We design interactive structural frameworks, custom backdrops, and complete themed environments.</p>
-            <div class="card-img-space"><img src="kids-wonderlands.jpg" alt="Immersive Kids Wonderlands"></div>
-        </div>
+                    <div class="card-img-space"><img src="kids-wonderlands.jpg" alt="Immersive Kids Wonderlands" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="metallic-gold">Immersive Kids Wonderlands</h3>
+                    <div class="gold-line"></div>
+                        <p>Whimsical, high concept children celebrations designed to tell an incredible story. We design interactive structural frameworks, custom backdrops, and complete themed environments.</p>
+                    </div>
+                </div>
 
         <div class="card">
-            <h3 class="metallic-gold">High Density Floral Installations</h3>
-            <div class="gold-line"></div>
-            <p>Bespoke botanical artistry matching premium seasonal florals to your exact setting. From dramatic entryway arches and hanging installations to elegant table pavilions, our floral curation establishes the mood.</p>
-            <div class="card-img-space"><img src="party-florals.jpg" alt="High Density Floral Installations"></div>
-        </div>
+                    <div class="card-img-space"><img src="party-florals.jpg" alt="High Density Floral Installations" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="metallic-gold">High Density Floral Installations</h3>
+                    <div class="gold-line"></div>
+                        <p>Bespoke botanical artistry matching premium seasonal florals to your exact setting. From dramatic entryway arches and hanging installations to elegant table pavilions, our floral curation establishes the mood.</p>
+                    </div>
+                </div>
 
         <div class="card">
-            <h3 class="metallic-gold">Organic Balloon Architecture</h3>
-            <div class="gold-line"></div>
-            <p>Premium, precision color matched balloon styling arrays designed as a scaling structural asset. We engineer cascading backdrops, framing arches, and room installations tailored to your theme.</p>
-            <div class="card-img-space"><img src="balloon-arch.jpg" alt="Organic Balloon Architecture"></div>
-        </div>
+                    <div class="card-img-space"><img src="balloon-arch.jpg" alt="Organic Balloon Architecture" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="metallic-gold">Organic Balloon Architecture</h3>
+                    <div class="gold-line"></div>
+                        <p>Premium, precision color matched balloon styling arrays designed as a scaling structural asset. We engineer cascading backdrops, framing arches, and room installations tailored to your theme.</p>
+                    </div>
+                </div>
 
         <div class="card">
-            <h3 class="metallic-gold">Bespoke Baby Showers</h3>
-            <div class="gold-line"></div>
-            <p>Elegant, high-concept celebrations honoring new beginnings. We craft sophisticated, tailored settings featuring custom backdrops, exquisite detailing, and flawless atmosphere management.</p>
-            <div class="card-img-space"><img src="bespoke-babyshowers.jpg" alt="Bespoke Baby Showers"></div>
-        </div>
+                    <div class="card-img-space"><img src="bespoke-babyshowers.jpg" alt="Bespoke Baby Showers" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="metallic-gold">Bespoke Baby Showers</h3>
+                    <div class="gold-line"></div>
+                        <p>Elegant, high-concept celebrations honoring new beginnings. We craft sophisticated, tailored settings featuring custom backdrops, exquisite detailing, and flawless atmosphere management.</p>
+                    </div>
+                </div>
 
         <div class="card">
-            <h3 class="metallic-gold">Interactive Photo Opportunities</h3>
-            <div class="gold-line"></div>
-            <p>Custom media walls, interactive installation settings, and immersive photo backdrops engineered uniquely to let your guests capture every memorable moment of your celebration.</p>
-            <div class="card-img-space"><img src="photo-ops.jpg" alt="Interactive Photo Opportunities"></div>
-        </div>
+                    <div class="card-img-space"><img src="photo-ops.jpg" alt="Interactive Photo Opportunities" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="metallic-gold">Interactive Photo Opportunities</h3>
+                    <div class="gold-line"></div>
+                        <p>Custom media walls, interactive installation settings, and immersive photo backdrops engineered uniquely to let your guests capture every memorable moment of your celebration.</p>
+                    </div>
+                </div>
 
         <div class="card">
-            <h3 class="metallic-gold">Private Weddings & Proposals</h3>
-            <div class="gold-line"></div>
-            <p>Bespoke coordination for luxury proposals and intimate private weddings. We craft deeply personal environments from custom structural lighting to pristine stage layouts for your special moments.</p>
-            <div class="card-img-space"><img src="luxury-proposal.jpg" alt="Private Weddings & Proposals"></div>
-        </div>
+                    <div class="card-img-space"><img src="luxury-proposal.jpg" alt="Private Weddings & Proposals" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="metallic-gold">Private Weddings & Proposals</h3>
+                    <div class="gold-line"></div>
+                        <p>Bespoke coordination for luxury proposals and intimate private weddings. We craft deeply personal environments from custom structural lighting to pristine stage layouts for your special moments.</p>
+                    </div>
+                </div>
 
     </div>
 </section>

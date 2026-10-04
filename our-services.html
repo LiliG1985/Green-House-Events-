@@ -30,6 +30,7 @@
             --bg-deep: #04100c;
             --bg-mid: #0a1f18;
             --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%);
+            --gold-metallic-nude: linear-gradient(135deg, #7A5A16 0%, #C9A84C 25%, #E8CC7A 50%, #C9A84C 75%, #7A5A16 100%);
             --gold-solid: #C9A84C;
             --white-off: #F4F0E8;
             --border: rgba(201,168,76,0.18);
@@ -99,10 +100,12 @@
 
         /* --- deep gold for legible headings on nude/light backgrounds --- */
         .service-intro .metallic-gold {
-            background: none;
-            -webkit-text-fill-color: var(--gold-deep);
-            color: var(--gold-deep);
-            animation: none;
+            background: var(--gold-metallic-nude);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
         }
 
         /* --- NAVIGATION --- */
