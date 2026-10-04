@@ -38,6 +38,7 @@
             --nude: #E6D9C2;
             --nude-soft: #F3EADA;
             --nude-card: #F8F2E6;
+            --gold-deep: #7A5A16;
             --serif: 'Cormorant Garamond', serif;
             --display: 'Cinzel', serif;
             --sans: 'DM Sans', sans-serif;
@@ -98,6 +99,20 @@
             font-weight: 600;
         }
         @keyframes shine { to { background-position: 200% center; } }
+
+        /* --- LUXURY REVAMP: solid deep gold for legible headings on nude/light backgrounds --- */
+        .showcase-container .metallic-gold {
+            background: none;
+            -webkit-text-fill-color: var(--gold-deep);
+            color: var(--gold-deep);
+            animation: none;
+        }
+        .showcase-text { position: relative; }
+        .showcase-text::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--gold-solid) 0%, #F5E9B8 50%, var(--gold-solid) 100%);
+        }
 
         /* --- IMMACULATE SOLID GOLD THIN DIVIDER LINE --- */
         .gold-line {
@@ -269,7 +284,7 @@
         }
 
         /* --- SERVICE SHOWCASE SECTIONS WITH BRAND BOXES --- */
-        .showcase-container { max-width: 1200px; margin: 0 auto; padding: 5rem 5vw 8rem 5vw; background-color: var(--nude); }
+        .showcase-container { max-width: 1200px; margin: 0 auto; padding: 5rem 5vw 8rem 5vw; background: linear-gradient(180deg, var(--nude) 0%, var(--nude-soft) 100%); }
 
         .showcase-row {
             display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 8rem; position: relative;
@@ -281,7 +296,7 @@
         .showcase-text {
             border: 0.5px solid var(--gold-solid);
             padding: 3.2rem 2.8rem;
-            background: var(--nude-card);
+            background: linear-gradient(160deg, var(--nude-card) 0%, #FFFDF8 100%);
             color: var(--bg-deep);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
@@ -300,9 +315,22 @@
             position: relative;
             background: linear-gradient(rgba(4, 24, 20, 0.50) 0%, rgba(4, 24, 20, 0.70) 100%), url('staging-footer-bg.jpg') no-repeat center center;
             background-size: cover;
-            border-top: 1px solid var(--gold-solid);
             padding: 8rem 5vw;
             text-align: center;
+        }
+        #contact-footer::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 30;
+            background: linear-gradient(90deg, transparent 0%, var(--gold-solid) 15%, #F5E9B8 50%, var(--gold-solid) 85%, transparent 100%);
+        }
+        #contact-footer::after {
+            content: '';
+            position: absolute; top: -6px; left: 50%; z-index: 31;
+            width: 13px; height: 13px;
+            transform: translateX(-50%) rotate(45deg);
+            background: var(--gold-solid);
+            border: 1.5px solid var(--nude-card);
+            box-shadow: 0 0 10px rgba(201,168,76,0.7);
         }
         .footer-cta-wrap { max-width: 800px; margin: 0 auto; position: relative; z-index: 5; }
         .footer-cta-wrap h3 { font-family: var(--serif); font-size: 2.5rem; margin-bottom: 1.5rem; font-weight: 300; text-shadow: 0 4px 15px rgba(0,0,0,0.95); }
