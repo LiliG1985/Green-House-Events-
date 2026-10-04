@@ -229,6 +229,7 @@
         #about-wardrobe {
             padding: 4rem 8vw;
             min-height: 65vh;
+            margin-top: 14px;
             display: grid; align-items: center;
             position: relative;
             z-index: 5;
@@ -278,7 +279,8 @@
         .showcase-container { max-width: 1200px; margin: 0 auto; padding: 5rem 5vw 8rem 5vw; background: linear-gradient(180deg, var(--nude) 0%, var(--nude-soft) 100%); }
 
         .showcase-row {
-            display: flex; align-items: stretch; margin-bottom: 2.4rem; position: relative;
+            display: flex; align-items: center; margin-bottom: 2.4rem; position: relative;
+            min-height: 420px;
             border: 0.5px solid var(--gold-solid);
             overflow: hidden;
             box-shadow: 0 20px 45px rgba(60,45,20,0.16);
@@ -297,34 +299,34 @@
             border: 1.5px solid var(--nude-card);
             box-shadow: 0 0 10px rgba(201,168,76,0.7);
         }
-        .showcase-row:nth-child(even) { flex-direction: row-reverse; }
         .showcase-text::before { display: none; }
 
-        /* --- UNIFORM HIGHLIGHTED BRAND BOX STYLE --- */
         .showcase-text {
-            flex: 1;
+            position: relative; z-index: 3;
+            width: 50%;
+            margin-left: auto;
             padding: 2.8rem 3rem;
-            background: linear-gradient(160deg, var(--nude-card) 0%, #FFFDF8 100%);
-            color: var(--bg-deep);
+            color: var(--white-off);
             display: flex; flex-direction: column; justify-content: center;
         }
-        .showcase-text h2 { font-family: var(--serif); font-size: 2.3rem; margin-bottom: 0px; font-weight: 400; }
-        .showcase-text p { color: var(--bg-deep); opacity: 0.75; font-size: 1rem; margin-bottom: 0px; line-height: 1.75; margin-top: 1.5rem; }
+        .showcase-row:nth-child(even) .showcase-text { margin-left: 0; margin-right: auto; }
+        .showcase-text h2 { font-family: var(--serif); font-size: 2.3rem; margin-bottom: 0px; font-weight: 400; color: var(--white-off); }
+        .showcase-text p { color: var(--white-off); opacity: 0.85; font-size: 1rem; margin-bottom: 0px; line-height: 1.75; margin-top: 1.5rem; }
 
         .showcase-img-space {
-            position: relative;
-            width: 46%; flex-shrink: 0;
-            aspect-ratio: 4 / 3;
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            z-index: 1;
             overflow: hidden;
         }
         .showcase-img-space img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 2; }
         .showcase-img-space::after {
             content: '';
             position: absolute; inset: 0; z-index: 3;
-            background: linear-gradient(90deg, transparent 55%, var(--nude-card) 100%);
+            background: linear-gradient(90deg, rgba(2,22,18,0.1) 0%, rgba(2,22,18,0.55) 45%, rgba(2,22,18,0.88) 72%, rgba(2,22,18,0.92) 100%);
         }
         .showcase-row:nth-child(even) .showcase-img-space::after {
-            background: linear-gradient(270deg, transparent 55%, var(--nude-card) 100%);
+            background: linear-gradient(270deg, rgba(2,22,18,0.1) 0%, rgba(2,22,18,0.55) 45%, rgba(2,22,18,0.88) 72%, rgba(2,22,18,0.92) 100%);
         }
 
         /* --- CONNECTOR FOOTER --- */
@@ -395,8 +397,11 @@
 
             /* Showcase */
             .showcase-container { padding: 3rem 4vw 4rem; }
-            .showcase-row, .showcase-row:nth-child(even) { flex-direction: column; margin-bottom: 1.6rem; }
-            .showcase-img-space { width: 100%; aspect-ratio: 16 / 10; }
+            .showcase-row { min-height: 340px; align-items: flex-end; margin-bottom: 1.6rem; }
+            .showcase-text, .showcase-row:nth-child(even) .showcase-text { width: 100%; margin: 0; padding: 2rem 1.6rem; }
+            .showcase-img-space::after, .showcase-row:nth-child(even) .showcase-img-space::after {
+                background: linear-gradient(0deg, rgba(2,22,18,0.92) 0%, rgba(2,22,18,0.65) 45%, rgba(2,22,18,0.1) 100%);
+            }
 
             /* Contact */
             #contact-footer { padding: 5rem 5vw; }
