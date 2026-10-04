@@ -292,8 +292,8 @@
 
         /* --- SECTION HEADINGS: TEXT HIGHLIGHTED OVER A THIN PHOTO BANNER --- */
         .section-headline-banner {
-            max-width: 1100px;
-            margin: 4rem auto 3rem auto;
+            width: 100vw;
+            margin: 4rem calc(50% - 50vw) 3rem calc(50% - 50vw);
             position: relative;
             border-top: 0.5px solid var(--gold-solid);
             border-bottom: 0.5px solid var(--gold-solid);
@@ -307,7 +307,7 @@
             font-size: 3rem;
             font-weight: 300;
             letter-spacing: 2px;
-            margin: 0;
+            margin: 0 auto;
             max-width: 1100px;
         }
 
@@ -488,7 +488,7 @@
                 background: linear-gradient(0deg, rgba(2,22,18,0.92) 0%, rgba(2,22,18,0.65) 45%, rgba(2,22,18,0.1) 100%);
             }
             .section-category-title { font-size: clamp(1.6rem, 5vw, 2.2rem); margin-top: 3rem; }
-            .section-headline-banner { padding: 1.4rem 1.2rem; margin: 3rem auto 2rem auto; }
+            .section-headline-banner { padding: 1.4rem 1.2rem; margin: 3rem calc(50% - 50vw) 2rem calc(50% - 50vw); }
 
             /* Contact */
             #contact-bridge { padding: 5rem 6vw; }
