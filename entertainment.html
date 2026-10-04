@@ -517,6 +517,34 @@
         @media (max-width: 900px) {
             .nav-pages { display: none; }
         }
+    
+        /* --- SERVICES CTA BANNER (image + overlay text) --- */
+        .about-banner {
+            position: relative; display: block;
+            width: 100vw; left: 50%; right: 50%;
+            margin-left: -50vw; margin-right: -50vw;
+            aspect-ratio: 21 / 9; overflow: hidden;
+            border-top: 0.5px solid var(--gold-solid);
+            border-bottom: 0.5px solid var(--gold-solid);
+            box-shadow: 0 25px 55px rgba(60,45,20,0.22);
+            text-decoration: none;
+        }
+        .about-banner img {
+            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .about-banner:hover img { transform: scale(1.03); }
+        .about-banner-overlay {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+            text-align: center; padding: 2.5rem 2rem;
+            background: linear-gradient(180deg, rgba(2,10,8,0.05) 0%, rgba(2,10,8,0.3) 60%, rgba(2,10,8,0.88) 100%);
+        }
+        .about-banner-overlay h3 {
+            font-family: var(--serif); font-weight: 300; color: var(--white-off);
+            font-size: clamp(1.7rem, 4vw, 3rem);
+            text-shadow: 0 4px 16px rgba(0,0,0,0.9);
+        }
     </style>
 </head>
 <body>
@@ -651,6 +679,14 @@
                 <p>At Greenhouse Events, we treat entertainment as an elite spatial discipline rather than a background element. Our entertainment showcase serves as a comprehensive portfolio designed to map premium artistic curation perfectly against high tier corporate galas, intimate private milestones, and luxury hospitality activations across Dubai. Explore our signature modules across Live Music, Live Performances, and high poise Atmosphere configurations to program your next experience.</p>
             </div>
         </section>
+
+<a href="our-services.html" class="about-banner">
+    <img src="about-banner.jpg" alt="Explore Greenhouse Events luxury production services" loading="lazy">
+    <div class="about-banner-overlay">
+        <h3>Explore Our Services</h3>
+    </div>
+</a>
+
 
         <section id="entertainment-portfolio">
             <h2 class="section-category-title metallic-gold">Live Music</h2>

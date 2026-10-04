@@ -342,8 +342,11 @@
             color: var(--bg-deep); opacity: 0.7; margin: 0.6rem 0 2.2rem;
         }
         .photobooth-img-wrap {
-            width: 100%; overflow: hidden;
-            border: 0.5px solid var(--gold-solid);
+            width: 100vw;
+            margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
+            overflow: hidden;
+            border-top: 0.5px solid var(--gold-solid);
+            border-bottom: 0.5px solid var(--gold-solid);
             box-shadow: 0 20px 45px rgba(60,45,20,0.18);
             margin-bottom: 2.2rem;
         }
@@ -955,6 +958,34 @@
         @media (max-width: 900px) {
             .nav-pages { display: none; }
         }
+    
+        /* --- SERVICES CTA BANNER (image + overlay text) --- */
+        .about-banner {
+            position: relative; display: block;
+            width: 100vw; left: 50%; right: 50%;
+            margin-left: -50vw; margin-right: -50vw;
+            aspect-ratio: 21 / 9; overflow: hidden;
+            border-top: 0.5px solid var(--gold-solid);
+            border-bottom: 0.5px solid var(--gold-solid);
+            box-shadow: 0 25px 55px rgba(60,45,20,0.22);
+            text-decoration: none;
+        }
+        .about-banner img {
+            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .about-banner:hover img { transform: scale(1.03); }
+        .about-banner-overlay {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+            text-align: center; padding: 2.5rem 2rem;
+            background: linear-gradient(180deg, rgba(2,10,8,0.05) 0%, rgba(2,10,8,0.3) 60%, rgba(2,10,8,0.88) 100%);
+        }
+        .about-banner-overlay h3 {
+            font-family: var(--serif); font-weight: 300; color: var(--white-off);
+            font-size: clamp(1.7rem, 4vw, 3rem);
+            text-shadow: 0 4px 16px rgba(0,0,0,0.9);
+        }
     </style>
 </head>
 <body>
@@ -1056,6 +1087,14 @@
         </div>
     </section>
 
+<a href="our-services.html" class="about-banner">
+    <img src="about-banner.jpg" alt="Explore Greenhouse Events luxury production services" loading="lazy">
+    <div class="about-banner-overlay">
+        <h3>Explore Our Services</h3>
+    </div>
+</a>
+
+
     <!-- 360 PHOTOBOOTHS -->
     <section id="photobooth" class="photobooth-section" aria-labelledby="photobooth-heading">
         <div class="photobooth-inner">
@@ -1088,7 +1127,7 @@
         <a href="our-services.html" class="discover-banner">
             <img src="discover-banner.jpg" alt="Explore Greenhouse Events luxury production services: private events, corporate production, entertainment, staging, wardrobe and space transformations" loading="lazy">
             <div class="discover-banner-overlay">
-                <h3>Explore Every Service We Offer</h3>
+                <h3>Explore Our Services</h3>
                 <span class="discover-banner-btn">Explore Our Services
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                 </span>
