@@ -251,6 +251,13 @@
             font-size: 2.5rem;
             font-weight: 300;
             line-height: 1.25;
+            color: var(--bg-deep);
+        }
+        #about-corporate .metallic-gold {
+            background: none;
+            -webkit-text-fill-color: var(--gold-deep);
+            color: var(--gold-deep);
+            animation: none;
         }
         .about-narrative {
             display: flex;
@@ -264,6 +271,7 @@
             font-weight: 300;
             letter-spacing: 0.5px;
             line-height: 1.75;
+            color: var(--bg-deep);
         }
 
         /* --- CORPORATE SERVICES GRID --- */
@@ -271,6 +279,20 @@
             padding: 5rem 8vw 8rem 8vw;
             position: relative;
             background: linear-gradient(180deg, var(--nude) 0%, var(--nude-soft) 100%);
+        }
+        #corporate-services::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 30;
+            background: linear-gradient(90deg, transparent 0%, var(--gold-solid) 15%, #F5E9B8 50%, var(--gold-solid) 85%, transparent 100%);
+        }
+        #corporate-services::after {
+            content: '';
+            position: absolute; top: -6px; left: 50%; z-index: 31;
+            width: 13px; height: 13px;
+            transform: translateX(-50%) rotate(45deg);
+            background: var(--gold-solid);
+            border: 1.5px solid var(--nude-card);
+            box-shadow: 0 0 10px rgba(201,168,76,0.7);
         }
         .services-grid {
             display: grid;
@@ -385,31 +407,10 @@
             position: relative;
             overflow: hidden;
             background-color: var(--nude);
-            --band-h: min(34%, 58vw);
         }
-        .greenery-band {
-            position: absolute;
-            left: 0; right: 0;
-            height: var(--band-h);
-            background-repeat: no-repeat;
-            background-size: cover;
-            z-index: 0;
-            pointer-events: none;
-        }
-        .greenery-band-1 { top: 0;   background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('wall-panel-1.jpg'); background-position: center top; }
         #about-corporate, #corporate-services { position: relative; z-index: 1; }
 
         @media (max-width: 900px) {
-
-            /* Greenery wrap - dedicated portrait image on mobile */
-            .greenery-band-1 {
-                position: absolute;
-                top: 0; height: auto;
-                aspect-ratio: 882 / 1784;
-                background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('wall-panel-mobile.jpg');
-                background-size: 100% auto;
-                background-position: top center;
-            }
 
             /* Nav */
             nav { padding: 1rem 5vw; gap: 1rem; }
@@ -576,7 +577,6 @@
 </header>
 
 <div class="greenery-wrap">
-<div class="greenery-band greenery-band-1"></div>
 <section id="about-corporate">
     <div class="about-grid">
         <div class="about-manifesto">

@@ -157,9 +157,12 @@
 
         /* --- DISCOVER BANNER (replaces services box grid) --- */
         .discover-banner {
-            position: relative; display: block; width: 100%;
+            position: relative; display: block;
+            width: 100vw; left: 50%; right: 50%;
+            margin-left: -50vw; margin-right: -50vw;
             aspect-ratio: 21 / 9; overflow: hidden;
-            border: 0.5px solid var(--gold-solid);
+            border-top: 0.5px solid var(--gold-solid);
+            border-bottom: 0.5px solid var(--gold-solid);
             box-shadow: 0 25px 55px rgba(60,45,20,0.22);
             text-decoration: none;
         }
@@ -177,7 +180,7 @@
         .discover-banner-eyebrow {
             font-family: var(--display); font-size: 0.68rem; letter-spacing: 2px;
             text-transform: uppercase; color: var(--gold-solid); opacity: 0.95;
-            margin-bottom: 1.2rem; max-width: 760px; line-height: 1.8;
+            margin-top: 1.6rem; max-width: 760px; line-height: 1.8;
             text-shadow: 0 2px 10px rgba(0,0,0,0.9);
         }
         .discover-banner-overlay h3 {
@@ -304,15 +307,28 @@
            360 PHOTO BOOTH
         ====================================================== */
         .photobooth-section {
-            padding: 4.5rem 8vw;
-            position: relative; z-index: 6;
-            background: var(--bg-deep);
+            padding: 2.4rem 8vw 3rem;
+            position: relative; z-index: 5;
+            background: linear-gradient(180deg, var(--nude) 0%, var(--nude-soft) 100%);
+            color: var(--bg-deep);
             text-align: center;
-            border-top: 0.5px solid var(--gold-solid);
-            border-bottom: 0.5px solid var(--border);
-            margin-top: 2rem;
         }
-        .photobooth-inner { max-width: 1300px; margin: 0 auto; }
+        .photobooth-section .sec-title { margin-bottom: 0.8rem; }
+        .photobooth-section::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 6;
+            background: linear-gradient(90deg, transparent 0%, var(--gold-solid) 15%, #F5E9B8 50%, var(--gold-solid) 85%, transparent 100%);
+        }
+        .photobooth-section::after {
+            content: '';
+            position: absolute; top: -6px; left: 50%; z-index: 7;
+            width: 13px; height: 13px;
+            transform: translateX(-50%) rotate(45deg);
+            background: var(--gold-solid);
+            border: 1.5px solid var(--nude-card);
+            box-shadow: 0 0 10px rgba(201,168,76,0.7);
+        }
+        .photobooth-inner { max-width: 1300px; margin: 0 auto; position: relative; z-index: 5; }
         .gold-heading {
             font-style: normal;
             letter-spacing: 3px;
@@ -323,12 +339,12 @@
             font-family: var(--display);
             font-size: clamp(0.7rem, 1.6vw, 0.95rem);
             letter-spacing: 3px; text-transform: uppercase;
-            opacity: 0.65; margin: 0.6rem 0 2.2rem;
+            color: var(--bg-deep); opacity: 0.7; margin: 0.6rem 0 2.2rem;
         }
         .photobooth-img-wrap {
             width: 100%; overflow: hidden;
-            border: 0.5px solid var(--border);
-            box-shadow: 0 20px 45px rgba(0,0,0,0.6);
+            border: 0.5px solid var(--gold-solid);
+            box-shadow: 0 20px 45px rgba(60,45,20,0.18);
             margin-bottom: 2.2rem;
         }
         .photobooth-img-wrap img {
@@ -336,7 +352,7 @@
         }
         .photobooth-copy {
             max-width: 680px; margin: 1.4rem auto 2.2rem;
-            font-size: 1rem; opacity: 0.85;
+            font-size: 1rem; color: var(--bg-deep); opacity: 0.8;
             line-height: 1.8; font-weight: 300;
         }
         .photobooth-cta {
@@ -369,6 +385,12 @@
             font-size: clamp(0.75rem, 1.8vw, 1.1rem);
             letter-spacing: 4px; text-transform: uppercase;
             padding-right: 2rem; flex-shrink: 0;
+        }
+        .marquee-nude {
+            background: var(--bg-deep);
+            border-top: 0.5px solid var(--gold-solid);
+            border-bottom: 0.5px solid var(--gold-solid);
+            position: relative; z-index: 5;
         }
 
         /* =====================================================
@@ -413,18 +435,7 @@
             position: relative;
             overflow: hidden;
             background-color: var(--nude);
-            --band-h: min(34%, 58vw);
         }
-        .greenery-band {
-            position: absolute;
-            left: 0; right: 0;
-            height: var(--band-h);
-            background-repeat: no-repeat;
-            background-size: cover;
-            z-index: 0;
-            pointer-events: none;
-        }
-        .greenery-band-1 { top: 0;   background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('wall-panel-1.jpg'); background-position: center top; }
 
         section { padding: 6rem 8vw; position: relative; }
         section#clients { padding: 0; margin: 0; }
@@ -446,9 +457,16 @@
             font-family: var(--serif);
             font-size: clamp(1.6rem, 3.5vw, 2.5rem);
             font-weight: 300; line-height: 1.25;
+            color: var(--bg-deep);
+        }
+        #about-profile .metallic-gold {
+            background: none;
+            -webkit-text-fill-color: var(--gold-deep);
+            color: var(--gold-deep);
+            animation: none;
         }
         .about-narrative { display: flex; flex-direction: column; gap: 1.5rem; justify-content: flex-start; }
-        .about-narrative p { font-size: 1rem; opacity: 0.85; font-weight: 300; letter-spacing: 0.5px; line-height: 1.8; }
+        .about-narrative p { font-size: 1rem; opacity: 0.85; font-weight: 300; letter-spacing: 0.5px; line-height: 1.8; color: var(--bg-deep); }
 
         /* =====================================================
            SERVICES
@@ -457,6 +475,20 @@
             padding: 3rem 8vw 1rem 8vw;
             position: relative; z-index: 5;
             background: linear-gradient(180deg, var(--nude) 0%, var(--nude-soft) 100%);
+        }
+        #services::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 30;
+            background: linear-gradient(90deg, transparent 0%, var(--gold-solid) 15%, #F5E9B8 50%, var(--gold-solid) 85%, transparent 100%);
+        }
+        #services::after {
+            content: '';
+            position: absolute; top: -6px; left: 50%; z-index: 31;
+            width: 13px; height: 13px;
+            transform: translateX(-50%) rotate(45deg);
+            background: var(--gold-solid);
+            border: 1.5px solid var(--nude-card);
+            box-shadow: 0 0 10px rgba(201,168,76,0.7);
         }
         #services > * { position: relative; z-index: 5; }
         #services .sec-title { color: var(--bg-deep); }
@@ -583,7 +615,28 @@
         #testimonials {
             padding: 4.5rem 8vw 5rem 8vw;
             position: relative; z-index: 10;
-            background: var(--bg-deep);
+            background: linear-gradient(180deg, var(--nude) 0%, var(--nude-soft) 100%);
+        }
+        #testimonials::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 30;
+            background: linear-gradient(90deg, transparent 0%, var(--gold-solid) 15%, #F5E9B8 50%, var(--gold-solid) 85%, transparent 100%);
+        }
+        #testimonials::after {
+            content: '';
+            position: absolute; top: -6px; left: 50%; z-index: 31;
+            width: 13px; height: 13px;
+            transform: translateX(-50%) rotate(45deg);
+            background: var(--gold-solid);
+            border: 1.5px solid var(--nude-card);
+            box-shadow: 0 0 10px rgba(201,168,76,0.7);
+        }
+        #testimonials .sec-title { color: var(--bg-deep); }
+        #testimonials .metallic-gold {
+            background: none;
+            -webkit-text-fill-color: var(--gold-deep);
+            color: var(--gold-deep);
+            animation: none;
         }
         .testimonials-carousel {
             position: relative;
@@ -605,26 +658,27 @@
             flex: 0 0 calc(50% - 0.7rem);
             scroll-snap-align: start;
             height: 320px;
-            border: 0.5px solid var(--border);
-            background: rgba(0, 5, 4, 0.94);
+            border: 0.5px solid var(--gold-solid);
+            background: linear-gradient(160deg, var(--nude-card) 0%, #FFFDF8 100%);
+            color: var(--bg-deep);
             backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
             padding: 1.5rem 1.4rem;
             display: flex; flex-direction: column;
-            box-shadow: 0 20px 45px rgba(0,0,0,0.6);
+            box-shadow: 0 20px 45px rgba(60,45,20,0.16);
             transition: border-color 0.3s ease, background 0.3s ease;
         }
         .testimonial-card:hover {
             border-color: var(--gold-solid);
-            background: rgba(1, 9, 7, 0.96);
+            background: #FFFDF8;
         }
         .testimonial-mark {
             font-family: var(--serif); font-size: 1.8rem;
-            color: var(--gold-solid); line-height: 1;
+            color: var(--gold-deep); line-height: 1;
             margin-bottom: 0.2rem; opacity: 0.85;
             flex-shrink: 0;
         }
         .testimonial-stars {
-            color: var(--gold-solid); font-size: 0.65rem;
+            color: var(--gold-deep); font-size: 0.65rem;
             letter-spacing: 2px; margin-bottom: 0.7rem;
             flex-shrink: 0;
         }
@@ -633,36 +687,36 @@
         }
         .testimonial-text::-webkit-scrollbar { width: 4px; }
         .testimonial-text::-webkit-scrollbar-track { background: transparent; }
-        .testimonial-text::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.35); border-radius: 4px; }
+        .testimonial-text::-webkit-scrollbar-thumb { background: rgba(122,90,22,0.35); border-radius: 4px; }
         .testimonial-text p {
             font-family: var(--serif); font-size: 0.85rem;
             font-weight: 300; font-style: italic;
-            line-height: 1.55; opacity: 0.9;
+            line-height: 1.55; color: var(--bg-deep); opacity: 0.85;
             margin-bottom: 0.7rem;
         }
         .testimonial-text p:last-child { margin-bottom: 0; }
         .testimonial-attribution {
             margin-top: 0.9rem; padding-top: 0.8rem;
-            border-top: 0.5px solid var(--border);
+            border-top: 0.5px solid rgba(201,168,76,0.4);
             flex-shrink: 0;
         }
         .testimonial-name {
             font-family: var(--display); font-size: 0.62rem;
             letter-spacing: 1.5px; text-transform: uppercase;
-            color: var(--gold-solid); font-style: normal;
+            color: var(--gold-deep); font-style: normal;
             display: block; margin-bottom: 0.25rem;
         }
-        .testimonial-role { font-size: 0.72rem; opacity: 0.6; letter-spacing: 0.3px; }
+        .testimonial-role { font-size: 0.72rem; color: var(--bg-deep); opacity: 0.6; letter-spacing: 0.3px; }
         .tc-arrow {
             position: absolute; top: 50%; transform: translateY(-50%);
             width: 40px; height: 40px; border-radius: 50%;
             border: 0.5px solid var(--gold-solid);
-            background: rgba(5, 13, 12, 0.9);
-            color: var(--gold-solid);
+            background: rgba(255, 253, 248, 0.9);
+            color: var(--gold-deep);
             display: flex; align-items: center; justify-content: center;
             cursor: pointer; transition: all 0.3s ease; z-index: 5; padding: 0;
         }
-        .tc-arrow:hover { background: rgba(201, 168, 76, 0.2); }
+        .tc-arrow:hover { background: #FFFDF8; }
         .tc-arrow svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
         .tc-prev { left: 0; }
         .tc-next { right: 0; }
@@ -680,8 +734,21 @@
         #contact {
             background: linear-gradient(135deg, rgba(2, 22, 18, 0.4), rgba(2, 22, 18, 0.4)), url('contact-bg.jpg') no-repeat center center;
             background-size: cover;
-            border-top: 0.5px solid var(--gold-solid);
             padding: 6rem 8vw; position: relative; z-index: 10;
+        }
+        #contact::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 30;
+            background: linear-gradient(90deg, transparent 0%, var(--gold-solid) 15%, #F5E9B8 50%, var(--gold-solid) 85%, transparent 100%);
+        }
+        #contact::after {
+            content: '';
+            position: absolute; top: -6px; left: 50%; z-index: 31;
+            width: 13px; height: 13px;
+            transform: translateX(-50%) rotate(45deg);
+            background: var(--gold-solid);
+            border: 1.5px solid var(--nude-card);
+            box-shadow: 0 0 10px rgba(201,168,76,0.7);
         }
         .contact-wrap {
             display: grid; grid-template-columns: 1fr 1fr;
@@ -780,16 +847,6 @@
             /* About */
             #about-profile { padding: 6rem 6vw 1.5rem; }
             .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-
-            /* Greenery wrap - dedicated portrait image on mobile instead of the landscape panel */
-            .greenery-band-1 {
-                position: absolute;
-                top: 0; height: auto;
-                aspect-ratio: 882 / 1784;
-                background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('wall-panel-mobile.jpg');
-                background-size: 100% auto;
-                background-position: top center;
-            }
 
             /* Services */
             #services { padding: 2.2rem 6vw 0.5rem; }
@@ -981,38 +1038,10 @@
     </div>
 </div>
 
-<!-- 360 PHOTOBOOTHS -->
-<section id="photobooth" class="photobooth-section" aria-labelledby="photobooth-heading">
-    <div class="photobooth-inner">
-        <h2 class="sec-title gold-heading" id="photobooth-heading"><span class="metallic-gold">360&deg; Photobooths</span></h2>
-        <p class="photobooth-tagline">360 Photo Booth Rental in Dubai and Across the UAE</p>
-        <div class="photobooth-img-wrap">
-            <img src="360-photobooth.jpg" alt="360 degree photobooth and photo booth rental for parties, weddings and corporate events in Dubai, Abu Dhabi and across the UAE" loading="lazy"/>
-        </div>
-        <p class="photobooth-copy">Our 360&deg; photobooths are a guest favourite at parties, weddings and corporate events across Dubai, Abu Dhabi, Sharjah and the wider UAE. They are fun, easy to set up and always get people on the dance floor.</p>
-        <a href="https://wa.me/971552537712?text=Hi!%20I'd%20like%20to%20enquire%20about%20the%20360%C2%B0%20Photobooths%20for%20my%20event." target="_blank" rel="noopener noreferrer" class="photobooth-cta" aria-label="Request the 360 degree photobooths on WhatsApp">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.001 2C6.478 2 2 6.478 2 12c0 1.876.52 3.63 1.42 5.13L2 22l4.998-1.395A9.956 9.956 0 0012.001 22C17.523 22 22 17.522 22 12S17.523 2 12.001 2zm0 18.2a8.16 8.16 0 01-4.166-1.14l-.299-.177-3.096.864.83-3.02-.194-.31A8.19 8.19 0 013.8 12c0-4.522 3.678-8.2 8.201-8.2 4.522 0 8.199 3.678 8.199 8.2 0 4.523-3.677 8.2-8.199 8.2z"/></svg>
-            Request on WhatsApp
-        </a>
-    </div>
-</section>
-
-<!-- BOOTH TYPES MARQUEE -->
-<div class="marquee" aria-hidden="true">
-    <div class="marquee-inner">
-        <span class="metallic-gold">360&deg; Photobooths</span> I <span class="metallic-gold">Magic Mirror Booth</span> I <span class="metallic-gold">Vintage</span> I <span class="metallic-gold">Glam Booth</span> I <span class="metallic-gold">Tailored Backdrops</span> I&nbsp;
-    </div>
-    <div class="marquee-inner">
-        <span class="metallic-gold">360&deg; Photobooths</span> I <span class="metallic-gold">Magic Mirror Booth</span> I <span class="metallic-gold">Vintage</span> I <span class="metallic-gold">Glam Booth</span> I <span class="metallic-gold">Tailored Backdrops</span> I&nbsp;
-    </div>
-</div>
-
-
 <!-- LIVING CONTENT WALL -->
 <div class="living-content-wall">
 
     <div class="greenery-wrap">
-    <div class="greenery-band greenery-band-1"></div>
 
     <!-- ABOUT -->
     <section id="about-profile" aria-labelledby="about-heading">
@@ -1027,17 +1056,43 @@
         </div>
     </section>
 
+    <!-- 360 PHOTOBOOTHS -->
+    <section id="photobooth" class="photobooth-section" aria-labelledby="photobooth-heading">
+        <div class="photobooth-inner">
+            <h2 class="sec-title gold-heading" id="photobooth-heading"><span class="metallic-gold">360&deg; Photobooths</span></h2>
+            <p class="photobooth-tagline">Photo Booth Rental in Dubai and Across the UAE</p>
+            <div class="photobooth-img-wrap">
+                <img src="360-photobooth.jpg" alt="360 degree photobooth and photo booth rental for parties, weddings and corporate events in Dubai, Abu Dhabi and across the UAE" loading="lazy"/>
+            </div>
+            <p class="photobooth-copy">Our photobooths are a guest favourite at parties, weddings and corporate events across Dubai, Abu Dhabi, Sharjah and the wider UAE. They are fun, easy to set up and always get people on the dance floor.</p>
+            <a href="https://wa.me/971552537712?text=Hi!%20I'd%20like%20to%20enquire%20about%20the%20360%C2%B0%20Photobooths%20for%20my%20event." target="_blank" rel="noopener noreferrer" class="photobooth-cta" aria-label="Request the 360 degree photobooths on WhatsApp">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.001 2C6.478 2 2 6.478 2 12c0 1.876.52 3.63 1.42 5.13L2 22l4.998-1.395A9.956 9.956 0 0012.001 22C17.523 22 22 17.522 22 12S17.523 2 12.001 2zm0 18.2a8.16 8.16 0 01-4.166-1.14l-.299-.177-3.096.864.83-3.02-.194-.31A8.19 8.19 0 013.8 12c0-4.522 3.678-8.2 8.201-8.2 4.522 0 8.199 3.678 8.199 8.2 0 4.523-3.677 8.2-8.199 8.2z"/></svg>
+                Request on WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- BOOTH TYPES MARQUEE -->
+    <div class="marquee marquee-nude" aria-hidden="true">
+        <div class="marquee-inner">
+            <span class="metallic-gold">360&deg; Photobooths</span> I <span class="metallic-gold">Magic Mirror Booth</span> I <span class="metallic-gold">Vintage</span> I <span class="metallic-gold">Glam Booth</span> I <span class="metallic-gold">Tailored Backdrops</span> I&nbsp;
+        </div>
+        <div class="marquee-inner">
+            <span class="metallic-gold">360&deg; Photobooths</span> I <span class="metallic-gold">Magic Mirror Booth</span> I <span class="metallic-gold">Vintage</span> I <span class="metallic-gold">Glam Booth</span> I <span class="metallic-gold">Tailored Backdrops</span> I&nbsp;
+        </div>
+    </div>
+
     <!-- SERVICES -->
     <section id="services" aria-labelledby="services-heading">
         <h2 class="sec-title" id="services-heading">Luxury <em class="metallic-gold">Production</em></h2>
         <a href="our-services.html" class="discover-banner">
             <img src="discover-banner.jpg" alt="Explore Greenhouse Events luxury production services: private events, corporate production, entertainment, staging, wardrobe and space transformations" loading="lazy">
             <div class="discover-banner-overlay">
-                <p class="discover-banner-eyebrow">Private Events &middot; Corporate Production &middot; Entertainment &middot; Staging &amp; AV &middot; Wardrobe &middot; Transformations</p>
                 <h3>Explore Every Service We Offer</h3>
-                <span class="discover-banner-btn">Discover
+                <span class="discover-banner-btn">Explore Our Services
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                 </span>
+                <p class="discover-banner-eyebrow">Private Events &middot; Corporate Production &middot; Entertainment &middot; Staging &amp; AV &middot; Wardrobe &middot; Transformations</p>
             </div>
         </a>
     </section>
