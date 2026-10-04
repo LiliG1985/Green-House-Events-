@@ -106,6 +106,11 @@
             --gold-solid: #C9A84C;
             --white-off: #F4F0E8;
             --border: rgba(201,168,76,0.18);
+            --nude: #E6D9C2;
+            --nude-soft: #F3EADA;
+            --nude-card: #F8F2E6;
+            --nude-border: rgba(4,16,12,0.14);
+            --gold-deep: #7A5A16;
             --serif: 'Cormorant Garamond', serif;
             --display: 'Cinzel', serif;
             --sans: 'DM Sans', sans-serif;
@@ -135,6 +140,61 @@
             font-weight: 600;
         }
         @keyframes shine { to { background-position: 200% center; } }
+
+        /* --- LUXURY REVAMP: solid deep gold for legible headings on nude/light backgrounds --- */
+        #services .metallic-gold {
+            background: none;
+            -webkit-text-fill-color: var(--gold-deep);
+            color: var(--gold-deep);
+            animation: none;
+        }
+        .card { position: relative; }
+        .card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--gold-solid) 0%, #F5E9B8 50%, var(--gold-solid) 100%);
+        }
+
+        /* --- DISCOVER BANNER (replaces services box grid) --- */
+        .discover-banner {
+            position: relative; display: block; width: 100%;
+            aspect-ratio: 21 / 9; overflow: hidden;
+            border: 0.5px solid var(--gold-solid);
+            box-shadow: 0 25px 55px rgba(60,45,20,0.22);
+            text-decoration: none;
+        }
+        .discover-banner img {
+            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .discover-banner:hover img { transform: scale(1.03); }
+        .discover-banner-overlay {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+            text-align: center; padding: 2.5rem 2rem;
+            background: linear-gradient(180deg, rgba(2,10,8,0.05) 0%, rgba(2,10,8,0.3) 60%, rgba(2,10,8,0.92) 100%);
+        }
+        .discover-banner-eyebrow {
+            font-family: var(--display); font-size: 0.68rem; letter-spacing: 2px;
+            text-transform: uppercase; color: var(--gold-solid); opacity: 0.95;
+            margin-bottom: 1.2rem; max-width: 760px; line-height: 1.8;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+        }
+        .discover-banner-overlay h3 {
+            font-family: var(--serif); font-weight: 300; color: var(--white-off);
+            font-size: clamp(1.7rem, 4vw, 3rem); margin-bottom: 1.8rem;
+            text-shadow: 0 4px 16px rgba(0,0,0,0.9);
+        }
+        .discover-banner-btn {
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            background: var(--gold-metallic); color: #0b1a18;
+            padding: 1rem 2.4rem; font-family: var(--sans); font-weight: 600;
+            font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase;
+            transition: transform 0.3s;
+        }
+        .discover-banner-btn svg { width: 16px; height: 16px; transition: transform 0.3s; }
+        .discover-banner:hover .discover-banner-btn { transform: translateY(-3px); }
+        .discover-banner:hover .discover-banner-btn svg { transform: translateX(3px); }
 
         /* =====================================================
            NAVIGATION
@@ -259,6 +319,7 @@
             text-transform: uppercase;
         }
         .gold-heading .metallic-gold { font-weight: 600; }
+        .photobooth-tagline {
             font-family: var(--display);
             font-size: clamp(0.7rem, 1.6vw, 0.95rem);
             letter-spacing: 3px; text-transform: uppercase;
@@ -351,7 +412,7 @@
         .greenery-wrap {
             position: relative;
             overflow: hidden;
-            background-color: var(--bg-deep);
+            background-color: var(--nude);
             --band-h: min(34%, 58vw);
         }
         .greenery-band {
@@ -364,8 +425,6 @@
             pointer-events: none;
         }
         .greenery-band-1 { top: 0;   background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('wall-panel-1.jpg'); background-position: center top; }
-        .greenery-band-2 { top: calc(var(--band-h) - 2px); background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('wall-panel-2.jpg'); background-position: center center; }
-        .greenery-band-3 { top: calc(var(--band-h) * 2 - 4px); background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('wall-panel-3.jpg'); background-position: center bottom; }
 
         section { padding: 6rem 8vw; position: relative; }
         section#clients { padding: 0; margin: 0; }
@@ -395,10 +454,12 @@
            SERVICES
         ====================================================== */
         #services {
-            padding: 2rem 8vw 0 8vw;
+            padding: 3rem 8vw 1rem 8vw;
             position: relative; z-index: 5;
+            background: linear-gradient(180deg, var(--nude) 0%, var(--nude-soft) 100%);
         }
         #services > * { position: relative; z-index: 5; }
+        #services .sec-title { color: var(--bg-deep); }
         .sec-title {
             font-family: var(--serif);
             font-size: clamp(2rem, 5vw, 3.5rem);
@@ -408,30 +469,30 @@
         /* Remove any bottom margin from the last service card */
         .services-grid {
             display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 2rem; position: relative; z-index: 5;
+            gap: 2.6rem; position: relative; z-index: 5;
             margin-bottom: 0;
         }
         .card {
-            text-decoration: none; color: inherit;
-            border: 0.5px solid var(--border); padding: 2.5rem 1.8rem;
-            background: rgba(0, 5, 4, 0.94);
+            text-decoration: none; color: var(--bg-deep);
+            border: 0.5px solid var(--gold-solid); padding: 3.2rem 2.2rem;
+            background: linear-gradient(160deg, var(--nude-card) 0%, #FFFDF8 100%);
             backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             display: flex; flex-direction: column; justify-content: flex-start;
-            cursor: pointer; box-shadow: 0 20px 45px rgba(0,0,0,0.6);
+            cursor: pointer; box-shadow: 0 20px 45px rgba(60,45,20,0.16);
         }
         .card:hover {
             border-color: var(--gold-solid); transform: translateY(-8px);
-            background: rgba(1, 9, 7, 0.96);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8); z-index: 10;
+            background: #FFFDF8;
+            box-shadow: 0 30px 60px rgba(60,45,20,0.26); z-index: 10;
         }
-        .card h3 { font-family: var(--serif); font-size: 1.4rem; margin-bottom: 1.2rem; line-height: 1.3; min-height: 4.4rem; }
-        .card p { font-size: 0.88rem; opacity: 0.75; margin-bottom: 1.5rem; line-height: 1.6; min-height: 5.5rem; }
+        .card h3 { font-family: var(--serif); font-size: 1.55rem; margin-bottom: 1.3rem; line-height: 1.3; min-height: 4.6rem; }
+        .card p { font-size: 0.92rem; color: var(--bg-deep); opacity: 0.72; margin-bottom: 1.6rem; line-height: 1.65; min-height: 5.5rem; }
         .card-img-space {
-            width: 100%; aspect-ratio: 16/11;
-            background: rgba(0, 5, 4, 0.6);
-            border: 0.5px solid rgba(201, 168, 76, 0.3);
-            margin-bottom: 1.5rem; overflow: hidden; margin-top: auto;
+            width: 100%; aspect-ratio: 16/10;
+            background: rgba(4, 16, 12, 0.05);
+            border: 0.5px solid rgba(201, 168, 76, 0.35);
+            margin-bottom: 1.6rem; overflow: hidden; margin-top: auto;
             position: relative; display: flex; align-items: center; justify-content: center;
         }
         .card-img-space img {
@@ -441,9 +502,9 @@
         }
         .card:hover .card-img-space img { transform: scale(1.04); }
         .card .learn-more {
-            font-family: var(--display); font-size: 0.65rem;
-            letter-spacing: 2px; color: var(--gold-solid);
-            text-transform: uppercase; opacity: 0.5;
+            font-family: var(--display); font-size: 0.68rem;
+            letter-spacing: 2px; color: var(--gold-deep);
+            text-transform: uppercase; opacity: 0.85;
             transition: 0.3s; margin-top: 0.5rem;
         }
         .card:hover .learn-more { opacity: 1; letter-spacing: 3px; }
@@ -468,10 +529,20 @@
         }
         .clients-divider {
             width: 100%;
-            max-width: 220px;
-            height: 1px;
-            margin: 4rem auto 0;
-            background: var(--gold-metallic);
+            max-width: 280px;
+            height: 3px;
+            margin: 2rem auto 2.5rem;
+            position: relative;
+            background: linear-gradient(90deg, transparent 0%, var(--gold-solid) 15%, #F5E9B8 50%, var(--gold-solid) 85%, transparent 100%);
+        }
+        .clients-divider::after {
+            content: '';
+            position: absolute; top: 50%; left: 50%;
+            width: 13px; height: 13px;
+            transform: translate(-50%, -50%) rotate(45deg);
+            background: var(--gold-solid);
+            border: 1.5px solid #000;
+            box-shadow: 0 0 10px rgba(201,168,76,0.7);
         }
         .client-image-wrap {
             display: block;
@@ -710,8 +781,7 @@
             #about-profile { padding: 6rem 6vw 1.5rem; }
             .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
 
-            /* Greenery wrap - dedicated portrait image on mobile instead of the landscape panels */
-            .greenery-band-2, .greenery-band-3 { display: none; }
+            /* Greenery wrap - dedicated portrait image on mobile instead of the landscape panel */
             .greenery-band-1 {
                 position: absolute;
                 top: 0; height: auto;
@@ -722,12 +792,17 @@
             }
 
             /* Services */
-            #services { padding: 1.5rem 6vw 0; }
-            .services-grid { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-            .card { padding: 1.6rem 1.2rem; }
+            #services { padding: 2.2rem 6vw 0.5rem; }
+            .services-grid { grid-template-columns: 1fr 1fr; gap: 1.3rem; }
+            .card { padding: 1.8rem 1.3rem; }
             .card h3 { font-size: 1.1rem; min-height: unset; }
             .card p { font-size: 0.82rem; min-height: unset; }
             .card:hover { transform: none; }
+
+            /* Discover banner */
+            .discover-banner { aspect-ratio: 4 / 5; }
+            .discover-banner-eyebrow { display: none; }
+            .discover-banner-overlay h3 { font-size: 1.6rem; }
 
             /* Clients */
             #clients { padding: 0; }
@@ -830,6 +905,7 @@
 <!-- MOBILE FULL-SCREEN MENU -->
 <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
     <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="our-services.html" onclick="closeMobileMenu()">Our Services</a>
     <a href="private-events.html" onclick="closeMobileMenu()">Private Party &amp; Event Planning</a>
     <a href="corporate-events.html" onclick="closeMobileMenu()">Corporate Event Management</a>
     <a href="permanent-transformations.html" onclick="closeMobileMenu()">Permanent Transformations</a>
@@ -860,6 +936,7 @@
             </button>
             <div class="nav-pages-menu" id="navPagesMenu">
                 <a href="index.html">Home</a>
+                <a href="our-services.html">Our Services</a>
                 <a href="private-events.html">Private Party &amp; Event Planning</a>
                 <a href="corporate-events.html">Corporate Event Management</a>
                 <a href="permanent-transformations.html">Permanent Transformations</a>
@@ -908,11 +985,11 @@
 <section id="photobooth" class="photobooth-section" aria-labelledby="photobooth-heading">
     <div class="photobooth-inner">
         <h2 class="sec-title gold-heading" id="photobooth-heading"><span class="metallic-gold">360&deg; Photobooths</span></h2>
-        <p class="photobooth-tagline">360 Photo Booth Rental in Dubai and Across the UAE</p>
+        <p class="photobooth-tagline">Photo Booth Rental in Dubai and Across the UAE</p>
         <div class="photobooth-img-wrap">
             <img src="360-photobooth.jpg" alt="360 degree photobooth and photo booth rental for parties, weddings and corporate events in Dubai, Abu Dhabi and across the UAE" loading="lazy"/>
         </div>
-        <p class="photobooth-copy">Our 360&deg; photobooths are a guest favourite at parties, weddings and corporate events across Dubai, Abu Dhabi, Sharjah and the wider UAE. They are fun, easy to set up and always get people on the dance floor.</p>
+        <p class="photobooth-copy">Our photobooths are a guest favourite at parties, weddings and corporate events across Dubai, Abu Dhabi, Sharjah and the wider UAE. They are fun, easy to set up and always get people on the dance floor.</p>
         <a href="https://wa.me/971552537712?text=Hi!%20I'd%20like%20to%20enquire%20about%20the%20360%C2%B0%20Photobooths%20for%20my%20event." target="_blank" rel="noopener noreferrer" class="photobooth-cta" aria-label="Request the 360 degree photobooths on WhatsApp">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.001 2C6.478 2 2 6.478 2 12c0 1.876.52 3.63 1.42 5.13L2 22l4.998-1.395A9.956 9.956 0 0012.001 22C17.523 22 22 17.522 22 12S17.523 2 12.001 2zm0 18.2a8.16 8.16 0 01-4.166-1.14l-.299-.177-3.096.864.83-3.02-.194-.31A8.19 8.19 0 013.8 12c0-4.522 3.678-8.2 8.201-8.2 4.522 0 8.199 3.678 8.199 8.2 0 4.523-3.677 8.2-8.199 8.2z"/></svg>
             Request on WhatsApp
@@ -936,8 +1013,6 @@
 
     <div class="greenery-wrap">
     <div class="greenery-band greenery-band-1"></div>
-    <div class="greenery-band greenery-band-2"></div>
-    <div class="greenery-band greenery-band-3"></div>
 
     <!-- ABOUT -->
     <section id="about-profile" aria-labelledby="about-heading">
@@ -955,44 +1030,16 @@
     <!-- SERVICES -->
     <section id="services" aria-labelledby="services-heading">
         <h2 class="sec-title" id="services-heading">Luxury <em class="metallic-gold">Production</em></h2>
-        <div class="services-grid">
-            <a href="private-events.html" class="card">
-                <h3 class="metallic-gold">Private Party and Event Planning</h3>
-                <p>Bespoke execution for birthday celebrations, engagements, proposals, and high profile gatherings.</p>
-                <div class="card-img-space"><img src="card1.jpg" alt="Private party and event planning Dubai" loading="lazy"></div>
-                <span class="learn-more">View Projects</span>
-            </a>
-            <a href="corporate-events.html" class="card">
-                <h3 class="metallic-gold">Corporate Event Management</h3>
-                <p>Full scale corporate production, business activations, brand launches, and structural operations.</p>
-                <div class="card-img-space"><img src="card2.jpg" alt="Corporate event management Dubai" loading="lazy"></div>
-                <span class="learn-more">View Projects</span>
-            </a>
-            <a href="permanent-transformations.html" class="card">
-                <h3 class="metallic-gold">Permanent Transformations</h3>
-                <p>Layout curation for restaurants, hospitality, and workspaces. Luxury floral art and greenery installations.</p>
-                <div class="card-img-space"><img src="card3.jpg" alt="Permanent space transformation Dubai" loading="lazy"></div>
-                <span class="learn-more">View Projects</span>
-            </a>
-            <a href="staging-av.html" class="card">
-                <h3 class="metallic-gold">Staging, Sound and AV</h3>
-                <p>Technical infrastructure, sound engineering, specialized lighting arrays, and rigid stage architecture.</p>
-                <div class="card-img-space"><img src="card4.jpg" alt="Staging sound and AV Dubai" loading="lazy"></div>
-                <span class="learn-more">View Projects</span>
-            </a>
-            <a href="entertainment.html" class="card">
-                <h3 class="metallic-gold">Local and International Entertainment</h3>
-                <p>Direct sourcing of talent, global acts, musicians, characters, and custom show design.</p>
-                <div class="card-img-space"><img src="card5.jpg" alt="Entertainment booking Dubai UAE" loading="lazy"></div>
-                <span class="learn-more">View Projects</span>
-            </a>
-            <a href="wardrobe-costumes.html" class="card">
-                <h3 class="metallic-gold">Wardrobe</h3>
-                <p>Bespoke costume design, extensive wardrobe hire, and elite hair and makeup transformations on site.</p>
-                <div class="card-img-space"><img src="card6.jpg" alt="Wardrobe costume hire Dubai" loading="lazy"></div>
-                <span class="learn-more">View Projects</span>
-            </a>
-        </div>
+        <a href="our-services.html" class="discover-banner">
+            <img src="discover-banner.jpg" alt="Explore Greenhouse Events luxury production services: private events, corporate production, entertainment, staging, wardrobe and space transformations" loading="lazy">
+            <div class="discover-banner-overlay">
+                <p class="discover-banner-eyebrow">Private Events &middot; Corporate Production &middot; Entertainment &middot; Staging &amp; AV &middot; Wardrobe &middot; Transformations</p>
+                <h3>Explore Every Service We Offer</h3>
+                <span class="discover-banner-btn">Discover
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </span>
+            </div>
+        </a>
     </section>
     </div><!-- /greenery-wrap -->
 
