@@ -247,6 +247,20 @@
             background: linear-gradient(135deg, rgba(2,22,18,0.45) 0%, rgba(2,22,18,0.80) 100%), url('about-banner.jpg') no-repeat center center;
             background-size: cover;
         }
+        #about-corporate::before {
+            content: '';
+            position: absolute; bottom: 0; left: 0; right: 0; height: 3px; z-index: 30;
+            background: linear-gradient(90deg, transparent 0%, var(--gold-solid) 15%, #F5E9B8 50%, var(--gold-solid) 85%, transparent 100%);
+        }
+        #about-corporate::after {
+            content: '';
+            position: absolute; bottom: -6px; left: 50%; z-index: 31;
+            width: 13px; height: 13px;
+            transform: translateX(-50%) rotate(45deg);
+            background: var(--gold-solid);
+            border: 1.5px solid var(--nude-card);
+            box-shadow: 0 0 10px rgba(201,168,76,0.7);
+        }
         #about-corporate > * { position: relative; z-index: 5; }
         .about-grid {
             display: grid;
@@ -287,23 +301,7 @@
 
         /* --- CORPORATE SERVICES GRID --- */
         #corporate-services {
-            padding: 5rem 8vw 8rem 8vw;
             position: relative;
-            background: linear-gradient(180deg, var(--nude) 0%, var(--nude-soft) 100%);
-        }
-        #corporate-services::before {
-            content: '';
-            position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 30;
-            background: linear-gradient(90deg, transparent 0%, var(--gold-solid) 15%, #F5E9B8 50%, var(--gold-solid) 85%, transparent 100%);
-        }
-        #corporate-services::after {
-            content: '';
-            position: absolute; top: -6px; left: 50%; z-index: 31;
-            width: 13px; height: 13px;
-            transform: translateX(-50%) rotate(45deg);
-            background: var(--gold-solid);
-            border: 1.5px solid var(--nude-card);
-            box-shadow: 0 0 10px rgba(201,168,76,0.7);
         }
         .services-grid {
             display: flex;
@@ -594,7 +592,6 @@
             .about-grid { grid-template-columns: 1fr; gap: 2rem; }
 
             /* Services */
-            #corporate-services { padding: 3rem 4vw 4rem; }
             .services-grid { gap: 1.5rem; }
             .card { min-height: 340px; }
             .card-body, .card:nth-child(even) .card-body { width: 100%; margin: 0; padding: 2rem 1.6rem; }
@@ -815,7 +812,7 @@
     <div class="svc-slide">
         <div class="svc-slide-bg" style="background-image:url('brand-activations.jpg')"></div>
         <div class="svc-slide-content">
-            <span class="svc-slide-eyebrow">01 &mdash; Brand Activations</span>
+            <span class="svc-slide-eyebrow">Brand Activations</span>
             <h3 class="metallic-gold">Brand Activations</h3>
             <p>High impact, immersive environments engineered to connect audiences deeply with your narrative. We translate brand identity into physical, sensory spatial installations.</p>
         </div>
@@ -841,7 +838,7 @@
     <div class="svc-slide svc-slide--right">
         <div class="svc-slide-bg" style="background-image:url('corporate-galas.jpg')"></div>
         <div class="svc-slide-content">
-            <span class="svc-slide-eyebrow">02 &mdash; Corporate Galas &amp; Dinners</span>
+            <span class="svc-slide-eyebrow">Corporate Galas &amp; Dinners</span>
             <h3 class="metallic-gold">Corporate Galas &amp; Dinners</h3>
             <p>Prestigious evening receptions, awards ceremonies, and milestone corporate celebrations styled with elite tablescapes, tailored entertainment curation, and premium hospitality management.</p>
         </div>
@@ -858,7 +855,7 @@
     <div class="svc-slide">
         <div class="svc-slide-bg" style="background-image:url('product-launches.jpg')"></div>
         <div class="svc-slide-content">
-            <span class="svc-slide-eyebrow">03 &mdash; Product Launches</span>
+            <span class="svc-slide-eyebrow">Product Launches</span>
             <h3 class="metallic-gold">Product Launches</h3>
             <p>Strategic structural reveals designed to command media and consumer attention. We integrate dramatic custom backdrops, reveal engineering, and premium ambiance styling.</p>
         </div>
@@ -880,7 +877,7 @@
     <div class="svc-slide svc-slide--right">
         <div class="svc-slide-bg" style="background-image:url('exhibition-stands.jpg')"></div>
         <div class="svc-slide-content">
-            <span class="svc-slide-eyebrow">04 &mdash; Exhibition Stand Curation</span>
+            <span class="svc-slide-eyebrow">Exhibition Stand Curation</span>
             <h3 class="metallic-gold">Exhibition Stand Curation</h3>
             <p>Bespoke exhibition booth architecture designed to stand out at major international trade shows. We maximize foot traffic flow, sleek brand visibility, and structural premium finishes.</p>
         </div>

@@ -197,6 +197,20 @@
             background: linear-gradient(135deg, rgba(2,22,18,0.45) 0%, rgba(2,22,18,0.80) 100%), url('about-banner.jpg') no-repeat center center;
             background-size: cover;
         }
+        #about-decor::before {
+            content: '';
+            position: absolute; bottom: 0; left: 0; right: 0; height: 3px; z-index: 30;
+            background: linear-gradient(90deg, transparent 0%, var(--gold-solid) 15%, #F5E9B8 50%, var(--gold-solid) 85%, transparent 100%);
+        }
+        #about-decor::after {
+            content: '';
+            position: absolute; bottom: -6px; left: 50%; z-index: 31;
+            width: 13px; height: 13px;
+            transform: translateX(-50%) rotate(45deg);
+            background: var(--gold-solid);
+            border: 1.5px solid var(--nude-card);
+            box-shadow: 0 0 10px rgba(201,168,76,0.7);
+        }
         #about-decor > * { position: relative; z-index: 5; }
         #about-decor .about-grid {
             display: grid;
@@ -571,7 +585,7 @@
     <div class="svc-slide">
         <div class="svc-slide-bg" style="background-image:url('decor1.jpg')"></div>
         <div class="svc-slide-content">
-            <span class="svc-slide-eyebrow">01 &mdash; Decor &amp; Botanical Artistry</span>
+            <span class="svc-slide-eyebrow">Decor &amp; Botanical Artistry</span>
             <h3 class="metallic-gold">Customised Decor &amp; Botanical Artistry</h3>
             <p>We craft high-impact interior atmospheres that completely recontextualize venue architecture. From luxury, precision-tailored organic balloon architecture to stunning bespoke floral arrangements, our installations introduce vibrant, structural elegance. We specialize in planning permanent greenery and premium artificial floral concepts meticulously styled for high-end bars, rooftop venues, and luxury restaurants looking to build iconic aesthetics.</p>
             <div class="feature-tags">
@@ -603,7 +617,7 @@
     <div class="svc-slide svc-slide--right">
         <div class="svc-slide-bg" style="background-image:url('decor2.jpg')"></div>
         <div class="svc-slide-content">
-            <span class="svc-slide-eyebrow">02 &mdash; Arrival Production</span>
+            <span class="svc-slide-eyebrow">Arrival Production</span>
             <h3 class="metallic-gold">High-Profile Arrival Production</h3>
             <p>First impressions dictate the absolute prestige of an event. We design, coordinate, and execute majestic entrance installations, premium media walls, and flawlessly coordinated red carpet arrival tracks. Our entry configurations fuse dramatic specialty lighting with structured scenery to ensure high-profile media attention and uncompromised VIP hospitality from the exact millisecond guests step onto the property.</p>
             <div class="feature-tags">
@@ -626,7 +640,7 @@
     <div class="svc-slide">
         <div class="svc-slide-bg" style="background-image:url('decor3.jpg')"></div>
         <div class="svc-slide-content">
-            <span class="svc-slide-eyebrow">03 &mdash; Scenic Fabrications</span>
+            <span class="svc-slide-eyebrow">Scenic Fabrications</span>
             <h3 class="metallic-gold">Bespoke Scenic Fabrications</h3>
             <p>When the market doesn't offer what your concept demands, we manufacture it in-house. Our structural engineering team specializes in producing custom-tailored event sets, specialized performance staging, and unique experiential builds. By merging raw carpentry with modern precision materials, we materialize complex immersive worlds, customized structural brand props, and architectural photo opportunities that are completely exclusive to your project timeline.</p>
             <div class="feature-tags">
@@ -654,7 +668,7 @@
     <div class="svc-slide svc-slide--right">
         <div class="svc-slide-bg" style="background-image:url('decor4.jpg')"></div>
         <div class="svc-slide-content">
-            <span class="svc-slide-eyebrow">04 &mdash; Furniture Rental</span>
+            <span class="svc-slide-eyebrow">Furniture Rental</span>
             <h3 class="metallic-gold">Premium Furniture Rental &amp; Configuration</h3>
             <p>Furniture should never be an afterthought—it determines human flow and structural symmetry. We provide an exquisite inventory of immaculate, luxury seating, high-tier lounging configurations, and statement items engineered perfectly for garden productions, rooftop soirées, and upscale private venues. Every asset is managed under strict quality protocols to guarantee a pristine, elite atmosphere for your crowd.</p>
             <div class="feature-tags">

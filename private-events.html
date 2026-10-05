@@ -274,6 +274,20 @@
             padding: 2rem 8vw;
             position: relative;
         }
+        #video-showcase::before {
+            content: '';
+            position: absolute; bottom: 0; left: 0; right: 0; height: 3px; z-index: 30;
+            background: linear-gradient(90deg, transparent 0%, var(--gold-solid) 15%, #F5E9B8 50%, var(--gold-solid) 85%, transparent 100%);
+        }
+        #video-showcase::after {
+            content: '';
+            position: absolute; bottom: -6px; left: 50%; z-index: 31;
+            width: 13px; height: 13px;
+            transform: translateX(-50%) rotate(45deg);
+            background: var(--gold-solid);
+            border: 1.5px solid var(--nude-card);
+            box-shadow: 0 0 10px rgba(201,168,76,0.7);
+        }
         .showcase-container {
             max-width: 680px;
             margin: 0 auto;
@@ -778,7 +792,7 @@
     <div class="svc-slide">
         <div class="svc-slide-bg" style="background-image:url('party-themes.jpg')"></div>
         <div class="svc-slide-content">
-            <span class="svc-slide-eyebrow">01 &mdash; Concept &amp; Theme</span>
+            <span class="svc-slide-eyebrow">Concept &amp; Theme</span>
             <h3 class="metallic-gold">Bespoke Concept &amp; Theme Design</h3>
             <p>Custom visual blueprints for luxury adult milestones and premium children's celebrations. We design cohesive, high-end thematic aesthetics and immersive event environments from scratch.</p>
         </div>
@@ -804,7 +818,7 @@
     <div class="svc-slide svc-slide--right">
         <div class="svc-slide-bg" style="background-image:url('luxury-adults.jpg')"></div>
         <div class="svc-slide-content">
-            <span class="svc-slide-eyebrow">02 &mdash; Adult Celebrations</span>
+            <span class="svc-slide-eyebrow">Adult Celebrations</span>
             <h3 class="metallic-gold">Luxury Adult Celebrations</h3>
             <p>Milestone birthdays, engagements, anniversary galas, and high profile private cocktail gatherings executed with sophisticated styling, luxury finishes, and top tier hospitality management.</p>
         </div>
@@ -821,7 +835,7 @@
     <div class="svc-slide">
         <div class="svc-slide-bg" style="background-image:url('kids-wonderlands.jpg')"></div>
         <div class="svc-slide-content">
-            <span class="svc-slide-eyebrow">03 &mdash; Kids Wonderlands</span>
+            <span class="svc-slide-eyebrow">Kids Wonderlands</span>
             <h3 class="metallic-gold">Immersive Kids Wonderlands</h3>
             <p>Whimsical, high concept children celebrations designed to tell an incredible story. We design interactive structural frameworks, custom backdrops, and complete themed environments.</p>
         </div>
@@ -843,7 +857,7 @@
     <div class="svc-slide svc-slide--right">
         <div class="svc-slide-bg" style="background-image:url('party-florals.jpg')"></div>
         <div class="svc-slide-content">
-            <span class="svc-slide-eyebrow">04 &mdash; Floral Installations</span>
+            <span class="svc-slide-eyebrow">Floral Installations</span>
             <h3 class="metallic-gold">High Density Floral Installations</h3>
             <p>Bespoke botanical artistry matching premium seasonal florals to your exact setting. From dramatic entryway arches and hanging installations to elegant table pavilions, our floral curation establishes the mood.</p>
         </div>
@@ -860,7 +874,7 @@
     <div class="svc-slide">
         <div class="svc-slide-bg" style="background-image:url('balloon-arch.jpg')"></div>
         <div class="svc-slide-content">
-            <span class="svc-slide-eyebrow">05 &mdash; Balloon Architecture</span>
+            <span class="svc-slide-eyebrow">Balloon Architecture</span>
             <h3 class="metallic-gold">Organic Balloon Architecture</h3>
             <p>Premium, precision color matched balloon styling arrays designed as a scaling structural asset. We engineer cascading backdrops, framing arches, and room installations tailored to your theme.</p>
         </div>
@@ -882,7 +896,7 @@
     <div class="svc-slide svc-slide--right">
         <div class="svc-slide-bg" style="background-image:url('bespoke-babyshowers.jpg')"></div>
         <div class="svc-slide-content">
-            <span class="svc-slide-eyebrow">06 &mdash; Baby Showers</span>
+            <span class="svc-slide-eyebrow">Baby Showers</span>
             <h3 class="metallic-gold">Bespoke Baby Showers</h3>
             <p>Elegant, high-concept celebrations honoring new beginnings. We craft sophisticated, tailored settings featuring custom backdrops, exquisite detailing, and flawless atmosphere management.</p>
         </div>
@@ -899,7 +913,7 @@
     <div class="svc-slide">
         <div class="svc-slide-bg" style="background-image:url('photo-ops.jpg')"></div>
         <div class="svc-slide-content">
-            <span class="svc-slide-eyebrow">07 &mdash; Photo Opportunities</span>
+            <span class="svc-slide-eyebrow">Photo Opportunities</span>
             <h3 class="metallic-gold">Interactive Photo Opportunities</h3>
             <p>Custom media walls, interactive installation settings, and immersive photo backdrops engineered uniquely to let your guests capture every memorable moment of your celebration.</p>
         </div>
@@ -921,7 +935,7 @@
     <div class="svc-slide svc-slide--right">
         <div class="svc-slide-bg" style="background-image:url('luxury-proposal.jpg')"></div>
         <div class="svc-slide-content">
-            <span class="svc-slide-eyebrow">08 &mdash; Weddings &amp; Proposals</span>
+            <span class="svc-slide-eyebrow">Weddings &amp; Proposals</span>
             <h3 class="metallic-gold">Private Weddings &amp; Proposals</h3>
             <p>Bespoke coordination for luxury proposals and intimate private weddings. We craft deeply personal environments from custom structural lighting to pristine stage layouts for your special moments.</p>
         </div>

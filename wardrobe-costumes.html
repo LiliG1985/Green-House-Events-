@@ -237,6 +237,20 @@
             background: linear-gradient(135deg, rgba(2,22,18,0.45) 0%, rgba(2,22,18,0.80) 100%), url('about-banner.jpg') no-repeat center center;
             background-size: cover;
         }
+        #about-wardrobe::before {
+            content: '';
+            position: absolute; bottom: 0; left: 0; right: 0; height: 3px; z-index: 30;
+            background: linear-gradient(90deg, transparent 0%, var(--gold-solid) 15%, #F5E9B8 50%, var(--gold-solid) 85%, transparent 100%);
+        }
+        #about-wardrobe::after {
+            content: '';
+            position: absolute; bottom: -6px; left: 50%; z-index: 31;
+            width: 13px; height: 13px;
+            transform: translateX(-50%) rotate(45deg);
+            background: var(--gold-solid);
+            border: 1.5px solid var(--nude-card);
+            box-shadow: 0 0 10px rgba(201,168,76,0.7);
+        }
         #about-wardrobe > * { position: relative; z-index: 5; }
         .about-grid {
             display: grid;
@@ -276,7 +290,7 @@
         }
 
         /* --- SERVICE SHOWCASE SECTIONS WITH BRAND BOXES --- */
-        .showcase-container { max-width: 1200px; margin: 0 auto; padding: 5rem 5vw 8rem 5vw; background: linear-gradient(180deg, var(--nude) 0%, var(--nude-soft) 100%); }
+        .showcase-container { position: relative; }
 
         .showcase-row {
             display: flex; align-items: center; margin-bottom: 2.4rem; position: relative;
@@ -284,20 +298,6 @@
             border: 0.5px solid var(--gold-solid);
             overflow: hidden;
             box-shadow: 0 20px 45px rgba(60,45,20,0.16);
-        }
-        .showcase-container::before {
-            content: '';
-            position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 30;
-            background: linear-gradient(90deg, transparent 0%, var(--gold-solid) 15%, #F5E9B8 50%, var(--gold-solid) 85%, transparent 100%);
-        }
-        .showcase-container::after {
-            content: '';
-            position: absolute; top: -6px; left: 50%; z-index: 31;
-            width: 13px; height: 13px;
-            transform: translateX(-50%) rotate(45deg);
-            background: var(--gold-solid);
-            border: 1.5px solid var(--nude-card);
-            box-shadow: 0 0 10px rgba(201,168,76,0.7);
         }
         .showcase-text::before { display: none; }
 
@@ -541,7 +541,6 @@
             .about-grid { grid-template-columns: 1fr; gap: 2rem; }
 
             /* Showcase */
-            .showcase-container { padding: 3rem 4vw 4rem; }
             .showcase-row { min-height: 340px; align-items: flex-end; margin-bottom: 1.6rem; }
             .showcase-text, .showcase-row:nth-child(even) .showcase-text { width: 100%; margin: 0; padding: 2rem 1.6rem; }
             .showcase-img-space::after, .showcase-row:nth-child(even) .showcase-img-space::after {
@@ -750,7 +749,7 @@
     <div class="svc-slide">
         <div class="svc-slide-bg" style="background-image:url('wardrobe1.jpg')"></div>
         <div class="svc-slide-content">
-            <span class="svc-slide-eyebrow">01 &mdash; Costume Hire</span>
+            <span class="svc-slide-eyebrow">Costume Hire</span>
             <h3 class="metallic-gold">Costume Hire</h3>
             <p>Greenhouse Events partners directly with Dubai's leading costume designers and elite costume hire networks to bring you the absolute pinnacle of premium character creations. Whether sourcing vintage high fashion elements, grand structural show sets, or specialty performance attire, our extensive partner network guarantees unmatched access to world class wardrobe collections tailored perfectly for high profile entertainment footprint requirements.</p>
         </div>
@@ -776,7 +775,7 @@
     <div class="svc-slide svc-slide--right">
         <div class="svc-slide-bg" style="background-image:url('wardrobe2.jpg')"></div>
         <div class="svc-slide-content">
-            <span class="svc-slide-eyebrow">02 &mdash; Tailoring</span>
+            <span class="svc-slide-eyebrow">Tailoring</span>
             <h3 class="metallic-gold">Tailoring</h3>
             <p>When off the rack collections fall short, our dedicated atelier network steps in. We collaborate closely with premier bespoke tailors and advanced pattern makers across Dubai to sketch, draft, and assemble completely customized performance garments. From high tech reflective fabrics and complex inner construction frameworks to hand stitched embellishments, every garment is expertly engineered for comfort, agility, and massive visual impact under intense stage lighting configurations.</p>
         </div>
@@ -798,7 +797,7 @@
     <div class="svc-slide">
         <div class="svc-slide-bg" style="background-image:url('wardrobe3.jpg')"></div>
         <div class="svc-slide-content">
-            <span class="svc-slide-eyebrow">03 &mdash; Hair &amp; Makeup</span>
+            <span class="svc-slide-eyebrow">Hair &amp; Makeup</span>
             <h3 class="metallic-gold">Hair and Makeup</h3>
             <p>Complete entertainment characterization requires absolute aesthetic perfection. Greenhouse Events brings together Dubai's premier editorial hair stylists and avant garde makeup artists to deliver flawless look execution backstage. Utilizing ultra high definition, camera ready application techniques, our elite beauty teams specialize in intricate theatrical cosmetics, prosthetics coordination, and high glam styling engineered to look immaculate under blinding spotlights and close up production lenses.</p>
         </div>
