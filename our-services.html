@@ -113,7 +113,9 @@
             padding: 1.2rem 5vw; display: flex; justify-content: space-between; align-items: center;
             background: rgba(2, 22, 18, 0.96); backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
+            transition: transform 0.4s ease;
         }
+        nav.nav-hidden { transform: translateY(-100%); }
 
         .logo-wrap { text-decoration: none; display: inline-block; position: relative; padding-bottom: 4px; }
         .nav-logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; letter-spacing: 3px; display: inline-block; white-space: nowrap; }
@@ -249,11 +251,12 @@
             scroll-snap-align: center;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             text-align: center; padding: 0 10vw;
-            background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(201,168,76,0.12), transparent 70%), var(--bg-deep);
+            background: linear-gradient(180deg, var(--nude) 0%, var(--nude-soft) 100%);
         }
         .svc-quote-slide blockquote {
             font-family: var(--serif); font-style: italic; font-weight: 300;
             font-size: clamp(1.5rem, 4vw, 2.5rem); line-height: 1.5; max-width: 800px;
+            color: var(--bg-deep);
             opacity: 0; transform: translateY(20px); transition: opacity 0.9s ease, transform 0.9s ease;
         }
         .svc-quote-slide.in-view blockquote { opacity: 1; transform: translateY(0); }
@@ -302,9 +305,12 @@
         .footer-buttons { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2.5rem; }
 
         footer {
-            padding: 4rem; text-align: center; border-top: 1px solid var(--gold-solid);
+            padding: 4rem; text-align: center;
             background: #000; position: relative; overflow: hidden;
+            opacity: 0; transform: translateY(40px);
+            transition: opacity 0.9s ease, transform 0.9s ease;
         }
+        footer.in-view { opacity: 1; transform: translateY(0); }
         footer::before {
             content: ''; position: absolute; inset: 0;
             background-image: linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.9)), url('wall-panel-3.jpg');
@@ -616,6 +622,72 @@
     window.addEventListener("resize", function () {
         if (window.innerWidth > 900) closeMobileMenu();
     });
+
+    // --- HEADER: hide on scroll down, show on scroll up ---
+    (function () {
+        var navEl = document.querySelector("nav");
+        if (!navEl) return;
+        var mobileMenuEl = document.getElementById("mobileMenu");
+        var navPagesEl = document.getElementById("navPages");
+        var lastY = window.scrollY;
+        var ticking = false;
+        function isMenuOpen() {
+            return (mobileMenuEl && mobileMenuEl.classList.contains("open")) ||
+                   (navPagesEl && navPagesEl.classList.contains("open"));
+        }
+        function update(y) {
+            if (!isMenuOpen()) {
+                if (y > lastY && y > 140) {
+                    navEl.classList.add("nav-hidden");
+                } else {
+                    navEl.classList.remove("nav-hidden");
+                }
+            }
+            lastY = y;
+            ticking = false;
+        }
+        window.addEventListener("scroll", function () {
+            if (!ticking) {
+                var y = window.scrollY;
+                requestAnimationFrame(function () { update(y); });
+                ticking = true;
+            }
+        }, { passive: true });
+        var slidesWrap = document.querySelector(".services-slides");
+        if (slidesWrap) {
+            var lastSlideY = slidesWrap.scrollTop;
+            slidesWrap.addEventListener("scroll", function () {
+                var y = slidesWrap.scrollTop;
+                if (!isMenuOpen()) {
+                    if (y > lastSlideY && y > 60) {
+                        navEl.classList.add("nav-hidden");
+                    } else {
+                        navEl.classList.remove("nav-hidden");
+                    }
+                }
+                lastSlideY = y;
+            }, { passive: true });
+        }
+    })();
+
+    // --- FOOTER: reveal when scrolled into view ---
+    (function () {
+        var footerEl = document.querySelector("footer");
+        if (!footerEl) return;
+        if ("IntersectionObserver" in window) {
+            var fio = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        footerEl.classList.add("in-view");
+                        fio.unobserve(footerEl);
+                    }
+                });
+            }, { threshold: 0.15 });
+            fio.observe(footerEl);
+        } else {
+            footerEl.classList.add("in-view");
+        }
+    })();
 
     // --- SERVICES SLIDE WALL: fade-in, progress dots, parallax ---
     (function () {
