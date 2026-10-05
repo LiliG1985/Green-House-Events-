@@ -74,21 +74,6 @@
         }
         @keyframes shine { to { background-position: 200% center; } }
 
-        /* --- LUXURY REVAMP: solid deep gold for legible headings on nude/light backgrounds --- */
-        #services-inclusions .metallic-gold {
-            background: var(--gold-metallic-nude);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            background-size: 200% auto;
-            animation: shine 5s linear infinite;
-        }
-        .card { position: relative; }
-        .card::before {
-            content: '';
-            position: absolute; top: 0; left: 0; right: 0; height: 3px;
-            background: linear-gradient(90deg, var(--gold-solid) 0%, #F5E9B8 50%, var(--gold-solid) 100%);
-        }
 
         /* --- IMMACULATE SOLID GOLD THIN DIVIDER LINE --- */
         .gold-line {
@@ -310,11 +295,96 @@
             border: none;
         }
 
-        /* --- THEMED SERVICE CARD GRIDS --- */
-        #services-inclusions {
-            padding: 5rem 8vw 8rem 8vw;
+        /* --- SERVICES SLIDE WALL --- */
+        .services-slides {
             position: relative;
-            background: linear-gradient(180deg, var(--nude) 0%, var(--nude-soft) 100%);
+            height: 100vh; height: 100dvh;
+            overflow-y: scroll; overflow-x: hidden;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            border-top: 0.5px solid var(--border);
+            border-bottom: 0.5px solid var(--border);
+        }
+        .services-slides::-webkit-scrollbar { width: 0; background: transparent; }
+
+        .svc-slide {
+            position: relative; height: 100vh; height: 100dvh; width: 100%;
+            scroll-snap-align: start; scroll-snap-stop: always;
+            display: flex; align-items: center;
+            overflow: hidden;
+        }
+        .svc-slide-bg {
+            position: absolute; inset: -16% -6%;
+            background-size: cover; background-position: center;
+            will-change: transform;
+        }
+        .svc-slide-bg::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(90deg, rgba(2,10,8,0.93) 0%, rgba(2,10,8,0.6) 42%, rgba(2,10,8,0.22) 100%);
+        }
+        .svc-slide--right .svc-slide-bg::after {
+            background: linear-gradient(270deg, rgba(2,10,8,0.93) 0%, rgba(2,10,8,0.6) 42%, rgba(2,10,8,0.22) 100%);
+        }
+        .svc-slide-content {
+            position: relative; z-index: 5; max-width: 560px;
+            padding: 0 8vw;
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .svc-slide.in-view .svc-slide-content { opacity: 1; transform: translateY(0); }
+        .svc-slide--right { justify-content: flex-end; }
+        .svc-slide--right .svc-slide-content { text-align: right; margin-left: auto; }
+        .svc-slide--right .svc-slide-content p { margin-left: auto; }
+        .svc-slide-eyebrow {
+            font-family: var(--display); font-size: 0.72rem; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--gold-solid); margin-bottom: 1rem; display: block;
+        }
+        .svc-slide-content h3 { font-family: var(--serif); font-size: clamp(2rem, 4.6vw, 3.1rem); font-weight: 300; margin-bottom: 1.2rem; line-height: 1.15; color: var(--white-off); }
+        .svc-slide-content p { font-size: 1rem; color: var(--white-off); opacity: 0.85; line-height: 1.75; margin-bottom: 0; max-width: 460px; }
+
+        /* Quote interlude slides */
+        .svc-quote-slide {
+            position: relative; height: 100vh; height: 100dvh; width: 100%;
+            scroll-snap-align: start; scroll-snap-stop: always;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 0 10vw;
+            background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(201,168,76,0.12), transparent 70%), var(--bg-deep);
+        }
+        .svc-quote-diamond {
+            width: 13px; height: 13px; transform: rotate(45deg);
+            background: var(--gold-solid); box-shadow: 0 0 14px rgba(201,168,76,0.7);
+            margin-bottom: 2.4rem; flex-shrink: 0;
+        }
+        .svc-quote-slide blockquote {
+            font-family: var(--serif); font-style: italic; font-weight: 300;
+            font-size: clamp(1.5rem, 4vw, 2.5rem); line-height: 1.5; max-width: 800px;
+            opacity: 0; transform: translateY(20px); transition: opacity 0.9s ease, transform 0.9s ease;
+        }
+        .svc-quote-slide.in-view blockquote { opacity: 1; transform: translateY(0); }
+
+        /* Side progress dots */
+        .svc-progress {
+            position: absolute; right: 2.2rem; top: 50%; transform: translateY(-50%);
+            z-index: 10; display: flex; flex-direction: column; gap: 0.6rem;
+        }
+        .svc-progress button {
+            width: 7px; height: 7px; border-radius: 50%; border: 1px solid var(--gold-solid);
+            background: transparent; padding: 0; cursor: pointer; transition: all 0.3s; appearance: none;
+        }
+        .svc-progress button.active { background: var(--gold-solid); transform: scale(1.5); }
+
+        .svc-scroll-hint {
+            position: absolute; left: 50%; bottom: 1.8rem; transform: translateX(-50%);
+            z-index: 6; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+            font-family: var(--display); font-size: 0.62rem; letter-spacing: 2px; text-transform: uppercase;
+            color: var(--white-off); opacity: 0.65; animation: hintBob 2.2s ease-in-out infinite;
+        }
+        .svc-scroll-hint svg { width: 14px; height: 14px; }
+        @keyframes hintBob { 0%,100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 8px); } }
+
+        #services-inclusions {
+            position: relative;
         }
         #services-inclusions::before {
             content: '';
@@ -330,77 +400,6 @@
             border: 1.5px solid var(--nude-card);
             box-shadow: 0 0 10px rgba(201,168,76,0.7);
         }
-        .services-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 2.2rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        .card {
-            position: relative;
-            border: 0.5px solid var(--gold-solid);
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            display: flex;
-            align-items: center;
-            min-height: 420px;
-            overflow: hidden;
-            box-shadow: 0 20px 45px rgba(60,45,20,0.16);
-        }
-        .card::before { display: none; }
-        .card:hover {
-            border-color: var(--gold-solid);
-            box-shadow: 0 30px 60px rgba(60,45,20,0.26);
-        }
-        .card-body {
-            position: relative; z-index: 3;
-            width: 50%;
-            margin-left: auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 2.6rem 3rem;
-            color: var(--white-off);
-        }
-        .card:nth-child(even) .card-body { margin-left: 0; margin-right: auto; }
-        .card h3 {
-            font-family: var(--serif);
-            font-size: 1.6rem;
-            margin-bottom: 0px;
-            line-height: 1.3;
-            color: var(--white-off);
-        }
-        .card p {
-            font-size: 0.95rem;
-            color: var(--white-off);
-            opacity: 0.85;
-            margin-bottom: 0;
-            margin-top: 0.8rem;
-            line-height: 1.65;
-        }
-        .card-img-space {
-            position: absolute; inset: 0;
-            width: 100%; height: 100%;
-            z-index: 1;
-            overflow: hidden;
-        }
-        .card-img-space img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            inset: 0;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        .card-img-space::after {
-            content: '';
-            position: absolute; inset: 0; z-index: 2;
-            background: linear-gradient(90deg, rgba(2,22,18,0.1) 0%, rgba(2,22,18,0.55) 45%, rgba(2,22,18,0.88) 72%, rgba(2,22,18,0.92) 100%);
-        }
-        .card:nth-child(even) .card-img-space::after {
-            background: linear-gradient(270deg, rgba(2,22,18,0.1) 0%, rgba(2,22,18,0.55) 45%, rgba(2,22,18,0.88) 72%, rgba(2,22,18,0.92) 100%);
-        }
-        .card:hover .card-img-space img { transform: scale(1.04); }
 
         /* --- CONTACT INLINE CONFIGURATION --- */
         #contact-bridge {
@@ -502,12 +501,11 @@
             .about-grid { grid-template-columns: 1fr; gap: 2rem; }
 
             /* Services */
-            .services-grid { gap: 1.5rem; }
-            .card { min-height: 340px; align-items: flex-end; }
-            .card-body, .card:nth-child(even) .card-body { width: 100%; margin: 0; padding: 2rem 1.6rem; }
-            .card-img-space::after, .card:nth-child(even) .card-img-space::after {
-                background: linear-gradient(0deg, rgba(2,22,18,0.92) 0%, rgba(2,22,18,0.65) 45%, rgba(2,22,18,0.1) 100%);
-            }
+            .svc-progress { display: none; }
+            .svc-slide-content { max-width: 100%; text-align: left !important; margin-left: 0 !important; }
+            .svc-slide-content p { max-width: 100%; margin-left: 0 !important; }
+            .svc-slide--right { justify-content: flex-start; }
+            .svc-quote-slide { padding: 0 8vw; }
 
             /* Contact buttons */
             .footer-buttons { flex-direction: column; align-items: center; gap: 1rem; }
@@ -719,81 +717,126 @@
 </section>
 
 <section id="services-inclusions">
-    <div class="services-grid">
-        
-        <div class="card">
-                    <div class="card-img-space"><img src="party-themes.jpg" alt="Bespoke Concept & Theme Design" loading="lazy"></div>
-                    <div class="card-body">
-                        <h3 class="metallic-gold">Bespoke Concept & Theme Design</h3>
-                    <div class="gold-line"></div>
-                        <p>Custom visual blueprints for luxury adult milestones and premium children's celebrations. We design cohesive, high-end thematic aesthetics and immersive event environments from scratch.</p>
-                    </div>
-                </div>
+<div class="services-slides" id="servicesSlides">
 
-        <div class="card">
-                    <div class="card-img-space"><img src="luxury-adults.jpg" alt="Luxury Adult Celebrations" loading="lazy"></div>
-                    <div class="card-body">
-                        <h3 class="metallic-gold">Luxury Adult Celebrations</h3>
-                    <div class="gold-line"></div>
-                        <p>Milestone birthdays, engagements, anniversary galas, and high profile private cocktail gatherings executed with sophisticated styling, luxury finishes, and top tier hospitality management.</p>
-                    </div>
-                </div>
-
-        <div class="card">
-                    <div class="card-img-space"><img src="kids-wonderlands.jpg" alt="Immersive Kids Wonderlands" loading="lazy"></div>
-                    <div class="card-body">
-                        <h3 class="metallic-gold">Immersive Kids Wonderlands</h3>
-                    <div class="gold-line"></div>
-                        <p>Whimsical, high concept children celebrations designed to tell an incredible story. We design interactive structural frameworks, custom backdrops, and complete themed environments.</p>
-                    </div>
-                </div>
-
-        <div class="card">
-                    <div class="card-img-space"><img src="party-florals.jpg" alt="High Density Floral Installations" loading="lazy"></div>
-                    <div class="card-body">
-                        <h3 class="metallic-gold">High Density Floral Installations</h3>
-                    <div class="gold-line"></div>
-                        <p>Bespoke botanical artistry matching premium seasonal florals to your exact setting. From dramatic entryway arches and hanging installations to elegant table pavilions, our floral curation establishes the mood.</p>
-                    </div>
-                </div>
-
-        <div class="card">
-                    <div class="card-img-space"><img src="balloon-arch.jpg" alt="Organic Balloon Architecture" loading="lazy"></div>
-                    <div class="card-body">
-                        <h3 class="metallic-gold">Organic Balloon Architecture</h3>
-                    <div class="gold-line"></div>
-                        <p>Premium, precision color matched balloon styling arrays designed as a scaling structural asset. We engineer cascading backdrops, framing arches, and room installations tailored to your theme.</p>
-                    </div>
-                </div>
-
-        <div class="card">
-                    <div class="card-img-space"><img src="bespoke-babyshowers.jpg" alt="Bespoke Baby Showers" loading="lazy"></div>
-                    <div class="card-body">
-                        <h3 class="metallic-gold">Bespoke Baby Showers</h3>
-                    <div class="gold-line"></div>
-                        <p>Elegant, high-concept celebrations honoring new beginnings. We craft sophisticated, tailored settings featuring custom backdrops, exquisite detailing, and flawless atmosphere management.</p>
-                    </div>
-                </div>
-
-        <div class="card">
-                    <div class="card-img-space"><img src="photo-ops.jpg" alt="Interactive Photo Opportunities" loading="lazy"></div>
-                    <div class="card-body">
-                        <h3 class="metallic-gold">Interactive Photo Opportunities</h3>
-                    <div class="gold-line"></div>
-                        <p>Custom media walls, interactive installation settings, and immersive photo backdrops engineered uniquely to let your guests capture every memorable moment of your celebration.</p>
-                    </div>
-                </div>
-
-        <div class="card">
-                    <div class="card-img-space"><img src="luxury-proposal.jpg" alt="Private Weddings & Proposals" loading="lazy"></div>
-                    <div class="card-body">
-                        <h3 class="metallic-gold">Private Weddings & Proposals</h3>
-                    <div class="gold-line"></div>
-                        <p>Bespoke coordination for luxury proposals and intimate private weddings. We craft deeply personal environments from custom structural lighting to pristine stage layouts for your special moments.</p>
-                    </div>
-                </div>
-
+    <div class="svc-slide">
+        <div class="svc-slide-bg" style="background-image:url('party-themes.jpg')"></div>
+        <div class="svc-slide-content">
+            <span class="svc-slide-eyebrow">01 &mdash; Concept &amp; Theme</span>
+            <h3 class="metallic-gold">Bespoke Concept &amp; Theme Design</h3>
+            <p>Custom visual blueprints for luxury adult milestones and premium children's celebrations. We design cohesive, high-end thematic aesthetics and immersive event environments from scratch.</p>
+        </div>
+        <div class="svc-scroll-hint">
+            Scroll
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </div>
     </div>
+
+    <div class="svc-quote-slide">
+        <div class="svc-quote-diamond"></div>
+        <blockquote>&ldquo;Every theme starts as a blank canvas, and ends as a memory.&rdquo;</blockquote>
+    </div>
+
+    <div class="svc-slide svc-slide--right">
+        <div class="svc-slide-bg" style="background-image:url('luxury-adults.jpg')"></div>
+        <div class="svc-slide-content">
+            <span class="svc-slide-eyebrow">02 &mdash; Adult Celebrations</span>
+            <h3 class="metallic-gold">Luxury Adult Celebrations</h3>
+            <p>Milestone birthdays, engagements, anniversary galas, and high profile private cocktail gatherings executed with sophisticated styling, luxury finishes, and top tier hospitality management.</p>
+        </div>
+    </div>
+
+    <div class="svc-quote-slide">
+        <div class="svc-quote-diamond"></div>
+        <blockquote>&ldquo;Milestones don&rsquo;t repeat. Neither do we.&rdquo;</blockquote>
+    </div>
+
+    <div class="svc-slide">
+        <div class="svc-slide-bg" style="background-image:url('kids-wonderlands.jpg')"></div>
+        <div class="svc-slide-content">
+            <span class="svc-slide-eyebrow">03 &mdash; Kids Wonderlands</span>
+            <h3 class="metallic-gold">Immersive Kids Wonderlands</h3>
+            <p>Whimsical, high concept children celebrations designed to tell an incredible story. We design interactive structural frameworks, custom backdrops, and complete themed environments.</p>
+        </div>
+    </div>
+
+    <div class="svc-quote-slide">
+        <div class="svc-quote-diamond"></div>
+        <blockquote>&ldquo;Childhood wonder, built to scale.&rdquo;</blockquote>
+    </div>
+
+    <div class="svc-slide svc-slide--right">
+        <div class="svc-slide-bg" style="background-image:url('party-florals.jpg')"></div>
+        <div class="svc-slide-content">
+            <span class="svc-slide-eyebrow">04 &mdash; Floral Installations</span>
+            <h3 class="metallic-gold">High Density Floral Installations</h3>
+            <p>Bespoke botanical artistry matching premium seasonal florals to your exact setting. From dramatic entryway arches and hanging installations to elegant table pavilions, our floral curation establishes the mood.</p>
+        </div>
+    </div>
+
+    <div class="svc-quote-slide">
+        <div class="svc-quote-diamond"></div>
+        <blockquote>&ldquo;Flowers don&rsquo;t just decorate a room. They define it.&rdquo;</blockquote>
+    </div>
+
+    <div class="svc-slide">
+        <div class="svc-slide-bg" style="background-image:url('balloon-arch.jpg')"></div>
+        <div class="svc-slide-content">
+            <span class="svc-slide-eyebrow">05 &mdash; Balloon Architecture</span>
+            <h3 class="metallic-gold">Organic Balloon Architecture</h3>
+            <p>Premium, precision color matched balloon styling arrays designed as a scaling structural asset. We engineer cascading backdrops, framing arches, and room installations tailored to your theme.</p>
+        </div>
+    </div>
+
+    <div class="svc-quote-slide">
+        <div class="svc-quote-diamond"></div>
+        <blockquote>&ldquo;Structure and whimsy, engineered together.&rdquo;</blockquote>
+    </div>
+
+    <div class="svc-slide svc-slide--right">
+        <div class="svc-slide-bg" style="background-image:url('bespoke-babyshowers.jpg')"></div>
+        <div class="svc-slide-content">
+            <span class="svc-slide-eyebrow">06 &mdash; Baby Showers</span>
+            <h3 class="metallic-gold">Bespoke Baby Showers</h3>
+            <p>Elegant, high-concept celebrations honoring new beginnings. We craft sophisticated, tailored settings featuring custom backdrops, exquisite detailing, and flawless atmosphere management.</p>
+        </div>
+    </div>
+
+    <div class="svc-quote-slide">
+        <div class="svc-quote-diamond"></div>
+        <blockquote>&ldquo;New beginnings, celebrated beautifully.&rdquo;</blockquote>
+    </div>
+
+    <div class="svc-slide">
+        <div class="svc-slide-bg" style="background-image:url('photo-ops.jpg')"></div>
+        <div class="svc-slide-content">
+            <span class="svc-slide-eyebrow">07 &mdash; Photo Opportunities</span>
+            <h3 class="metallic-gold">Interactive Photo Opportunities</h3>
+            <p>Custom media walls, interactive installation settings, and immersive photo backdrops engineered uniquely to let your guests capture every memorable moment of your celebration.</p>
+        </div>
+    </div>
+
+    <div class="svc-quote-slide">
+        <div class="svc-quote-diamond"></div>
+        <blockquote>&ldquo;Give your guests a moment worth capturing.&rdquo;</blockquote>
+    </div>
+
+    <div class="svc-slide svc-slide--right">
+        <div class="svc-slide-bg" style="background-image:url('luxury-proposal.jpg')"></div>
+        <div class="svc-slide-content">
+            <span class="svc-slide-eyebrow">08 &mdash; Weddings &amp; Proposals</span>
+            <h3 class="metallic-gold">Private Weddings &amp; Proposals</h3>
+            <p>Bespoke coordination for luxury proposals and intimate private weddings. We craft deeply personal environments from custom structural lighting to pristine stage layouts for your special moments.</p>
+        </div>
+    </div>
+
+    <div class="svc-quote-slide">
+        <div class="svc-quote-diamond"></div>
+        <blockquote>&ldquo;The quietest moments deserve the most care.&rdquo;</blockquote>
+    </div>
+
+    <div class="svc-progress" id="svcProgress"></div>
+</div>
 </section>
 
 </div><!-- /greenery-wrap -->
@@ -864,6 +907,67 @@
     window.addEventListener("resize", function () {
         if (window.innerWidth > 900) closeMobileMenu();
     });
+
+    // --- SERVICES SLIDE WALL: fade-in, progress dots, parallax ---
+    (function () {
+        var wrap = document.querySelector(".services-slides");
+        if (!wrap) return;
+        var slides = Array.prototype.slice.call(wrap.querySelectorAll(".svc-slide, .svc-quote-slide"));
+        var dotsWrap = document.getElementById("svcProgress");
+
+        slides.forEach(function (s, i) {
+            var b = document.createElement("button");
+            b.type = "button";
+            b.setAttribute("aria-label", "Go to section " + (i + 1) + " of " + slides.length);
+            b.addEventListener("click", function () {
+                s.scrollIntoView({ behavior: "smooth", block: "start" });
+            });
+            dotsWrap.appendChild(b);
+        });
+        var dots = Array.prototype.slice.call(dotsWrap.children);
+
+        if ("IntersectionObserver" in window) {
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    var idx = slides.indexOf(entry.target);
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("in-view");
+                        if (entry.intersectionRatio > 0.55 && dots[idx]) {
+                            dots.forEach(function (d) { d.classList.remove("active"); });
+                            dots[idx].classList.add("active");
+                        }
+                    }
+                });
+            }, { root: wrap, threshold: [0.25, 0.55, 0.9] });
+            slides.forEach(function (s) { io.observe(s); });
+        } else {
+            slides.forEach(function (s) { s.classList.add("in-view"); });
+        }
+
+        var ticking = false;
+        wrap.addEventListener("scroll", function () {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(function () {
+                var wrapRect = wrap.getBoundingClientRect();
+                slides.forEach(function (s) {
+                    var bg = s.querySelector(".svc-slide-bg");
+                    if (!bg) return;
+                    var r = s.getBoundingClientRect();
+                    var offset = (r.top - wrapRect.top) * 0.1;
+                    bg.style.transform = "translateY(" + offset + "px)";
+                });
+                ticking = false;
+            });
+        }, { passive: true });
+
+        var hint = wrap.querySelector(".svc-scroll-hint");
+        if (hint) {
+            wrap.addEventListener("scroll", function () {
+                hint.style.opacity = wrap.scrollTop > 40 ? "0" : "0.65";
+            }, { passive: true });
+        }
+    })();
 </script>
 </body>
 </html>
