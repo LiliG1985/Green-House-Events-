@@ -1,0 +1,44 @@
+/**
+ * Greenhouse Events — Contact Form backend
+ * Paste this entire file into the Apps Script editor (see setup steps below).
+ */
+
+function doPost(e) {
+  try {
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = ss.getSheetByName("Submissions") || ss.getActiveSheet();
+    var p = e.parameter;
+
+    // Honeypot — if the hidden "botcheck" field was filled in, it's a bot.
+    // Pretend success so the bot doesn't learn anything, but don't save the row.
+    if (p.botcheck) {
+      return ContentService
+        .createTextOutput(JSON.stringify({ result: "success" }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
+    // Add a header row the first time the sheet is used.
+    if (sheet.getLastRow() === 0) {
+      sheet.appendRow(["Timestamp", "Name", "Email", "Phone", "Event Date", "Service", "Message"]);
+    }
+
+    sheet.appendRow([
+      new Date(),
+      p.name || "",
+      p.email || "",
+      p.phone || "",
+      p.event_date || "",
+      p.service || "",
+      p.message || ""
+    ]);
+
+    return ContentService
+      .createTextOutput(JSON.stringify({ result: "success" }))
+      .setMimeType(ContentService.MimeType.JSON);
+
+  } catch (err) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ result: "error", error: err.toString() }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
