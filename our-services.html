@@ -111,11 +111,14 @@
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             padding: 1.2rem 5vw; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(2, 22, 18, 0.96); backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            background: transparent;
             transition: transform 0.4s ease;
         }
         nav.nav-hidden { transform: translateY(-100%); }
+        /* Legibility for nav floating directly over hero imagery (no solid bar) */
+        .nav-logo, .nav-whatsapp, .nav-whatsapp svg { text-shadow: 0 2px 10px rgba(0,0,0,0.85), 0 1px 4px rgba(0,0,0,0.9); filter: drop-shadow(0 1px 3px rgba(0,0,0,0.7)); }
+        .hamburger span { filter: drop-shadow(0 1px 3px rgba(0,0,0,0.7)); }
+        .nav-pages-btn { text-shadow: 0 2px 10px rgba(0,0,0,0.85), 0 1px 4px rgba(0,0,0,0.9); }
 
         .logo-wrap { text-decoration: none; display: inline-block; position: relative; padding-bottom: 4px; }
         .nav-logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; letter-spacing: 3px; display: inline-block; white-space: nowrap; }
@@ -253,13 +256,63 @@
             text-align: center; padding: 0 10vw;
             background: linear-gradient(180deg, var(--nude) 0%, var(--nude-soft) 100%);
         }
-        .svc-quote-slide blockquote {
-            font-family: var(--serif); font-style: italic; font-weight: 300;
-            font-size: clamp(1.5rem, 4vw, 2.5rem); line-height: 1.5; max-width: 800px;
-            color: var(--bg-deep);
+        .svc-quote-card {
+            max-width: 820px;
             opacity: 0; transform: translateY(20px); transition: opacity 0.9s ease, transform 0.9s ease;
         }
-        .svc-quote-slide.in-view blockquote { opacity: 1; transform: translateY(0); }
+        .svc-quote-slide.in-view .svc-quote-card { opacity: 1; transform: translateY(0); }
+        .svc-quote-mark {
+            display: block; font-family: var(--serif); font-size: 2.6rem; line-height: 1;
+            color: var(--gold-deep); opacity: 0.85; margin-bottom: 0.4rem;
+        }
+        .svc-quote-slide blockquote {
+            font-family: var(--serif); font-style: italic; font-weight: 300;
+            font-size: clamp(1.3rem, 3.6vw, 2.3rem); line-height: 1.5; max-width: 800px;
+            color: var(--bg-deep); margin: 0 auto;
+        }
+        .svc-quote-tag {
+            display: block; position: relative;
+            font-family: var(--display); font-size: 0.65rem; font-style: normal;
+            letter-spacing: 2.5px; text-transform: uppercase;
+            color: var(--gold-deep); opacity: 0.8;
+            margin-top: 1.1rem; padding-top: 1rem;
+        }
+        .svc-quote-tag::before {
+            content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 42px; height: 0.5px; background: var(--gold-solid);
+        }
+
+        /* Process / service-step interlude slides */
+        .svc-process-slide {
+            position: relative; height: 32vh; height: 32dvh; width: 100%;
+            scroll-snap-align: center;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 0 8vw;
+            background: linear-gradient(180deg, var(--nude) 0%, var(--nude-soft) 100%);
+        }
+        .svc-process-card {
+            max-width: 940px;
+            opacity: 0; transform: translateY(20px); transition: opacity 0.9s ease, transform 0.9s ease;
+        }
+        .svc-process-slide.in-view .svc-process-card { opacity: 1; transform: translateY(0); }
+        .svc-process-lead {
+            font-family: var(--serif); font-style: italic; font-weight: 300;
+            font-size: clamp(1.15rem, 2.8vw, 1.6rem); line-height: 1.5;
+            color: var(--bg-deep); margin: 0 0 1.4rem;
+        }
+        .svc-process-steps {
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+            gap: 0.6rem 0.8rem;
+        }
+        .svc-process-steps .step {
+            font-family: var(--display); font-size: 0.65rem; letter-spacing: 1.5px;
+            font-weight: 600; text-transform: uppercase; color: var(--gold-deep);
+            border: 0.5px solid var(--gold-solid); padding: 0.55rem 1.1rem;
+            white-space: nowrap; background: rgba(255,255,255,0.3);
+        }
+        .svc-process-steps .step-arrow {
+            color: var(--gold-deep); opacity: 0.55; font-size: 0.9rem; flex-shrink: 0;
+        }
 
         /* Side progress dots */
         .svc-progress {
@@ -337,6 +390,7 @@
             .svc-slide-content p { max-width: 100%; margin-left: 0 !important; }
             .svc-slide--right { justify-content: flex-start; }
             .svc-quote-slide { padding: 0 8vw; }
+            .svc-process-slide { padding: 0 7vw; }
 
             .footer-buttons { flex-direction: column; align-items: center; gap: 1.5rem; }
         }
@@ -473,7 +527,11 @@
     </div>
 
     <div class="svc-quote-slide">
-        <blockquote>&ldquo;Life&rsquo;s biggest moments deserve a team that never misses a beat.&rdquo;</blockquote>
+        <div class="svc-quote-card">
+            <span class="svc-quote-mark" aria-hidden="true">&ldquo;</span>
+            <blockquote>Life&rsquo;s biggest moments deserve a team that never misses a beat.</blockquote>
+            <span class="svc-quote-tag">Greenhouse Events Dubai</span>
+        </div>
     </div>
 
     <div class="svc-slide svc-slide--right">
@@ -488,8 +546,17 @@
         </div>
     </div>
 
-    <div class="svc-quote-slide">
-        <blockquote>&ldquo;Flawless execution isn&rsquo;t an accident. It&rsquo;s a discipline.&rdquo;</blockquote>
+    <div class="svc-process-slide">
+        <div class="svc-process-card">
+            <p class="svc-process-lead">We take the stress out of corporate production.</p>
+            <div class="svc-process-steps">
+                <span class="step">Concept &amp; Creative Direction</span>
+                <span class="step-arrow" aria-hidden="true">&rarr;</span>
+                <span class="step">AI Rendering &amp; Visualisation</span>
+                <span class="step-arrow" aria-hidden="true">&rarr;</span>
+                <span class="step">Full Production &amp; Execution</span>
+            </div>
+        </div>
     </div>
 
     <div class="svc-slide">
@@ -505,7 +572,11 @@
     </div>
 
     <div class="svc-quote-slide">
-        <blockquote>&ldquo;Spaces that work harder, every single day.&rdquo;</blockquote>
+        <div class="svc-quote-card">
+            <span class="svc-quote-mark" aria-hidden="true">&ldquo;</span>
+            <blockquote>Spaces that work harder, every single day.</blockquote>
+            <span class="svc-quote-tag">Greenhouse Events Dubai</span>
+        </div>
     </div>
 
     <div class="svc-slide svc-slide--right">
@@ -520,8 +591,17 @@
         </div>
     </div>
 
-    <div class="svc-quote-slide">
-        <blockquote>&ldquo;Every light, every cue, engineered to feel effortless.&rdquo;</blockquote>
+    <div class="svc-process-slide">
+        <div class="svc-process-card">
+            <p class="svc-process-lead">Every build starts with a plan, not a guess.</p>
+            <div class="svc-process-steps">
+                <span class="step">Technical Site Survey</span>
+                <span class="step-arrow" aria-hidden="true">&rarr;</span>
+                <span class="step">Structural &amp; AV Design</span>
+                <span class="step-arrow" aria-hidden="true">&rarr;</span>
+                <span class="step">Install &amp; Live Show Support</span>
+            </div>
+        </div>
     </div>
 
     <div class="svc-slide">
@@ -537,7 +617,11 @@
     </div>
 
     <div class="svc-quote-slide">
-        <blockquote>&ldquo;The right act, at the right moment, changes everything.&rdquo;</blockquote>
+        <div class="svc-quote-card">
+            <span class="svc-quote-mark" aria-hidden="true">&ldquo;</span>
+            <blockquote>The right act, at the right moment, changes everything.</blockquote>
+            <span class="svc-quote-tag">Greenhouse Events Dubai</span>
+        </div>
     </div>
 
     <div class="svc-slide svc-slide--right">
@@ -552,8 +636,17 @@
         </div>
     </div>
 
-    <div class="svc-quote-slide">
-        <blockquote>&ldquo;Costume is character. We build both.&rdquo;</blockquote>
+    <div class="svc-process-slide">
+        <div class="svc-process-card">
+            <p class="svc-process-lead">From first fitting to final bow, nothing is left to chance.</p>
+            <div class="svc-process-steps">
+                <span class="step">Casting &amp; Fittings</span>
+                <span class="step-arrow" aria-hidden="true">&rarr;</span>
+                <span class="step">Tailoring &amp; Alterations</span>
+                <span class="step-arrow" aria-hidden="true">&rarr;</span>
+                <span class="step">Styling On The Day</span>
+            </div>
+        </div>
     </div>
 
     <div class="svc-progress" id="svcProgress"></div>
@@ -693,7 +786,7 @@
     (function () {
         var wrap = document.querySelector(".services-slides");
         if (!wrap) return;
-        var slides = Array.prototype.slice.call(wrap.querySelectorAll(".svc-slide, .svc-quote-slide"));
+        var slides = Array.prototype.slice.call(wrap.querySelectorAll(".svc-slide, .svc-quote-slide, .svc-process-slide"));
         var dotsWrap = document.getElementById("svcProgress");
 
         slides.forEach(function (s, i) {
