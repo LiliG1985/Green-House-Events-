@@ -913,21 +913,6 @@
                 ticking = true;
             }
         }, { passive: true });
-        var slidesWrap = document.querySelector(".services-slides");
-        if (slidesWrap) {
-            var lastSlideY = slidesWrap.scrollTop;
-            slidesWrap.addEventListener("scroll", function () {
-                var y = slidesWrap.scrollTop;
-                if (!isMenuOpen()) {
-                    if (y > lastSlideY && y > 60) {
-                        navEl.classList.add("nav-hidden");
-                    } else {
-                        navEl.classList.remove("nav-hidden");
-                    }
-                }
-                lastSlideY = y;
-            }, { passive: true });
-        }
     })();
 
     // --- FOOTER: reveal when scrolled into view ---
