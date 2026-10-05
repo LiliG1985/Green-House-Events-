@@ -69,7 +69,6 @@
             padding: 1.2rem 5vw; display: flex; justify-content: space-between; align-items: center;
             background: rgba(11, 26, 24, 0.95); backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border-bottom: 0.5px solid var(--border);
         }
         
         .logo-wrap { text-decoration: none; display: inline-block; position: relative; padding-bottom: 4px; }
@@ -87,7 +86,7 @@
 
         /* --- INNER HERO BANNER --- */
         .inner-hero {
-            height: 45vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; border-bottom: 0.5px solid var(--border); padding-top: 80px; position: relative; background: #0b1a18;
+            height: 45vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding-top: 80px; position: relative; background: #0b1a18;
         }
         .inner-hero h1 { font-family: var(--serif); font-size: 3.5rem; font-weight: 300; margin-bottom: 0.5rem; }
         .inner-hero p { font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.6; color: var(--gold-solid); }
@@ -190,7 +189,6 @@
             margin-top: 14px;
             display: grid; align-items: center;
             position: relative; z-index: 5;
-            border-bottom: 0.5px solid var(--border);
             background: linear-gradient(135deg, rgba(2,22,18,0.45) 0%, rgba(2,22,18,0.80) 100%), url('about-banner.jpg') no-repeat center center;
             background-size: cover;
         }
@@ -284,7 +282,6 @@
         .nav-pages-chevron { width: 12px; height: 12px; fill: currentColor; transition: transform 0.25s ease; flex-shrink: 0; }
         .nav-pages.open .nav-pages-chevron { transform: rotate(180deg); }
         .nav-pages-menu {
-            display: none;
             position: absolute;
             top: calc(100% + 12px);
             right: 0;
@@ -296,8 +293,19 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.6);
             padding: 0.5rem 0;
             z-index: 1001;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(-8px) translateZ(0);
+        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
         }
-        .nav-pages.open .nav-pages-menu { display: block; }
+        .nav-pages.open .nav-pages-menu {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateY(0) translateZ(0);
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0s;
+        }
         .nav-pages-menu a {
             display: block;
             padding: 0.7rem 1.4rem;
