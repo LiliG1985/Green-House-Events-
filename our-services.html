@@ -182,60 +182,103 @@
         .service-intro h2 { font-family: var(--serif); font-size: clamp(2rem, 5vw, 3rem); font-weight: 300; max-width: 820px; margin: 0 auto 1.2rem; line-height: 1.3; }
         .service-intro p { max-width: 680px; margin: 0 auto; opacity: 0.75; font-size: 1rem; line-height: 1.75; }
 
-        /* --- SERVICE BANNERS --- */
-        .service-banner-list {
-            max-width: 1300px; margin: 0 auto;
-            padding: 3.5rem 5vw 8rem 5vw;
-            display: flex; flex-direction: column; gap: 2.4rem;
-            position: relative; z-index: 5;
+        /* --- SERVICES SLIDE WALL --- */
+        .services-slides {
+            position: relative;
+            height: 100vh; height: 100dvh;
+            overflow-y: scroll; overflow-x: hidden;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            border-top: 0.5px solid var(--border);
+            border-bottom: 0.5px solid var(--border);
         }
-        .service-banner {
-            position: relative; display: flex; align-items: stretch; width: 100%;
+        .services-slides::-webkit-scrollbar { width: 0; background: transparent; }
+
+        .svc-slide {
+            position: relative; height: 100vh; height: 100dvh; width: 100%;
+            scroll-snap-align: start; scroll-snap-stop: always;
+            display: flex; align-items: flex-start;
+            padding-top: 18vh;
             overflow: hidden;
-            border: 0.5px solid var(--gold-solid);
-            box-shadow: 0 20px 45px rgba(0,0,0,0.35);
-            text-decoration: none;
         }
-        .service-banner:nth-child(even) { flex-direction: row-reverse; }
-        .service-banner-img {
-            position: relative; width: 56%; flex-shrink: 0;
-            aspect-ratio: 4 / 3; overflow: hidden;
+        .svc-slide-bg {
+            position: absolute; inset: -16% -6%;
+            background-size: cover; background-position: center;
+            will-change: transform;
         }
-        .service-banner-img img {
-            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        .service-banner:hover .service-banner-img img { transform: scale(1.04); }
-        .service-banner-img::after {
+        .svc-slide-bg::after {
             content: ''; position: absolute; inset: 0;
-            background: linear-gradient(90deg, transparent 58%, #020a08 100%);
+            background: linear-gradient(90deg, rgba(2,10,8,0.93) 0%, rgba(2,10,8,0.6) 42%, rgba(2,10,8,0.22) 100%);
         }
-        .service-banner:nth-child(even) .service-banner-img::after {
-            background: linear-gradient(270deg, transparent 58%, #020a08 100%);
+        .svc-slide--right .svc-slide-bg::after {
+            background: linear-gradient(270deg, rgba(2,10,8,0.93) 0%, rgba(2,10,8,0.6) 42%, rgba(2,10,8,0.22) 100%);
         }
-        .service-banner-overlay {
-            position: relative; flex: 1; display: flex; align-items: center;
-            justify-content: flex-start;
-            padding: 2.5rem 3.5rem;
-            background: #020a08;
+        .svc-slide-content {
+            position: relative; z-index: 5; max-width: 560px;
+            padding: 0 8vw;
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
-        .service-banner:nth-child(even) .service-banner-overlay {
-            justify-content: flex-end; text-align: right;
+        .svc-slide.in-view .svc-slide-content { opacity: 1; transform: translateY(0); }
+        .svc-slide--right { justify-content: flex-end; }
+        .svc-slide--right .svc-slide-content { text-align: right; margin-left: auto; }
+        .svc-slide--right .svc-slide-content p { margin-left: auto; }
+        .svc-slide-eyebrow {
+            font-family: var(--display); font-size: 0.72rem; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--gold-solid); margin-bottom: 1rem; display: block;
         }
-        .service-banner:nth-child(even) .service-banner-content { align-items: flex-end; }
-        .service-banner-content { max-width: 440px; display: flex; flex-direction: column; }
-        .service-banner-content h2 { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 400; margin-bottom: 1rem; }
-        .service-banner-content p { font-size: 0.95rem; color: var(--white-off); opacity: 0.85; line-height: 1.7; margin-bottom: 1.6rem; }
-        .service-banner-btn {
+        .svc-slide-content h2 { font-family: var(--serif); font-size: clamp(2.1rem, 5vw, 3.4rem); font-weight: 300; margin-bottom: 1.2rem; line-height: 1.15; }
+        .svc-slide-content p { font-size: 1rem; color: var(--white-off); opacity: 0.85; line-height: 1.75; margin-bottom: 2rem; max-width: 460px; }
+        .svc-slide-btn {
             display: inline-flex; align-items: center; gap: 0.6rem;
             background: var(--gold-metallic); color: #0b1a18;
-            padding: 0.85rem 2rem; font-family: var(--sans); font-weight: 600;
+            padding: 0.9rem 2.2rem; font-family: var(--sans); font-weight: 600;
             font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase;
-            transition: transform 0.3s; align-self: flex-start;
+            transition: transform 0.3s; text-decoration: none;
         }
-        .service-banner:nth-child(even) .service-banner-btn { align-self: flex-end; }
-        .service-banner-btn svg { width: 15px; height: 15px; transition: transform 0.3s; }
-        .service-banner:hover .service-banner-btn { transform: translateX(4px); }
+        .svc-slide-btn:hover { transform: translateX(4px); }
+        .svc-slide-btn svg { width: 15px; height: 15px; }
+
+        /* Quote interlude slides */
+        .svc-quote-slide {
+            position: relative; height: 32vh; height: 32dvh; width: 100%;
+            scroll-snap-align: center;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 0 10vw;
+            background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(201,168,76,0.12), transparent 70%), var(--bg-deep);
+        }
+        .svc-quote-diamond {
+            width: 13px; height: 13px; transform: rotate(45deg);
+            background: var(--gold-solid); box-shadow: 0 0 14px rgba(201,168,76,0.7);
+            margin-bottom: 2.4rem; flex-shrink: 0;
+        }
+        .svc-quote-slide blockquote {
+            font-family: var(--serif); font-style: italic; font-weight: 300;
+            font-size: clamp(1.5rem, 4vw, 2.5rem); line-height: 1.5; max-width: 800px;
+            opacity: 0; transform: translateY(20px); transition: opacity 0.9s ease, transform 0.9s ease;
+        }
+        .svc-quote-slide.in-view blockquote { opacity: 1; transform: translateY(0); }
+
+        /* Side progress dots */
+        .svc-progress {
+            position: absolute; right: 2.2rem; top: 50%; transform: translateY(-50%);
+            z-index: 10; display: flex; flex-direction: column; gap: 0.7rem;
+        }
+        .svc-progress button {
+            width: 7px; height: 7px; border-radius: 50%; border: 1px solid var(--gold-solid);
+            background: transparent; padding: 0; cursor: pointer; transition: all 0.3s; appearance: none;
+        }
+        .svc-progress button.active { background: var(--gold-solid); transform: scale(1.5); }
+
+        .svc-scroll-hint {
+            position: absolute; left: 50%; bottom: 1.8rem; transform: translateX(-50%);
+            z-index: 6; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+            font-family: var(--display); font-size: 0.62rem; letter-spacing: 2px; text-transform: uppercase;
+            color: var(--white-off); opacity: 0.65; animation: hintBob 2.2s ease-in-out infinite;
+        }
+        .svc-scroll-hint svg { width: 14px; height: 14px; }
+        @keyframes hintBob { 0%,100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 8px); } }
 
         /* --- CONTACT --- */
         #contact-footer {
@@ -285,23 +328,11 @@
 
             .service-intro { padding: 3rem 6vw 0.5rem; }
 
-            .service-banner-list { padding: 2.5rem 5vw 4rem; gap: 1.6rem; }
-            .service-banner,
-            .service-banner:nth-child(even) { flex-direction: column; }
-            .service-banner-img { width: 100%; aspect-ratio: 4 / 3; }
-            .service-banner-img::after,
-            .service-banner:nth-child(even) .service-banner-img::after {
-                background: linear-gradient(0deg, #020a08 0%, transparent 35%);
-            }
-            .service-banner-overlay,
-            .service-banner:nth-child(even) .service-banner-overlay {
-                justify-content: flex-start; text-align: left;
-                padding: 1.8rem 1.6rem;
-            }
-            .service-banner-content,
-            .service-banner:nth-child(even) .service-banner-content { max-width: 100%; align-items: flex-start; }
-            .service-banner-btn,
-            .service-banner:nth-child(even) .service-banner-btn { align-self: flex-start; }
+            .svc-progress { display: none; }
+            .svc-slide-content { max-width: 100%; text-align: left !important; margin-left: 0 !important; }
+            .svc-slide-content p { max-width: 100%; margin-left: 0 !important; }
+            .svc-slide--right { justify-content: flex-start; }
+            .svc-quote-slide { padding: 0 8vw; }
 
             .footer-buttons { flex-direction: column; align-items: center; gap: 1.5rem; }
         }
@@ -408,98 +439,115 @@
     <p>From the first concept sketch to the final strike, Greenhouse Events manages every layer of production in house. Choose a discipline below to explore our work.</p>
 </section>
 
-<div class="service-banner-list">
+<div class="services-slides" id="servicesSlides">
 
-    <a href="private-events.html" class="service-banner">
-        <div class="service-banner-img">
-            <img src="card1.jpg" alt="Private party and event planning Dubai" loading="lazy">
+    <div class="svc-slide">
+        <div class="svc-slide-bg" style="background-image:url('card1.jpg')"></div>
+        <div class="svc-slide-content">
+            <span class="svc-slide-eyebrow">01 &mdash; Private Events</span>
+            <h2 class="metallic-gold">Private Party &amp; Event Planning</h2>
+            <p>Bespoke execution for birthday celebrations, engagements, proposals, and high profile gatherings.</p>
+            <a href="private-events.html" class="svc-slide-btn">Discover
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
         </div>
-        <div class="service-banner-overlay">
-            <div class="service-banner-content">
-                <h2 class="metallic-gold">Private Party &amp; Event Planning</h2>
-                <p>Bespoke execution for birthday celebrations, engagements, proposals, and high profile gatherings.</p>
-                <span class="service-banner-btn">Discover
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                </span>
-            </div>
+        <div class="svc-scroll-hint">
+            Scroll
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
         </div>
-    </a>
+    </div>
 
-    <a href="corporate-events.html" class="service-banner">
-        <div class="service-banner-img">
-            <img src="card2.jpg" alt="Corporate event management Dubai" loading="lazy">
-        </div>
-        <div class="service-banner-overlay">
-            <div class="service-banner-content">
-                <h2 class="metallic-gold">Corporate Event Management</h2>
-                <p>Full scale corporate production, business activations, brand launches, and structural operations.</p>
-                <span class="service-banner-btn">Discover
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                </span>
-            </div>
-        </div>
-    </a>
+    <div class="svc-quote-slide">
+        <div class="svc-quote-diamond"></div>
+        <blockquote>&ldquo;Life&rsquo;s biggest moments deserve a team that never misses a beat.&rdquo;</blockquote>
+    </div>
 
-    <a href="permanent-transformations.html" class="service-banner">
-        <div class="service-banner-img">
-            <img src="card3.jpg" alt="Permanent space transformation Dubai" loading="lazy">
+    <div class="svc-slide svc-slide--right">
+        <div class="svc-slide-bg" style="background-image:url('card2.jpg')"></div>
+        <div class="svc-slide-content">
+            <span class="svc-slide-eyebrow">02 &mdash; Corporate Events</span>
+            <h2 class="metallic-gold">Corporate Event Management</h2>
+            <p>Full scale corporate production, business activations, brand launches, and structural operations.</p>
+            <a href="corporate-events.html" class="svc-slide-btn">Discover
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
         </div>
-        <div class="service-banner-overlay">
-            <div class="service-banner-content">
-                <h2 class="metallic-gold">Permanent Transformations</h2>
-                <p>Layout curation for restaurants, hospitality, and workspaces. Luxury floral art and greenery installations.</p>
-                <span class="service-banner-btn">Discover
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                </span>
-            </div>
-        </div>
-    </a>
+    </div>
 
-    <a href="staging-av.html" class="service-banner">
-        <div class="service-banner-img">
-            <img src="card4.jpg" alt="Staging sound and AV Dubai" loading="lazy">
-        </div>
-        <div class="service-banner-overlay">
-            <div class="service-banner-content">
-                <h2 class="metallic-gold">Staging, Sound &amp; AV</h2>
-                <p>Technical infrastructure, sound engineering, specialized lighting arrays, and rigid stage architecture.</p>
-                <span class="service-banner-btn">Discover
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                </span>
-            </div>
-        </div>
-    </a>
+    <div class="svc-quote-slide">
+        <div class="svc-quote-diamond"></div>
+        <blockquote>&ldquo;Flawless execution isn&rsquo;t an accident. It&rsquo;s a discipline.&rdquo;</blockquote>
+    </div>
 
-    <a href="entertainment.html" class="service-banner">
-        <div class="service-banner-img">
-            <img src="card5.jpg" alt="Entertainment booking Dubai UAE" loading="lazy">
+    <div class="svc-slide">
+        <div class="svc-slide-bg" style="background-image:url('card3.jpg')"></div>
+        <div class="svc-slide-content">
+            <span class="svc-slide-eyebrow">03 &mdash; Transformations</span>
+            <h2 class="metallic-gold">Permanent Transformations</h2>
+            <p>Layout curation for restaurants, hospitality, and workspaces. Luxury floral art and greenery installations.</p>
+            <a href="permanent-transformations.html" class="svc-slide-btn">Discover
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
         </div>
-        <div class="service-banner-overlay">
-            <div class="service-banner-content">
-                <h2 class="metallic-gold">Local &amp; International Entertainment</h2>
-                <p>Direct sourcing of talent, global acts, musicians, characters, and custom show design.</p>
-                <span class="service-banner-btn">Discover
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                </span>
-            </div>
-        </div>
-    </a>
+    </div>
 
-    <a href="wardrobe-costumes.html" class="service-banner">
-        <div class="service-banner-img">
-            <img src="card6.jpg" alt="Wardrobe costume hire Dubai" loading="lazy">
-        </div>
-        <div class="service-banner-overlay">
-            <div class="service-banner-content">
-                <h2 class="metallic-gold">Wardrobe</h2>
-                <p>Bespoke costume design, extensive wardrobe hire, and elite hair and makeup transformations on site.</p>
-                <span class="service-banner-btn">Discover
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                </span>
-            </div>
-        </div>
-    </a>
+    <div class="svc-quote-slide">
+        <div class="svc-quote-diamond"></div>
+        <blockquote>&ldquo;Spaces that work harder, every single day.&rdquo;</blockquote>
+    </div>
 
+    <div class="svc-slide svc-slide--right">
+        <div class="svc-slide-bg" style="background-image:url('card4.jpg')"></div>
+        <div class="svc-slide-content">
+            <span class="svc-slide-eyebrow">04 &mdash; Staging &amp; AV</span>
+            <h2 class="metallic-gold">Staging, Sound &amp; AV</h2>
+            <p>Technical infrastructure, sound engineering, specialized lighting arrays, and rigid stage architecture.</p>
+            <a href="staging-av.html" class="svc-slide-btn">Discover
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+        </div>
+    </div>
+
+    <div class="svc-quote-slide">
+        <div class="svc-quote-diamond"></div>
+        <blockquote>&ldquo;Every light, every cue, engineered to feel effortless.&rdquo;</blockquote>
+    </div>
+
+    <div class="svc-slide">
+        <div class="svc-slide-bg" style="background-image:url('card5.jpg')"></div>
+        <div class="svc-slide-content">
+            <span class="svc-slide-eyebrow">05 &mdash; Entertainment</span>
+            <h2 class="metallic-gold">Local &amp; International Entertainment</h2>
+            <p>Direct sourcing of talent, global acts, musicians, characters, and custom show design.</p>
+            <a href="entertainment.html" class="svc-slide-btn">Discover
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+        </div>
+    </div>
+
+    <div class="svc-quote-slide">
+        <div class="svc-quote-diamond"></div>
+        <blockquote>&ldquo;The right act, at the right moment, changes everything.&rdquo;</blockquote>
+    </div>
+
+    <div class="svc-slide svc-slide--right">
+        <div class="svc-slide-bg" style="background-image:url('card6.jpg')"></div>
+        <div class="svc-slide-content">
+            <span class="svc-slide-eyebrow">06 &mdash; Wardrobe</span>
+            <h2 class="metallic-gold">Wardrobe</h2>
+            <p>Bespoke costume design, extensive wardrobe hire, and elite hair and makeup transformations on site.</p>
+            <a href="wardrobe-costumes.html" class="svc-slide-btn">Discover
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+        </div>
+    </div>
+
+    <div class="svc-quote-slide">
+        <div class="svc-quote-diamond"></div>
+        <blockquote>&ldquo;Costume is character. We build both.&rdquo;</blockquote>
+    </div>
+
+    <div class="svc-progress" id="svcProgress"></div>
 </div>
 
 <section id="contact-footer">
@@ -565,6 +613,67 @@
     window.addEventListener("resize", function () {
         if (window.innerWidth > 900) closeMobileMenu();
     });
+
+    // --- SERVICES SLIDE WALL: fade-in, progress dots, parallax ---
+    (function () {
+        var wrap = document.querySelector(".services-slides");
+        if (!wrap) return;
+        var slides = Array.prototype.slice.call(wrap.querySelectorAll(".svc-slide, .svc-quote-slide"));
+        var dotsWrap = document.getElementById("svcProgress");
+
+        slides.forEach(function (s, i) {
+            var b = document.createElement("button");
+            b.type = "button";
+            b.setAttribute("aria-label", "Go to section " + (i + 1) + " of " + slides.length);
+            b.addEventListener("click", function () {
+                s.scrollIntoView({ behavior: "smooth", block: "start" });
+            });
+            dotsWrap.appendChild(b);
+        });
+        var dots = Array.prototype.slice.call(dotsWrap.children);
+
+        if ("IntersectionObserver" in window) {
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    var idx = slides.indexOf(entry.target);
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("in-view");
+                        if (entry.intersectionRatio > 0.55 && dots[idx]) {
+                            dots.forEach(function (d) { d.classList.remove("active"); });
+                            dots[idx].classList.add("active");
+                        }
+                    }
+                });
+            }, { root: wrap, threshold: [0.25, 0.55, 0.9] });
+            slides.forEach(function (s) { io.observe(s); });
+        } else {
+            slides.forEach(function (s) { s.classList.add("in-view"); });
+        }
+
+        var ticking = false;
+        wrap.addEventListener("scroll", function () {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(function () {
+                var wrapRect = wrap.getBoundingClientRect();
+                slides.forEach(function (s) {
+                    var bg = s.querySelector(".svc-slide-bg");
+                    if (!bg) return;
+                    var r = s.getBoundingClientRect();
+                    var offset = (r.top - wrapRect.top) * 0.1;
+                    bg.style.transform = "translateY(" + offset + "px)";
+                });
+                ticking = false;
+            });
+        }, { passive: true });
+
+        var hint = wrap.querySelector(".svc-scroll-hint");
+        if (hint) {
+            wrap.addEventListener("scroll", function () {
+                hint.style.opacity = wrap.scrollTop > 40 ? "0" : "0.65";
+            }, { passive: true });
+        }
+    })();
 </script>
 </body>
 </html>
