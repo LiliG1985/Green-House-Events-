@@ -259,9 +259,16 @@
         .cat-section--magicians { display: block; }
         .cat-section--live-art { display: block; }
         .instrumental-subhead {
-            font-family: var(--sans); font-size: 0.7rem; font-weight: 600;
+            font-family: var(--sans); font-size: 0.88rem; font-weight: 600;
             letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-solid);
             margin: 2.2rem 0 1.4rem;
+        }
+        /* Keep every roster card bio short on mobile; a video link is coming later */
+        [class$="-card"] p {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
         .sax-card img {
             width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: top center;
