@@ -196,6 +196,25 @@
             .band-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1.6rem 1rem; }
         }
 
+        /* --- SINGERS SUB-ROSTER GRID --- */
+        .cat-section--singers { display: block; }
+        .singer-card--hidden { display: none; }
+        .singer-card img {
+            width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: top center;
+            border: 0.5px solid var(--border); background: #000;
+        }
+        .singer-card h3 {
+            font-family: var(--serif); font-weight: 400; font-size: 1.05rem;
+            margin: 0.9rem 0 0.5rem; color: var(--white-off);
+        }
+        .singer-card p { font-size: 0.82rem; line-height: 1.6; opacity: 0.72; margin-bottom: 0.7rem; max-width: none; }
+        .singer-card .singer-enquire {
+            display: inline-block; font-family: var(--sans); font-size: 0.65rem; font-weight: 600;
+            letter-spacing: 1px; text-transform: uppercase; color: var(--gold-solid);
+            border-bottom: 0.5px solid var(--gold-solid); padding-bottom: 2px; transition: opacity 0.25s ease;
+        }
+        .singer-card .singer-enquire:hover { opacity: 0.7; }
+
         /* --- FOOTER CTA --- */
         #contact-bridge { position: relative; padding: 6rem 8vw; text-align: center; background: var(--bg-mid); }
         .footer-cta-wrap { max-width: 700px; margin: 0 auto; }
@@ -299,13 +318,671 @@
         <a href="contact.html?service=Entertainment&amp;items=DJs" class="cat-enquire-btn">Enquire About DJs</a>
     </section>
 
-    <section class="cat-section" id="singers">
-        <div>
-            <h2 class="metallic-gold">Singers</h2>
-            <p>Live vocalists for ceremonies, dinner sets, and headline performances, across genres and languages.</p>
-        </div>
-        <a href="contact.html?service=Entertainment&amp;items=Singers" class="cat-enquire-btn">Enquire About Singers</a>
-    </section>
+        <section class="cat-section cat-section--singers" id="singers">
+            <div class="band-intro">
+                <h2 class="metallic-gold">Singers</h2>
+                <p>A taste of the solo vocalists and duos on our roster, from soul and jazz to pop and cabaret. Tell us your date and vibe and we will match the right voice to your event.</p>
+            </div>
+            <div class="band-grid" id="singerGrid">
+                <div class="singer-card">
+                    <img src="singer-photos/layla-kardan.jpg" alt="Layla Kardan, Dubai event singer" loading="lazy"/>
+                    <h3>Layla Kardan</h3>
+                    <p>Layla Kardan blends Belgian, Iranian and Australian influences into a sound built for big stages, with a string of regional awards behind her including Emirates Woman&#x27;s Artist of the Year. She has performed at Quincy Jones&#x27; own Dubai venue, Q&#x27;s Bar, and brings that same star power to private events.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Layla+Kardan" class="singer-enquire">Enquire About Layla Kardan</a>
+                </div>
+                <div class="singer-card">
+                    <img src="singer-photos/aislu-zhak.jpg" alt="Aislu Zhak, Dubai event singer" loading="lazy"/>
+                    <h3>Aislu Zhak</h3>
+                    <p>Aislu Zhak is a Kazakhstan born vocalist who moves easily between jazz, soul and pop, pairing emotional depth with a warm stage presence. She also works as a vocal coach, so expect a technically polished performance as well as a passionate one.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Aislu+Zhak" class="singer-enquire">Enquire About Aislu Zhak</a>
+                </div>
+                <div class="singer-card">
+                    <img src="singer-photos/alena-radziuk.jpg" alt="Alena Radziuk, Dubai event singer" loading="lazy"/>
+                    <h3>Alena Radziuk</h3>
+                    <p>Alena is a Belarusian powerhouse vocalist who won the UAE&#x27;s Win the Crowd and reached the finals of TheVocalist UAE. She has performed for royalty in Bahrain and Saudi Arabia and is especially in demand for festive season bookings.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Alena+Radziuk" class="singer-enquire">Enquire About Alena Radziuk</a>
+                </div>
+                <div class="singer-card">
+                    <img src="singer-photos/bettina-schweiger.jpg" alt="Bettina Schweiger, Dubai event singer" loading="lazy"/>
+                    <h3>Bettina Schweiger</h3>
+                    <p>Bettina Schweiger is an award winning opera soprano from Vienna who has captivated audiences across Europe and the Middle East. She brings rare range to any event, moving comfortably between classical performance and vocal consulting work.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Bettina+Schweiger" class="singer-enquire">Enquire About Bettina Schweiger</a>
+                </div>
+                <div class="singer-card">
+                    <img src="singer-photos/alina-hrokhovska.jpg" alt="Alina Hrokhovska, Dubai event singer" loading="lazy"/>
+                    <h3>Alina Hrokhovska</h3>
+                    <p>Alina has been performing since 2014 across Ukraine, the UAE and Egypt, equally comfortable solo, in a duo or fronting a cover band. Her warm, engaging stage presence keeps guests entertained at everything from five star hotels to beach parties.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Alina+Hrokhovska" class="singer-enquire">Enquire About Alina Hrokhovska</a>
+                </div>
+                <div class="singer-card">
+                    <img src="singer-photos/claudia-lang-lenton.jpg" alt="Claudia Lang Lenton, Dubai event singer" loading="lazy"/>
+                    <h3>Claudia Lang Lenton</h3>
+                    <p>Claudia is a classically trained vocalist from Spain who sings fluently in English, Spanish and French. Her repertoire runs from jazz standards to modern ballads, delivered with a voice she herself describes as sweet yet powerful.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Claudia+Lang+Lenton" class="singer-enquire">Enquire About Claudia Lang Lenton</a>
+                </div>
+                <div class="singer-card">
+                    <img src="singer-photos/claudia-patrice.jpg" alt="Claudia Patrice, Dubai event singer" loading="lazy"/>
+                    <h3>Claudia Patrice</h3>
+                    <p>Claudia Patrice is a Dubai based singer, songwriter and producer known for soulful, honest music built around real storytelling. She writes and produces her own material, giving every performance a personal, original edge.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Claudia+Patrice" class="singer-enquire">Enquire About Claudia Patrice</a>
+                </div>
+                <div class="singer-card">
+                    <img src="singer-photos/ella-lefterova.jpg" alt="Ella Lefterova, Dubai event singer" loading="lazy"/>
+                    <h3>Ella Lefterova</h3>
+                    <p>Ella Lefterova fronts a flexible lineup, performing as a duo, trio or full four piece band across jazz, pop, soul and lounge. Her multilingual repertoire gives her a genuinely global sound, built for UAE audiences of every background.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Ella+Lefterova" class="singer-enquire">Enquire About Ella Lefterova</a>
+                </div>
+                <div class="singer-card">
+                    <img src="singer-photos/elnura.jpg" alt="Elnura, Dubai event singer" loading="lazy"/>
+                    <h3>Elnura</h3>
+                    <p>Elnura Abdykasymova is a UAE based vocalist known for a powerful voice and magnetic stage presence across Dubai and Abu Dhabi. Whether on a big stage or in an intimate setting, she brings energy and elegance to every set.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Elnura" class="singer-enquire">Enquire About Elnura</a>
+                </div>
+                <div class="singer-card">
+                    <img src="singer-photos/courtney-gaw.jpg" alt="Courtney Gaw, Dubai event singer" loading="lazy"/>
+                    <h3>Courtney Gaw</h3>
+                    <p>Courtney Gaw is a Dubai based singer and actress whose performances draw equally on vocal power and dramatic storytelling. Her background on stage and screen gives her sets a theatrical, character driven edge.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Courtney+Gaw" class="singer-enquire">Enquire About Courtney Gaw</a>
+                </div>
+                <div class="singer-card">
+                    <img src="singer-photos/alisha-vickers.jpg" alt="Alisha Vickers, Dubai event singer" loading="lazy"/>
+                    <h3>Alisha Vickers</h3>
+                    <p>Alisha Vickers is a Dubai based singer songwriter with a background in marketing, which shows in how sharply her shows are put together. Expect smooth, expressive vocals paired with lyrics that feel personal and purposeful.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Alisha+Vickers" class="singer-enquire">Enquire About Alisha Vickers</a>
+                </div>
+                <div class="singer-card">
+                    <img src="singer-photos/alen-hit.jpg" alt="Alen Hit, Dubai event singer" loading="lazy"/>
+                    <h3>Alen Hit</h3>
+                    <p>Alen Hit, also known as Aleh Shchutski, built his name on European talent shows including The Voice and X Factor, plus a national final at Eurovision 2018. His powerful voice and striking stage presence have earned him fans across Europe and the Middle East.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Alen+Hit" class="singer-enquire">Enquire About Alen Hit</a>
+                </div>
+                <div class="singer-card">
+                    <img src="singer-photos/allexa-bash.jpg" alt="Allexa Bash, Dubai event singer" loading="lazy"/>
+                    <h3>Allexa Bash</h3>
+                    <p>Allexa blends the drama of Kate Bush with the emotional weight of Adele, a style she brought to her debut album Dark Angels. Classically trained since childhood, she performs across pop, rock and jazz and has earned radio play from Beirut to Paris.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Allexa+Bash" class="singer-enquire">Enquire About Allexa Bash</a>
+                </div>
+                <div class="singer-card">
+                    <img src="singer-photos/anelly.jpg" alt="Anelly, Dubai event singer" loading="lazy"/>
+                    <h3>Anelly</h3>
+                    <p>Anelly is a Ukrainian born, UAE based singer with a theatrical vocal background from Kyiv&#x27;s Circus and Variety Arts academy. Over 12 years she has performed across six countries and sings fluently in four languages.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Anelly" class="singer-enquire">Enquire About Anelly</a>
+                </div>
+                <div class="singer-card">
+                    <img src="singer-photos/anna-yeli.jpg" alt="Anna Yeli, Dubai event singer" loading="lazy"/>
+                    <h3>Anna Yeli</h3>
+                    <p>Anna Yeli is a Ukrainian singer based in Dubai whose sound blends the depth of jazz with the smoothness of lounge and the energy of pop. Her international performances have built her a loyal following well beyond the UAE.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Anna+Yeli" class="singer-enquire">Enquire About Anna Yeli</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/aston-wylie.jpg" alt="Aston Wylie, Dubai event singer" loading="lazy"/>
+                    <h3>Aston Wylie</h3>
+                    <p>Aston Wylie is a South African multi instrumentalist who gained wide recognition as a contestant on The Voice SA. His looping techniques turn classic and contemporary hits into something distinctly his own live.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Aston+Wylie" class="singer-enquire">Enquire About Aston Wylie</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/bibi-luna.jpg" alt="Bibi Luna, Dubai event singer" loading="lazy"/>
+                    <h3>Bibi Luna</h3>
+                    <p>Bibi Luna is an Italian vocalist whose soulful, elegant sets suit upscale events from private soirees to international galas. Her style blends old world charm with a contemporary touch that keeps audiences fully engaged.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Bibi+Luna" class="singer-enquire">Enquire About Bibi Luna</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/charley-ryan.jpg" alt="Charley Ryan, Dubai event singer" loading="lazy"/>
+                    <h3>Charley Ryan</h3>
+                    <p>Charley Ryan brings an Irish rock and roll spirit to Dubai&#x27;s stages as lead singer of Warehouse11 and a founding member of Heart Strings. Her raw vocals and magnetic energy work equally well in a packed venue or a stripped back acoustic set.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Charley+Ryan" class="singer-enquire">Enquire About Charley Ryan</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/dan-moores.jpg" alt="Dan Moores, Dubai event singer" loading="lazy"/>
+                    <h3>Dan Moores</h3>
+                    <p>Dan Moores is a Dubai based guitarist and vocalist known for blending acoustic playing with live looping to build a full, layered sound solo. He has held residencies at some of the city&#x27;s top venues including Emirates Palace and Jumeirah Beach Hotel.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Dan+Moores" class="singer-enquire">Enquire About Dan Moores</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/deniza.jpg" alt="DeniZa, Dubai event singer" loading="lazy"/>
+                    <h3>DeniZa</h3>
+                    <p>DeniZa is a touring vocalist, producer and choreographer whose shows fuse music, movement and storytelling, honed across five years of performing in Asia. Her vocal range stretches from jazz to rock, and she commands a stage with real confidence.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=DeniZa" class="singer-enquire">Enquire About DeniZa</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/dermott-taggart.jpg" alt="Dermott Taggart, Dubai event singer" loading="lazy"/>
+                    <h3>Dermott Taggart</h3>
+                    <p>Dermott Taggart is an Irish singer songwriter bringing warm, acoustic driven sets to stages across Dubai and Abu Dhabi. He moves easily between original songs and reimagined classics, always grounded in honest storytelling.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Dermott+Taggart" class="singer-enquire">Enquire About Dermott Taggart</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/diana-torres.jpg" alt="Diana Torres, Dubai event singer" loading="lazy"/>
+                    <h3>Diana Torres</h3>
+                    <p>Diana Torres sings in English, Spanish and Italian, giving her sets genuine multicultural reach for weddings and corporate events across the UAE. Her warm stage presence and emotional delivery suit everything from intimate gatherings to grand celebrations.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Diana+Torres" class="singer-enquire">Enquire About Diana Torres</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/diana-petrovska.jpg" alt="Diana Petrovska, Dubai event singer" loading="lazy"/>
+                    <h3>Diana Petrovska</h3>
+                    <p>Diana Petrovska is a cabaret and show performer from Odesa whose range spans soulful ballads to high energy cabaret numbers. She has performed across the UAE, Georgia, Turkey and Ukraine, building a reputation for versatility.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Diana+Petrovska" class="singer-enquire">Enquire About Diana Petrovska</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/emily-bourn.jpg" alt="Emily Bourn, Dubai event singer" loading="lazy"/>
+                    <h3>Emily Bourn</h3>
+                    <p>Emily Bourn is a British singer songwriter based in Dubai whose original music carries Celtic tones and bittersweet, story driven lyrics. She performs both solo and with a cover band, giving clients real flexibility in format.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Emily+Bourn" class="singer-enquire">Enquire About Emily Bourn</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/evgenia.jpg" alt="Evgenia, Dubai event singer" loading="lazy"/>
+                    <h3>Evgenia</h3>
+                    <p>Evgenia is a Dubai based vocalist whose set list moves fluidly between pop, jazz, lounge and rock depending on the room. She performs solo or with a full band, tailoring the mood from corporate gatherings to upscale lounge nights.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Evgenia" class="singer-enquire">Enquire About Evgenia</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/florentina-tuchel.jpg" alt="Florentina Tuchel, Dubai event singer" loading="lazy"/>
+                    <h3>Florentina Tuchel</h3>
+                    <p>Florentina Tuchel is a Dubai based singer who performs both as a solo artist and fronting her own band. Her sets blend soulful ballads with upbeat hits for an energetic, crowd pleasing experience.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Florentina+Tuchel" class="singer-enquire">Enquire About Florentina Tuchel</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/idorka.jpg" alt="Idorka, Dubai event singer" loading="lazy"/>
+                    <h3>Idorka</h3>
+                    <p>Idorka is a Dubai based vocalist with a soulful tone and dynamic range suited to luxury events and private parties alike. Her repertoire spans pop, soul, jazz and contemporary hits, solo or alongside a live band.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Idorka" class="singer-enquire">Enquire About Idorka</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/irina-shepova.jpg" alt="Irina Shepova, Dubai event singer" loading="lazy"/>
+                    <h3>Irina Shepova</h3>
+                    <p>Irina Shepova has been performing professionally since 2013 across an unusually wide range, from jazz and soul to Latin, country and disco. She has worked in bands, duos and trios before building a strong solo career in Dubai.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Irina+Shepova" class="singer-enquire">Enquire About Irina Shepova</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/irina-t.jpg" alt="Irina T, Dubai event singer" loading="lazy"/>
+                    <h3>Irina T</h3>
+                    <p>Irina is a Belarusian singer based in Dubai performing solo, as a duo or trio across pop, soul, jazz, lounge and dance. Her main repertoire is in English, with sets also available in French, Italian, Spanish and Russian.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Irina+T" class="singer-enquire">Enquire About Irina T</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/itzel.jpg" alt="Itzel, Dubai event singer" loading="lazy"/>
+                    <h3>Itzel</h3>
+                    <p>Itzel is a Dubai based singer songwriter whose sound blends pop, soul, R&amp;B and acoustic textures. She writes original material as well as reimagined covers, bringing a storyteller&#x27;s instinct to every performance.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Itzel" class="singer-enquire">Enquire About Itzel</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/joel-rothwell.jpg" alt="Joel Rothwell, Dubai event singer" loading="lazy"/>
+                    <h3>Joel Rothwell</h3>
+                    <p>Joel Rothwell splits his time between the UK and UAE as a singer, guitarist and DJ performing under the name Hudson. He can deliver an acoustic set, a full band performance or a high energy DJ set, often within the same event.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Joel+Rothwell" class="singer-enquire">Enquire About Joel Rothwell</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/julia-choo.jpg" alt="Julia Choo, Dubai event singer" loading="lazy"/>
+                    <h3>Julia Choo</h3>
+                    <p>Julia Choo is a Dubai based vocalist known for a polished, elegant stage presence suited to luxury events and private functions. Her wide ranging repertoire moves from soulful ballads to upbeat hits depending on the mood of the room.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Julia+Choo" class="singer-enquire">Enquire About Julia Choo</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/kate-meteora.jpg" alt="Kate Meteora, Dubai event singer" loading="lazy"/>
+                    <h3>Kate Meteora</h3>
+                    <p>Kate Meteora, also known as KT, built her following through heartfelt lyrics and mesmerizing melodies performed across Dubai&#x27;s music scene. Her multicultural influences give her sound a fresh, distinctive edge.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Kate+Meteora" class="singer-enquire">Enquire About Kate Meteora</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/katarina-gerlova.jpg" alt="Katarina Gerlova, Dubai event singer" loading="lazy"/>
+                    <h3>Katarina Gerlova</h3>
+                    <p>Katarina Gerlova is a Dubai based singer and violinist who blends vocal and instrumental performance in one act. Her versatility suits everything from private celebrations to corporate functions.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Katarina+Gerlova" class="singer-enquire">Enquire About Katarina Gerlova</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/kati-muse.jpg" alt="Kati Muse, Dubai event singer" loading="lazy"/>
+                    <h3>Kati Muse</h3>
+                    <p>Miss Kati draws on soul, R&amp;B, hip hop, jazz, funk and downtempo influences from artists like Amy Winehouse and Erykah Badu. Her mature, expressive voice is built for emotionally rich, intimate performances.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Kati+Muse" class="singer-enquire">Enquire About Kati Muse</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/kristina-gutseva.jpg" alt="Kristina Gutseva, Dubai event singer" loading="lazy"/>
+                    <h3>Kristina Gutseva</h3>
+                    <p>Kristina Gutseva is an award winning Belarusian singer based in Dubai known for a powerful voice and strong stage presence. Her performances span a wide range of genres, always marked by real emotional depth.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Kristina+Gutseva" class="singer-enquire">Enquire About Kristina Gutseva</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/kristina-skiba.jpg" alt="Kristina Skiba, Dubai event singer" loading="lazy"/>
+                    <h3>Kristina Skiba</h3>
+                    <p>Kristina Skiba performs across jazz, pop, cabaret, Latin, swing, disco and blues, often reworking world hits into her own arrangements. She also writes her own songs and works as a vocal teacher and actress in Dubai&#x27;s theatre scene.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Kristina+Skiba" class="singer-enquire">Enquire About Kristina Skiba</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/kristine-martiashvili.jpg" alt="Kristine Martiashvili, Dubai event singer" loading="lazy"/>
+                    <h3>Kristine Martiashvili</h3>
+                    <p>Kristine Martiashvili is a Dubai based singer songwriter whose emotive voice and heartfelt lyrics anchor every set. Her live shows move across soul, pop, acoustic and contemporary sounds.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Kristine+Martiashvili" class="singer-enquire">Enquire About Kristine Martiashvili</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/raena-lashae.jpg" alt="Raena Lashae, Dubai event singer" loading="lazy"/>
+                    <h3>Raena Lashae</h3>
+                    <p>Raena Lashae is a British vocalist based in Dubai with a smooth, rich blend of soul, jazz and funk. She performs at luxury venues, private events and festivals with a warm, effortlessly cool sound.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Raena+Lashae" class="singer-enquire">Enquire About Raena Lashae</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/la-rudche.jpg" alt="La Rudche, Dubai event singer" loading="lazy"/>
+                    <h3>La Rudche</h3>
+                    <p>Known as the Demon Queen of Dubai, La Rudche fuses dark pop, soul, rock and performance art into a genre defying live show. Expect raw emotion, theatrical flair and a commanding stage presence.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=La+Rudche" class="singer-enquire">Enquire About La Rudche</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/laura-arias.jpg" alt="Laura Arias, Dubai event singer" loading="lazy"/>
+                    <h3>Laura Arias</h3>
+                    <p>Laura brings Latin, pop and jazz together into vibrant, high energy sets suited to everything from intimate restaurants to yacht parties. Her warm stage presence makes her a natural at engaging a crowd of any size.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Laura+Arias" class="singer-enquire">Enquire About Laura Arias</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/lauren-townley.jpg" alt="Lauren Townley, Dubai event singer" loading="lazy"/>
+                    <h3>Lauren Townley</h3>
+                    <p>Lauren Claire Townley is a heartfelt country singer songwriter whose music blends classic country charm with a modern twist. Her storytelling style turns personal moments into songs that resonate well beyond the stage.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Lauren+Townley" class="singer-enquire">Enquire About Lauren Townley</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/lexie.jpg" alt="Lexie, Dubai event singer" loading="lazy"/>
+                    <h3>Lexie</h3>
+                    <p>Lexie is a UK signed recording artist with releases through Warner Music and Universal and a sound she describes as pop with a touch of soul and country. She has performed over 300 shows worldwide, including sets at Dubai Opera and Coca Cola Arena.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Lexie" class="singer-enquire">Enquire About Lexie</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/lia.jpg" alt="Lia, Dubai event singer" loading="lazy"/>
+                    <h3>Lia</h3>
+                    <p>Lia is a singer songwriter with 20 years in the industry, equally at home across pop, dance, lounge and jazz. She has collaborated widely with musicians, orchestras and dancers, bringing that range to every live set.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Lia" class="singer-enquire">Enquire About Lia</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/lisi-vald-s.jpg" alt="Lisi Valdés, Dubai event singer" loading="lazy"/>
+                    <h3>Lisi Valdés</h3>
+                    <p>Lisi Valdés is a Dubai based singer songwriter whose repertoire spans salsa, bossa nova, bachata, pop and jazz, performed in Spanish, English and Portuguese. Her reliable, interactive style has made her a regular at venues including Expo 2020 and aboard MSC Cruises.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Lisi+Valdés" class="singer-enquire">Enquire About Lisi Valdés</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/massiel-sarraff.jpg" alt="Massiel Sarraff, Dubai event singer" loading="lazy"/>
+                    <h3>Massiel Sarraff</h3>
+                    <p>Massiel Sarraff Collazo is a Spanish Cuban vocalist, saxophonist and trumpet player whose sets span classic jazz, R&amp;B, rock and Latin music. She sings in five languages, giving her a genuinely global reach on stage.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Massiel+Sarraff" class="singer-enquire">Enquire About Massiel Sarraff</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/nadin.jpg" alt="Nadin, Dubai event singer" loading="lazy"/>
+                    <h3>Nadin</h3>
+                    <p>Nadin is a Ukrainian artist based in Dubai performing solo, as a duo or as part of the high energy Redline Band. Beyond singing she also works as a voiceover artist, actress and model, bringing a polished, multi disciplinary presence to every set.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Nadin" class="singer-enquire">Enquire About Nadin</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/natalia.jpg" alt="Natalia, Dubai event singer" loading="lazy"/>
+                    <h3>Natalia</h3>
+                    <p>Natalia is a Belarusian singer and trained pianist with 11 years of experience across upbeat pop, lounge, rock, jazz and Latin sets, plus decades of classic hits. She performs solo, in duos and trios, fronting a live band or leading dinner shows with dancers.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Natalia" class="singer-enquire">Enquire About Natalia</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/nataly.jpg" alt="Nataly, Dubai event singer" loading="lazy"/>
+                    <h3>Nataly</h3>
+                    <p>Nataly has been performing across the Emirates since 2012, fluent in multiple languages and comfortable blending genres for any room. She has played five star hotels, weddings, exhibitions and corporate events worldwide.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Nataly" class="singer-enquire">Enquire About Nataly</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/nathaniel-lewis.jpg" alt="Nathaniel Lewis, Dubai event singer" loading="lazy"/>
+                    <h3>Nathaniel Lewis</h3>
+                    <p>Nathaniel Lewis is a singer songwriter whose soulful vocals and heartfelt lyrics sit across genre lines. Beyond the stage he is also an entrepreneur, bringing a sharp, business minded approach to every project.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Nathaniel+Lewis" class="singer-enquire">Enquire About Nathaniel Lewis</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/nonna.jpg" alt="Nonna, Dubai event singer" loading="lazy"/>
+                    <h3>Nonna</h3>
+                    <p>Nonna Askerova is a Dubai based jazz and pop vocalist known for rich tone and refined technique as a soloist with a jazz Big Band. She also teaches voice, bringing a technically grounded polish to every performance.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Nonna" class="singer-enquire">Enquire About Nonna</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/polina-qz.jpg" alt="Polina Qz, Dubai event singer" loading="lazy"/>
+                    <h3>Polina Qz</h3>
+                    <p>Polina Qz trained in Jazz Vocal at St Petersburg University of Culture and has performed everywhere from the Byblos Festival in Lebanon to Dubai Opera House. A former contestant on The Voice Russia and X Factor Ukraine, she moves comfortably between jazz, opera and pop.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Polina+Qz" class="singer-enquire">Enquire About Polina Qz</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/polina-sandan.jpg" alt="Polina Sandan, Dubai event singer" loading="lazy"/>
+                    <h3>Polina Sandan</h3>
+                    <p>Polina Sandan is a Dubai based singer and pianist crowned Best Singer of the UAE in 2020, performing in French, English, Italian, Russian and Chinese. Her refined, multilingual sets suit luxury events and cultural showcases alike.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Polina+Sandan" class="singer-enquire">Enquire About Polina Sandan</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/sara-tarabulsi.jpg" alt="Sara Tarabulsi, Dubai event singer" loading="lazy"/>
+                    <h3>Sara Tarabulsi</h3>
+                    <p>Sara Tarabulsi is a Dubai based vocalist whose expressive voice and elegant style suit luxury events and live venues. Her sets range from soulful ballads to pop hits and acoustic classics.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Sara+Tarabulsi" class="singer-enquire">Enquire About Sara Tarabulsi</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/shanice-michaels.jpg" alt="Shanice Michaels, Dubai event singer" loading="lazy"/>
+                    <h3>Shanice Michaels</h3>
+                    <p>Shanice Michaels has performed across Dubai, Hong Kong, New York and Las Vegas, moving through Motown, jazz, R&amp;B, reggae and contemporary sets. Before the UAE she was first runner up on the TV show Born Diva in the Philippines.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Shanice+Michaels" class="singer-enquire">Enquire About Shanice Michaels</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/sophie-magali.jpg" alt="Sophie Magali, Dubai event singer" loading="lazy"/>
+                    <h3>Sophie Magali</h3>
+                    <p>Sophie Magali is a Dubai based singer songwriter with German and Slovenian roots whose soft, dreamy voice suits an upbeat, modern pop and R&amp;B sound. Her newer material explores the early excitement of romance alongside themes of self love.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Sophie+Magali" class="singer-enquire">Enquire About Sophie Magali</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/sol-basaldua.jpg" alt="Solé Basaldua, Dubai event singer" loading="lazy"/>
+                    <h3>Solé Basaldua</h3>
+                    <p>Solé Basaldua is an Argentine singer, songwriter and dancer who spent years refining her craft across London, Los Angeles and Miami. She has collaborated with Pitbull and signed to Universal, and has performed everywhere from the iHeartRadio Music Awards to Wembley Stadium.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Solé+Basaldua" class="singer-enquire">Enquire About Solé Basaldua</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/toi-dupras.jpg" alt="Toi Dupras, Dubai event singer" loading="lazy"/>
+                    <h3>Toi Dupras</h3>
+                    <p>Toi Dupras is a Dubai based singer, show creator and dancer who blends music and movement into one unified performance. Her creative, high energy shows make her a standout for events looking for something visually driven.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Toi+Dupras" class="singer-enquire">Enquire About Toi Dupras</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/tsaint.jpg" alt="TSaint, Dubai event singer" loading="lazy"/>
+                    <h3>TSaint</h3>
+                    <p>TSaint is a rising Dubai based performer blending R&amp;B, pop and hip hop into smooth, personal, catchy sets. His music captures everyday stories of love and self discovery with a modern, global sound.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=TSaint" class="singer-enquire">Enquire About TSaint</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/vahimiti.jpg" alt="Vahimiti, Dubai event singer" loading="lazy"/>
+                    <h3>Vahimiti</h3>
+                    <p>Born in Italy with Tahitian roots, Vahimiti writes songs that blend soulful melodies with influences from across her multicultural background. Her intimate, warm performances turn every set into a meeting point of cultures.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Vahimiti" class="singer-enquire">Enquire About Vahimiti</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/tina-paravian.jpg" alt="Tina Paravian, Dubai event singer" loading="lazy"/>
+                    <h3>Tina Paravian</h3>
+                    <p>Tina Paravian is a Kyiv born, Dubai and London based singer and TV presenter with a commanding, versatile vocal style. Her performances are vibrant and emotional, backed by a natural ease in front of a camera as well as a crowd.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Tina+Paravian" class="singer-enquire">Enquire About Tina Paravian</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/toria-kant.jpg" alt="Toria Kant, Dubai event singer" loading="lazy"/>
+                    <h3>Toria Kant</h3>
+                    <p>Toria is a Dubai based singer blending pop, R&amp;B and soul into a sound that has earned her a reputation as one of the city&#x27;s rising talents. Her strong stage presence and emotive delivery work well live or in the studio.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Toria+Kant" class="singer-enquire">Enquire About Toria Kant</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/victoria-newman.jpg" alt="Victoria Newman, Dubai event singer" loading="lazy"/>
+                    <h3>Victoria Newman</h3>
+                    <p>Victoria Newman is a soul and R&amp;B artist with over 15 years of experience as a solo performer and in bands. Her voice blends sultry smoothness with powerful highs, shaped by formal music college training.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Victoria+Newman" class="singer-enquire">Enquire About Victoria Newman</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/sergio-catalan.jpg" alt="Sergio Catalan, Dubai event singer" loading="lazy"/>
+                    <h3>Sergio Catalan</h3>
+                    <p>Sergio Catalan is a Chilean guitarist and vocalist whose sound draws on bossa nova, flamenco and Latin American music alongside romantic ballads and jazz. Based in the UAE since 2008, he has performed at Dubai Opera, Expo 2020 and venues including Burj Al Arab and Four Seasons.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Sergio+Catalan" class="singer-enquire">Enquire About Sergio Catalan</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/jay-bellamy.jpg" alt="Jay Bellamy, Dubai event singer" loading="lazy"/>
+                    <h3>Jay Bellamy</h3>
+                    <p>Jay Bellamy is a UK singer and guitarist now based in Dubai, known for smooth vocals and a laid back, soulful charm. His repertoire spans acoustic classics, pop, rock and indie, suited to both chilled and high energy events.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Jay+Bellamy" class="singer-enquire">Enquire About Jay Bellamy</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/hamdan-al-abri.jpg" alt="Hamdan Al Abri, Dubai event singer" loading="lazy"/>
+                    <h3>Hamdan Al Abri</h3>
+                    <p>Hamdan Al Abri is an Emirati singer songwriter and frontman of Dubai based soul band ABRI, known for albums Sunchild and Blank Notes. ABRI has toured extensively and shared stages with artists including Erykah Badu and Ziggy Marley.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Hamdan+Al+Abri" class="singer-enquire">Enquire About Hamdan Al Abri</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/arianna-bianchi.jpg" alt="Arianna Bianchi, Dubai event singer" loading="lazy"/>
+                    <h3>Arianna Bianchi</h3>
+                    <p>Arianna Bianchi has been performing since childhood, moving from Italian television at age six to a decade long residency at Rome&#x27;s Harry&#x27;s Bar. Now based across the Middle East, she performs solo and with her own jazz trio.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Arianna+Bianchi" class="singer-enquire">Enquire About Arianna Bianchi</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/ryan-gibb.jpg" alt="Ryan Gibb, Dubai event singer" loading="lazy"/>
+                    <h3>Ryan Gibb</h3>
+                    <p>Ryan Gibb is a pianist, vocalist and actor with West End credits and a repertoire spanning every genre. He has shared the stage with Andrew Lloyd Webber, Sir Tom Jones and Will.I.Am before relocating to Dubai in 2022.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Ryan+Gibb" class="singer-enquire">Enquire About Ryan Gibb</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/andrea-florez.jpg" alt="Andrea Florez, Dubai event singer" loading="lazy"/>
+                    <h3>Andrea Florez</h3>
+                    <p>Andrea Florez brings a strong stage presence and wide vocal range built across performances in New York, Miami, Paris and beyond. Her technical background in recording and arranging makes her a dependable, detail focused performer.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Andrea+Florez" class="singer-enquire">Enquire About Andrea Florez</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/arqam-al-abri.jpg" alt="Arqam Al Abri, Dubai event singer" loading="lazy"/>
+                    <h3>Arqam Al Abri</h3>
+                    <p>Arqam is an Emirati soul singer who left a corporate career to pursue music rooted in positivity and purpose. His sound blends old school soul with neo soul beats, available on major streaming platforms.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Arqam+Al+Abri" class="singer-enquire">Enquire About Arqam Al Abri</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/eirini.jpg" alt="Eirini, Dubai event singer" loading="lazy"/>
+                    <h3>Eirini</h3>
+                    <p>Eirini is a UK based R&amp;B artist of Greek Cypriot and British Irish heritage who trained at Stella Mann College before building a following in Dubai. She has performed at The Royal Albert Hall and major UAE venues, and released her debut single in 2022.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Eirini" class="singer-enquire">Enquire About Eirini</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/lyndrik-xela.jpg" alt="Lyndrik Xela, Dubai event singer" loading="lazy"/>
+                    <h3>Lyndrik Xela</h3>
+                    <p>Lyndrik Xela brings an energy reminiscent of Michael Jackson and Prince, built over a decade performing on London&#x27;s West End including a lead role in Thriller the musical. His range and charisma make him a genuinely original presence on stage.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Lyndrik+Xela" class="singer-enquire">Enquire About Lyndrik Xela</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/lina-ammor.jpg" alt="Lina Ammor, Dubai event singer" loading="lazy"/>
+                    <h3>Lina Ammor</h3>
+                    <p>Lina Ammor is a German born, Dubai based RnB and soul singer who won Netflix&#x27;s Sing On Germany and has appeared on The Voice of Germany. She has performed at Dubai Expo 2020 and the Forbes Middle East Healthcare Summit among other major events.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Lina+Ammor" class="singer-enquire">Enquire About Lina Ammor</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/jaymie-deville.jpg" alt="Jaymie Deville, Dubai event singer" loading="lazy"/>
+                    <h3>Jaymie Deville</h3>
+                    <p>Jaymie Deville is an Australian singer now based in Dubai, known for atmospheric, emotionally intimate R&amp;B. He is also an accomplished producer and songwriter, with his original music streamed over 4.5 million times.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Jaymie+Deville" class="singer-enquire">Enquire About Jaymie Deville</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/ayesha-reid.jpg" alt="Ayesha Reid, Dubai event singer" loading="lazy"/>
+                    <h3>Ayesha Reid</h3>
+                    <p>Ayesha Reid is a Dubai based singer songwriter whose soulful vocals draw on R&amp;B, soul and jazz influences. Her heartfelt lyrics and emotive delivery have made her a rising name in the local scene.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Ayesha+Reid" class="singer-enquire">Enquire About Ayesha Reid</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/chinua-hawk.jpg" alt="Chinua Hawk, Dubai event singer" loading="lazy"/>
+                    <h3>Chinua Hawk</h3>
+                    <p>Chinua Hawk is an award winning singer from New Jersey rooted in American soul and gospel traditions, who has sung backing vocals for Celine Dion and recorded with Kanye West. His performances span North America, the Middle East, Africa and beyond.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Chinua+Hawk" class="singer-enquire">Enquire About Chinua Hawk</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/julia-sydorenko.jpg" alt="Julia Sydorenko, Dubai event singer" loading="lazy"/>
+                    <h3>Julia Sydorenko</h3>
+                    <p>Julia Sydorenko is a Ukrainian singer based in the UAE for the past seven years, trained in jazz and pop vocals in Poland. Her repertoire spans jazz, soul, pop and dance, performed at venues including Waldorf Astoria and Four Seasons Jumeirah.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Julia+Sydorenko" class="singer-enquire">Enquire About Julia Sydorenko</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/bruno-fave.jpg" alt="Bruno Fave, Dubai event singer" loading="lazy"/>
+                    <h3>Bruno Fave</h3>
+                    <p>Bruno Fave is a Dubai based producer, vocalist and content creator known for electro soul and contemporary R&amp;B releases including Save The Day and Run. He performs live with guitar, loop station and drum machine at events from Fashion Forward to Formula 1 Yas Marina.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Bruno+Fave" class="singer-enquire">Enquire About Bruno Fave</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/sam-tring.jpg" alt="Sam Tring, Dubai event singer" loading="lazy"/>
+                    <h3>Sam Tring</h3>
+                    <p>Sam Tring is a South London born singer songwriter with a soul pop sound shaped by jazz influences like Esperanza Spalding and Gretchen Parlato. Her rich vocal tones and jazzy melodic choices give every set a distinct, exploratory edge.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Sam+Tring" class="singer-enquire">Enquire About Sam Tring</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/sean-lipsey.jpg" alt="Sean Lipsey, Dubai event singer" loading="lazy"/>
+                    <h3>Sean Lipsey</h3>
+                    <p>Sean Lipsey is a US born, Dubai based vocalist whose soulful R&amp;B style is rooted in his church music background. Beyond singing, he is also a multi instrumentalist, producer and entrepreneur.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Sean+Lipsey" class="singer-enquire">Enquire About Sean Lipsey</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/anastasia-marushova.jpg" alt="Anastasia Marushova, Dubai event singer" loading="lazy"/>
+                    <h3>Anastasia Marushova</h3>
+                    <p>Performing as MARUSHOVA, Anastasia brings an experimental, original sound shaped by competition finals including SerebroKasting and national TV appearances in Russia. Her original music is available on Spotify and Apple Music under the same stage name.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Anastasia+Marushova" class="singer-enquire">Enquire About Anastasia Marushova</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/diane.jpg" alt="Diane, Dubai event singer" loading="lazy"/>
+                    <h3>Diane</h3>
+                    <p>Diane is an Irish born singer with a 25 year career spanning West End tours and major international events, including performances at the FIFA World Cup 2022 fan zone in Qatar. As a Dubai resident she has also performed for Sheikh Mohammed Bin Rashid and royal guests at the Endurance World Cup.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Diane" class="singer-enquire">Enquire About Diane</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/anna.jpg" alt="Anna, Dubai event singer" loading="lazy"/>
+                    <h3>Anna</h3>
+                    <p>Anna is an Odessa born singer with 12 years of international experience across pop, R&amp;B, rock, Latin and jazz, performing in duos, trios and larger bands. She has worked in five star hotels worldwide and fronted Dubai party band Rhythm Nation.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Anna" class="singer-enquire">Enquire About Anna</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/mary-louise.jpg" alt="Mary Louise, Dubai event singer" loading="lazy"/>
+                    <h3>Mary Louise</h3>
+                    <p>Mary Louise is an Irish singer, model and actress known for a versatile voice and a striking stage presence at Dubai&#x27;s top venues. Her shows combine music and style into one polished package.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Mary+Louise" class="singer-enquire">Enquire About Mary Louise</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/winck.jpg" alt="Winck, Dubai event singer" loading="lazy"/>
+                    <h3>Winck</h3>
+                    <p>Discovered on The Voice Brasil, Luiza Winck is a Brazilian pop singer blending funk and Latin influences into high energy, sold out shows at Souk Madinat Jumeirah. Her sets often feature outfit changes and dancers for a full production experience.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Winck" class="singer-enquire">Enquire About Winck</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/maria.jpg" alt="Maria, Dubai event singer" loading="lazy"/>
+                    <h3>Maria</h3>
+                    <p>Maria is a resident singer at Palazzo Versace Hotel who has performed for UAE government and royal family events and shared stages with Amr Diab and Tamer Hosni. She sings in six languages across nine years of performing in the UAE.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Maria" class="singer-enquire">Enquire About Maria</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/anyuta.jpg" alt="Anyuta, Dubai event singer" loading="lazy"/>
+                    <h3>Anyuta</h3>
+                    <p>Anna is a Ukrainian singer skilled in pop, jazz, lounge and blues, equally comfortable in duos, trios or full bands and incorporating choreography into her shows. Her international career spans South Korea, China and a range of Dubai&#x27;s top venues.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Anyuta" class="singer-enquire">Enquire About Anyuta</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/nati.jpg" alt="Nati, Dubai event singer" loading="lazy"/>
+                    <h3>Nati</h3>
+                    <p>Nati is an internationally touring singer educated at Kyiv&#x27;s top music institutions, with wins at international vocal competitions behind her. She performs regularly across Germany, the Maldives, Kazakhstan and beyond, including a Dubai residency with Nuart Entertainment.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Nati" class="singer-enquire">Enquire About Nati</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/clare-sophia.jpg" alt="Clare Sophia, Dubai event singer" loading="lazy"/>
+                    <h3>Clare Sophia</h3>
+                    <p>Clare is a British soul, jazz and R&amp;B vocalist who has toured internationally as a backing vocalist for Stormzy, Rita Ora and Kylie Minogue. Now based in Dubai, she performs for clients including Van Cleef &amp; Arpels and Waldorf Astoria.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Clare+Sophia" class="singer-enquire">Enquire About Clare Sophia</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/alina.jpg" alt="Alina, Dubai event singer" loading="lazy"/>
+                    <h3>Alina</h3>
+                    <p>Alina is a Ukrainian singer songwriter and semi finalist on The Voice of Ukraine, formerly lead soloist of the National Academic Symphonic Band of Ukraine. Her style moves between sincere, soulful ballads and stylish, high energy sets.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Alina" class="singer-enquire">Enquire About Alina</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/jade-kimberley.jpg" alt="Jade Kimberley, Dubai event singer" loading="lazy"/>
+                    <h3>Jade Kimberley</h3>
+                    <p>Jade Kimberley is an international triple threat performer whose 15 year career spans singing, dancing, hosting and even fire performance. Her vocals move fluidly from jazz to rock, pop to musical theatre.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Jade+Kimberley" class="singer-enquire">Enquire About Jade Kimberley</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/aleksandra.jpg" alt="Aleksandra, Dubai event singer" loading="lazy"/>
+                    <h3>Aleksandra</h3>
+                    <p>Aleksandra Krstic is a Dubai based pianist, singer and composer with a Master&#x27;s in classical music, blending jazz, funk and soul with electronic textures. She performs solo, leads her own band and has composed film scores for award winning shorts.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Aleksandra" class="singer-enquire">Enquire About Aleksandra</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/luba.jpg" alt="Luba, Dubai event singer" loading="lazy"/>
+                    <h3>Luba</h3>
+                    <p>Luba is a jazz trained vocalist from Kyiv National University of Culture and Arts with performances across Ukraine, China, Cyprus and Dubai. She has also appeared in musicals including Cats and Chicago, and directs shows in Dubai.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Luba" class="singer-enquire">Enquire About Luba</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/ingrid.jpg" alt="Ingrid, Dubai event singer" loading="lazy"/>
+                    <h3>Ingrid</h3>
+                    <p>Ingrid is a Lebanese singer trained in opera and contemporary styles at Berklee College of Music, performing across Lebanon, Turkey, Bahrain and the UAE. She released her debut single in 2021 and also works as a vocal coach.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Ingrid" class="singer-enquire">Enquire About Ingrid</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/july-nazarenko.jpg" alt="July Nazarenko, Dubai event singer" loading="lazy"/>
+                    <h3>July Nazarenko</h3>
+                    <p>July Nazarenko is a Belarusian born singer with 15 years of experience across pop, rock, blues, jazz, funk and soul. She leads several project lineups and carries a playlist of over 350 songs spanning decades.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=July+Nazarenko" class="singer-enquire">Enquire About July Nazarenko</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/carla.jpg" alt="Carla, Dubai event singer" loading="lazy"/>
+                    <h3>Carla</h3>
+                    <p>Carla Mannino is an Italian jazz and bossa nova vocalist with a degree in Music Therapy and a soulful, refined sound. Since relocating to the UAE in 2022 she has performed at Expo 2020 and Emirates Palace, often incorporating roller skating into her shows.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Carla" class="singer-enquire">Enquire About Carla</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/alina-2.jpg" alt="Alina Postrova, Dubai event singer" loading="lazy"/>
+                    <h3>Alina Postrova</h3>
+                    <p>Alina Postrova is a Kazakhstan born singer with 10 years of experience across pop, jazz, rock, blues and hip hop. She also collaborates with DJs and writes and releases her own techno house and pop tracks.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Alina+Postrova" class="singer-enquire">Enquire About Alina Postrova</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/angel.jpg" alt="Angel, Dubai event singer" loading="lazy"/>
+                    <h3>Angel</h3>
+                    <p>Angeliki Angel Karatsami began classical piano training at age six and later studied opera at the Athens Conservatory. Discovered by Greek pop group The Charms, she built her career from there into a full performing act.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Angel" class="singer-enquire">Enquire About Angel</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/lisa-goldin.jpg" alt="Lisa Goldin, Dubai event singer" loading="lazy"/>
+                    <h3>Lisa Goldin</h3>
+                    <p>Lisa Goldin is a songwriter and performer whose work has aired internationally on radio and TV, including a number one single on Heart FM. She has shared stages with Ed Sheeran and Jessie J and holds a Dubai Golden Visa for her contribution to the arts.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Lisa+Goldin" class="singer-enquire">Enquire About Lisa Goldin</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/dario-femino.jpg" alt="Dario Femino, Dubai event singer" loading="lazy"/>
+                    <h3>Dario Femino</h3>
+                    <p>Dario is an Italian pop singer with a touch of opera style, performing across Italy, the UAE, Bahrain and Greece. He is available solo or in duo format with a singer or musician for weddings, parties and yacht events.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Dario+Femino" class="singer-enquire">Enquire About Dario Femino</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/eleonora-barbacini.jpg" alt="Eleonora Barbacini, Dubai event singer" loading="lazy"/>
+                    <h3>Eleonora Barbacini</h3>
+                    <p>Eleonora Barbacini is an Italian singer from Verona now based in Dubai, with a background in musical theatre including We Will Rock You and Peter Pan. She has appeared on X Factor and now performs regularly at venues including Armani and Cove Beach.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Eleonora+Barbacini" class="singer-enquire">Enquire About Eleonora Barbacini</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/yvonne-park.jpg" alt="Yvonne Park, Dubai event singer" loading="lazy"/>
+                    <h3>Yvonne Park</h3>
+                    <p>Yvonne Park, performing as Vonné, trained at The Academy of Contemporary Music in London and brings a soulful, wide ranging voice to every set. She performs with a flexible three or four piece band for a dynamic live sound.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Yvonne+Park" class="singer-enquire">Enquire About Yvonne Park</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/laura-vargas.jpg" alt="Laura Vargas, Dubai event singer" loading="lazy"/>
+                    <h3>Laura Vargas</h3>
+                    <p>Laura Vargas is a Portuguese born, Dubai based singer with Brazilian roots blending soul, R&amp;B, pop, jazz and samba. Formally jazz trained, she has performed on The Voice Portugal and judged the competition show All Together Now.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Laura+Vargas" class="singer-enquire">Enquire About Laura Vargas</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/kerrie-sterling.jpg" alt="Kerrie Sterling, Dubai event singer" loading="lazy"/>
+                    <h3>Kerrie Sterling</h3>
+                    <p>Kerrie Sterling is a singer, saxophonist and artist manager with over 15 years in the industry and a music degree from Edinburgh Napier University. She has performed at Dubai Expo 2020 and the Abu Dhabi Grand Prix, and founded her own entertainment company, FlatCap Productions.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Kerrie+Sterling" class="singer-enquire">Enquire About Kerrie Sterling</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/mary-nademo.jpg" alt="Mary Nademo, Dubai event singer" loading="lazy"/>
+                    <h3>Mary Nademo</h3>
+                    <p>Mary Nademo is a Dubai based singer and former contestant on The Voice of Ukraine with over 10 years of experience. She performs solo or with her own three to four piece band across pop, jazz, soul and R&amp;B.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Mary+Nademo" class="singer-enquire">Enquire About Mary Nademo</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/iva-georgieva.jpg" alt="Iva Georgieva, Dubai event singer" loading="lazy"/>
+                    <h3>Iva Georgieva</h3>
+                    <p>IVA is a Dubai based soul, jazz, pop and dance vocalist who has performed at Atlantis The Royal, Burj Al Arab and Bulgari Yacht Club. A finalist on The Voice of Bulgaria, she was selected by Grammy winning band Clean Bandit to record an official Bulgarian version of their song Mama.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Iva+Georgieva" class="singer-enquire">Enquire About Iva Georgieva</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/inga.jpg" alt="Inga, Dubai event singer" loading="lazy"/>
+                    <h3>Inga</h3>
+                    <p>Inga Mar is an Armenian Polish singer and performer fluent in four languages, blending music and dance into one connected act. She has competed on The Voice of Armenia and The Voice of Poland and built a strong following across social media.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Inga" class="singer-enquire">Enquire About Inga</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/luna.jpg" alt="Luna, Dubai event singer" loading="lazy"/>
+                    <h3>Luna</h3>
+                    <p>Luna, born Claudia Castells, is a Cuban singer based in Dubai whose versatile voice spans jazz, soul and pop. Her international performances across China, Vietnam, Egypt and Oman bring a genuinely global energy to every set.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Luna" class="singer-enquire">Enquire About Luna</a>
+                </div>
+                <div class="singer-card singer-card--hidden">
+                    <img src="singer-photos/roxanne-duo.jpg" alt="Roxanne Duo, Dubai event singer" loading="lazy"/>
+                    <h3>Roxanne Duo</h3>
+                    <p>Roxane is a French Lebanese vocalist whose sultry, powerful voice moves through R&amp;B, soul, pop, disco and jazz. Now a Dubai resident, she performs regularly at venues including Bagatelle, The Nice Guy and ONZE Dubai.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Roxanne+Duo" class="singer-enquire">Enquire About Roxanne Duo</a>
+                </div>
+            </div>
+            <div class="band-load-more-wrap" id="singerLoadMoreWrap">
+                <button type="button" class="band-load-more-btn" id="singerLoadMoreBtn">Show More Singers</button>
+            </div>
+        </section>
 
     <section class="cat-section cat-section--bands" id="bands">
         <div class="band-intro">
@@ -858,6 +1535,24 @@
                 card.classList.remove("band-card--hidden");
             });
             if (grid.querySelectorAll(".band-card--hidden").length === 0) {
+                wrap.classList.add("is-exhausted");
+            }
+        });
+    })();
+
+    // --- SINGERS GRID: show more ---
+    (function () {
+        var btn = document.getElementById("singerLoadMoreBtn");
+        var wrap = document.getElementById("singerLoadMoreWrap");
+        var grid = document.getElementById("singerGrid");
+        if (!btn || !wrap || !grid) return;
+        var BATCH = 15;
+        btn.addEventListener("click", function () {
+            var hidden = Array.prototype.slice.call(grid.querySelectorAll(".singer-card--hidden"));
+            hidden.slice(0, BATCH).forEach(function (card) {
+                card.classList.remove("singer-card--hidden");
+            });
+            if (grid.querySelectorAll(".singer-card--hidden").length === 0) {
                 wrap.classList.add("is-exhausted");
             }
         });
