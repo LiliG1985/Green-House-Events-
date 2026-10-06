@@ -209,7 +209,7 @@
             white-space: nowrap;
             animation: loop-ticker 18s linear infinite; 
         }
-        .ticker-wrap a {
+        .ticker-wrap span {
             font-family: var(--display);
             font-size: 0.75rem;
             font-weight: 600;
@@ -219,9 +219,6 @@
             padding: 0 1rem;
             display: flex;
             align-items: center;
-            text-decoration: none;
-            cursor: pointer;
-            transition: opacity 0.25s ease;
 
             background: var(--gold-metallic);
             -webkit-background-clip: text;
@@ -230,8 +227,7 @@
             background-size: 200% auto;
             animation: shine 5s linear infinite;
         }
-        .ticker-wrap a:hover { opacity: 0.72; }
-        .ticker-wrap a::after {
+        .ticker-wrap span::after {
             content: "•";
             margin-left: 2rem;
             background: var(--gold-metallic);
@@ -310,21 +306,6 @@
             opacity: 0.9;
             color: var(--white-off);
         }
-        .roster-cta-btn {
-            display: inline-block;
-            margin-top: 1.8rem;
-            font-family: var(--sans);
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            padding: 0.9rem 1.8rem;
-            border: 0.5px solid var(--gold-solid);
-            color: var(--gold-solid);
-            transition: all 0.3s ease;
-        }
-        .roster-cta-btn:hover { background: rgba(201,168,76,0.12); }
-
         /* --- SECTION HEADINGS: TEXT HIGHLIGHTED OVER A THIN PHOTO BANNER --- */
         .section-headline-banner {
             width: 100vw;
@@ -861,70 +842,70 @@
 
     <div class="ticker-container">
         <div class="ticker-wrap">
-            <a href="talent.html#djs">DJs</a>
-            <a href="talent.html#singers">Singers</a>
-            <a href="talent.html#bands">Bands</a>
-            <a href="talent.html#instrumental">Instrumental</a>
-            <a href="talent.html#arabic-musicians">Arabic Musicians</a>
-            <a href="talent.html#specialist-acts">Specialists Acts</a>
-            <a href="talent.html#circus-acts">Circus Acts</a>
-            <a href="talent.html#roaming-acts">Roaming Acts</a>
-            <a href="talent.html#dancers">Dancers</a>
-            <a href="talent.html#shows">Shows</a>
-            <a href="talent.html#acrobats">Acrobats</a>
-            <a href="talent.html#stationed-acts">Stationed Acts</a>
-            <a href="talent.html#fire-led-shows">Fire & L.E.D Shows</a>
-            <a href="talent.html#childrens-entertainment">Children's Entertainment</a>
-            <a href="talent.html#hostesses">Hostesses</a>
-            <a href="talent.html#mc-host-comedian">MC / Host / Comedian</a>
-            <a href="talent.html#live-art">Live Art</a>
-            <a href="talent.html#photographers-videographers">Photographers & Videographers</a>
-            <a href="talent.html#photo-booths">Photo Booths</a>
-            <a href="talent.html#magicians-illusionists">Magicians & Illusionists</a>
+            <span>DJs</span>
+            <span>Singers</span>
+            <span>Bands</span>
+            <span>Instrumental</span>
+            <span>Arabic Musicians</span>
+            <span>Specialists Acts</span>
+            <span>Circus Acts</span>
+            <span>Roaming Acts</span>
+            <span>Dancers</span>
+            <span>Shows</span>
+            <span>Acrobats</span>
+            <span>Stationed Acts</span>
+            <span>Fire & L.E.D Shows</span>
+            <span>Children's Entertainment</span>
+            <span>Hostesses</span>
+            <span>MC / Host / Comedian</span>
+            <span>Live Art</span>
+            <span>Photographers & Videographers</span>
+            <span>Photo Booths</span>
+            <span>Magicians & Illusionists</span>
         </div>
         <div class="ticker-wrap">
-            <a href="talent.html#djs">DJs</a>
-            <a href="talent.html#singers">Singers</a>
-            <a href="talent.html#bands">Bands</a>
-            <a href="talent.html#instrumental">Instrumental</a>
-            <a href="talent.html#arabic-musicians">Arabic Musicians</a>
-            <a href="talent.html#specialist-acts">Specialists Acts</a>
-            <a href="talent.html#circus-acts">Circus Acts</a>
-            <a href="talent.html#roaming-acts">Roaming Acts</a>
-            <a href="talent.html#dancers">Dancers</a>
-            <a href="talent.html#shows">Shows</a>
-            <a href="talent.html#acrobats">Acrobats</a>
-            <a href="talent.html#stationed-acts">Stationed Acts</a>
-            <a href="talent.html#fire-led-shows">Fire & L.E.D Shows</a>
-            <a href="talent.html#childrens-entertainment">Children's Entertainment</a>
-            <a href="talent.html#hostesses">Hostesses</a>
-            <a href="talent.html#mc-host-comedian">MC / Host / Comedian</a>
-            <a href="talent.html#live-art">Live Art</a>
-            <a href="talent.html#photographers-videographers">Photographers & Videographers</a>
-            <a href="talent.html#photo-booths">Photo Booths</a>
-            <a href="talent.html#magicians-illusionists">Magicians & Illusionists</a>
+            <span>DJs</span>
+            <span>Singers</span>
+            <span>Bands</span>
+            <span>Instrumental</span>
+            <span>Arabic Musicians</span>
+            <span>Specialists Acts</span>
+            <span>Circus Acts</span>
+            <span>Roaming Acts</span>
+            <span>Dancers</span>
+            <span>Shows</span>
+            <span>Acrobats</span>
+            <span>Stationed Acts</span>
+            <span>Fire & L.E.D Shows</span>
+            <span>Children's Entertainment</span>
+            <span>Hostesses</span>
+            <span>MC / Host / Comedian</span>
+            <span>Live Art</span>
+            <span>Photographers & Videographers</span>
+            <span>Photo Booths</span>
+            <span>Magicians & Illusionists</span>
         </div>
         <div class="ticker-wrap">
-            <a href="talent.html#djs">DJs</a>
-            <a href="talent.html#singers">Singers</a>
-            <a href="talent.html#bands">Bands</a>
-            <a href="talent.html#instrumental">Instrumental</a>
-            <a href="talent.html#arabic-musicians">Arabic Musicians</a>
-            <a href="talent.html#specialist-acts">Specialists Acts</a>
-            <a href="talent.html#circus-acts">Circus Acts</a>
-            <a href="talent.html#roaming-acts">Roaming Acts</a>
-            <a href="talent.html#dancers">Dancers</a>
-            <a href="talent.html#shows">Shows</a>
-            <a href="talent.html#acrobats">Acrobats</a>
-            <a href="talent.html#stationed-acts">Stationed Acts</a>
-            <a href="talent.html#fire-led-shows">Fire & L.E.D Shows</a>
-            <a href="talent.html#childrens-entertainment">Children's Entertainment</a>
-            <a href="talent.html#hostesses">Hostesses</a>
-            <a href="talent.html#mc-host-comedian">MC / Host / Comedian</a>
-            <a href="talent.html#live-art">Live Art</a>
-            <a href="talent.html#photographers-videographers">Photographers & Videographers</a>
-            <a href="talent.html#photo-booths">Photo Booths</a>
-            <a href="talent.html#magicians-illusionists">Magicians & Illusionists</a>
+            <span>DJs</span>
+            <span>Singers</span>
+            <span>Bands</span>
+            <span>Instrumental</span>
+            <span>Arabic Musicians</span>
+            <span>Specialists Acts</span>
+            <span>Circus Acts</span>
+            <span>Roaming Acts</span>
+            <span>Dancers</span>
+            <span>Shows</span>
+            <span>Acrobats</span>
+            <span>Stationed Acts</span>
+            <span>Fire & L.E.D Shows</span>
+            <span>Children's Entertainment</span>
+            <span>Hostesses</span>
+            <span>MC / Host / Comedian</span>
+            <span>Live Art</span>
+            <span>Photographers & Videographers</span>
+            <span>Photo Booths</span>
+            <span>Magicians & Illusionists</span>
         </div>
     </div>
 </header>
@@ -938,7 +919,6 @@
             </div>
             <div class="about-right">
                 <p>We book and manage entertainment for corporate galas, private celebrations, and hospitality venues across Dubai, offering live music, performers, and immersive atmosphere design, curated to make every event feel breathtaking.</p>
-                <a href="talent.html" class="roster-cta-btn">Browse Full Entertainment Roster</a>
             </div>
         </section>
 
