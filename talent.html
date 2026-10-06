@@ -215,6 +215,25 @@
         }
         .singer-card .singer-enquire:hover { opacity: 0.7; }
 
+        /* --- EMCEES SUB-ROSTER GRID --- */
+        .cat-section--emcees { display: block; }
+        .emcee-card--hidden { display: none; }
+        .emcee-card img {
+            width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: top center;
+            border: 0.5px solid var(--border); background: #000;
+        }
+        .emcee-card h3 {
+            font-family: var(--serif); font-weight: 400; font-size: 1.05rem;
+            margin: 0.9rem 0 0.5rem; color: var(--white-off);
+        }
+        .emcee-card p { font-size: 0.82rem; line-height: 1.6; opacity: 0.72; margin-bottom: 0.7rem; max-width: none; }
+        .emcee-card .emcee-enquire {
+            display: inline-block; font-family: var(--sans); font-size: 0.65rem; font-weight: 600;
+            letter-spacing: 1px; text-transform: uppercase; color: var(--gold-solid);
+            border-bottom: 0.5px solid var(--gold-solid); padding-bottom: 2px; transition: opacity 0.25s ease;
+        }
+        .emcee-card .emcee-enquire:hover { opacity: 0.7; }
+
         /* --- FOOTER CTA --- */
         #contact-bridge { position: relative; padding: 6rem 8vw; text-align: center; background: var(--bg-mid); }
         .footer-cta-wrap { max-width: 700px; margin: 0 auto; }
@@ -1350,13 +1369,143 @@
         <a href="contact.html?service=Entertainment&amp;items=Hostesses" class="cat-enquire-btn">Enquire About Hostesses</a>
     </section>
 
-    <section class="cat-section" id="mc-host-comedian">
-        <div>
-            <h2 class="metallic-gold">MC / Host / Comedian</h2>
-            <p>Hosts, MCs, and comedians to guide your event and keep the energy right.</p>
-        </div>
-        <a href="contact.html?service=Entertainment&amp;items=MC%20%2F%20Host%20%2F%20Comedian" class="cat-enquire-btn">Enquire About MC / Host / Comedian</a>
-    </section>
+    <section class="cat-section cat-section--emcees" id="mc-host-comedian">
+            <div class="band-intro">
+                <h2 class="metallic-gold">MC / Host / Comedian</h2>
+                <p>A taste of the hosts, MCs and comedians on our roster, who keep your event on track and your guests engaged from welcome to send off. Tell us your date and tone and we will match the right voice to your stage.</p>
+            </div>
+            <div class="band-grid" id="emceeGrid">
+                <div class="emcee-card">
+                    <img src="emcee-photos/mo.jpg" alt="Mo, Dubai event MC and host" loading="lazy"/>
+                    <h3>Mo</h3>
+                    <p>Mo brings fifteen years of experience hosting corporate functions, community events and government ceremonies across the UAE and GCC in both English and Arabic. Known for his high energy and natural rapport with audiences, he has earned a reputation as one of the region&#x27;s most sought after masters of ceremony.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Mo" class="emcee-enquire">Enquire About Mo</a>
+                </div>
+                <div class="emcee-card">
+                    <img src="emcee-photos/ali.jpg" alt="Ali, Dubai event MC and host" loading="lazy"/>
+                    <h3>Ali</h3>
+                    <p>Ali Al Sayed moved from corporate event organizing into a career as a comedian, master of ceremonies and producer, and cofounded Viva Arts and Dubomedy to help grow Dubai&#x27;s comedy scene. He has hosted major sporting events including the FIVB World Beach Volleyball Championship and FIFA Beach Soccer World Cup Qualifiers.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Ali" class="emcee-enquire">Enquire About Ali</a>
+                </div>
+                <div class="emcee-card">
+                    <img src="emcee-photos/bassam.jpg" alt="Bassam, Dubai event MC and host" loading="lazy"/>
+                    <h3>Bassam</h3>
+                    <p>Bassam Nader grew up moving between Dubai and Lebanon with a lifelong passion for entertainment, and has become one of the most recognised MCs in the UAE, fluent in both English and Arabic. He has hosted events for clients including Lamborghini, TikTok, FIFA and Majid Al Futtaim.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Bassam" class="emcee-enquire">Enquire About Bassam</a>
+                </div>
+                <div class="emcee-card">
+                    <img src="emcee-photos/nour-aldin.jpg" alt="Nour Aldin, Dubai event MC and host" loading="lazy"/>
+                    <h3>Nour Aldin</h3>
+                    <p>NourAldin AlYousuf is a TV presenter with a background in mass communication and nearly seventeen years in the media industry, including a Best Khaliji Presenter award in 2013. He began his career with Dubai TV before going on to anchor and produce programs for Al Jazeera and Al Arabiya.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Nour+Aldin" class="emcee-enquire">Enquire About Nour Aldin</a>
+                </div>
+                <div class="emcee-card">
+                    <img src="emcee-photos/hassan.jpg" alt="Hassan, Dubai event MC and host" loading="lazy"/>
+                    <h3>Hassan</h3>
+                    <p>Hassan is a dependable, entertaining host fluent in both English and Arabic, equally comfortable running a formal corporate event or a lively quiz night. His credits include anchoring the stage at the German Pavilion during EXPO 2020 and hosting RIT Dubai University&#x27;s graduation ceremony for two years running.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Hassan" class="emcee-enquire">Enquire About Hassan</a>
+                </div>
+                <div class="emcee-card">
+                    <img src="emcee-photos/elias.jpg" alt="Elias, Dubai event MC and host" loading="lazy"/>
+                    <h3>Elias</h3>
+                    <p>Originally from Lebanon and based in the UAE for over a decade, Elias is a master of ceremonies who also works as a voice over artist, actor and filmmaker. He has hosted live shows including the Dolphins and Seals Show and corporate and public events, and has appeared in campaigns for Fly Emirates, Talabat and Lexus.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Elias" class="emcee-enquire">Enquire About Elias</a>
+                </div>
+                <div class="emcee-card">
+                    <img src="emcee-photos/abdullah.jpg" alt="Abdullah, Dubai event MC and host" loading="lazy"/>
+                    <h3>Abdullah</h3>
+                    <p>Abdullah Al Qassab is an Emirati host and emcee who blends an engineering background with a genuine flair for comedy on stage. His experience as a TV presenter and actor adds extra polish to his hosting, making him a natural fit for everything from corporate conferences to entertainment shows.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Abdullah" class="emcee-enquire">Enquire About Abdullah</a>
+                </div>
+                <div class="emcee-card">
+                    <img src="emcee-photos/hassan-h.jpg" alt="Hassan H, Dubai event MC and host" loading="lazy"/>
+                    <h3>Hassan H</h3>
+                    <p>Hassan Habib is a dynamic master of ceremonies and speaker on responsible AI and the future of work, drawing on experience leading digitization projects across banking and other sectors. A multilingual communicator, he makes complex topics about innovation and technology easy for any audience to follow.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Hassan+H" class="emcee-enquire">Enquire About Hassan H</a>
+                </div>
+                <div class="emcee-card">
+                    <img src="emcee-photos/alex.jpg" alt="Alex, Dubai event MC and host" loading="lazy"/>
+                    <h3>Alex</h3>
+                    <p>Alex Simmons is a British TV presenter, DJ and event host who has run large scale occasions such as the Challenge Cup Final and the Six Nations fanzone. He has presented for networks including Premier Sports and Made TV and hosted events for clubs like the Leeds Rhinos.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Alex" class="emcee-enquire">Enquire About Alex</a>
+                </div>
+                <div class="emcee-card">
+                    <img src="emcee-photos/chris.jpg" alt="Chris, Dubai event MC and host" loading="lazy"/>
+                    <h3>Chris</h3>
+                    <p>Chris Sibley, known as Sibbers, spent over fifteen years in UK radio and picked up two Sony Gold Awards along the way before relocating to Dubai. He now hosts quiz nights and major events such as New Year&#x27;s at Barasti, and works regularly as the MC at Top Golf Dubai.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Chris" class="emcee-enquire">Enquire About Chris</a>
+                </div>
+                <div class="emcee-card">
+                    <img src="emcee-photos/darryl.jpg" alt="Darryl, Dubai event MC and host" loading="lazy"/>
+                    <h3>Darryl</h3>
+                    <p>Darryl is an engaging event host known for his quick wit and his ability to bring guests of every age together through laughter. With a background in radio, sports and entertainment, he is a natural compere for trade shows, expos, live music festivals and corporate functions.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Darryl" class="emcee-enquire">Enquire About Darryl</a>
+                </div>
+                <div class="emcee-card">
+                    <img src="emcee-photos/scott.jpg" alt="Scott, Dubai event MC and host" loading="lazy"/>
+                    <h3>Scott</h3>
+                    <p>Scott Shepard is a British MC and host who began as a DJ in Lincoln in 1992 before joining the Ministry of Sound family and building an international career, including a move to Dubai in 2011. He now hosts quiz nights, music bingo, karaoke and fan zones for major events like the FIFA World Cup.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Scott" class="emcee-enquire">Enquire About Scott</a>
+                </div>
+                <div class="emcee-card">
+                    <img src="emcee-photos/sawsan.jpg" alt="Sawsan, Dubai event MC and host" loading="lazy"/>
+                    <h3>Sawsan</h3>
+                    <p>Dr Sawsan Saad is a TV presenter at Dubai Sports Channel and the first Arab woman to serve as an official FIFA and UAE stadiums commentator, with over eleven years in sports media. She has been the official commentator or MC for the FIFA Club World Cup, the AFC Asian Cup and the FIFA World Cup 2022 Trophy Tour.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Sawsan" class="emcee-enquire">Enquire About Sawsan</a>
+                </div>
+                <div class="emcee-card">
+                    <img src="emcee-photos/salma.jpg" alt="Salma, Dubai event MC and host" loading="lazy"/>
+                    <h3>Salma</h3>
+                    <p>Salma is a bilingual MC and event host who moved from a successful career as a makeup artist into presenting, bringing the same eye for detail and professionalism to the stage. Her background in business and marketing makes her a strong fit for corporate functions, product launches and entertainment events.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Salma" class="emcee-enquire">Enquire About Salma</a>
+                </div>
+                <div class="emcee-card">
+                    <img src="emcee-photos/dija.jpg" alt="Dija, Dubai event MC and host" loading="lazy"/>
+                    <h3>Dija</h3>
+                    <p>Dija is a bilingual MC and presenter known for turning events into memorable experiences in both English and Arabic. Her credits include the AZIZI Developments Gala, the Leadership Summit Awards, the Gulf Food Exhibition and the Dubai Muscle Show.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Dija" class="emcee-enquire">Enquire About Dija</a>
+                </div>
+                <div class="emcee-card emcee-card--hidden">
+                    <img src="emcee-photos/andreea.jpg" alt="Andreea, Dubai event MC and host" loading="lazy"/>
+                    <h3>Andreea</h3>
+                    <p>Andreea is a public speaker, speaking coach and master of ceremonies who has lived and studied in London, Los Angeles and Dubai. Her warm, genuine and often humorous presenting style has made her a favorite among PR agencies, event planners and TV producers across the region.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Andreea" class="emcee-enquire">Enquire About Andreea</a>
+                </div>
+                <div class="emcee-card emcee-card--hidden">
+                    <img src="emcee-photos/laura.jpg" alt="Laura, Dubai event MC and host" loading="lazy"/>
+                    <h3>Laura</h3>
+                    <p>Laura is a British television and radio presenter and live events host based in Dubai, with a career spanning red carpet reporting, award ceremonies, talent shows, fashion shows and weddings. She is currently on air with Dubai 92 and has recently hosted the Burj Al Arab New Year&#x27;s Gala and the Park Hyatt Dubai Awards Ceremony.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Laura" class="emcee-enquire">Enquire About Laura</a>
+                </div>
+                <div class="emcee-card emcee-card--hidden">
+                    <img src="emcee-photos/lorna.jpg" alt="Lorna, Dubai event MC and host" loading="lazy"/>
+                    <h3>Lorna</h3>
+                    <p>Lorna has worked in radio, television and events hosting since 2003 and is a familiar voice across the UAE through stations including Global, Shock ME and ARN. She owns and hosts the popular weekly kids&#x27; brunch Gen X and has worked with clients such as EXPO, the Dubai International Boat Show, Hilton and Marriott.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Lorna" class="emcee-enquire">Enquire About Lorna</a>
+                </div>
+                <div class="emcee-card emcee-card--hidden">
+                    <img src="emcee-photos/jade.jpg" alt="Jade, Dubai event MC and host" loading="lazy"/>
+                    <h3>Jade</h3>
+                    <p>Jade is a radio presenter on Channel 4 Dubai and a skilled MC and DJ who loves to both mix music and work a crowd with a microphone. Recent bookings include MC at F1 Abu Dhabi, host of the Dubai Marathon, MC at EXPO Young Stars and MC for Rugby 7s.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Jade" class="emcee-enquire">Enquire About Jade</a>
+                </div>
+                <div class="emcee-card emcee-card--hidden">
+                    <img src="emcee-photos/alexandra.jpg" alt="Alexandra, Dubai event MC and host" loading="lazy"/>
+                    <h3>Alexandra</h3>
+                    <p>Alexandra Topalian is a Canadian conference MC and panel moderator with over twenty five years of experience across North America, Southeast Asia, Africa and the MENA region. She is a sought after host in Dubai, Riyadh and Doha and often takes on scriptwriting too, acting as a true partner in every event she joins.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Alexandra" class="emcee-enquire">Enquire About Alexandra</a>
+                </div>
+                <div class="emcee-card emcee-card--hidden">
+                    <img src="emcee-photos/shwetha.jpg" alt="Shwetha, Dubai event MC and host" loading="lazy"/>
+                    <h3>Shwetha</h3>
+                    <p>Shwetha Mendon has hosted a wide range of events since 2008, from celebrity gatherings and concerts to conferences, award ceremonies and product launches. Fluent in English, Hindi and Kannada, she has hosted movie promotions with visiting stars and the Dubai Fitness Challenge in both 2018 and 2019.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Shwetha" class="emcee-enquire">Enquire About Shwetha</a>
+                </div>
+            </div>
+            <div class="band-load-more-wrap" id="emceeLoadMoreWrap">
+                <button type="button" class="band-load-more-btn" id="emceeLoadMoreBtn">Show More Hosts</button>
+            </div>
+        </section>
 
     <section class="cat-section" id="live-art">
         <div>
@@ -1553,6 +1702,24 @@
                 card.classList.remove("singer-card--hidden");
             });
             if (grid.querySelectorAll(".singer-card--hidden").length === 0) {
+                wrap.classList.add("is-exhausted");
+            }
+        });
+    })();
+
+    // --- EMCEES GRID: show more ---
+    (function () {
+        var btn = document.getElementById("emceeLoadMoreBtn");
+        var wrap = document.getElementById("emceeLoadMoreWrap");
+        var grid = document.getElementById("emceeGrid");
+        if (!btn || !wrap || !grid) return;
+        var BATCH = 15;
+        btn.addEventListener("click", function () {
+            var hidden = Array.prototype.slice.call(grid.querySelectorAll(".emcee-card--hidden"));
+            hidden.slice(0, BATCH).forEach(function (card) {
+                card.classList.remove("emcee-card--hidden");
+            });
+            if (grid.querySelectorAll(".emcee-card--hidden").length === 0) {
                 wrap.classList.add("is-exhausted");
             }
         });
