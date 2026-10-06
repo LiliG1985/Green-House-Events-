@@ -394,6 +394,71 @@
         }
         .photobooth-cta svg { width: 18px; height: 18px; flex-shrink: 0; }
 
+        .ramadan-section {
+            padding: 2.4rem 8vw 3rem;
+            position: relative; z-index: 5;
+            background: linear-gradient(180deg, var(--nude) 0%, var(--nude-soft) 100%);
+            color: var(--bg-deep);
+            text-align: center;
+        }
+        .ramadan-section .sec-title { margin-bottom: 0.8rem; }
+        .ramadan-section::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 6;
+            background: linear-gradient(90deg, transparent 0%, var(--gold-solid) 15%, #F5E9B8 50%, var(--gold-solid) 85%, transparent 100%);
+        }
+        .ramadan-section::after {
+            content: '';
+            position: absolute; top: -6px; left: 50%; z-index: 7;
+            width: 13px; height: 13px;
+            transform: translateX(-50%) rotate(45deg);
+            background: var(--gold-solid);
+            border: 1.5px solid var(--nude-card);
+            box-shadow: 0 0 10px rgba(201,168,76,0.7);
+        }
+        .ramadan-inner { max-width: 1300px; margin: 0 auto; position: relative; z-index: 5; }
+        .ramadan-tagline {
+            font-family: var(--display);
+            font-size: clamp(0.7rem, 1.6vw, 0.95rem);
+            letter-spacing: 3px; text-transform: uppercase;
+            color: var(--bg-deep); opacity: 0.7; margin: 0.6rem 0 2.2rem;
+        }
+        .ramadan-img-wrap {
+            width: 100vw;
+            margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
+            overflow: hidden;
+            border-top: 0.5px solid var(--gold-solid);
+            border-bottom: 0.5px solid var(--gold-solid);
+            box-shadow: 0 20px 45px rgba(60,45,20,0.18);
+            margin-bottom: 2.2rem;
+        }
+        .ramadan-img-wrap img {
+            width: 100%; height: auto; display: block;
+        }
+        .ramadan-copy {
+            max-width: 680px; margin: 1.4rem auto 2.2rem;
+            font-size: 1rem; color: var(--bg-deep); opacity: 0.8;
+            line-height: 1.8; font-weight: 300;
+        }
+        .ramadan-cta {
+            display: inline-flex; align-items: center; gap: 0.65rem;
+            background: var(--gold-metallic); color: #020e0c;
+            padding: 1rem 2.6rem; text-decoration: none;
+            font-family: var(--sans); font-weight: 600;
+            font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .ramadan-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(201,168,76,0.35);
+        }
+        .ramadan-cta svg { width: 18px; height: 18px; flex-shrink: 0; transition: transform 0.3s; }
+        .ramadan-cta:hover svg { transform: translateX(4px); }
+        @media (max-width: 700px) {
+            .ramadan-section { padding: 3rem 6vw; }
+            .ramadan-cta { width: 100%; justify-content: center; }
+        }
+
         /* =====================================================
            TEXT MARQUEE
         ====================================================== */
@@ -1191,6 +1256,61 @@
             font-size: clamp(1.7rem, 4vw, 3rem);
             text-shadow: 0 4px 16px rgba(0,0,0,0.9);
         }
+
+        /* --- FESTIVE & SEASONAL BANNER --- */
+        .festive-banner {
+            position: relative; display: block;
+            width: 100vw; left: 50%; right: 50%;
+            margin-left: -50vw; margin-right: -50vw;
+            margin-top: 3.5rem;
+            aspect-ratio: 21 / 9;
+            min-height: 340px;
+            overflow: hidden;
+            border-top: 0.5px solid var(--gold-solid);
+            border-bottom: 0.5px solid var(--gold-solid);
+            box-shadow: 0 25px 55px rgba(60,45,20,0.22);
+            text-decoration: none;
+        }
+        .festive-banner img {
+            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 35%;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .festive-banner:hover img { transform: scale(1.04); }
+        .festive-banner-overlay {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 2.5rem 2rem;
+            background: linear-gradient(180deg, rgba(4,16,12,0.35) 0%, rgba(4,16,12,0.25) 45%, rgba(4,16,12,0.82) 100%);
+        }
+        .festive-banner-badge {
+            display: inline-block; background: #B3122B; color: #fff;
+            font-family: var(--display); font-size: 0.68rem; letter-spacing: 2.5px;
+            padding: 0.5rem 1.3rem; border-radius: 999px; transform: rotate(-2deg);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.35); margin-bottom: 1rem;
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+        .festive-banner-overlay h3 {
+            font-family: 'Cormorant Garamond', serif; font-weight: 600; color: #fff;
+            font-size: clamp(2rem, 5vw, 3.6rem); line-height: 1.1;
+            text-shadow: 0 4px 18px rgba(0,0,0,0.9);
+            margin-bottom: 0.9rem;
+        }
+        .festive-banner-overlay p {
+            color: var(--white-off); opacity: 0.95; font-size: clamp(0.9rem, 1.6vw, 1.1rem);
+            max-width: 560px; text-shadow: 0 2px 10px rgba(0,0,0,0.85); margin-bottom: 1.6rem;
+        }
+        .festive-banner-cta {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--gold-metallic); color: #0b1a18;
+            padding: 0.85rem 2rem; font-family: var(--display); font-size: 0.72rem;
+            letter-spacing: 1.5px; font-weight: 700; text-transform: uppercase;
+            transition: transform 0.3s ease;
+        }
+        .festive-banner-cta:hover { transform: translateY(-2px); }
+        @media (max-width: 700px) {
+            .festive-banner { aspect-ratio: 4 / 5; min-height: 420px; }
+            .festive-banner-overlay { padding: 2rem 1.3rem; }
+        }
     </style>
 </head>
 <body>
@@ -1211,6 +1331,7 @@
     <a href="#clients" onclick="closeMobileMenu()">Portfolio</a>
     <a href="#testimonials" onclick="closeMobileMenu()">Testimonials</a>
     <a href="entertainment.html" onclick="closeMobileMenu()">Entertainment</a>
+    <a href="festive-seasonal.html" onclick="closeMobileMenu()">Festive &amp; Seasonal</a>
     <a href="#contact" onclick="closeMobileMenu()" class="mobile-cta">Enquire Now</a>
 </div>
 
@@ -1235,6 +1356,7 @@
                 <a href="permanent-transformations.html">Permanent Transformations</a>
                 <a href="staging-av.html">Staging, Sound &amp; AV</a>
                 <a href="entertainment.html">Entertainment</a>
+                <a href="festive-seasonal.html">Festive &amp; Seasonal</a>
                 <a href="wardrobe-costumes.html">Wardrobe</a>
                 <a href="contact.html">Contact</a>
             </div>
@@ -1425,6 +1547,37 @@
             </a>
         </div>
     </section>
+
+    <!-- RAMADAN ENTERTAINMENT -->
+    <section id="ramadan-entertainment" class="ramadan-section" aria-labelledby="ramadan-entertainment-heading">
+        <div class="ramadan-inner">
+            <h2 class="sec-title" id="ramadan-entertainment-heading">Ramadan <em class="metallic-gold">Entertainment</em></h2>
+            <p class="ramadan-tagline">Bands, Instrumentalists, Cultural Activations &amp; Dance for the Holy Month</p>
+            <div class="ramadan-img-wrap">
+                <img src="ae-activations-photos/date-expert.jpg" alt="Ramadan entertainment in Dubai: traditional Arabic bands, oud, qanun and dance performers available for Iftar and Ramadan events" loading="lazy"/>
+            </div>
+            <p class="ramadan-copy">Our Ramadan programme brings together a complete roster of Arabic entertainment for the holy month, from live bands, oud, qanun and percussion to Sufi, Tanoura and Khaleeji dance, alongside cultural activations including Arabic calligraphy, henna art and Arabic coffee serving. Every act can be booked individually or combined into a full Iftar or Suhoor programme.</p>
+            <a href="talent.html#arabic-entertainment" class="ramadan-cta" aria-label="Explore the Arabic Entertainment roster">
+                Explore Arabic Entertainment
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- FESTIVE & SEASONAL BANNER -->
+    <a href="festive-seasonal.html" class="festive-banner" aria-label="Explore Festive and Seasonal Entertainment">
+        <img src="festive-home-banner.jpg" alt="Festive Christmas entertainment in Dubai: toy soldier parade, reindeer stilt walkers and LED performers" loading="lazy"/>
+        <div class="festive-banner-overlay">
+            <span class="festive-banner-badge">Festive &amp; Seasonal</span>
+            <h3>Book Your Festive Entertainment</h3>
+            <p>Santa arrivals, LED parades, aerial shows and more. Make this holiday season unforgettable with our full festive entertainment roster.</p>
+            <span class="festive-banner-cta">
+                Explore Festive &amp; Seasonal
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+        </div>
+    </a>
+
     </div><!-- /greenery-wrap -->
 
     <!-- CLIENTS -->
