@@ -573,6 +573,10 @@
             .svc-slide-content { max-width: 100%; text-align: left !important; margin-left: 0 !important; }
             .svc-slide-content p { max-width: 100%; margin-left: 0 !important; }
             .svc-slide--right { justify-content: flex-start; }
+            .svc-slide-bg::after,
+            .svc-slide--right .svc-slide-bg::after {
+                background: linear-gradient(180deg, rgba(2,10,8,0.62) 0%, rgba(2,10,8,0.48) 45%, rgba(2,10,8,0.85) 100%);
+            }
             .svc-quote-slide { padding: 0 8vw; }
             .svc-process-slide { padding: 0 7vw; }
 
