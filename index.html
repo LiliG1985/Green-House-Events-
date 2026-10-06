@@ -1311,6 +1311,63 @@
             .festive-banner { aspect-ratio: 4 / 5; min-height: 420px; }
             .festive-banner-overlay { padding: 2rem 1.3rem; }
         }
+
+        /* =====================================================
+           RAMADAN BANNER
+        ====================================================== */
+        .ramadan-banner {
+            position: relative; display: block;
+            width: 100vw; left: 50%; right: 50%;
+            margin-left: -50vw; margin-right: -50vw;
+            margin-top: 3.5rem;
+            aspect-ratio: 21 / 9;
+            min-height: 340px;
+            overflow: hidden;
+            border-top: 0.5px solid var(--gold-solid);
+            border-bottom: 0.5px solid var(--gold-solid);
+            box-shadow: 0 25px 55px rgba(60,45,20,0.22);
+            text-decoration: none;
+        }
+        .ramadan-banner img {
+            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 35%;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .ramadan-banner:hover img { transform: scale(1.04); }
+        .ramadan-banner-overlay {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 2.5rem 2rem;
+            background: linear-gradient(180deg, rgba(20,10,30,0.35) 0%, rgba(20,10,30,0.25) 45%, rgba(20,10,30,0.82) 100%);
+        }
+        .ramadan-banner-badge {
+            display: inline-block; background: #5B3A7A; color: #fff;
+            font-family: var(--display); font-size: 0.68rem; letter-spacing: 2.5px;
+            padding: 0.5rem 1.3rem; border-radius: 999px; transform: rotate(-2deg);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.35); margin-bottom: 1rem;
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+        .ramadan-banner-overlay h3 {
+            font-family: 'Cormorant Garamond', serif; font-weight: 600; color: #fff;
+            font-size: clamp(2rem, 5vw, 3.6rem); line-height: 1.1;
+            text-shadow: 0 4px 18px rgba(0,0,0,0.9);
+            margin-bottom: 0.9rem;
+        }
+        .ramadan-banner-overlay p {
+            color: var(--white-off); opacity: 0.95; font-size: clamp(0.9rem, 1.6vw, 1.1rem);
+            max-width: 560px; text-shadow: 0 2px 10px rgba(0,0,0,0.85); margin-bottom: 1.6rem;
+        }
+        .ramadan-banner-cta {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--gold-metallic); color: #0b1a18;
+            padding: 0.85rem 2rem; font-family: var(--display); font-size: 0.72rem;
+            letter-spacing: 1.5px; font-weight: 700; text-transform: uppercase;
+            transition: transform 0.3s ease;
+        }
+        .ramadan-banner-cta:hover { transform: translateY(-2px); }
+        @media (max-width: 700px) {
+            .ramadan-banner { aspect-ratio: 4 / 5; min-height: 420px; }
+            .ramadan-banner-overlay { padding: 2rem 1.3rem; }
+        }
     </style>
 </head>
 <body>
@@ -1537,21 +1594,19 @@
         </div>
     </a>
 
-    <!-- RAMADAN ENTERTAINMENT -->
-    <section id="ramadan-entertainment" class="ramadan-section" aria-labelledby="ramadan-entertainment-heading">
-        <div class="ramadan-inner">
-            <h2 class="sec-title" id="ramadan-entertainment-heading">Ramadan <em class="metallic-gold">Entertainment</em></h2>
-            <p class="ramadan-tagline">Bands, Instrumentalists, Cultural Activations &amp; Dance for the Holy Month</p>
-            <div class="ramadan-img-wrap">
-                <img src="ae-activations-photos/date-expert.jpg" alt="Ramadan entertainment in Dubai: traditional Arabic bands, oud, qanun and dance performers available for Iftar and Ramadan events" loading="lazy"/>
-            </div>
-            <p class="ramadan-copy">Our Ramadan programme brings together a complete roster of Arabic entertainment for the holy month, from live bands, oud, qanun and percussion to Sufi, Tanoura and Khaleeji dance, alongside cultural activations including Arabic calligraphy, henna art and Arabic coffee serving. Every act can be booked individually or combined into a full Iftar or Suhoor programme.</p>
-            <a href="talent.html#arabic-entertainment" class="ramadan-cta" aria-label="Explore the Arabic Entertainment roster">
+    <!-- RAMADAN BANNER -->
+    <a href="talent.html#arabic-entertainment" class="ramadan-banner" aria-label="Explore Ramadan and Arabic Entertainment">
+        <img src="ae-activations-photos/date-expert.jpg" alt="Ramadan entertainment in Dubai: traditional Arabic bands, oud, qanun and dance performers available for Iftar and Ramadan events" loading="lazy"/>
+        <div class="ramadan-banner-overlay">
+            <span class="ramadan-banner-badge">Ramadan &amp; Arabic Entertainment</span>
+            <h3>Book Your Ramadan Entertainment</h3>
+            <p>Bands, instrumentalists, cultural activations and dance for the holy month. Explore our complete Arabic entertainment roster for Iftar and Suhoor.</p>
+            <span class="ramadan-banner-cta">
                 Explore Arabic Entertainment
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
         </div>
-    </section>
+    </a>
 
     <!-- 360 PHOTOBOOTHS -->
     <section id="photobooth" class="photobooth-section" aria-label="Photobooths">
