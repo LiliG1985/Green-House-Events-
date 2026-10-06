@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
+    <title>Entertainment Roster | DJs, Bands, Dancers &amp; More | Greenhouse Events UAE</title>
+    <meta name="description" content="Browse the Greenhouse Events entertainment roster: DJs, singers, bands, dancers, circus acts, magicians, hostesses and more, matched to your event in Dubai."/>
+    <meta name="keywords" content="entertainment roster Dubai, DJ booking Dubai, band hire Dubai, dancers Dubai, circus acts Dubai, magician hire Dubai, hostess hire Dubai"/>
+    <meta name="robots" content="index, follow"/>
+    <link rel="canonical" href="https://greenhouseeventsuae.com/talent.html"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://greenhouseeventsuae.com/talent.html"/>
+    <meta property="og:title" content="Entertainment Roster | Greenhouse Events UAE"/>
+    <meta property="og:description" content="Browse the entertainment roster: DJs, singers, bands, dancers, circus acts, magicians, hostesses and more."/>
+    <meta property="og:image" content="https://greenhouseeventsuae.com/entertainment-header-bg.jpg"/>
+    <meta property="og:site_name" content="Greenhouse Events Dubai"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Entertainment Roster | Greenhouse Events UAE"/>
+    <meta name="twitter:image" content="https://greenhouseeventsuae.com/entertainment-header-bg.jpg"/>
+    <meta name="geo.region" content="AE-DU"/>
+    <meta name="geo.placename" content="Dubai, United Arab Emirates"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #04100c;
+            --bg-mid: #0a1f18;
+            --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%);
+            --gold-solid: #C9A84C;
+            --white-off: #F4F0E8;
+            --border: rgba(201,168,76,0.18);
+            --nude: #E6D9C2;
+            --serif: 'Cormorant Garamond', serif;
+            --display: 'Cinzel', serif;
+            --sans: 'DM Sans', sans-serif;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        a { color: inherit; text-decoration: none; }
+        body {
+            background-color: var(--bg-deep);
+            background-image:
+                radial-gradient(ellipse 65% 45% at 50% 0%, rgba(201,168,76,0.28), transparent 65%),
+                url('leaf-shadows.png'),
+                url('wall-texture.jpg');
+            background-repeat: no-repeat, no-repeat, repeat;
+            background-size: cover, cover, auto;
+            color: var(--white-off);
+            font-family: var(--sans);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+        .metallic-gold {
+            background: var(--gold-metallic);
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+        }
+
+        /* --- HAMBURGER --- */
+        .hamburger {
+            display: none; flex-direction: column; gap: 5px;
+            cursor: pointer; background: none; border: none;
+            padding: 4px; flex-shrink: 0;
+        }
+        .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--gold-solid); transition: all 0.3s; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.7)); }
+        .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+        /* --- MOBILE FULL SCREEN MENU --- */
+        .mobile-menu {
+            display: none; position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            background: rgba(2, 22, 18, 0.98); backdrop-filter: blur(20px);
+            z-index: 999; flex-direction: column;
+            align-items: center; justify-content: flex-start; gap: 1.35rem;
+            overflow-y: auto; -webkit-overflow-scrolling: touch;
+            padding: 6.5rem 1.5rem 3rem;
+        }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a { font-family: var(--serif); font-size: 1.3rem; color: var(--white-off); text-decoration: none; letter-spacing: 1.5px; opacity: 0.85; transition: opacity 0.3s; text-align: center; line-height: 1.3; }
+        .mobile-menu a:hover { opacity: 1; color: var(--gold-solid); }
+        .mobile-menu a.current-page { color: var(--gold-solid); opacity: 1; }
+        .mobile-menu .mobile-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.8rem 2.5rem; font-family: var(--display); font-size: 0.8rem; letter-spacing: 2px; font-weight: 700; }
+
+        /* --- NAV --- */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            padding: 1.2rem 5vw; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(4, 16, 12, 0.72); backdrop-filter: blur(14px);
+            transition: transform 0.4s ease;
+        }
+        nav.nav-hidden { transform: translateY(-100%); }
+        .logo-wrap { text-decoration: none; display: inline-block; position: relative; padding-bottom: 4px; flex-shrink: 1; min-width: 0; }
+        .nav-logo { font-family: var(--serif); font-size: clamp(0.7rem, 2.2vw, 1.15rem); font-weight: 600; letter-spacing: 3px; display: inline-block; white-space: nowrap; }
+        .nav-actions { display: flex; align-items: center; gap: 1.5rem; flex-shrink: 0; }
+        .nav-whatsapp, .nav-cta {
+            font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 1.5px;
+            padding: 0.6rem 1.1rem; border: 0.5px solid var(--gold-solid); color: var(--gold-solid); white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+        .nav-cta { background: var(--gold-metallic); color: #0b1a18; border: none; }
+        .nav-whatsapp:hover { background: rgba(201,168,76,0.12); }
+        .nav-pages { position: relative; }
+        .nav-pages-btn {
+            background: rgba(5, 13, 12, 0.85); border: 0.5px solid var(--gold-solid); color: var(--gold-solid);
+            padding: 0.55rem 1.1rem; font-family: var(--sans); font-weight: 600; font-size: 0.7rem;
+            display: inline-flex; align-items: center; gap: 6px; cursor: pointer; transition: all 0.3s ease;
+        }
+        .nav-pages-btn:hover { background: rgba(201, 168, 76, 0.2); }
+        .nav-pages-chevron { width: 12px; height: 12px; fill: currentColor; transition: transform 0.25s ease; flex-shrink: 0; }
+        .nav-pages.open .nav-pages-chevron { transform: rotate(180deg); }
+        .nav-pages-menu {
+            position: absolute; top: calc(100% + 12px); right: 0; min-width: 260px;
+            background: rgba(2, 22, 18, 0.98); backdrop-filter: blur(20px);
+            border: 0.5px solid var(--border); box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            padding: 0.5rem 0; z-index: 1001;
+            opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(-8px);
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
+        }
+        .nav-pages.open .nav-pages-menu { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0s; }
+        .nav-pages-menu a { display: block; padding: 0.7rem 1.4rem; font-family: var(--serif); font-size: 0.95rem; letter-spacing: 0.5px; color: var(--white-off); opacity: 0.85; border-left: 2px solid transparent; transition: all 0.2s ease; }
+        .nav-pages-menu a:hover { opacity: 1; color: var(--gold-solid); background: rgba(201,168,76,0.08); border-left-color: var(--gold-solid); }
+        .nav-pages-menu a.current-page { color: var(--gold-solid); opacity: 1; border-left-color: var(--gold-solid); }
+        @media (max-width: 900px) { .nav-pages { display: none; } .nav-whatsapp { display: none; } .nav-cta { display: none; } .hamburger { display: flex; } }
+
+        /* --- HERO --- */
+        .roster-hero { padding: 11rem 8vw 4rem; text-align: center; max-width: 820px; margin: 0 auto; }
+        .roster-hero h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(2.2rem, 6vw, 3.6rem); margin-bottom: 1.2rem; }
+        .roster-hero p { opacity: 0.8; font-size: 1.05rem; line-height: 1.7; }
+
+        /* --- CATEGORY NAV --- */
+        .cat-nav-wrap { position: sticky; top: 0; z-index: 50; background: rgba(4,16,12,0.92); backdrop-filter: blur(16px); border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); padding-top: 4.6rem; }
+        .cat-nav { display: flex; gap: 0.6rem; overflow-x: auto; padding: 1rem 6vw; scrollbar-width: none; }
+        .cat-nav::-webkit-scrollbar { display: none; }
+        .cat-nav a {
+            flex-shrink: 0; font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 1px;
+            padding: 0.6rem 1.1rem; border: 0.5px solid var(--border); color: var(--white-off); opacity: 0.7;
+            transition: all 0.25s ease; white-space: nowrap;
+        }
+        .cat-nav a:hover { opacity: 1; border-color: var(--gold-solid); }
+        .cat-nav a.active { opacity: 1; color: var(--gold-solid); border-color: var(--gold-solid); background: rgba(201,168,76,0.08); }
+
+        /* --- CATEGORY SECTIONS --- */
+        .roster-list { max-width: 980px; margin: 0 auto; padding: 1rem 6vw 2rem; }
+        .cat-section {
+            scroll-margin-top: 7.5rem;
+            padding: 3rem 0; border-bottom: 0.5px solid var(--border);
+            display: grid; grid-template-columns: 1fr auto; gap: 2.5rem; align-items: center;
+        }
+        .cat-section:last-child { border-bottom: none; }
+        .cat-section h2 { font-family: var(--serif); font-weight: 300; font-size: clamp(1.6rem, 3.2vw, 2.3rem); margin-bottom: 0.7rem; }
+        .cat-section p { opacity: 0.75; line-height: 1.75; max-width: 560px; }
+        .cat-enquire-btn {
+            display: inline-block; font-family: var(--sans); font-weight: 600; font-size: 0.72rem; letter-spacing: 1.5px;
+            padding: 0.9rem 1.8rem; border: 0.5px solid var(--gold-solid); color: var(--gold-solid);
+            white-space: nowrap; transition: all 0.3s ease;
+        }
+        .cat-enquire-btn:hover { background: rgba(201,168,76,0.12); }
+        @media (max-width: 700px) {
+            .cat-section { grid-template-columns: 1fr; gap: 1.2rem; }
+            .cat-enquire-btn { width: 100%; text-align: center; }
+        }
+
+        /* --- BANDS SUB-ROSTER GRID --- */
+        .cat-section--bands { display: block; }
+        .band-intro p { max-width: 640px; }
+        .band-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 2rem 1.6rem; margin-top: 2.2rem;
+        }
+        .band-card--hidden { display: none; }
+        .band-card img {
+            width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+            border: 0.5px solid var(--border); background: #000;
+        }
+        .band-card h3 {
+            font-family: var(--serif); font-weight: 400; font-size: 1.05rem;
+            margin: 0.9rem 0 0.5rem; color: var(--white-off);
+        }
+        .band-card p { font-size: 0.82rem; line-height: 1.6; opacity: 0.72; margin-bottom: 0.7rem; max-width: none; }
+        .band-card .band-enquire {
+            display: inline-block; font-family: var(--sans); font-size: 0.65rem; font-weight: 600;
+            letter-spacing: 1px; text-transform: uppercase; color: var(--gold-solid);
+            border-bottom: 0.5px solid var(--gold-solid); padding-bottom: 2px; transition: opacity 0.25s ease;
+        }
+        .band-card .band-enquire:hover { opacity: 0.7; }
+        .band-load-more-wrap { text-align: center; margin-top: 2.8rem; }
+        .band-load-more-btn {
+            font-family: var(--sans); font-weight: 600; font-size: 0.72rem; letter-spacing: 1.5px;
+            padding: 0.9rem 2.2rem; border: 0.5px solid var(--gold-solid); color: var(--gold-solid);
+            background: none; cursor: pointer; transition: all 0.3s ease;
+        }
+        .band-load-more-btn:hover { background: rgba(201,168,76,0.12); }
+        .band-load-more-wrap.is-exhausted { display: none; }
+        @media (max-width: 700px) {
+            .band-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1.6rem 1rem; }
+        }
+
+        /* --- FOOTER CTA --- */
+        #contact-bridge { position: relative; padding: 6rem 8vw; text-align: center; background: var(--bg-mid); }
+        .footer-cta-wrap { max-width: 700px; margin: 0 auto; }
+        .footer-cta-wrap h3 { font-family: var(--serif); font-size: 2.3rem; margin-bottom: 1.2rem; font-weight: 300; }
+        .footer-cta-wrap p { opacity: 0.75; margin-bottom: 2.2rem; }
+        .footer-buttons { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; }
+        .nav-whatsapp-btn, .nav-email-btn {
+            display: inline-flex; align-items: center; gap: 0.6rem; font-family: var(--sans); font-weight: 600;
+            font-size: 0.75rem; letter-spacing: 1.5px; padding: 1rem 1.8rem; border: 0.5px solid var(--gold-solid);
+            color: var(--gold-solid); transition: all 0.3s ease;
+        }
+        .nav-whatsapp-btn svg, .nav-email-btn svg { width: 16px; height: 16px; fill: currentColor; }
+        .nav-whatsapp-btn:hover, .nav-email-btn:hover { background: rgba(201,168,76,0.12); }
+
+        footer { padding: 4rem 5vw; text-align: center; background: #000; }
+    </style>
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="our-services.html" onclick="closeMobileMenu()">Our Services</a>
+    <a href="private-events.html" onclick="closeMobileMenu()">Private Party &amp; Event Planning</a>
+    <a href="corporate-events.html" onclick="closeMobileMenu()">Corporate Event Management</a>
+    <a href="permanent-transformations.html" onclick="closeMobileMenu()">Permanent Transformations</a>
+    <a href="staging-av.html" onclick="closeMobileMenu()">Staging, Sound &amp; AV</a>
+    <a href="entertainment.html" onclick="closeMobileMenu()">Entertainment</a>
+    <a href="talent.html" onclick="closeMobileMenu()">Entertainment Roster</a>
+    <a href="wardrobe-costumes.html" onclick="closeMobileMenu()">Wardrobe</a>
+    <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+    <a href="contact.html" onclick="closeMobileMenu()" class="mobile-cta">Enquire Now</a>
+</div>
+
+<nav>
+    <a href="index.html" class="logo-wrap"><span class="nav-logo metallic-gold">GREENHOUSE EVENTS DUBAI</span></a>
+    <div class="nav-actions">
+        <a href="https://wa.me/971552537712" target="_blank" class="nav-whatsapp">WHATSAPP</a>
+        <a href="contact.html" class="nav-cta">ENQUIRE NOW</a>
+        <div class="nav-pages" id="navPages">
+            <button class="nav-pages-btn" id="navPagesBtn" type="button" aria-haspopup="true" aria-expanded="false">
+                EXPLORE
+                <svg class="nav-pages-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="nav-pages-menu" id="navPagesMenu">
+                <a href="index.html">Home</a>
+                <a href="our-services.html">Our Services</a>
+                <a href="private-events.html">Private Party &amp; Event Planning</a>
+                <a href="corporate-events.html">Corporate Event Management</a>
+                <a href="permanent-transformations.html">Permanent Transformations</a>
+                <a href="staging-av.html">Staging, Sound &amp; AV</a>
+                <a href="entertainment.html">Entertainment</a>
+                <a href="talent.html">Entertainment Roster</a>
+                <a href="wardrobe-costumes.html">Wardrobe</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<div class="roster-hero">
+    <h1 class="metallic-gold">Entertainment Roster</h1>
+    <p>Twenty categories of talent, matched to your event. Pick a category to see what it covers, then send us your date and vibe and we will put the right act in front of you.</p>
+</div>
+
+<div class="cat-nav-wrap">
+    <nav class="cat-nav" id="catNav" aria-label="Entertainment categories">
+        <a href="#djs">DJs</a>
+        <a href="#singers">Singers</a>
+        <a href="#bands">Bands</a>
+        <a href="#instrumental">Instrumental</a>
+        <a href="#arabic-musicians">Arabic Musicians</a>
+        <a href="#specialist-acts">Specialists Acts</a>
+        <a href="#circus-acts">Circus Acts</a>
+        <a href="#roaming-acts">Roaming Acts</a>
+        <a href="#dancers">Dancers</a>
+        <a href="#shows">Shows</a>
+        <a href="#acrobats">Acrobats</a>
+        <a href="#stationed-acts">Stationed Acts</a>
+        <a href="#fire-led-shows">Fire &amp; L.E.D Shows</a>
+        <a href="#childrens-entertainment">Children's Entertainment</a>
+        <a href="#hostesses">Hostesses</a>
+        <a href="#mc-host-comedian">MC / Host / Comedian</a>
+        <a href="#live-art">Live Art</a>
+        <a href="#photographers-videographers">Photographers &amp; Videographers</a>
+        <a href="#photo-booths">Photo Booths</a>
+        <a href="#magicians-illusionists">Magicians &amp; Illusionists</a>
+    </nav>
+</div>
+
+<div class="roster-list">
+
+    <section class="cat-section" id="djs">
+        <div>
+            <h2 class="metallic-gold">DJs</h2>
+            <p>From intimate lounge sets to full dancefloor takeovers. Open format, Arabic, and commercial DJs, matched to your crowd and your night.</p>
+        </div>
+        <a href="contact.html?service=Entertainment&amp;items=DJs" class="cat-enquire-btn">Enquire About DJs</a>
+    </section>
+
+    <section class="cat-section" id="singers">
+        <div>
+            <h2 class="metallic-gold">Singers</h2>
+            <p>Live vocalists for ceremonies, dinner sets, and headline performances, across genres and languages.</p>
+        </div>
+        <a href="contact.html?service=Entertainment&amp;items=Singers" class="cat-enquire-btn">Enquire About Singers</a>
+    </section>
+
+    <section class="cat-section cat-section--bands" id="bands">
+        <div class="band-intro">
+            <h2 class="metallic-gold">Bands</h2>
+            <p>Full live bands from our roster, from jazz trios to high-energy party bands, built around your event's sound. A taste of who is available, not the full list, tell us your date and vibe and we will match the right act.</p>
+        </div>
+        <div class="band-grid" id="bandGrid">
+                <div class="band-card">
+                    <img src="band-photos/the-swing-revue.jpg" alt="The Swing Revue, Dubai event band" loading="lazy"/>
+                    <h3>The Swing Revue</h3>
+                    <p>Six-piece swing outfit built around the sound of the 1920s to the 1950s, horns, harmonies and all. Weekly residents at Jazz@PizzaExpress JLT, with a Time Out Nightlife Award nomination behind them.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=The%20Swing%20Revue" class="band-enquire">Enquire About The Swing Revue</a>
+                </div>
+                <div class="band-card">
+                    <img src="band-photos/the-sonix.jpg" alt="The Sonix, Dubai event band" loading="lazy"/>
+                    <h3>The Sonix</h3>
+                    <p>Flexible lineup running from an acoustic duo up to a seven-piece band, covering five decades of hits from the 50s through today's top 40. Built for restaurants, bars and large-scale functions alike.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=The%20Sonix" class="band-enquire">Enquire About The Sonix</a>
+                </div>
+                <div class="band-card">
+                    <img src="band-photos/gorgeous-george.jpg" alt="Gorgeous George, Dubai event band" loading="lazy"/>
+                    <h3>Gorgeous George</h3>
+                    <p>A full-throttle live act that moves between rock, indie, funk and pop within a single set. Known for packing dance floors at Dubai bars, private parties and festival stages.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Gorgeous%20George" class="band-enquire">Enquire About Gorgeous George</a>
+                </div>
+                <div class="band-card">
+                    <img src="band-photos/the-bossa-project.jpg" alt="The Bossa Project, Dubai event band" loading="lazy"/>
+                    <h3>The Bossa Project</h3>
+                    <p>A vocal-led quartet blending Brazilian rhythm with English lyrics, inspired by Rio de Janeiro as much as Ibiza sunsets. Their percussionist carries a Latin Grammy to the stage.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=The%20Bossa%20Project" class="band-enquire">Enquire About The Bossa Project</a>
+                </div>
+                <div class="band-card">
+                    <img src="band-photos/the-seen.jpg" alt="The Seen, Dubai event band" loading="lazy"/>
+                    <h3>The Seen</h3>
+                    <p>A Pakistani band weaving Sufi, pop, rock and fusion together, with modern Bollywood flair running through classic Eastern melodies. Built for both intimate cultural evenings and large celebrations.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=The%20Seen" class="band-enquire">Enquire About The Seen</a>
+                </div>
+                <div class="band-card">
+                    <img src="band-photos/the-nomads.jpg" alt="The Nomads, Dubai event band" loading="lazy"/>
+                    <h3>The Nomads</h3>
+                    <p>High-energy pop and rock covers with a feel-good, borderless approach to genre. A band built to keep a dance floor moving from the first song.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=The%20Nomads" class="band-enquire">Enquire About The Nomads</a>
+                </div>
+                <div class="band-card">
+                    <img src="band-photos/nutella-riot.jpg" alt="Nutella Riot, Dubai event band" loading="lazy"/>
+                    <h3>Nutella Riot</h3>
+                    <p>A pop-jazz duo pairing singer-songwriter vocals with virtuoso guitar, part funk, part swing. Their jazzy covers of English and French favourites have travelled from Glastonbury to the Cologne Philharmonic.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Nutella%20Riot" class="band-enquire">Enquire About Nutella Riot</a>
+                </div>
+                <div class="band-card">
+                    <img src="band-photos/lnd-romantic.jpg" alt="LND Romantic, Dubai event band" loading="lazy"/>
+                    <h3>LND Romantic</h3>
+                    <p>An electrifying trio built for club residencies and late-night sets, blending house, progressive and dancefloor-ready beats. Suited to private events that want a DJ-band hybrid energy.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=LND%20Romantic" class="band-enquire">Enquire About LND Romantic</a>
+                </div>
+                <div class="band-card">
+                    <img src="band-photos/noon-band.jpg" alt="Noon Band, Dubai event band" loading="lazy"/>
+                    <h3>Noon Band</h3>
+                    <p>An instrumental trio fronting the oud over electric bass and drums, framed by jazz improvisation. They call their sound 'experimental Oriental,' equal parts funk groove and Middle Eastern melody.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Noon%20Band" class="band-enquire">Enquire About Noon Band</a>
+                </div>
+                <div class="band-card">
+                    <img src="band-photos/hosny-fusion-trio.jpg" alt="Hosny Fusion Trio, Dubai event band" loading="lazy"/>
+                    <h3>Hosny Fusion Trio</h3>
+                    <p>Oud, piano and percussion rooted in traditional Arabic melody, played with a contemporary touch. A tight, interplay-driven trio built for events that want an authentic regional sound.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Hosny%20Fusion%20Trio" class="band-enquire">Enquire About Hosny Fusion Trio</a>
+                </div>
+                <div class="band-card">
+                    <img src="band-photos/golden-collective.jpg" alt="Golden Collective, Dubai event band" loading="lazy"/>
+                    <h3>Golden Collective</h3>
+                    <p>A full party band with horns, rhythm section and a charismatic lead vocalist, built from musicians across Europe, the Americas and the UAE. Equally at home playing jazz through dinner or soul and disco on the dance floor.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Golden%20Collective" class="band-enquire">Enquire About Golden Collective</a>
+                </div>
+                <div class="band-card">
+                    <img src="band-photos/nuvo-soul.jpg" alt="Nuvo Soul, Dubai event band" loading="lazy"/>
+                    <h3>Nuvo Soul</h3>
+                    <p>A jazz, soul and funk trio drawing on Ella Fitzgerald and Frank Sinatra as much as Amy Winehouse and Bruno Mars. Twice shortlisted for Best Live Band at Time Out Dubai's Nightlife Awards.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Nuvo%20Soul" class="band-enquire">Enquire About Nuvo Soul</a>
+                </div>
+                <div class="band-card">
+                    <img src="band-photos/the-moxies.jpg" alt="The Moxies, Dubai event band" loading="lazy"/>
+                    <h3>The Moxies</h3>
+                    <p>An all-female vocal harmony trio built entirely around the sound of the 1920s, tight three-part harmonies, vintage choreography and all. A favourite for events chasing a roaring twenties theme.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=The%20Moxies" class="band-enquire">Enquire About The Moxies</a>
+                </div>
+                <div class="band-card">
+                    <img src="band-photos/the-youngers.jpg" alt="The Youngers, Dubai event band" loading="lazy"/>
+                    <h3>The Youngers</h3>
+                    <p>An acoustic trio that performs in English, Spanish, Portuguese, Italian and Arabic, known for leaving the stage to perform among guests. Built for weddings, theme nights and business events alike.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=The%20Youngers" class="band-enquire">Enquire About The Youngers</a>
+                </div>
+                <div class="band-card">
+                    <img src="band-photos/lady-j.jpg" alt="Lady J, Dubai event band" loading="lazy"/>
+                    <h3>Lady J</h3>
+                    <p>A jazz-leaning duo built around Motown-inspired originals and live drum and guitar loops, performing together since 2006 across Asia and the GCC. Over 2,700 shows and counting.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Lady%20J" class="band-enquire">Enquire About Lady J</a>
+                </div>
+                <div class="band-card band-card--hidden">
+                    <img src="band-photos/4themusic.jpg" alt="4TheMusic, Dubai event band" loading="lazy"/>
+                    <h3>4TheMusic</h3>
+                    <p>An award-winning South African band that took home Best Band of 2023 and a Best World Beat win in Los Angeles. Sixteen years of experience energising weeknights and weekends across Dubai.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=4TheMusic" class="band-enquire">Enquire About 4TheMusic</a>
+                </div>
+                <div class="band-card band-card--hidden">
+                    <img src="band-photos/salt-and-pepper-duo.jpg" alt="Salt &amp; Pepper Duo, Dubai event band" loading="lazy"/>
+                    <h3>Salt &amp; Pepper Duo</h3>
+                    <p>Vocals and piano covering pop, dance, R&amp;B, jazz, classical and ballads, with a polished, professional approach built from years in the industry. A reliable, repertoire-deep duo for any room.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Salt%20&amp;%20Pepper%20Duo" class="band-enquire">Enquire About Salt &amp; Pepper Duo</a>
+                </div>
+                <div class="band-card band-card--hidden">
+                    <img src="band-photos/irina-band.jpg" alt="Irina Band, Dubai event band" loading="lazy"/>
+                    <h3>Irina Band</h3>
+                    <p>A solo, duo or trio setup spanning pop, soul, jazz, lounge and dance music, performed in English, French, Italian, Spanish and Russian. Built to flex to whatever the event calls for.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Irina%20Band" class="band-enquire">Enquire About Irina Band</a>
+                </div>
+                <div class="band-card band-card--hidden">
+                    <img src="band-photos/vibe-de-sol.jpg" alt="Vibe De Sol, Dubai event band" loading="lazy"/>
+                    <h3>Vibe De Sol</h3>
+                    <p>A singer, songwriter and dancer whose career has run through London, Los Angeles and Miami, with studio credits alongside major international names. Pop built for a stage that wants a genuine performer, not just a vocalist.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Vibe%20De%20Sol" class="band-enquire">Enquire About Vibe De Sol</a>
+                </div>
+                <div class="band-card band-card--hidden">
+                    <img src="band-photos/de-cruz-band.jpg" alt="De Cruz Band, Dubai event band" loading="lazy"/>
+                    <h3>De Cruz Band</h3>
+                    <p>A West African ensemble spanning jazz, Motown, soul, reggae and Afrobeat, with a stage history alongside major touring artists. Scales from a tight trio to a full ensemble show.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=De%20Cruz%20Band" class="band-enquire">Enquire About De Cruz Band</a>
+                </div>
+                <div class="band-card band-card--hidden">
+                    <img src="band-photos/the-boxtones.jpg" alt="The Boxtones, Dubai event band" loading="lazy"/>
+                    <h3>The Boxtones</h3>
+                    <p>A Scottish and Canadian rock-pop band with a Celtic edge, signed to Universal Music MENA, with a touring history that includes stages shared with major international acts. Built for a bigger, festival-leaning sound.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=The%20Boxtones" class="band-enquire">Enquire About The Boxtones</a>
+                </div>
+                <div class="band-card band-card--hidden">
+                    <img src="band-photos/about-last-night.jpg" alt="About Last Night, Dubai event band" loading="lazy"/>
+                    <h3>About Last Night</h3>
+                    <p>A stadium-style show band built around curated mash-ups and a full multimedia light and video production. For events that want the volume and spectacle turned all the way up.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=About%20Last%20Night" class="band-enquire">Enquire About About Last Night</a>
+                </div>
+                <div class="band-card band-card--hidden">
+                    <img src="band-photos/nomades-the-band.jpg" alt="Nomades The Band, Dubai event band" loading="lazy"/>
+                    <h3>Nomades The Band</h3>
+                    <p>Strings, oud, percussion, electronic keys and wind instruments woven into one eclectic, borderless sound. Built to move a room between dancing and stillness within the same set.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Nomades%20The%20Band" class="band-enquire">Enquire About Nomades The Band</a>
+                </div>
+                <div class="band-card band-card--hidden">
+                    <img src="band-photos/mr-and-mrs-duo.jpg" alt="Mr and Mrs Duo, Dubai event band" loading="lazy"/>
+                    <h3>Mr and Mrs Duo</h3>
+                    <p>A married duo pairing saxophone with soulful vocals, drawing on jazz ballads, classic pop and the golden era of disco. An intimate, polished sound built from years performing together.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Mr%20and%20Mrs%20Duo" class="band-enquire">Enquire About Mr and Mrs Duo</a>
+                </div>
+                <div class="band-card band-card--hidden">
+                    <img src="band-photos/danny-and-krystle-duo.jpg" alt="Danny &amp; Krystle Duo, Dubai event band" loading="lazy"/>
+                    <h3>Danny &amp; Krystle Duo</h3>
+                    <p>A married duo blending soulful vocals with acoustic guitar, performing together across intimate venues and larger stages alike. A warm, connected sound built on years of musical partnership.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Danny%20&amp;%20Krystle%20Duo" class="band-enquire">Enquire About Danny &amp; Krystle Duo</a>
+                </div>
+                <div class="band-card band-card--hidden">
+                    <img src="band-photos/the-girl-from-the-north-country.jpg" alt="The Girl From The North Country, Dubai event band" loading="lazy"/>
+                    <h3>The Girl From The North Country</h3>
+                    <p>A soulful duo led by a UK vocalist, moving between heartfelt ballads and upbeat anthems within the same set. Built for a room that wants both quiet moments and energy.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=The%20Girl%20From%20The%20North%20Country" class="band-enquire">Enquire About The Girl From The North Country</a>
+                </div>
+                <div class="band-card band-card--hidden">
+                    <img src="band-photos/the-ark-angels.jpg" alt="The Ark Angels, Dubai event band" loading="lazy"/>
+                    <h3>The Ark Angels</h3>
+                    <p>A four-piece all-female band fusing pop and rock into a lively, feel-good set. Regulars across Dubai's biggest venues, built for a crowd that wants to sing along.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=The%20Ark%20Angels" class="band-enquire">Enquire About The Ark Angels</a>
+                </div>
+                <div class="band-card band-card--hidden">
+                    <img src="band-photos/big-mouth.jpg" alt="Big Mouth, Dubai event band" loading="lazy"/>
+                    <h3>Big Mouth</h3>
+                    <p>A power trio built around sharp guitar work and a tight rhythm section, playing timeless classics with real musicianship behind the fun. Built for a night that keeps the dance floor full.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Big%20Mouth" class="band-enquire">Enquire About Big Mouth</a>
+                </div>
+                <div class="band-card band-card--hidden">
+                    <img src="band-photos/carla-duo.jpg" alt="Carla Duo, Dubai event band" loading="lazy"/>
+                    <h3>Carla Duo</h3>
+                    <p>An Italian jazz and bossa nova vocalist with formal music therapy training, bringing warmth and emotional depth to every set. Known for weaving roller-skating into her stage presence.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Carla%20Duo" class="band-enquire">Enquire About Carla Duo</a>
+                </div>
+                <div class="band-card band-card--hidden">
+                    <img src="band-photos/jose-jazz-trio.jpg" alt="Jose Jazz Trio, Dubai event band" loading="lazy"/>
+                    <h3>Jose Jazz Trio</h3>
+                    <p>A pianist, trombonist and composer blending Latin-Arabic fusion with classical and Afro-Cuban influence. Built for a set that moves past straight jazz standards into something more layered.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Jose%20Jazz%20Trio" class="band-enquire">Enquire About Jose Jazz Trio</a>
+                </div>
+                <div class="band-card band-card--hidden">
+                    <img src="band-photos/bobby-jazz-trio.jpg" alt="Bobby Jazz Trio, Dubai event band" loading="lazy"/>
+                    <h3>Bobby Jazz Trio</h3>
+                    <p>Grand piano jazz covering Tony Bennett, Frank Sinatra and Michael Bublé in a 360-degree set that's never quite the same twice. Built for an elegant, mellow room.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Bobby%20Jazz%20Trio" class="band-enquire">Enquire About Bobby Jazz Trio</a>
+                </div>
+                <div class="band-card band-card--hidden">
+                    <img src="band-photos/errico-jazz-band.jpg" alt="Errico Jazz Band, Dubai event band" loading="lazy"/>
+                    <h3>Errico Jazz Band</h3>
+                    <p>An Italian vocalist and composer with roots in classical study and a career that has carried him through Europe, Brazil and now Dubai. Blends jazz technique with samba warmth.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Errico%20Jazz%20Band" class="band-enquire">Enquire About Errico Jazz Band</a>
+                </div>
+                <div class="band-card band-card--hidden">
+                    <img src="band-photos/rudo-jazz-trio.jpg" alt="Rudo Jazz Trio, Dubai event band" loading="lazy"/>
+                    <h3>Rudo Jazz Trio</h3>
+                    <p>An upright bass-led pop-jazz trio reinventing five decades of best-known hits, formed by a three-time SAMA Award-nominated arranger. Has shared stages with major international names.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Rudo%20Jazz%20Trio" class="band-enquire">Enquire About Rudo Jazz Trio</a>
+                </div>
+                <div class="band-card band-card--hidden">
+                    <img src="band-photos/rami-jazz-trio.jpg" alt="Rami Jazz Trio, Dubai event band" loading="lazy"/>
+                    <h3>Rami Jazz Trio</h3>
+                    <p>An Egyptian pianist blending modern jazz with Middle Eastern and Mediterranean influence, built around rich, cinematic composition. Led by a Yamaha Artist with 25-plus international festival credits.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Rami%20Jazz%20Trio" class="band-enquire">Enquire About Rami Jazz Trio</a>
+                </div>
+                <div class="band-card band-card--hidden">
+                    <img src="band-photos/the-rebel-bass.jpg" alt="The Rebel Bass, Dubai event band" loading="lazy"/>
+                    <h3>The Rebel Bass</h3>
+                    <p>A multicultural covers band spanning rock, pop, funk and indie, winner of Best Bar Band at the 2023 Dubai nightlife awards. Built for a set that keeps the crowd dancing from the first chord.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=The%20Rebel%20Bass" class="band-enquire">Enquire About The Rebel Bass</a>
+                </div>
+                <div class="band-card band-card--hidden">
+                    <img src="band-photos/chloe-jazz-trio.jpg" alt="Chloe Jazz Trio, Dubai event band" loading="lazy"/>
+                    <h3>Chloe Jazz Trio</h3>
+                    <p>A British soul and jazz vocalist raised on Natalie Cole, Stevie Wonder and Ella Fitzgerald, with residencies across Dubai's five-star hotel circuit. Brings a sultry, velvet-toned set to jazz bars and private events alike.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Chloe%20Jazz%20Trio" class="band-enquire">Enquire About Chloe Jazz Trio</a>
+                </div>
+                <div class="band-card band-card--hidden">
+                    <img src="band-photos/the-jazz-project.jpg" alt="The Jazz Project, Dubai event band" loading="lazy"/>
+                    <h3>The Jazz Project</h3>
+                    <p>A four-piece ensemble moving between classic jazz standards and contemporary jazz fusion. Built for a refined, elegant room that still wants some energy in the set.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=The%20Jazz%20Project" class="band-enquire">Enquire About The Jazz Project</a>
+                </div>
+                <div class="band-card band-card--hidden">
+                    <img src="band-photos/mark-zitti.jpg" alt="Mark Zitti, Dubai event band" loading="lazy"/>
+                    <h3>Mark Zitti</h3>
+                    <p>A brass-driven swing and jazz trio with a sharp, engaging sound and plenty of youthful energy. Built for a set that leans into classic swing with real bite.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Mark%20Zitti" class="band-enquire">Enquire About Mark Zitti</a>
+                </div>
+                <div class="band-card band-card--hidden">
+                    <img src="band-photos/ssb.jpg" alt="SSB (Saadiyat Studio Band), Dubai event band" loading="lazy"/>
+                    <h3>SSB (Saadiyat Studio Band)</h3>
+                    <p>A scalable lineup of the UAE's top session musicians, from an intimate trio to a seven-piece band, with members who've shared stages with major global artists. Moves comfortably between sophisticated jazz and high-energy funk and soul.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=SSB%20(Saadiyat%20Studio%20Band)" class="band-enquire">Enquire About SSB (Saadiyat Studio Band)</a>
+                </div>
+                <div class="band-card band-card--hidden">
+                    <img src="band-photos/cubache-band.jpg" alt="Cubache Band, Dubai event band" loading="lazy"/>
+                    <h3>Cubache Band</h3>
+                    <p>A six-piece Cuban ensemble playing authentic salsa and Buena Vista-style music, built from musicians raised across different regions of Cuba. Time Out Dubai 'Best Bar Band' nominees.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Cubache%20Band" class="band-enquire">Enquire About Cubache Band</a>
+                </div>
+                <div class="band-card band-card--hidden">
+                    <img src="band-photos/the-tasty-biscuits.jpg" alt="The Tasty Biscuits, Dubai event band" loading="lazy"/>
+                    <h3>The Tasty Biscuits</h3>
+                    <p>A six-piece band blending soulful melodies with funky grooves, with stages that have ranged from intimate Sofar Sounds shows to F1 after-race concerts. Built for a set with real groove behind it.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=The%20Tasty%20Biscuits" class="band-enquire">Enquire About The Tasty Biscuits</a>
+                </div>
+                <div class="band-card band-card--hidden">
+                    <img src="band-photos/iva.jpg" alt="IVA, Dubai event band" loading="lazy"/>
+                    <h3>IVA</h3>
+                    <p>A Dubai-based soul, jazz, pop and dance act that has performed across the region's top five-star venues, from Atlantis to Burj Al Arab. A polished, high-profile act for a room that wants a proven performer.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=IVA" class="band-enquire">Enquire About IVA</a>
+                </div>
+                <div class="band-card band-card--hidden">
+                    <img src="band-photos/mike-and-mary-duo.jpg" alt="Mike &amp; Mary Duo, Dubai event band" loading="lazy"/>
+                    <h3>Mike &amp; Mary Duo</h3>
+                    <p>A vocal duo and trio spanning 1940s and 50s classics through to modern dance hits, with stage credits on major TV talent shows. Built for romantic gatherings, brunches and larger celebrations alike.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Mike%20&amp;%20Mary%20Duo" class="band-enquire">Enquire About Mike &amp; Mary Duo</a>
+                </div>
+        </div>
+        <div class="band-load-more-wrap" id="bandLoadMoreWrap">
+            <button type="button" class="band-load-more-btn" id="bandLoadMoreBtn">Show More Bands</button>
+        </div>
+    </section>
+
+    <section class="cat-section" id="instrumental">
+        <div>
+            <h2 class="metallic-gold">Instrumental</h2>
+            <p>Solo and ensemble instrumentalists: strings, piano, saxophone and more, for ceremonies and ambient sets.</p>
+        </div>
+        <a href="contact.html?service=Entertainment&amp;items=Instrumental" class="cat-enquire-btn">Enquire About Instrumental</a>
+    </section>
+
+    <section class="cat-section" id="arabic-musicians">
+        <div>
+            <h2 class="metallic-gold">Arabic Musicians</h2>
+            <p>Traditional and contemporary Arabic musicians and ensembles for cultural and regional celebrations.</p>
+        </div>
+        <a href="contact.html?service=Entertainment&amp;items=Arabic%20Musicians" class="cat-enquire-btn">Enquire About Arabic Musicians</a>
+    </section>
+
+    <section class="cat-section" id="specialist-acts">
+        <div>
+            <h2 class="metallic-gold">Specialists Acts</h2>
+            <p>Specialist performers built around a unique concept or theme, tailored to your event.</p>
+        </div>
+        <a href="contact.html?service=Entertainment&amp;items=Specialists%20Acts" class="cat-enquire-btn">Enquire About Specialists Acts</a>
+    </section>
+
+    <section class="cat-section" id="circus-acts">
+        <div>
+            <h2 class="metallic-gold">Circus Acts</h2>
+            <p>Aerialists, contortionists, and circus performers for high impact visual entertainment.</p>
+        </div>
+        <a href="contact.html?service=Entertainment&amp;items=Circus%20Acts" class="cat-enquire-btn">Enquire About Circus Acts</a>
+    </section>
+
+    <section class="cat-section" id="roaming-acts">
+        <div>
+            <h2 class="metallic-gold">Roaming Acts</h2>
+            <p>Walkabout performers who move through your event, mingling with guests and creating moments.</p>
+        </div>
+        <a href="contact.html?service=Entertainment&amp;items=Roaming%20Acts" class="cat-enquire-btn">Enquire About Roaming Acts</a>
+    </section>
+
+    <section class="cat-section" id="dancers">
+        <div>
+            <h2 class="metallic-gold">Dancers</h2>
+            <p>Choreographed dance troupes and solo performers across styles, from contemporary to cultural.</p>
+        </div>
+        <a href="contact.html?service=Entertainment&amp;items=Dancers" class="cat-enquire-btn">Enquire About Dancers</a>
+    </section>
+
+    <section class="cat-section" id="shows">
+        <div>
+            <h2 class="metallic-gold">Shows</h2>
+            <p>Full production shows built around a theme, choreography, and a clear narrative arc.</p>
+        </div>
+        <a href="contact.html?service=Entertainment&amp;items=Shows" class="cat-enquire-btn">Enquire About Shows</a>
+    </section>
+
+    <section class="cat-section" id="acrobats">
+        <div>
+            <h2 class="metallic-gold">Acrobats</h2>
+            <p>Acrobatic and gymnastic performers for stage shows or roaming entertainment.</p>
+        </div>
+        <a href="contact.html?service=Entertainment&amp;items=Acrobats" class="cat-enquire-btn">Enquire About Acrobats</a>
+    </section>
+
+    <section class="cat-section" id="stationed-acts">
+        <div>
+            <h2 class="metallic-gold">Stationed Acts</h2>
+            <p>Performers stationed at a fixed point: living statues, art installations, and interactive stations.</p>
+        </div>
+        <a href="contact.html?service=Entertainment&amp;items=Stationed%20Acts" class="cat-enquire-btn">Enquire About Stationed Acts</a>
+    </section>
+
+    <section class="cat-section" id="fire-led-shows">
+        <div>
+            <h2 class="metallic-gold">Fire &amp; L.E.D Shows</h2>
+            <p>High impact fire and LED performance acts for a striking visual finale.</p>
+        </div>
+        <a href="contact.html?service=Entertainment&amp;items=Fire%20%26%20L.E.D%20Shows" class="cat-enquire-btn">Enquire About Fire &amp; L.E.D Shows</a>
+    </section>
+
+    <section class="cat-section" id="childrens-entertainment">
+        <div>
+            <h2 class="metallic-gold">Children's Entertainment</h2>
+            <p>Entertainers, characters, and activities designed for younger guests.</p>
+        </div>
+        <a href="contact.html?service=Entertainment&amp;items=Children%27s%20Entertainment" class="cat-enquire-btn">Enquire About Children's Entertainment</a>
+    </section>
+
+    <section class="cat-section" id="hostesses">
+        <div>
+            <h2 class="metallic-gold">Hostesses</h2>
+            <p>Professional hostesses for guest management, registration, and brand representation.</p>
+        </div>
+        <a href="contact.html?service=Entertainment&amp;items=Hostesses" class="cat-enquire-btn">Enquire About Hostesses</a>
+    </section>
+
+    <section class="cat-section" id="mc-host-comedian">
+        <div>
+            <h2 class="metallic-gold">MC / Host / Comedian</h2>
+            <p>Hosts, MCs, and comedians to guide your event and keep the energy right.</p>
+        </div>
+        <a href="contact.html?service=Entertainment&amp;items=MC%20%2F%20Host%20%2F%20Comedian" class="cat-enquire-btn">Enquire About MC / Host / Comedian</a>
+    </section>
+
+    <section class="cat-section" id="live-art">
+        <div>
+            <h2 class="metallic-gold">Live Art</h2>
+            <p>Live painters and artists who create a piece in real time as part of your event.</p>
+        </div>
+        <a href="contact.html?service=Entertainment&amp;items=Live%20Art" class="cat-enquire-btn">Enquire About Live Art</a>
+    </section>
+
+    <section class="cat-section" id="photographers-videographers">
+        <div>
+            <h2 class="metallic-gold">Photographers &amp; Videographers</h2>
+            <p>Event photography and videography, from documentary coverage to cinematic highlight reels.</p>
+        </div>
+        <a href="contact.html?service=Entertainment&amp;items=Photographers%20%26%20Videographers" class="cat-enquire-btn">Enquire About Photographers &amp; Videographers</a>
+    </section>
+
+    <section class="cat-section" id="photo-booths">
+        <div>
+            <h2 class="metallic-gold">Photo Booths</h2>
+            <p>Photo booths and activations, from classic booths to 360 experiences.</p>
+        </div>
+        <a href="contact.html?service=Entertainment&amp;items=Photo%20Booths" class="cat-enquire-btn">Enquire About Photo Booths</a>
+    </section>
+
+    <section class="cat-section" id="magicians-illusionists">
+        <div>
+            <h2 class="metallic-gold">Magicians &amp; Illusionists</h2>
+            <p>Close-up magic and stage illusion acts for an unforgettable wow moment.</p>
+        </div>
+        <a href="contact.html?service=Entertainment&amp;items=Magicians%20%26%20Illusionists" class="cat-enquire-btn">Enquire About Magicians &amp; Illusionists</a>
+    </section>
+
+</div>
+
+<section id="contact-bridge">
+    <div class="footer-cta-wrap">
+        <h3 class="metallic-gold">Not Sure Which Act You Need?</h3>
+        <p>Tell us your event type, date, and the mood you're going for, and we'll shortlist the right talent for you.</p>
+        <div class="footer-buttons">
+            <a href="https://wa.me/971552537712?text=Hello%20Greenhouse%20Events%2C%20I%27d%20like%20to%20ask%20about%20entertainment%20options." target="_blank" class="nav-whatsapp-btn">
+                <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+                WHATSAPP US
+            </a>
+            <a href="contact.html?service=Entertainment" class="nav-email-btn">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                CONTACT US VIA EMAIL
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p class="metallic-gold" style="font-family: var(--display); font-size: 1.1rem; letter-spacing: 5px; font-weight: 700; margin-bottom: 0.5rem;">GREENHOUSE EVENTS DUBAI</p>
+    <p style="font-size: 0.75rem; opacity: 0.4; letter-spacing: 1px;">&copy; 2026 Greenhouse Events UAE. All Rights Reserved.</p>
+</footer>
+
+<script>
+    const hamburger = document.getElementById("hamburger");
+    const mobileMenu = document.getElementById("mobileMenu");
+    hamburger.addEventListener("click", function () {
+        const isOpen = mobileMenu.classList.toggle("open");
+        hamburger.classList.toggle("open");
+        hamburger.setAttribute("aria-expanded", isOpen);
+        document.body.style.overflow = isOpen ? "hidden" : "";
+    });
+    function closeMobileMenu() {
+        hamburger.classList.remove("open");
+        mobileMenu.classList.remove("open");
+        hamburger.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+    }
+
+    // EXPLORE dropdown
+    var navPages = document.getElementById("navPages");
+    var navPagesBtn = document.getElementById("navPagesBtn");
+    if (navPages && navPagesBtn) {
+        navPagesBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            var isOpen = navPages.classList.toggle("open");
+            navPagesBtn.setAttribute("aria-expanded", isOpen);
+        });
+        document.addEventListener("click", function (e) {
+            if (!navPages.contains(e.target)) {
+                navPages.classList.remove("open");
+                navPagesBtn.setAttribute("aria-expanded", "false");
+            }
+        });
+        var currentFile = window.location.pathname.split("/").pop() || "index.html";
+        document.querySelectorAll(".nav-pages-menu a, .mobile-menu a").forEach(function (a) {
+            if (a.getAttribute("href") === currentFile) {
+                a.classList.add("current-page");
+            }
+        });
+    }
+
+    window.addEventListener("resize", function () {
+        if (window.innerWidth > 900) closeMobileMenu();
+    });
+
+    // --- HEADER: hide on scroll down, show on scroll up ---
+    (function () {
+        var navEl = document.querySelector("nav");
+        if (!navEl) return;
+        var mobileMenuEl = document.getElementById("mobileMenu");
+        var navPagesEl = document.getElementById("navPages");
+        var lastY = window.scrollY;
+        var ticking = false;
+        function isMenuOpen() {
+            return (mobileMenuEl && mobileMenuEl.classList.contains("open")) ||
+                   (navPagesEl && navPagesEl.classList.contains("open"));
+        }
+        function update(y) {
+            if (!isMenuOpen()) {
+                if (y > lastY && y > 140) {
+                    navEl.classList.add("nav-hidden");
+                } else {
+                    navEl.classList.remove("nav-hidden");
+                }
+            }
+            lastY = y;
+            ticking = false;
+        }
+        window.addEventListener("scroll", function () {
+            if (!ticking) {
+                ticking = true;
+                requestAnimationFrame(function () { update(window.scrollY); });
+            }
+        }, { passive: true });
+    })();
+
+    // --- CATEGORY NAV: active-state tracking ---
+    (function () {
+        var links = Array.prototype.slice.call(document.querySelectorAll("#catNav a"));
+        var sections = Array.prototype.slice.call(document.querySelectorAll(".cat-section"));
+        if (!links.length || !sections.length) return;
+        var map = {};
+        links.forEach(function (a) { map[a.getAttribute("href").slice(1)] = a; });
+
+        function setActive(id) {
+            links.forEach(function (a) { a.classList.remove("active"); });
+            if (map[id]) {
+                map[id].classList.add("active");
+                map[id].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+            }
+        }
+
+        if (window.location.hash) {
+            setActive(window.location.hash.slice(1));
+        } else {
+            links[0].classList.add("active");
+        }
+
+        if ("IntersectionObserver" in window) {
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        setActive(entry.target.id);
+                    }
+                });
+            }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+            sections.forEach(function (s) { io.observe(s); });
+        }
+    })();
+
+    // --- BANDS GRID: show more ---
+    (function () {
+        var btn = document.getElementById("bandLoadMoreBtn");
+        var wrap = document.getElementById("bandLoadMoreWrap");
+        var grid = document.getElementById("bandGrid");
+        if (!btn || !wrap || !grid) return;
+        var BATCH = 15;
+        btn.addEventListener("click", function () {
+            var hidden = Array.prototype.slice.call(grid.querySelectorAll(".band-card--hidden"));
+            hidden.slice(0, BATCH).forEach(function (card) {
+                card.classList.remove("band-card--hidden");
+            });
+            if (grid.querySelectorAll(".band-card--hidden").length === 0) {
+                wrap.classList.add("is-exhausted");
+            }
+        });
+    })();
+</script>
+
+</body>
+</html>
