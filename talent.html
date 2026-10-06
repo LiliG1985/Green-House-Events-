@@ -253,6 +253,29 @@
         }
         .dj-card .dj-enquire:hover { opacity: 0.7; }
 
+        /* --- INSTRUMENTAL SUB-ROSTER GRID --- */
+        .cat-section--instrumental { display: block; }
+        .instrumental-subhead {
+            font-family: var(--sans); font-size: 0.7rem; font-weight: 600;
+            letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-solid);
+            margin: 2.2rem 0 1.4rem;
+        }
+        .sax-card img {
+            width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: top center;
+            border: 0.5px solid var(--border); background: #000;
+        }
+        .sax-card h3 {
+            font-family: var(--serif); font-weight: 400; font-size: 1.05rem;
+            margin: 0.9rem 0 0.5rem; color: var(--white-off);
+        }
+        .sax-card p { font-size: 0.82rem; line-height: 1.6; opacity: 0.72; margin-bottom: 0.7rem; max-width: none; }
+        .sax-card .sax-enquire {
+            display: inline-block; font-family: var(--sans); font-size: 0.65rem; font-weight: 600;
+            letter-spacing: 1px; text-transform: uppercase; color: var(--gold-solid);
+            border-bottom: 0.5px solid var(--gold-solid); padding-bottom: 2px; transition: opacity 0.25s ease;
+        }
+        .sax-card .sax-enquire:hover { opacity: 0.7; }
+
         /* --- FOOTER CTA --- */
         #contact-bridge { position: relative; padding: 6rem 8vw; text-align: center; background: var(--bg-mid); }
         .footer-cta-wrap { max-width: 700px; margin: 0 auto; }
@@ -1518,13 +1541,87 @@
         </div>
     </section>
 
-    <section class="cat-section" id="instrumental">
-        <div>
-            <h2 class="metallic-gold">Instrumental</h2>
-            <p>Solo and ensemble instrumentalists: strings, piano, saxophone and more, for ceremonies and ambient sets.</p>
-        </div>
-        <a href="contact.html?service=Entertainment&amp;items=Instrumental" class="cat-enquire-btn">Enquire About Instrumental</a>
-    </section>
+    <section class="cat-section cat-section--instrumental" id="instrumental">
+            <div class="band-intro">
+                <h2 class="metallic-gold">Instrumental</h2>
+                <p>Solo and ensemble instrumentalists for ceremonies and ambient sets. A taste of the saxophonists on our roster, tell us your date and vibe and we will match the right sound to your event.</p>
+            </div>
+            <h3 class="instrumental-subhead">Saxophonists</h3>
+            <div class="band-grid" id="saxGrid">
+                <div class="sax-card">
+                    <img src="sax-photos/aksinia.jpg" alt="Aksinia, Dubai event saxophonist" loading="lazy"/>
+                    <h3>Aksinia</h3>
+                    <p>Aksinia is an acclaimed saxophonist who has graced stages for Coca Cola, Dubai Fashion Week and Formula 1 Abu Dhabi, and has performed alongside global stars including Lionel Richie, Seal and Alicia Keys. Her international career spans twelve countries and forty major cities, including a notable performance for Jean Paul Belmondo and Leonardo DiCaprio at the Cannes Film Festival.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Aksinia" class="sax-enquire">Enquire About Aksinia</a>
+                </div>
+                <div class="sax-card">
+                    <img src="sax-photos/kristina.jpg" alt="Kristina, Dubai event saxophonist" loading="lazy"/>
+                    <h3>Kristina</h3>
+                    <p>Kristina is one of the most soulful saxophonists working in Dubai, where she has been based for more than five years. She brings a warm, polished sound to corporate events, presentations and private celebrations alike.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Kristina" class="sax-enquire">Enquire About Kristina</a>
+                </div>
+                <div class="sax-card">
+                    <img src="sax-photos/matt-west.jpg" alt="Matt West, Dubai event saxophonist" loading="lazy"/>
+                    <h3>Matt West</h3>
+                    <p>Matt West is a highly talented saxophonist, multi instrumentalist and DJ, born and raised in Los Angeles, who has performed in over fifty countries at some of the world&#x27;s best known venues. His energetic stage presence makes him a standout booking for any high profile event.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Matt+West" class="sax-enquire">Enquire About Matt West</a>
+                </div>
+                <div class="sax-card">
+                    <img src="sax-photos/may-ravelo.jpg" alt="May Ravelo, Dubai event saxophonist" loading="lazy"/>
+                    <h3>May Ravelo</h3>
+                    <p>Maisbel Ravelo Mora, known as May Ravelo, is a Cuban saxophonist and graduate of the Jose White Conservatory of Music with ten years of experience. She has performed across Bahrain, Vietnam and beyond, bringing a sophisticated, worldly sound to every set.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=May+Ravelo" class="sax-enquire">Enquire About May Ravelo</a>
+                </div>
+                <div class="sax-card">
+                    <img src="sax-photos/dave-bo.jpg" alt="Dave Bo, Dubai event saxophonist" loading="lazy"/>
+                    <h3>Dave Bo</h3>
+                    <p>Dave Bo is a world class saxophonist and music producer known for his collaborations with leading DJs both locally and internationally, including Milk and Sugar, Plastik Funk and Sean Finn. His polished, high energy style makes him a favorite at Dubai&#x27;s top venues.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Dave+Bo" class="sax-enquire">Enquire About Dave Bo</a>
+                </div>
+                <div class="sax-card">
+                    <img src="sax-photos/manuel-kev.jpg" alt="Manuel Kev, Dubai event saxophonist" loading="lazy"/>
+                    <h3>Manuel Kev</h3>
+                    <p>Manuel is a professional saxophonist from Colombia whose musical journey began at sixteen at the Colombian Conservatory of Music. His expertise spans a wide range of styles, bringing versatility and polish to every performance.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Manuel+Kev" class="sax-enquire">Enquire About Manuel Kev</a>
+                </div>
+                <div class="sax-card">
+                    <img src="sax-photos/aleksandra-dudek.jpg" alt="Aleksandra Dudek, Dubai event saxophonist" loading="lazy"/>
+                    <h3>Aleksandra Dudek</h3>
+                    <p>Aleksandra Dudek, originally from Poland, has called Dubai home for the past five years after beginning her musical journey through formal training at a young age. A versatile performer, she brings elegance and precision to every stage she plays.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Aleksandra+Dudek" class="sax-enquire">Enquire About Aleksandra Dudek</a>
+                </div>
+                <div class="sax-card">
+                    <img src="sax-photos/marin-bozev.jpg" alt="Marin Bozev, Dubai event saxophonist" loading="lazy"/>
+                    <h3>Marin Bozev</h3>
+                    <p>Marin Bozev, known as MarciSax, is a versatile saxophonist who has been based in Dubai since 2003. He has graced the stages of luxury five star venues, collaborating with DJs and musicians across Dubai and Abu Dhabi.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Marin+Bozev" class="sax-enquire">Enquire About Marin Bozev</a>
+                </div>
+                <div class="sax-card">
+                    <img src="sax-photos/maby.jpg" alt="Maby, Dubai event saxophonist" loading="lazy"/>
+                    <h3>Maby</h3>
+                    <p>Maby is a Cuban national based in Abu Dhabi who graduated from the Vocational Art School Manuel Munoz Cedeno with a specialisation in Choral Chant. Her bold, striking stage presence brings real drama and flair to every performance.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Maby" class="sax-enquire">Enquire About Maby</a>
+                </div>
+                <div class="sax-card">
+                    <img src="sax-photos/christian.jpg" alt="Christian, Dubai event saxophonist" loading="lazy"/>
+                    <h3>Christian</h3>
+                    <p>Christian Sax is a Colombian professional saxophonist and graduate of the University of Antioquia, known for a distinctive sound and sharp improvisation skills. With over ten years of professional experience, he brings polish and energy to every event.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Christian" class="sax-enquire">Enquire About Christian</a>
+                </div>
+                <div class="sax-card">
+                    <img src="sax-photos/karolina.jpg" alt="Karolina, Dubai event saxophonist" loading="lazy"/>
+                    <h3>Karolina</h3>
+                    <p>Karolina is a professional saxophonist and multi instrumentalist with a career spanning over a decade since 2010, and a winner of both Russian and international competitions. Her refined, artistic style comes from training at a prestigious music conservatory.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Karolina" class="sax-enquire">Enquire About Karolina</a>
+                </div>
+                <div class="sax-card">
+                    <img src="sax-photos/dan-blaax.jpg" alt="Dan Blaax, Dubai event saxophonist" loading="lazy"/>
+                    <h3>Dan Blaax</h3>
+                    <p>A contestant on Talang 2021, Sweden&#x27;s Got Talent, Dan Blaax brings extensive experience performing everywhere from royal gatherings in the South of France to the VIP nightclubs of Scandinavia. He is regularly booked for weddings, corporate events, venue openings and festivals, with notable performances at Nikki Beach and the Cannes Film Festival.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Dan+Blaax" class="sax-enquire">Enquire About Dan Blaax</a>
+                </div>
+            </div>
+        </section>
 
     <section class="cat-section" id="arabic-musicians">
         <div>
