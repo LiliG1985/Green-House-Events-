@@ -11,7 +11,7 @@
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="https://greenhouseeventsuae.com/private-events.html"/>
     <meta property="og:title" content="Private Party &amp; Event Planning Dubai | Greenhouse Events"/>
-    <meta property="og:description" content="Bespoke private party planning in Dubai — luxury birthdays, proposals, kids parties, florals and balloon architecture."/>
+    <meta property="og:description" content="Bespoke private party planning in Dubai: luxury birthdays, proposals, kids parties, florals and balloon architecture."/>
     <meta property="og:image" content="https://greenhouseeventsuae.com/private-header-bg.jpg"/>
     <meta property="og:site_name" content="Greenhouse Events Dubai"/>
     <meta name="twitter:card" content="summary_large_image"/>
@@ -97,9 +97,9 @@
         .hamburger span { filter: drop-shadow(0 1px 3px rgba(0,0,0,0.7)); }
         .nav-pages-btn { text-shadow: 0 2px 10px rgba(0,0,0,0.85), 0 1px 4px rgba(0,0,0,0.9); }
         
-        .logo-wrap { text-decoration: none; display: inline-block; position: relative; padding-bottom: 4px; }
-        .nav-logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; letter-spacing: 3px; display: inline-block; white-space: nowrap; }
-        .nav-actions { display: flex; align-items: center; gap: 1.5rem; }
+        .logo-wrap { text-decoration: none; display: inline-block; position: relative; padding-bottom: 4px; flex-shrink: 1; min-width: 0; }
+        .nav-logo { font-family: var(--serif); font-size: clamp(0.7rem, 2.2vw, 1.15rem); font-weight: 600; letter-spacing: 3px; display: inline-block; white-space: nowrap; }
+        .nav-actions { display: flex; align-items: center; gap: 1.5rem; flex-shrink: 0; }
         .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; }
 
         /* --- CONTACT BUTTONS - BOXED STYLE --- */
@@ -225,7 +225,6 @@
         #about-party {
             padding: 4rem 8vw;
             min-height: 65vh;
-            margin-top: 14px;
             display: grid; align-items: center;
             position: relative;
             z-index: 5;
@@ -321,7 +320,9 @@
             position: relative;
             height: 100vh; height: 100dvh;
             overflow-y: scroll; overflow-x: hidden;
-            scroll-snap-type: y proximity;
+            scroll-snap-type: none;
+            touch-action: pan-y;
+            overscroll-behavior-y: contain;
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
             }
@@ -612,7 +613,6 @@
 
         @media (max-width: 500px) {
             .hero { padding: 100px 5vw 60px; }
-            #services-inclusions { padding: 3rem 4vw 4rem; }
             #contact-bridge { padding: 5rem 5vw; }
         }
 
@@ -805,7 +805,7 @@
             Tailoring landmark celebrations into completely unique <span class="metallic-gold">visual realities</span>.
         </div>
         <div class="about-narrative">
-            <p>We plan private celebrations that feel personal, not generic — turning milestone birthdays, proposals, intimate weddings, and family occasions into breathtaking experiences.</p>
+            <p>We plan private celebrations that feel personal, not generic, turning milestone birthdays, proposals, intimate weddings, and family occasions into breathtaking experiences.</p>
             <p>From elegant dinners with custom tablescapes to immersive, whimsical theme parties for kids, we handle the design, build, and setup, and stay on site to deliver every detail beautifully.</p>
         </div>
     </div>

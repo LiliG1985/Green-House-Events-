@@ -390,7 +390,9 @@
             position: relative;
             height: 100vh; height: 100dvh;
             overflow-y: scroll; overflow-x: hidden;
-            scroll-snap-type: y proximity;
+            scroll-snap-type: none;
+            touch-action: pan-y;
+            overscroll-behavior-y: contain;
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
         }
@@ -713,7 +715,7 @@
 
 <nav>
     <a href="index.html" class="logo-wrap">
-        <span class="nav-logo metallic-gold">GREENHOUSE EVENTS — DUBAI</span>
+        <span class="nav-logo metallic-gold">GREENHOUSE EVENTS DUBAI</span>
     </a>
     <div class="nav-actions">
         <a href="https://wa.me/971552537712?text=Hello%20Greenhouse%20Events%2C%20I%20would%20like%20to%20enquire%20about%20your%20bespoke%20wardrobe%20and%20costume%20services." target="_blank" class="nav-whatsapp">WHATSAPP</a>
@@ -772,7 +774,7 @@
     Turning performers into <span class="metallic-gold">living works of art.</span>
 </div>
 <div class="about-narrative">
-    <p>We manage the full wardrobe process for performers — sourcing, custom tailoring, and on-site styling, so every look feels polished and on-theme.</p>
+    <p>We manage the full wardrobe process for performers: sourcing, custom tailoring, and on-site styling, so every look feels polished and on-theme.</p>
     <p>From first fitting to show time, we make sure your entertainment looks genuinely breathtaking under the lights.</p>
 </div>    </div>
 </section>

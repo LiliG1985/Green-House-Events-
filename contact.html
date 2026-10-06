@@ -373,7 +373,7 @@
 
 <nav>
     <a href="index.html" class="logo-wrap">
-        <span class="nav-logo metallic-gold">GREENHOUSE EVENTS — DUBAI</span>
+        <span class="nav-logo metallic-gold">GREENHOUSE EVENTS DUBAI</span>
     </a>
     <div class="nav-actions">
         <a href="https://wa.me/971552537712?text=Hello%20Greenhouse%20Events%2C%20I%20would%20like%20to%20enquire%20about%20your%20services." target="_blank" class="nav-whatsapp">WHATSAPP</a>
@@ -597,7 +597,7 @@
             if (form.botcheck && form.botcheck.checked) return;
 
             if (!SCRIPT_URL || SCRIPT_URL.indexOf("PASTE_YOUR") === 0) {
-                statusEl.textContent = "Form isn't connected yet — please contact us via WhatsApp or email for now.";
+                statusEl.textContent = "Form isn't connected yet. Please contact us via WhatsApp or email for now.";
                 statusEl.classList.add("show", "error");
                 return;
             }
@@ -615,7 +615,7 @@
             .then(function (response) { return response.json(); })
             .then(function (data) {
                 if (data.result === "success") {
-                    statusEl.textContent = "Thank you — your enquiry has been sent. Our team will be in touch within 24 hours.";
+                    statusEl.textContent = "Thank you, your enquiry has been sent. Our team will be in touch within 24 hours.";
                     statusEl.classList.add("show");
                     form.reset();
                 } else {
@@ -656,7 +656,7 @@
         if (items) {
             var message = document.getElementById("cf-message");
             if (message) {
-                message.value = "I'm interested in: " + items + ".\n\nPlease send me a quote — happy to share more details!";
+                message.value = "I'm interested in: " + items + ".\n\nPlease send me a quote, happy to share more details!";
             }
         }
     })();
