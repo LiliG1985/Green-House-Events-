@@ -234,6 +234,25 @@
         }
         .emcee-card .emcee-enquire:hover { opacity: 0.7; }
 
+        /* --- DJS SUB-ROSTER GRID --- */
+        .cat-section--djs { display: block; }
+        .dj-card--hidden { display: none; }
+        .dj-card img {
+            width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: top center;
+            border: 0.5px solid var(--border); background: #000;
+        }
+        .dj-card h3 {
+            font-family: var(--serif); font-weight: 400; font-size: 1.05rem;
+            margin: 0.9rem 0 0.5rem; color: var(--white-off);
+        }
+        .dj-card p { font-size: 0.82rem; line-height: 1.6; opacity: 0.72; margin-bottom: 0.7rem; max-width: none; }
+        .dj-card .dj-enquire {
+            display: inline-block; font-family: var(--sans); font-size: 0.65rem; font-weight: 600;
+            letter-spacing: 1px; text-transform: uppercase; color: var(--gold-solid);
+            border-bottom: 0.5px solid var(--gold-solid); padding-bottom: 2px; transition: opacity 0.25s ease;
+        }
+        .dj-card .dj-enquire:hover { opacity: 0.7; }
+
         /* --- FOOTER CTA --- */
         #contact-bridge { position: relative; padding: 6rem 8vw; text-align: center; background: var(--bg-mid); }
         .footer-cta-wrap { max-width: 700px; margin: 0 auto; }
@@ -329,13 +348,239 @@
 
 <div class="roster-list">
 
-    <section class="cat-section" id="djs">
-        <div>
-            <h2 class="metallic-gold">DJs</h2>
-            <p>From intimate lounge sets to full dancefloor takeovers. Open format, Arabic, and commercial DJs, matched to your crowd and your night.</p>
-        </div>
-        <a href="contact.html?service=Entertainment&amp;items=DJs" class="cat-enquire-btn">Enquire About DJs</a>
-    </section>
+    <section class="cat-section cat-section--djs" id="djs">
+            <div class="band-intro">
+                <h2 class="metallic-gold">DJs</h2>
+                <p>A taste of the DJs on our roster, from open format and house to Arabic sets and beach club sounds. Tell us your date and vibe and we will match the right sound to your event.</p>
+            </div>
+            <div class="band-grid" id="djGrid">
+                <div class="dj-card">
+                    <img src="dj-photos/parvane.jpg" alt="Parvané, Dubai event DJ" loading="lazy"/>
+                    <h3>Parvané</h3>
+                    <p>Parvané is a Dubai based creative of French Iranian roots who started DJing, modelling and consulting for brands at just seventeen. Her sets move through Miami Bass, Breakbeat, Electronic, House, UK Garage and Brazilian Funk, reflecting the eclectic, multicultural sound she has built her name on.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Parvané" class="dj-enquire">Enquire About Parvané</a>
+                </div>
+                <div class="dj-card">
+                    <img src="dj-photos/joanna.jpg" alt="Joanna, Dubai event DJ" loading="lazy"/>
+                    <h3>Joanna</h3>
+                    <p>Joanna Rose is a Dubai based DJ known for versatile, soulful house sets that have made her a favorite across the city&#x27;s nightlife scene. She has played some of Dubai&#x27;s most prestigious venues, including FIVE Palm Jumeirah&#x27;s Penthouse and Praia, plus brand events for Porsche, Bentley and Cartier.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Joanna" class="dj-enquire">Enquire About Joanna</a>
+                </div>
+                <div class="dj-card">
+                    <img src="dj-photos/akmaral.jpg" alt="Akmaral, Dubai event DJ" loading="lazy"/>
+                    <h3>Akmaral</h3>
+                    <p>Akmaral Matkaliyeva is a globally recognised DJ and music producer based between Dubai and Abu Dhabi. Her sets blend genres with real technical skill, earning her bookings at major brand activations and festivals across the region.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Akmaral" class="dj-enquire">Enquire About Akmaral</a>
+                </div>
+                <div class="dj-card">
+                    <img src="dj-photos/yava.jpg" alt="Yava, Dubai event DJ" loading="lazy"/>
+                    <h3>Yava</h3>
+                    <p>Yava was born in Chernihiv, Ukraine and is now a prominent DJ and music producer based in Dubai. Since relocating to the UAE she has built a reputation for energetic, crowd reading sets across the city&#x27;s top venues.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Yava" class="dj-enquire">Enquire About Yava</a>
+                </div>
+                <div class="dj-card">
+                    <img src="dj-photos/viola.jpg" alt="Viola, Dubai event DJ" loading="lazy"/>
+                    <h3>Viola</h3>
+                    <p>Viola Vi is an internationally acclaimed DJ and music producer based in Dubai, known for her dynamic fusion of genres and sun soaked beach club sets. She brings the same polish to intimate gatherings as she does to large festival stages.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Viola" class="dj-enquire">Enquire About Viola</a>
+                </div>
+                <div class="dj-card">
+                    <img src="dj-photos/cascou.jpg" alt="Cascou, Dubai event DJ" loading="lazy"/>
+                    <h3>Cascou</h3>
+                    <p>Cascou is a Kuwaiti born and raised DJ, producer and one of the original presenters and curators on the grassroots Dubai party scene. His sets have landed him bookings for major fashion houses including Ferragamo.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Cascou" class="dj-enquire">Enquire About Cascou</a>
+                </div>
+                <div class="dj-card">
+                    <img src="dj-photos/sonya.jpg" alt="Sonya, Dubai event DJ" loading="lazy"/>
+                    <h3>Sonya</h3>
+                    <p>Sonya has emerged onto the Dubai DJ stage over the past six years with a striking fusion of beats and genres that keeps dance floors moving. Her bold, editorial style on and off the decks has made her a standout presence in the scene.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Sonya" class="dj-enquire">Enquire About Sonya</a>
+                </div>
+                <div class="dj-card">
+                    <img src="dj-photos/sara.jpg" alt="Sara, Dubai event DJ" loading="lazy"/>
+                    <h3>Sara</h3>
+                    <p>Sara Laroutine is a professional house and techno DJ known for dynamic sets built on a deep understanding of underground electronic music. Her energy behind the decks translates into packed dance floors at every event she plays.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Sara" class="dj-enquire">Enquire About Sara</a>
+                </div>
+                <div class="dj-card">
+                    <img src="dj-photos/bambi.jpg" alt="Bambi, Dubai event DJ" loading="lazy"/>
+                    <h3>Bambi</h3>
+                    <p>Sofa, professionally known as DJ Bambi, is a dynamic DJ from St Petersburg, Russia with over four years of experience behind the decks. She brings sharp technical skill and a fresh sound to every set she plays.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Bambi" class="dj-enquire">Enquire About Bambi</a>
+                </div>
+                <div class="dj-card">
+                    <img src="dj-photos/karrouhat.jpg" alt="Karrouhat, Dubai event DJ" loading="lazy"/>
+                    <h3>Karrouhat</h3>
+                    <p>Basil Alhadi, known as Karrouhat, is a DJ, singer, songwriter, composer and filmmaker who studied filmmaking and acting before turning his creative energy to music. His multidisciplinary background gives his sets a distinctive, story driven feel.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Karrouhat" class="dj-enquire">Enquire About Karrouhat</a>
+                </div>
+                <div class="dj-card">
+                    <img src="dj-photos/hilde.jpg" alt="Hilde, Dubai event DJ" loading="lazy"/>
+                    <h3>Hilde</h3>
+                    <p>Hilde hails from Brazil and is both a skilled DJ and a talented music producer with wide experience playing clubs and beach venues. Her sets carry the warmth and rhythm of her Brazilian roots wherever she plays.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Hilde" class="dj-enquire">Enquire About Hilde</a>
+                </div>
+                <div class="dj-card">
+                    <img src="dj-photos/dagari.jpg" alt="Dagari, Dubai event DJ" loading="lazy"/>
+                    <h3>Dagari</h3>
+                    <p>Dagari is a British Iranian DJ born in London in 1995 whose music reflects his rich, mixed heritage. His dynamic productions and sets have earned him a growing following across the region.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Dagari" class="dj-enquire">Enquire About Dagari</a>
+                </div>
+                <div class="dj-card">
+                    <img src="dj-photos/michelle-grant.jpg" alt="Michelle Grant, Dubai event DJ" loading="lazy"/>
+                    <h3>Michelle Grant</h3>
+                    <p>As a pioneer of the thriving Future Rave genre in China, Michelle Grant crafts a signature blend of anthemic melodies and driving bass that pulls audiences into the moment. She has toured alongside DJ Mag Top 100 artists and played the official Victoria&#x27;s Secret Afterparty in Shanghai, with brand collaborations including Ducati, YSL and Porsche.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Michelle+Grant" class="dj-enquire">Enquire About Michelle Grant</a>
+                </div>
+                <div class="dj-card">
+                    <img src="dj-photos/mixada.jpg" alt="Mixada, Dubai event DJ" loading="lazy"/>
+                    <h3>Mixada</h3>
+                    <p>Mixada is a seasoned professional with over eight years of experience spinning across Lebanon and the United Arab Emirates. His polished, open format sets make him a reliable choice for any room.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Mixada" class="dj-enquire">Enquire About Mixada</a>
+                </div>
+                <div class="dj-card">
+                    <img src="dj-photos/alicia-oates.jpg" alt="Alicia Oates, Dubai event DJ" loading="lazy"/>
+                    <h3>Alicia Oates</h3>
+                    <p>Alicia Oates is an open format DJ who has showcased her unique grooves across the UK, Europe and Dubai. Now based in the UAE, she brings an easy, beach club energy to every set.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Alicia+Oates" class="dj-enquire">Enquire About Alicia Oates</a>
+                </div>
+                <div class="dj-card dj-card--hidden">
+                    <img src="dj-photos/joe-lang.jpg" alt="Joe Lang, Dubai event DJ" loading="lazy"/>
+                    <h3>Joe Lang</h3>
+                    <p>Joe Lang has graced top clubs across the UK for over five years, breaking into the scene with an energetic, crowd focused style. He continues to bring that same drive to every booking today.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Joe+Lang" class="dj-enquire">Enquire About Joe Lang</a>
+                </div>
+                <div class="dj-card dj-card--hidden">
+                    <img src="dj-photos/koshka.jpg" alt="Koshka, Dubai event DJ" loading="lazy"/>
+                    <h3>Koshka</h3>
+                    <p>Koshka, born in Uzbekistan, is a versatile DJ with years of experience and twelve years based in the UAE. She has played across the region&#x27;s top venues, bringing warmth and polish to every set.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Koshka" class="dj-enquire">Enquire About Koshka</a>
+                </div>
+                <div class="dj-card dj-card--hidden">
+                    <img src="dj-photos/major-flow.jpg" alt="Major Flow, Dubai event DJ" loading="lazy"/>
+                    <h3>Major Flow</h3>
+                    <p>Born in Lebanon, Major Flow began his musical journey in 2002, performing at school and university parties before building a serious club career. His high energy sets have since taken him to some of Dubai&#x27;s best known nightlife venues.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Major+Flow" class="dj-enquire">Enquire About Major Flow</a>
+                </div>
+                <div class="dj-card dj-card--hidden">
+                    <img src="dj-photos/mike-d.jpg" alt="Mike D, Dubai event DJ" loading="lazy"/>
+                    <h3>Mike D</h3>
+                    <p>Deejay Mike D began his musical journey at sixteen on the radio stations of Beirut, developing his skills in sound technology from an early age. That foundation has carried through into a confident, versatile style behind the decks today.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Mike+D" class="dj-enquire">Enquire About Mike D</a>
+                </div>
+                <div class="dj-card dj-card--hidden">
+                    <img src="dj-photos/tarek.jpg" alt="Tarek, Dubai event DJ" loading="lazy"/>
+                    <h3>Tarek</h3>
+                    <p>Tarek is an open format DJ known for a dynamic blend of Arabic music, Hip Hop and R&amp;B that keeps dance floors full. His crowd reading instincts make him a strong fit for weddings and mixed audience events alike.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Tarek" class="dj-enquire">Enquire About Tarek</a>
+                </div>
+                <div class="dj-card dj-card--hidden">
+                    <img src="dj-photos/zee.jpg" alt="Zee, Dubai event DJ" loading="lazy"/>
+                    <h3>Zee</h3>
+                    <p>Mohammad Ziyad, known as Zee, is an open format DJ who began his career in 2012 at an early age and has been building momentum ever since. His sets draw on a wide range of genres to keep every kind of crowd engaged.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Zee" class="dj-enquire">Enquire About Zee</a>
+                </div>
+                <div class="dj-card dj-card--hidden">
+                    <img src="dj-photos/rb.jpg" alt="RB, Dubai event DJ" loading="lazy"/>
+                    <h3>RB</h3>
+                    <p>RB is a professional club DJ and producer with a career spanning since 2010, playing both event and residency sets. His experience across formats makes him a dependable choice for everything from private parties to late night club bookings.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=RB" class="dj-enquire">Enquire About RB</a>
+                </div>
+                <div class="dj-card dj-card--hidden">
+                    <img src="dj-photos/elena-vladi.jpg" alt="Elena Vladi, Dubai event DJ" loading="lazy"/>
+                    <h3>Elena Vladi</h3>
+                    <p>Elena is an energetic and creative artist based in Dubai with a passion for art, music, film, photography and videography that shows in every performance. Her multidisciplinary eye gives her sets a distinctive visual and sonic identity.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Elena+Vladi" class="dj-enquire">Enquire About Elena Vladi</a>
+                </div>
+                <div class="dj-card dj-card--hidden">
+                    <img src="dj-photos/danny-kwang.jpg" alt="Danny Kwang, Dubai event DJ" loading="lazy"/>
+                    <h3>Danny Kwang</h3>
+                    <p>Danny Kwang&#x27;s passion for music spans four decades, moving seamlessly from soul, funk and rare groove into hip hop and beyond. That depth of musical knowledge gives his sets a richness few DJs can match.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Danny+Kwang" class="dj-enquire">Enquire About Danny Kwang</a>
+                </div>
+                <div class="dj-card dj-card--hidden">
+                    <img src="dj-photos/nicki-nicol.jpg" alt="Nicki Nicol, Dubai event DJ" loading="lazy"/>
+                    <h3>Nicki Nicol</h3>
+                    <p>Nicki Nicol, hailing from Queens, New York, relocated to the UAE ten years ago and has been a fixture of the scene ever since. Her first event, Code Red, marked the start of a career built on bold, confident sets.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Nicki+Nicol" class="dj-enquire">Enquire About Nicki Nicol</a>
+                </div>
+                <div class="dj-card dj-card--hidden">
+                    <img src="dj-photos/stu-laurie.jpg" alt="Stu Laurie, Dubai event DJ" loading="lazy"/>
+                    <h3>Stu Laurie</h3>
+                    <p>Stu Laurie is a renowned DJ and music producer with seventeen years of experience and residencies held across the UK, Dubai and Australia. His seasoned, well travelled style brings a reliable energy to any dance floor.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Stu+Laurie" class="dj-enquire">Enquire About Stu Laurie</a>
+                </div>
+                <div class="dj-card dj-card--hidden">
+                    <img src="dj-photos/fatima.jpg" alt="Fatima, Dubai event DJ" loading="lazy"/>
+                    <h3>Fatima</h3>
+                    <p>Fatima Shikhaliyeva, known professionally as DJ Fatima, is a passionate and dynamic DJ based in Dubai with a growing reputation across the region. Her elegant, polished sets suit both intimate gatherings and larger celebrations.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Fatima" class="dj-enquire">Enquire About Fatima</a>
+                </div>
+                <div class="dj-card dj-card--hidden">
+                    <img src="dj-photos/ema.jpg" alt="Ema, Dubai event DJ" loading="lazy"/>
+                    <h3>Ema</h3>
+                    <p>Known as E.M.A, this renowned English DJ from Manchester started her career as Director of VIVA magazine before discovering her true passion behind the decks. Her bold, colourful personality carries straight through into every set she plays.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Ema" class="dj-enquire">Enquire About Ema</a>
+                </div>
+                <div class="dj-card dj-card--hidden">
+                    <img src="dj-photos/sara-g.jpg" alt="Sara G, Dubai event DJ" loading="lazy"/>
+                    <h3>Sara G</h3>
+                    <p>DJ and emcee Sara G is based in Dubai with a unique flair for events, showcasing versatility across a wide range of music genres. Her dual skill set as both DJ and host makes her a natural fit for parties that need both music and energy on the mic.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Sara+G" class="dj-enquire">Enquire About Sara G</a>
+                </div>
+                <div class="dj-card dj-card--hidden">
+                    <img src="dj-photos/julia-poly.jpg" alt="Julia Poly, Dubai event DJ" loading="lazy"/>
+                    <h3>Julia Poly</h3>
+                    <p>Julia Poly is a seasoned professional DJ and music producer with over ten years of experience in the industry. Her sets, often played against Dubai&#x27;s most iconic backdrops, combine technical skill with an unmistakably joyful energy.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Julia+Poly" class="dj-enquire">Enquire About Julia Poly</a>
+                </div>
+                <div class="dj-card dj-card--hidden">
+                    <img src="dj-photos/alena.jpg" alt="Alena, Dubai event DJ" loading="lazy"/>
+                    <h3>Alena</h3>
+                    <p>Alena, originally from Belarus, has been a DJ since 2016, building extensive experience across events, clubs and lounges. Her polished, versatile style makes her comfortable in settings both intimate and large scale.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Alena" class="dj-enquire">Enquire About Alena</a>
+                </div>
+                <div class="dj-card dj-card--hidden">
+                    <img src="dj-photos/jadora.jpg" alt="J&#x27;Adora, Dubai event DJ" loading="lazy"/>
+                    <h3>J&#x27;Adora</h3>
+                    <p>International DJ J&#x27;Adora, based in Dubai, is a fresh female artist who creates a vibrant atmosphere with a diverse range of sounds. Her playful, confident stage presence makes every set feel like a party.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=J%27Adora" class="dj-enquire">Enquire About J&#x27;Adora</a>
+                </div>
+                <div class="dj-card dj-card--hidden">
+                    <img src="dj-photos/naz.jpg" alt="Naz, Dubai event DJ" loading="lazy"/>
+                    <h3>Naz</h3>
+                    <p>Deejay Naz is a seasoned international DJ with over fifteen years of experience, known for his dynamic open format style. He has played some of Dubai&#x27;s best known nightlife venues and keeps every crowd moving from start to finish.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Naz" class="dj-enquire">Enquire About Naz</a>
+                </div>
+                <div class="dj-card dj-card--hidden">
+                    <img src="dj-photos/joy-tresher.jpg" alt="Joy Tresher, Dubai event DJ" loading="lazy"/>
+                    <h3>Joy Tresher</h3>
+                    <p>Joy Tresher is an open format DJ from the south of France, influenced from an early age by electronic music and the artists who shaped the genre. That early passion now drives a warm, crowd pleasing sound on stage.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Joy+Tresher" class="dj-enquire">Enquire About Joy Tresher</a>
+                </div>
+                <div class="dj-card dj-card--hidden">
+                    <img src="dj-photos/tala-samman.jpg" alt="Tala Samman, Dubai event DJ" loading="lazy"/>
+                    <h3>Tala Samman</h3>
+                    <p>Tala Samman is fast becoming a prevalent name within the Middle East&#x27;s DJ circuit, known for an elegant, polished style that suits upscale events. Her sets combine technical precision with genuine warmth behind the decks.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Tala+Samman" class="dj-enquire">Enquire About Tala Samman</a>
+                </div>
+                <div class="dj-card dj-card--hidden">
+                    <img src="dj-photos/kat.jpg" alt="Kat, Dubai event DJ" loading="lazy"/>
+                    <h3>Kat</h3>
+                    <p>Kat Sizova hails from Moscow, Russia, where her passion for performance first ignited at a young age. That early spark has grown into a bold, confident DJ career built on strong stage presence and crowd connection.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Kat" class="dj-enquire">Enquire About Kat</a>
+                </div>
+                <div class="dj-card dj-card--hidden">
+                    <img src="dj-photos/karine.jpg" alt="Karine, Dubai event DJ" loading="lazy"/>
+                    <h3>Karine</h3>
+                    <p>Karine is a Lebanese DJ based in Dubai who began mixing in 2020 at Karnaval, a series of private events she created herself for music lovers and party goers. Her style ranges from nu disco to house to afro and organic house, always chasing a good time on the dance floor.</p>
+                    <a href="contact.html?service=Entertainment&amp;items=Karine" class="dj-enquire">Enquire About Karine</a>
+                </div>
+            </div>
+            <div class="band-load-more-wrap" id="djLoadMoreWrap">
+                <button type="button" class="band-load-more-btn" id="djLoadMoreBtn">Show More DJs</button>
+            </div>
+        </section>
 
         <section class="cat-section cat-section--singers" id="singers">
             <div class="band-intro">
@@ -1720,6 +1965,24 @@
                 card.classList.remove("emcee-card--hidden");
             });
             if (grid.querySelectorAll(".emcee-card--hidden").length === 0) {
+                wrap.classList.add("is-exhausted");
+            }
+        });
+    })();
+
+    // --- DJS GRID: show more ---
+    (function () {
+        var btn = document.getElementById("djLoadMoreBtn");
+        var wrap = document.getElementById("djLoadMoreWrap");
+        var grid = document.getElementById("djGrid");
+        if (!btn || !wrap || !grid) return;
+        var BATCH = 15;
+        btn.addEventListener("click", function () {
+            var hidden = Array.prototype.slice.call(grid.querySelectorAll(".dj-card--hidden"));
+            hidden.slice(0, BATCH).forEach(function (card) {
+                card.classList.remove("dj-card--hidden");
+            });
+            if (grid.querySelectorAll(".dj-card--hidden").length === 0) {
                 wrap.classList.add("is-exhausted");
             }
         });
