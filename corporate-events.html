@@ -429,8 +429,6 @@
         }
         footer p { position: relative; z-index: 1; }
 
-
-
         .greenery-wrap {
             position: relative;
             overflow: hidden;
@@ -568,6 +566,34 @@
             background: transparent; padding: 0; cursor: pointer; transition: all 0.3s; appearance: none;
         }
         .svc-progress button.active { background: var(--gold-solid); transform: scale(1.5); }
+
+        /* --- QUOTE BUILDER --- */
+        #quote-builder { padding: 6rem 8vw; text-align: center; background: var(--bg-deep); }
+        .qb-wrap { max-width: 760px; margin: 0 auto; }
+        .qb-intro h3 { font-family: var(--serif); font-weight: 300; font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--white-off); margin-bottom: 0.8rem; }
+        .qb-intro p { opacity: 0.75; color: var(--white-off); margin-bottom: 2.5rem; }
+        .qb-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.9rem; margin-bottom: 2.2rem; text-align: left; }
+        .qb-option { display: flex; align-items: center; gap: 0.7rem; padding: 0.9rem 1.1rem; border: 0.5px solid var(--border); cursor: pointer; transition: all 0.25s ease; }
+        .qb-option:hover { background: rgba(201,168,76,0.06); }
+        .qb-option input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--gold-solid); flex-shrink: 0; }
+        .qb-option span { font-family: var(--sans); font-size: 0.85rem; letter-spacing: 0.3px; color: var(--white-off); }
+        .qb-submit-btn, .qb-edit-btn, .qb-continue-btn {
+            display: inline-block; font-family: var(--sans); font-weight: 600; font-size: 0.75rem; letter-spacing: 1.5px;
+            padding: 1rem 2.4rem; border: 0.5px solid var(--gold-solid); color: var(--gold-solid);
+            background: transparent; cursor: pointer; text-decoration: none; transition: all 0.3s ease;
+        }
+        .qb-submit-btn:hover, .qb-edit-btn:hover, .qb-continue-btn:hover { background: rgba(201,168,76,0.12); }
+        .qb-error { color: #e08a8a; font-size: 0.8rem; margin-top: 1.2rem; }
+        .qb-summary-lead { color: var(--white-off); opacity: 0.8; margin-bottom: 1.2rem; }
+        .qb-summary-list { list-style: none; padding: 0; margin: 0 0 2.2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; }
+        .qb-summary-list li { font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.5px; color: var(--gold-solid); border: 0.5px solid rgba(201,168,76,0.4); padding: 0.5rem 1rem; }
+        .qb-summary-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        @media (max-width: 900px) {
+            #quote-builder { padding: 4rem 6vw; }
+            .qb-summary-buttons { flex-direction: column; align-items: center; }
+            .qb-submit-btn, .qb-edit-btn, .qb-continue-btn { width: 100%; max-width: 320px; text-align: center; }
+        }
+
 
         .svc-scroll-hint {
             position: absolute; left: 50%; bottom: 1.8rem; transform: translateX(-50%);
@@ -812,8 +838,6 @@
     </div>
 </section>
 
-
-
 <section id="corporate-services">
 <div class="services-slides" id="servicesSlides">
 
@@ -826,19 +850,6 @@
         <div class="svc-scroll-hint">
             Scroll
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-        </div>
-    </div>
-
-    <div class="svc-process-slide">
-        <div class="svc-process-card">
-            <p class="svc-process-lead">From first concept to final execution, every detail is mapped before it's built.</p>
-            <div class="svc-process-steps">
-                <span class="step">Concept &amp; Creative Direction</span>
-                <span class="step-arrow" aria-hidden="true">&rarr;</span>
-                <span class="step">AI Rendering &amp; Visualisation</span>
-                <span class="step-arrow" aria-hidden="true">&rarr;</span>
-                <span class="step">Full Production &amp; Execution</span>
-            </div>
         </div>
     </div>
 
@@ -866,19 +877,6 @@
         </div>
     </div>
 
-    <div class="svc-process-slide">
-        <div class="svc-process-card">
-            <p class="svc-process-lead">From first brief to curtain call, handled start to finish.</p>
-            <div class="svc-process-steps">
-                <span class="step">Run-Of-Show Planning</span>
-                <span class="step-arrow" aria-hidden="true">&rarr;</span>
-                <span class="step">Supplier &amp; Vendor Management</span>
-                <span class="step-arrow" aria-hidden="true">&rarr;</span>
-                <span class="step">Live Event Execution</span>
-            </div>
-        </div>
-    </div>
-
     <div class="svc-slide svc-slide--right">
         <div class="svc-slide-bg" style="background-image:url('exhibition-stands.jpg')"></div>
         <div class="svc-slide-content">
@@ -900,6 +898,40 @@
 </section>
 
 </div><!-- /greenery-wrap -->
+
+
+<section id="quote-builder">
+    <div class="qb-wrap">
+        <div class="qb-intro">
+            <h3 class="metallic-gold">Build Your Quote</h3>
+            <p>Tick everything your event needs and we'll have a head start before we even speak.</p>
+        </div>
+
+        <form class="qb-checklist" id="qbChecklist" onsubmit="return false;">
+            <div class="qb-grid">
+                    <label class="qb-option"><input type="checkbox" value="Staging &amp; AV"><span>Staging &amp; AV</span></label>
+                    <label class="qb-option"><input type="checkbox" value="Branding &amp; Signage"><span>Branding &amp; Signage</span></label>
+                    <label class="qb-option"><input type="checkbox" value="Entertainment"><span>Entertainment</span></label>
+                    <label class="qb-option"><input type="checkbox" value="Catering"><span>Catering</span></label>
+                    <label class="qb-option"><input type="checkbox" value="Full Event Production"><span>Full Event Production</span></label>
+                    <label class="qb-option"><input type="checkbox" value="Venue Sourcing"><span>Venue Sourcing</span></label>
+                    <label class="qb-option"><input type="checkbox" value="Guest Activations"><span>Guest Activations</span></label>
+                    <label class="qb-option"><input type="checkbox" value="Other"><span>Other</span></label>
+            </div>
+            <button type="button" class="qb-submit-btn" id="qbSubmitBtn">Get My Quote</button>
+            <p class="qb-error" id="qbError" style="display:none;">Please select at least one item.</p>
+        </form>
+
+        <div class="qb-summary" id="qbSummary" style="display:none;">
+            <p class="qb-summary-lead">Here's what we'll send over:</p>
+            <ul class="qb-summary-list" id="qbSummaryList"></ul>
+            <div class="qb-summary-buttons">
+                <button type="button" class="qb-edit-btn" id="qbEditBtn">Edit Selections</button>
+                <a href="contact.html" class="qb-continue-btn" id="qbContinueBtn">Continue to Contact Form</a>
+            </div>
+        </div>
+    </div>
+</section>
 
 <section id="contact-bridge">
     <div class="footer-cta-wrap">
@@ -1078,6 +1110,51 @@
                 hint.style.opacity = wrap.scrollTop > 40 ? "0" : "0.65";
             }, { passive: true });
         }
+    })();
+
+    // --- QUOTE BUILDER ---
+    (function () {
+        var checklist = document.getElementById("qbChecklist");
+        var summary = document.getElementById("qbSummary");
+        var summaryList = document.getElementById("qbSummaryList");
+        var submitBtn = document.getElementById("qbSubmitBtn");
+        var editBtn = document.getElementById("qbEditBtn");
+        var continueBtn = document.getElementById("qbContinueBtn");
+        var errorMsg = document.getElementById("qbError");
+        if (!checklist || !submitBtn) return;
+
+        var QB_SERVICE = "Corporate Event Management";
+
+        submitBtn.addEventListener("click", function () {
+            var checked = Array.prototype.slice.call(checklist.querySelectorAll('input[type="checkbox"]:checked'));
+            if (checked.length === 0) {
+                errorMsg.style.display = "block";
+                return;
+            }
+            errorMsg.style.display = "none";
+            var items = checked.map(function (c) { return c.value; });
+
+            summaryList.innerHTML = "";
+            items.forEach(function (item) {
+                var li = document.createElement("li");
+                li.textContent = item;
+                summaryList.appendChild(li);
+            });
+
+            var params = new URLSearchParams();
+            params.set("service", QB_SERVICE);
+            params.set("items", items.join(", "));
+            continueBtn.href = "contact.html?" + params.toString();
+
+            checklist.style.display = "none";
+            summary.style.display = "block";
+            summary.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+
+        editBtn.addEventListener("click", function () {
+            summary.style.display = "none";
+            checklist.style.display = "block";
+        });
     })();
 </script>
 </body>

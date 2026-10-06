@@ -633,6 +633,33 @@
             });
         });
     })();
+
+    // --- PRE-FILL FROM QUOTE BUILDER ---
+    (function () {
+        var params = new URLSearchParams(window.location.search);
+        var service = params.get("service");
+        var items = params.get("items");
+        if (!service && !items) return;
+
+        if (service) {
+            var select = document.getElementById("cf-service");
+            if (select) {
+                for (var i = 0; i < select.options.length; i++) {
+                    if (select.options[i].value === service) {
+                        select.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (items) {
+            var message = document.getElementById("cf-message");
+            if (message) {
+                message.value = "I'm interested in: " + items + ".\n\nPlease send me a quote — happy to share more details!";
+            }
+        }
+    })();
 </script>
 
 </body>

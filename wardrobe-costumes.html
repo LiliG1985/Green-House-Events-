@@ -359,7 +359,6 @@
         .footer-cta-wrap p { font-size: 1.05rem; text-shadow: 0 2px 10px rgba(0,0,0,0.95); }
         .footer-buttons { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2.5rem; }
 
-
         .greenery-wrap {
             position: relative;
             overflow: hidden;
@@ -516,6 +515,34 @@
             background: transparent; padding: 0; cursor: pointer; transition: all 0.3s; appearance: none;
         }
         .svc-progress button.active { background: var(--gold-solid); transform: scale(1.5); }
+
+        /* --- QUOTE BUILDER --- */
+        #quote-builder { padding: 6rem 8vw; text-align: center; background: var(--bg-deep); }
+        .qb-wrap { max-width: 760px; margin: 0 auto; }
+        .qb-intro h3 { font-family: var(--serif); font-weight: 300; font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--white-off); margin-bottom: 0.8rem; }
+        .qb-intro p { opacity: 0.75; color: var(--white-off); margin-bottom: 2.5rem; }
+        .qb-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.9rem; margin-bottom: 2.2rem; text-align: left; }
+        .qb-option { display: flex; align-items: center; gap: 0.7rem; padding: 0.9rem 1.1rem; border: 0.5px solid var(--border); cursor: pointer; transition: all 0.25s ease; }
+        .qb-option:hover { background: rgba(201,168,76,0.06); }
+        .qb-option input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--gold-solid); flex-shrink: 0; }
+        .qb-option span { font-family: var(--sans); font-size: 0.85rem; letter-spacing: 0.3px; color: var(--white-off); }
+        .qb-submit-btn, .qb-edit-btn, .qb-continue-btn {
+            display: inline-block; font-family: var(--sans); font-weight: 600; font-size: 0.75rem; letter-spacing: 1.5px;
+            padding: 1rem 2.4rem; border: 0.5px solid var(--gold-solid); color: var(--gold-solid);
+            background: transparent; cursor: pointer; text-decoration: none; transition: all 0.3s ease;
+        }
+        .qb-submit-btn:hover, .qb-edit-btn:hover, .qb-continue-btn:hover { background: rgba(201,168,76,0.12); }
+        .qb-error { color: #e08a8a; font-size: 0.8rem; margin-top: 1.2rem; }
+        .qb-summary-lead { color: var(--white-off); opacity: 0.8; margin-bottom: 1.2rem; }
+        .qb-summary-list { list-style: none; padding: 0; margin: 0 0 2.2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; }
+        .qb-summary-list li { font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.5px; color: var(--gold-solid); border: 0.5px solid rgba(201,168,76,0.4); padding: 0.5rem 1rem; }
+        .qb-summary-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        @media (max-width: 900px) {
+            #quote-builder { padding: 4rem 6vw; }
+            .qb-summary-buttons { flex-direction: column; align-items: center; }
+            .qb-submit-btn, .qb-edit-btn, .qb-continue-btn { width: 100%; max-width: 320px; text-align: center; }
+        }
+
 
         .svc-scroll-hint {
             position: absolute; left: 50%; bottom: 1.8rem; transform: translateX(-50%);
@@ -749,8 +776,6 @@
 </div>    </div>
 </section>
 
-
-
 <main class="showcase-container">
 <div class="services-slides" id="servicesSlides">
 
@@ -766,37 +791,11 @@
         </div>
     </div>
 
-    <div class="svc-process-slide">
-        <div class="svc-process-card">
-            <p class="svc-process-lead">A full wardrobe, ready before your performers arrive.</p>
-            <div class="svc-process-steps">
-                <span class="step">Casting Brief</span>
-                <span class="step-arrow" aria-hidden="true">&rarr;</span>
-                <span class="step">Costume Sourcing</span>
-                <span class="step-arrow" aria-hidden="true">&rarr;</span>
-                <span class="step">Fitting &amp; Delivery</span>
-            </div>
-        </div>
-    </div>
-
     <div class="svc-slide svc-slide--right">
         <div class="svc-slide-bg" style="background-image:url('wardrobe2.jpg')"></div>
         <div class="svc-slide-content">
             <h3 class="metallic-gold">Tailoring</h3>
             <p>When off the rack collections fall short, our dedicated atelier network steps in. We collaborate closely with premier bespoke tailors and advanced pattern makers across Dubai to sketch, draft, and assemble completely customized performance garments. From high tech reflective fabrics and complex inner construction frameworks to hand stitched embellishments, every garment is expertly engineered for comfort, agility, and massive visual impact under intense stage lighting configurations.</p>
-        </div>
-    </div>
-
-    <div class="svc-process-slide">
-        <div class="svc-process-card">
-            <p class="svc-process-lead">Stitched to the detail, so nothing moves out of place.</p>
-            <div class="svc-process-steps">
-                <span class="step">Measurement &amp; Design</span>
-                <span class="step-arrow" aria-hidden="true">&rarr;</span>
-                <span class="step">Construction &amp; Fitting</span>
-                <span class="step-arrow" aria-hidden="true">&rarr;</span>
-                <span class="step">Final Alterations</span>
-            </div>
         </div>
     </div>
 
@@ -820,6 +819,38 @@
 </div>
 </main>
 </div><!-- /greenery-wrap -->
+
+
+<section id="quote-builder">
+    <div class="qb-wrap">
+        <div class="qb-intro">
+            <h3 class="metallic-gold">Build Your Quote</h3>
+            <p>Tick everything you need and we'll have a head start before we even speak.</p>
+        </div>
+
+        <form class="qb-checklist" id="qbChecklist" onsubmit="return false;">
+            <div class="qb-grid">
+                    <label class="qb-option"><input type="checkbox" value="Custom Costume Design"><span>Custom Costume Design</span></label>
+                    <label class="qb-option"><input type="checkbox" value="Wardrobe Styling"><span>Wardrobe Styling</span></label>
+                    <label class="qb-option"><input type="checkbox" value="Character Costumes"><span>Character Costumes</span></label>
+                    <label class="qb-option"><input type="checkbox" value="Alterations &amp; Fitting"><span>Alterations &amp; Fitting</span></label>
+                    <label class="qb-option"><input type="checkbox" value="Accessories &amp; Props"><span>Accessories &amp; Props</span></label>
+                    <label class="qb-option"><input type="checkbox" value="Other"><span>Other</span></label>
+            </div>
+            <button type="button" class="qb-submit-btn" id="qbSubmitBtn">Get My Quote</button>
+            <p class="qb-error" id="qbError" style="display:none;">Please select at least one item.</p>
+        </form>
+
+        <div class="qb-summary" id="qbSummary" style="display:none;">
+            <p class="qb-summary-lead">Here's what we'll send over:</p>
+            <ul class="qb-summary-list" id="qbSummaryList"></ul>
+            <div class="qb-summary-buttons">
+                <button type="button" class="qb-edit-btn" id="qbEditBtn">Edit Selections</button>
+                <a href="contact.html" class="qb-continue-btn" id="qbContinueBtn">Continue to Contact Form</a>
+            </div>
+        </div>
+    </div>
+</section>
 
 <section id="contact-footer">
     <div class="footer-cta-wrap">
@@ -998,5 +1029,50 @@
                 hint.style.opacity = wrap.scrollTop > 40 ? "0" : "0.65";
             }, { passive: true });
         }
+    })();
+
+    // --- QUOTE BUILDER ---
+    (function () {
+        var checklist = document.getElementById("qbChecklist");
+        var summary = document.getElementById("qbSummary");
+        var summaryList = document.getElementById("qbSummaryList");
+        var submitBtn = document.getElementById("qbSubmitBtn");
+        var editBtn = document.getElementById("qbEditBtn");
+        var continueBtn = document.getElementById("qbContinueBtn");
+        var errorMsg = document.getElementById("qbError");
+        if (!checklist || !submitBtn) return;
+
+        var QB_SERVICE = "Wardrobe & Costume";
+
+        submitBtn.addEventListener("click", function () {
+            var checked = Array.prototype.slice.call(checklist.querySelectorAll('input[type="checkbox"]:checked'));
+            if (checked.length === 0) {
+                errorMsg.style.display = "block";
+                return;
+            }
+            errorMsg.style.display = "none";
+            var items = checked.map(function (c) { return c.value; });
+
+            summaryList.innerHTML = "";
+            items.forEach(function (item) {
+                var li = document.createElement("li");
+                li.textContent = item;
+                summaryList.appendChild(li);
+            });
+
+            var params = new URLSearchParams();
+            params.set("service", QB_SERVICE);
+            params.set("items", items.join(", "));
+            continueBtn.href = "contact.html?" + params.toString();
+
+            checklist.style.display = "none";
+            summary.style.display = "block";
+            summary.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+
+        editBtn.addEventListener("click", function () {
+            summary.style.display = "none";
+            checklist.style.display = "block";
+        });
     })();
 </script>
