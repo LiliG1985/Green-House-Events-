@@ -1309,19 +1309,11 @@
         }
         .festive-banner-cta:hover { transform: translateY(-2px); }
         .festive-banner-buttons { display: flex; flex-wrap: wrap; gap: 0.9rem; justify-content: center; }
-        .festive-banner-cta-outline {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: var(--gold-metallic); color: #0b1a18;
-            padding: 0.85rem 2rem; font-family: var(--display); font-size: 0.72rem;
-            letter-spacing: 1.5px; font-weight: 700; text-transform: uppercase;
-            text-decoration: none; transition: transform 0.3s ease, background 0.3s ease;
-        }
-        .festive-banner-cta-outline:hover { transform: translateY(-2px); }
         @media (max-width: 700px) {
             .festive-banner { aspect-ratio: 4 / 5; min-height: 420px; margin-top: 1rem; }
             .festive-banner-overlay { padding: 2rem 1.3rem; }
             .festive-banner-buttons { flex-direction: column; width: 100%; }
-            .festive-banner-cta, .festive-banner-cta-outline { justify-content: center; }
+            .festive-banner-cta { justify-content: center; }
         }
 
         /* =====================================================
@@ -1600,12 +1592,8 @@
             <h3>Book Your Festive Entertainment</h3>
             <p>Santa arrivals, LED parades, aerial shows and more. Make this holiday season unforgettable with our full festive entertainment roster.</p>
             <div class="festive-banner-buttons">
-                <a href="festive-seasonal.html" class="festive-banner-cta">
-                    Explore Festive &amp; Seasonal
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                </a>
-                <a href="festive-seasonal.html#fs-extras" class="festive-banner-cta-outline">
-                    Festive Activations
+                <a href="festive-seasonal.html#fs-extras" class="festive-banner-cta">
+                    Explore Our Festive Activations
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                 </a>
             </div>
