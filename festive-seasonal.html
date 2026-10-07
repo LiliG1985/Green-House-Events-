@@ -23,7 +23,7 @@
     {"@context":"https://schema.org","@type":"Service","serviceType":"Festive and Seasonal Entertainment","provider":{"@type":"LocalBusiness","name":"Greenhouse Events Dubai","url":"https://greenhouseeventsuae.com","telephone":"+971552537712","address":{"@type":"PostalAddress","addressLocality":"Dubai","addressCountry":"AE"}},"areaServed":"Dubai, United Arab Emirates","url":"https://greenhouseeventsuae.com/festive-seasonal.html"}
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&family=Mountains+of+Christmas:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-deep: #04100c;
@@ -42,7 +42,7 @@
             --sans: 'DM Sans', sans-serif;
 
             /* Festive palette */
-            --xmas-display: 'Mountains of Christmas', cursive;
+            --xmas-display: 'Cormorant Garamond', serif;
             --xmas-red: #B3122B;
             --xmas-red-deep: #7A0E1E;
             --xmas-green: #0F4C35;
@@ -139,10 +139,10 @@
             .snowfall span:nth-child(n+9) { display: none; }
         }
 
-        /* --- CANDY STRIPE BAR --- */
+        /* --- GOLD DIVIDER BAR --- */
         .candy-bar {
-            width: 100%; height: 10px;
-            background: repeating-linear-gradient(135deg, #fff 0, #fff 18px, var(--xmas-red) 18px, var(--xmas-red) 36px);
+            width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent 0%, var(--gold-solid) 20%, #F5E9B8 50%, var(--gold-solid) 80%, transparent 100%);
             position: relative; z-index: 20;
         }
 
@@ -262,7 +262,7 @@
         }
         .fs-hero h1 {
             font-family: var(--xmas-display);
-            font-weight: 700;
+            font-weight: 600;
             font-size: clamp(3.2rem, 8vw, 6.5rem);
             line-height: 1;
             margin-bottom: 1.3rem;
@@ -276,18 +276,18 @@
         }
         .fs-hero-cta {
             display: inline-flex; align-items: center; gap: 10px;
-            background: var(--xmas-red);
-            color: #fff;
+            background: var(--gold-metallic);
+            color: #0b1a18;
             padding: 1rem 2.4rem;
             font-family: var(--display);
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             letter-spacing: 1.5px;
             font-weight: 700;
-            border-radius: 999px;
-            box-shadow: 0 10px 28px rgba(179,18,43,0.5);
+            text-transform: uppercase;
+            box-shadow: 0 10px 28px rgba(0,0,0,0.35);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .fs-hero-cta:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(179,18,43,0.6); }
+        .fs-hero-cta:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(0,0,0,0.45); }
 
         .greenery-wrap { position: relative; overflow: hidden; background-color: var(--xmas-cream); }
 
@@ -298,14 +298,15 @@
             max-width: 900px; margin: 0 auto; text-align: center;
         }
         .fs-intro::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 30;
-            background: repeating-linear-gradient(90deg, var(--xmas-red) 0, var(--xmas-red) 24px, #fff 24px, #fff 48px, var(--xmas-green) 48px, var(--xmas-green) 72px, #fff 72px, #fff 96px);
+            content: ''; position: absolute; top: 0; left: 50%; width: 160px; height: 2px; z-index: 30;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, transparent 0%, var(--gold-solid) 15%, #F5E9B8 50%, var(--gold-solid) 85%, transparent 100%);
         }
         .fs-eyebrow {
             font-family: var(--display); font-size: 0.75rem; letter-spacing: 3px;
             text-transform: uppercase; color: var(--xmas-red); margin-bottom: 1rem; display: inline-block;
         }
-        .fs-intro h2 { font-family: var(--xmas-display); font-size: clamp(2.4rem, 5vw, 3.4rem); font-weight: 700; color: var(--xmas-green-deep); margin-bottom: 1.1rem; }
+        .fs-intro h2 { font-family: var(--xmas-display); font-size: clamp(2.4rem, 5vw, 3.4rem); font-weight: 600; color: var(--xmas-green-deep); margin-bottom: 1.1rem; }
         .fs-intro p { color: #3a2e22; opacity: 0.85; font-size: 1.05rem; line-height: 1.8; }
 
         /* --- CARD GRID --- */
@@ -323,27 +324,21 @@
             position: relative;
             transition: transform 0.35s ease, box-shadow 0.35s ease;
         }
-        .fs-card:hover { transform: translateY(-7px) rotate(-0.4deg); box-shadow: 0 20px 42px rgba(6,40,28,0.3); }
-        .fs-card-stripe { height: 9px; width: 100%; background: repeating-linear-gradient(45deg, var(--xmas-red), var(--xmas-red) 10px, #fff 10px, #fff 20px); }
-        .fs-card:nth-child(even) .fs-card-stripe { background: repeating-linear-gradient(45deg, var(--xmas-green), var(--xmas-green) 10px, #fff 10px, #fff 20px); }
-        .fs-card-ornament {
-            position: absolute; top: 20px; right: 16px; width: 38px; height: 38px; border-radius: 50%;
-            background: var(--gold-metallic); display: flex; align-items: center; justify-content: center;
-            font-size: 1.05rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 2; color: #3a2a06;
-        }
+        .fs-card:hover { transform: translateY(-6px); box-shadow: 0 20px 42px rgba(6,40,28,0.3); }
+        .fs-card-stripe { height: 4px; width: 100%; background: var(--gold-metallic); }
         .fs-card-photo-wrap { aspect-ratio: 4 / 3; overflow: hidden; }
         .fs-card-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform 0.6s ease; }
         .fs-card-photo-wrap img.crop-top { object-position: center 10%; }
         .fs-card:hover .fs-card-photo-wrap img { transform: scale(1.07); }
         .fs-card-body { padding: 1.6rem 1.6rem 1.9rem; }
-        .fs-card-body h3 { font-family: var(--xmas-display); font-size: 1.85rem; font-weight: 700; color: var(--xmas-green-deep); margin-bottom: 0.6rem; line-height: 1.1; }
+        .fs-card-body h3 { font-family: var(--xmas-display); font-size: 1.85rem; font-weight: 600; color: var(--xmas-green-deep); margin-bottom: 0.6rem; line-height: 1.1; }
         .fs-card-body p { font-family: var(--sans); font-size: 0.93rem; line-height: 1.7; color: #3a2e22; opacity: 0.88; }
 
         /* --- EXTRAS: KIDS CORNER, SANTA'S GROTTO & SEASONAL DECOR --- */
         .fs-extras { padding: 1rem 6vw 5rem; max-width: 1500px; margin: 0 auto; }
         .fs-extras-intro { text-align: center; max-width: 720px; margin: 0 auto 2.6rem; }
         .fs-extras-intro .fs-eyebrow { display: block; margin-bottom: 0.6rem; }
-        .fs-extras-intro h2 { font-family: var(--xmas-display); font-size: clamp(2rem, 4.2vw, 2.8rem); font-weight: 700; color: var(--xmas-green-deep); margin-bottom: 0.9rem; }
+        .fs-extras-intro h2 { font-family: var(--xmas-display); font-size: clamp(2rem, 4.2vw, 2.8rem); font-weight: 600; color: var(--xmas-green-deep); margin-bottom: 0.9rem; }
         .fs-extras-intro p { color: #3a2e22; opacity: 0.85; font-size: 1.02rem; line-height: 1.75; }
         .fs-quote-badge {
             display: inline-block; background: var(--gold-metallic); color: #3a2a06;
@@ -352,23 +347,64 @@
             margin-bottom: 0.7rem; box-shadow: 0 4px 10px rgba(0,0,0,0.18);
         }
 
+        /* --- ACTIVATION BANNER (top of Activations section) --- */
+        .fs-activation-banner {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 21 / 9;
+            min-height: 360px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 3.2rem;
+            box-shadow: 0 16px 40px rgba(6,40,28,0.28);
+        }
+        .fs-activation-banner img {
+            width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block;
+        }
+        .fs-activation-banner-overlay {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 2.5rem 2rem;
+            background: linear-gradient(180deg, rgba(4,16,12,0.25) 0%, rgba(4,16,12,0.35) 45%, rgba(4,16,12,0.86) 100%);
+        }
+        .fs-activation-banner-overlay h2 {
+            font-family: var(--xmas-display); font-weight: 600; color: #fff;
+            font-size: clamp(1.9rem, 4.2vw, 3rem); margin: 0.7rem 0 0.8rem;
+            text-shadow: 0 4px 18px rgba(0,0,0,0.9);
+        }
+        .fs-activation-banner-overlay p {
+            color: var(--white-off); opacity: 0.95; font-size: clamp(0.9rem, 1.6vw, 1.05rem);
+            max-width: 580px; text-shadow: 0 2px 10px rgba(0,0,0,0.85); margin-bottom: 1.5rem;
+        }
+        .fs-venue-list {
+            list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.7rem;
+        }
+        .fs-venue-list li {
+            font-family: var(--sans); font-size: 0.74rem; letter-spacing: 1px; text-transform: uppercase;
+            font-weight: 600; color: #fff; background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.4); padding: 0.5rem 1.1rem; border-radius: 999px;
+            backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+        }
+        @media (max-width: 700px) {
+            .fs-activation-banner { aspect-ratio: auto; height: auto; min-height: 600px; border-radius: 14px; }
+            .fs-activation-banner-overlay { padding: 2rem 1.3rem; }
+            .fs-activation-banner-overlay p { margin-bottom: 1.2rem; }
+            .fs-venue-list { gap: 0.5rem; }
+            .fs-venue-list li { font-size: 0.66rem; padding: 0.45rem 0.85rem; }
+        }
+
         /* --- BANNER CTA --- */
         .fs-cta-band {
             position: relative;
-            background: linear-gradient(135deg, var(--xmas-red-deep), var(--xmas-red));
+            background: radial-gradient(ellipse 80% 100% at 50% 0%, rgba(201,168,76,0.16), transparent 65%), linear-gradient(180deg, var(--xmas-green-deep), var(--bg-deep));
             padding: 4.5rem 8vw;
             text-align: center;
             overflow: hidden;
+            border-top: 1px solid var(--border);
         }
-        .fs-cta-band::before {
-            content: ''; position: absolute; inset: 0;
-            background: repeating-linear-gradient(135deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 20px, transparent 20px, transparent 40px);
-            pointer-events: none;
-        }
-        .fs-cta-band h2 { font-family: var(--xmas-display); font-size: clamp(2.2rem, 5vw, 3rem); color: #fff; margin-bottom: 1rem; position: relative; }
-        .fs-cta-band p { color: rgba(255,255,255,0.9); max-width: 560px; margin: 0 auto 2rem; font-size: 1.02rem; position: relative; }
-        .fs-cta-band .fs-hero-cta { background: #fff; color: var(--xmas-red-deep); position: relative; box-shadow: 0 10px 28px rgba(0,0,0,0.3); }
-        .fs-cta-band .fs-hero-cta:hover { transform: translateY(-2px); }
+        .fs-cta-band h2 { font-family: var(--xmas-display); font-weight: 600; font-size: clamp(2.2rem, 5vw, 3rem); color: #fff; margin-bottom: 1rem; position: relative; }
+        .fs-cta-band p { color: rgba(255,255,255,0.85); max-width: 560px; margin: 0 auto 2rem; font-size: 1.02rem; position: relative; }
+        .fs-cta-band .fs-hero-cta { position: relative; }
 
         footer { position: relative; overflow: hidden; }
 
@@ -459,324 +495,23 @@
     <p>Every act on this page is dressed, lit and ready for the holidays. Mix and match Santa appearances, roaming characters, musicians and parades to build a festive lineup that fits your venue, your guest list and your season.</p>
 </section>
 
-<section class="fs-roster" id="fs-roster">
-    <div class="fs-grid">
-                <article class="fs-card" id="santa-arrival">
-                    <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">★</div>
-                    <div class="fs-card-photo-wrap">
-                        <img src="fs-photos/santa-arrival.jpg" alt="Santa Arrival festive entertainment Dubai" loading="lazy">
-                    </div>
-                    <div class="fs-card-body">
-                        <h3>Santa Arrival</h3>
-                        <p>Few entrances capture the magic of the season quite like Santa&#x27;s own grand arrival. Choose the style that fits your event, from Santa gliding in on a camel to arriving by supercar or a classic reindeer drawn sleigh, and we will tailor the entrance to match your venue and theme. It is the perfect way to kick off your celebration with wonder and set the tone for an unforgettable festive season.</p>
-                    </div>
-                </article>
-
-                <article class="fs-card" id="santa-elves">
-                    <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">❄</div>
-                    <div class="fs-card-photo-wrap">
-                        <img class="crop-top" src="fs-photos/santa-elves.jpg" alt="Santa &amp; The Elves festive entertainment Dubai" loading="lazy">
-                    </div>
-                    <div class="fs-card-body">
-                        <h3>Santa &amp; The Elves</h3>
-                        <p>Our professional Santa and his team of playful elves bring warmth, charm and genuine holiday spirit to every event they visit. Santa greets children and adults alike with authenticity, while the elves keep the festive energy flowing through games, photos and playful interactions. Whether it is a corporate celebration or a family gathering, this duo creates memories your guests will treasure.</p>
-                    </div>
-                </article>
-
-                <article class="fs-card" id="led-snowflakes">
-                    <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">✩</div>
-                    <div class="fs-card-photo-wrap">
-                        <img src="fs-photos/led-snowflakes.jpg" alt="LED Roaming Snowflakes festive entertainment Dubai" loading="lazy">
-                    </div>
-                    <div class="fs-card-body">
-                        <h3>LED Roaming Snowflakes</h3>
-                        <p>Our LED Snowflake performers glide through the crowd in shimmering, light up gowns that catch every eye in the room. Their graceful, flowing movements and twinkling costumes bring a touch of winter magic to any space they enter. Perfect for galas, corporate parties or festive receptions, they turn any room into a glowing winter wonderland.</p>
-                    </div>
-                </article>
-
-                <article class="fs-card" id="winter-parade">
-                    <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">✨</div>
-                    <div class="fs-card-photo-wrap">
-                        <img src="fs-photos/winter-parade.jpg" alt="Winter Parade festive entertainment Dubai" loading="lazy">
-                    </div>
-                    <div class="fs-card-body">
-                        <h3>Winter Parade</h3>
-                        <p>Our Winter Wonderland Parade brings stilt walkers, jugglers and dancers together in a dazzling procession of colour and light. Vibrant winter costumes, twinkling decorations and lively music fill the space with festive energy the whole family can enjoy. It is a joyful, communal celebration that captures everything wonderful about the season.</p>
-                    </div>
-                </article>
-
-                <article class="fs-card" id="reindeer-parade">
-                    <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">★</div>
-                    <div class="fs-card-photo-wrap">
-                        <img class="crop-top" src="fs-photos/reindeer-parade.jpg" alt="Reindeer Parade festive entertainment Dubai" loading="lazy">
-                    </div>
-                    <div class="fs-card-body">
-                        <h3>Reindeer Parade</h3>
-                        <p>Our towering reindeer stilt walkers bring a playful, larger than life presence to any festive celebration. Dressed in rich holiday attire, they mingle with guests, pose for photos and add a magical, whimsical touch wherever they roam. A guaranteed favourite with children and adults alike, they are perfect for parades, parties and community gatherings.</p>
-                    </div>
-                </article>
-
-                <article class="fs-card" id="giant-mascots">
-                    <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">❄</div>
-                    <div class="fs-card-photo-wrap">
-                        <img src="fs-photos/giant-mascots.jpg" alt="Giant Mascots festive entertainment Dubai" loading="lazy">
-                    </div>
-                    <div class="fs-card-body">
-                        <h3>Giant Mascots</h3>
-                        <p>From towering, larger than life polar bears and reindeer to classic Santas and cheerful snowmen, our festive mascots bring instant joy wherever they appear. Each costume is crafted to a professional, high quality finish, and every mascot interacts warmly with guests, posing for photos and spreading holiday cheer. Perfect for parades, family events, corporate celebrations and mall activations, they leave every occasion filled with laughter and festive spirit.</p>
-                    </div>
-                </article>
-
-                <article class="fs-card" id="elf-chair-balancing">
-                    <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">✩</div>
-                    <div class="fs-card-photo-wrap">
-                        <img class="crop-top" src="fs-photos/elf-chair-balancing.jpg" alt="Elf Chair Balancing Act festive entertainment Dubai" loading="lazy">
-                    </div>
-                    <div class="fs-card-body">
-                        <h3>Elf Chair Balancing Act</h3>
-                        <p>Watch in amazement as our acrobats balance, climb and perform daring feats atop a stack of chairs, all while dressed as playful festive elves. Every movement is a careful blend of precision, strength and showmanship, delivered with a wink and a smile that keeps the whole crowd entertained. A striking centrepiece for any holiday party or corporate celebration, this act blends genuine skill with festive fun.</p>
-                    </div>
-                </article>
-
-                <article class="fs-card" id="aerial-show">
-                    <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">✨</div>
-                    <div class="fs-card-photo-wrap">
-                        <img src="fs-photos/aerial-show.jpg" alt="Christmas Aerial Show festive entertainment Dubai" loading="lazy">
-                    </div>
-                    <div class="fs-card-body">
-                        <h3>Christmas Aerial Show</h3>
-                        <p>Suspended high above the crowd, our aerialists perform a graceful, flowing routine that brings real elegance to your celebration. Backlit by twinkling festive lights, their silhouettes create a sense of wonder as they twist and soar through the air. For an extra showstopping touch, the act can also be performed around a dazzling mirror ball prop, perfect for a poolside setting or a glamorous indoor stage.</p>
-                    </div>
-                </article>
-
-                <article class="fs-card" id="led-ballerinas-violinist">
-                    <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">★</div>
-                    <div class="fs-card-photo-wrap">
-                        <img src="fs-photos/led-ballerinas-violinist.jpg" alt="LED Ballerinas &amp; Giant Violinist festive entertainment Dubai" loading="lazy">
-                    </div>
-                    <div class="fs-card-body">
-                        <h3>LED Ballerinas &amp; Giant Violinist</h3>
-                        <p>Centred around a violinist in a breathtaking three metre tall illuminated skirt, this performance fuses music, movement and visual spectacle. A trio of LED dancers bring the melody to life around her, their light up costumes dancing in perfect harmony with every note. It is a true showstopper, designed to leave a lasting impression on any audience.</p>
-                    </div>
-                </article>
-
-                <article class="fs-card" id="led-ballerina-shows">
-                    <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">❄</div>
-                    <div class="fs-card-photo-wrap">
-                        <img src="fs-photos/led-ballerina-shows.jpg" alt="LED Ballerina Shows festive entertainment Dubai" loading="lazy">
-                    </div>
-                    <div class="fs-card-body">
-                        <h3>LED Ballerina Shows</h3>
-                        <p>Our ensemble of LED ballerinas bring classical elegance and modern flair together in one beautifully choreographed routine. Dancing in traditional ballet or pointe shoes, their illuminated costumes light up the stage as they move with grace and sophistication. A stunning choice for galas, showcases and festive celebrations of every kind.</p>
-                    </div>
-                </article>
-
-                <article class="fs-card" id="festive-hosts">
-                    <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">✩</div>
-                    <div class="fs-card-photo-wrap">
-                        <img class="crop-top" src="fs-photos/festive-hosts.jpg" alt="Hosts &amp; Hostesses festive entertainment Dubai" loading="lazy">
-                    </div>
-                    <div class="fs-card-body">
-                        <h3>Hosts &amp; Hostesses</h3>
-                        <p>Greet your guests in style with our festive hosts and hostesses, dressed in their finest holiday attire and ready to welcome everyone with warmth and polish. They guide guests smoothly to their destination, ensuring every arrival feels seamless, special and full of festive charm. A lovely finishing touch for galas, corporate events and private celebrations alike.</p>
-                    </div>
-                </article>
-
-                <article class="fs-card" id="giant-violinist-pianist">
-                    <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">✨</div>
-                    <div class="fs-card-photo-wrap">
-                        <img class="crop-top" src="fs-photos/giant-violinist-pianist.jpg" alt="Giant Violinist or Pianist festive entertainment Dubai" loading="lazy">
-                    </div>
-                    <div class="fs-card-body">
-                        <h3>Giant Violinist or Pianist</h3>
-                        <p>Our specialty musicians add real spectacle to any event, from towering violinists performing high above the crowd to pianists playing inside glowing, illuminated bubbles. Each artist brings a distinctive visual flair alongside genuine musical talent, creating a moment guests will not forget. It is music elevated into pure theatre, perfect for galas, receptions and milestone celebrations.</p>
-                    </div>
-                </article>
-
-                <article class="fs-card" id="musician-bubble">
-                    <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">★</div>
-                    <div class="fs-card-photo-wrap">
-                        <img src="fs-photos/musician-bubble.jpg" alt="Musician in a Bubble festive entertainment Dubai" loading="lazy">
-                    </div>
-                    <div class="fs-card-body">
-                        <h3>Musician in a Bubble</h3>
-                        <p>Picture a talented musician performing inside a crystal clear, glowing bubble, lit from below for an enchanting visual effect. Each artist is a true master of their craft, delivering a polished, sophisticated performance with genuine stage presence. It is an immersive, elegant touch that suits galas, corporate events and intimate celebrations alike.</p>
-                    </div>
-                </article>
-
-                <article class="fs-card" id="roly-poly">
-                    <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">❄</div>
-                    <div class="fs-card-photo-wrap">
-                        <img src="fs-photos/roly-poly.jpg" alt="Roly Poly festive entertainment Dubai" loading="lazy">
-                    </div>
-                    <div class="fs-card-body">
-                        <h3>Roly Poly</h3>
-                        <p>Our Roly Poly performer brings striking contortion and movement artistry to your event, flowing and bending with remarkable grace and control. Available as a staged performance or a roaming meet and greet, the act adapts beautifully to almost any festive setting. It is a visually stunning addition that never fails to draw a crowd.</p>
-                    </div>
-                </article>
-
-                <article class="fs-card" id="nutcracker-parade">
-                    <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">✩</div>
-                    <div class="fs-card-photo-wrap">
-                        <img src="fs-photos/nutcracker-parade.jpg" alt="Nutcracker Parade festive entertainment Dubai" loading="lazy">
-                    </div>
-                    <div class="fs-card-body">
-                        <h3>Nutcracker Parade</h3>
-                        <p>Our Christmas Toy Soldier Parade brings a troupe of nutcracker inspired performers marching through your event in rich red, gold and blue costumes. Alongside their striking uniforms, these talented performers are also skilled acrobats and jugglers, adding real excitement to every step of the parade. With drums and music filling the air, it is a festive spectacle guaranteed to delight guests of every age.</p>
-                    </div>
-                </article>
-
-                <article class="fs-card" id="video-booth-360">
-                    <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">✨</div>
-                    <div class="fs-card-photo-wrap">
-                        <img src="fs-photos/360-video-booth.jpg" alt="360 Video Booth festive entertainment Dubai" loading="lazy">
-                    </div>
-                    <div class="fs-card-body">
-                        <h3>360 Video Booth</h3>
-                        <p>Step into the holiday spirit with our 360 degree video booth, complete with festive props and accessories for every guest to enjoy. Choose from custom designs and add your own branding for a memorable keepsake guests will want to share. It is an immersive, fun loving way to capture the magic of your celebration.</p>
-                    </div>
-                </article>
-
-                <article class="fs-card" id="kids-arts-crafts">
-                    <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">★</div>
-                    <div class="fs-card-photo-wrap">
-                        <img src="fs-photos/kids-arts-crafts.jpg" alt="Children&#x27;s Arts &amp; Craft Corner festive entertainment Dubai" loading="lazy">
-                    </div>
-                    <div class="fs-card-body">
-                        <h3>Children&#x27;s Arts &amp; Craft Corner</h3>
-                        <p>Our Christmas themed Arts and Craft Corner keeps young guests busy and smiling with festive activities designed just for them. From gingerbread house decorating to colouring pages, ornament making and playful games, there is something to spark every child&#x27;s creativity. A wonderful addition to any family friendly holiday celebration.</p>
-                    </div>
-                </article>
-
-                <article class="fs-card" id="face-painting">
-                    <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">❄</div>
-                    <div class="fs-card-photo-wrap">
-                        <img src="fs-photos/face-painting.jpg" alt="Face Painting festive entertainment Dubai" loading="lazy">
-                    </div>
-                    <div class="fs-card-body">
-                        <h3>Face Painting</h3>
-                        <p>Our festive face painters transform little ones into reindeer, snowmen and elves with playful, colourful designs made just for the season. Using high quality, skin safe materials, they create a comfortable and joyful experience for guests of every age. A delightful, interactive touch for winter festivals, family days and holiday parties.</p>
-                    </div>
-                </article>
-
-                <article class="fs-card" id="dxb-brass-band">
-                    <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">✩</div>
-                    <div class="fs-card-photo-wrap">
-                        <img src="fs-photos/dxb-brass-band.jpg" alt="DXB Brass Band festive entertainment Dubai" loading="lazy">
-                    </div>
-                    <div class="fs-card-body">
-                        <h3>DXB Brass Band</h3>
-                        <p>Our Dubai based brass band brings high energy, stylish performances to every event, blending authentic brass sound with a modern twist. This talented five piece lineup of tuba, saxophones, trumpet and drums moves effortlessly between reggae, jazz, samba and today&#x27;s biggest hits. Whether performing on the main stage or roaming through the crowd, they are guaranteed to fill the dance floor with festive energy.</p>
-                    </div>
-                </article>
-
-                <article class="fs-card" id="carol-singers">
-                    <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">✨</div>
-                    <div class="fs-card-photo-wrap">
-                        <img src="fs-photos/carol-singers.jpg" alt="Christmas Choir and Carol Singers festive entertainment Dubai" loading="lazy">
-                    </div>
-                    <div class="fs-card-body">
-                        <h3>Christmas Choir &amp; Carol Singers</h3>
-                        <p>Our Christmas choir and carol singers bring festive cheer with a fun, interactive twist on classic favourites, blending playful harmonies with upbeat arrangements and plenty of personality. Dressed in festive style, they move through the crowd or take centre stage, encouraging guests to join in and spreading that magical holiday atmosphere. Perfect for brunches, tree lightings and corporate celebrations, this choir turns tradition into a joyful, high energy experience your guests will remember.</p>
-                    </div>
-                </article>
-
-                <article class="fs-card" id="festive-belles">
-                    <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">★</div>
-                    <div class="fs-card-photo-wrap">
-                        <img src="fs-photos/festive-belles.jpg" alt="Festive Belles Dancers festive entertainment Dubai" loading="lazy">
-                    </div>
-                    <div class="fs-card-body">
-                        <h3>Festive Belles Dancers</h3>
-                        <p>Our Festive Belles are a dazzling dance troupe who bring glamour, sparkle and festive cheer to any celebration. Dressed in stunning costumes adorned with sequins and festive accents, these performers light up the room with high energy choreography, elegant formations and a touch of holiday magic. Perfect for gala dinners, festive brunches or a grand entrance, they deliver a showstopping performance that blends sophistication with Christmas sparkle.</p>
-                    </div>
-                </article>
-
-                <article class="fs-card" id="festive-magician">
-                    <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">❄</div>
-                    <div class="fs-card-photo-wrap">
-                        <img src="fs-photos/festive-magician.jpg" alt="Christmas Magician festive entertainment Dubai" loading="lazy">
-                    </div>
-                    <div class="fs-card-body">
-                        <h3>Christmas Magician</h3>
-                        <p>Our festive magician brings close up sleight of hand and dazzling stage illusions straight to your guests, moving between tables or taking centre stage with equal ease. Cards, mentalism and audience interaction combine for a performance that keeps guests gasping, laughing and talking long after the show ends. A polished, high energy addition to galas, brunches and corporate celebrations, perfect for adding a touch of wonder to your festive season.</p>
-                    </div>
-                </article>
-
-                <article class="fs-card" id="dancing-elves">
-                    <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">✩</div>
-                    <div class="fs-card-photo-wrap">
-                        <img src="fs-photos/dancing-elves.jpg" alt="Little People as Dancing Elves festive entertainment Dubai" loading="lazy">
-                    </div>
-                    <div class="fs-card-body">
-                        <h3>Little People as Dancing Elves</h3>
-                        <p>Our dancing elves bring big energy, cheeky charm and plenty of festive mischief to every celebration. With upbeat choreography, playful antics and irresistible holiday spirit, they light up the room and have guests of all ages dancing along. A guaranteed favourite for brunches, meet and greets and roaming entertainment.</p>
-                    </div>
-                </article>
-
-                <article class="fs-card" id="festive-mascots">
-                    <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">★</div>
-                    <div class="fs-card-photo-wrap">
-                        <img src="fs-photos/festive-mascots.jpg" alt="Festive Mascots festive entertainment Dubai" loading="lazy">
-                    </div>
-                    <div class="fs-card-body">
-                        <h3>Festive Mascots</h3>
-                        <p>From beloved reindeer and snowmen to polar bears and festive favourites, our mascots bring instant excitement and plenty of personality to any celebration. They mingle with guests, pose for photos and create memorable moments for children and adults alike. Perfect for welcoming guests, meet and greets and family activations.</p>
-                    </div>
-                </article>
-
-                <article class="fs-card" id="mirror-ball-acrobat">
-                    <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">✨</div>
-                    <div class="fs-card-photo-wrap">
-                        <img src="fs-photos/mirror-ball-acrobat.jpg" alt="Festive Mirror Ball Acrobat festive entertainment Dubai" loading="lazy">
-                    </div>
-                    <div class="fs-card-body">
-                        <h3>Festive Mirror Ball Acrobat</h3>
-                        <p>Combining incredible balance, flexibility and strength with a dazzling festive twist, our acrobat performs atop a giant mirrored sphere as the surface catches the surrounding lights. Dressed in an elegant festive costume, she moves through a striking sequence of poses for a sophisticated, show stopping moment. Perfect for gala dinners, grand entrances and feature performances.</p>
-                    </div>
-                </article>
-
-                <article class="fs-card" id="roaming-balancing-balls">
-                    <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">❄</div>
-                    <div class="fs-card-photo-wrap">
-                        <img src="fs-photos/roaming-balancing-balls.jpg" alt="Festive Roaming Balancing Balls festive entertainment Dubai" loading="lazy">
-                    </div>
-                    <div class="fs-card-body">
-                        <h3>Festive Roaming Balancing Balls</h3>
-                        <p>Our elves bring playful skill and festive charm as they balance, roam and interact atop oversized balancing balls. Eye catching and highly photogenic, they move through the venue creating spontaneous moments of entertainment and plenty of smiles. A fun addition to brunches, lobby entertainment and festive welcomes.</p>
-                    </div>
-                </article>
-
-    </div>
-</section>
-
 <section class="fs-extras" id="fs-extras">
+    <div class="fs-activation-banner">
+        <img src="fs-photos/santas-grotto.jpg" alt="Santa's Grotto venue activation Dubai" loading="lazy">
+        <div class="fs-activation-banner-overlay">
+            <span class="fs-quote-badge">Quoted On Request</span>
+            <h2>We Transform Your Venue</h2>
+            <p>From an intimate lobby corner to a full festive takeover, we design, build and style bespoke Christmas activations tailored to your space.</p>
+            <ul class="fs-venue-list">
+                <li>Malls &amp; Retail</li>
+                <li>Hotels &amp; Resorts</li>
+                <li>Corporate Offices</li>
+                <li>Residential Communities</li>
+                <li>Restaurants &amp; Brunches</li>
+                <li>Private Events</li>
+            </ul>
+        </div>
+    </div>
     <div class="fs-extras-intro">
         <span class="fs-eyebrow">For Your Venue</span>
         <h2>Seasonal Decor &amp; Activations</h2>
@@ -786,7 +521,6 @@
 
                 <article class="fs-card" id="kids-corner">
                     <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">✩</div>
                     <div class="fs-card-photo-wrap">
                         <img src="fs-photos/kids-corner.jpg" alt="Festive Kids Corner and Activations Dubai" loading="lazy">
                     </div>
@@ -799,7 +533,6 @@
 
                 <article class="fs-card" id="santas-grotto">
                     <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">★</div>
                     <div class="fs-card-photo-wrap">
                         <img src="fs-photos/santas-grotto.jpg" alt="Santa's Grotto festive entertainment Dubai" loading="lazy">
                     </div>
@@ -812,7 +545,6 @@
 
                 <article class="fs-card" id="seasonal-decor">
                     <div class="fs-card-stripe"></div>
-                    <div class="fs-card-ornament">❄</div>
                     <div class="fs-card-photo-wrap">
                         <img src="fs-photos/seasonal-decor.jpg" alt="Seasonal Christmas Decor Dubai" loading="lazy">
                     </div>
@@ -820,6 +552,297 @@
                         <span class="fs-quote-badge">Quoted On Request</span>
                         <h3>Seasonal Decor</h3>
                         <p>Christmas trees, photo backdrops, garlands and festive styling dressed to match your venue and theme, from an elegant lobby tree to a full festive takeover. Every detail is designed, built and installed to bring the season to life.</p>
+                    </div>
+                </article>
+
+    </div>
+</section>
+
+<section class="fs-roster" id="fs-roster">
+    <div class="fs-grid">
+                <article class="fs-card" id="santa-arrival">
+                    <div class="fs-card-stripe"></div>
+                    <div class="fs-card-photo-wrap">
+                        <img src="fs-photos/santa-arrival.jpg" alt="Santa Arrival festive entertainment Dubai" loading="lazy">
+                    </div>
+                    <div class="fs-card-body">
+                        <h3>Santa Arrival</h3>
+                        <p>Few entrances capture the magic of the season quite like Santa&#x27;s own grand arrival. Choose the style that fits your event, from Santa gliding in on a camel to arriving by supercar or a classic reindeer drawn sleigh, and we will tailor the entrance to match your venue and theme. It is the perfect way to kick off your celebration with wonder and set the tone for an unforgettable festive season.</p>
+                    </div>
+                </article>
+
+                <article class="fs-card" id="santa-elves">
+                    <div class="fs-card-stripe"></div>
+                    <div class="fs-card-photo-wrap">
+                        <img class="crop-top" src="fs-photos/santa-elves.jpg" alt="Santa &amp; The Elves festive entertainment Dubai" loading="lazy">
+                    </div>
+                    <div class="fs-card-body">
+                        <h3>Santa &amp; The Elves</h3>
+                        <p>Our professional Santa and his team of playful elves bring warmth, charm and genuine holiday spirit to every event they visit. Santa greets children and adults alike with authenticity, while the elves keep the festive energy flowing through games, photos and playful interactions. Whether it is a corporate celebration or a family gathering, this duo creates memories your guests will treasure.</p>
+                    </div>
+                </article>
+
+                <article class="fs-card" id="led-snowflakes">
+                    <div class="fs-card-stripe"></div>
+                    <div class="fs-card-photo-wrap">
+                        <img src="fs-photos/led-snowflakes.jpg" alt="LED Roaming Snowflakes festive entertainment Dubai" loading="lazy">
+                    </div>
+                    <div class="fs-card-body">
+                        <h3>LED Roaming Snowflakes</h3>
+                        <p>Our LED Snowflake performers glide through the crowd in shimmering, light up gowns that catch every eye in the room. Their graceful, flowing movements and twinkling costumes bring a touch of winter magic to any space they enter. Perfect for galas, corporate parties or festive receptions, they turn any room into a glowing winter wonderland.</p>
+                    </div>
+                </article>
+
+                <article class="fs-card" id="winter-parade">
+                    <div class="fs-card-stripe"></div>
+                    <div class="fs-card-photo-wrap">
+                        <img src="fs-photos/winter-parade.jpg" alt="Winter Parade festive entertainment Dubai" loading="lazy">
+                    </div>
+                    <div class="fs-card-body">
+                        <h3>Winter Parade</h3>
+                        <p>Our Winter Wonderland Parade brings stilt walkers, jugglers and dancers together in a dazzling procession of colour and light. Vibrant winter costumes, twinkling decorations and lively music fill the space with festive energy the whole family can enjoy. It is a joyful, communal celebration that captures everything wonderful about the season.</p>
+                    </div>
+                </article>
+
+                <article class="fs-card" id="reindeer-parade">
+                    <div class="fs-card-stripe"></div>
+                    <div class="fs-card-photo-wrap">
+                        <img class="crop-top" src="fs-photos/reindeer-parade.jpg" alt="Reindeer Parade festive entertainment Dubai" loading="lazy">
+                    </div>
+                    <div class="fs-card-body">
+                        <h3>Reindeer Parade</h3>
+                        <p>Our towering reindeer stilt walkers bring a playful, larger than life presence to any festive celebration. Dressed in rich holiday attire, they mingle with guests, pose for photos and add a magical, whimsical touch wherever they roam. A guaranteed favourite with children and adults alike, they are perfect for parades, parties and community gatherings.</p>
+                    </div>
+                </article>
+
+                <article class="fs-card" id="giant-mascots">
+                    <div class="fs-card-stripe"></div>
+                    <div class="fs-card-photo-wrap">
+                        <img src="fs-photos/giant-mascots.jpg" alt="Giant Mascots festive entertainment Dubai" loading="lazy">
+                    </div>
+                    <div class="fs-card-body">
+                        <h3>Giant Mascots</h3>
+                        <p>From towering, larger than life polar bears and reindeer to classic Santas and cheerful snowmen, our festive mascots bring instant joy wherever they appear. Each costume is crafted to a professional, high quality finish, and every mascot interacts warmly with guests, posing for photos and spreading holiday cheer. Perfect for parades, family events, corporate celebrations and mall activations, they leave every occasion filled with laughter and festive spirit.</p>
+                    </div>
+                </article>
+
+                <article class="fs-card" id="elf-chair-balancing">
+                    <div class="fs-card-stripe"></div>
+                    <div class="fs-card-photo-wrap">
+                        <img class="crop-top" src="fs-photos/elf-chair-balancing.jpg" alt="Elf Chair Balancing Act festive entertainment Dubai" loading="lazy">
+                    </div>
+                    <div class="fs-card-body">
+                        <h3>Elf Chair Balancing Act</h3>
+                        <p>Watch in amazement as our acrobats balance, climb and perform daring feats atop a stack of chairs, all while dressed as playful festive elves. Every movement is a careful blend of precision, strength and showmanship, delivered with a wink and a smile that keeps the whole crowd entertained. A striking centrepiece for any holiday party or corporate celebration, this act blends genuine skill with festive fun.</p>
+                    </div>
+                </article>
+
+                <article class="fs-card" id="aerial-show">
+                    <div class="fs-card-stripe"></div>
+                    <div class="fs-card-photo-wrap">
+                        <img src="fs-photos/aerial-show.jpg" alt="Christmas Aerial Show festive entertainment Dubai" loading="lazy">
+                    </div>
+                    <div class="fs-card-body">
+                        <h3>Christmas Aerial Show</h3>
+                        <p>Suspended high above the crowd, our aerialists perform a graceful, flowing routine that brings real elegance to your celebration. Backlit by twinkling festive lights, their silhouettes create a sense of wonder as they twist and soar through the air. For an extra showstopping touch, the act can also be performed around a dazzling mirror ball prop, perfect for a poolside setting or a glamorous indoor stage.</p>
+                    </div>
+                </article>
+
+                <article class="fs-card" id="led-ballerinas-violinist">
+                    <div class="fs-card-stripe"></div>
+                    <div class="fs-card-photo-wrap">
+                        <img src="fs-photos/led-ballerinas-violinist.jpg" alt="LED Ballerinas &amp; Giant Violinist festive entertainment Dubai" loading="lazy">
+                    </div>
+                    <div class="fs-card-body">
+                        <h3>LED Ballerinas &amp; Giant Violinist</h3>
+                        <p>Centred around a violinist in a breathtaking three metre tall illuminated skirt, this performance fuses music, movement and visual spectacle. A trio of LED dancers bring the melody to life around her, their light up costumes dancing in perfect harmony with every note. It is a true showstopper, designed to leave a lasting impression on any audience.</p>
+                    </div>
+                </article>
+
+                <article class="fs-card" id="led-ballerina-shows">
+                    <div class="fs-card-stripe"></div>
+                    <div class="fs-card-photo-wrap">
+                        <img src="fs-photos/led-ballerina-shows.jpg" alt="LED Ballerina Shows festive entertainment Dubai" loading="lazy">
+                    </div>
+                    <div class="fs-card-body">
+                        <h3>LED Ballerina Shows</h3>
+                        <p>Our ensemble of LED ballerinas bring classical elegance and modern flair together in one beautifully choreographed routine. Dancing in traditional ballet or pointe shoes, their illuminated costumes light up the stage as they move with grace and sophistication. A stunning choice for galas, showcases and festive celebrations of every kind.</p>
+                    </div>
+                </article>
+
+                <article class="fs-card" id="festive-hosts">
+                    <div class="fs-card-stripe"></div>
+                    <div class="fs-card-photo-wrap">
+                        <img class="crop-top" src="fs-photos/festive-hosts.jpg" alt="Hosts &amp; Hostesses festive entertainment Dubai" loading="lazy">
+                    </div>
+                    <div class="fs-card-body">
+                        <h3>Hosts &amp; Hostesses</h3>
+                        <p>Greet your guests in style with our festive hosts and hostesses, dressed in their finest holiday attire and ready to welcome everyone with warmth and polish. They guide guests smoothly to their destination, ensuring every arrival feels seamless, special and full of festive charm. A lovely finishing touch for galas, corporate events and private celebrations alike.</p>
+                    </div>
+                </article>
+
+                <article class="fs-card" id="giant-violinist-pianist">
+                    <div class="fs-card-stripe"></div>
+                    <div class="fs-card-photo-wrap">
+                        <img class="crop-top" src="fs-photos/giant-violinist-pianist.jpg" alt="Giant Violinist or Pianist festive entertainment Dubai" loading="lazy">
+                    </div>
+                    <div class="fs-card-body">
+                        <h3>Giant Violinist or Pianist</h3>
+                        <p>Our specialty musicians add real spectacle to any event, from towering violinists performing high above the crowd to pianists playing inside glowing, illuminated bubbles. Each artist brings a distinctive visual flair alongside genuine musical talent, creating a moment guests will not forget. It is music elevated into pure theatre, perfect for galas, receptions and milestone celebrations.</p>
+                    </div>
+                </article>
+
+                <article class="fs-card" id="musician-bubble">
+                    <div class="fs-card-stripe"></div>
+                    <div class="fs-card-photo-wrap">
+                        <img src="fs-photos/musician-bubble.jpg" alt="Musician in a Bubble festive entertainment Dubai" loading="lazy">
+                    </div>
+                    <div class="fs-card-body">
+                        <h3>Musician in a Bubble</h3>
+                        <p>Picture a talented musician performing inside a crystal clear, glowing bubble, lit from below for an enchanting visual effect. Each artist is a true master of their craft, delivering a polished, sophisticated performance with genuine stage presence. It is an immersive, elegant touch that suits galas, corporate events and intimate celebrations alike.</p>
+                    </div>
+                </article>
+
+                <article class="fs-card" id="roly-poly">
+                    <div class="fs-card-stripe"></div>
+                    <div class="fs-card-photo-wrap">
+                        <img src="fs-photos/roly-poly.jpg" alt="Roly Poly festive entertainment Dubai" loading="lazy">
+                    </div>
+                    <div class="fs-card-body">
+                        <h3>Roly Poly</h3>
+                        <p>Our Roly Poly performer brings striking contortion and movement artistry to your event, flowing and bending with remarkable grace and control. Available as a staged performance or a roaming meet and greet, the act adapts beautifully to almost any festive setting. It is a visually stunning addition that never fails to draw a crowd.</p>
+                    </div>
+                </article>
+
+                <article class="fs-card" id="nutcracker-parade">
+                    <div class="fs-card-stripe"></div>
+                    <div class="fs-card-photo-wrap">
+                        <img src="fs-photos/nutcracker-parade.jpg" alt="Nutcracker Parade festive entertainment Dubai" loading="lazy">
+                    </div>
+                    <div class="fs-card-body">
+                        <h3>Nutcracker Parade</h3>
+                        <p>Our Christmas Toy Soldier Parade brings a troupe of nutcracker inspired performers marching through your event in rich red, gold and blue costumes. Alongside their striking uniforms, these talented performers are also skilled acrobats and jugglers, adding real excitement to every step of the parade. With drums and music filling the air, it is a festive spectacle guaranteed to delight guests of every age.</p>
+                    </div>
+                </article>
+
+                <article class="fs-card" id="video-booth-360">
+                    <div class="fs-card-stripe"></div>
+                    <div class="fs-card-photo-wrap">
+                        <img src="fs-photos/360-video-booth.jpg" alt="360 Video Booth festive entertainment Dubai" loading="lazy">
+                    </div>
+                    <div class="fs-card-body">
+                        <h3>360 Video Booth</h3>
+                        <p>Step into the holiday spirit with our 360 degree video booth, complete with festive props and accessories for every guest to enjoy. Choose from custom designs and add your own branding for a memorable keepsake guests will want to share. It is an immersive, fun loving way to capture the magic of your celebration.</p>
+                    </div>
+                </article>
+
+                <article class="fs-card" id="kids-arts-crafts">
+                    <div class="fs-card-stripe"></div>
+                    <div class="fs-card-photo-wrap">
+                        <img src="fs-photos/kids-arts-crafts.jpg" alt="Children&#x27;s Arts &amp; Craft Corner festive entertainment Dubai" loading="lazy">
+                    </div>
+                    <div class="fs-card-body">
+                        <h3>Children&#x27;s Arts &amp; Craft Corner</h3>
+                        <p>Our Christmas themed Arts and Craft Corner keeps young guests busy and smiling with festive activities designed just for them. From gingerbread house decorating to colouring pages, ornament making and playful games, there is something to spark every child&#x27;s creativity. A wonderful addition to any family friendly holiday celebration.</p>
+                    </div>
+                </article>
+
+                <article class="fs-card" id="face-painting">
+                    <div class="fs-card-stripe"></div>
+                    <div class="fs-card-photo-wrap">
+                        <img src="fs-photos/face-painting.jpg" alt="Face Painting festive entertainment Dubai" loading="lazy">
+                    </div>
+                    <div class="fs-card-body">
+                        <h3>Face Painting</h3>
+                        <p>Our festive face painters transform little ones into reindeer, snowmen and elves with playful, colourful designs made just for the season. Using high quality, skin safe materials, they create a comfortable and joyful experience for guests of every age. A delightful, interactive touch for winter festivals, family days and holiday parties.</p>
+                    </div>
+                </article>
+
+                <article class="fs-card" id="dxb-brass-band">
+                    <div class="fs-card-stripe"></div>
+                    <div class="fs-card-photo-wrap">
+                        <img src="fs-photos/dxb-brass-band.jpg" alt="DXB Brass Band festive entertainment Dubai" loading="lazy">
+                    </div>
+                    <div class="fs-card-body">
+                        <h3>DXB Brass Band</h3>
+                        <p>Our Dubai based brass band brings high energy, stylish performances to every event, blending authentic brass sound with a modern twist. This talented five piece lineup of tuba, saxophones, trumpet and drums moves effortlessly between reggae, jazz, samba and today&#x27;s biggest hits. Whether performing on the main stage or roaming through the crowd, they are guaranteed to fill the dance floor with festive energy.</p>
+                    </div>
+                </article>
+
+                <article class="fs-card" id="carol-singers">
+                    <div class="fs-card-stripe"></div>
+                    <div class="fs-card-photo-wrap">
+                        <img src="fs-photos/carol-singers.jpg" alt="Christmas Choir and Carol Singers festive entertainment Dubai" loading="lazy">
+                    </div>
+                    <div class="fs-card-body">
+                        <h3>Christmas Choir &amp; Carol Singers</h3>
+                        <p>Our Christmas choir and carol singers bring festive cheer with a fun, interactive twist on classic favourites, blending playful harmonies with upbeat arrangements and plenty of personality. Dressed in festive style, they move through the crowd or take centre stage, encouraging guests to join in and spreading that magical holiday atmosphere. Perfect for brunches, tree lightings and corporate celebrations, this choir turns tradition into a joyful, high energy experience your guests will remember.</p>
+                    </div>
+                </article>
+
+                <article class="fs-card" id="festive-belles">
+                    <div class="fs-card-stripe"></div>
+                    <div class="fs-card-photo-wrap">
+                        <img src="fs-photos/festive-belles.jpg" alt="Festive Belles Dancers festive entertainment Dubai" loading="lazy">
+                    </div>
+                    <div class="fs-card-body">
+                        <h3>Festive Belles Dancers</h3>
+                        <p>Our Festive Belles are a dazzling dance troupe who bring glamour, sparkle and festive cheer to any celebration. Dressed in stunning costumes adorned with sequins and festive accents, these performers light up the room with high energy choreography, elegant formations and a touch of holiday magic. Perfect for gala dinners, festive brunches or a grand entrance, they deliver a showstopping performance that blends sophistication with Christmas sparkle.</p>
+                    </div>
+                </article>
+
+                <article class="fs-card" id="festive-magician">
+                    <div class="fs-card-stripe"></div>
+                    <div class="fs-card-photo-wrap">
+                        <img src="fs-photos/festive-magician.jpg" alt="Christmas Magician festive entertainment Dubai" loading="lazy">
+                    </div>
+                    <div class="fs-card-body">
+                        <h3>Christmas Magician</h3>
+                        <p>Our festive magician brings close up sleight of hand and dazzling stage illusions straight to your guests, moving between tables or taking centre stage with equal ease. Cards, mentalism and audience interaction combine for a performance that keeps guests gasping, laughing and talking long after the show ends. A polished, high energy addition to galas, brunches and corporate celebrations, perfect for adding a touch of wonder to your festive season.</p>
+                    </div>
+                </article>
+
+                <article class="fs-card" id="dancing-elves">
+                    <div class="fs-card-stripe"></div>
+                    <div class="fs-card-photo-wrap">
+                        <img src="fs-photos/dancing-elves.jpg" alt="Little People as Dancing Elves festive entertainment Dubai" loading="lazy">
+                    </div>
+                    <div class="fs-card-body">
+                        <h3>Little People as Dancing Elves</h3>
+                        <p>Our dancing elves bring big energy, cheeky charm and plenty of festive mischief to every celebration. With upbeat choreography, playful antics and irresistible holiday spirit, they light up the room and have guests of all ages dancing along. A guaranteed favourite for brunches, meet and greets and roaming entertainment.</p>
+                    </div>
+                </article>
+
+                <article class="fs-card" id="festive-mascots">
+                    <div class="fs-card-stripe"></div>
+                    <div class="fs-card-photo-wrap">
+                        <img src="fs-photos/festive-mascots.jpg" alt="Festive Mascots festive entertainment Dubai" loading="lazy">
+                    </div>
+                    <div class="fs-card-body">
+                        <h3>Festive Mascots</h3>
+                        <p>From beloved reindeer and snowmen to polar bears and festive favourites, our mascots bring instant excitement and plenty of personality to any celebration. They mingle with guests, pose for photos and create memorable moments for children and adults alike. Perfect for welcoming guests, meet and greets and family activations.</p>
+                    </div>
+                </article>
+
+                <article class="fs-card" id="mirror-ball-acrobat">
+                    <div class="fs-card-stripe"></div>
+                    <div class="fs-card-photo-wrap">
+                        <img src="fs-photos/mirror-ball-acrobat.jpg" alt="Festive Mirror Ball Acrobat festive entertainment Dubai" loading="lazy">
+                    </div>
+                    <div class="fs-card-body">
+                        <h3>Festive Mirror Ball Acrobat</h3>
+                        <p>Combining incredible balance, flexibility and strength with a dazzling festive twist, our acrobat performs atop a giant mirrored sphere as the surface catches the surrounding lights. Dressed in an elegant festive costume, she moves through a striking sequence of poses for a sophisticated, show stopping moment. Perfect for gala dinners, grand entrances and feature performances.</p>
+                    </div>
+                </article>
+
+                <article class="fs-card" id="roaming-balancing-balls">
+                    <div class="fs-card-stripe"></div>
+                    <div class="fs-card-photo-wrap">
+                        <img src="fs-photos/roaming-balancing-balls.jpg" alt="Festive Roaming Balancing Balls festive entertainment Dubai" loading="lazy">
+                    </div>
+                    <div class="fs-card-body">
+                        <h3>Festive Roaming Balancing Balls</h3>
+                        <p>Our elves bring playful skill and festive charm as they balance, roam and interact atop oversized balancing balls. Eye catching and highly photogenic, they move through the venue creating spontaneous moments of entertainment and plenty of smiles. A fun addition to brunches, lobby entertainment and festive welcomes.</p>
                     </div>
                 </article>
 
