@@ -516,7 +516,7 @@ html.gated .gate{display:grid;min-height:100vh;min-height:100dvh;place-items:cen
 .gate-box h1{font-size:1.9rem;text-align:center;margin:0}
 .gate-box .btn{justify-content:center}
 </style>
-<script>(function(){var g=true;try{var v=JSON.parse(localStorage.getItem("bn_client")||"null");g=!(v&&v.exp>Date.now());}catch(e){}if(g&&!/^#admin/.test(location.hash))document.documentElement.classList.add("gated");})();</script>
+<script>(function(){var g=true;try{var v=JSON.parse(localStorage.getItem("bn_client")||"null");var a=JSON.parse(localStorage.getItem("bn_admin")||sessionStorage.getItem("bn_admin")||"null");g=!(v&&v.exp>Date.now())&&!(a&&a.exp>Date.now());}catch(e){}if(g&&!/^#admin/.test(location.hash))document.documentElement.classList.add("gated");})();</script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -541,6 +541,7 @@ html.gated .gate{display:grid;min-height:100vh;min-height:100dvh;place-items:cen
     <div class="field"><label for="g-pass">Password</label><input id="g-pass" type="password" autocomplete="current-password"></div>
     <p class="err" id="gErr" role="alert"></p>
     <button type="submit" class="btn" id="gBtn">Enter</button>
+    <a href="#admin" class="tlink" id="gStaff" style="justify-self:center;font-size:.6rem;margin-top:6px">Staff login</a>
   </form>
 </div>
 
@@ -2393,7 +2394,7 @@ const VIEWS=["home","about","treatments","new","prices","book","consult","contac
 let pendingJump=null;
 function route(){
   const h=location.hash.slice(1), v=VIEWS.includes(h)?h:"home";
-  if(CONFIG.clientLogin){ if(v==="admin") gateHide(); else if(!CLIENT.token){ gateShow($("#gErr").textContent); return; } }
+  if(CONFIG.clientLogin){ if(v==="admin"||ADM.token||admLoad()) gateHide(); else if(!CLIENT.token){ gateShow($("#gErr").textContent); return; } }
   $$("section.view").forEach(s=>s.classList.toggle("on",s.dataset.view===v));
   $$("nav.main a").forEach(a=>{ if(a.getAttribute("href")==="#"+v) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); });
   $("#top").classList.remove("open"); $("#menuBtn").setAttribute("aria-expanded","false");
