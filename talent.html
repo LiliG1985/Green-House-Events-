@@ -123,9 +123,15 @@
         @media (max-width: 900px) { .nav-pages { display: none; } .nav-whatsapp { display: none; } .nav-cta { display: none; } .hamburger { display: flex; } }
 
         /* --- HERO --- */
-        .roster-hero { padding: 11rem 8vw 4rem; text-align: center; max-width: 820px; margin: 0 auto; }
-        .roster-hero h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(2.2rem, 6vw, 3.6rem); margin-bottom: 1.2rem; }
-        .roster-hero p { opacity: 0.8; font-size: 1.05rem; line-height: 1.7; }
+        .roster-hero {
+            position: relative;
+            padding: 11rem 8vw 4rem;
+            text-align: center;
+            background: linear-gradient(rgba(2, 22, 18, 0.35) 0%, #021612 100%), url('entertainment-header-bg.jpg') no-repeat center 30%;
+            background-size: cover;
+        }
+        .roster-hero h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(2.2rem, 6vw, 3.6rem); margin-bottom: 1.2rem; text-shadow: 0 4px 20px rgba(0,0,0,0.6); }
+        .roster-hero p { opacity: 0.9; font-size: 1.05rem; line-height: 1.7; max-width: 820px; margin: 0 auto; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 
         /* --- CATEGORY NAV --- */
         .cat-nav-wrap { position: sticky; top: 0; z-index: 50; background: rgba(4,16,12,0.92); backdrop-filter: blur(16px); border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); padding-top: 4.6rem; }
@@ -653,7 +659,60 @@
         .nav-whatsapp-btn svg, .nav-email-btn svg { width: 16px; height: 16px; fill: currentColor; }
         .nav-whatsapp-btn:hover, .nav-email-btn:hover { background: rgba(201,168,76,0.12); }
 
-        footer { padding: 4rem 5vw; text-align: center; background: #000; }
+        footer {
+            padding: 5rem 5vw;
+            text-align: center;
+            background: #000000;
+            position: relative;
+            overflow: hidden;
+        }
+        footer::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.9)), url('wall-panel-3.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.4;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .footer-directory-grid {
+            max-width: 1300px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 3rem; padding-bottom: 3rem;
+            position: relative; z-index: 1;
+            text-align: left;
+        }
+        .directory-col h4 {
+            color: var(--gold-solid); font-family: var(--display);
+            font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+        .directory-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; padding: 0; margin: 0; }
+        .directory-col ul li a {
+            color: var(--white-off); text-decoration: none;
+            opacity: 0.6; font-size: 0.88rem;
+            transition: all 0.3s ease; font-weight: 300;
+        }
+        .directory-col ul li a:hover { opacity: 1; padding-left: 4px; }
+        .footer-bottom-bar {
+            max-width: 1300px; margin: 0 auto;
+            border-top: 0.5px solid rgba(201,168,76,0.15);
+            padding-top: 2rem; display: flex;
+            justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 1rem;
+            position: relative; z-index: 1;
+        }
+        .footer-bottom-bar p { font-size: 0.75rem; opacity: 0.4; letter-spacing: 1px; margin: 0; }
+        @media (max-width: 900px) {
+            .footer-directory-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+            .footer-bottom-bar { flex-direction: column; text-align: center; }
+        }
+        @media (max-width: 600px) {
+            .footer-directory-grid { grid-template-columns: 1fr; }
+        }
 
         /* --- ACT PHOTO: bio shows on hover instead of always-on paragraph --- */
         .act-photo { position: relative; overflow: hidden; }
@@ -2546,8 +2605,45 @@
 </section>
 
 <footer>
-    <p class="metallic-gold" style="font-family: var(--display); font-size: 1.1rem; letter-spacing: 5px; font-weight: 700; margin-bottom: 0.5rem;">GREENHOUSE EVENTS DUBAI</p>
-    <p style="font-size: 0.75rem; opacity: 0.4; letter-spacing: 1px;">&copy; 2026 Greenhouse Events UAE. All Rights Reserved.</p>
+    <div class="footer-directory-grid">
+        <div class="directory-col">
+            <h4>MAIN DIRECTORY</h4>
+            <ul>
+                <li><a href="index.html">Home Base</a></li>
+                <li><a href="entertainment.html">Entertainment</a></li>
+                <li><a href="our-services.html">Our Services</a></li>
+                <li><a href="contact.html">Contact Desk</a></li>
+            </ul>
+        </div>
+        <div class="directory-col">
+            <h4>ROSTER CATEGORIES</h4>
+            <ul>
+                <li><a href="#djs">DJs</a></li>
+                <li><a href="#singers">Singers</a></li>
+                <li><a href="#bands">Live Bands</a></li>
+                <li><a href="#instrumental">Instrumentalists</a></li>
+            </ul>
+        </div>
+        <div class="directory-col">
+            <h4>LUXURY PRODUCTION</h4>
+            <ul>
+                <li><a href="private-events.html">Private Event Planning</a></li>
+                <li><a href="corporate-events.html">Corporate Management</a></li>
+                <li><a href="permanent-transformations.html">Permanent Transformations</a></li>
+                <li><a href="staging-av.html">Staging, Sound &amp; AV</a></li>
+                <li><a href="wardrobe-costumes.html">Wardrobe Curation</a></li>
+            </ul>
+        </div>
+        <div class="directory-col">
+            <h4>CAPABILITIES</h4>
+            <p style="color:var(--white-off);opacity:0.6;font-size:0.85rem;line-height:1.6;margin-bottom:2rem;">Leveraging two decades of industry experience, we specialize in unrivaled event production for global brands and private events.</p>
+            <p class="metallic-gold" style="font-family:var(--display);font-size:0.9rem;letter-spacing:4px;font-weight:700;margin-bottom:1rem;">GREENHOUSE EVENTS DUBAI</p>
+        </div>
+    </div>
+    <div class="footer-bottom-bar">
+        <p>GREENHOUSE EVENTS UAE &mdash; DUBAI, UAE</p>
+        <p>&copy; 2026 All Rights Reserved.</p>
+    </div>
 </footer>
 
 <script>

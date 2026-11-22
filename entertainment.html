@@ -459,6 +459,63 @@
             pointer-events: none;
         }
         footer p { position: relative; z-index: 1; }
+        .footer-directory-grid {
+            max-width: 1300px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 3rem; padding-bottom: 3rem;
+            position: relative; z-index: 1;
+            text-align: left;
+        }
+        .directory-col h4 {
+            color: var(--gold-solid); font-family: var(--display);
+            font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+        .directory-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; padding: 0; margin: 0; }
+        .directory-col ul li a {
+            color: var(--white-off); text-decoration: none;
+            opacity: 0.6; font-size: 0.88rem;
+            transition: all 0.3s ease; font-weight: 300;
+        }
+        .directory-col ul li a:hover { opacity: 1; padding-left: 4px; }
+        .footer-bottom-bar {
+            max-width: 1300px; margin: 0 auto;
+            border-top: 0.5px solid rgba(201,168,76,0.15);
+            padding-top: 2rem; display: flex;
+            justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 1rem;
+            position: relative; z-index: 1;
+        }
+        .footer-bottom-bar p { font-size: 0.75rem; opacity: 0.4; letter-spacing: 1px; margin: 0; }
+        @media (max-width: 900px) {
+            .footer-directory-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+            .footer-bottom-bar { flex-direction: column; text-align: center; }
+        }
+        @media (max-width: 600px) {
+            .footer-directory-grid { grid-template-columns: 1fr; }
+        }
+
+        /* --- HOW IT WORKS --- */
+        .how-it-works { padding: 6rem 8vw; text-align: center; max-width: 1200px; margin: 0 auto; position: relative; z-index: 5; }
+        .hiw-intro h2 { font-family: var(--serif); font-weight: 300; font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 0.8rem; }
+        .hiw-intro p { opacity: 0.75; margin-bottom: 3.5rem; }
+        .hiw-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-bottom: 3.5rem; }
+        .hiw-step { padding: 2.5rem 1.5rem; border: 0.5px solid rgba(201,168,76,0.2); }
+        .hiw-num { display: block; font-family: var(--display); font-size: 2.2rem; color: var(--gold-solid); opacity: 0.5; margin-bottom: 1rem; }
+        .hiw-step h3 { font-family: var(--serif); font-weight: 400; font-size: 1.2rem; margin-bottom: 0.8rem; }
+        .hiw-step p { opacity: 0.75; font-size: 0.92rem; line-height: 1.6; }
+        .hiw-request { border-top: 0.5px solid rgba(201,168,76,0.2); padding-top: 2.5rem; }
+        .hiw-request p { opacity: 0.8; margin-bottom: 1.2rem; font-size: 1.05rem; }
+        .hiw-request-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--gold-solid); color: #021612; padding: 0.9rem 2.2rem;
+            text-decoration: none; font-weight: 600; font-size: 0.85rem; letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        .hiw-request-btn:hover { transform: translateY(-2px); opacity: 0.9; }
+        @media (max-width: 900px) {
+            .hiw-steps { grid-template-columns: 1fr; }
+        }
 
         @media (max-width: 1024px) {
             .entertainment-about { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 6vw 1rem 6vw; }
@@ -1002,6 +1059,34 @@
 </div>
 
 
+<section id="how-it-works" class="how-it-works">
+    <div class="hiw-intro">
+        <h2 class="metallic-gold">How It Works</h2>
+        <p>Three simple steps from first look to final booking.</p>
+    </div>
+    <div class="hiw-steps">
+        <div class="hiw-step">
+            <span class="hiw-num">01</span>
+            <h3>Choose Your Favorites</h3>
+            <p>Browse the roster above and tag any performers you like the look of.</p>
+        </div>
+        <div class="hiw-step">
+            <span class="hiw-num">02</span>
+            <h3>Send an Enquiry</h3>
+            <p>Build your quote below, or send us a quick enquiry with your shortlist and event details.</p>
+        </div>
+        <div class="hiw-step">
+            <span class="hiw-num">03</span>
+            <h3>We Take It From There</h3>
+            <p>We check availability, speak directly with the artists, and come back to you with confirmed options plus videos that could work for your event.</p>
+        </div>
+    </div>
+    <div class="hiw-request">
+        <p>Not sure what you're looking for?</p>
+        <a href="contact.html?service=Entertainment%20Request" class="hiw-request-btn">Let Us Help &mdash; Send a Request</a>
+    </div>
+</section>
+
 <section id="quote-builder">
     <div class="qb-wrap">
         <div class="qb-intro">
@@ -1054,8 +1139,44 @@
 </section>
 
 <footer>
-    <p class="metallic-gold" style="font-family: var(--display); font-size: 1.1rem; letter-spacing: 5px; font-weight: 700; margin-bottom: 0.5rem;">GREENHOUSE EVENTS DUBAI</p>
-    <p style="font-size: 0.75rem; opacity: 0.4; letter-spacing: 1px;">&copy; 2026 Greenhouse Events UAE. All Rights Reserved.</p>
+    <div class="footer-directory-grid">
+        <div class="directory-col">
+            <h4>MAIN DIRECTORY</h4>
+            <ul>
+                <li><a href="index.html">Home Base</a></li>
+                <li><a href="our-services.html">Our Services</a></li>
+                <li><a href="contact.html">Contact Desk</a></li>
+            </ul>
+        </div>
+        <div class="directory-col">
+            <h4>TALENT ROSTER</h4>
+            <ul>
+                <li><a href="talent.html#djs">DJs</a></li>
+                <li><a href="talent.html#singers">Singers</a></li>
+                <li><a href="talent.html#bands">Live Bands</a></li>
+                <li><a href="talent.html#instrumental">Instrumentalists</a></li>
+            </ul>
+        </div>
+        <div class="directory-col">
+            <h4>LUXURY PRODUCTION</h4>
+            <ul>
+                <li><a href="private-events.html">Private Event Planning</a></li>
+                <li><a href="corporate-events.html">Corporate Management</a></li>
+                <li><a href="permanent-transformations.html">Permanent Transformations</a></li>
+                <li><a href="staging-av.html">Staging, Sound &amp; AV</a></li>
+                <li><a href="wardrobe-costumes.html">Wardrobe Curation</a></li>
+            </ul>
+        </div>
+        <div class="directory-col">
+            <h4>CAPABILITIES</h4>
+            <p style="color:var(--white-off);opacity:0.6;font-size:0.85rem;line-height:1.6;margin-bottom:2rem;">Leveraging two decades of industry experience, we specialize in unrivaled event production for global brands and private events.</p>
+            <p class="metallic-gold" style="font-family:var(--display);font-size:0.9rem;letter-spacing:4px;font-weight:700;margin-bottom:1rem;">GREENHOUSE EVENTS DUBAI</p>
+        </div>
+    </div>
+    <div class="footer-bottom-bar">
+        <p>GREENHOUSE EVENTS UAE &mdash; DUBAI, UAE</p>
+        <p>&copy; 2026 All Rights Reserved.</p>
+    </div>
 </footer>
 
 <script>
