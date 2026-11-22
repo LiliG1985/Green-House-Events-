@@ -4,14 +4,13 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
     <title>Entertainment Roster | Greenhouse Events UAE</title>
-    <meta name="description" content="This page is being updated. Contact Greenhouse Events Dubai directly for entertainment bookings."/>
+    <meta name="description" content="Browse the Greenhouse Events entertainment roster: DJs, singers, live bands, saxophonists, classical ensembles, percussionists and pianists for events across Dubai and the UAE."/>
     <meta name="keywords" content="entertainment roster Dubai, DJ booking Dubai, band hire Dubai, dancers Dubai, circus acts Dubai, magician hire Dubai, hostess hire Dubai"/>
-    <meta name="robots" content="noindex, nofollow"/>
     <link rel="canonical" href="https://greenhouseeventsuae.com/talent.html"/>
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="https://greenhouseeventsuae.com/talent.html"/>
     <meta property="og:title" content="Entertainment Roster | Greenhouse Events UAE"/>
-    <meta property="og:description" content="Browse the entertainment roster: DJs, singers, bands, dancers, circus acts, magicians, hostesses and more."/>
+    <meta property="og:description" content="Browse the Greenhouse Events entertainment roster: DJs, singers, live bands and instrumentalists for events across Dubai and the UAE."/>
     <meta property="og:image" content="https://greenhouseeventsuae.com/entertainment-header-bg.jpg"/>
     <meta property="og:site_name" content="Greenhouse Events Dubai"/>
     <meta name="twitter:card" content="summary_large_image"/>
@@ -655,6 +654,20 @@
         .nav-whatsapp-btn:hover, .nav-email-btn:hover { background: rgba(201,168,76,0.12); }
 
         footer { padding: 4rem 5vw; text-align: center; background: #000; }
+
+        /* --- ACT PHOTO: bio shows on hover instead of always-on paragraph --- */
+        .act-photo { position: relative; overflow: hidden; }
+        .act-bio-overlay {
+            position: absolute; inset: 0; display: flex; align-items: flex-end;
+            padding: 1.1rem; opacity: 0; pointer-events: none;
+            background: linear-gradient(to top, rgba(4,16,12,0.95) 0%, rgba(4,16,12,0.65) 55%, rgba(4,16,12,0) 100%);
+            transition: opacity 0.3s ease;
+        }
+        .act-photo:hover .act-bio-overlay,
+        .act-photo:focus-within .act-bio-overlay { opacity: 1; }
+        .act-bio-overlay p {
+            color: var(--white-off); font-size: 0.82rem; line-height: 1.55; opacity: 0.95; margin: 0;
+        }
     </style>
 <body>
 
@@ -704,21 +717,1819 @@
     </div>
 </nav>
 
-<div class="roster-hero" style="min-height: 60vh; display: flex; flex-direction: column; justify-content: center;">
+<div class="roster-hero">
     <h1 class="metallic-gold">Entertainment Roster</h1>
-    <p>We're currently updating this page. Please check back again soon &mdash; or get in touch directly and our team will help you find the right act for your event.</p>
-    <div class="footer-buttons" style="margin-top: 2.2rem; justify-content: center;">
-        <a href="https://wa.me/971552537712?text=Hello%20Greenhouse%20Events%2C%20I%27d%20like%20to%20ask%20about%20entertainment%20options." target="_blank" class="nav-whatsapp-btn">
-            <svg viewBox="0 0 448 512" style="width:18px;height:18px;"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-            WHATSAPP US
-        </a>
-        <a href="contact.html?service=Entertainment" class="nav-email-btn">
-            <svg viewBox="0 0 24 24" style="width:18px;height:18px;"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-            CONTACT US VIA EMAIL
-        </a>
-    </div>
+    <p>DJs, singers, live bands and instrumentalists for weddings, private parties and corporate events across Dubai and the UAE. Tap any act to enquire &mdash; we'll confirm availability and a rough rate.</p>
 </div>
+<div class="cat-nav-wrap">
+    <nav class="cat-nav" id="catNav">
+        <a href="#djs">DJs</a>
+        <a href="#singers">Singers</a>
+        <a href="#bands">Live Bands</a>
+        <a href="#instrumental">Instrumentalists</a>
+    </nav>
+</div>
+<div class="roster-list">
+<section class="cat-section cat-section--djs" id="djs">
+  <h2>DJs</h2>
+  <p>Open-format, house and party DJs for weddings, clubs, brand activations and corporate events across Dubai and the UAE.</p>
+  <div class="band-grid" id="djGrid">
+<div class="dj-card">
+  <div class="act-photo">
+    <img src="dj-photos/parvane.jpg" alt="Parvané" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based DJ of French Iranian roots whose eclectic sets span Miami Bass, House, UK Garage and Brazilian Funk.</p></div>
+  </div>
+  <h3>Parvané</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Parvan%C3%A9" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card">
+  <div class="act-photo">
+    <img src="dj-photos/joanna.jpg" alt="Joanna" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai DJ known for soulful house sets at venues including FIVE Palm Jumeirah and brand events for Porsche, Bentley and Cartier.</p></div>
+  </div>
+  <h3>Joanna</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Joanna" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card">
+  <div class="act-photo">
+    <img src="dj-photos/akmaral.jpg" alt="Akmaral" loading="lazy">
+    <div class="act-bio-overlay"><p>Globally recognised DJ and music producer based between Dubai and Abu Dhabi, booked for major brand activations and festivals.</p></div>
+  </div>
+  <h3>Akmaral</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Akmaral" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card">
+  <div class="act-photo">
+    <img src="dj-photos/yava.jpg" alt="Yava" loading="lazy">
+    <div class="act-bio-overlay"><p>Ukrainian-born DJ and producer based in Dubai, known for energetic, crowd-reading sets at the city&#x27;s top venues.</p></div>
+  </div>
+  <h3>Yava</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Yava" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card">
+  <div class="act-photo">
+    <img src="dj-photos/viola.jpg" alt="Viola" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based DJ and producer who fuses genres and plays sun-soaked beach club sets for both small and large events.</p></div>
+  </div>
+  <h3>Viola</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Viola" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card">
+  <div class="act-photo">
+    <img src="dj-photos/cascou.jpg" alt="Cascou" loading="lazy">
+    <div class="act-bio-overlay"><p>Kuwaiti-born DJ, producer and original Dubai party scene curator who has been booked by fashion houses including Ferragamo.</p></div>
+  </div>
+  <h3>Cascou</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Cascou" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card">
+  <div class="act-photo">
+    <img src="dj-photos/sonya.jpg" alt="Sonya" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai DJ of six years whose bold, editorial style fuses beats and genres to keep dance floors moving.</p></div>
+  </div>
+  <h3>Sonya</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Sonya" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card">
+  <div class="act-photo">
+    <img src="dj-photos/sara.jpg" alt="Sara" loading="lazy">
+    <div class="act-bio-overlay"><p>Professional house and techno DJ known for dynamic sets rooted in underground electronic music.</p></div>
+  </div>
+  <h3>Sara</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Sara" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card">
+  <div class="act-photo">
+    <img src="dj-photos/bambi.jpg" alt="Bambi" loading="lazy">
+    <div class="act-bio-overlay"><p>St Petersburg-born DJ (professionally DJ Bambi) with over four years of experience and a sharp technical, fresh sound.</p></div>
+  </div>
+  <h3>Bambi</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Bambi" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card">
+  <div class="act-photo">
+    <img src="dj-photos/karrouhat.jpg" alt="Karrouhat" loading="lazy">
+    <div class="act-bio-overlay"><p>Basil Alhadi, a DJ, singer, composer and filmmaker whose multidisciplinary background gives his sets a story-driven feel.</p></div>
+  </div>
+  <h3>Karrouhat</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Karrouhat" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card">
+  <div class="act-photo">
+    <img src="dj-photos/hilde.jpg" alt="Hilde" loading="lazy">
+    <div class="act-bio-overlay"><p>Brazilian DJ and music producer with wide experience in clubs and beach venues, bringing Brazilian rhythm to her sets.</p></div>
+  </div>
+  <h3>Hilde</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Hilde" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card">
+  <div class="act-photo">
+    <img src="dj-photos/dagari.jpg" alt="Dagari" loading="lazy">
+    <div class="act-bio-overlay"><p>British Iranian DJ born in London in 1995 whose productions reflect his mixed heritage and have a growing regional following.</p></div>
+  </div>
+  <h3>Dagari</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Dagari" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card">
+  <div class="act-photo">
+    <img src="dj-photos/michelle-grant.jpg" alt="Michelle Grant" loading="lazy">
+    <div class="act-bio-overlay"><p>China-based pioneer of the Future Rave genre who has toured with DJ Mag Top 100 artists and played Victoria&#x27;s Secret afterparties.</p></div>
+  </div>
+  <h3>Michelle Grant</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Michelle%20Grant" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card">
+  <div class="act-photo">
+    <img src="dj-photos/mixada.jpg" alt="Mixada" loading="lazy">
+    <div class="act-bio-overlay"><p>Professional with over eight years spinning in Lebanon and the UAE, known for polished, open-format sets.</p></div>
+  </div>
+  <h3>Mixada</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Mixada" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card">
+  <div class="act-photo">
+    <img src="dj-photos/alicia-oates.jpg" alt="Alicia Oates" loading="lazy">
+    <div class="act-bio-overlay"><p>Open-format DJ who has played the UK, Europe and Dubai and now brings easy beach club energy to sets in the UAE.</p></div>
+  </div>
+  <h3>Alicia Oates</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Alicia%20Oates" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card dj-card--hidden">
+  <div class="act-photo">
+    <img src="dj-photos/joe-lang.jpg" alt="Joe Lang" loading="lazy">
+    <div class="act-bio-overlay"><p>UK DJ with over five years in top clubs, known for an energetic, crowd-focused style.</p></div>
+  </div>
+  <h3>Joe Lang</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Joe%20Lang" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card dj-card--hidden">
+  <div class="act-photo">
+    <img src="dj-photos/koshka.jpg" alt="Koshka" loading="lazy">
+    <div class="act-bio-overlay"><p>Uzbekistan-born, UAE-based DJ with twelve years in the region and a warm, polished style.</p></div>
+  </div>
+  <h3>Koshka</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Koshka" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card dj-card--hidden">
+  <div class="act-photo">
+    <img src="dj-photos/major-flow.jpg" alt="Major Flow" loading="lazy">
+    <div class="act-bio-overlay"><p>Lebanese-born DJ who began in 2002 at school and university parties and now plays high-energy sets at Dubai nightlife venues.</p></div>
+  </div>
+  <h3>Major Flow</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Major%20Flow" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card dj-card--hidden">
+  <div class="act-photo">
+    <img src="dj-photos/mike-d.jpg" alt="Mike D" loading="lazy">
+    <div class="act-bio-overlay"><p>Beirut-born DJ who started at sixteen on local radio and now has a confident, versatile style behind the decks.</p></div>
+  </div>
+  <h3>Mike D</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Mike%20D" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card dj-card--hidden">
+  <div class="act-photo">
+    <img src="dj-photos/tarek.jpg" alt="Tarek" loading="lazy">
+    <div class="act-bio-overlay"><p>Open-format DJ blending Arabic music, Hip Hop and R&amp;B, well suited to weddings and mixed-audience events.</p></div>
+  </div>
+  <h3>Tarek</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Tarek" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card dj-card--hidden">
+  <div class="act-photo">
+    <img src="dj-photos/zee.jpg" alt="Zee" loading="lazy">
+    <div class="act-bio-overlay"><p>Open-format DJ (Mohammad Ziyad) who began his career in 2012 and draws on many genres for mixed crowds.</p></div>
+  </div>
+  <h3>Zee</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Zee" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card dj-card--hidden">
+  <div class="act-photo">
+    <img src="dj-photos/rb.jpg" alt="RB" loading="lazy">
+    <div class="act-bio-overlay"><p>Professional club DJ and producer active since 2010, covering both event and residency work.</p></div>
+  </div>
+  <h3>RB</h3>
+  <a href="contact.html?service=Entertainment&amp;act=RB" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card dj-card--hidden">
+  <div class="act-photo">
+    <img src="dj-photos/elena-vladi.jpg" alt="Elena Vladi" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based creative artist working across art, music, film, photography and videography, giving her sets a visual and sonic identity.</p></div>
+  </div>
+  <h3>Elena Vladi</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Elena%20Vladi" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card dj-card--hidden">
+  <div class="act-photo">
+    <img src="dj-photos/danny-kwang.jpg" alt="Danny Kwang" loading="lazy">
+    <div class="act-bio-overlay"><p>DJ with four decades of music passion, moving from soul, funk and rare groove into hip hop.</p></div>
+  </div>
+  <h3>Danny Kwang</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Danny%20Kwang" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card dj-card--hidden">
+  <div class="act-photo">
+    <img src="dj-photos/nicki-nicol.jpg" alt="Nicki Nicol" loading="lazy">
+    <div class="act-bio-overlay"><p>New York-born DJ who has been a fixture of the UAE scene for ten years, playing bold, confident sets.</p></div>
+  </div>
+  <h3>Nicki Nicol</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Nicki%20Nicol" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card dj-card--hidden">
+  <div class="act-photo">
+    <img src="dj-photos/stu-laurie.jpg" alt="Stu Laurie" loading="lazy">
+    <div class="act-bio-overlay"><p>DJ and producer with seventeen years of experience and residencies across the UK, Dubai and Australia.</p></div>
+  </div>
+  <h3>Stu Laurie</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Stu%20Laurie" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card dj-card--hidden">
+  <div class="act-photo">
+    <img src="dj-photos/fatima.jpg" alt="Fatima" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based DJ (Fatima Shikhaliyeva) with elegant, polished sets for both intimate and large celebrations.</p></div>
+  </div>
+  <h3>Fatima</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Fatima" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card dj-card--hidden">
+  <div class="act-photo">
+    <img src="dj-photos/ema.jpg" alt="Ema" loading="lazy">
+    <div class="act-bio-overlay"><p>Manchester-born DJ (E.M.A) who moved from magazine editing into the booth with a bold, colourful style.</p></div>
+  </div>
+  <h3>Ema</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Ema" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card dj-card--hidden">
+  <div class="act-photo">
+    <img src="dj-photos/sara-g.jpg" alt="Sara G" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based DJ and emcee who combines music and hosting, suiting parties that need both sound and mic energy.</p></div>
+  </div>
+  <h3>Sara G</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Sara%20G" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card dj-card--hidden">
+  <div class="act-photo">
+    <img src="dj-photos/julia-poly.jpg" alt="Julia Poly" loading="lazy">
+    <div class="act-bio-overlay"><p>DJ and producer with over ten years of experience whose sets often play against Dubai&#x27;s iconic backdrops.</p></div>
+  </div>
+  <h3>Julia Poly</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Julia%20Poly" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card dj-card--hidden">
+  <div class="act-photo">
+    <img src="dj-photos/alena.jpg" alt="Alena" loading="lazy">
+    <div class="act-bio-overlay"><p>Belarusian-born DJ active since 2016 across events, clubs and lounges, comfortable in intimate or large settings.</p></div>
+  </div>
+  <h3>Alena</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Alena" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card dj-card--hidden">
+  <div class="act-photo">
+    <img src="dj-photos/jadora.jpg" alt="J&#x27;Adora" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based international DJ who creates a vibrant, playful atmosphere with a wide range of sounds.</p></div>
+  </div>
+  <h3>J&#x27;Adora</h3>
+  <a href="contact.html?service=Entertainment&amp;act=J%27Adora" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card dj-card--hidden">
+  <div class="act-photo">
+    <img src="dj-photos/naz.jpg" alt="Naz" loading="lazy">
+    <div class="act-bio-overlay"><p>International DJ with over fifteen years of experience in a dynamic open-format style.</p></div>
+  </div>
+  <h3>Naz</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Naz" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card dj-card--hidden">
+  <div class="act-photo">
+    <img src="dj-photos/joy-tresher.jpg" alt="Joy Tresher" loading="lazy">
+    <div class="act-bio-overlay"><p>South of France open-format DJ influenced early by electronic music, with a warm, crowd-pleasing sound.</p></div>
+  </div>
+  <h3>Joy Tresher</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Joy%20Tresher" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card dj-card--hidden">
+  <div class="act-photo">
+    <img src="dj-photos/tala-samman.jpg" alt="Tala Samman" loading="lazy">
+    <div class="act-bio-overlay"><p>Rising Middle East DJ with an elegant, polished style suited to upscale events.</p></div>
+  </div>
+  <h3>Tala Samman</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Tala%20Samman" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card dj-card--hidden">
+  <div class="act-photo">
+    <img src="dj-photos/kat.jpg" alt="Kat" loading="lazy">
+    <div class="act-bio-overlay"><p>Moscow-born DJ with a bold, confident career built on stage presence and crowd connection.</p></div>
+  </div>
+  <h3>Kat</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Kat" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="dj-card dj-card--hidden">
+  <div class="act-photo">
+    <img src="dj-photos/karine.jpg" alt="Karine" loading="lazy">
+    <div class="act-bio-overlay"><p>Lebanese DJ based in Dubai who began mixing in 2020 at the private Karnaval events she created, playing nu disco to organic house.</p></div>
+  </div>
+  <h3>Karine</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Karine" class="dj-enquire">Enquire About This Act &rarr;</a>
+</div>
+  </div>
+  <div class="band-load-more-wrap" id="djLoadMoreWrap">
+    <button class="band-load-more-btn" id="djLoadMoreBtn" type="button">Load More DJs</button>
+  </div>
+</section>
 
+<section class="cat-section cat-section--singers" id="singers">
+  <h2>Singers</h2>
+  <p>Solo vocalists and duos covering jazz, soul, pop, R&amp;amp;B and acoustic sets for every kind of event.</p>
+  <div class="band-grid" id="singerGrid">
+<div class="singer-card">
+  <div class="act-photo">
+    <img src="layla-kardan.jpg" alt="Layla Kardan" loading="lazy">
+    <div class="act-bio-overlay"><p>Belgian-Iranian-Australian vocalist with regional awards, including Emirates Woman&#x27;s Artist of the Year, who has performed at Q&#x27;s Bar in Dubai.</p></div>
+  </div>
+  <h3>Layla Kardan</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Layla%20Kardan" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card">
+  <div class="act-photo">
+    <img src="aislu-zhak.jpg" alt="Aislu Zhak" loading="lazy">
+    <div class="act-bio-overlay"><p>Kazakhstan-born vocalist moving across jazz, soul and pop, who also works as a vocal coach.</p></div>
+  </div>
+  <h3>Aislu Zhak</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Aislu%20Zhak" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card">
+  <div class="act-photo">
+    <img src="alena-radziuk.jpg" alt="Alena Radziuk" loading="lazy">
+    <div class="act-bio-overlay"><p>Belarusian vocalist who won Win the Crowd in the UAE and reached the TheVocalist UAE finals, in demand for festive bookings.</p></div>
+  </div>
+  <h3>Alena Radziuk</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Alena%20Radziuk" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card">
+  <div class="act-photo">
+    <img src="bettina-schweiger.jpg" alt="Bettina Schweiger" loading="lazy">
+    <div class="act-bio-overlay"><p>Award-winning Vienna opera soprano who also does vocal consulting and moves between classical and private performance.</p></div>
+  </div>
+  <h3>Bettina Schweiger</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Bettina%20Schweiger" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card">
+  <div class="act-photo">
+    <img src="alina-hrokhovska.jpg" alt="Alina Hrokhovska" loading="lazy">
+    <div class="act-bio-overlay"><p>Singer performing since 2014 in Ukraine, the UAE and Egypt, solo, as a duo or fronting a cover band.</p></div>
+  </div>
+  <h3>Alina Hrokhovska</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Alina%20Hrokhovska" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card">
+  <div class="act-photo">
+    <img src="claudia-lang-lenton.jpg" alt="Claudia Lang Lenton" loading="lazy">
+    <div class="act-bio-overlay"><p>Classically trained Spanish vocalist singing in English, Spanish and French across jazz standards and modern ballads.</p></div>
+  </div>
+  <h3>Claudia Lang Lenton</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Claudia%20Lang%20Lenton" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card">
+  <div class="act-photo">
+    <img src="claudia-patrice.jpg" alt="Claudia Patrice" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based singer-songwriter and producer who writes and produces her own soulful material.</p></div>
+  </div>
+  <h3>Claudia Patrice</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Claudia%20Patrice" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card">
+  <div class="act-photo">
+    <img src="ella-lefterova.jpg" alt="Ella Lefterova" loading="lazy">
+    <div class="act-bio-overlay"><p>Multilingual vocalist who fronts flexible lineups from duo to four-piece band across jazz, pop, soul and lounge.</p></div>
+  </div>
+  <h3>Ella Lefterova</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Ella%20Lefterova" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card">
+  <div class="act-photo">
+    <img src="elnura.jpg" alt="Elnura" loading="lazy">
+    <div class="act-bio-overlay"><p>UAE-based vocalist (Elnura Abdykasymova) with a powerful voice across Dubai and Abu Dhabi.</p></div>
+  </div>
+  <h3>Elnura</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Elnura" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card">
+  <div class="act-photo">
+    <img src="courtney-gaw.jpg" alt="Courtney Gaw" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based singer and actress whose performances combine vocal power with dramatic, character-driven storytelling.</p></div>
+  </div>
+  <h3>Courtney Gaw</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Courtney%20Gaw" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card">
+  <div class="act-photo">
+    <img src="alisha-vickers.jpg" alt="Alisha Vickers" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based singer-songwriter with a marketing background, delivering smooth vocals and personal lyrics.</p></div>
+  </div>
+  <h3>Alisha Vickers</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Alisha%20Vickers" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card">
+  <div class="act-photo">
+    <img src="alen-hit.jpg" alt="Alen Hit" loading="lazy">
+    <div class="act-bio-overlay"><p>Singer (Aleh Shchutski) known from The Voice, X Factor and a Eurovision 2018 national final.</p></div>
+  </div>
+  <h3>Alen Hit</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Alen%20Hit" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card">
+  <div class="act-photo">
+    <img src="allexa-bash.jpg" alt="Allexa Bash" loading="lazy">
+    <div class="act-bio-overlay"><p>Classically trained singer blending dramatic pop with jazz and rock, with a debut album and radio play across the region.</p></div>
+  </div>
+  <h3>Allexa Bash</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Allexa%20Bash" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card">
+  <div class="act-photo">
+    <img src="anelly.jpg" alt="Anelly" loading="lazy">
+    <div class="act-bio-overlay"><p>Ukrainian-born UAE-based singer with theatrical training from a Kyiv circus and variety academy, performing in four languages.</p></div>
+  </div>
+  <h3>Anelly</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Anelly" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card">
+  <div class="act-photo">
+    <img src="anna-yeli.jpg" alt="Anna Yeli" loading="lazy">
+    <div class="act-bio-overlay"><p>Ukrainian singer based in Dubai blending jazz depth with lounge smoothness and pop energy.</p></div>
+  </div>
+  <h3>Anna Yeli</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Anna%20Yeli" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="aston-wylie.jpg" alt="Aston Wylie" loading="lazy">
+    <div class="act-bio-overlay"><p>South African multi-instrumentalist and former The Voice SA contestant who uses live looping on hits.</p></div>
+  </div>
+  <h3>Aston Wylie</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Aston%20Wylie" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="bibi-luna.jpg" alt="Bibi Luna" loading="lazy">
+    <div class="act-bio-overlay"><p>Italian vocalist whose soulful, elegant sets suit upscale events and international galas.</p></div>
+  </div>
+  <h3>Bibi Luna</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Bibi%20Luna" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="charley-ryan.jpg" alt="Charley Ryan" loading="lazy">
+    <div class="act-bio-overlay"><p>Irish rock vocalist, lead singer of Warehouse11 and founding member of Heart Strings, suited to big venues or acoustic sets.</p></div>
+  </div>
+  <h3>Charley Ryan</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Charley%20Ryan" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="dan-moores.jpg" alt="Dan Moores" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based guitarist and vocalist who builds layered solo sets with acoustic playing and live looping.</p></div>
+  </div>
+  <h3>Dan Moores</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Dan%20Moores" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="deniza.jpg" alt="DeniZa" loading="lazy">
+    <div class="act-bio-overlay"><p>Touring vocalist, producer and choreographer whose shows fuse music, movement and storytelling.</p></div>
+  </div>
+  <h3>DeniZa</h3>
+  <a href="contact.html?service=Entertainment&amp;act=DeniZa" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="dermott-taggart.jpg" alt="Dermott Taggart" loading="lazy">
+    <div class="act-bio-overlay"><p>Irish singer-songwriter with warm acoustic sets across Dubai and Abu Dhabi, mixing originals and reimagined classics.</p></div>
+  </div>
+  <h3>Dermott Taggart</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Dermott%20Taggart" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="diana-torres.jpg" alt="Diana Torres" loading="lazy">
+    <div class="act-bio-overlay"><p>Singer performing in English, Spanish and Italian for weddings and corporate events across the UAE.</p></div>
+  </div>
+  <h3>Diana Torres</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Diana%20Torres" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="diana-petrovska.jpg" alt="Diana Petrovska" loading="lazy">
+    <div class="act-bio-overlay"><p>Odesa-born cabaret and show performer spanning soulful ballads to high-energy cabaret numbers.</p></div>
+  </div>
+  <h3>Diana Petrovska</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Diana%20Petrovska" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="evgenia.jpg" alt="Evgenia" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based vocalist moving between pop, jazz, lounge and rock, solo or with a full band.</p></div>
+  </div>
+  <h3>Evgenia</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Evgenia" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="idorka.jpg" alt="Idorka" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based vocalist with a soulful tone for luxury events and private parties, solo or with a live band.</p></div>
+  </div>
+  <h3>Idorka</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Idorka" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="irina-shepova.jpg" alt="Irina Shepova" loading="lazy">
+    <div class="act-bio-overlay"><p>Professional singer since 2013 covering a wide range from jazz and soul to Latin, country and disco.</p></div>
+  </div>
+  <h3>Irina Shepova</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Irina%20Shepova" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="irina-t.jpg" alt="Irina T" loading="lazy">
+    <div class="act-bio-overlay"><p>Belarusian singer based in Dubai, solo or as a duo or trio, mainly in English with other languages available.</p></div>
+  </div>
+  <h3>Irina T</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Irina%20T" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="itzel.jpg" alt="Itzel" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based singer-songwriter blending pop, soul, R&amp;B and acoustic textures.</p></div>
+  </div>
+  <h3>Itzel</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Itzel" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="joel-rothwell.jpg" alt="Joel Rothwell" loading="lazy">
+    <div class="act-bio-overlay"><p>UK and UAE singer, guitarist and DJ who performs as Hudson across acoustic, band and DJ formats.</p></div>
+  </div>
+  <h3>Joel Rothwell</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Joel%20Rothwell" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="julia-choo.jpg" alt="Julia Choo" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based vocalist with a polished, elegant presence for luxury events and private functions.</p></div>
+  </div>
+  <h3>Julia Choo</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Julia%20Choo" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="kate-meteora.jpg" alt="Kate Meteora" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based singer (also known as KT) with heartfelt lyrics and a multicultural, fresh sound.</p></div>
+  </div>
+  <h3>Kate Meteora</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Kate%20Meteora" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="katarina-gerlova.jpg" alt="Katarina Gerlova" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based singer and violinist who combines vocal and instrumental performance in one act.</p></div>
+  </div>
+  <h3>Katarina Gerlova</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Katarina%20Gerlova" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="kati-muse.jpg" alt="Kati Muse" loading="lazy">
+    <div class="act-bio-overlay"><p>Singer (Miss Kati) drawing on soul, R&amp;B, jazz and funk with a mature, expressive voice for intimate sets.</p></div>
+  </div>
+  <h3>Kati Muse</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Kati%20Muse" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="kristina-gutseva.jpg" alt="Kristina Gutseva" loading="lazy">
+    <div class="act-bio-overlay"><p>Award-winning Belarusian singer based in Dubai with a powerful voice across many genres.</p></div>
+  </div>
+  <h3>Kristina Gutseva</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Kristina%20Gutseva" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="kristina-skiba.jpg" alt="Kristina Skiba" loading="lazy">
+    <div class="act-bio-overlay"><p>Singer covering jazz, pop, cabaret, Latin and blues, who also writes songs and teaches voice.</p></div>
+  </div>
+  <h3>Kristina Skiba</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Kristina%20Skiba" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="kristine-martiashvili.jpg" alt="Kristine Martiashvili" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based singer-songwriter with an emotive voice across soul, pop and acoustic sounds.</p></div>
+  </div>
+  <h3>Kristine Martiashvili</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Kristine%20Martiashvili" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="raena-lashae.jpg" alt="Raena Lashae" loading="lazy">
+    <div class="act-bio-overlay"><p>British vocalist in Dubai with a smooth blend of soul, jazz and funk for luxury venues and festivals.</p></div>
+  </div>
+  <h3>Raena Lashae</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Raena%20Lashae" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="la-rudche.jpg" alt="La Rudche" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai performer known as the Demon Queen, fusing dark pop, soul, rock and performance art.</p></div>
+  </div>
+  <h3>La Rudche</h3>
+  <a href="contact.html?service=Entertainment&amp;act=La%20Rudche" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="laura-arias.jpg" alt="Laura Arias" loading="lazy">
+    <div class="act-bio-overlay"><p>Singer combining Latin, pop and jazz into high-energy sets for restaurants and yacht parties.</p></div>
+  </div>
+  <h3>Laura Arias</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Laura%20Arias" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="lauren-townley.jpg" alt="Lauren Townley" loading="lazy">
+    <div class="act-bio-overlay"><p>Country singer-songwriter whose storytelling blends classic country with a modern twist.</p></div>
+  </div>
+  <h3>Lauren Townley</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Lauren%20Townley" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="lexie.jpg" alt="Lexie" loading="lazy">
+    <div class="act-bio-overlay"><p>UK-signed recording artist with pop, soul and country sound who has performed over 300 shows, including Dubai Opera.</p></div>
+  </div>
+  <h3>Lexie</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Lexie" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="lia.jpg" alt="Lia" loading="lazy">
+    <div class="act-bio-overlay"><p>Singer-songwriter with twenty years in the industry across pop, dance, lounge and jazz.</p></div>
+  </div>
+  <h3>Lia</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Lia" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="lisi-vald-s.jpg" alt="Lisi Valdés" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based singer-songwriter covering salsa, bossa nova, bachata, pop and jazz in Spanish, English and Portuguese.</p></div>
+  </div>
+  <h3>Lisi Valdés</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Lisi%20Vald%C3%A9s" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="massiel-sarraff.jpg" alt="Massiel Sarraff" loading="lazy">
+    <div class="act-bio-overlay"><p>Spanish-Cuban vocalist, saxophonist and trumpeter singing classic jazz, R&amp;B, rock and Latin in five languages.</p></div>
+  </div>
+  <h3>Massiel Sarraff</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Massiel%20Sarraff" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="nadin.jpg" alt="Nadin" loading="lazy">
+    <div class="act-bio-overlay"><p>Ukrainian artist in Dubai who sings solo, as a duo, or with Redline Band, and also works in voiceover and modelling.</p></div>
+  </div>
+  <h3>Nadin</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Nadin" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="natalia.jpg" alt="Natalia" loading="lazy">
+    <div class="act-bio-overlay"><p>Belarusian singer and trained pianist with eleven years of experience across pop, lounge, rock, jazz and Latin.</p></div>
+  </div>
+  <h3>Natalia</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Natalia" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="nataly.jpg" alt="Nataly" loading="lazy">
+    <div class="act-bio-overlay"><p>Singer performing across the Emirates since 2012, fluent in several languages and comfortable blending genres.</p></div>
+  </div>
+  <h3>Nataly</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Nataly" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="nathaniel-lewis.jpg" alt="Nathaniel Lewis" loading="lazy">
+    <div class="act-bio-overlay"><p>Singer-songwriter with soulful vocals and heartfelt lyrics across genres, who is also an entrepreneur.</p></div>
+  </div>
+  <h3>Nathaniel Lewis</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Nathaniel%20Lewis" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="nonna.jpg" alt="Nonna" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based jazz and pop vocalist with rich tone, who soloes with a jazz Big Band and teaches voice.</p></div>
+  </div>
+  <h3>Nonna</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Nonna" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="polina-qz.jpg" alt="Polina Qz" loading="lazy">
+    <div class="act-bio-overlay"><p>Jazz-trained singer who has performed from Lebanon&#x27;s Byblos Festival to Dubai Opera and moves between jazz, opera and pop.</p></div>
+  </div>
+  <h3>Polina Qz</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Polina%20Qz" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="polina-sandan.jpg" alt="Polina Sandan" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based singer and pianist named Best Singer of the UAE in 2020, performing in five languages.</p></div>
+  </div>
+  <h3>Polina Sandan</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Polina%20Sandan" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="sara-tarabulsi.jpg" alt="Sara Tarabulsi" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based vocalist with an expressive voice, covering soulful ballads, pop hits and acoustic classics.</p></div>
+  </div>
+  <h3>Sara Tarabulsi</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Sara%20Tarabulsi" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="shanice-michaels.jpg" alt="Shanice Michaels" loading="lazy">
+    <div class="act-bio-overlay"><p>Performer across Dubai, Hong Kong, New York and Las Vegas covering Motown, jazz, R&amp;B and reggae.</p></div>
+  </div>
+  <h3>Shanice Michaels</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Shanice%20Michaels" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="sophie-magali.jpg" alt="Sophie Magali" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based singer-songwriter with German and Slovenian roots and a soft, dreamy pop and R&amp;B sound.</p></div>
+  </div>
+  <h3>Sophie Magali</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Sophie%20Magali" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="sol-basaldua.jpg" alt="Solé Basaldua" loading="lazy">
+    <div class="act-bio-overlay"><p>Argentine singer, songwriter and dancer who has collaborated with Pitbull and performed at major venues worldwide.</p></div>
+  </div>
+  <h3>Solé Basaldua</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Sol%C3%A9%20Basaldua" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="toi-dupras.jpg" alt="Toi Dupras" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based singer, show creator and dancer who blends music and movement in visually driven shows.</p></div>
+  </div>
+  <h3>Toi Dupras</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Toi%20Dupras" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="tsaint.jpg" alt="TSaint" loading="lazy">
+    <div class="act-bio-overlay"><p>Rising Dubai performer blending R&amp;B, pop and hip hop into personal, catchy sets.</p></div>
+  </div>
+  <h3>TSaint</h3>
+  <a href="contact.html?service=Entertainment&amp;act=TSaint" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="vahimiti.jpg" alt="Vahimiti" loading="lazy">
+    <div class="act-bio-overlay"><p>Italian-born singer with Tahitian roots who writes songs blending soulful melodies with multicultural influences.</p></div>
+  </div>
+  <h3>Vahimiti</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Vahimiti" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="tina-paravian.jpg" alt="Tina Paravian" loading="lazy">
+    <div class="act-bio-overlay"><p>Kyiv-born singer and TV presenter based in Dubai and London with a commanding, versatile vocal style.</p></div>
+  </div>
+  <h3>Tina Paravian</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Tina%20Paravian" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="toria-kant.jpg" alt="Toria Kant" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based singer blending pop, R&amp;B and soul, seen as one of the city&#x27;s rising talents.</p></div>
+  </div>
+  <h3>Toria Kant</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Toria%20Kant" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="victoria-newman.jpg" alt="Victoria Newman" loading="lazy">
+    <div class="act-bio-overlay"><p>Soul and R&amp;B artist with over 15 years as a solo performer and in bands, with formal music college training.</p></div>
+  </div>
+  <h3>Victoria Newman</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Victoria%20Newman" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="sergio-catalan.jpg" alt="Sergio Catalan" loading="lazy">
+    <div class="act-bio-overlay"><p>Chilean guitarist and vocalist in the UAE since 2008, drawing on bossa nova, flamenco and Latin American music.</p></div>
+  </div>
+  <h3>Sergio Catalan</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Sergio%20Catalan" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="jay-bellamy.jpg" alt="Jay Bellamy" loading="lazy">
+    <div class="act-bio-overlay"><p>UK singer and guitarist based in Dubai with smooth, laid-back vocals across acoustic, pop, rock and indie.</p></div>
+  </div>
+  <h3>Jay Bellamy</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Jay%20Bellamy" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="hamdan-al-abri.jpg" alt="Hamdan Al Abri" loading="lazy">
+    <div class="act-bio-overlay"><p>Emirati singer-songwriter and frontman of Dubai soul band ABRI.</p></div>
+  </div>
+  <h3>Hamdan Al Abri</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Hamdan%20Al%20Abri" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="arianna-bianchi.jpg" alt="Arianna Bianchi" loading="lazy">
+    <div class="act-bio-overlay"><p>Singer with a long performing career from Italian TV to a Rome residency, who performs solo or with her jazz trio.</p></div>
+  </div>
+  <h3>Arianna Bianchi</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Arianna%20Bianchi" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="ryan-gibb.jpg" alt="Ryan Gibb" loading="lazy">
+    <div class="act-bio-overlay"><p>Pianist, vocalist and West End actor who has relocated to Dubai and covers every genre.</p></div>
+  </div>
+  <h3>Ryan Gibb</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Ryan%20Gibb" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="andrea-florez.jpg" alt="Andrea Florez" loading="lazy">
+    <div class="act-bio-overlay"><p>Singer with a strong stage presence and wide vocal range from performances in New York, Miami and Paris.</p></div>
+  </div>
+  <h3>Andrea Florez</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Andrea%20Florez" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="arqam-al-abri.jpg" alt="Arqam Al Abri" loading="lazy">
+    <div class="act-bio-overlay"><p>Emirati soul singer who left a corporate career for music blending old-school soul with neo-soul beats.</p></div>
+  </div>
+  <h3>Arqam Al Abri</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Arqam%20Al%20Abri" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="eirini.jpg" alt="Eirini" loading="lazy">
+    <div class="act-bio-overlay"><p>UK-based R&amp;B artist with Greek Cypriot and British Irish heritage who has built a following in Dubai.</p></div>
+  </div>
+  <h3>Eirini</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Eirini" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="lyndrik-xela.jpg" alt="Lyndrik Xela" loading="lazy">
+    <div class="act-bio-overlay"><p>Performer with a Michael Jackson and Prince-inspired energy, built over a decade on the London West End.</p></div>
+  </div>
+  <h3>Lyndrik Xela</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Lyndrik%20Xela" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="lina-ammor.jpg" alt="Lina Ammor" loading="lazy">
+    <div class="act-bio-overlay"><p>German-born Dubai-based R&amp;B and soul singer who won Netflix&#x27;s Sing On Germany.</p></div>
+  </div>
+  <h3>Lina Ammor</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Lina%20Ammor" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="jaymie-deville.jpg" alt="Jaymie Deville" loading="lazy">
+    <div class="act-bio-overlay"><p>Australian singer based in Dubai known for intimate R&amp;B, also a producer and songwriter.</p></div>
+  </div>
+  <h3>Jaymie Deville</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Jaymie%20Deville" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="ayesha-reid.jpg" alt="Ayesha Reid" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based singer-songwriter with soulful vocals drawing on R&amp;B, soul and jazz.</p></div>
+  </div>
+  <h3>Ayesha Reid</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Ayesha%20Reid" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="chinua-hawk.jpg" alt="Chinua Hawk" loading="lazy">
+    <div class="act-bio-overlay"><p>Award-winning New Jersey singer rooted in soul and gospel, who has sung backing vocals for Celine Dion.</p></div>
+  </div>
+  <h3>Chinua Hawk</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Chinua%20Hawk" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="julia-sydorenko.jpg" alt="Julia Sydorenko" loading="lazy">
+    <div class="act-bio-overlay"><p>Ukrainian singer based in the UAE for seven years, trained in jazz and pop, performing at Waldorf Astoria and Four Seasons Jumeirah.</p></div>
+  </div>
+  <h3>Julia Sydorenko</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Julia%20Sydorenko" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="bruno-fave.jpg" alt="Bruno Fave" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based producer and vocalist of electro soul and R&amp;B who performs live with guitar and loop station.</p></div>
+  </div>
+  <h3>Bruno Fave</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Bruno%20Fave" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="sam-tring.jpg" alt="Sam Tring" loading="lazy">
+    <div class="act-bio-overlay"><p>South London singer-songwriter with a soul-pop sound shaped by jazz influences.</p></div>
+  </div>
+  <h3>Sam Tring</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Sam%20Tring" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="sean-lipsey.jpg" alt="Sean Lipsey" loading="lazy">
+    <div class="act-bio-overlay"><p>US-born Dubai vocalist with soulful R&amp;B rooted in church music, also a multi-instrumentalist and producer.</p></div>
+  </div>
+  <h3>Sean Lipsey</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Sean%20Lipsey" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="anastasia-marushova.jpg" alt="Anastasia Marushova" loading="lazy">
+    <div class="act-bio-overlay"><p>Performer under the name MARUSHOVA with an experimental, original sound and TV appearances in Russia.</p></div>
+  </div>
+  <h3>Anastasia Marushova</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Anastasia%20Marushova" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="diane.jpg" alt="Diane" loading="lazy">
+    <div class="act-bio-overlay"><p>Irish singer with a 25-year career including West End tours and performances at FIFA World Cup 2022 in Qatar.</p></div>
+  </div>
+  <h3>Diane</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Diane" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="anna.jpg" alt="Anna" loading="lazy">
+    <div class="act-bio-overlay"><p>Odessa-born singer with twelve years of international experience across pop, R&amp;B, rock, Latin and jazz.</p></div>
+  </div>
+  <h3>Anna</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Anna" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="mary-louise.jpg" alt="Mary Louise" loading="lazy">
+    <div class="act-bio-overlay"><p>Irish singer, model and actress with a versatile voice and striking stage presence at Dubai&#x27;s top venues.</p></div>
+  </div>
+  <h3>Mary Louise</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Mary%20Louise" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="winck.jpg" alt="Winck" loading="lazy">
+    <div class="act-bio-overlay"><p>Brazilian pop singer (Luiza Winck) who blends funk and Latin influences into high-energy shows with dancers.</p></div>
+  </div>
+  <h3>Winck</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Winck" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="maria.jpg" alt="Maria" loading="lazy">
+    <div class="act-bio-overlay"><p>Resident singer at Palazzo Versace Hotel who has performed for UAE government and royal family events.</p></div>
+  </div>
+  <h3>Maria</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Maria" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="anyuta.jpg" alt="Anyuta" loading="lazy">
+    <div class="act-bio-overlay"><p>Ukrainian singer skilled in pop, jazz, lounge and blues, with choreography in her shows and a career spanning Asia and Dubai.</p></div>
+  </div>
+  <h3>Anyuta</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Anyuta" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="nati.jpg" alt="Nati" loading="lazy">
+    <div class="act-bio-overlay"><p>Internationally touring singer trained at Kyiv institutions, with a Dubai residency with Nuart Entertainment.</p></div>
+  </div>
+  <h3>Nati</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Nati" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="clare-sophia.jpg" alt="Clare Sophia" loading="lazy">
+    <div class="act-bio-overlay"><p>British soul, jazz and R&amp;B vocalist who has backed Stormzy, Rita Ora and Kylie Minogue and is now based in Dubai.</p></div>
+  </div>
+  <h3>Clare Sophia</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Clare%20Sophia" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="alina.jpg" alt="Alina" loading="lazy">
+    <div class="act-bio-overlay"><p>Ukrainian singer-songwriter and Voice of Ukraine semi-finalist, formerly lead soloist of a national symphonic band.</p></div>
+  </div>
+  <h3>Alina</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Alina" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="jade-kimberley.jpg" alt="Jade Kimberley" loading="lazy">
+    <div class="act-bio-overlay"><p>International triple-threat performer with a 15-year career spanning singing, dancing, hosting and fire performance.</p></div>
+  </div>
+  <h3>Jade Kimberley</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Jade%20Kimberley" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="aleksandra.jpg" alt="Aleksandra" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based pianist, singer and composer with a Master&#x27;s in classical music who blends jazz, funk and electronic textures.</p></div>
+  </div>
+  <h3>Aleksandra</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Aleksandra" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="luba.jpg" alt="Luba" loading="lazy">
+    <div class="act-bio-overlay"><p>Jazz-trained vocalist from Kyiv with performances across Ukraine, China, Cyprus and Dubai, who has also appeared in musicals.</p></div>
+  </div>
+  <h3>Luba</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Luba" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="ingrid.jpg" alt="Ingrid" loading="lazy">
+    <div class="act-bio-overlay"><p>Lebanese singer trained in opera and contemporary styles at Berklee, performing across the region and also a vocal coach.</p></div>
+  </div>
+  <h3>Ingrid</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Ingrid" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="july-nazarenko.jpg" alt="July Nazarenko" loading="lazy">
+    <div class="act-bio-overlay"><p>Belarusian-born singer with 15 years across pop, rock, blues, jazz, funk and soul, with a playlist of over 350 songs.</p></div>
+  </div>
+  <h3>July Nazarenko</h3>
+  <a href="contact.html?service=Entertainment&amp;act=July%20Nazarenko" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="carla.jpg" alt="Carla" loading="lazy">
+    <div class="act-bio-overlay"><p>Italian jazz and bossa nova vocalist with a music therapy degree, performing in the UAE since 2022, sometimes on roller skates.</p></div>
+  </div>
+  <h3>Carla</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Carla" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="alina-2.jpg" alt="Alina Postrova" loading="lazy">
+    <div class="act-bio-overlay"><p>Kazakhstan-born singer with ten years across pop, jazz, rock, blues and hip hop, who also releases her own tracks.</p></div>
+  </div>
+  <h3>Alina Postrova</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Alina%20Postrova" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="angel.jpg" alt="Angel" loading="lazy">
+    <div class="act-bio-overlay"><p>Singer (Angeliki Karatsami) with classical piano and Athens Conservatory opera training, now a full performing act.</p></div>
+  </div>
+  <h3>Angel</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Angel" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="lisa-goldin.jpg" alt="Lisa Goldin" loading="lazy">
+    <div class="act-bio-overlay"><p>Songwriter and performer whose work has aired internationally, holding a Dubai Golden Visa for her contribution to the arts.</p></div>
+  </div>
+  <h3>Lisa Goldin</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Lisa%20Goldin" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="dario-femino.jpg" alt="Dario Femino" loading="lazy">
+    <div class="act-bio-overlay"><p>Italian pop singer with a touch of opera, available solo or in duo format for weddings and yacht events.</p></div>
+  </div>
+  <h3>Dario Femino</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Dario%20Femino" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="eleonora-barbacini.jpg" alt="Eleonora Barbacini" loading="lazy">
+    <div class="act-bio-overlay"><p>Italian singer from Verona with a musical theatre background, performing regularly at Armani and Cove Beach.</p></div>
+  </div>
+  <h3>Eleonora Barbacini</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Eleonora%20Barbacini" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="yvonne-park.jpg" alt="Yvonne Park" loading="lazy">
+    <div class="act-bio-overlay"><p>Singer performing as Vonné with a soulful, wide-ranging voice, backed by a three or four-piece band.</p></div>
+  </div>
+  <h3>Yvonne Park</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Yvonne%20Park" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="laura-vargas.jpg" alt="Laura Vargas" loading="lazy">
+    <div class="act-bio-overlay"><p>Portuguese-born Dubai singer with Brazilian roots blending soul, R&amp;B, pop, jazz and samba.</p></div>
+  </div>
+  <h3>Laura Vargas</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Laura%20Vargas" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="kerrie-sterling.jpg" alt="Kerrie Sterling" loading="lazy">
+    <div class="act-bio-overlay"><p>Singer, saxophonist and artist manager with 15-plus years in the industry and a company called FlatCap Productions.</p></div>
+  </div>
+  <h3>Kerrie Sterling</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Kerrie%20Sterling" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="mary-nademo.jpg" alt="Mary Nademo" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based singer and former Voice of Ukraine contestant with over ten years of experience, solo or with a band.</p></div>
+  </div>
+  <h3>Mary Nademo</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Mary%20Nademo" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="iva-georgieva.jpg" alt="Iva Georgieva" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai soul, jazz, pop and dance vocalist who performed at Atlantis The Royal and Burj Al Arab, and was a finalist on The Voice of Bulgaria.</p></div>
+  </div>
+  <h3>Iva Georgieva</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Iva%20Georgieva" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="inga.jpg" alt="Inga" loading="lazy">
+    <div class="act-bio-overlay"><p>Armenian-Polish singer and performer fluent in four languages, combining music and dance, with Voice appearances in Armenia and Poland.</p></div>
+  </div>
+  <h3>Inga</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Inga" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="luna.jpg" alt="Luna" loading="lazy">
+    <div class="act-bio-overlay"><p>Cuban singer based in Dubai (Claudia Castells) whose voice spans jazz, soul and pop, with international performances.</p></div>
+  </div>
+  <h3>Luna</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Luna" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="singer-card singer-card--hidden">
+  <div class="act-photo">
+    <img src="roxanne-duo.jpg" alt="Roxanne Duo" loading="lazy">
+    <div class="act-bio-overlay"><p>French-Lebanese vocalist with a sultry voice across R&amp;B, soul, pop, disco and jazz, playing regularly at Bagatelle and ONZE Dubai.</p></div>
+  </div>
+  <h3>Roxanne Duo</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Roxanne%20Duo" class="singer-enquire">Enquire About This Act &rarr;</a>
+</div>
+  </div>
+  <div class="band-load-more-wrap" id="singerLoadMoreWrap">
+    <button class="band-load-more-btn" id="singerLoadMoreBtn" type="button">Load More Singers</button>
+  </div>
+</section>
+
+<section class="cat-section cat-section--bands" id="bands">
+  <h2>Live Bands</h2>
+  <p>Full live bands, trios and duos spanning swing, jazz, soul, Latin and party covers.</p>
+  <div class="band-grid" id="bandGrid">
+<div class="band-card">
+  <div class="act-photo">
+    <img src="band-photos/the-swing-revue.jpg" alt="The Swing Revue" loading="lazy">
+    <div class="act-bio-overlay"><p>Six-piece 1920s-1950s swing outfit with horns and harmonies, weekly residents at Jazz@PizzaExpress JLT.</p></div>
+  </div>
+  <h3>The Swing Revue</h3>
+  <a href="contact.html?service=Entertainment&amp;act=The%20Swing%20Revue" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card">
+  <div class="act-photo">
+    <img src="band-photos/the-sonix.jpg" alt="The Sonix" loading="lazy">
+    <div class="act-bio-overlay"><p>Flexible band from acoustic duo up to seven pieces, covering five decades of hits for restaurants, bars and large functions.</p></div>
+  </div>
+  <h3>The Sonix</h3>
+  <a href="contact.html?service=Entertainment&amp;act=The%20Sonix" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card">
+  <div class="act-photo">
+    <img src="band-photos/gorgeous-george.jpg" alt="Gorgeous George" loading="lazy">
+    <div class="act-bio-overlay"><p>Full-throttle live act moving between rock, indie, funk and pop in one set, popular at Dubai bars and festivals.</p></div>
+  </div>
+  <h3>Gorgeous George</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Gorgeous%20George" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card">
+  <div class="act-photo">
+    <img src="band-photos/the-bossa-project.jpg" alt="The Bossa Project" loading="lazy">
+    <div class="act-bio-overlay"><p>Vocal-led quartet blending Brazilian rhythm with English lyrics, with a Latin Grammy-winning percussionist.</p></div>
+  </div>
+  <h3>The Bossa Project</h3>
+  <a href="contact.html?service=Entertainment&amp;act=The%20Bossa%20Project" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card">
+  <div class="act-photo">
+    <img src="band-photos/the-seen.jpg" alt="The Seen" loading="lazy">
+    <div class="act-bio-overlay"><p>Pakistani band weaving Sufi, pop, rock and fusion with Bollywood flair, for cultural evenings and big celebrations.</p></div>
+  </div>
+  <h3>The Seen</h3>
+  <a href="contact.html?service=Entertainment&amp;act=The%20Seen" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card">
+  <div class="act-photo">
+    <img src="band-photos/the-nomads.jpg" alt="The Nomads" loading="lazy">
+    <div class="act-bio-overlay"><p>High-energy pop and rock covers band built to keep a dance floor moving.</p></div>
+  </div>
+  <h3>The Nomads</h3>
+  <a href="contact.html?service=Entertainment&amp;act=The%20Nomads" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card">
+  <div class="act-photo">
+    <img src="band-photos/nutella-riot.jpg" alt="Nutella Riot" loading="lazy">
+    <div class="act-bio-overlay"><p>Pop-jazz duo pairing singer-songwriter vocals with virtuoso guitar, with covers that have played Glastonbury and the Cologne Philharmonic.</p></div>
+  </div>
+  <h3>Nutella Riot</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Nutella%20Riot" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card">
+  <div class="act-photo">
+    <img src="band-photos/lnd-romantic.jpg" alt="LND Romantic" loading="lazy">
+    <div class="act-bio-overlay"><p>Trio built for club residencies and late-night sets, blending house, progressive and dancefloor beats.</p></div>
+  </div>
+  <h3>LND Romantic</h3>
+  <a href="contact.html?service=Entertainment&amp;act=LND%20Romantic" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card">
+  <div class="act-photo">
+    <img src="band-photos/noon-band.jpg" alt="Noon Band" loading="lazy">
+    <div class="act-bio-overlay"><p>Instrumental trio with oud, electric bass and drums blending jazz improvisation with Middle Eastern melody.</p></div>
+  </div>
+  <h3>Noon Band</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Noon%20Band" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card">
+  <div class="act-photo">
+    <img src="band-photos/hosny-fusion-trio.jpg" alt="Hosny Fusion Trio" loading="lazy">
+    <div class="act-bio-overlay"><p>Oud, piano and percussion trio rooted in traditional Arabic melody with a contemporary touch.</p></div>
+  </div>
+  <h3>Hosny Fusion Trio</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Hosny%20Fusion%20Trio" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card">
+  <div class="act-photo">
+    <img src="band-photos/golden-collective.jpg" alt="Golden Collective" loading="lazy">
+    <div class="act-bio-overlay"><p>Full party band with horns, rhythm section and lead vocalist, playing jazz at dinner and soul or disco on the floor.</p></div>
+  </div>
+  <h3>Golden Collective</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Golden%20Collective" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card">
+  <div class="act-photo">
+    <img src="band-photos/nuvo-soul.jpg" alt="Nuvo Soul" loading="lazy">
+    <div class="act-bio-overlay"><p>Jazz, soul and funk trio drawing on Ella Fitzgerald and Amy Winehouse, twice shortlisted for Time Out Dubai&#x27;s Best Live Band.</p></div>
+  </div>
+  <h3>Nuvo Soul</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Nuvo%20Soul" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card">
+  <div class="act-photo">
+    <img src="band-photos/the-moxies.jpg" alt="The Moxies" loading="lazy">
+    <div class="act-bio-overlay"><p>All-female vocal harmony trio built around 1920s sounds and vintage choreography.</p></div>
+  </div>
+  <h3>The Moxies</h3>
+  <a href="contact.html?service=Entertainment&amp;act=The%20Moxies" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card">
+  <div class="act-photo">
+    <img src="band-photos/the-youngers.jpg" alt="The Youngers" loading="lazy">
+    <div class="act-bio-overlay"><p>Acoustic trio singing in five languages that performs among guests for weddings and business events.</p></div>
+  </div>
+  <h3>The Youngers</h3>
+  <a href="contact.html?service=Entertainment&amp;act=The%20Youngers" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card">
+  <div class="act-photo">
+    <img src="band-photos/lady-j.jpg" alt="Lady J" loading="lazy">
+    <div class="act-bio-overlay"><p>Jazz-leaning duo with Motown-inspired originals and live loops, performing together since 2006 with over 2,700 shows.</p></div>
+  </div>
+  <h3>Lady J</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Lady%20J" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card band-card--hidden">
+  <div class="act-photo">
+    <img src="band-photos/4themusic.jpg" alt="4TheMusic" loading="lazy">
+    <div class="act-bio-overlay"><p>South African band with sixteen years of experience and a Best Band of 2023 award.</p></div>
+  </div>
+  <h3>4TheMusic</h3>
+  <a href="contact.html?service=Entertainment&amp;act=4TheMusic" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card band-card--hidden">
+  <div class="act-photo">
+    <img src="band-photos/salt-and-pepper-duo.jpg" alt="Salt &amp; Pepper Duo" loading="lazy">
+    <div class="act-bio-overlay"><p>Vocal and piano duo covering pop, dance, R&amp;B, jazz, classical and ballads for any room.</p></div>
+  </div>
+  <h3>Salt &amp; Pepper Duo</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Salt%20%26%20Pepper%20Duo" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card band-card--hidden">
+  <div class="act-photo">
+    <img src="band-photos/irina-band.jpg" alt="Irina Band" loading="lazy">
+    <div class="act-bio-overlay"><p>Solo, duo or trio setup spanning pop, soul, jazz, lounge and dance in five languages.</p></div>
+  </div>
+  <h3>Irina Band</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Irina%20Band" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card band-card--hidden">
+  <div class="act-photo">
+    <img src="band-photos/vibe-de-sol.jpg" alt="Vibe De Sol" loading="lazy">
+    <div class="act-bio-overlay"><p>Singer, songwriter and dancer whose career has run through London, Los Angeles and Miami.</p></div>
+  </div>
+  <h3>Vibe De Sol</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Vibe%20De%20Sol" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card band-card--hidden">
+  <div class="act-photo">
+    <img src="band-photos/de-cruz-band.jpg" alt="De Cruz Band" loading="lazy">
+    <div class="act-bio-overlay"><p>West African ensemble spanning jazz, Motown, soul, reggae and Afrobeat, scaling from trio to full ensemble.</p></div>
+  </div>
+  <h3>De Cruz Band</h3>
+  <a href="contact.html?service=Entertainment&amp;act=De%20Cruz%20Band" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card band-card--hidden">
+  <div class="act-photo">
+    <img src="band-photos/the-boxtones.jpg" alt="The Boxtones" loading="lazy">
+    <div class="act-bio-overlay"><p>Scottish and Canadian rock-pop band with a Celtic edge, signed to Universal Music MENA.</p></div>
+  </div>
+  <h3>The Boxtones</h3>
+  <a href="contact.html?service=Entertainment&amp;act=The%20Boxtones" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card band-card--hidden">
+  <div class="act-photo">
+    <img src="band-photos/about-last-night.jpg" alt="About Last Night" loading="lazy">
+    <div class="act-bio-overlay"><p>Stadium-style show band built around mash-ups and full multimedia lighting and video.</p></div>
+  </div>
+  <h3>About Last Night</h3>
+  <a href="contact.html?service=Entertainment&amp;act=About%20Last%20Night" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card band-card--hidden">
+  <div class="act-photo">
+    <img src="band-photos/nomades-the-band.jpg" alt="Nomades The Band" loading="lazy">
+    <div class="act-bio-overlay"><p>Eclectic band blending strings, oud, percussion, keys and winds, moving a room between dancing and stillness.</p></div>
+  </div>
+  <h3>Nomades The Band</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Nomades%20The%20Band" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card band-card--hidden">
+  <div class="act-photo">
+    <img src="band-photos/mr-and-mrs-duo.jpg" alt="Mr and Mrs Duo" loading="lazy">
+    <div class="act-bio-overlay"><p>Married saxophone and vocal duo playing jazz ballads, classic pop and disco.</p></div>
+  </div>
+  <h3>Mr and Mrs Duo</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Mr%20and%20Mrs%20Duo" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card band-card--hidden">
+  <div class="act-photo">
+    <img src="band-photos/danny-and-krystle-duo.jpg" alt="Danny &amp; Krystle Duo" loading="lazy">
+    <div class="act-bio-overlay"><p>Married duo of vocals and acoustic guitar for intimate venues and larger stages.</p></div>
+  </div>
+  <h3>Danny &amp; Krystle Duo</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Danny%20%26%20Krystle%20Duo" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card band-card--hidden">
+  <div class="act-photo">
+    <img src="band-photos/the-girl-from-the-north-country.jpg" alt="The Girl From The North Country" loading="lazy">
+    <div class="act-bio-overlay"><p>UK-led soulful duo alternating heartfelt ballads with upbeat anthems.</p></div>
+  </div>
+  <h3>The Girl From The North Country</h3>
+  <a href="contact.html?service=Entertainment&amp;act=The%20Girl%20From%20The%20North%20Country" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card band-card--hidden">
+  <div class="act-photo">
+    <img src="band-photos/the-ark-angels.jpg" alt="The Ark Angels" loading="lazy">
+    <div class="act-bio-overlay"><p>Four-piece all-female band fusing pop and rock for a sing-along crowd.</p></div>
+  </div>
+  <h3>The Ark Angels</h3>
+  <a href="contact.html?service=Entertainment&amp;act=The%20Ark%20Angels" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card band-card--hidden">
+  <div class="act-photo">
+    <img src="band-photos/big-mouth.jpg" alt="Big Mouth" loading="lazy">
+    <div class="act-bio-overlay"><p>Power trio with sharp guitar work and a tight rhythm section, playing timeless classics.</p></div>
+  </div>
+  <h3>Big Mouth</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Big%20Mouth" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card band-card--hidden">
+  <div class="act-photo">
+    <img src="band-photos/carla-duo.jpg" alt="Carla Duo" loading="lazy">
+    <div class="act-bio-overlay"><p>Italian jazz and bossa nova vocalist with music therapy training, known for roller-skating in her performances.</p></div>
+  </div>
+  <h3>Carla Duo</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Carla%20Duo" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card band-card--hidden">
+  <div class="act-photo">
+    <img src="band-photos/jose-jazz-trio.jpg" alt="Jose Jazz Trio" loading="lazy">
+    <div class="act-bio-overlay"><p>Trio led by pianist, trombonist and composer Jose Ramon, blending Latin-Arabic fusion with classical and Afro-Cuban influences.</p></div>
+  </div>
+  <h3>Jose Jazz Trio</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Jose%20Jazz%20Trio" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card band-card--hidden">
+  <div class="act-photo">
+    <img src="band-photos/bobby-jazz-trio.jpg" alt="Bobby Jazz Trio" loading="lazy">
+    <div class="act-bio-overlay"><p>Grand piano jazz trio covering Tony Bennett, Frank Sinatra and Michael Bublé in a varied set.</p></div>
+  </div>
+  <h3>Bobby Jazz Trio</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Bobby%20Jazz%20Trio" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card band-card--hidden">
+  <div class="act-photo">
+    <img src="band-photos/errico-jazz-band.jpg" alt="Errico Jazz Band" loading="lazy">
+    <div class="act-bio-overlay"><p>Italian vocalist and composer blending jazz technique with samba warmth.</p></div>
+  </div>
+  <h3>Errico Jazz Band</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Errico%20Jazz%20Band" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card band-card--hidden">
+  <div class="act-photo">
+    <img src="band-photos/rudo-jazz-trio.jpg" alt="Rudo Jazz Trio" loading="lazy">
+    <div class="act-bio-overlay"><p>Upright bass-led pop-jazz trio reinventing five decades of hits, with a SAMA-nominated arranger.</p></div>
+  </div>
+  <h3>Rudo Jazz Trio</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Rudo%20Jazz%20Trio" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card band-card--hidden">
+  <div class="act-photo">
+    <img src="band-photos/rami-jazz-trio.jpg" alt="Rami Jazz Trio" loading="lazy">
+    <div class="act-bio-overlay"><p>Egyptian pianist blending modern jazz with Middle Eastern and Mediterranean influences.</p></div>
+  </div>
+  <h3>Rami Jazz Trio</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Rami%20Jazz%20Trio" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card band-card--hidden">
+  <div class="act-photo">
+    <img src="band-photos/the-rebel-bass.jpg" alt="The Rebel Bass" loading="lazy">
+    <div class="act-bio-overlay"><p>Multicultural covers band spanning rock, pop, funk and indie, with a 2023 Dubai nightlife award.</p></div>
+  </div>
+  <h3>The Rebel Bass</h3>
+  <a href="contact.html?service=Entertainment&amp;act=The%20Rebel%20Bass" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card band-card--hidden">
+  <div class="act-photo">
+    <img src="band-photos/chloe-jazz-trio.jpg" alt="Chloe Jazz Trio" loading="lazy">
+    <div class="act-bio-overlay"><p>British soul and jazz vocalist with residencies across Dubai&#x27;s five-star hotels.</p></div>
+  </div>
+  <h3>Chloe Jazz Trio</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Chloe%20Jazz%20Trio" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card band-card--hidden">
+  <div class="act-photo">
+    <img src="band-photos/the-jazz-project.jpg" alt="The Jazz Project" loading="lazy">
+    <div class="act-bio-overlay"><p>Four-piece ensemble moving between jazz standards and contemporary fusion.</p></div>
+  </div>
+  <h3>The Jazz Project</h3>
+  <a href="contact.html?service=Entertainment&amp;act=The%20Jazz%20Project" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card band-card--hidden">
+  <div class="act-photo">
+    <img src="band-photos/mark-zitti.jpg" alt="Mark Zitti" loading="lazy">
+    <div class="act-bio-overlay"><p>Brass-driven swing and jazz trio with an energetic sound.</p></div>
+  </div>
+  <h3>Mark Zitti</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Mark%20Zitti" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card band-card--hidden">
+  <div class="act-photo">
+    <img src="band-photos/ssb.jpg" alt="SSB (Saadiyat Studio Band)" loading="lazy">
+    <div class="act-bio-overlay"><p>Scalable lineup of session musicians from trio to seven-piece, spanning sophisticated jazz to funk and soul.</p></div>
+  </div>
+  <h3>SSB (Saadiyat Studio Band)</h3>
+  <a href="contact.html?service=Entertainment&amp;act=SSB%20%28Saadiyat%20Studio%20Band%29" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card band-card--hidden">
+  <div class="act-photo">
+    <img src="band-photos/cubache-band.jpg" alt="Cubache Band" loading="lazy">
+    <div class="act-bio-overlay"><p>Six-piece Cuban ensemble playing authentic salsa and Buena Vista-style music.</p></div>
+  </div>
+  <h3>Cubache Band</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Cubache%20Band" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card band-card--hidden">
+  <div class="act-photo">
+    <img src="band-photos/the-tasty-biscuits.jpg" alt="The Tasty Biscuits" loading="lazy">
+    <div class="act-bio-overlay"><p>Six-piece band mixing soulful melodies with funky grooves, from intimate shows to F1 concerts.</p></div>
+  </div>
+  <h3>The Tasty Biscuits</h3>
+  <a href="contact.html?service=Entertainment&amp;act=The%20Tasty%20Biscuits" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card band-card--hidden">
+  <div class="act-photo">
+    <img src="band-photos/iva.jpg" alt="IVA" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based soul, jazz, pop and dance act that has played major five-star venues across the region.</p></div>
+  </div>
+  <h3>IVA</h3>
+  <a href="contact.html?service=Entertainment&amp;act=IVA" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="band-card band-card--hidden">
+  <div class="act-photo">
+    <img src="band-photos/mike-and-mary-duo.jpg" alt="Mike &amp; Mary Duo" loading="lazy">
+    <div class="act-bio-overlay"><p>Vocal duo and trio covering 1940s-50s classics through modern dance hits.</p></div>
+  </div>
+  <h3>Mike &amp; Mary Duo</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Mike%20%26%20Mary%20Duo" class="band-enquire">Enquire About This Act &rarr;</a>
+</div>
+  </div>
+  <div class="band-load-more-wrap" id="bandLoadMoreWrap">
+    <button class="band-load-more-btn" id="bandLoadMoreBtn" type="button">Load More Live Bands</button>
+  </div>
+</section>
+
+<section class="cat-section cat-section--instrumental" id="instrumental">
+  <h2>Instrumentalists</h2>
+  <p>Solo and ensemble instrumentalists for ceremonies, dinners and receptions.</p>
+  <div class="instrumental-subhead">Saxophonists</div>
+  <div class="band-grid">
+  <div class="sax-card">
+  <div class="act-photo">
+    <img src="sax-photos/aksinia.jpg" alt="Aksinia" loading="lazy">
+    <div class="act-bio-overlay"><p>Acclaimed saxophonist who has performed for brands, Formula 1 Abu Dhabi and international stars across twelve countries.</p></div>
+  </div>
+  <h3>Aksinia</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Aksinia" class="sax-enquire">Enquire About This Act &rarr;</a>
+</div>
+  <div class="sax-card">
+  <div class="act-photo">
+    <img src="sax-photos/kristina.jpg" alt="Kristina" loading="lazy">
+    <div class="act-bio-overlay"><p>Soulful Dubai-based saxophonist of over five years with a warm, polished sound for corporate and private events.</p></div>
+  </div>
+  <h3>Kristina</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Kristina" class="sax-enquire">Enquire About This Act &rarr;</a>
+</div>
+  <div class="sax-card">
+  <div class="act-photo">
+    <img src="sax-photos/matt-west.jpg" alt="Matt West" loading="lazy">
+    <div class="act-bio-overlay"><p>Los Angeles-born saxophonist, multi-instrumentalist and DJ who has performed in over fifty countries.</p></div>
+  </div>
+  <h3>Matt West</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Matt%20West" class="sax-enquire">Enquire About This Act &rarr;</a>
+</div>
+  <div class="sax-card">
+  <div class="act-photo">
+    <img src="sax-photos/may-ravelo.jpg" alt="May Ravelo" loading="lazy">
+    <div class="act-bio-overlay"><p>Cuban saxophonist with ten years of experience and performances across Bahrain, Vietnam and beyond.</p></div>
+  </div>
+  <h3>May Ravelo</h3>
+  <a href="contact.html?service=Entertainment&amp;act=May%20Ravelo" class="sax-enquire">Enquire About This Act &rarr;</a>
+</div>
+  <div class="sax-card">
+  <div class="act-photo">
+    <img src="sax-photos/dave-bo.jpg" alt="Dave Bo" loading="lazy">
+    <div class="act-bio-overlay"><p>World-class saxophonist and producer who has collaborated with leading DJs including Milk and Sugar.</p></div>
+  </div>
+  <h3>Dave Bo</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Dave%20Bo" class="sax-enquire">Enquire About This Act &rarr;</a>
+</div>
+  <div class="sax-card">
+  <div class="act-photo">
+    <img src="sax-photos/manuel-kev.jpg" alt="Manuel Kev" loading="lazy">
+    <div class="act-bio-overlay"><p>Colombian saxophonist who began at the Colombian Conservatory at sixteen and plays a wide range of styles.</p></div>
+  </div>
+  <h3>Manuel Kev</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Manuel%20Kev" class="sax-enquire">Enquire About This Act &rarr;</a>
+</div>
+  <div class="sax-card">
+  <div class="act-photo">
+    <img src="sax-photos/aleksandra-dudek.jpg" alt="Aleksandra Dudek" loading="lazy">
+    <div class="act-bio-overlay"><p>Polish-born, Dubai-based saxophonist with formal training and a refined, versatile style.</p></div>
+  </div>
+  <h3>Aleksandra Dudek</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Aleksandra%20Dudek" class="sax-enquire">Enquire About This Act &rarr;</a>
+</div>
+  <div class="sax-card">
+  <div class="act-photo">
+    <img src="sax-photos/marin-bozev.jpg" alt="Marin Bozev" loading="lazy">
+    <div class="act-bio-overlay"><p>Saxophonist (MarciSax) based in Dubai since 2003 who has played luxury five-star venues.</p></div>
+  </div>
+  <h3>Marin Bozev</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Marin%20Bozev" class="sax-enquire">Enquire About This Act &rarr;</a>
+</div>
+  <div class="sax-card">
+  <div class="act-photo">
+    <img src="sax-photos/maby.jpg" alt="Maby" loading="lazy">
+    <div class="act-bio-overlay"><p>Cuban performer based in Abu Dhabi with a bold, dramatic stage presence.</p></div>
+  </div>
+  <h3>Maby</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Maby" class="sax-enquire">Enquire About This Act &rarr;</a>
+</div>
+  <div class="sax-card">
+  <div class="act-photo">
+    <img src="sax-photos/christian.jpg" alt="Christian" loading="lazy">
+    <div class="act-bio-overlay"><p>Colombian saxophonist with over ten years of experience and sharp improvisation skills.</p></div>
+  </div>
+  <h3>Christian</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Christian" class="sax-enquire">Enquire About This Act &rarr;</a>
+</div>
+  <div class="sax-card">
+  <div class="act-photo">
+    <img src="sax-photos/karolina.jpg" alt="Karolina" loading="lazy">
+    <div class="act-bio-overlay"><p>Saxophonist and multi-instrumentalist with a career since 2010 and competition wins.</p></div>
+  </div>
+  <h3>Karolina</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Karolina" class="sax-enquire">Enquire About This Act &rarr;</a>
+</div>
+  <div class="sax-card">
+  <div class="act-photo">
+    <img src="sax-photos/dan-blaax.jpg" alt="Dan Blaax" loading="lazy">
+    <div class="act-bio-overlay"><p>Swedish saxophonist who has performed at weddings, corporate events and festivals including Cannes.</p></div>
+  </div>
+  <h3>Dan Blaax</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Dan%20Blaax" class="sax-enquire">Enquire About This Act &rarr;</a>
+</div>
+  </div>
+  <div class="instrumental-subhead">Classical Ensembles</div>
+  <div class="band-grid">
+  <div class="classical-card">
+  <div class="act-photo">
+    <img src="classical-photos/canella-duo-trio.jpg" alt="Canella Duo / Trio" loading="lazy">
+    <div class="act-bio-overlay"><p>Harp-led ensemble led by Lidia Stankulova that performs as a duo or trio with flute or violin.</p></div>
+  </div>
+  <h3>Canella Duo / Trio</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Canella%20Duo%20/%20Trio" class="classical-enquire">Enquire About This Act &rarr;</a>
+</div>
+  <div class="classical-card">
+  <div class="act-photo">
+    <img src="classical-photos/harp-duo.jpg" alt="Harp Duo" loading="lazy">
+    <div class="act-bio-overlay"><p>Two-harpist duo of Lidia Stankulova and Diana Pandova blending classical and contemporary sounds, optionally with a dancer.</p></div>
+  </div>
+  <h3>Harp Duo</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Harp%20Duo" class="classical-enquire">Enquire About This Act &rarr;</a>
+</div>
+  <div class="classical-card">
+  <div class="act-photo">
+    <img src="classical-photos/piano-violin-duo.jpg" alt="Piano and Violin Duo" loading="lazy">
+    <div class="act-bio-overlay"><p>Violin and piano duo of Kristina and Giselle, with Giselle a Moscow Conservatory-trained pianist.</p></div>
+  </div>
+  <h3>Piano and Violin Duo</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Piano%20and%20Violin%20Duo" class="classical-enquire">Enquire About This Act &rarr;</a>
+</div>
+  <div class="classical-card">
+  <div class="act-photo">
+    <img src="classical-photos/classical-trio-harp-violin-cello.jpg" alt="Classical Trio" loading="lazy">
+    <div class="act-bio-overlay"><p>Violin-led ensemble with harp and cello, led by violinist Kristina, blending classical and contemporary styles.</p></div>
+  </div>
+  <h3>Classical Trio</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Classical%20Trio" class="classical-enquire">Enquire About This Act &rarr;</a>
+</div>
+  <div class="classical-card">
+  <div class="act-photo">
+    <img src="classical-photos/giulia-kristina-duo.jpg" alt="Giulia and Kristina" loading="lazy">
+    <div class="act-bio-overlay"><p>Cello and violin duo moving across classical, Arabic and contemporary styles on acoustic and electric instruments.</p></div>
+  </div>
+  <h3>Giulia and Kristina</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Giulia%20and%20Kristina" class="classical-enquire">Enquire About This Act &rarr;</a>
+</div>
+  <div class="classical-card">
+  <div class="act-photo">
+    <img src="classical-photos/saxophone-violin-duo.jpg" alt="Saxophone and Violin Duo" loading="lazy">
+    <div class="act-bio-overlay"><p>Duo of Dubai violinist Kristina and saxophonist Pasha, with royal and award-show experience.</p></div>
+  </div>
+  <h3>Saxophone and Violin Duo</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Saxophone%20and%20Violin%20Duo" class="classical-enquire">Enquire About This Act &rarr;</a>
+</div>
+  <div class="classical-card">
+  <div class="act-photo">
+    <img src="classical-photos/soprano-trio.jpg" alt="Soprano Trio" loading="lazy">
+    <div class="act-bio-overlay"><p>Three sopranos singing close harmonies across operatic, crossover and festive repertoire.</p></div>
+  </div>
+  <h3>Soprano Trio</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Soprano%20Trio" class="classical-enquire">Enquire About This Act &rarr;</a>
+</div>
+  <div class="classical-card">
+  <div class="act-photo">
+    <img src="classical-photos/gulf-string-quartet.jpg" alt="Gulf String Quartet" loading="lazy">
+    <div class="act-bio-overlay"><p>String quartet performing classical, contemporary and regional repertoire for formal occasions.</p></div>
+  </div>
+  <h3>Gulf String Quartet</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Gulf%20String%20Quartet" class="classical-enquire">Enquire About This Act &rarr;</a>
+</div>
+  <div class="classical-card">
+  <div class="act-photo">
+    <img src="classical-photos/jose-jazz-trio.jpg" alt="Jose Jazz Trio" loading="lazy">
+    <div class="act-bio-overlay"><p>Trio led by pianist and composer Jose Ramon blending Latin, world, classical and Afro-Cuban influences.</p></div>
+  </div>
+  <h3>Jose Jazz Trio</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Jose%20Jazz%20Trio" class="classical-enquire">Enquire About This Act &rarr;</a>
+</div>
+  <div class="classical-card">
+  <div class="act-photo">
+    <img src="classical-photos/rudo-jazz-trio.jpg" alt="Rudo Jazz Trio" loading="lazy">
+    <div class="act-bio-overlay"><p>Pop-jazz trio led by SAMA-nominated arranger Rudo on upright bass, who has opened for Beyoncé.</p></div>
+  </div>
+  <h3>Rudo Jazz Trio</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Rudo%20Jazz%20Trio" class="classical-enquire">Enquire About This Act &rarr;</a>
+</div>
+  </div>
+  <div class="instrumental-subhead">Percussionists</div>
+  <div class="band-grid">
+  <div class="percussion-card">
+  <div class="act-photo">
+    <img src="percussion-photos/daneel.jpg" alt="Daneel" loading="lazy">
+    <div class="act-bio-overlay"><p>Percussionist who reached the finals of Arabs Got Talent and has performed at the Music Hall Theater and the London Olympics.</p></div>
+  </div>
+  <h3>Daneel</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Daneel" class="percussion-enquire">Enquire About This Act &rarr;</a>
+</div>
+  <div class="percussion-card">
+  <div class="act-photo">
+    <img src="percussion-photos/inas.jpg" alt="Inas" loading="lazy">
+    <div class="act-bio-overlay"><p>Syrian female drummer and percussionist, Damascus graduate and music teacher with over fifteen years of experience.</p></div>
+  </div>
+  <h3>Inas</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Inas" class="percussion-enquire">Enquire About This Act &rarr;</a>
+</div>
+  <div class="percussion-card">
+  <div class="act-photo">
+    <img src="percussion-photos/miti.jpg" alt="Miti" loading="lazy">
+    <div class="act-bio-overlay"><p>Cuban percussionist and teacher with a Havana music degree, versed in Cuban and Afro-Cuban percussion.</p></div>
+  </div>
+  <h3>Miti</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Miti" class="percussion-enquire">Enquire About This Act &rarr;</a>
+</div>
+  <div class="percussion-card">
+  <div class="act-photo">
+    <img src="percussion-photos/pascale.jpg" alt="Pascale" loading="lazy">
+    <div class="act-bio-overlay"><p>Lebanese percussionist based in Dubai fusing oriental and occidental styles, who has performed at Expo 2020.</p></div>
+  </div>
+  <h3>Pascale</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Pascale" class="percussion-enquire">Enquire About This Act &rarr;</a>
+</div>
+  <div class="percussion-card">
+  <div class="act-photo">
+    <img src="percussion-photos/fernando.jpg" alt="Fernando" loading="lazy">
+    <div class="act-bio-overlay"><p>International percussionist with Spanish and Bulgarian degrees and performances at Emirates Palace and Atlantis.</p></div>
+  </div>
+  <h3>Fernando</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Fernando" class="percussion-enquire">Enquire About This Act &rarr;</a>
+</div>
+  <div class="percussion-card">
+  <div class="act-photo">
+    <img src="percussion-photos/morsi.jpg" alt="Morsi" loading="lazy">
+    <div class="act-bio-overlay"><p>Egyptian percussionist active since 2013 across orchestra, band and theatre work, skilled in cajon, djembe and conga.</p></div>
+  </div>
+  <h3>Morsi</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Morsi" class="percussion-enquire">Enquire About This Act &rarr;</a>
+</div>
+  <div class="percussion-card">
+  <div class="act-photo">
+    <img src="percussion-photos/boudi.jpg" alt="Boudi" loading="lazy">
+    <div class="act-bio-overlay"><p>Percussionist, dancer and circus acrobat from Beirut who also founded the events company Lark Eventos.</p></div>
+  </div>
+  <h3>Boudi</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Boudi" class="percussion-enquire">Enquire About This Act &rarr;</a>
+</div>
+  </div>
+  <div class="instrumental-subhead">Pianists</div>
+  <div class="band-grid">
+  <div class="piano-card">
+  <div class="act-photo">
+    <img src="piano-photos/sandra-stefanova.jpg" alt="Sandra Stefanova" loading="lazy">
+    <div class="act-bio-overlay"><p>Bulgarian pianist and National Conservatory graduate who has played since age seven across pop, Arabic, jazz and classical styles.</p></div>
+  </div>
+  <h3>Sandra Stefanova</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Sandra%20Stefanova" class="piano-enquire">Enquire About This Act &rarr;</a>
+</div>
+  <div class="piano-card">
+  <div class="act-photo">
+    <img src="piano-photos/anna-shchebeneva.jpg" alt="Anna Shchebeneva" loading="lazy">
+    <div class="act-bio-overlay"><p>Russian pianist from Saint Petersburg with jazz and pop training who also composes, arranges and has released six albums.</p></div>
+  </div>
+  <h3>Anna Shchebeneva</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Anna%20Shchebeneva" class="piano-enquire">Enquire About This Act &rarr;</a>
+</div>
+  <div class="piano-card">
+  <div class="act-photo">
+    <img src="piano-photos/giselle-piano.jpg" alt="Giselle" loading="lazy">
+    <div class="act-bio-overlay"><p>Internationally renowned pianist and Moscow Conservatory graduate.</p></div>
+  </div>
+  <h3>Giselle</h3>
+  <a href="contact.html?service=Entertainment&amp;act=Giselle" class="piano-enquire">Enquire About This Act &rarr;</a>
+</div>
+  </div>
+</section>
+
+</div>
 <section id="contact-bridge">
     <div class="footer-cta-wrap">
         <h3 class="metallic-gold">Not Sure Which Act You Need?</h3>
