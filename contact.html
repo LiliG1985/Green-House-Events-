@@ -641,7 +641,8 @@
         var params = new URLSearchParams(window.location.search);
         var service = params.get("service");
         var items = params.get("items");
-        if (!service && !items) return;
+        var act = params.get("act");
+        if (!service && !items && !act) return;
 
         if (service) {
             var select = document.getElementById("cf-service");
@@ -659,6 +660,11 @@
             var message = document.getElementById("cf-message");
             if (message) {
                 message.value = "I'm interested in: " + items + ".\n\nPlease send me a quote, happy to share more details!";
+            }
+        } else if (act) {
+            var message2 = document.getElementById("cf-message");
+            if (message2) {
+                message2.value = "I'm interested in: " + act + ".\n\nPlease send me a quote, happy to share more details!";
             }
         }
     })();
