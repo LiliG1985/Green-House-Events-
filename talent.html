@@ -127,7 +127,7 @@
             position: relative;
             padding: 11rem 8vw 4rem;
             text-align: center;
-            background: linear-gradient(rgba(2, 22, 18, 0.35) 0%, #021612 100%), url('entertainment-header-bg.jpg') no-repeat center 30%;
+            background: linear-gradient(rgba(2, 22, 18, 0.45) 0%, #021612 100%), url('percussion-photos/miti.jpg') no-repeat center 35%;
             background-size: cover;
         }
         .roster-hero h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(2.2rem, 6vw, 3.6rem); margin-bottom: 1.2rem; text-shadow: 0 4px 20px rgba(0,0,0,0.6); }
@@ -135,7 +135,7 @@
 
         /* --- CATEGORY NAV --- */
         .cat-nav-wrap { position: sticky; top: 0; z-index: 50; background: rgba(4,16,12,0.92); backdrop-filter: blur(16px); border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); padding-top: 4.6rem; }
-        .cat-nav { display: flex; gap: 0.6rem; overflow-x: auto; padding: 1rem 6vw; scrollbar-width: none; }
+        .cat-nav { position: static; width: auto; z-index: auto; background: none; backdrop-filter: none; transition: none; display: flex; gap: 0.6rem; overflow-x: auto; padding: 1rem 6vw; scrollbar-width: none; }
         .cat-nav::-webkit-scrollbar { display: none; }
         .cat-nav a {
             flex-shrink: 0; font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 1px;
