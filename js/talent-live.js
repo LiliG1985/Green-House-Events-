@@ -6,7 +6,7 @@
   if (!window.GHDB) return;
 
   var GROUP_IDS = {
-    "singers|Choirs": "choirs", "instrumental|Violinists": "violinists", "mcs|Quiz Hosts": "quiz-hosts",
+    "singers|Choirs": "choirs", "instrumental|Violinists": "violinists", "mcs|Quiz Hosts": "quiz-hosts", "instrumental|Guitarists": "guitarists", "instrumental|Cellists & Harpists": "cello-harp", "instrumental|Handpan": "handpan",
     "specialist|Acrobats & Circus": "spec-aerial", "specialist|Roaming & Specialty Musicians": "spec-roaming",
     "specialist|Laser Shows": "spec-laser", "specialist|Fire": "spec-fire",
     "ramadan|Arabic Bands & Duos": "ram-bands", "ramadan|Oud": "ram-oud", "ramadan|Qanun": "ram-qanun",
