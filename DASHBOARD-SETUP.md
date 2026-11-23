@@ -14,6 +14,8 @@ It uses Supabase (database, logins and photo storage), the same setup as the NOV
 2. **Create the tables.** In Supabase: **SQL Editor** › New query › paste all of `supabase/schema.sql` › **Run**.
 3. **Import the current roster.** New query › paste all of `supabase/seed-current-roster.sql` › **Run**.
    This copies the ~340 acts already on the talent page into the dashboard, all switched on.
+   Then run the **private-full-names.sql** file Claude sent you separately (it fills in each artist's full
+   name in their private details). That file is deliberately not in this repository, which is public.
 4. **Add yourself as an admin.** New query › run (with your email):
    `insert into public.admins (email) values ('info@greenhouseeventsuae.com');`
 5. **Create your login.** Supabase › **Authentication › Users › Add user › Create new user** with that same
