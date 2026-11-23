@@ -6,7 +6,7 @@
 
   var CATEGORIES = [
     ["djs", "DJs"], ["singers", "Singers"], ["bands", "Live Bands"], ["instrumental", "Instrumentalists"],
-    ["specialist", "Specialist Acts"], ["dancers", "Dancers"], ["mcs", "MCs & Emcees"], ["hostesses", "Hostesses & Promo Staff"],
+    ["specialist", "Specialist Acts"], ["dancers", "Dancers"], ["mcs", "Emcees"], ["hostesses", "Hostesses & Promo Staff"],
     ["magicians", "Magicians & Mentalists"], ["kids", "Children's Entertainment"], ["ramadan", "Ramadan & Arabic"]
   ];
   var CAT_LABEL = {}; CATEGORIES.forEach(function (c) { CAT_LABEL[c[0]] = c[1]; });
@@ -503,7 +503,7 @@
   // ---------- slides library ----------
   var SLIDE_BUCKET = "slides";
   var SLIDE_CATS = ["Cover & Intro", "DJs", "Singers", "Live Bands", "Instrumentalists", "Specialist Acts", "Dancers",
-    "MCs & Emcees", "Hostesses & Promo Staff", "Magicians", "Children's", "Ramadan & Arabic", "Festive", "Decor & Venue",
+    "Emcees", "Hostesses & Promo Staff", "Magicians", "Children's", "Ramadan & Arabic", "Festive", "Decor & Venue",
     "Packages & Pricing", "Closing", "Other"];
   var slideState = { q: "", cat: "", selected: {}, target: "" };
 
