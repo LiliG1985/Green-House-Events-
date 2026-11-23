@@ -113,13 +113,16 @@
   // ---------- router ----------
   function route() {
     if (!session) { renderLogin(); return; }
-    var h = location.hash.replace(/^#\/?/, "").split("/");
+    var h = location.hash.replace(/^#\/?/, "").split("?")[0].split("/");
     $all(".topnav a[data-nav]").forEach(function (a) { a.classList.toggle("active", a.dataset.nav === h[0]); });
     window.scrollTo(0, 0);
     if (h[0] === "applications" && h[1]) return viewApplication(h[1]);
     if (h[0] === "applications") return viewApplications();
     if (h[0] === "artists" && h[1] === "new") return viewArtist(null);
     if (h[0] === "artists" && h[1]) return viewArtist(h[1]);
+    if (h[0] === "slides") return viewSlides();
+    if (h[0] === "proposals" && h[1]) return viewProposal(h[1]);
+    if (h[0] === "proposals") return viewProposals();
     if (h[0] === "password") return viewPassword();
     return viewArtists();
   }
@@ -495,6 +498,253 @@
       .then(function () { return sb.from("applications").update({ status: "approved", artist_id: artistId }).eq("id", x.id).then(must); })
       .then(function () { refreshBadge(); toast("Profile created. It stays hidden until you switch it on."); location.hash = "#/artists/" + artistId; })
       .catch(function (e) { fail(e); btn.disabled = false; btn.textContent = "Create artist profile"; });
+  }
+
+  // ---------- slides library ----------
+  var SLIDE_BUCKET = "slides";
+  var SLIDE_CATS = ["Cover & Intro", "DJs", "Singers", "Live Bands", "Instrumentalists", "Specialist Acts", "Dancers",
+    "MCs & Emcees", "Hostesses & Promo Staff", "Magicians", "Children's", "Ramadan & Arabic", "Festive", "Decor & Venue",
+    "Packages & Pricing", "Closing", "Other"];
+  var slideState = { q: "", cat: "", selected: {}, target: "" };
+
+  function slideCatOptions(sel, withAll) {
+    return (withAll ? '<option value="">All categories</option>' : '<option value="">No category</option>') +
+      SLIDE_CATS.map(function (c) { return '<option' + (c === sel ? " selected" : "") + ">" + esc(c) + "</option>"; }).join("");
+  }
+  function titleFromFile(name) {
+    return String(name).replace(/\.[a-z0-9]+$/i, "").replace(/[_-]+/g, " ").replace(/\s+/g, " ").trim() || "Slide";
+  }
+
+  function viewSlides() {
+    var q = new URLSearchParams(location.hash.split("?")[1] || "");
+    if (q.get("add")) slideState.target = q.get("add");
+    app.innerHTML = '<div class="pagehead"><div><h1>Slides</h1><p class="muted">Your proposal slide library. Tick slides, then add them to a proposal.</p></div>' +
+      '<label class="btn primary" for="slideUpload">+ Upload slides<input type="file" id="slideUpload" accept="image/*" multiple hidden></label></div>' +
+      '<div class="toolbar"><input type="text" id="sQ" placeholder="Search slide titles" value="' + esc(slideState.q) + '">' +
+      '<select id="sCat">' + slideCatOptions(slideState.cat, true) + "</select>" +
+      '<span class="count" id="sCount"></span></div>' +
+      '<label class="dropzone" id="slideDrop">Drag slide images here (PNG or JPG exported from Canva)</label><br>' +
+      '<div id="slideGrid" class="slide-grid"><p class="muted">Loading&hellip;</p></div>' +
+      '<div class="selbar" id="selBar" hidden><span id="selCount"></span><select id="selTarget"></select>' +
+      '<button class="btn primary" type="button" id="selAdd">Add to proposal</button><button class="btn" type="button" id="selClear">Clear</button></div>';
+    var all = [];
+    function load() {
+      return sb.from("slides").select("id,title,category,url,path,sort_order,created_at").order("sort_order").order("created_at").range(0, 4999)
+        .then(function (r) { if (r.error) throw r.error; all = r.data; draw(); });
+    }
+    function draw() {
+      var ql = slideState.q.toLowerCase();
+      var rows = all.filter(function (x) {
+        return (!slideState.cat || x.category === slideState.cat) && (!ql || (x.title || "").toLowerCase().indexOf(ql) >= 0);
+      });
+      $("#sCount").textContent = rows.length + " of " + all.length + " slides";
+      $("#slideGrid").innerHTML = rows.length ? rows.map(function (x) {
+        var on = !!slideState.selected[x.id];
+        return '<div class="slide' + (on ? " on" : "") + '" data-id="' + x.id + '"><button type="button" class="slide-pick" data-pick="' + x.id + '" aria-label="Select slide">' +
+          '<img loading="lazy" src="' + esc(x.url) + '" alt=""><span class="tick">' + (on ? "&#10003;" : "") + "</span></button>" +
+          '<div class="slide-meta"><input type="text" value="' + esc(x.title) + '" data-title="' + x.id + '" aria-label="Slide title">' +
+          '<select data-cat="' + x.id + '">' + slideCatOptions(x.category, false) + "</select>" +
+          '<button type="button" class="linkbtn del" data-del="' + x.id + '" title="Delete slide">Delete</button></div></div>';
+      }).join("") : '<p class="muted center">No slides yet. Upload your proposal slides to get started.</p>';
+      drawSel();
+    }
+    function drawSel() {
+      var ids = Object.keys(slideState.selected);
+      $("#selBar").hidden = !ids.length;
+      $("#selCount").textContent = ids.length + " selected";
+    }
+    function loadTargets() {
+      sb.from("proposals").select("id,title,client").order("updated_at", { ascending: false }).range(0, 499).then(function (r) {
+        var opts = '<option value="__new">+ New proposal&hellip;</option>' + (r.data || []).map(function (p) {
+          return '<option value="' + p.id + '"' + (p.id === slideState.target ? " selected" : "") + ">" + esc(p.title + (p.client ? " (" + p.client + ")" : "")) + "</option>";
+        }).join("");
+        $("#selTarget").innerHTML = opts;
+        if (slideState.target && (r.data || []).some(function (p) { return p.id === slideState.target; })) $("#selTarget").value = slideState.target;
+      });
+    }
+    function upload(files) {
+      files = Array.prototype.slice.call(files || []).filter(function (f) { return /^image\//.test(f.type); });
+      if (!files.length) return;
+      var dz = $("#slideDrop"), n = 0, base = all.length ? Math.max.apply(null, all.map(function (x) { return x.sort_order; })) : 0;
+      files.sort(function (a, b) { return a.name.localeCompare(b.name, undefined, { numeric: true }); });
+      var chain = Promise.resolve();
+      files.forEach(function (f, i) {
+        chain = chain.then(function () {
+          dz.textContent = "Uploading " + (i + 1) + " of " + files.length + "...";
+          return GHDB.shrinkImage(f, 2400).then(function (blob) {
+            var path = GHDB.uuid() + ".jpg";
+            return uploadBlob(SLIDE_BUCKET, path, blob).then(function () {
+              var url = sb.storage.from(SLIDE_BUCKET).getPublicUrl(path).data.publicUrl;
+              return sb.from("slides").insert({ title: titleFromFile(f.name), category: slideState.cat || null, url: url, path: path, sort_order: base + (i + 1) * 10 }).then(must);
+            }).then(function () { n++; });
+          });
+        });
+      });
+      chain.catch(fail).then(function () {
+        dz.textContent = "Drag slide images here (PNG or JPG exported from Canva)";
+        if (n) toast(n + " slide" + (n > 1 ? "s" : "") + " uploaded");
+        return load();
+      });
+    }
+
+    load().catch(fail); loadTargets();
+    $("#sQ").addEventListener("input", function (e) { slideState.q = e.target.value; draw(); });
+    $("#sCat").addEventListener("change", function (e) { slideState.cat = e.target.value; draw(); });
+    $("#slideUpload").addEventListener("change", function (e) { upload(e.target.files); e.target.value = ""; });
+    var dz = $("#slideDrop");
+    dz.addEventListener("dragover", function (e) { e.preventDefault(); dz.classList.add("over"); });
+    dz.addEventListener("dragleave", function () { dz.classList.remove("over"); });
+    dz.addEventListener("drop", function (e) { e.preventDefault(); dz.classList.remove("over"); upload(e.dataTransfer.files); });
+    dz.addEventListener("click", function () { $("#slideUpload").click(); });
+
+    var grid = $("#slideGrid");
+    grid.addEventListener("click", function (e) {
+      var pick = e.target.closest("[data-pick]");
+      if (pick) { var id = pick.getAttribute("data-pick"); if (slideState.selected[id]) delete slideState.selected[id]; else slideState.selected[id] = 1; draw(); return; }
+      var del = e.target.closest("[data-del]");
+      if (del) {
+        var sid = del.getAttribute("data-del"), x = all.filter(function (y) { return y.id === sid; })[0];
+        if (!confirm("Delete this slide? It will also be removed from any proposals.")) return;
+        (x.path ? sb.storage.from(SLIDE_BUCKET).remove([x.path]) : Promise.resolve())
+          .then(function () { return sb.from("slides").delete().eq("id", sid).then(must); })
+          .then(function () { delete slideState.selected[sid]; toast("Slide deleted"); return load(); }).catch(fail);
+      }
+    });
+    grid.addEventListener("change", function (e) {
+      var t = e.target, id = t.getAttribute("data-title") || t.getAttribute("data-cat");
+      if (!id) return;
+      var patch = t.hasAttribute("data-title") ? { title: t.value.trim() || "Slide" } : { category: t.value || null };
+      sb.from("slides").update(patch).eq("id", id).then(must).then(function () {
+        all.forEach(function (x) { if (x.id === id) { for (var k in patch) x[k] = patch[k]; } }); toast("Saved");
+      }).catch(fail);
+    });
+    $("#selClear").addEventListener("click", function () { slideState.selected = {}; draw(); });
+    $("#selAdd").addEventListener("click", function () {
+      var ids = all.filter(function (x) { return slideState.selected[x.id]; }).map(function (x) { return x.id; });
+      var target = $("#selTarget").value;
+      var getId = target === "__new" ? (function () {
+        var title = prompt("Name for the new proposal (e.g. Grand Hyatt NYE 2026):");
+        if (!title) return Promise.reject(null);
+        return sb.from("proposals").insert({ title: title.trim() }).select("id").single().then(must).then(function (r) { return r.id; });
+      })() : Promise.resolve(target);
+      getId.then(function (pid) {
+        return sb.from("proposal_slides").select("slide_id,position").eq("proposal_id", pid).then(must).then(function (existing) {
+          var have = {}, max = -1;
+          existing.forEach(function (e) { have[e.slide_id] = 1; if (e.position > max) max = e.position; });
+          var rows = ids.filter(function (id) { return !have[id]; }).map(function (id, i) { return { proposal_id: pid, slide_id: id, position: max + 1 + i }; });
+          return (rows.length ? sb.from("proposal_slides").insert(rows).then(must) : Promise.resolve()).then(function () {
+            return sb.from("proposals").update({ updated_at: new Date().toISOString() }).eq("id", pid);
+          }).then(function () {
+            slideState.selected = {}; slideState.target = pid;
+            toast(rows.length + " slide" + (rows.length === 1 ? "" : "s") + " added" + (ids.length > rows.length ? " (some were already in it)" : ""));
+            location.hash = "#/proposals/" + pid;
+          });
+        });
+      }).catch(function (e) { if (e) fail(e); });
+    });
+  }
+
+  // ---------- proposals ----------
+  function viewProposals() {
+    app.innerHTML = '<div class="pagehead"><div><h1>Proposals</h1><p class="muted">Build a proposal from your slide library, download it as a PDF or send the client a private link.</p></div>' +
+      '<button class="btn primary" type="button" id="newProp">+ New proposal</button></div><div id="propList"><p class="muted">Loading&hellip;</p></div>';
+    $("#newProp").addEventListener("click", function () {
+      var title = prompt("Name for the new proposal (e.g. Grand Hyatt NYE 2026):");
+      if (!title) return;
+      sb.from("proposals").insert({ title: title.trim() }).select("id").single().then(must)
+        .then(function (r) { location.hash = "#/proposals/" + r.id; }).catch(fail);
+    });
+    sb.from("proposals").select("id,title,client,event_date,shared,updated_at,proposal_slides(count)").order("updated_at", { ascending: false }).range(0, 999)
+      .then(function (r) {
+        if (r.error) return fail(r.error);
+        if (!r.data.length) { $("#propList").innerHTML = '<p class="muted center">No proposals yet.</p>'; return; }
+        $("#propList").innerHTML = '<table class="list"><thead><tr><th>Proposal</th><th class="hide-m">Client</th><th class="hide-m">Event date</th><th>Slides</th><th>Client link</th><th></th></tr></thead><tbody>' +
+          r.data.map(function (p) {
+            var n = (p.proposal_slides && p.proposal_slides[0] && p.proposal_slides[0].count) || 0;
+            return '<tr><td class="name"><a href="#/proposals/' + p.id + '">' + esc(p.title) + '</a><div class="sub">Edited ' + fmtDate(p.updated_at) + "</div></td>" +
+              '<td class="hide-m sub">' + esc(p.client || "") + '</td><td class="hide-m sub">' + (p.event_date ? fmtDate(p.event_date) : "") + "</td>" +
+              "<td>" + n + '</td><td><span class="pill ' + (p.shared ? "live" : "hidden") + '">' + (p.shared ? "On" : "Off") + "</span></td>" +
+              '<td><a class="btn sm" href="#/proposals/' + p.id + '">Open</a></td></tr>';
+          }).join("") + "</tbody></table>";
+      });
+  }
+
+  function viewProposal(id) {
+    app.innerHTML = '<p class="muted center">Loading&hellip;</p>';
+    Promise.all([
+      sb.from("proposals").select("*").eq("id", id).maybeSingle(),
+      sb.from("proposal_slides").select("slide_id,position,slides(id,title,url,category)").eq("proposal_id", id).order("position")
+    ]).then(function (res) {
+      if (res[0].error) return fail(res[0].error);
+      if (res[1].error) return fail(res[1].error);
+      var p = res[0].data;
+      if (!p) { app.innerHTML = '<p class="center muted">Proposal not found. <a href="#/proposals">Back</a></p>'; return; }
+      var items = res[1].data.filter(function (x) { return x.slides; }).map(function (x) { return x.slides; });
+      var link = location.origin + "/proposal.html?t=" + p.share_token;
+      app.innerHTML = '<div class="pagehead"><div><a href="#/proposals" class="small">&larr; All proposals</a><h1>' + esc(p.title) + "</h1></div>" +
+        '<div class="toolbar"><a class="btn" href="#/slides?add=' + p.id + '">+ Add slides</a><button class="btn primary" type="button" id="pdfBtn">Download PDF</button></div></div>' +
+        '<section class="panel"><div class="grid3">' +
+        '<label class="field">Proposal name<input type="text" id="prTitle" value="' + esc(p.title) + '"></label>' +
+        '<label class="field">Client<input type="text" id="prClient" value="' + esc(p.client || "") + '"></label>' +
+        '<label class="field">Event date<input type="date" id="prDate" value="' + esc(p.event_date || "") + '"></label>' +
+        '<label class="field" style="grid-column:1/-1">Internal notes<textarea id="prNotes">' + esc(p.notes || "") + "</textarea></label></div>" +
+        '<br><button class="btn primary" type="button" id="prSave">Save details</button></section>' +
+        '<section class="panel"><h2>Client link ' + sw("prShared", p.shared, "Link switched on") + "</h2>" +
+        '<p class="note">When the link is on, anyone you send it to can view and download this proposal. Switch it off at any time.</p>' +
+        '<div class="linkrow"><input type="text" id="prLink" readonly value="' + esc(link) + '"><button class="btn" type="button" id="prCopy">Copy link</button></div></section>' +
+        '<section class="panel"><h2>Slides <span class="muted small">' + items.length + " in this proposal</span></h2>" +
+        (items.length ? '<div class="slide-grid order" id="prSlides">' + items.map(function (x, i) {
+          return '<div class="slide"><span class="num">' + (i + 1) + '</span><img loading="lazy" src="' + esc(x.url) + '" alt=""><div class="slide-meta"><span class="sub">' + esc(x.title) + "</span>" +
+            '<span class="tools"><button type="button" data-mv="-1" data-i="' + i + '"' + (i === 0 ? " disabled" : "") + ' title="Move earlier">&larr;</button>' +
+            '<button type="button" data-mv="1" data-i="' + i + '"' + (i === items.length - 1 ? " disabled" : "") + ' title="Move later">&rarr;</button>' +
+            '<button type="button" class="del" data-rm="' + i + '" title="Remove from proposal">&#10005;</button></span></div></div>';
+        }).join("") + "</div>" : '<p class="muted">No slides yet. <a href="#/slides?add=' + p.id + '">Choose slides from your library</a>.</p>') +
+        '</section><div class="actions"><span class="spacer"></span><button class="btn danger" type="button" id="prDelete">Delete proposal</button></div>';
+
+      $("#prSave").addEventListener("click", function () {
+        sb.from("proposals").update({ title: val("prTitle") || "Untitled proposal", client: val("prClient"), event_date: val("prDate"), notes: val("prNotes") }).eq("id", id).then(must)
+          .then(function () { toast("Saved"); viewProposal(id); }).catch(fail);
+      });
+      $("#prShared").addEventListener("change", function (e) {
+        sb.from("proposals").update({ shared: e.target.checked }).eq("id", id).then(must)
+          .then(function () { toast(e.target.checked ? "Client link is on" : "Client link is off"); }).catch(fail);
+      });
+      $("#prCopy").addEventListener("click", function () {
+        var inp = $("#prLink"); inp.select();
+        (navigator.clipboard ? navigator.clipboard.writeText(inp.value) : Promise.reject()).then(function () { toast("Link copied"); }, function () { document.execCommand("copy"); toast("Link copied"); });
+        if (!$("#prShared").checked) toast("Copied. Switch the link on before sending it.", true);
+      });
+      $("#pdfBtn").addEventListener("click", function () { printSlides(p.title, items.map(function (x) { return x.url; })); });
+      $("#prDelete").addEventListener("click", function () {
+        if (!confirm("Delete this proposal? Your slides stay in the library.")) return;
+        sb.from("proposals").delete().eq("id", id).then(must).then(function () { toast("Proposal deleted"); location.hash = "#/proposals"; }).catch(fail);
+      });
+      var grid = $("#prSlides");
+      if (grid) grid.addEventListener("click", function (e) {
+        var b = e.target.closest("button"); if (!b || b.disabled) return;
+        if (b.hasAttribute("data-rm")) items.splice(+b.getAttribute("data-rm"), 1);
+        else { var from = +b.getAttribute("data-i"), to = from + +b.getAttribute("data-mv"); var m = items.splice(from, 1)[0]; items.splice(to, 0, m); }
+        sb.from("proposal_slides").delete().eq("proposal_id", id).then(must)
+          .then(function () { return items.length ? sb.from("proposal_slides").insert(items.map(function (x, i) { return { proposal_id: id, slide_id: x.id, position: i }; })).then(must) : null; })
+          .then(function () { return sb.from("proposals").update({ updated_at: new Date().toISOString() }).eq("id", id); })
+          .then(function () { viewProposal(id); }).catch(fail);
+      });
+    }).catch(fail);
+  }
+
+  // Opens the slides as landscape pages and the browser's Save as PDF dialog.
+  function printSlides(title, urls) {
+    if (!urls.length) { toast("Add some slides first", true); return; }
+    var w = window.open("", "_blank");
+    if (!w) { toast("Allow pop-ups for this site to download the PDF", true); return; }
+    w.document.write('<!DOCTYPE html><html><head><meta charset="utf-8"><title>' + esc(title) + "</title><style>" +
+      "@page{size:1920px 1080px;margin:0}html,body{margin:0;background:#111}img{display:block;width:100vw;height:auto;page-break-after:always;break-after:page}" +
+      "@media screen{img{max-width:1200px;margin:16px auto;width:90vw}}</style></head><body>" +
+      urls.map(function (u) { return '<img src="' + esc(u) + '" alt="">'; }).join("") + "</body></html>");
+    w.document.close();
+    var imgs = w.document.images, left = imgs.length;
+    function done() { if (--left <= 0) setTimeout(function () { w.focus(); w.print(); }, 300); }
+    Array.prototype.forEach.call(imgs, function (im) { if (im.complete) done(); else { im.onload = done; im.onerror = done; } });
   }
 
   // ---------- password ----------

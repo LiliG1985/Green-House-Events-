@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="robots" content="noindex, nofollow"/>
+    <title>Proposal | Greenhouse Events Dubai</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #C9A84C; --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%); }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: #04100c; color: #F4F0E8; font-family: 'DM Sans', sans-serif; }
+        header { position: sticky; top: 0; z-index: 5; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem 4vw; background: rgba(4,16,12,0.94); border-bottom: 1px solid rgba(201,168,76,0.25); flex-wrap: wrap; }
+        .brand { font-family: 'Cinzel', serif; letter-spacing: 4px; font-weight: 700; color: var(--gold); font-size: 0.95rem; }
+        h1 { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 1.4rem; }
+        .sub { color: rgba(244,240,232,0.6); font-size: 0.85rem; }
+        button { background: var(--gold-metallic); color: #1a1405; border: 0; padding: 0.7rem 1.3rem; font-family: 'Cinzel', serif; font-weight: 700; letter-spacing: 1.5px; font-size: 0.75rem; cursor: pointer; }
+        main { max-width: 1280px; margin: 0 auto; padding: 2rem 4vw 4rem; display: grid; gap: 1.6rem; }
+        main img { width: 100%; height: auto; display: block; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .msg { text-align: center; padding: 18vh 1rem; color: rgba(244,240,232,0.75); line-height: 1.7; }
+        .msg a { color: var(--gold); }
+        @page { size: 1920px 1080px; margin: 0; }
+        @media print {
+            header { display: none; }
+            body { background: #fff; }
+            main { padding: 0; gap: 0; max-width: none; }
+            main img { width: 100vw; box-shadow: none; page-break-after: always; break-after: page; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div><span class="brand">GREENHOUSE EVENTS DUBAI</span></div>
+        <div style="text-align:center"><h1 id="pTitle"></h1><div class="sub" id="pClient"></div></div>
+        <button type="button" id="dlBtn" hidden>Download PDF</button>
+    </header>
+    <main id="slides"><p class="msg">Loading proposal&hellip;</p></main>
+
+    <script src="/js/supabase.js"></script>
+    <script src="/js/gh-db.js"></script>
+    <script>
+    (function () {
+        var token = new URLSearchParams(location.search).get("t") || "";
+        var main = document.getElementById("slides");
+        function esc(v) { return String(v == null ? "" : v).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+        function unavailable() {
+            main.innerHTML = '<p class="msg">This proposal link is no longer available.<br>Please contact <a href="mailto:info@greenhouseeventsuae.com">info@greenhouseeventsuae.com</a> for an updated link.</p>';
+        }
+        GHDB.client().then(function (sb) {
+            if (!sb || token.length < 32) return unavailable();
+            return sb.rpc("shared_proposal", { token: token }).then(function (r) {
+                var p = r.data;
+                if (r.error || !p || !p.slides || !p.slides.length) return unavailable();
+                document.title = p.title + " | Greenhouse Events Dubai";
+                document.getElementById("pTitle").textContent = p.title;
+                document.getElementById("pClient").textContent = p.client ? "Prepared for " + p.client : "";
+                main.innerHTML = p.slides.map(function (u, i) { return '<img src="' + esc(u) + '" alt="Slide ' + (i + 1) + '"' + (i > 1 ? ' loading="lazy"' : "") + ">"; }).join("");
+                var btn = document.getElementById("dlBtn"); btn.hidden = false;
+                btn.addEventListener("click", function () {
+                    Array.prototype.forEach.call(main.querySelectorAll("img"), function (im) { im.loading = "eager"; });
+                    var imgs = main.querySelectorAll("img"), left = imgs.length;
+                    function go() { if (--left <= 0) window.print(); }
+                    Array.prototype.forEach.call(imgs, function (im) { if (im.complete) go(); else { im.onload = go; im.onerror = go; } });
+                });
+            });
+        }).catch(unavailable);
+    })();
+    </script>
+</body>
+</html>

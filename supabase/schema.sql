@@ -240,6 +240,86 @@ create policy "admins delete application photos" on storage.objects for delete
   using (bucket_id = 'applications' and public.is_admin());
 
 -- ---------------------------------------------------------------------------
+-- Proposal builder: a library of slides, and proposals made from them.
+-- Admin only. A proposal can be shared with a client through a private link.
+-- ---------------------------------------------------------------------------
+create table if not exists public.slides (
+  id uuid primary key default gen_random_uuid(),
+  title text not null default 'Slide',
+  category text,
+  artist_id uuid references public.artists (id) on delete set null,
+  url text not null,
+  path text,
+  sort_order int not null default 0,
+  created_at timestamptz not null default now()
+);
+create index if not exists slides_list_idx on public.slides (category, sort_order);
+
+create table if not exists public.proposals (
+  id uuid primary key default gen_random_uuid(),
+  title text not null,
+  client text,
+  event_date date,
+  notes text,
+  share_token text not null unique default encode(gen_random_bytes(16), 'hex'),
+  shared boolean not null default false,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+create table if not exists public.proposal_slides (
+  proposal_id uuid not null references public.proposals (id) on delete cascade,
+  slide_id uuid not null references public.slides (id) on delete cascade,
+  position int not null default 0,
+  primary key (proposal_id, slide_id)
+);
+
+drop trigger if exists proposals_touch on public.proposals;
+create trigger proposals_touch before update on public.proposals
+  for each row execute function public.artist_private_touch();
+
+alter table public.slides enable row level security;
+alter table public.proposals enable row level security;
+alter table public.proposal_slides enable row level security;
+drop policy if exists "admins manage slides" on public.slides;
+create policy "admins manage slides" on public.slides for all using (public.is_admin()) with check (public.is_admin());
+drop policy if exists "admins manage proposals" on public.proposals;
+create policy "admins manage proposals" on public.proposals for all using (public.is_admin()) with check (public.is_admin());
+drop policy if exists "admins manage proposal slides" on public.proposal_slides;
+create policy "admins manage proposal slides" on public.proposal_slides for all using (public.is_admin()) with check (public.is_admin());
+
+-- What a client sees through a shared link: the title and the slide images, nothing else.
+create or replace function public.shared_proposal(token text)
+returns json
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select json_build_object(
+    'title', p.title,
+    'client', p.client,
+    'slides', coalesce((
+      select json_agg(s.url order by ps.position)
+      from public.proposal_slides ps join public.slides s on s.id = ps.slide_id
+      where ps.proposal_id = p.id), '[]'::json))
+  from public.proposals p
+  where p.shared and p.share_token = token and length(token) >= 32;
+$$;
+grant execute on function public.shared_proposal(text) to anon, authenticated;
+
+-- Slide images: viewable by link (file names are random), only admins add or remove.
+insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+values ('slides', 'slides', true, 15728640, array['image/jpeg', 'image/png', 'image/webp'])
+on conflict (id) do nothing;
+drop policy if exists "admins upload slides" on storage.objects;
+create policy "admins upload slides" on storage.objects for insert with check (bucket_id = 'slides' and public.is_admin());
+drop policy if exists "admins update slides" on storage.objects;
+create policy "admins update slides" on storage.objects for update using (bucket_id = 'slides' and public.is_admin());
+drop policy if exists "admins delete slides" on storage.objects;
+create policy "admins delete slides" on storage.objects for delete using (bucket_id = 'slides' and public.is_admin());
+
+-- ---------------------------------------------------------------------------
 -- Add the people who may sign in to the dashboard (edit the email, then run).
 -- insert into public.admins (email) values ('info@greenhouseeventsuae.com') on conflict do nothing;
 -- ---------------------------------------------------------------------------

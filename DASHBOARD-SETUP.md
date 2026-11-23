@@ -42,9 +42,17 @@ To give a team member access later: repeat steps 4 and 5 with their email.
 Until Supabase is connected, the talent page shows the roster written into `talent.html`, the Join Our Roster
 form asks artists to email instead, and `/admin` shows a "not connected yet" message.
 
+## Slides & proposals
+
+- **Slides:** upload your proposal slides (PNG/JPG exported from Canva; drag in a whole batch). Give each a
+  title and category. Tick the ones you want and press **Add to proposal** (or start a new one).
+- **Proposals:** set the client and event date, reorder or remove slides, **Download PDF** (opens the print
+  dialog; choose *Save as PDF*), or switch on the **client link** and send it. Switch the link off to stop access.
+
 ## Files
 
 - `admin/`: the dashboard (`index.html`, `admin.js`, `admin.css`)
+- `proposal.html`: what a client sees through a shared proposal link
 - `api/config.js`: gives the site the Supabase address and public key from Vercel
 - `js/supabase.js`: Supabase's browser library (v2), `js/gh-db.js`: shared connection and photo resizing
 - `js/talent-live.js`: draws the talent page from the dashboard
