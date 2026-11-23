@@ -434,6 +434,18 @@
         .pb-features { list-style: none; padding: 0; margin: 0.8rem 0 1.1rem; display: grid; gap: 0.35rem; }
         .pb-features li { font-size: 0.88rem; color: #3b4a40; padding-left: 1.1rem; position: relative; }
         .pb-features li::before { content: "\2726"; position: absolute; left: 0; color: #c9a84c; font-size: 0.7rem; top: 0.2rem; }
+
+        /* Photo booths: split header, our 360 photo on the left */
+        .fs-hero.pb-hero { background: #04140e; align-items: flex-start; text-align: left; padding: 0 6vw 0 calc(50% + 4vw); }
+        .fs-hero.pb-hero::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 50%; background: url('photobooth-photos/360-tall.jpg?v=1') no-repeat center 45%; background-size: cover; }
+        .fs-hero.pb-hero::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 50%; background: linear-gradient(90deg, rgba(4,20,14,0) 70%, rgba(4,20,14,1) 100%); }
+        .fs-hero.pb-hero > * { position: relative; z-index: 1; }
+        .fs-hero.pb-hero p { margin-left: 0; }
+        @media (max-width: 800px) {
+            .fs-hero.pb-hero { padding: 72vh 6vw 56px; align-items: center; text-align: center; min-height: 0; }
+            .fs-hero.pb-hero::before { width: 100%; height: 68vh; bottom: auto; background-position: center 35%; }
+            .fs-hero.pb-hero::after { width: 100%; height: 68vh; bottom: auto; background: linear-gradient(180deg, rgba(4,20,14,0) 65%, rgba(4,20,14,1) 100%); }
+        }
     </style>
 </head>
 <body>
@@ -490,7 +502,7 @@
     </div>
 </nav>
 
-<header class="fs-hero">
+<header class="fs-hero pb-hero">
     <span class="fs-hero-badge">PHOTO BOOTHS</span>
     <h1>Strike A <span class="accent">Pose</span></h1>
     <p>From 360 video and classic print booths to AI, mirror and neon scribble booths, every booth comes with set-up, an attendant and your own custom branding.</p>
