@@ -164,21 +164,64 @@
         }
 
         /* --- CATEGORY NAV --- */
-        .cat-nav-wrap { position: sticky; top: 0; z-index: 50; background: rgba(4,16,12,0.92); backdrop-filter: blur(16px); border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); padding-top: 4.6rem; }
-        .cat-nav { position: static; width: auto; z-index: auto; background: none; backdrop-filter: none; transition: none; display: flex; gap: 0.6rem; overflow-x: auto; padding: 1rem 6vw; scrollbar-width: none; }
-        .cat-nav::-webkit-scrollbar { display: none; }
-        .cat-nav a {
-            flex-shrink: 0; font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 1px;
-            padding: 0.6rem 1.1rem; border: 0.5px solid var(--border); color: var(--white-off); opacity: 0.7;
-            transition: all 0.25s ease; white-space: nowrap;
+        .cat-nav-wrap {
+            position: sticky; top: 4.55rem; z-index: 50; transition: top 0.4s ease;
+            background: rgba(4,16,12,0.94); backdrop-filter: blur(16px);
+            border-top: 0.5px solid rgba(201,168,76,0.25); border-bottom: 0.5px solid rgba(201,168,76,0.25);
+            display: flex; align-items: center; gap: 1rem; padding: 0.9rem 6vw;
         }
-        .cat-nav a:hover { opacity: 1; border-color: var(--gold-solid); }
-        .cat-nav a.active { opacity: 1; color: var(--gold-solid); border-color: var(--gold-solid); background: rgba(201,168,76,0.08); }
+        body:has(nav.nav-hidden) .cat-nav-wrap { top: 0; }
+        .cat-nav {
+            position: static; width: auto; z-index: auto; background: none; backdrop-filter: none; transition: none;
+            display: flex; justify-content: flex-start; align-items: center; gap: 0.8rem;
+            flex: 1 1 auto; min-width: 0; overflow-x: auto; padding: 0.2rem 0; scrollbar-width: none;
+        }
+        .cat-nav > a:first-child { margin-left: auto; }
+        .cat-nav > a:last-child { margin-right: auto; }
+        .cat-nav::-webkit-scrollbar { display: none; }
+        .cat-nav a, .cat-more-btn {
+            flex-shrink: 0; font-family: var(--sans); font-size: 0.74rem; font-weight: 600; letter-spacing: 1.6px; text-transform: uppercase;
+            padding: 0.7rem 1.4rem; border: 0.5px solid rgba(201,168,76,0.55); white-space: nowrap; text-decoration: none;
+            background: var(--gold-metallic); -webkit-background-clip: text; background-clip: text; color: transparent;
+            transition: all 0.25s ease; cursor: pointer;
+        }
+        .cat-nav a:hover, .cat-more-btn:hover { border-color: #F5E9B8; box-shadow: 0 0 14px rgba(201,168,76,0.25); }
+        .cat-nav a.active {
+            background: var(--gold-metallic); -webkit-background-clip: border-box; background-clip: border-box;
+            color: #0b1a18; border-color: transparent; box-shadow: 0 2px 16px rgba(201,168,76,0.3);
+        }
+        .cat-more { position: relative; flex-shrink: 0; }
+        .cat-more-btn { display: inline-flex; align-items: center; gap: 0.45rem; background-color: transparent; font: inherit; font-family: var(--sans); font-size: 0.74rem; font-weight: 600; letter-spacing: 1.6px; }
+        .cat-more-btn svg { width: 14px; height: 14px; fill: #C9A84C; transition: transform 0.25s ease; }
+        .cat-more.open .cat-more-btn svg { transform: rotate(180deg); }
+        .cat-more-menu {
+            display: none; position: absolute; right: 0; top: calc(100% + 0.6rem); width: 300px; max-width: 88vw;
+            max-height: 70vh; overflow-y: auto; z-index: 60; padding: 0.8rem 0;
+            background: rgba(4,16,12,0.98); border: 0.5px solid rgba(201,168,76,0.45); box-shadow: 0 18px 40px rgba(0,0,0,0.55);
+        }
+        .cat-more.open .cat-more-menu { display: block; }
+        .cat-more-menu h4 {
+            font-family: var(--sans); font-size: 0.64rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+            color: var(--gold-solid); opacity: 0.75; padding: 0.8rem 1.3rem 0.4rem; margin: 0;
+        }
+        .cat-more-menu a {
+            display: block; padding: 0.55rem 1.3rem; font-family: var(--sans); font-size: 0.88rem;
+            color: var(--white-off); opacity: 0.85; text-decoration: none; transition: all 0.2s ease;
+        }
+        .cat-more-menu a:hover { opacity: 1; color: #F5E9B8; background: rgba(201,168,76,0.08); }
+        .cat-more-menu .cat-more-all { margin-top: 0.6rem; border-top: 0.5px solid rgba(201,168,76,0.25); padding-top: 0.9rem; color: var(--gold-solid); font-weight: 600; }
+        @media (max-width: 700px) {
+            .cat-nav-wrap { padding: 0.7rem 4vw; gap: 0.6rem; }
+            .cat-nav { gap: 0.5rem; }
+            .cat-nav a, .cat-more-btn { padding: 0.6rem 0.9rem; font-size: 0.66rem; letter-spacing: 1.2px; }
+            .cat-more-long { display: none; }
+            .cat-nav-wrap { top: 3.9rem; }
+        }
 
         /* --- CATEGORY SECTIONS --- */
         .roster-list { max-width: 980px; margin: 0 auto; padding: 1rem 6vw 2rem; }
         .cat-section {
-            scroll-margin-top: 7.5rem;
+            scroll-margin-top: 9rem;
             padding: 3rem 0; border-bottom: 0.5px solid var(--border);
             display: grid; grid-template-columns: 1fr auto; gap: 2.5rem; align-items: center;
         }
@@ -842,6 +885,35 @@
         <a href="#bands">Live Bands</a>
         <a href="#instrumental">Instrumentalists</a>
     </nav>
+    <div class="cat-more" id="catMore">
+        <button class="cat-more-btn" id="catMoreBtn" type="button" aria-haspopup="true" aria-expanded="false">
+            More<span class="cat-more-long">&nbsp;Entertainment</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div class="cat-more-menu" id="catMoreMenu">
+            <h4>Live Performances &amp; Shows</h4>
+            <a href="contact.html?service=Entertainment&amp;act=Specialists%20Acts">Specialists Acts</a>
+            <a href="contact.html?service=Entertainment&amp;act=Circus%20Acts">Circus Acts</a>
+            <a href="contact.html?service=Entertainment&amp;act=Roaming%20Acts">Roaming Acts</a>
+            <a href="contact.html?service=Entertainment&amp;act=Dancers">Dancers</a>
+            <a href="contact.html?service=Entertainment&amp;act=Shows">Shows</a>
+            <a href="contact.html?service=Entertainment&amp;act=Acrobats">Acrobats</a>
+            <a href="contact.html?service=Entertainment&amp;act=Stationed%20Acts">Stationed Acts</a>
+            <a href="contact.html?service=Entertainment&amp;act=Fire%20%26%20L.E.D%20Shows">Fire &amp; L.E.D Shows</a>
+            <a href="contact.html?service=Entertainment&amp;act=Children%27s">Children's</a>
+            <h4>Atmosphere &amp; Media</h4>
+            <a href="contact.html?service=Entertainment&amp;act=Hostesses">Hostesses</a>
+            <a href="contact.html?service=Entertainment&amp;act=MC%20/%20Host%20/%20Comedian">MC / Host / Comedian</a>
+            <a href="contact.html?service=Entertainment&amp;act=Live%20Art">Live Art</a>
+            <a href="contact.html?service=Entertainment&amp;act=Photographers%20%26%20Videographers">Photographers &amp; Videographers</a>
+            <a href="contact.html?service=Entertainment&amp;act=Photo%20Booths">Photo Booths</a>
+            <a href="contact.html?service=Entertainment&amp;act=Magicians%20%26%20Illusionists">Magicians &amp; Illusionists</a>
+            <h4>Arabic</h4>
+            <a href="contact.html?service=Entertainment&amp;act=Arabic">Arabic</a>
+            <a href="contact.html?service=Entertainment&amp;act=Arabic%20Entertainment">Arabic Entertainment</a>
+            <a href="entertainment.html#entertainment-portfolio" class="cat-more-all">View all entertainment &rarr;</a>
+        </div>
+    </div>
 </div>
 <div class="roster-list">
 <section class="cat-section cat-section--djs" id="djs">
@@ -2777,6 +2849,16 @@
                 requestAnimationFrame(function () { update(window.scrollY); });
             }
         }, { passive: true });
+    })();
+
+    // --- CATEGORY NAV: "More Entertainment" dropdown ---
+    (function () {
+        var wrap = document.getElementById("catMore"), btn = document.getElementById("catMoreBtn");
+        if (!wrap || !btn) return;
+        function setOpen(open) { wrap.classList.toggle("open", open); btn.setAttribute("aria-expanded", open ? "true" : "false"); }
+        btn.addEventListener("click", function (e) { e.stopPropagation(); setOpen(!wrap.classList.contains("open")); });
+        document.addEventListener("click", function (e) { if (!wrap.contains(e.target)) setOpen(false); });
+        document.addEventListener("keydown", function (e) { if (e.key === "Escape") setOpen(false); });
     })();
 
     // --- CATEGORY NAV: active-state tracking ---
