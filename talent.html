@@ -218,6 +218,33 @@
             .cat-nav-wrap { top: 3.9rem; }
         }
 
+        /* --- RAMADAN & ARABIC ENTERTAINMENT --- */
+        .cat-section.cat-section--ramadan { display: block; }
+        .ram-anchor { display: block; position: relative; top: -9rem; visibility: hidden; }
+        .ram-subhead { scroll-margin-top: 9.5rem; }
+        .ram-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.6rem 0 0.4rem; }
+        .ram-chips a {
+            font-family: var(--sans); font-size: 0.68rem; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase;
+            padding: 0.45rem 0.9rem; border: 0.5px solid rgba(201,168,76,0.4); color: var(--gold-solid);
+            text-decoration: none; transition: all 0.25s ease;
+        }
+        .ram-chips a:hover { background: rgba(201,168,76,0.1); border-color: var(--gold-solid); }
+        .ram-card img {
+            width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: center;
+            border: 0.5px solid var(--border); background: #000;
+        }
+        .ram-card h3 {
+            font-family: var(--serif); font-weight: 400; font-size: 1.05rem;
+            margin: 0.9rem 0 0.2rem; color: var(--white-off);
+        }
+        .ram-card .ram-role { display: block; font-size: 0.74rem; opacity: 0.6; margin-bottom: 0.6rem; line-height: 1.4; }
+        .ram-card .ram-enquire {
+            display: inline-block; font-family: var(--sans); font-size: 0.65rem; font-weight: 600;
+            letter-spacing: 1px; text-transform: uppercase; color: var(--gold-solid);
+            border-bottom: 0.5px solid var(--gold-solid); padding-bottom: 2px; transition: opacity 0.25s ease;
+        }
+        .ram-card .ram-enquire:hover { opacity: 0.7; }
+
         /* --- CATEGORY SECTIONS --- */
         .roster-list { max-width: 980px; margin: 0 auto; padding: 1rem 6vw 2rem; }
         .cat-section {
@@ -884,6 +911,7 @@
         <a href="#singers">Singers</a>
         <a href="#bands">Live Bands</a>
         <a href="#instrumental">Instrumentalists</a>
+        <a href="#ramadan">Ramadan</a>
     </nav>
     <div class="cat-more" id="catMore">
         <button class="cat-more-btn" id="catMoreBtn" type="button" aria-haspopup="true" aria-expanded="false">
@@ -908,9 +936,10 @@
             <a href="contact.html?service=Entertainment&amp;act=Photographers%20%26%20Videographers">Photographers &amp; Videographers</a>
             <a href="contact.html?service=Entertainment&amp;act=Photo%20Booths">Photo Booths</a>
             <a href="contact.html?service=Entertainment&amp;act=Magicians%20%26%20Illusionists">Magicians &amp; Illusionists</a>
-            <h4>Arabic</h4>
-            <a href="contact.html?service=Entertainment&amp;act=Arabic">Arabic</a>
-            <a href="contact.html?service=Entertainment&amp;act=Arabic%20Entertainment">Arabic Entertainment</a>
+            <h4>Ramadan &amp; Arabic</h4>
+            <a href="#ramadan">Ramadan &amp; Arabic Entertainment</a>
+            <a href="#ram-activations">Cultural Activations</a>
+            <a href="#ram-dance">Cultural Dance</a>
             <a href="entertainment.html#entertainment-portfolio" class="cat-more-all">View all entertainment &rarr;</a>
         </div>
     </div>
@@ -2714,6 +2743,619 @@
 </div>
   </div>
 </section>
+<section class="cat-section cat-section--ramadan" id="ramadan">
+  <span id="arabic-entertainment" class="ram-anchor" aria-hidden="true"></span>
+  <h2>Ramadan &amp; Arabic Entertainment</h2>
+  <p>Traditional Arabic musicians, live artists, cultural activations and heritage dance for Iftar, Suhoor and Ramadan gatherings across Dubai and the UAE.</p>
+  <div class="ram-chips"><a href="#ram-bands">Arabic Bands &amp; Duos</a><a href="#ram-oud">Oud</a><a href="#ram-qanun">Qanun</a><a href="#ram-percussion">Percussion</a><a href="#ram-harp">Harp</a><a href="#ram-violin">Violin</a><a href="#ram-flute">Flute</a><a href="#ram-artists">Live Artists</a><a href="#ram-activations">Cultural Activations</a><a href="#ram-dance">Cultural Dance</a></div>
+  <div class="instrumental-subhead ram-subhead" id="ram-bands">Arabic Bands &amp; Duos</div>
+  <div class="band-grid ram-grid">
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/benna-band.jpg" alt="Benna Band - Duo / Trio" loading="lazy">
+    <div class="act-bio-overlay"><p>UAE-based band blending Arabic, Latin, bossa nova and manouche sounds, with festival stages across the region.</p></div>
+  </div>
+  <h3>Benna Band</h3>
+  <span class="ram-role">Duo / Trio</span>
+  <a href="contact.html?service=Entertainment&amp;act=Benna%20Band%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/jad-duo.jpg" alt="Jad Duo - Oud, Vocals &amp; Percussion" loading="lazy">
+    <div class="act-bio-overlay"><p>Oud and vocals with live percussion, fusing soulful Arabic melodies with contemporary rhythms.</p></div>
+  </div>
+  <h3>Jad Duo</h3>
+  <span class="ram-role">Oud, Vocals &amp; Percussion</span>
+  <a href="contact.html?service=Entertainment&amp;act=Jad%20Duo%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/lubna-aida.jpg" alt="Lubna &amp; Aida - Qanun &amp; Vocals" loading="lazy">
+    <div class="act-bio-overlay"><p>A rich Arabic voice paired with the shimmering qanun, rooted in classical maqam tradition.</p></div>
+  </div>
+  <h3>Lubna &amp; Aida</h3>
+  <span class="ram-role">Qanun &amp; Vocals</span>
+  <a href="contact.html?service=Entertainment&amp;act=Lubna%20%26%20Aida%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/hooman-ensemble.jpg" alt="Hooman Ensemble - Oud, Vocals, Qanun &amp; Percussion" loading="lazy">
+    <div class="act-bio-overlay"><p>Persian and Arabic classical ensemble whose leader has performed at Expo 2020's Al Wasl Dome.</p></div>
+  </div>
+  <h3>Hooman Ensemble</h3>
+  <span class="ram-role">Oud, Vocals, Qanun &amp; Percussion</span>
+  <a href="contact.html?service=Entertainment&amp;act=Hooman%20Ensemble%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/gharbi-twins.jpg" alt="Gharbi Twins - Oud &amp; Violin" loading="lazy">
+    <div class="act-bio-overlay"><p>Twin brothers on oud and violin, blending traditional Arabic music with global influences.</p></div>
+  </div>
+  <h3>Gharbi Twins</h3>
+  <span class="ram-role">Oud &amp; Violin</span>
+  <a href="contact.html?service=Entertainment&amp;act=Gharbi%20Twins%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+  </div>
+  <div class="instrumental-subhead ram-subhead" id="ram-oud">Oud</div>
+  <div class="band-grid ram-grid">
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/sadeq.jpg" alt="Sadeq - Oud" loading="lazy">
+    <div class="act-bio-overlay"><p>Baghdad-trained oud master, schooled at the Institute of Fine Arts and taught by a master oud maker.</p></div>
+  </div>
+  <h3>Sadeq</h3>
+  <span class="ram-role">Oud</span>
+  <a href="contact.html?service=Entertainment&amp;act=Sadeq%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/saif-al-ali.jpg" alt="Saif Al Ali - Oud &amp; Vocals, Solo / Duo" loading="lazy">
+    <div class="act-bio-overlay"><p>Emirati oud player and singer blending Eastern and Emirati traditions, inspired by the great Arab classics.</p></div>
+  </div>
+  <h3>Saif Al Ali</h3>
+  <span class="ram-role">Oud &amp; Vocals, Solo / Duo</span>
+  <a href="contact.html?service=Entertainment&amp;act=Saif%20Al%20Ali%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/mahrat.jpg" alt="Mahrat - Oud, Saz &amp; Electric Oud" loading="lazy">
+    <div class="act-bio-overlay"><p>Multi-instrumentalist mixing Arabic and Western styles, a regular at luxury hotels across the region.</p></div>
+  </div>
+  <h3>Mahrat</h3>
+  <span class="ram-role">Oud, Saz &amp; Electric Oud</span>
+  <a href="contact.html?service=Entertainment&amp;act=Mahrat%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/tina.jpg" alt="Tina - Oud" loading="lazy">
+    <div class="act-bio-overlay"><p>Oud player and composer with a Master's in Iranian music, comfortable from classical to sets with DJs.</p></div>
+  </div>
+  <h3>Tina</h3>
+  <span class="ram-role">Oud</span>
+  <a href="contact.html?service=Entertainment&amp;act=Tina%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/sam.jpg" alt="Sam - Oud &amp; Vocals" loading="lazy">
+    <div class="act-bio-overlay"><p>Versatile oud player and vocalist at home in maqam, folklore, jazz, fusion and pop.</p></div>
+  </div>
+  <h3>Sam</h3>
+  <span class="ram-role">Oud &amp; Vocals</span>
+  <a href="contact.html?service=Entertainment&amp;act=Sam%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/jad.jpg" alt="Jad - Oud &amp; Vocals" loading="lazy">
+    <div class="act-bio-overlay"><p>Damascus-born oud player and singer who has performed at the Damascus Opera House and TUNES DXB.</p></div>
+  </div>
+  <h3>Jad</h3>
+  <span class="ram-role">Oud &amp; Vocals</span>
+  <a href="contact.html?service=Entertainment&amp;act=Jad%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/fady.jpg" alt="Fady - Oud, Violin, Qanun, Nay &amp; Vocals" loading="lazy">
+    <div class="act-bio-overlay"><p>Egyptian oud master who also plays violin, qanun and nay, with over a decade on UAE stages.</p></div>
+  </div>
+  <h3>Fady</h3>
+  <span class="ram-role">Oud, Violin, Qanun, Nay &amp; Vocals</span>
+  <a href="contact.html?service=Entertainment&amp;act=Fady%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/nina.jpg" alt="Nina - Oud &amp; Vocals" loading="lazy">
+    <div class="act-bio-overlay"><p>Oud player, composer and singer who has performed at major festivals and opened for renowned artists.</p></div>
+  </div>
+  <h3>Nina</h3>
+  <span class="ram-role">Oud &amp; Vocals</span>
+  <a href="contact.html?service=Entertainment&amp;act=Nina%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/yahia.jpg" alt="Yahia - Oud &amp; Vocals" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based oud master with rich vocals, who can also freestyle alongside a DJ.</p></div>
+  </div>
+  <h3>Yahia</h3>
+  <span class="ram-role">Oud &amp; Vocals</span>
+  <a href="contact.html?service=Entertainment&amp;act=Yahia%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/hooman.jpg" alt="Hooman - Oud" loading="lazy">
+    <div class="act-bio-overlay"><p>Oud player and composer blending classical Arabic melodies with modern influences.</p></div>
+  </div>
+  <h3>Hooman</h3>
+  <span class="ram-role">Oud</span>
+  <a href="contact.html?service=Entertainment&amp;act=Hooman%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/khaled.jpg" alt="Khaled - Oud" loading="lazy">
+    <div class="act-bio-overlay"><p>UAE oud player performing at weddings, corporate events and upscale venues since 2013.</p></div>
+  </div>
+  <h3>Khaled</h3>
+  <span class="ram-role">Oud</span>
+  <a href="contact.html?service=Entertainment&amp;act=Khaled%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/farnoush.jpg" alt="Farnoush - Oud" loading="lazy">
+    <div class="act-bio-overlay"><p>Accomplished oud player and former radio presenter with performances at festivals across the region.</p></div>
+  </div>
+  <h3>Farnoush</h3>
+  <span class="ram-role">Oud</span>
+  <a href="contact.html?service=Entertainment&amp;act=Farnoush%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/mayyas.jpg" alt="Mayyas - Oud" loading="lazy">
+    <div class="act-bio-overlay"><p>UAE-based oud player and teacher, preserving the heritage of oud while embracing contemporary styles.</p></div>
+  </div>
+  <h3>Mayyas</h3>
+  <span class="ram-role">Oud</span>
+  <a href="contact.html?service=Entertainment&amp;act=Mayyas%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/yamen.jpg" alt="Yamen - Oud &amp; Vocals" loading="lazy">
+    <div class="act-bio-overlay"><p>Oud player, composer and singer blending classical Arabic styles with modern touches.</p></div>
+  </div>
+  <h3>Yamen</h3>
+  <span class="ram-role">Oud &amp; Vocals</span>
+  <a href="contact.html?service=Entertainment&amp;act=Yamen%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+  </div>
+  <div class="instrumental-subhead ram-subhead" id="ram-qanun">Qanun</div>
+  <div class="band-grid ram-grid">
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/nagham.jpg" alt="Nagham - Qanun" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai's first female qanun player, composing and performing at festivals across the Middle East.</p></div>
+  </div>
+  <h3>Nagham</h3>
+  <span class="ram-role">Qanun</span>
+  <a href="contact.html?service=Entertainment&amp;act=Nagham%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/abdulkader.jpg" alt="Abdulkader - Qanun" loading="lazy">
+    <div class="act-bio-overlay"><p>Sought-after qanun player for concerts, weddings and cultural festivals across the UAE and region.</p></div>
+  </div>
+  <h3>Abdulkader</h3>
+  <span class="ram-role">Qanun</span>
+  <a href="contact.html?service=Entertainment&amp;act=Abdulkader%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/bella.jpg" alt="Bella - Qanun" loading="lazy">
+    <div class="act-bio-overlay"><p>Armenian-born qanun player, a Grand Prix winner at European folk festivals who has played Dubai Opera.</p></div>
+  </div>
+  <h3>Bella</h3>
+  <span class="ram-role">Qanun</span>
+  <a href="contact.html?service=Entertainment&amp;act=Bella%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/nazgol.jpg" alt="Nazgol - Qanun" loading="lazy">
+    <div class="act-bio-overlay"><p>Award-winning qanun player with a repertoire from Arabic classical to oriental house and fusion.</p></div>
+  </div>
+  <h3>Nazgol</h3>
+  <span class="ram-role">Qanun</span>
+  <a href="contact.html?service=Entertainment&amp;act=Nazgol%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/abdalla.jpg" alt="Abdalla - Qanun" loading="lazy">
+    <div class="act-bio-overlay"><p>Egyptian qanun player with twelve years touring alongside leading Arabic stars.</p></div>
+  </div>
+  <h3>Abdalla</h3>
+  <span class="ram-role">Qanun</span>
+  <a href="contact.html?service=Entertainment&amp;act=Abdalla%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/areej.jpg" alt="Areej - Qanun" loading="lazy">
+    <div class="act-bio-overlay"><p>Fujairah Academy-trained qanun player who has performed at major concerts across the Emirates.</p></div>
+  </div>
+  <h3>Areej</h3>
+  <span class="ram-role">Qanun</span>
+  <a href="contact.html?service=Entertainment&amp;act=Areej%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/kenan.jpg" alt="Kenan - Qanun" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai qanun player with over thirteen years of solo and ensemble performances.</p></div>
+  </div>
+  <h3>Kenan</h3>
+  <span class="ram-role">Qanun</span>
+  <a href="contact.html?service=Entertainment&amp;act=Kenan%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/maya.jpg" alt="Maya - Qanun" loading="lazy">
+    <div class="act-bio-overlay"><p>Syrian qanun player blending Eastern and Western styles, performing from Bahrain to Saudi Arabia.</p></div>
+  </div>
+  <h3>Maya</h3>
+  <span class="ram-role">Qanun</span>
+  <a href="contact.html?service=Entertainment&amp;act=Maya%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/ahmed.jpg" alt="Ahmed - Qanun" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai-based qanun player bringing technical mastery and emotional depth to classical Arabic music.</p></div>
+  </div>
+  <h3>Ahmed</h3>
+  <span class="ram-role">Qanun</span>
+  <a href="contact.html?service=Entertainment&amp;act=Ahmed%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+  </div>
+  <div class="instrumental-subhead ram-subhead" id="ram-percussion">Percussion</div>
+  <div class="band-grid ram-grid">
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/inas.jpg" alt="Inas - Percussion" loading="lazy">
+    <div class="act-bio-overlay"><p>Pioneering Syrian female drummer and percussionist, performing professionally since 2007.</p></div>
+  </div>
+  <h3>Inas</h3>
+  <span class="ram-role">Percussion</span>
+  <a href="contact.html?service=Entertainment&amp;act=Inas%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/pascale.jpg" alt="Pascale - Percussion" loading="lazy">
+    <div class="act-bio-overlay"><p>Lebanese percussionist fusing oriental and Western rhythms, and a member of Expo 2020's Firdaus Orchestra.</p></div>
+  </div>
+  <h3>Pascale</h3>
+  <span class="ram-role">Percussion</span>
+  <a href="contact.html?service=Entertainment&amp;act=Pascale%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/qayes.jpg" alt="Qayes - Percussion" loading="lazy">
+    <div class="act-bio-overlay"><p>Golden Visa percussionist blending Middle Eastern rhythms with global styles at major UAE events.</p></div>
+  </div>
+  <h3>Qayes</h3>
+  <span class="ram-role">Percussion</span>
+  <a href="contact.html?service=Entertainment&amp;act=Qayes%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/kdun.jpg" alt="Kdun - Percussion &amp; Handpan" loading="lazy">
+    <div class="act-bio-overlay"><p>Composer and percussionist known for the hypnotic, meditative sound of the handpan.</p></div>
+  </div>
+  <h3>Kdun</h3>
+  <span class="ram-role">Percussion &amp; Handpan</span>
+  <a href="contact.html?service=Entertainment&amp;act=Kdun%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+  </div>
+  <div class="instrumental-subhead ram-subhead" id="ram-harp">Harp</div>
+  <div class="band-grid ram-grid">
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/lidia.jpg" alt="Lidia - Harp, Arabic Repertoire" loading="lazy">
+    <div class="act-bio-overlay"><p>Classically trained harpist in Dubai since 2005, with a repertoire of well-known Arabic songs.</p></div>
+  </div>
+  <h3>Lidia</h3>
+  <span class="ram-role">Harp, Arabic Repertoire</span>
+  <a href="contact.html?service=Entertainment&amp;act=Lidia%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/diana-harp.jpg" alt="Diana - Harp, Arabic Repertoire" loading="lazy">
+    <div class="act-bio-overlay"><p>Masterful harpist with a classical background and performances across Europe, the Gulf and Asia.</p></div>
+  </div>
+  <h3>Diana</h3>
+  <span class="ram-role">Harp, Arabic Repertoire</span>
+  <a href="contact.html?service=Entertainment&amp;act=Diana%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+  </div>
+  <div class="instrumental-subhead ram-subhead" id="ram-violin">Violin</div>
+  <div class="band-grid ram-grid">
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/pasha.jpg" alt="Pasha - Violin, Arabic Repertoire" loading="lazy">
+    <div class="act-bio-overlay"><p>Dubai violinist on electric and acoustic, a favourite for Khaliji weddings and royal ceremonies.</p></div>
+  </div>
+  <h3>Pasha</h3>
+  <span class="ram-role">Violin, Arabic Repertoire</span>
+  <a href="contact.html?service=Entertainment&amp;act=Pasha%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/tijana.jpg" alt="Tijana - Violin, Arabic Repertoire" loading="lazy">
+    <div class="act-bio-overlay"><p>Award-winning violinist with a Master's in performance and concerts across Europe and the UAE.</p></div>
+  </div>
+  <h3>Tijana</h3>
+  <span class="ram-role">Violin, Arabic Repertoire</span>
+  <a href="contact.html?service=Entertainment&amp;act=Tijana%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/sana.jpg" alt="Sana - Violin, Arabic Repertoire" loading="lazy">
+    <div class="act-bio-overlay"><p>Abu Dhabi violinist mastering Khaleeji, classical and pop with Arabic and oriental influences.</p></div>
+  </div>
+  <h3>Sana</h3>
+  <span class="ram-role">Violin, Arabic Repertoire</span>
+  <a href="contact.html?service=Entertainment&amp;act=Sana%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/maria.jpg" alt="Maria - Violin, Arabic Repertoire" loading="lazy">
+    <div class="act-bio-overlay"><p>Belarusian violinist with international hotel residencies and an Arabic repertoire.</p></div>
+  </div>
+  <h3>Maria</h3>
+  <span class="ram-role">Violin, Arabic Repertoire</span>
+  <a href="contact.html?service=Entertainment&amp;act=Maria%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/kristina.jpg" alt="Kristina - Violin, Arabic Repertoire" loading="lazy">
+    <div class="act-bio-overlay"><p>Award-winning violinist and soloist blending classical training with contemporary sets.</p></div>
+  </div>
+  <h3>Kristina</h3>
+  <span class="ram-role">Violin, Arabic Repertoire</span>
+  <a href="contact.html?service=Entertainment&amp;act=Kristina%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/naima.jpg" alt="Naima - Violin, Arabic Repertoire" loading="lazy">
+    <div class="act-bio-overlay"><p>Cuban violinist who has performed with Joshua Bell, Wynton Marsalis and Yo-Yo Ma.</p></div>
+  </div>
+  <h3>Naima</h3>
+  <span class="ram-role">Violin, Arabic Repertoire</span>
+  <a href="contact.html?service=Entertainment&amp;act=Naima%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+  </div>
+  <div class="instrumental-subhead ram-subhead" id="ram-flute">Flute</div>
+  <div class="band-grid ram-grid">
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/malena.jpg" alt="Malena - Flute, Arabic Repertoire" loading="lazy">
+    <div class="act-bio-overlay"><p>Versatile flutist moving easily from classical to traditional Arabic sounds.</p></div>
+  </div>
+  <h3>Malena</h3>
+  <span class="ram-role">Flute, Arabic Repertoire</span>
+  <a href="contact.html?service=Entertainment&amp;act=Malena%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/darya.jpg" alt="Darya - Flute, Arabic Repertoire" loading="lazy">
+    <div class="act-bio-overlay"><p>Prize-winning flutist with over sixteen years performing in the UAE and Ukraine.</p></div>
+  </div>
+  <h3>Darya</h3>
+  <span class="ram-role">Flute, Arabic Repertoire</span>
+  <a href="contact.html?service=Entertainment&amp;act=Darya%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/tania.jpg" alt="Tania - Flute, Arabic Repertoire" loading="lazy">
+    <div class="act-bio-overlay"><p>Colombian flutist performing at top hotels, weddings and festivals across the UAE.</p></div>
+  </div>
+  <h3>Tania</h3>
+  <span class="ram-role">Flute, Arabic Repertoire</span>
+  <a href="contact.html?service=Entertainment&amp;act=Tania%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+  </div>
+  <div class="instrumental-subhead ram-subhead" id="ram-artists">Live Artists</div>
+  <div class="band-grid ram-grid">
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/eliza.jpg" alt="Eliza - Sketch Artist" loading="lazy">
+    <div class="act-bio-overlay"><p>Fashion and event illustrator creating live portraits in marker, pencil and watercolour.</p></div>
+  </div>
+  <h3>Eliza</h3>
+  <span class="ram-role">Sketch Artist</span>
+  <a href="contact.html?service=Entertainment&amp;act=Eliza%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/diana-sketch.jpg" alt="Diana - Sketch Artist" loading="lazy">
+    <div class="act-bio-overlay"><p>Event illustrator working digitally and by hand for luxury, fashion and beauty brands.</p></div>
+  </div>
+  <h3>Diana</h3>
+  <span class="ram-role">Sketch Artist</span>
+  <a href="contact.html?service=Entertainment&amp;act=Diana%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/charlotte.jpg" alt="Charlotte - Sketch Artist" loading="lazy">
+    <div class="act-bio-overlay"><p>UK-trained artist creating personalised live art, illustration and bespoke designs.</p></div>
+  </div>
+  <h3>Charlotte</h3>
+  <span class="ram-role">Sketch Artist</span>
+  <a href="contact.html?service=Entertainment&amp;act=Charlotte%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/shayma.jpg" alt="Shayma - Sand Artist" loading="lazy">
+    <div class="act-bio-overlay"><p>Arabs Got Talent finalist whose live sand art tells stories in light and shadow.</p></div>
+  </div>
+  <h3>Shayma</h3>
+  <span class="ram-role">Sand Artist</span>
+  <a href="contact.html?service=Entertainment&amp;act=Shayma%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+  </div>
+  <div class="instrumental-subhead ram-subhead" id="ram-activations">Cultural Activations</div>
+  <div class="band-grid ram-grid">
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/arabic-calligraphy.jpg" alt="Arabic Calligraphy - Live Activation" loading="lazy">
+    <div class="act-bio-overlay"><p>A calligrapher writing guests' names and Ramadan blessings as personalised keepsakes.</p></div>
+  </div>
+  <h3>Arabic Calligraphy</h3>
+  <span class="ram-role">Live Activation</span>
+  <a href="contact.html?service=Entertainment&amp;act=Arabic%20Calligraphy%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/sand-bottle-art.jpg" alt="Sand Bottle Art - Live Activation" loading="lazy">
+    <div class="act-bio-overlay"><p>Layered sand art in bottles, created live as unique take-home gifts.</p></div>
+  </div>
+  <h3>Sand Bottle Art</h3>
+  <span class="ram-role">Live Activation</span>
+  <a href="contact.html?service=Entertainment&amp;act=Sand%20Bottle%20Art%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/henna-art.jpg" alt="Henna Art - Live Activation" loading="lazy">
+    <div class="act-bio-overlay"><p>Skilled henna artists creating traditional designs for guests.</p></div>
+  </div>
+  <h3>Henna Art</h3>
+  <span class="ram-role">Live Activation</span>
+  <a href="contact.html?service=Entertainment&amp;act=Henna%20Art%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/basket-weaving.jpg" alt="Basket Weaving - Live Activation" loading="lazy">
+    <div class="act-bio-overlay"><p>Artisans demonstrating traditional palm-frond weaving, with hands-on sessions.</p></div>
+  </div>
+  <h3>Basket Weaving</h3>
+  <span class="ram-role">Live Activation</span>
+  <a href="contact.html?service=Entertainment&amp;act=Basket%20Weaving%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/clay-pottery.jpg" alt="Clay Pottery - Live Activation" loading="lazy">
+    <div class="act-bio-overlay"><p>Traditional pottery demonstrations with hands-on workshops for guests.</p></div>
+  </div>
+  <h3>Clay Pottery</h3>
+  <span class="ram-role">Live Activation</span>
+  <a href="contact.html?service=Entertainment&amp;act=Clay%20Pottery%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/arabic-coffee.jpg" alt="Arabic Coffee Serving - Hospitality" loading="lazy">
+    <div class="act-bio-overlay"><p>Traditional qahwa brewed and poured by attendants in heritage dress.</p></div>
+  </div>
+  <h3>Arabic Coffee Serving</h3>
+  <span class="ram-role">Hospitality</span>
+  <a href="contact.html?service=Entertainment&amp;act=Arabic%20Coffee%20Serving%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/luqaimat.jpg" alt="Luqaimat Serving - Hospitality" loading="lazy">
+    <div class="act-bio-overlay"><p>Golden luqaimat dumplings made fresh and drizzled with date syrup for Iftar guests.</p></div>
+  </div>
+  <h3>Luqaimat Serving</h3>
+  <span class="ram-role">Hospitality</span>
+  <a href="contact.html?service=Entertainment&amp;act=Luqaimat%20Serving%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/date-expert.jpg" alt="Date Expert - Hospitality" loading="lazy">
+    <div class="act-bio-overlay"><p>A storyteller sharing the varieties, history and traditions of dates.</p></div>
+  </div>
+  <h3>Date Expert</h3>
+  <span class="ram-role">Hospitality</span>
+  <a href="contact.html?service=Entertainment&amp;act=Date%20Expert%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/falcon-display.jpg" alt="Falcon Display - Heritage Display" loading="lazy">
+    <div class="act-bio-overlay"><p>Falconers showcasing their birds and the heritage of Arabian falconry.</p></div>
+  </div>
+  <h3>Falcon Display</h3>
+  <span class="ram-role">Heritage Display</span>
+  <a href="contact.html?service=Entertainment&amp;act=Falcon%20Display%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/eagle-display.jpg" alt="Eagle Display - Heritage Display" loading="lazy">
+    <div class="act-bio-overlay"><p>A trained eagle with its handler, a striking photo moment for guests.</p></div>
+  </div>
+  <h3>Eagle Display</h3>
+  <span class="ram-role">Heritage Display</span>
+  <a href="contact.html?service=Entertainment&amp;act=Eagle%20Display%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/hakawati.jpg" alt="Hakawati Storyteller - Storytelling" loading="lazy">
+    <div class="act-bio-overlay"><p>A traditional storyteller bringing timeless Arabic tales to life.</p></div>
+  </div>
+  <h3>Hakawati Storyteller</h3>
+  <span class="ram-role">Storytelling</span>
+  <a href="contact.html?service=Entertainment&amp;act=Hakawati%20Storyteller%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/majlis-tent.jpg" alt="Majlis Tent - Setting" loading="lazy">
+    <div class="act-bio-overlay"><p>A beautifully dressed majlis with plush seating for Iftar and Suhoor gatherings.</p></div>
+  </div>
+  <h3>Majlis Tent</h3>
+  <span class="ram-role">Setting</span>
+  <a href="contact.html?service=Entertainment&amp;act=Majlis%20Tent%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+  </div>
+  <div class="instrumental-subhead ram-subhead" id="ram-dance">Cultural Dance</div>
+  <div class="band-grid ram-grid">
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/sufi-dance.jpg" alt="Sufi Dance - Dance" loading="lazy">
+    <div class="act-bio-overlay"><p>Whirling Sufi performers in flowing robes, a calm and spiritual spectacle.</p></div>
+  </div>
+  <h3>Sufi Dance</h3>
+  <span class="ram-role">Dance</span>
+  <a href="contact.html?service=Entertainment&amp;act=Sufi%20Dance%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/tanoura-dance.jpg" alt="Tanoura Dance - Dance" loading="lazy">
+    <div class="act-bio-overlay"><p>Dancers in vibrant spinning skirts, an Egyptian tradition full of colour and movement.</p></div>
+  </div>
+  <h3>Tanoura Dance</h3>
+  <span class="ram-role">Dance</span>
+  <a href="contact.html?service=Entertainment&amp;act=Tanoura%20Dance%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/ayala-dance.jpg" alt="Ayala Dance - Dance" loading="lazy">
+    <div class="act-bio-overlay"><p>Emirati Ayala troupe performing the traditional line dance with canes and drums.</p></div>
+  </div>
+  <h3>Ayala Dance</h3>
+  <span class="ram-role">Dance</span>
+  <a href="contact.html?service=Entertainment&amp;act=Ayala%20Dance%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/dabke-dance.jpg" alt="Dabke Dance - Dance" loading="lazy">
+    <div class="act-bio-overlay"><p>High-energy Levantine folk dance with lively footwork that gets guests clapping along.</p></div>
+  </div>
+  <h3>Dabke Dance</h3>
+  <span class="ram-role">Dance</span>
+  <a href="contact.html?service=Entertainment&amp;act=Dabke%20Dance%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+<div class="ram-card">
+  <div class="act-photo">
+    <img src="ramadan-photos/khaleej-dancers.jpg" alt="Khaleej Dancers - Dance" loading="lazy">
+    <div class="act-bio-overlay"><p>Gulf dancers in traditional dress performing the graceful hair-tossing Khaleeji style.</p></div>
+  </div>
+  <h3>Khaleej Dancers</h3>
+  <span class="ram-role">Dance</span>
+  <a href="contact.html?service=Entertainment&amp;act=Khaleej%20Dancers%20%28Ramadan%29" class="ram-enquire">Enquire About This Act &rarr;</a>
+</div>
+  </div>
+</section>
+
 
 </div>
 
