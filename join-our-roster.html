@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
     <title>Join Our Roster | Artists &amp; Performers | Greenhouse Events Dubai</title>
-    <meta name="description" content="Are you a musician, DJ, singer, performer or MC in the UAE? Apply to join the Greenhouse Events Dubai entertainment roster."/>
+    <meta name="description" content="Performers, artists and event suppliers in the UAE: apply to join the Greenhouse Events Dubai roster and partner network."/>
     <meta name="keywords" content="performer jobs Dubai, musician booking Dubai, join entertainment agency UAE, DJ roster Dubai, artist application"/>
     <meta name="robots" content="index, follow"/>
     <link rel="canonical" href="https://greenhouseeventsuae.com/join-our-roster.html"/>
@@ -286,6 +286,12 @@
         .roster-steps { list-style: none; counter-reset: st; display: grid; gap: 1.1rem; margin-top: 1.6rem; }
         .roster-steps li { counter-increment: st; display: flex; gap: 0.9rem; color: var(--white-off); font-size: 0.9rem; opacity: 0.9; line-height: 1.5; }
         .roster-steps li::before { content: "0" counter(st); font-family: var(--display); color: var(--gold-solid); font-size: 0.85rem; flex-shrink: 0; margin-top: 1px; }
+        .type-switch { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid rgba(201,168,76,0.55); }
+        .type-switch label { cursor: pointer; }
+        .type-switch input { position: absolute; opacity: 0; pointer-events: none; }
+        .type-switch span { display: block; text-align: center; padding: 0.9rem 0.6rem; font-family: var(--display); font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--bg-deep); transition: background 0.2s; }
+        .type-switch input:checked + span { background: var(--gold-metallic); color: #1a1405; font-weight: 700; }
+        .type-switch input:focus-visible + span { outline: 2px solid var(--gold-solid); outline-offset: -3px; }
         .form-field.hp { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
 
         .form-submit-btn {
@@ -415,7 +421,7 @@
 
 <header class="inner-hero">
     <h1 class="metallic-gold">Join Our Roster</h1>
-    <p>Musicians, DJs, singers, performers and hosts: share your profile and we'll be in touch when the right event comes along.</p>
+    <p>Performers, artists and event suppliers: share your details and we'll be in touch when the right event comes along.</p>
 </header>
 <div class="nude-break"></div>
 
@@ -423,21 +429,51 @@
 <section class="contact-section" id="artist-form-section">
     <div class="contact-grid">
         <div class="contact-intro">
-            <span class="contact-intro-eyebrow">For Artists &amp; Performers</span>
-            <h2>Apply To Perform With Us</h2>
+            <span class="contact-intro-eyebrow">For Artists, Performers &amp; Suppliers</span>
+            <h2 id="joinTitle">Apply To Perform With Us</h2>
             <p>We book talent for weddings, private parties, galas, brand activations and corporate events across Dubai and the UAE. Tell us about your act, add a few photos and links to your best videos, and our entertainment team will review your profile.</p>
 
             <form class="contact-form" id="artistForm">
                 <input type="checkbox" name="botcheck" class="form-field hp" tabindex="-1" autocomplete="off">
+
+                <div class="type-switch" role="radiogroup" aria-label="I am applying as">
+                    <label><input type="radio" name="applicant_type" value="performer" checked><span>Performer / Artist</span></label>
+                    <label><input type="radio" name="applicant_type" value="supplier"><span>Supplier / Partner</span></label>
+                </div>
 
                 <div class="form-row">
                     <div class="form-field">
                         <label for="af-name">Full Name</label>
                         <input type="text" id="af-name" name="full_name" required placeholder="Your name">
                     </div>
-                    <div class="form-field">
+                    <div class="form-field only-performer">
                         <label for="af-act">Act / Stage Name</label>
                         <input type="text" id="af-act" name="act_name" placeholder="If different from your name">
+                    </div>
+                </div>
+
+                <div class="form-row only-supplier" hidden>
+                    <div class="form-field">
+                        <label for="af-company">Company Name</label>
+                        <input type="text" id="af-company" name="company" placeholder="Your company">
+                    </div>
+                    <div class="form-field">
+                        <label for="af-service">Services</label>
+                        <select id="af-service" name="service_type">
+                            <option value="" disabled selected>Choose one</option>
+                            <option value="AV, Sound &amp; Lighting">AV, Sound &amp; Lighting</option>
+                            <option value="Staging &amp; Structures">Staging &amp; Structures</option>
+                            <option value="Decor &amp; Florals">Decor &amp; Florals</option>
+                            <option value="Furniture Rental">Furniture Rental</option>
+                            <option value="Catering &amp; Beverage">Catering &amp; Beverage</option>
+                            <option value="Photography &amp; Video">Photography &amp; Video</option>
+                            <option value="Photo Booths &amp; Activations">Photo Booths &amp; Activations</option>
+                            <option value="Printing &amp; Signage">Printing &amp; Signage</option>
+                            <option value="Costumes &amp; Wardrobe">Costumes &amp; Wardrobe</option>
+                            <option value="Transport &amp; Logistics">Transport &amp; Logistics</option>
+                            <option value="Venue">Venue</option>
+                            <option value="Other">Other</option>
+                        </select>
                     </div>
                 </div>
 
@@ -453,7 +489,7 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="form-field">
+                    <div class="form-field only-performer">
                         <label for="af-category">Category</label>
                         <select id="af-category" name="category" required>
                         <option value="" disabled selected>Choose one</option>
@@ -478,7 +514,7 @@
                     </div>
                 </div>
 
-                <div class="form-row">
+                <div class="form-row only-performer">
                     <div class="form-field">
                         <label for="af-skills">Instruments / Skills / Genres</label>
                         <input type="text" id="af-skills" name="skills" placeholder="e.g. Oud &amp; vocals, House &amp; Afro House">
@@ -490,22 +526,22 @@
                 </div>
 
                 <div class="form-field">
-                    <label for="af-bio">About You / Your Act</label>
+                    <label for="af-bio" id="lbl-bio">About You / Your Act</label>
                     <textarea id="af-bio" name="bio" required placeholder="Your experience, notable venues and events, line-up options..."></textarea>
                 </div>
 
                 <div class="form-field">
-                    <label for="af-videos">Video Links</label>
+                    <label for="af-videos" id="lbl-videos">Video Links</label>
                     <textarea id="af-videos" name="video_links" style="min-height:80px" placeholder="YouTube, Vimeo, Instagram or Google Drive links, one per line"></textarea>
                 </div>
 
                 <div class="form-field">
-                    <label for="af-social">Instagram / Website</label>
+                    <label for="af-social" id="lbl-social">Instagram / Website</label>
                     <input type="text" id="af-social" name="social" placeholder="@yourhandle or www.yoursite.com">
                 </div>
 
                 <div class="form-field">
-                    <label for="af-photos">Photos (up to 3)</label>
+                    <label for="af-photos" id="lbl-photos">Photos (up to 3)</label>
                     <input type="file" id="af-photos" accept="image/*" multiple>
                     <span class="form-hint">Clear, high-quality performance or portrait shots work best, without logos or watermarks.</span>
                     <div class="photo-previews" id="afPreviews"></div>
@@ -524,9 +560,9 @@
         <aside class="contact-info-card">
             <h3 class="metallic-gold">What Happens Next</h3>
             <ol class="roster-steps">
-                <li>Our entertainment team reviews every application.</li>
+                <li>Our team reviews every application.</li>
                 <li>If your act is a fit, we'll contact you to talk availability, line-ups and rates.</li>
-                <li>Approved artists are added to our roster and put forward for suitable events.</li>
+                <li>Approved artists join our roster; approved suppliers join our private partner list.</li>
             </ol>
             <p style="color:var(--white-off);opacity:0.7;font-size:0.85rem;line-height:1.6;margin-top:1.8rem">Questions? Email <a href="mailto:info@greenhouseeventsuae.com" style="color:var(--gold-solid)">info@greenhouseeventsuae.com</a></p>
         </aside>
@@ -624,6 +660,32 @@
         var blobs = [];
         if (!form) return;
 
+        var LABELS = {
+            performer: { title: "Apply To Perform With Us", bio: "About You / Your Act", videos: "Video Links", photos: "Photos (up to 3)", social: "Instagram / Website",
+                         bioPh: "Your experience, notable venues and events, line-up options..." },
+            supplier:  { title: "Partner With Us", bio: "About Your Company & Services", videos: "Portfolio / Video Links", photos: "Photos Of Your Work (up to 3)", social: "Website / Instagram",
+                         bioPh: "What you offer, past events and venues, coverage across the UAE..." }
+        };
+        function setType(t) {
+            var sup = t === "supplier", L = LABELS[t];
+            Array.prototype.forEach.call(form.querySelectorAll(".only-performer"), function (el) { el.hidden = sup; });
+            Array.prototype.forEach.call(form.querySelectorAll(".only-supplier"), function (el) { el.hidden = !sup; });
+            document.getElementById("af-category").required = !sup;
+            document.getElementById("af-company").required = sup;
+            document.getElementById("af-service").required = sup;
+            document.getElementById("joinTitle").textContent = L.title;
+            document.getElementById("lbl-bio").textContent = L.bio;
+            document.getElementById("lbl-videos").textContent = L.videos;
+            document.getElementById("lbl-photos").textContent = L.photos;
+            document.getElementById("lbl-social").textContent = L.social;
+            document.getElementById("af-bio").placeholder = L.bioPh;
+        }
+        Array.prototype.forEach.call(form.elements.applicant_type, function (r) {
+            r.addEventListener("change", function () { if (r.checked) setType(r.value); });
+        });
+        if (/[?&]type=supplier\b/.test(location.search)) { form.querySelector('input[value="supplier"]').checked = true; }
+        setType(form.querySelector('input[name="applicant_type"]:checked').value);
+
         fileInput.addEventListener("change", function () {
             var files = Array.prototype.slice.call(fileInput.files, 0, 3);
             previews.innerHTML = ""; blobs = [];
@@ -659,16 +721,22 @@
                     });
                 });
                 return chain.then(function () {
+                    var sup = form.querySelector('input[name="applicant_type"]:checked').value === "supplier";
                     return sb.from("applications").insert({
-                        full_name: field("full_name"), act_name: field("act_name"), email: field("email"), phone: field("phone"),
-                        category: field("category"), based_in: field("based_in"), skills: field("skills"), languages: field("languages"),
+                        applicant_type: sup ? "supplier" : "performer",
+                        company: sup ? field("company") : null, service_type: sup ? field("service_type") : null,
+                        full_name: field("full_name"), act_name: sup ? null : field("act_name"), email: field("email"), phone: field("phone"),
+                        category: sup ? null : field("category"), based_in: field("based_in"),
+                        skills: sup ? null : field("skills"), languages: sup ? null : field("languages"),
                         bio: field("bio"), video_links: field("video_links"), social: field("social"), photos: paths, consent: true
                     });
                 }).then(function (r) { if (r.error) throw r.error; });
             })
             .then(function () {
-                show("Thank you! Your profile has been sent to our entertainment team. We'll be in touch if there's a fit.");
+                show("Thank you! Your details have been sent to our team. We'll be in touch if there's a fit.");
+                var keep = form.querySelector('input[name="applicant_type"]:checked').value;
                 form.reset(); previews.innerHTML = ""; blobs = [];
+                form.querySelector('input[value="' + keep + '"]').checked = true; setType(keep);
             })
             .catch(function () {
                 show("Something went wrong sending your profile. Please email it to info@greenhouseeventsuae.com instead.", true);

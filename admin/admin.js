@@ -365,16 +365,19 @@
   }
 
   // ---------- applications ----------
-  var appFilter = "new";
+  var appFilter = "new", appType = "";
   function viewApplications() {
-    app.innerHTML = '<div class="pagehead"><div><h1>Applications</h1><p class="muted">Artists who applied through the Join Our Roster page.</p></div></div>' +
+    app.innerHTML = '<div class="pagehead"><div><h1>Applications</h1><p class="muted">Performers and suppliers who applied through the Join Our Roster page. Suppliers stay private and are never added to the website.</p></div>' +
+      '<select id="appType" style="max-width:220px"><option value="">Performers and suppliers</option><option value="performer"' + (appType === "performer" ? " selected" : "") + '>Performers only</option><option value="supplier"' + (appType === "supplier" ? " selected" : "") + '>Suppliers only</option></select></div>' +
       '<div class="tabs" id="appTabs"></div><div id="appList"><p class="muted">Loading&hellip;</p></div>';
-    sb.from("applications").select("id,created_at,status,full_name,act_name,category,based_in,photos").order("created_at", { ascending: false }).range(0, 4999)
+    sb.from("applications").select("id,created_at,status,full_name,act_name,category,based_in,photos,applicant_type,company,service_type").order("created_at", { ascending: false }).range(0, 4999)
       .then(function (r) {
         if (r.error) return fail(r.error);
-        var all = r.data, counts = { all: all.length };
-        STATUSES.forEach(function (s) { counts[s] = all.filter(function (x) { return x.status === s; }).length; });
+        var everything = r.data, all, counts;
         function draw() {
+          all = everything.filter(function (x) { return !appType || (x.applicant_type || "performer") === appType; });
+          counts = { all: all.length };
+          STATUSES.forEach(function (s) { counts[s] = all.filter(function (x) { return x.status === s; }).length; });
           $("#appTabs").innerHTML = STATUSES.concat(["all"]).map(function (s) {
             return '<button type="button" data-s="' + s + '" class="' + (appFilter === s ? "on" : "") + '">' + s.charAt(0).toUpperCase() + s.slice(1) + " (" + counts[s] + ")</button>";
           }).join("");
@@ -382,12 +385,14 @@
           if (!rows.length) { $("#appList").innerHTML = '<p class="muted center">Nothing here.</p>'; return; }
           $("#appList").innerHTML = '<div class="cards">' + rows.map(function (x) {
             return '<a class="card" href="#/applications/' + x.id + '"><div class="noimg" data-thumb="' + esc((x.photos && x.photos[0]) || "") + '">' + (x.photos && x.photos.length ? "" : "No photo") + "</div>" +
-              "<div><h3>" + esc(x.act_name || x.full_name) + '</h3><div class="sub">' + esc(x.category || "") + (x.based_in ? " &middot; " + esc(x.based_in) : "") + "</div>" +
+              "<div><h3>" + esc(x.applicant_type === "supplier" ? (x.company || x.full_name) : (x.act_name || x.full_name)) + '</h3><div class="sub">' +
+              (x.applicant_type === "supplier" ? "Supplier &middot; " + esc(x.service_type || "") : esc(x.category || "")) + (x.based_in ? " &middot; " + esc(x.based_in) : "") + "</div>" +
               '<div class="sub">' + fmtDate(x.created_at) + '</div><span class="pill ' + x.status + '">' + x.status + "</span></div></a>";
           }).join("") + "</div>";
           loadThumbs();
         }
         $("#appTabs").addEventListener("click", function (e) { var s = e.target.getAttribute("data-s"); if (s) { appFilter = s; draw(); } });
+        $("#appType").addEventListener("change", function (e) { appType = e.target.value; draw(); });
         draw();
       });
   }
@@ -412,15 +417,18 @@
       if (r.error) return fail(r.error);
       var x = r.data;
       if (!x) { app.innerHTML = '<p class="center muted">Application not found. <a href="#/applications">Back</a></p>'; return; }
-      var facts = [["Full name", x.full_name], ["Act / stage name", x.act_name], ["Category", x.category], ["Email", x.email],
+      var isSup = x.applicant_type === "supplier";
+      var facts = (isSup ? [["Type", "Supplier / partner"], ["Company", x.company], ["Services", x.service_type], ["Contact name", x.full_name]]
+                         : [["Full name", x.full_name], ["Act / stage name", x.act_name], ["Category", x.category]]).concat([["Email", x.email],
         ["Phone / WhatsApp", x.phone], ["Based in", x.based_in], ["Skills / genres", x.skills], ["Languages", x.languages],
-        ["Instagram / website", x.social], ["Applied", fmtDate(x.created_at)]];
-      app.innerHTML = '<div class="pagehead"><div><a href="#/applications" class="small">&larr; All applications</a><h1>' + esc(x.act_name || x.full_name) + '</h1><span class="pill ' + x.status + '">' + x.status + "</span></div>" +
-        '<div class="toolbar">' + (x.artist_id ? '<a class="btn primary" href="#/artists/' + x.artist_id + '">Open artist profile</a>' : '<button class="btn primary" id="convertBtn" type="button">Create artist profile</button>') + "</div></div>" +
+        ["Instagram / website", x.social], ["Applied", fmtDate(x.created_at)]]).filter(function (f) { return !(isSup && /Skills|Languages/.test(f[0])); });
+      app.innerHTML = '<div class="pagehead"><div><a href="#/applications" class="small">&larr; All applications</a><h1>' + esc(isSup ? (x.company || x.full_name) : (x.act_name || x.full_name)) + '</h1><span class="pill ' + x.status + '">' + x.status + "</span>" + (isSup ? ' <span class="pill hidden">Supplier</span>' : "") + "</div>" +
+        '<div class="toolbar">' + (isSup ? '<span class="muted small">Suppliers stay private in the dashboard and are never added to the website.</span>'
+          : x.artist_id ? '<a class="btn primary" href="#/artists/' + x.artist_id + '">Open artist profile</a>' : '<button class="btn primary" id="convertBtn" type="button">Create artist profile</button>') + "</div></div>" +
         '<section class="panel"><h2>Photos</h2><div class="photos" id="appPhotos">' + (x.photos && x.photos.length ? '<p class="muted">Loading photos&hellip;</p>' : '<p class="muted">No photos sent.</p>') + "</div></section>" +
         '<section class="panel private"><h2>Details <span class="lock">Private</span></h2><dl class="facts">' +
         facts.map(function (f) { return "<dt>" + esc(f[0]) + "</dt><dd>" + (f[1] ? (f[0] === "Email" ? '<a href="mailto:' + esc(f[1]) + '">' + esc(f[1]) + "</a>" : linkify(f[1])) : '<span class="muted">-</span>') + "</dd>"; }).join("") +
-        "<dt>About</dt><dd>" + linkify(x.bio || "-") + "</dd><dt>Video links</dt><dd>" + linkify(x.video_links || "-") + "</dd></dl></section>" +
+        "<dt>About</dt><dd>" + linkify(x.bio || "-") + "</dd><dt>" + (isSup ? "Portfolio links" : "Video links") + "</dt><dd>" + linkify(x.video_links || "-") + "</dd></dl></section>" +
         '<section class="panel"><h2>Review</h2><div class="grid2"><label class="field">Status<select id="apStatus">' +
         STATUSES.map(function (s) { return '<option value="' + s + '"' + (s === x.status ? " selected" : "") + ">" + s.charAt(0).toUpperCase() + s.slice(1) + "</option>"; }).join("") +
         '</select></label><span></span><label class="field span2">Internal notes<textarea id="apNotes">' + esc(x.admin_notes || "") + "</textarea></label></div></section>" +

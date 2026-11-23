@@ -673,6 +673,18 @@
         /* =====================================================
            ENTERTAINMENT ROSTER STRIP
         ====================================================== */
+        /* Work With Us: performers & suppliers */
+        .work-with-us { max-width: 1100px; margin: 3.5rem auto 0; padding: 0 8vw; display: grid; grid-template-columns: 1fr 1fr; gap: 1.8rem; position: relative; z-index: 5; }
+        .wwu-intro { grid-column: 1 / -1; text-align: center; margin-bottom: 0.4rem; }
+        .wwu-intro span { font-family: var(--display); font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-deep); }
+        .wwu-intro h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.8rem, 3.6vw, 2.5rem); color: var(--bg-deep); margin-top: 0.4rem; }
+        .wwu-card { border: 0.5px solid var(--gold-solid); background: linear-gradient(160deg, var(--nude-card) 0%, #FFFDF8 100%); padding: 2.4rem 2.2rem; display: flex; flex-direction: column; gap: 0.9rem; box-shadow: 0 14px 30px rgba(60,45,20,0.1); }
+        .wwu-card h4 { font-family: var(--serif); font-weight: 600; font-size: 1.6rem; color: var(--bg-deep); }
+        .wwu-card p { color: #3a2e22; opacity: 0.85; line-height: 1.7; font-size: 0.97rem; flex: 1; }
+        .wwu-card a { align-self: flex-start; display: inline-flex; align-items: center; gap: 0.5rem; background: var(--gold-metallic); color: #1a1405; text-decoration: none; padding: 0.85rem 1.6rem; font-family: var(--display); font-size: 0.72rem; letter-spacing: 1.5px; font-weight: 700; text-transform: uppercase; transition: transform 0.3s ease; }
+        .wwu-card a:hover { transform: translateY(-2px); }
+        .wwu-card a.outline { background: transparent; border: 0.5px solid var(--gold-deep); color: var(--gold-deep); }
+        @media (max-width: 760px) { .work-with-us { grid-template-columns: 1fr; padding: 0 6vw; } .wwu-card { padding: 2rem 1.6rem; } }
         #entertainment-strip {
             padding: 1rem 0 5rem 0;
             position: relative; z-index: 5;
@@ -1585,6 +1597,22 @@
             <a href="entertainment.html" class="ent-strip-card ent-strip-more">
                 <span class="ent-strip-img"><span>View Full<br>Roster →</span></span>
             </a>
+        </div>
+        <div class="work-with-us">
+            <div class="wwu-intro">
+                <span>Work With Us</span>
+                <h3>Join The Greenhouse Network</h3>
+            </div>
+            <div class="wwu-card">
+                <h4>Performers &amp; Artists</h4>
+                <p>Musicians, DJs, singers, dancers, specialist acts and hosts: share your profile, photos and videos, and our entertainment team will be in touch when the right event comes along.</p>
+                <a href="join-our-roster.html">Join Our Roster &rarr;</a>
+            </div>
+            <div class="wwu-card">
+                <h4>Suppliers &amp; Partners</h4>
+                <p>AV, staging, decor, florals, furniture, catering and more. Tell us about your company and services, and we'll reach out when there's a project that fits.</p>
+                <a href="join-our-roster.html?type=supplier" class="outline">Become A Supplier &rarr;</a>
+            </div>
         </div>
     </section>
 

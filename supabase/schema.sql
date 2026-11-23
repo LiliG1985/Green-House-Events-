@@ -158,6 +158,13 @@ create table if not exists public.applications (
   artist_id uuid references public.artists (id) on delete set null
 );
 
+-- Suppliers apply through the same form. They stay in the dashboard only and are never shown on the website.
+alter table public.applications add column if not exists applicant_type text not null default 'performer';
+alter table public.applications add column if not exists company text;
+alter table public.applications add column if not exists service_type text;
+alter table public.applications drop constraint if exists applications_applicant_type_check;
+alter table public.applications add constraint applications_applicant_type_check check (applicant_type in ('performer', 'supplier'));
+
 -- ---------------------------------------------------------------------------
 -- Row level security.
 -- ---------------------------------------------------------------------------
