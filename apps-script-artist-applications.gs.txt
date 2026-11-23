@@ -1,0 +1,100 @@
+/**
+ * Greenhouse Events — Artist Applications backend ("Join Our Roster" page)
+ *
+ * Every application lands as a new row in the "Artist Applications" tab of the
+ * Google Sheet this script is attached to. Photos are saved into a Google Drive
+ * folder called "Greenhouse Artist Applications", with links in the sheet.
+ * The "Status" column has a dropdown (New / Shortlisted / Approved / Declined)
+ * so you can review applications right in the sheet.
+ *
+ * SETUP (about 5 minutes, one time):
+ *  1. Go to sheets.google.com and create a new blank sheet,
+ *     e.g. "Greenhouse Artist Applications".
+ *  2. In that sheet: Extensions > Apps Script.
+ *  3. Delete what is there, paste this whole file in, and click Save.
+ *  4. Click Deploy > New deployment. Click the gear icon > "Web app".
+ *       Execute as:      Me
+ *       Who has access:  Anyone
+ *     Click Deploy, then Authorise access and allow the permissions
+ *     (it needs Sheets, Drive for the photos, and Mail for the email alert).
+ *  5. Copy the Web app URL (ends in /exec) and send it to Claude, or paste it
+ *     into join-our-roster.html where it says PASTE_YOUR_ARTIST_SCRIPT_URL.
+ */
+
+var NOTIFY_EMAIL = "info@greenhouseeventsuae.com";   // gets an email for each new application
+var SHEET_NAME   = "Artist Applications";
+var FOLDER_NAME  = "Greenhouse Artist Applications";
+var HEADERS = ["Submitted", "Status", "Full Name", "Act / Stage Name", "Category",
+               "Instruments / Skills", "Based In", "Languages", "Email", "Phone / WhatsApp",
+               "Bio", "Video Links", "Instagram / Website", "Photos", "Internal Notes"];
+
+function doPost(e) {
+  try {
+    var p = e.parameter;
+
+    // Honeypot: bots fill the hidden field. Pretend success, save nothing.
+    if (p.botcheck) return json({ result: "success" });
+
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = ss.getSheetByName(SHEET_NAME) || ss.insertSheet(SHEET_NAME);
+    if (sheet.getLastRow() === 0) setupSheet(sheet);
+
+    // Save photos (sent as base64 data URLs) into a per-artist Drive folder.
+    var photoLinks = [];
+    var photos = [p.photo1, p.photo2, p.photo3].filter(function (x) { return x; });
+    if (photos.length) {
+      var root = getFolder(FOLDER_NAME);
+      var stamp = Utilities.formatDate(new Date(), "Asia/Dubai", "yyyy-MM-dd");
+      var folder = root.createFolder(stamp + " - " + clean(p.act_name || p.full_name || "Artist"));
+      photos.forEach(function (dataUrl, i) {
+        var m = String(dataUrl).match(/^data:(image\/[a-z]+);base64,(.+)$/);
+        if (!m) return;
+        var blob = Utilities.newBlob(Utilities.base64Decode(m[2]), m[1], "photo-" + (i + 1) + ".jpg");
+        photoLinks.push(folder.createFile(blob).getUrl());
+      });
+    }
+
+    sheet.appendRow([
+      new Date(), "New",
+      p.full_name || "", p.act_name || "", p.category || "",
+      p.skills || "", p.based_in || "", p.languages || "",
+      p.email || "", p.phone || "",
+      p.bio || "", p.video_links || "", p.social || "",
+      photoLinks.join("\n"), ""
+    ]);
+
+    if (NOTIFY_EMAIL) {
+      MailApp.sendEmail({
+        to: NOTIFY_EMAIL,
+        subject: "New artist application: " + (p.act_name || p.full_name) + " (" + (p.category || "") + ")",
+        body: "A new artist has applied to join the roster.\n\n" +
+              "Name: " + (p.full_name || "") + "\nAct: " + (p.act_name || "") +
+              "\nCategory: " + (p.category || "") + "\nEmail: " + (p.email || "") +
+              "\nPhone: " + (p.phone || "") + "\n\nReview it here: " + ss.getUrl()
+      });
+    }
+
+    return json({ result: "success" });
+  } catch (err) {
+    return json({ result: "error", error: err.toString() });
+  }
+}
+
+function setupSheet(sheet) {
+  sheet.appendRow(HEADERS);
+  sheet.setFrozenRows(1);
+  sheet.getRange(1, 1, 1, HEADERS.length).setFontWeight("bold").setBackground("#0a1f18").setFontColor("#C9A84C");
+  var rule = SpreadsheetApp.newDataValidation()
+    .requireValueInList(["New", "Shortlisted", "Approved", "Declined"], true).build();
+  sheet.getRange(2, 2, 1000, 1).setDataValidation(rule);
+  sheet.setColumnWidth(11, 360);
+}
+
+function getFolder(name) {
+  var it = DriveApp.getFoldersByName(name);
+  return it.hasNext() ? it.next() : DriveApp.createFolder(name);
+}
+function clean(s) { return String(s).replace(/[\\\/:*?"<>|]/g, "").slice(0, 60); }
+function json(o) {
+  return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON);
+}

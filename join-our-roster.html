@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
+    <title>Join Our Roster | Artists &amp; Performers | Greenhouse Events Dubai</title>
+    <meta name="description" content="Are you a musician, DJ, singer, performer or MC in the UAE? Apply to join the Greenhouse Events Dubai entertainment roster."/>
+    <meta name="keywords" content="performer jobs Dubai, musician booking Dubai, join entertainment agency UAE, DJ roster Dubai, artist application"/>
+    <meta name="robots" content="index, follow"/>
+    <link rel="canonical" href="https://greenhouseeventsuae.com/join-our-roster.html"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://greenhouseeventsuae.com/join-our-roster.html"/>
+    <meta property="og:title" content="Join Our Roster | Greenhouse Events Dubai"/>
+    <meta property="og:description" content="Musicians, DJs, singers, performers and MCs: apply to join the Greenhouse Events entertainment roster."/>
+    <meta property="og:image" content="https://greenhouseeventsuae.com/about-banner.jpg"/>
+    <meta property="og:site_name" content="Greenhouse Events Dubai"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Join Our Roster | Greenhouse Events Dubai"/>
+    <meta name="twitter:image" content="https://greenhouseeventsuae.com/about-banner.jpg"/>
+    <meta name="geo.region" content="AE-DU"/>
+    <meta name="geo.placename" content="Dubai, United Arab Emirates"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #04100c;
+            --bg-mid: #0a1f18;
+            --gold-metallic: linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E9B8 50%, #C9A84C 75%, #8B6914 100%);
+            --gold-metallic-nude: linear-gradient(135deg, #7A5A16 0%, #C9A84C 25%, #E8CC7A 50%, #C9A84C 75%, #7A5A16 100%);
+            --gold-solid: #C9A84C;
+            --white-off: #F4F0E8;
+            --border: rgba(201,168,76,0.18);
+            --nude: #E6D9C2;
+            --nude-soft: #F3EADA;
+            --nude-card: #F8F2E6;
+            --gold-deep: #7A5A16;
+            --serif: 'Cormorant Garamond', serif;
+            --display: 'Cinzel', serif;
+            --sans: 'DM Sans', sans-serif;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        a { color: inherit; text-decoration: none; }
+
+        /* --- HAMBURGER --- */
+        .hamburger {
+            display: none; flex-direction: column; gap: 5px;
+            cursor: pointer; background: none; border: none;
+            padding: 4px; flex-shrink: 0;
+        }
+        .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--gold-solid); transition: all 0.3s; }
+        .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+        /* --- MOBILE FULL SCREEN MENU --- */
+        .mobile-menu {
+            display: none; position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            background: rgba(2, 22, 18, 0.98); backdrop-filter: blur(20px);
+            z-index: 999; flex-direction: column;
+            align-items: center; justify-content: flex-start; gap: 1.35rem;
+            overflow-y: auto; -webkit-overflow-scrolling: touch;
+            padding: 6.5rem 1.5rem 3rem;
+        }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a { font-family: var(--serif); font-size: 1.3rem; color: var(--white-off); text-decoration: none; letter-spacing: 1.5px; opacity: 0.85; transition: opacity 0.3s; text-align: center; line-height: 1.3; }
+        .mobile-menu a:hover { opacity: 1; color: var(--gold-solid); }
+        .mobile-menu .mobile-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.8rem 2.5rem; font-family: var(--display); font-size: 0.8rem; letter-spacing: 2px; font-weight: 700; }
+
+        /* --- MOLDED LIGHT & SHADOW LUXURY EMERALD BASE --- */
+        body {
+            background-color: var(--bg-deep);
+            background-image:
+                radial-gradient(ellipse 65% 45% at 50% 0%, rgba(201,168,76,0.28), transparent 65%),
+                url('leaf-shadows.png'),
+                url('wall-texture.jpg');
+            background-repeat: no-repeat, no-repeat, repeat;
+            background-position: top center, top center, top left;
+            background-size: 100% auto, 100% auto, 300px 300px;
+            color: var(--white-off);
+            font-family: var(--sans);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .metallic-gold {
+            background: var(--gold-metallic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
+            display: inline-block;
+            font-weight: 600;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            padding: 1.2rem 5vw; display: flex; justify-content: space-between; align-items: center;
+            background: transparent;
+            transition: transform 0.4s ease;
+        }
+        nav.nav-hidden { transform: translateY(-100%); }
+        .nude-break { width: 100%; height: 16px; background: var(--nude); position: relative; z-index: 20; }
+        .nav-logo, .nav-whatsapp, .nav-whatsapp svg { text-shadow: 0 2px 10px rgba(0,0,0,0.85), 0 1px 4px rgba(0,0,0,0.9); filter: drop-shadow(0 1px 3px rgba(0,0,0,0.7)); }
+        .hamburger span { filter: drop-shadow(0 1px 3px rgba(0,0,0,0.7)); }
+        .nav-pages-btn { text-shadow: 0 2px 10px rgba(0,0,0,0.85), 0 1px 4px rgba(0,0,0,0.9); }
+
+        .logo-wrap { text-decoration: none; display: inline-block; position: relative; padding-bottom: 4px; flex-shrink: 1; min-width: 0; }
+        .nav-logo { font-family: var(--serif); font-size: clamp(0.7rem, 2.2vw, 1.15rem); font-weight: 600; letter-spacing: 3px; display: inline-block; white-space: nowrap; }
+
+        .nav-actions { display: flex; align-items: center; gap: 1.5rem; flex-shrink: 0; }
+        .nav-cta { background: var(--gold-metallic); color: #0b1a18; padding: 0.55rem 1.4rem; text-decoration: none; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; transition: transform 0.3s ease; }
+        .nav-cta:hover { transform: translateY(-1px); }
+
+        .nav-whatsapp {
+            color: var(--white-off); text-decoration: none; font-size: 0.75rem; letter-spacing: 1.5px; opacity: 0.8;
+        }
+        .nav-whatsapp:hover { opacity: 1; }
+
+        /* --- EXPLORE NAV DROPDOWN --- */
+        .nav-pages { position: relative; }
+        .nav-pages-btn {
+            background: rgba(5, 13, 12, 0.85);
+            border: 0.5px solid var(--gold-solid);
+            color: var(--gold-solid);
+            padding: 0.55rem 1.1rem;
+            font-family: var(--sans);
+            font-weight: 600;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .nav-pages-btn:hover { background: rgba(201, 168, 76, 0.2); }
+        .nav-pages-chevron { width: 12px; height: 12px; fill: currentColor; transition: transform 0.25s ease; flex-shrink: 0; }
+        .nav-pages.open .nav-pages-chevron { transform: rotate(180deg); }
+        .nav-pages-menu {
+            position: absolute;
+            top: calc(100% + 12px);
+            right: 0;
+            min-width: 260px;
+            background: rgba(2, 22, 18, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 0.5px solid var(--border);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            padding: 0.5rem 0;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translateY(-8px) translateZ(0);
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
+        }
+        .nav-pages.open .nav-pages-menu {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateY(0) translateZ(0);
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0s;
+        }
+        .nav-pages-menu a {
+            display: block;
+            padding: 0.7rem 1.4rem;
+            font-family: var(--serif);
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            color: var(--white-off);
+            opacity: 0.85;
+            border-left: 2px solid transparent;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+        .nav-pages-menu a:hover { opacity: 1; color: var(--gold-solid); background: rgba(201,168,76,0.08); border-left-color: var(--gold-solid); }
+        .nav-pages-menu a.current-page,
+        .mobile-menu a.current-page { color: var(--gold-solid); opacity: 1; }
+        .nav-pages-menu a.current-page { border-left-color: var(--gold-solid); }
+        @media (max-width: 900px) {
+            .nav-pages { display: none; }
+        }
+
+        /* --- LUXURY HERO COVER HEADER --- */
+        .inner-hero {
+            height: 65vh;
+            min-height: 480px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 8vw;
+            position: relative;
+            background: linear-gradient(rgba(5, 13, 12, 0.45) 0%, rgba(5, 13, 12, 0.92) 100%), url('about-banner.jpg') no-repeat center center;
+            background-size: cover;
+        }
+        .inner-hero h1 { font-family: var(--serif); font-size: 4rem; font-weight: 300; margin-bottom: 1.2rem; letter-spacing: 2px; line-height: 1.15; text-shadow: 0 4px 12px rgba(0,0,0,0.6); }
+        .inner-hero p { font-size: 1.15rem; letter-spacing: 0.5px; opacity: 0.9; color: var(--white-off); font-weight: 300; text-shadow: 0 2px 8px rgba(0,0,0,0.8); max-width: 620px; margin: 0 auto; }
+
+        .greenery-wrap {
+            position: relative;
+            overflow: hidden;
+            background-color: var(--nude);
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact-section {
+            position: relative; z-index: 1;
+            padding: 5rem 8vw 6rem;
+        }
+        .contact-section::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 30;
+            background: linear-gradient(90deg, transparent 0%, var(--gold-solid) 15%, #F5E9B8 50%, var(--gold-solid) 85%, transparent 100%);
+        }
+        .contact-section::after {
+            content: '';
+            position: absolute; top: -6px; left: 50%; z-index: 31;
+            width: 13px; height: 13px;
+            transform: translateX(-50%) rotate(45deg);
+            background: var(--gold-solid);
+            border: 1.5px solid var(--nude-card);
+            box-shadow: 0 0 10px rgba(201,168,76,0.7);
+        }
+
+        .contact-grid {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: 1.3fr 1fr; gap: 4.5rem;
+            align-items: start;
+        }
+
+        .contact-intro-eyebrow {
+            font-family: var(--display); font-size: 0.72rem; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--gold-deep); margin-bottom: 1rem; display: block;
+        }
+        .contact-intro h2 { font-family: var(--serif); font-size: 2.4rem; font-weight: 400; color: var(--bg-deep); margin-bottom: 1rem; }
+        .contact-intro > p { color: var(--bg-deep); opacity: 0.75; font-size: 1rem; line-height: 1.75; margin-bottom: 2.5rem; max-width: 520px; }
+
+        /* Form */
+        .contact-form { display: grid; gap: 1.3rem; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.3rem; }
+        .form-field { display: flex; flex-direction: column; gap: 0.5rem; }
+        .form-field label {
+            font-family: var(--display); font-size: 0.65rem; letter-spacing: 1.5px;
+            text-transform: uppercase; color: var(--gold-deep); font-weight: 600;
+        }
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+            font-family: var(--sans); font-size: 0.95rem; color: var(--bg-deep);
+            background: var(--nude-card);
+            border: 0.5px solid rgba(122, 90, 22, 0.35);
+            padding: 0.85rem 1rem;
+            width: 100%;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-field input:focus,
+        .form-field select:focus,
+        .form-field textarea:focus {
+            outline: none;
+            border-color: var(--gold-solid);
+            box-shadow: 0 0 0 3px rgba(201,168,76,0.15);
+        }
+        .form-field textarea { resize: vertical; min-height: 130px; font-family: var(--sans); }
+        .form-field select { appearance: none; cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%237A5A16'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 1rem center; background-size: 16px;
+            padding-right: 2.5rem;
+        }
+
+        /* honeypot */
+        .form-hint { font-size: 0.78rem; color: var(--bg-deep); opacity: 0.6; margin-top: -0.2rem; }
+        .form-field input[type="file"] { padding: 0.8rem; cursor: pointer; }
+        .photo-previews { display: flex; gap: 0.7rem; flex-wrap: wrap; }
+        .photo-previews img { width: 84px; height: 112px; object-fit: cover; border: 1px solid rgba(201,168,76,0.5); }
+        .form-consent { display: flex; gap: 0.7rem; align-items: flex-start; font-size: 0.85rem; color: var(--bg-deep); opacity: 0.8; line-height: 1.5; }
+        .form-consent input { margin-top: 0.25rem; accent-color: #C9A84C; }
+        .roster-steps { list-style: none; counter-reset: st; display: grid; gap: 1.1rem; margin-top: 1.6rem; }
+        .roster-steps li { counter-increment: st; display: flex; gap: 0.9rem; color: var(--white-off); font-size: 0.9rem; opacity: 0.9; line-height: 1.5; }
+        .roster-steps li::before { content: "0" counter(st); font-family: var(--display); color: var(--gold-solid); font-size: 0.85rem; flex-shrink: 0; margin-top: 1px; }
+        .form-field.hp { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
+
+        .form-submit-btn {
+            justify-self: start;
+            background: var(--gold-metallic-nude);
+            background-size: 200% auto;
+            color: #0b1a18;
+            border: none;
+            padding: 1rem 2.6rem;
+            font-family: var(--display);
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-position 0.4s ease, transform 0.3s ease;
+            margin-top: 0.5rem;
+        }
+        .form-submit-btn:hover { background-position: 100% center; transform: translateY(-1px); }
+        .form-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+        .form-status {
+            font-family: var(--sans); font-size: 0.9rem; margin-top: 0.5rem;
+            padding: 0.9rem 1.1rem; display: none; border-left: 3px solid var(--gold-solid);
+            background: rgba(122,90,22,0.08); color: var(--bg-deep);
+        }
+        .form-status.show { display: block; }
+        .form-status.error { border-left-color: #a33; background: rgba(170,51,51,0.08); }
+
+        /* Sidebar info card */
+        .contact-info-card {
+            background: linear-gradient(145deg, rgba(5,13,12,0.95), rgba(10,31,24,0.95));
+            border: 0.5px solid var(--gold-solid);
+            padding: 2.8rem 2.4rem;
+            position: sticky; top: 110px;
+        }
+        .contact-info-card h3 { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; margin-bottom: 1.8rem; color: var(--white-off); }
+        .contact-info-row { display: flex; align-items: flex-start; gap: 0.9rem; margin-bottom: 1.6rem; }
+        .contact-info-row:last-of-type { margin-bottom: 0; }
+        .contact-info-row svg { width: 18px; height: 18px; fill: var(--gold-solid); flex-shrink: 0; margin-top: 2px; }
+        .contact-info-row .label { font-family: var(--display); font-size: 0.62rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-solid); opacity: 0.85; display: block; margin-bottom: 0.3rem; }
+        .contact-info-row .value { font-size: 0.92rem; color: var(--white-off); opacity: 0.9; line-height: 1.5; }
+        .contact-info-row a.value { text-decoration: none; }
+        .contact-info-row a.value:hover { color: var(--gold-solid); }
+
+        .contact-whatsapp-btn {
+            margin-top: 2.2rem;
+            background: transparent; border: 0.5px solid var(--gold-solid); color: var(--gold-solid);
+            padding: 0.85rem 1.4rem; text-decoration: none; font-weight: 500; font-size: 0.78rem; letter-spacing: 1px;
+            display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.3s ease;
+        }
+        .contact-whatsapp-btn:hover { background: rgba(201, 168, 76, 0.12); transform: translateY(-1px); }
+        .contact-whatsapp-btn svg { width: 15px; height: 15px; fill: currentColor; }
+
+        footer {
+            position: relative; overflow: hidden;
+        }
+
+        @media (max-width: 900px) {
+            nav { padding: 1rem 5vw; gap: 1rem; }
+            .nav-whatsapp { display: none; }
+            .nav-cta { display: none; }
+            .hamburger { display: flex; }
+
+            .inner-hero { height: auto; min-height: 50vh; padding: 130px 6vw 60px; }
+            .inner-hero h1 { font-size: clamp(2rem, 7vw, 2.6rem); letter-spacing: 1px; }
+            .inner-hero p { font-size: clamp(0.9rem, 2.5vw, 1.05rem); }
+
+            .contact-section { padding: 3.5rem 6vw 4rem; }
+            .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .form-row { grid-template-columns: 1fr; gap: 1.3rem; }
+            .contact-info-card { position: static; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="our-services.html" onclick="closeMobileMenu()">Our Services</a>
+    <a href="private-events.html" onclick="closeMobileMenu()">Private Party &amp; Event Planning</a>
+    <a href="corporate-events.html" onclick="closeMobileMenu()">Corporate Event Management</a>
+    <a href="permanent-transformations.html" onclick="closeMobileMenu()">Permanent Transformations</a>
+    <a href="staging-av.html" onclick="closeMobileMenu()">Staging, Sound &amp; AV</a>
+    <a href="entertainment.html" onclick="closeMobileMenu()">Entertainment</a>
+    <a href="festive-seasonal.html" onclick="closeMobileMenu()">Festive &amp; Seasonal</a>
+    <a href="ramadan.html" onclick="closeMobileMenu()">Ramadan</a>
+    <a href="wardrobe-costumes.html" onclick="closeMobileMenu()">Wardrobe</a>
+    <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+    <a href="join-our-roster.html" onclick="closeMobileMenu()">Join Our Roster</a>
+    <a href="#contact-form-section" onclick="closeMobileMenu()" class="mobile-cta">Enquire Now</a>
+</div>
+
+<nav>
+    <a href="index.html" class="logo-wrap">
+        <span class="nav-logo metallic-gold">GREENHOUSE EVENTS DUBAI</span>
+    </a>
+    <div class="nav-actions">
+        <a href="https://wa.me/971552537712?text=Hello%20Greenhouse%20Events%2C%20I%20would%20like%20to%20enquire%20about%20your%20services." target="_blank" class="nav-whatsapp">WHATSAPP</a>
+        <a href="#contact-form-section" class="nav-cta">ENQUIRE NOW</a>
+        <div class="nav-pages" id="navPages">
+            <button class="nav-pages-btn" id="navPagesBtn" type="button" aria-haspopup="true" aria-expanded="false">
+                EXPLORE
+                <svg class="nav-pages-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="nav-pages-menu" id="navPagesMenu">
+                <a href="index.html">Home</a>
+                <a href="our-services.html">Our Services</a>
+                <a href="private-events.html">Private Party &amp; Event Planning</a>
+                <a href="corporate-events.html">Corporate Event Management</a>
+                <a href="permanent-transformations.html">Permanent Transformations</a>
+                <a href="staging-av.html">Staging, Sound &amp; AV</a>
+                <a href="entertainment.html">Entertainment</a>
+                <a href="festive-seasonal.html">Festive &amp; Seasonal</a>
+                <a href="ramadan.html">Ramadan</a>
+                <a href="wardrobe-costumes.html">Wardrobe</a>
+                <a href="contact.html">Contact</a>
+                <a href="join-our-roster.html">Join Our Roster</a>
+            </div>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<header class="inner-hero">
+    <h1 class="metallic-gold">Join Our Roster</h1>
+    <p>Musicians, DJs, singers, performers and hosts: share your profile and we'll be in touch when the right event comes along.</p>
+</header>
+<div class="nude-break"></div>
+
+<div class="greenery-wrap">
+<section class="contact-section" id="artist-form-section">
+    <div class="contact-grid">
+        <div class="contact-intro">
+            <span class="contact-intro-eyebrow">For Artists &amp; Performers</span>
+            <h2>Apply To Perform With Us</h2>
+            <p>We book talent for weddings, private parties, galas, brand activations and corporate events across Dubai and the UAE. Tell us about your act, add a few photos and links to your best videos, and our entertainment team will review your profile.</p>
+
+            <form class="contact-form" id="artistForm">
+                <input type="checkbox" name="botcheck" class="form-field hp" tabindex="-1" autocomplete="off">
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="af-name">Full Name</label>
+                        <input type="text" id="af-name" name="full_name" required placeholder="Your name">
+                    </div>
+                    <div class="form-field">
+                        <label for="af-act">Act / Stage Name</label>
+                        <input type="text" id="af-act" name="act_name" placeholder="If different from your name">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="af-email">Email</label>
+                        <input type="email" id="af-email" name="email" required placeholder="you@email.com">
+                    </div>
+                    <div class="form-field">
+                        <label for="af-phone">Phone / WhatsApp</label>
+                        <input type="tel" id="af-phone" name="phone" required placeholder="+971 5X XXX XXXX">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="af-category">Category</label>
+                        <select id="af-category" name="category" required>
+                        <option value="" disabled selected>Choose one</option>
+                        <option value="DJ">DJ</option>
+                        <option value="Singer / Vocalist">Singer / Vocalist</option>
+                        <option value="Live Band / Duo">Live Band / Duo</option>
+                        <option value="Instrumentalist">Instrumentalist</option>
+                        <option value="Arabic Musician">Arabic Musician</option>
+                        <option value="Specialist / Circus Act">Specialist / Circus Act</option>
+                        <option value="Roaming Performer">Roaming Performer</option>
+                        <option value="Dancer / Dance Crew">Dancer / Dance Crew</option>
+                        <option value="MC / Host">MC / Host</option>
+                        <option value="Magician / Mentalist">Magician / Mentalist</option>
+                        <option value="Children's Entertainer">Children's Entertainer</option>
+                        <option value="Live Artist">Live Artist</option>
+                        <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label for="af-based">Based In</label>
+                        <input type="text" id="af-based" name="based_in" placeholder="e.g. Dubai, Abu Dhabi">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="af-skills">Instruments / Skills / Genres</label>
+                        <input type="text" id="af-skills" name="skills" placeholder="e.g. Oud &amp; vocals, House &amp; Afro House">
+                    </div>
+                    <div class="form-field">
+                        <label for="af-lang">Languages</label>
+                        <input type="text" id="af-lang" name="languages" placeholder="e.g. English, Arabic">
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label for="af-bio">About You / Your Act</label>
+                    <textarea id="af-bio" name="bio" required placeholder="Your experience, notable venues and events, line-up options..."></textarea>
+                </div>
+
+                <div class="form-field">
+                    <label for="af-videos">Video Links</label>
+                    <textarea id="af-videos" name="video_links" style="min-height:80px" placeholder="YouTube, Vimeo, Instagram or Google Drive links, one per line"></textarea>
+                </div>
+
+                <div class="form-field">
+                    <label for="af-social">Instagram / Website</label>
+                    <input type="text" id="af-social" name="social" placeholder="@yourhandle or www.yoursite.com">
+                </div>
+
+                <div class="form-field">
+                    <label for="af-photos">Photos (up to 3)</label>
+                    <input type="file" id="af-photos" accept="image/*" multiple>
+                    <span class="form-hint">Clear, high-quality performance or portrait shots work best, without logos or watermarks.</span>
+                    <div class="photo-previews" id="afPreviews"></div>
+                </div>
+
+                <label class="form-consent">
+                    <input type="checkbox" required>
+                    <span>I confirm I own or have permission to share these photos and videos, and I'm happy for Greenhouse Events to keep my details on file for future bookings.</span>
+                </label>
+
+                <button type="submit" class="form-submit-btn" id="afSubmitBtn">Submit My Profile</button>
+                <div class="form-status" id="afStatus"></div>
+            </form>
+        </div>
+
+        <aside class="contact-info-card">
+            <h3 class="metallic-gold">What Happens Next</h3>
+            <ol class="roster-steps">
+                <li>Our entertainment team reviews every application.</li>
+                <li>If your act is a fit, we'll contact you to talk availability, line-ups and rates.</li>
+                <li>Approved artists are added to our roster and put forward for suitable events.</li>
+            </ol>
+            <p style="color:var(--white-off);opacity:0.7;font-size:0.85rem;line-height:1.6;margin-top:1.8rem">Questions? Email <a href="mailto:info@greenhouseeventsuae.com" style="color:var(--gold-solid)">info@greenhouseeventsuae.com</a></p>
+        </aside>
+    </div>
+</section>
+</div><!-- /greenery-wrap -->
+
+<footer style="background: #000; padding: 5rem 8vw 3rem 8vw; text-align: center;">
+    <p class="metallic-gold" style="font-family: var(--display); font-size: 1.1rem; letter-spacing: 5px; font-weight: 700; margin-bottom: 0.5rem;">GREENHOUSE EVENTS DUBAI</p>
+    <p style="font-size: 0.75rem; opacity: 0.4; letter-spacing: 1px; color: #fff;">&copy; 2026 Greenhouse Events UAE. All Rights Reserved.</p>
+</footer>
+
+<script>
+    const hamburger = document.getElementById("hamburger");
+    const mobileMenu = document.getElementById("mobileMenu");
+    hamburger.addEventListener("click", function () {
+        const isOpen = mobileMenu.classList.toggle("open");
+        hamburger.classList.toggle("open");
+        hamburger.setAttribute("aria-expanded", isOpen);
+        document.body.style.overflow = isOpen ? "hidden" : "";
+    });
+    function closeMobileMenu() {
+        hamburger.classList.remove("open");
+        mobileMenu.classList.remove("open");
+        hamburger.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+    }
+
+    // EXPLORE dropdown
+    var navPages = document.getElementById("navPages");
+    var navPagesBtn = document.getElementById("navPagesBtn");
+    if (navPages && navPagesBtn) {
+        navPagesBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            var isOpen = navPages.classList.toggle("open");
+            navPagesBtn.setAttribute("aria-expanded", isOpen);
+        });
+        document.addEventListener("click", function (e) {
+            if (!navPages.contains(e.target)) {
+                navPages.classList.remove("open");
+                navPagesBtn.setAttribute("aria-expanded", "false");
+            }
+        });
+        var currentFile = window.location.pathname.split("/").pop() || "index.html";
+        document.querySelectorAll(".nav-pages-menu a, .mobile-menu a").forEach(function (a) {
+            if (a.getAttribute("href") === currentFile) {
+                a.classList.add("current-page");
+            }
+        });
+    }
+
+    window.addEventListener("resize", function () {
+        if (window.innerWidth > 900) closeMobileMenu();
+    });
+
+    // --- HEADER: hide on scroll down, show on scroll up ---
+    (function () {
+        var navEl = document.querySelector("nav");
+        if (!navEl) return;
+        var mobileMenuEl = document.getElementById("mobileMenu");
+        var navPagesEl = document.getElementById("navPages");
+        var lastY = window.scrollY;
+        var ticking = false;
+        function isMenuOpen() {
+            return (mobileMenuEl && mobileMenuEl.classList.contains("open")) ||
+                   (navPagesEl && navPagesEl.classList.contains("open"));
+        }
+        function update(y) {
+            if (!isMenuOpen()) {
+                if (y > lastY && y > 140) {
+                    navEl.classList.add("nav-hidden");
+                } else {
+                    navEl.classList.remove("nav-hidden");
+                }
+            }
+            lastY = y;
+            ticking = false;
+        }
+        window.addEventListener("scroll", function () {
+            if (!ticking) {
+                var y = window.scrollY;
+                requestAnimationFrame(function () { update(y); });
+                ticking = true;
+            }
+        }, { passive: true });
+    })();
+
+    // --- ARTIST APPLICATION FORM: submit via Google Apps Script Web App ---
+    (function () {
+        // PASTE the deployed Artist Applications Web App URL here (ends in /exec)
+        var SCRIPT_URL = "PASTE_YOUR_ARTIST_SCRIPT_URL";
+
+        var form = document.getElementById("artistForm");
+        var statusEl = document.getElementById("afStatus");
+        var submitBtn = document.getElementById("afSubmitBtn");
+        var fileInput = document.getElementById("af-photos");
+        var previews = document.getElementById("afPreviews");
+        var photos = [];
+        if (!form) return;
+
+        // Shrink photos in the browser (max 1600px, JPEG) so uploads stay fast.
+        function shrink(file) {
+            return new Promise(function (resolve, reject) {
+                var reader = new FileReader();
+                reader.onload = function () {
+                    var img = new Image();
+                    img.onload = function () {
+                        var max = 1600, w = img.width, h = img.height;
+                        if (Math.max(w, h) > max) { var r = max / Math.max(w, h); w = Math.round(w * r); h = Math.round(h * r); }
+                        var c = document.createElement("canvas"); c.width = w; c.height = h;
+                        c.getContext("2d").drawImage(img, 0, 0, w, h);
+                        resolve(c.toDataURL("image/jpeg", 0.85));
+                    };
+                    img.onerror = reject;
+                    img.src = reader.result;
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
+        fileInput.addEventListener("change", function () {
+            var files = Array.prototype.slice.call(fileInput.files, 0, 3);
+            previews.innerHTML = "";
+            photos = [];
+            Promise.all(files.map(shrink)).then(function (urls) {
+                photos = urls;
+                urls.forEach(function (u) { var i = document.createElement("img"); i.src = u; previews.appendChild(i); });
+            });
+        });
+
+        function show(msg, isError) {
+            statusEl.textContent = msg;
+            statusEl.classList.add("show");
+            statusEl.classList.toggle("error", !!isError);
+        }
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            if (form.botcheck && form.botcheck.checked) return;
+            if (!SCRIPT_URL || SCRIPT_URL.indexOf("PASTE_YOUR") === 0) {
+                show("Applications aren't open online just yet. Please email your profile to info@greenhouseeventsuae.com.", true);
+                return;
+            }
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Sending...";
+            statusEl.classList.remove("show", "error");
+
+            var fd = new FormData(form);
+            photos.forEach(function (u, i) { fd.append("photo" + (i + 1), u); });
+
+            fetch(SCRIPT_URL, { method: "POST", body: fd })
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                if (data.result === "success") {
+                    show("Thank you! Your profile has been sent to our entertainment team. We'll be in touch if there's a fit.");
+                    form.reset(); previews.innerHTML = ""; photos = [];
+                } else {
+                    show("Something went wrong sending your profile. Please email it to info@greenhouseeventsuae.com instead.", true);
+                }
+            })
+            .catch(function () {
+                show("Something went wrong sending your profile. Please email it to info@greenhouseeventsuae.com instead.", true);
+            })
+            .finally(function () {
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Submit My Profile";
+            });
+        });
+    })();
+</script>
+
+</body>
+</html>
