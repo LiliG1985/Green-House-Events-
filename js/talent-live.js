@@ -6,11 +6,11 @@
   if (!window.GHDB) return;
 
   var GROUP_IDS = {
-    "singers|Choirs": "choirs",
+    "singers|Choirs": "choirs", "instrumental|Violinists": "violinists",
     "specialist|Acrobats & Circus": "spec-aerial", "specialist|Roaming & Specialty Musicians": "spec-roaming",
     "specialist|Laser Shows": "spec-laser", "specialist|Fire": "spec-fire",
     "ramadan|Arabic Bands & Duos": "ram-bands", "ramadan|Oud": "ram-oud", "ramadan|Qanun": "ram-qanun",
-    "ramadan|Percussion": "ram-percussion", "ramadan|Harp": "ram-harp", "ramadan|Violin": "ram-violin",
+    "ramadan|Percussion": "ram-percussion", "ramadan|Harp": "ram-harp",
     "ramadan|Flute": "ram-flute", "ramadan|Live Artists": "ram-artists",
     "ramadan|Cultural Activations": "ram-activations", "ramadan|Cultural Dance": "ram-dance"
   };
