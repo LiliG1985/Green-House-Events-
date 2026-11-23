@@ -229,6 +229,11 @@
       (id ? '<div class="photos" id="photoGrid"></div><label class="dropzone" id="dropzone">Click or drop photos here to upload<input type="file" id="photoInput" accept="image/*" multiple hidden></label>'
           : '<p class="muted">Save the artist first, then add photos.</p>') + "</section>" +
 
+      (id ? '<section class="panel"><h2>Proposal slides <span class="muted small" id="asCount"></span></h2>' +
+        '<p class="note">This act&rsquo;s slides from your proposal deck. Tick slides, then add them to a proposal.</p>' +
+        '<div id="asGrid" class="slide-grid compact"><p class="muted">Loading&hellip;</p></div>' +
+        '<label class="dropzone" id="asDrop">Click or drop slide images here to add them to this act<input type="file" id="asInput" accept="image/*" multiple hidden></label></section>' : "") +
+
       '<section class="panel"><h2>Videos &amp; links</h2><p class="note">Every link is saved privately. Switch one on to show it on the website too.</p>' +
       '<div class="linkrow"><label class="field">YouTube / video links <span class="hint">One per line. The first one plays on the website.</span><textarea id="pVideos">' + esc(p.video_links || "") + "</textarea></label>" + sw("aShowVideos", a.show_videos, "Show on website") + "</div>" +
       '<div class="linkrow"><label class="field">SoundCloud / Mixcloud / Spotify<input type="url" id="pAudio" value="' + esc(p.audio_link || "") + '"></label>' + sw("aShowAudio", a.show_audio, "Show on website") + "</div>" +
@@ -257,6 +262,7 @@
     if (id) {
       $("#deleteBtn").addEventListener("click", function () { deleteArtist(id, a.name, photos); });
       drawPhotos(id, photos);
+      artistSlides(id, a);
       var input = $("#photoInput"), dz = $("#dropzone");
       input.addEventListener("change", function () { uploadPhotos(id, photos, input.files); input.value = ""; });
       dz.addEventListener("dragover", function (e) { e.preventDefault(); dz.classList.add("over"); });
@@ -500,6 +506,111 @@
       .catch(function (e) { fail(e); btn.disabled = false; btn.textContent = "Create artist profile"; });
   }
 
+  // ---------- shared: add slides to a proposal ----------
+  var CAT_TO_SLIDECAT = { djs: "DJs", singers: "Singers", bands: "Live Bands", instrumental: "Instrumentalists", specialist: "Specialist Acts",
+    dancers: "Dancers", mcs: "Emcees", hostesses: "Hostesses & Promo Staff", magicians: "Magicians", kids: "Children's", ramadan: "Ramadan & Arabic" };
+  function fillProposalSelect(sel, current) {
+    return sb.from("proposals").select("id,title,client").order("updated_at", { ascending: false }).range(0, 499).then(function (r) {
+      sel.innerHTML = '<option value="__new">+ New proposal&hellip;</option>' + (r.data || []).map(function (p) {
+        return '<option value="' + p.id + '">' + esc(p.title + (p.client ? " (" + p.client + ")" : "")) + "</option>";
+      }).join("");
+      if (current && (r.data || []).some(function (p) { return p.id === current; })) sel.value = current;
+    });
+  }
+  function addSlidesToProposal(ids, target) {
+    var getId = target === "__new" ? (function () {
+      var title = prompt("Name for the new proposal (e.g. Grand Hyatt NYE 2026):");
+      if (!title) return Promise.reject(null);
+      return sb.from("proposals").insert({ title: title.trim() }).select("id").single().then(must).then(function (r) { return r.id; });
+    })() : Promise.resolve(target);
+    return getId.then(function (pid) {
+      return sb.from("proposal_slides").select("slide_id,position").eq("proposal_id", pid).then(must).then(function (existing) {
+        var have = {}, max = -1;
+        existing.forEach(function (e) { have[e.slide_id] = 1; if (e.position > max) max = e.position; });
+        var rows = ids.filter(function (id) { return !have[id]; }).map(function (id, i) { return { proposal_id: pid, slide_id: id, position: max + 1 + i }; });
+        return (rows.length ? sb.from("proposal_slides").insert(rows).then(must) : Promise.resolve()).then(function () {
+          return sb.from("proposals").update({ updated_at: new Date().toISOString() }).eq("id", pid);
+        }).then(function () {
+          slideState.target = pid;
+          toast(rows.length + " slide" + (rows.length === 1 ? "" : "s") + " added" + (ids.length > rows.length ? " (some were already in it)" : ""));
+          return pid;
+        });
+      });
+    });
+  }
+
+  // ---------- slides on an artist's page ----------
+  function artistSlides(artistId, a) {
+    var list = [], picked = {};
+    var bar = document.createElement("div");
+    bar.className = "selbar"; bar.hidden = true;
+    bar.innerHTML = '<span class="asSelCount"></span><select class="asTarget"></select>' +
+      '<button class="btn primary" type="button" data-act="add">Add to proposal</button><button class="btn" type="button" data-act="clear">Clear</button>';
+    app.appendChild(bar);
+    fillProposalSelect($(".asTarget", bar), slideState.target);
+    function load() {
+      return sb.from("slides").select("id,title,url,path,sort_order").eq("artist_id", artistId).order("sort_order").order("created_at")
+        .then(function (r) { if (r.error) throw r.error; list = r.data; draw(); });
+    }
+    function draw() {
+      var g = $("#asGrid"); if (!g) return;
+      $("#asCount").textContent = list.length ? list.length + " slide" + (list.length > 1 ? "s" : "") : "";
+      g.innerHTML = list.length ? list.map(function (x) {
+        var on = !!picked[x.id];
+        return '<div class="slide' + (on ? " on" : "") + '"><button type="button" class="slide-pick" data-pick="' + x.id + '" aria-label="Select slide">' +
+          '<img loading="lazy" src="' + esc(x.url) + '" alt=""><span class="tick">' + (on ? "&#10003;" : "") + "</span></button>" +
+          '<div class="slide-meta"><a class="small" href="' + esc(x.url) + '" target="_blank" rel="noopener">View full size</a><span class="spacer"></span>' +
+          '<button type="button" class="linkbtn" data-unlink="' + x.id + '" title="Keep in library, remove from this act">Unlink</button></div></div>';
+      }).join("") : '<p class="muted">No slides for this act yet. Upload one below, or import your master deck from the Slides page.</p>';
+      var n = Object.keys(picked).length;
+      bar.hidden = !n; $(".asSelCount", bar).textContent = n + " selected";
+    }
+    function upload(files) {
+      files = Array.prototype.slice.call(files || []).filter(function (f) { return /^image\//.test(f.type); });
+      if (!files.length) return;
+      var dz = $("#asDrop"), base = list.length ? Math.max.apply(null, list.map(function (x) { return x.sort_order; })) : 0, chain = Promise.resolve();
+      files.forEach(function (f, i) {
+        chain = chain.then(function () {
+          dz.firstChild.textContent = "Uploading " + (i + 1) + " of " + files.length + "...";
+          return GHDB.shrinkImage(f, 2400).then(function (blob) {
+            var path = GHDB.uuid() + ".jpg";
+            return uploadBlob(SLIDE_BUCKET, path, blob).then(function () {
+              var url = sb.storage.from(SLIDE_BUCKET).getPublicUrl(path).data.publicUrl;
+              return sb.from("slides").insert({ title: a.name, category: CAT_TO_SLIDECAT[a.category] || null, artist_id: artistId, url: url, path: path, sort_order: base + (i + 1) * 10 }).then(must);
+            });
+          });
+        });
+      });
+      chain.catch(fail).then(function () { dz.firstChild.textContent = "Click or drop slide images here to add them to this act"; return load(); });
+    }
+    $("#asGrid").addEventListener("click", function (e) {
+      var pk = e.target.closest("[data-pick]");
+      if (pk) { var id = pk.getAttribute("data-pick"); if (picked[id]) delete picked[id]; else picked[id] = 1; draw(); return; }
+      var ul = e.target.closest("[data-unlink]");
+      if (ul) {
+        var sid = ul.getAttribute("data-unlink");
+        sb.from("slides").update({ artist_id: null }).eq("id", sid).then(must).then(function () { delete picked[sid]; toast("Slide unlinked (still in your library)"); return load(); }).catch(fail);
+      }
+    });
+    var input = $("#asInput"), dz = $("#asDrop");
+    input.addEventListener("change", function () { upload(input.files); input.value = ""; });
+    dz.addEventListener("dragover", function (e) { e.preventDefault(); dz.classList.add("over"); });
+    dz.addEventListener("dragleave", function () { dz.classList.remove("over"); });
+    dz.addEventListener("drop", function (e) { e.preventDefault(); dz.classList.remove("over"); upload(e.dataTransfer.files); });
+    bar.addEventListener("click", function (e) {
+      var act = e.target.getAttribute("data-act");
+      if (act === "clear") { picked = {}; draw(); }
+      if (act === "add") {
+        var ids = list.filter(function (x) { return picked[x.id]; }).map(function (x) { return x.id; });
+        addSlidesToProposal(ids, $(".asTarget", bar).value).then(function (pid) {
+          picked = {}; draw(); fillProposalSelect($(".asTarget", bar), pid);
+        }).catch(function (err) { if (err) fail(err); });
+      }
+    });
+    window.addEventListener("hashchange", function rm() { bar.remove(); window.removeEventListener("hashchange", rm); });
+    load().catch(fail);
+  }
+
   // ---------- slides library ----------
   var SLIDE_BUCKET = "slides";
   var SLIDE_CATS = ["Cover & Intro", "DJs", "Singers", "Live Bands", "Instrumentalists", "Specialist Acts", "Dancers",
@@ -520,7 +631,7 @@
     if (q.get("add")) slideState.target = q.get("add");
     app.innerHTML = '<div class="pagehead"><div><h1>Slides</h1><p class="muted">Your proposal slide library. Tick slides, then add them to a proposal.</p></div>' +
       '<label class="btn primary" for="slideUpload">+ Upload slides<input type="file" id="slideUpload" accept="image/*" multiple hidden></label></div>' +
-      '<div class="toolbar"><input type="text" id="sQ" placeholder="Search slide titles" value="' + esc(slideState.q) + '">' +
+      '<div class="toolbar"><input type="text" id="sQ" placeholder="Search slides or act names" value="' + esc(slideState.q) + '">' +
       '<select id="sCat">' + slideCatOptions(slideState.cat, true) + "</select>" +
       '<span class="count" id="sCount"></span></div>' +
       '<label class="dropzone" id="slideDrop">Drag slide images here (PNG or JPG exported from Canva)</label><br>' +
@@ -529,13 +640,14 @@
       '<button class="btn primary" type="button" id="selAdd">Add to proposal</button><button class="btn" type="button" id="selClear">Clear</button></div>';
     var all = [];
     function load() {
-      return sb.from("slides").select("id,title,category,url,path,sort_order,created_at").order("sort_order").order("created_at").range(0, 4999)
+      return sb.from("slides").select("id,title,category,url,path,sort_order,created_at,artist_id,artists(name,slug)").order("sort_order").order("created_at").range(0, 4999)
         .then(function (r) { if (r.error) throw r.error; all = r.data; draw(); });
     }
     function draw() {
       var ql = slideState.q.toLowerCase();
       var rows = all.filter(function (x) {
-        return (!slideState.cat || x.category === slideState.cat) && (!ql || (x.title || "").toLowerCase().indexOf(ql) >= 0);
+        var hay = ((x.title || "") + " " + (x.artists ? x.artists.name : "")).toLowerCase();
+        return (!slideState.cat || x.category === slideState.cat) && (!ql || hay.indexOf(ql) >= 0);
       });
       $("#sCount").textContent = rows.length + " of " + all.length + " slides";
       $("#slideGrid").innerHTML = rows.length ? rows.map(function (x) {
@@ -544,6 +656,7 @@
           '<img loading="lazy" src="' + esc(x.url) + '" alt=""><span class="tick">' + (on ? "&#10003;" : "") + "</span></button>" +
           '<div class="slide-meta"><input type="text" value="' + esc(x.title) + '" data-title="' + x.id + '" aria-label="Slide title">' +
           '<select data-cat="' + x.id + '">' + slideCatOptions(x.category, false) + "</select>" +
+          (x.artists ? '<a class="small artist-tag" href="#/artists/' + x.artist_id + '">' + esc(x.artists.name) + "</a>" : '<span class="small muted">No act linked</span>') +
           '<button type="button" class="linkbtn del" data-del="' + x.id + '" title="Delete slide">Delete</button></div></div>';
       }).join("") : '<p class="muted center">No slides yet. Upload your proposal slides to get started.</p>';
       drawSel();
@@ -562,27 +675,45 @@
         if (slideState.target && (r.data || []).some(function (p) { return p.id === slideState.target; })) $("#selTarget").value = slideState.target;
       });
     }
+    // Files named like "0003--singers--layla.jpg" (the prepared master deck) are matched to their act and category automatically.
+    var DECK_RE = /^(\d+)--([a-z0-9-]+)--([a-z0-9-]*)\.(jpe?g|png)$/i;
     function upload(files) {
       files = Array.prototype.slice.call(files || []).filter(function (f) { return /^image\//.test(f.type); });
       if (!files.length) return;
-      var dz = $("#slideDrop"), n = 0, base = all.length ? Math.max.apply(null, all.map(function (x) { return x.sort_order; })) : 0;
+      var dz = $("#slideDrop"), n = 0, skipped = 0, base = all.length ? Math.max.apply(null, all.map(function (x) { return x.sort_order; })) : 0;
       files.sort(function (a, b) { return a.name.localeCompare(b.name, undefined, { numeric: true }); });
-      var chain = Promise.resolve();
-      files.forEach(function (f, i) {
-        chain = chain.then(function () {
-          dz.textContent = "Uploading " + (i + 1) + " of " + files.length + "...";
-          return GHDB.shrinkImage(f, 2400).then(function (blob) {
-            var path = GHDB.uuid() + ".jpg";
-            return uploadBlob(SLIDE_BUCKET, path, blob).then(function () {
-              var url = sb.storage.from(SLIDE_BUCKET).getPublicUrl(path).data.publicUrl;
-              return sb.from("slides").insert({ title: titleFromFile(f.name), category: slideState.cat || null, url: url, path: path, sort_order: base + (i + 1) * 10 }).then(must);
-            }).then(function () { n++; });
+      var catBySlug = {}; SLIDE_CATS.forEach(function (c) { catBySlug[slugify(c)] = c; });
+      var havePath = {}; all.forEach(function (x) { if (x.path) havePath[x.path] = 1; });
+      var needArtists = files.some(function (f) { return DECK_RE.test(f.name); });
+      var artistsReady = needArtists ? sb.from("artists").select("id,slug,name").range(0, 4999).then(must) : Promise.resolve([]);
+      artistsReady.then(function (arts) {
+        var bySlug = {}; arts.forEach(function (x) { bySlug[x.slug] = x; });
+        var chain = Promise.resolve();
+        files.forEach(function (f, i) {
+          chain = chain.then(function () {
+            dz.textContent = "Uploading " + (i + 1) + " of " + files.length + "... (keep this page open)";
+            var m = DECK_RE.exec(f.name), row = { title: titleFromFile(f.name), category: slideState.cat || null, sort_order: base + (i + 1) * 10 }, path = GHDB.uuid() + ".jpg";
+            if (m) {
+              var art = bySlug[m[3]];
+              path = "deck-" + m[1] + ".jpg";
+              if (havePath[path]) { skipped++; return; }
+              row.sort_order = parseInt(m[1], 10) * 10;
+              row.category = catBySlug[m[2]] || null;
+              row.artist_id = art ? art.id : null;
+              row.title = art ? art.name : (row.category || "Section") + " divider";
+            }
+            return GHDB.shrinkImage(f, 2400).then(function (blob) {
+              return uploadBlob(SLIDE_BUCKET, path, blob).then(function () {
+                row.url = sb.storage.from(SLIDE_BUCKET).getPublicUrl(path).data.publicUrl; row.path = path;
+                return sb.from("slides").insert(row).then(must);
+              }).then(function () { n++; havePath[path] = 1; });
+            });
           });
         });
-      });
-      chain.catch(fail).then(function () {
+        return chain;
+      }).catch(fail).then(function () {
         dz.textContent = "Drag slide images here (PNG or JPG exported from Canva)";
-        if (n) toast(n + " slide" + (n > 1 ? "s" : "") + " uploaded");
+        if (n || skipped) toast(n + " slide" + (n === 1 ? "" : "s") + " uploaded" + (skipped ? ", " + skipped + " already in the library" : ""));
         return load();
       });
     }
@@ -621,25 +752,8 @@
     $("#selClear").addEventListener("click", function () { slideState.selected = {}; draw(); });
     $("#selAdd").addEventListener("click", function () {
       var ids = all.filter(function (x) { return slideState.selected[x.id]; }).map(function (x) { return x.id; });
-      var target = $("#selTarget").value;
-      var getId = target === "__new" ? (function () {
-        var title = prompt("Name for the new proposal (e.g. Grand Hyatt NYE 2026):");
-        if (!title) return Promise.reject(null);
-        return sb.from("proposals").insert({ title: title.trim() }).select("id").single().then(must).then(function (r) { return r.id; });
-      })() : Promise.resolve(target);
-      getId.then(function (pid) {
-        return sb.from("proposal_slides").select("slide_id,position").eq("proposal_id", pid).then(must).then(function (existing) {
-          var have = {}, max = -1;
-          existing.forEach(function (e) { have[e.slide_id] = 1; if (e.position > max) max = e.position; });
-          var rows = ids.filter(function (id) { return !have[id]; }).map(function (id, i) { return { proposal_id: pid, slide_id: id, position: max + 1 + i }; });
-          return (rows.length ? sb.from("proposal_slides").insert(rows).then(must) : Promise.resolve()).then(function () {
-            return sb.from("proposals").update({ updated_at: new Date().toISOString() }).eq("id", pid);
-          }).then(function () {
-            slideState.selected = {}; slideState.target = pid;
-            toast(rows.length + " slide" + (rows.length === 1 ? "" : "s") + " added" + (ids.length > rows.length ? " (some were already in it)" : ""));
-            location.hash = "#/proposals/" + pid;
-          });
-        });
+      addSlidesToProposal(ids, $("#selTarget").value).then(function (pid) {
+        slideState.selected = {}; location.hash = "#/proposals/" + pid;
       }).catch(function (e) { if (e) fail(e); });
     });
   }

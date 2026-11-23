@@ -163,3 +163,7 @@ dl.facts dd { white-space: pre-wrap; word-break: break-word; }
 .slide .num { position: absolute; top: 8px; left: 8px; background: var(--gold); color: #1a1405; font-weight: 700; font-size: 0.75rem; padding: 0.1rem 0.5rem; z-index: 2; }
 .selbar { position: fixed; left: 50%; transform: translateX(-50%); bottom: 1.2rem; z-index: 30; display: flex; gap: 0.8rem; align-items: center; background: var(--panel-2); border: 1px solid var(--gold); padding: 0.7rem 1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5); flex-wrap: wrap; max-width: 94vw; }
 .selbar select { width: auto; min-width: 220px; }
+
+.slide-grid.compact { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); padding-bottom: 1rem; margin-bottom: 1rem; }
+.slide-meta .spacer { flex: 1; }
+.slide-meta .artist-tag { color: var(--gold); flex: 1; }
