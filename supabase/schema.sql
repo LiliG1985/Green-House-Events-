@@ -36,7 +36,7 @@ create table if not exists public.artists (
   name text not null,
   category text not null default 'singers' check (category in (
     'djs', 'singers', 'bands', 'instrumental', 'specialist', 'dancers',
-    'mcs', 'magicians', 'kids', 'ramadan'
+    'mcs', 'hostesses', 'magicians', 'kids', 'ramadan'
   )),
   subgroup text,
   role text,

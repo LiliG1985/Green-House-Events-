@@ -6,7 +6,7 @@
 
   var CATEGORIES = [
     ["djs", "DJs"], ["singers", "Singers"], ["bands", "Live Bands"], ["instrumental", "Instrumentalists"],
-    ["specialist", "Specialist Acts"], ["dancers", "Dancers"], ["mcs", "MCs & Hosts"],
+    ["specialist", "Specialist Acts"], ["dancers", "Dancers"], ["mcs", "MCs & Hosts"], ["hostesses", "Hostesses & Promo Staff"],
     ["magicians", "Magicians & Mentalists"], ["kids", "Children's Entertainment"], ["ramadan", "Ramadan & Arabic"]
   ];
   var CAT_LABEL = {}; CATEGORIES.forEach(function (c) { CAT_LABEL[c[0]] = c[1]; });
@@ -14,7 +14,7 @@
   var APP_CAT = {
     "DJ": "djs", "Singer / Vocalist": "singers", "Live Band / Duo": "bands", "Instrumentalist": "instrumental",
     "Arabic Musician": "ramadan", "Specialist / Circus Act": "specialist", "Roaming Performer": "specialist",
-    "Dancer / Dance Crew": "dancers", "MC / Host": "mcs", "Magician / Mentalist": "magicians",
+    "Dancer / Dance Crew": "dancers", "MC / Host": "mcs", "Hostess / Promotional Staff": "hostesses", "Magician / Mentalist": "magicians",
     "Children's Entertainer": "kids", "Live Artist": "specialist"
   };
   var STATUSES = ["new", "shortlisted", "approved", "declined"];
