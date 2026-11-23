@@ -231,6 +231,7 @@
       '<div class="linkrow"><label class="field">SoundCloud / Mixcloud / Spotify<input type="url" id="pAudio" value="' + esc(p.audio_link || "") + '"></label>' + sw("aShowAudio", a.show_audio, "Show on website") + "</div>" +
       '<div class="linkrow"><label class="field">Instagram<input type="text" id="pInstagram" placeholder="@handle or link" value="' + esc(p.instagram || "") + '"></label>' + sw("aShowInstagram", a.show_instagram, "Show on website") + "</div>" +
       '<div class="linkrow"><label class="field">Website<input type="url" id="pWebsite" value="' + esc(p.website || "") + '"></label>' + sw("aShowWebsite", a.show_website, "Show on website") + "</div>" +
+      '<div class="linkrow"><label class="field">Portfolio / EPK link <span class="hint">Private, for your team only</span><input type="url" id="pPortfolio" value="' + esc(p.portfolio_link || "") + '"></label><span></span></div>' +
       "</section>" +
 
       '<section class="panel private"><h2>Private details <span class="lock">Never shown on the website</span></h2>' +
@@ -272,7 +273,7 @@
     var priv = {
       legal_name: val("pLegal"), email: val("pEmail"), phone: val("pPhone"), based_in: val("pBased"), languages: val("pLang"),
       rates: val("pRates"), notes: val("pNotes"), video_links: val("pVideos"), audio_link: val("pAudio"),
-      instagram: val("pInstagram"), website: val("pWebsite")
+      instagram: val("pInstagram"), website: val("pWebsite"), portfolio_link: val("pPortfolio")
     };
     var done = function () { btn.disabled = false; btn.textContent = id ? "Save changes" : "Create artist"; };
     var step;
@@ -421,7 +422,7 @@
       var facts = (isSup ? [["Type", "Supplier / partner"], ["Company", x.company], ["Services", x.service_type], ["Contact name", x.full_name]]
                          : [["Full name", x.full_name], ["Act / stage name", x.act_name], ["Category", x.category]]).concat([["Email", x.email],
         ["Phone / WhatsApp", x.phone], ["Based in", x.based_in], ["Skills / genres", x.skills], ["Languages", x.languages],
-        ["Instagram / website", x.social], ["Applied", fmtDate(x.created_at)]]).filter(function (f) { return !(isSup && /Skills|Languages/.test(f[0])); });
+        ["Instagram", x.social], ["Website", x.website], ["Portfolio", x.portfolio_link], ["Applied", fmtDate(x.created_at)]]).filter(function (f) { return !(isSup && /Skills|Languages/.test(f[0])); });
       app.innerHTML = '<div class="pagehead"><div><a href="#/applications" class="small">&larr; All applications</a><h1>' + esc(isSup ? (x.company || x.full_name) : (x.act_name || x.full_name)) + '</h1><span class="pill ' + x.status + '">' + x.status + "</span>" + (isSup ? ' <span class="pill hidden">Supplier</span>' : "") + "</div>" +
         '<div class="toolbar">' + (isSup ? '<span class="muted small">Suppliers stay private in the dashboard and are never added to the website.</span>'
           : x.artist_id ? '<a class="btn primary" href="#/artists/' + x.artist_id + '">Open artist profile</a>' : '<button class="btn primary" id="convertBtn" type="button">Create artist profile</button>') + "</div></div>" +
@@ -460,7 +461,7 @@
   function convert(x, btn) {
     btn.disabled = true; btn.textContent = "Creating profile...";
     var name = x.act_name || x.full_name;
-    var social = x.social || "", insta = null, site = null;
+    var social = x.social || "", insta = null, site = x.website || null;
     social.split(/[\s,]+/).forEach(function (s) {
       if (!s) return;
       if (/instagram\.com|^@/i.test(s)) insta = insta || s; else if (/\./.test(s)) site = site || s;
@@ -472,6 +473,7 @@
         artistId = row.id;
         return sb.from("artist_private").upsert({ artist_id: artistId, legal_name: x.full_name, email: x.email, phone: x.phone,
           based_in: x.based_in, languages: x.languages, video_links: x.video_links, instagram: insta, website: site,
+          portfolio_link: x.portfolio_link || null,
           notes: (x.bio ? "From application:\n" + x.bio : null) }).then(must);
       })
       .then(function () {

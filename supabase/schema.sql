@@ -162,6 +162,9 @@ create table if not exists public.applications (
 alter table public.applications add column if not exists applicant_type text not null default 'performer';
 alter table public.applications add column if not exists company text;
 alter table public.applications add column if not exists service_type text;
+alter table public.applications add column if not exists portfolio_link text;
+alter table public.applications add column if not exists website text;
+alter table public.artist_private add column if not exists portfolio_link text;
 alter table public.applications drop constraint if exists applications_applicant_type_check;
 alter table public.applications add constraint applications_applicant_type_check check (applicant_type in ('performer', 'supplier'));
 

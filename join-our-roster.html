@@ -286,6 +286,7 @@
         .roster-steps { list-style: none; counter-reset: st; display: grid; gap: 1.1rem; margin-top: 1.6rem; }
         .roster-steps li { counter-increment: st; display: flex; gap: 0.9rem; color: var(--white-off); font-size: 0.9rem; opacity: 0.9; line-height: 1.5; }
         .roster-steps li::before { content: "0" counter(st); font-family: var(--display); color: var(--gold-solid); font-size: 0.85rem; flex-shrink: 0; margin-top: 1px; }
+        #artistForm [hidden] { display: none !important; }
         .type-switch { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid rgba(201,168,76,0.55); }
         .type-switch label { cursor: pointer; }
         .type-switch input { position: absolute; opacity: 0; pointer-events: none; }
@@ -536,21 +537,32 @@
                     <textarea id="af-videos" name="video_links" style="min-height:80px" placeholder="YouTube, Vimeo, Instagram or Google Drive links, one per line"></textarea>
                 </div>
 
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="af-portfolio" id="lbl-portfolio">Portfolio Link</label>
+                        <input type="url" id="af-portfolio" name="portfolio_link" placeholder="Google Drive, Dropbox, PDF or EPK link">
+                    </div>
+                    <div class="form-field">
+                        <label for="af-website">Website</label>
+                        <input type="url" id="af-website" name="website" placeholder="https://www.yoursite.com">
+                    </div>
+                </div>
+
                 <div class="form-field">
-                    <label for="af-social" id="lbl-social">Instagram / Website</label>
-                    <input type="text" id="af-social" name="social" placeholder="@yourhandle or www.yoursite.com">
+                    <label for="af-social" id="lbl-social">Instagram</label>
+                    <input type="text" id="af-social" name="social" placeholder="@yourhandle">
                 </div>
 
                 <div class="form-field">
                     <label for="af-photos" id="lbl-photos">Photos (up to 3)</label>
                     <input type="file" id="af-photos" accept="image/*" multiple>
-                    <span class="form-hint">Clear, high-quality performance or portrait shots work best, without logos or watermarks.</span>
+                    <span class="form-hint" id="photoHint">Clear, high-quality performance or portrait shots work best, without logos or watermarks.</span>
                     <div class="photo-previews" id="afPreviews"></div>
                 </div>
 
                 <label class="form-consent">
                     <input type="checkbox" required>
-                    <span>I confirm I own or have permission to share these photos and videos, and I'm happy for Greenhouse Events to keep my details on file for future bookings.</span>
+                    <span>I confirm I own or have permission to share these photos and videos, and I'm happy for Greenhouse Events to keep my details on file for future bookings and projects.</span>
                 </label>
 
                 <button type="submit" class="form-submit-btn" id="afSubmitBtn">Submit My Profile</button>
@@ -662,9 +674,9 @@
         if (!form) return;
 
         var LABELS = {
-            performer: { title: "Apply To Perform With Us", bio: "About You / Your Act", videos: "Video Links", photos: "Photos (up to 3)", social: "Instagram / Website",
+            performer: { title: "Apply To Perform With Us", bio: "About You / Your Act", videos: "Video Links", photos: "Photos (up to 3)", social: "Instagram", portfolio: "Portfolio / EPK Link",
                          bioPh: "Your experience, notable venues and events, line-up options..." },
-            supplier:  { title: "Partner With Us", bio: "About Your Company & Services", videos: "Portfolio / Video Links", photos: "Photos Of Your Work (up to 3)", social: "Website / Instagram",
+            supplier:  { title: "Partner With Us", bio: "About Your Company & Services", videos: "Video Links", photos: "Photos Of Your Work (up to 3)", social: "Instagram", portfolio: "Portfolio / Company Profile Link",
                          bioPh: "What you offer, past events and venues, coverage across the UAE..." }
         };
         function setType(t) {
@@ -679,6 +691,8 @@
             document.getElementById("lbl-videos").textContent = L.videos;
             document.getElementById("lbl-photos").textContent = L.photos;
             document.getElementById("lbl-social").textContent = L.social;
+            document.getElementById("lbl-portfolio").textContent = L.portfolio;
+            document.getElementById("photoHint").textContent = sup ? "Photos of your setups, products or past events work best." : "Clear, high-quality performance or portrait shots work best, without logos or watermarks.";
             document.getElementById("af-bio").placeholder = L.bioPh;
         }
         Array.prototype.forEach.call(form.elements.applicant_type, function (r) {
@@ -729,7 +743,8 @@
                         full_name: field("full_name"), act_name: sup ? null : field("act_name"), email: field("email"), phone: field("phone"),
                         category: sup ? null : field("category"), based_in: field("based_in"),
                         skills: sup ? null : field("skills"), languages: sup ? null : field("languages"),
-                        bio: field("bio"), video_links: field("video_links"), social: field("social"), photos: paths, consent: true
+                        bio: field("bio"), video_links: field("video_links"), social: field("social"),
+                        portfolio_link: field("portfolio_link"), website: field("website"), photos: paths, consent: true
                     });
                 }).then(function (r) { if (r.error) throw r.error; });
             })
