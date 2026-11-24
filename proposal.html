@@ -52,6 +52,7 @@
 
     <script src="/js/supabase.js"></script>
     <script src="/js/gh-db.js"></script>
+    <script src="/js/proposal-pdf.js?v=1"></script>
     <script>
     (function () {
         var token = new URLSearchParams(location.search).get("t") || "";
@@ -93,10 +94,14 @@
                 });
                 var btn = document.getElementById("dlBtn"); btn.hidden = false;
                 btn.addEventListener("click", function () {
-                    Array.prototype.forEach.call(main.querySelectorAll("img"), function (im) { im.loading = "eager"; });
-                    var imgs = main.querySelectorAll("img"), left = imgs.length;
-                    function go() { if (--left <= 0) window.print(); }
-                    Array.prototype.forEach.call(imgs, function (im) { if (im.complete) go(); else { im.onload = go; im.onerror = go; } });
+                    if (btn.disabled) return;
+                    btn.disabled = true; var label = btn.textContent;
+                    var list = p.slides.map(function (s) {
+                        return typeof s === "string" ? { url: s, videos: [] } : { url: s.url, videos: String(s.video || "").split(/\s+/).map(safeVideo).filter(Boolean).slice(0, 3) };
+                    });
+                    GHPDF.make(p.title, list, function (n, t) { btn.textContent = "Preparing " + n + "/" + t + "\u2026"; })
+                        .catch(function () { window.print(); })
+                        .then(function () { btn.disabled = false; btn.textContent = label; });
                 });
             });
         }).catch(unavailable);

@@ -904,18 +904,13 @@
   function printSlides(title, urls, videos) {
     videos = videos || [];
     if (!urls.length) { toast("Add some slides first", true); return; }
-    var w = window.open("", "_blank");
-    if (!w) { toast("Allow pop-ups for this site to download the PDF", true); return; }
-    w.document.write('<!DOCTYPE html><html><head><meta charset="utf-8"><title>' + esc(title) + "</title><style>" +
-      "@page{size:1920px 1080px;margin:0}html,body{margin:0;background:#111}img{display:block;width:100vw;height:auto;page-break-after:always;break-after:page}" +
-      ".pg{position:relative;page-break-after:always;break-after:page}.pg img{page-break-after:auto;break-after:auto}" +
-      ".vids{position:absolute;left:2.2%;bottom:5%;display:flex;flex-direction:column;align-items:flex-start;gap:.5vw}.vid{background:linear-gradient(135deg,#f3e3a6,#c9a84c 55%,#9c7a2b);color:#1a1405;font:700 1.6vw Georgia,serif;letter-spacing:.1em;padding:.7vw 1.4vw;text-decoration:none;border-radius:2px;box-shadow:0 4px 14px rgba(0,0,0,.35)}" +
-      "@media screen{.pg{max-width:1200px;margin:16px auto;width:90vw}.pg img{width:100%}.vid{font-size:14px;padding:8px 14px}}</style></head><body>" +
-      urls.map(function (u, i) { return '<div class="pg"><img src="' + esc(u) + '" alt="">' + vidButtons(videoList(videos[i])) + "</div>"; }).join("") + "</body></html>");
-    w.document.close();
-    var imgs = w.document.images, left = imgs.length;
-    function done() { if (--left <= 0) setTimeout(function () { w.focus(); w.print(); }, 300); }
-    Array.prototype.forEach.call(imgs, function (im) { if (im.complete) done(); else { im.onload = done; im.onerror = done; } });
+    var btn = $("#pdfBtn"), label = btn ? btn.textContent : "";
+    if (btn) btn.disabled = true;
+    GHPDF.make(title, urls.map(function (u, i) { return { url: u, videos: videoList(videos[i]) }; }), function (n, total) {
+      if (btn) btn.textContent = "Making PDF " + n + "/" + total + "\u2026";
+    }).then(function () { toast("PDF downloaded"); })
+      .catch(fail)
+      .then(function () { if (btn) { btn.disabled = false; btn.textContent = label; } });
   }
 
   // ---------- password ----------
