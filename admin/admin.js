@@ -844,6 +844,15 @@
       });
   }
 
+  function priceFields(stored, i) {
+    var pr = GHPDF.parsePrice(stored), rows = pr.rows, h = '<div class="price-fields" data-prices="' + i + '" title="Only shown in this proposal"><span class="pf-head">Prices</span>';
+    for (var k = 0; k < 3; k++) {
+      var r = rows[k] || ["", ""];
+      h += '<div class="price-row"><input type="text" maxlength="30" data-pl placeholder="' + ["Solo", "Duo", "Trio"][k] + '" value="' + esc(r[0]) + '" aria-label="Price name ' + (k + 1) + '">' +
+        '<input type="text" maxlength="40" data-pa placeholder="' + (k ? "AED (optional)" : "e.g. AED 4,500 + VAT") + '" value="' + esc(r[1]) + '" aria-label="Price ' + (k + 1) + '"></div>';
+    }
+    return h + '<textarea data-pn maxlength="200" rows="2" placeholder="Note, e.g. 3 x 45 min sets, 7pm to 11pm" aria-label="Price note">' + esc(pr.note) + "</textarea></div>";
+  }
   function noPriceCol(e) { return e && /price/.test(e.message || ""); }
   function viewProposal(id) {
     var hasPrice = true;
@@ -872,10 +881,10 @@
         '<p class="note">When the link is on, anyone you send it to can view and download this proposal. Switch it off at any time.</p>' +
         '<div class="linkrow"><input type="text" id="prLink" readonly value="' + esc(link) + '"><button class="btn" type="button" id="prCopy">Copy link</button></div></section>' +
         '<section class="panel"><h2>Slides <span class="muted small">' + items.length + " in this proposal</span></h2>" +
-        (items.length ? '<p class="note">Prices you type here appear only on this proposal, its client link and its PDF. Leave a box empty to show no price.</p>' : "") +
+        (items.length ? '<p class="note">Prices appear only on this proposal, its client link and its PDF. Add up to three per slide, each with an optional name such as Solo, Duo or Trio, plus a short note underneath (set times and so on). Leave them empty to show nothing.</p>' : "") +
         (items.length ? '<div class="slide-grid order" id="prSlides">' + items.map(function (x, i) {
           return '<div class="slide"><span class="num">' + (i + 1) + '</span><img loading="lazy" src="' + esc(x.url) + '" alt=""><div class="slide-meta"><span class="sub">' + (x.video_url ? '<span class="vid-badge" title="Has a video link">&#9654;</span> ' : "") + esc(x.title) + "</span>" +
-            '<label class="price-field" title="Only shown in this proposal"><span>Price</span><input type="text" maxlength="60" placeholder="e.g. AED 4,500 + VAT" value="' + esc(x._price) + '" data-price="' + i + '"></label>' +
+            priceFields(x._price, i) +
             '<span class="tools"><button type="button" data-mv="-1" data-i="' + i + '"' + (i === 0 ? " disabled" : "") + ' title="Move earlier">&larr;</button>' +
             '<button type="button" data-mv="1" data-i="' + i + '"' + (i === items.length - 1 ? " disabled" : "") + ' title="Move later">&rarr;</button>' +
             '<button type="button" class="del" data-rm="' + i + '" title="Remove from proposal">&#10005;</button></span></div></div>';
@@ -902,11 +911,17 @@
       });
       var grid = $("#prSlides");
       if (grid) grid.addEventListener("change", function (e) {
-        var inp = e.target.closest("[data-price]"); if (!inp) return;
-        var x = items[+inp.getAttribute("data-price")], v = inp.value.trim().slice(0, 60);
+        var box = e.target.closest("[data-prices]"); if (!box) return;
+        var x = items[+box.getAttribute("data-prices")], rows = [];
+        box.querySelectorAll(".price-row").forEach(function (row) {
+          var l = row.querySelector("[data-pl]").value.trim().slice(0, 30), v = row.querySelector("[data-pa]").value.trim().slice(0, 40);
+          if (v) rows.push([l, v]);
+        });
+        var note = box.querySelector("[data-pn]").value.trim().slice(0, 200);
         if (!hasPrice) { toast("Run the add-proposal-prices SQL in Supabase first, then try again.", true); return; }
-        sb.from("proposal_slides").update({ price: v || null }).eq("proposal_id", id).eq("slide_id", x.id).then(must)
-          .then(function () { x._price = v; inp.value = v; toast(v ? "Price saved" : "Price removed"); }).catch(fail);
+        var stored = rows.length || note ? JSON.stringify({ p: rows, n: note }) : null;
+        sb.from("proposal_slides").update({ price: stored }).eq("proposal_id", id).eq("slide_id", x.id).then(must)
+          .then(function () { x._price = stored || ""; toast(e.target.hasAttribute("data-pn") ? (note ? "Note saved" : "Note removed") : rows.length ? rows.length + " price" + (rows.length > 1 ? "s" : "") + " saved" : (e.target.hasAttribute("data-pl") ? "Add a price next to the name" : "Prices removed")); }).catch(fail);
       });
       if (grid) grid.addEventListener("click", function (e) {
         var b = e.target.closest("button"); if (!b || b.disabled) return;

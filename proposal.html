@@ -22,7 +22,16 @@
         .vids { position: absolute; left: 2.2%; bottom: 5%; display: flex; flex-direction: column; align-items: flex-start; gap: 0.5vw; }
         .vid { display: inline-flex; align-items: center; gap: 0.6em; background: var(--gold-metallic); color: #1a1405; font-family: 'Cinzel', serif; font-weight: 700; letter-spacing: 2px; font-size: clamp(0.6rem, 1.2vw, 1rem); padding: 0.75em 1.3em; text-decoration: none; box-shadow: 0 6px 18px rgba(0,0,0,0.45); }
         .vid:hover { filter: brightness(1.08); }
-        .price { position: absolute; left: 2.2%; top: 3.9%; background: #081e16; color: #e8cd78; border: 2px solid #c9a84c; font-family: 'Cinzel', serif; font-weight: 700; letter-spacing: 1.5px; font-size: clamp(0.65rem, 1.5vw, 1.25rem); padding: 0.55em 1.1em; box-shadow: 0 6px 18px rgba(0,0,0,0.45); }
+        .price { position: absolute; left: 2.2%; top: 3.9%; background: #081e16; border: 2px solid #c9a84c; padding: 0.35em 1.1em; box-shadow: 0 6px 18px rgba(0,0,0,0.45); display: grid; grid-template-columns: auto auto; column-gap: 0; align-items: stretch; font-size: clamp(0.6rem, 1.45vw, 1.2rem); }
+        .price .pl, .price .pa { padding: 0.4em 0; display: flex; align-items: center; }
+        .price .pa { justify-content: flex-end; }
+        .price .pl { padding-right: 1.6em; color: #c9a84c; font-family: 'Cinzel', serif; font-weight: 700; letter-spacing: 1.5px; font-size: 0.8em; text-transform: uppercase; }
+        .price .pa { color: #f5ecd2; font-weight: 700; text-align: right; letter-spacing: 0.5px; }
+        .price .pa.solo { grid-column: 1 / -1; }
+        .price .pr { display: contents; }
+        .price .pn { grid-column: 1 / -1; color: #d6cdb4; font-style: italic; font-size: 0.78em; line-height: 1.4; padding: 0.5em 0 0.55em; max-width: 26em; }
+        .price .pr + .pn { border-top: 1px solid rgba(201,168,76,0.35); }
+        .price .pr + .pr > span { border-top: 1px solid rgba(201,168,76,0.35); }
         .lightbox { position: fixed; inset: 0; z-index: 50; background: rgba(0,0,0,0.88); display: flex; align-items: center; justify-content: center; padding: 4vw; }
         .lightbox[hidden] { display: none; }
         .lightbox .frame { width: min(1100px, 100%); aspect-ratio: 16 / 9; background: #000; }
@@ -53,7 +62,7 @@
 
     <script src="/js/supabase.js"></script>
     <script src="/js/gh-db.js"></script>
-    <script src="/js/proposal-pdf.js?v=2"></script>
+    <script src="/js/proposal-pdf.js?v=4"></script>
     <script>
     (function () {
         var token = new URLSearchParams(location.search).get("t") || "";
@@ -83,9 +92,9 @@
                 document.getElementById("pClient").textContent = p.client ? "Prepared for " + p.client : "";
                 main.innerHTML = p.slides.map(function (s, i) {
                     var u = typeof s === "string" ? s : s.url, v = typeof s === "string" ? [] : String(s.video || "").split(/\s+/).map(safeVideo).filter(Boolean).slice(0, 3);
-                    var pr = typeof s === "string" ? "" : String(s.price || "").slice(0, 60);
+                    var pp = typeof s === "string" ? { rows: [], note: "" } : GHPDF.parsePrice(s.price), pr = pp.rows;
                     return '<div class="pg"><img src="' + esc(u) + '" alt="Slide ' + (i + 1) + '"' + (i > 1 ? ' loading="lazy"' : "") + ">" +
-                        (pr ? '<span class="price">' + esc(pr) + "</span>" : "") +
+                        (pr.length || pp.note ? '<span class="price">' + pr.map(function (r, k) { return '<span class="pr">' + (r[0] ? '<span class="pl">' + esc(r[0]) + "</span>" : "") + '<span class="pa' + (r[0] ? "" : " solo") + '">' + esc(r[1]) + "</span></span>"; }).join("") + (pp.note ? '<span class="pn">' + esc(pp.note) + "</span>" : "") + "</span>" : "") +
                         (v.length ? '<span class="vids">' + v.map(function (u, k) { return '<a class="vid" href="' + esc(u) + '" target="_blank" rel="noopener">&#9654; ' + (v.length > 1 ? "VIDEO " + (k + 1) : "WATCH VIDEO") + "</a>"; }).join("") + "</span>" : "") + "</div>";
                 }).join("");
                 main.addEventListener("click", function (e) {
@@ -100,7 +109,7 @@
                     if (btn.disabled) return;
                     btn.disabled = true; var label = btn.textContent;
                     var list = p.slides.map(function (s) {
-                        return typeof s === "string" ? { url: s, videos: [] } : { url: s.url, videos: String(s.video || "").split(/\s+/).map(safeVideo).filter(Boolean).slice(0, 3), price: String(s.price || "").slice(0, 60) };
+                        return typeof s === "string" ? { url: s, videos: [] } : { url: s.url, videos: String(s.video || "").split(/\s+/).map(safeVideo).filter(Boolean).slice(0, 3), price: s.price || "" };
                     });
                     GHPDF.make(p.title, list, function (n, t) { btn.textContent = "Preparing " + n + "/" + t + "\u2026"; })
                         .catch(function () { window.print(); })
