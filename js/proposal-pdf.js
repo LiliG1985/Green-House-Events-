@@ -48,7 +48,17 @@
     });
   }
 
-  // slides: [{ url, videos: [..] }]
+  function priceTag(doc, price) {
+    doc.setFont("helvetica", "bold"); doc.setFontSize(30);
+    var tw = doc.getTextWidth(price), bw = tw + 64, bh = 72, x = 42, y = 42;
+    doc.setFillColor(0, 0, 0); doc.setGState(new doc.GState({ opacity: 0.3 })); doc.rect(x + 4, y + 5, bw, bh, "F");
+    doc.setGState(new doc.GState({ opacity: 1 }));
+    doc.setFillColor(8, 30, 22); doc.rect(x, y, bw, bh, "F");
+    doc.setDrawColor(201, 168, 76); doc.setLineWidth(3); doc.rect(x + 1.5, y + 1.5, bw - 3, bh - 3, "S");
+    doc.setTextColor(232, 205, 120); doc.text(price, x + 32, y + bh / 2 + 11);
+  }
+
+  // slides: [{ url, videos: [..], price }]
   window.GHPDF = {
     make: function (title, slides, onProgress) {
       return loadScript("/js/jspdf.umd.min.js").then(function () {
@@ -62,6 +72,7 @@
             if (i > 0) doc.addPage([W, H], "landscape");
             doc.addImage(data, "JPEG", 0, 0, W, H, undefined, "FAST");
             if (s.videos && s.videos.length) videoButtons(doc, s.videos.slice(0, 3));
+            if (s.price) priceTag(doc, String(s.price).slice(0, 60));
             i++; if (onProgress) onProgress(i, slides.length);
             return next();
           });

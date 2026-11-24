@@ -844,18 +844,21 @@
       });
   }
 
+  function noPriceCol(e) { return e && /price/.test(e.message || ""); }
   function viewProposal(id) {
+    var hasPrice = true;
     app.innerHTML = '<p class="muted center">Loading&hellip;</p>';
     Promise.all([
       sb.from("proposals").select("*").eq("id", id).maybeSingle(),
-      sb.from("proposal_slides").select("slide_id,position,slides(id,title,url,category,video_url)").eq("proposal_id", id).order("position")
+      sb.from("proposal_slides").select("slide_id,position,price,slides(id,title,url,category,video_url)").eq("proposal_id", id).order("position")
+        .then(function (r) { if (noPriceCol(r.error)) { hasPrice = false; return sb.from("proposal_slides").select("slide_id,position,slides(id,title,url,category,video_url)").eq("proposal_id", id).order("position"); } return r; })
         .then(function (r) { return noVideoCol(r.error) ? sb.from("proposal_slides").select("slide_id,position,slides(id,title,url,category)").eq("proposal_id", id).order("position") : r; })
     ]).then(function (res) {
       if (res[0].error) return fail(res[0].error);
       if (res[1].error) return fail(res[1].error);
       var p = res[0].data;
       if (!p) { app.innerHTML = '<p class="center muted">Proposal not found. <a href="#/proposals">Back</a></p>'; return; }
-      var items = res[1].data.filter(function (x) { return x.slides; }).map(function (x) { return x.slides; });
+      var items = res[1].data.filter(function (x) { return x.slides; }).map(function (x) { x.slides._price = x.price || ""; return x.slides; });
       var link = location.origin + "/proposal.html?t=" + p.share_token;
       app.innerHTML = '<div class="pagehead"><div><a href="#/proposals" class="small">&larr; All proposals</a><h1>' + esc(p.title) + "</h1></div>" +
         '<div class="toolbar"><a class="btn" href="#/slides?add=' + p.id + '">+ Add slides</a><button class="btn primary" type="button" id="pdfBtn">Download PDF</button></div></div>' +
@@ -869,8 +872,10 @@
         '<p class="note">When the link is on, anyone you send it to can view and download this proposal. Switch it off at any time.</p>' +
         '<div class="linkrow"><input type="text" id="prLink" readonly value="' + esc(link) + '"><button class="btn" type="button" id="prCopy">Copy link</button></div></section>' +
         '<section class="panel"><h2>Slides <span class="muted small">' + items.length + " in this proposal</span></h2>" +
+        (items.length ? '<p class="note">Prices you type here appear only on this proposal, its client link and its PDF. Leave a box empty to show no price.</p>' : "") +
         (items.length ? '<div class="slide-grid order" id="prSlides">' + items.map(function (x, i) {
           return '<div class="slide"><span class="num">' + (i + 1) + '</span><img loading="lazy" src="' + esc(x.url) + '" alt=""><div class="slide-meta"><span class="sub">' + (x.video_url ? '<span class="vid-badge" title="Has a video link">&#9654;</span> ' : "") + esc(x.title) + "</span>" +
+            '<label class="price-field" title="Only shown in this proposal"><span>Price</span><input type="text" maxlength="60" placeholder="e.g. AED 4,500 + VAT" value="' + esc(x._price) + '" data-price="' + i + '"></label>' +
             '<span class="tools"><button type="button" data-mv="-1" data-i="' + i + '"' + (i === 0 ? " disabled" : "") + ' title="Move earlier">&larr;</button>' +
             '<button type="button" data-mv="1" data-i="' + i + '"' + (i === items.length - 1 ? " disabled" : "") + ' title="Move later">&rarr;</button>' +
             '<button type="button" class="del" data-rm="' + i + '" title="Remove from proposal">&#10005;</button></span></div></div>';
@@ -890,18 +895,25 @@
         (navigator.clipboard ? navigator.clipboard.writeText(inp.value) : Promise.reject()).then(function () { toast("Link copied"); }, function () { document.execCommand("copy"); toast("Link copied"); });
         if (!$("#prShared").checked) toast("Copied. Switch the link on before sending it.", true);
       });
-      $("#pdfBtn").addEventListener("click", function () { printSlides(p.title, items.map(function (x) { return x.url; }), items.map(function (x) { return x.video_url; })); });
+      $("#pdfBtn").addEventListener("click", function () { printSlides(p.title, items.map(function (x) { return x.url; }), items.map(function (x) { return x.video_url; }), items.map(function (x) { return x._price; })); });
       $("#prDelete").addEventListener("click", function () {
         if (!confirm("Delete this proposal? Your slides stay in the library.")) return;
         sb.from("proposals").delete().eq("id", id).then(must).then(function () { toast("Proposal deleted"); location.hash = "#/proposals"; }).catch(fail);
       });
       var grid = $("#prSlides");
+      if (grid) grid.addEventListener("change", function (e) {
+        var inp = e.target.closest("[data-price]"); if (!inp) return;
+        var x = items[+inp.getAttribute("data-price")], v = inp.value.trim().slice(0, 60);
+        if (!hasPrice) { toast("Run the add-proposal-prices SQL in Supabase first, then try again.", true); return; }
+        sb.from("proposal_slides").update({ price: v || null }).eq("proposal_id", id).eq("slide_id", x.id).then(must)
+          .then(function () { x._price = v; inp.value = v; toast(v ? "Price saved" : "Price removed"); }).catch(fail);
+      });
       if (grid) grid.addEventListener("click", function (e) {
         var b = e.target.closest("button"); if (!b || b.disabled) return;
         if (b.hasAttribute("data-rm")) items.splice(+b.getAttribute("data-rm"), 1);
         else { var from = +b.getAttribute("data-i"), to = from + +b.getAttribute("data-mv"); var m = items.splice(from, 1)[0]; items.splice(to, 0, m); }
         sb.from("proposal_slides").delete().eq("proposal_id", id).then(must)
-          .then(function () { return items.length ? sb.from("proposal_slides").insert(items.map(function (x, i) { return { proposal_id: id, slide_id: x.id, position: i }; })).then(must) : null; })
+          .then(function () { return items.length ? sb.from("proposal_slides").insert(items.map(function (x, i) { var row = { proposal_id: id, slide_id: x.id, position: i }; if (hasPrice) row.price = x._price || null; return row; })).then(must) : null; })
           .then(function () { return sb.from("proposals").update({ updated_at: new Date().toISOString() }).eq("id", id); })
           .then(function () { viewProposal(id); }).catch(fail);
       });
@@ -946,12 +958,12 @@
   function vidButtons(v) {
     return v.length ? '<span class="vids">' + v.map(function (u, i) { return '<a class="vid" href="' + esc(u) + '" target="_blank" rel="noopener">&#9654; ' + (v.length > 1 ? "VIDEO " + (i + 1) : "WATCH VIDEO") + "</a>"; }).join("") + "</span>" : "";
   }
-  function printSlides(title, urls, videos) {
-    videos = videos || [];
+  function printSlides(title, urls, videos, prices) {
+    videos = videos || []; prices = prices || [];
     if (!urls.length) { toast("Add some slides first", true); return; }
     var btn = $("#pdfBtn"), label = btn ? btn.textContent : "";
     if (btn) btn.disabled = true;
-    GHPDF.make(title, urls.map(function (u, i) { return { url: u, videos: videoList(videos[i]) }; }), function (n, total) {
+    GHPDF.make(title, urls.map(function (u, i) { return { url: u, videos: videoList(videos[i]), price: prices[i] || "" }; }), function (n, total) {
       if (btn) btn.textContent = "Making PDF " + n + "/" + total + "\u2026";
     }).then(function () { toast("PDF downloaded"); })
       .catch(fail)

@@ -273,6 +273,7 @@ create table if not exists public.proposal_slides (
   proposal_id uuid not null references public.proposals (id) on delete cascade,
   slide_id uuid not null references public.slides (id) on delete cascade,
   position int not null default 0,
+  price text,
   primary key (proposal_id, slide_id)
 );
 
@@ -302,7 +303,7 @@ as $$
     'title', p.title,
     'client', p.client,
     'slides', coalesce((
-      select json_agg(json_build_object('url', s.url, 'video', s.video_url) order by ps.position)
+      select json_agg(json_build_object('url', s.url, 'video', s.video_url, 'price', ps.price) order by ps.position)
       from public.proposal_slides ps join public.slides s on s.id = ps.slide_id
       where ps.proposal_id = p.id), '[]'::json))
   from public.proposals p
@@ -325,3 +326,5 @@ create policy "admins delete slides" on storage.objects for delete using (bucket
 -- Add the people who may sign in to the dashboard (edit the email, then run).
 -- insert into public.admins (email) values ('info@greenhouseeventsuae.com') on conflict do nothing;
 -- ---------------------------------------------------------------------------
+
+alter table public.proposal_slides add column if not exists price text;
