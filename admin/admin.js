@@ -655,9 +655,11 @@
 
   // ---------- slides library ----------
   var SLIDE_BUCKET = "slides";
-  var SLIDE_CATS = ["Cover & Intro", "DJs", "Singers", "Live Bands", "Instrumentalists", "Specialist Acts", "Dancers",
-    "Emcees", "Hostesses & Promo Staff", "Magicians", "Children's", "Ramadan & Arabic", "Festive", "Decor & Venue",
-    "Packages & Pricing", "Closing", "Other"];
+  var SLIDE_CATS = ["Cover & Intro", "DJs", "Singers", "Live Bands", "Instrumentalists", "Specialist Acts",
+    "Acrobats & Circus", "LED & Light Shows", "Fire Shows", "Roaming Characters", "Parades & Stilt Walkers", "Drummers",
+    "Live Artists", "Sand Artists", "Speed Painters", "Caricaturists", "Live Illustrators", "Calligraphers", "Henna Artists",
+    "Dancers", "Emcees", "Quiz Hosts", "Comedians", "Hostesses & Promo Staff", "Magicians", "Hypnotists", "Children's",
+    "Ramadan & Arabic", "Cultural Activations", "Festive", "Photo Booths", "Decor & Venue", "Packages & Pricing", "Closing", "Other"];
   var slideState = { q: "", cat: "", selected: {}, target: "" };
 
   function slideCatOptions(sel, withAll) {
