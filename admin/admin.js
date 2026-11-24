@@ -748,7 +748,7 @@
               row.sort_order = parseInt(m[1], 10) * 10;
               row.category = catBySlug[m[2]] || null;
               row.artist_id = art ? art.id : null;
-              row.title = art ? art.name : (row.category || "Section") + " divider";
+              row.title = art ? art.name : m[3] ? m[3].split("-").map(function (w) { return w.charAt(0).toUpperCase() + w.slice(1); }).join(" ") : (row.category || "Section") + " divider";
             }
             return GHDB.shrinkImage(f, 2400).then(function (blob) {
               return uploadBlob(SLIDE_BUCKET, path, blob).then(function () {
