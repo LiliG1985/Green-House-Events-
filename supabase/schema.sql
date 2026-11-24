@@ -253,6 +253,7 @@ create table if not exists public.slides (
   sort_order int not null default 0,
   created_at timestamptz not null default now()
 );
+alter table public.slides add column if not exists video_url text;
 create index if not exists slides_list_idx on public.slides (category, sort_order);
 
 create table if not exists public.proposals (
@@ -300,7 +301,7 @@ as $$
     'title', p.title,
     'client', p.client,
     'slides', coalesce((
-      select json_agg(s.url order by ps.position)
+      select json_agg(json_build_object('url', s.url, 'video', s.video_url) order by ps.position)
       from public.proposal_slides ps join public.slides s on s.id = ps.slide_id
       where ps.proposal_id = p.id), '[]'::json))
   from public.proposals p

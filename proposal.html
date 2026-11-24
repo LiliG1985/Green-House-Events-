@@ -18,6 +18,14 @@
         button { background: var(--gold-metallic); color: #1a1405; border: 0; padding: 0.7rem 1.3rem; font-family: 'Cinzel', serif; font-weight: 700; letter-spacing: 1.5px; font-size: 0.75rem; cursor: pointer; }
         main { max-width: 1280px; margin: 0 auto; padding: 2rem 4vw 4rem; display: grid; gap: 1.6rem; }
         main img { width: 100%; height: auto; display: block; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .pg { position: relative; }
+        .vid { position: absolute; left: 2.2%; bottom: 5%; display: inline-flex; align-items: center; gap: 0.6em; background: var(--gold-metallic); color: #1a1405; font-family: 'Cinzel', serif; font-weight: 700; letter-spacing: 2px; font-size: clamp(0.6rem, 1.2vw, 1rem); padding: 0.75em 1.3em; text-decoration: none; box-shadow: 0 6px 18px rgba(0,0,0,0.45); }
+        .vid:hover { filter: brightness(1.08); }
+        .lightbox { position: fixed; inset: 0; z-index: 50; background: rgba(0,0,0,0.88); display: flex; align-items: center; justify-content: center; padding: 4vw; }
+        .lightbox[hidden] { display: none; }
+        .lightbox .frame { width: min(1100px, 100%); aspect-ratio: 16 / 9; background: #000; }
+        .lightbox iframe { width: 100%; height: 100%; border: 0; display: block; }
+        .lightbox .x { position: absolute; top: 1rem; right: 1.2rem; background: none; color: #fff; font-size: 2rem; padding: 0.2rem 0.6rem; font-family: sans-serif; }
         .msg { text-align: center; padding: 18vh 1rem; color: rgba(244,240,232,0.75); line-height: 1.7; }
         .msg a { color: var(--gold); }
         @page { size: 1920px 1080px; margin: 0; }
@@ -25,7 +33,10 @@
             header { display: none; }
             body { background: #fff; }
             main { padding: 0; gap: 0; max-width: none; }
-            main img { width: 100vw; box-shadow: none; page-break-after: always; break-after: page; }
+            main img { width: 100vw; box-shadow: none; }
+            .pg { page-break-after: always; break-after: page; }
+            .vid { box-shadow: none; }
+            .lightbox { display: none !important; }
         }
     </style>
 </head>
@@ -36,6 +47,7 @@
         <button type="button" id="dlBtn" hidden>Download PDF</button>
     </header>
     <main id="slides"><p class="msg">Loading proposal&hellip;</p></main>
+    <div class="lightbox" id="lb" hidden><button type="button" class="x" aria-label="Close video">&times;</button><div class="frame" id="lbFrame"></div></div>
 
     <script src="/js/supabase.js"></script>
     <script src="/js/gh-db.js"></script>
@@ -44,6 +56,17 @@
         var token = new URLSearchParams(location.search).get("t") || "";
         var main = document.getElementById("slides");
         function esc(v) { return String(v == null ? "" : v).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+        var lb = document.getElementById("lb");
+        function closeLb() { lb.hidden = true; document.getElementById("lbFrame").innerHTML = ""; }
+        lb.addEventListener("click", function (e) { if (e.target === lb || e.target.classList.contains("x")) closeLb(); });
+        document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !lb.hidden) closeLb(); });
+        function safeVideo(v) { return typeof v === "string" && /^https:\/\/(www\.|m\.)?(youtube\.com|youtu\.be|vimeo\.com)\//i.test(v) ? v : ""; }
+        function embedUrl(v) {
+            var m = v.match(/(?:youtu\.be\/|[?&]v=|\/shorts\/|\/embed\/|\/live\/)([\w-]{11})/);
+            if (m) return "https://www.youtube-nocookie.com/embed/" + m[1] + "?autoplay=1&rel=0";
+            m = v.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+            return m ? "https://player.vimeo.com/video/" + m[1] + "?autoplay=1" : "";
+        }
         function unavailable() {
             main.innerHTML = '<p class="msg">This proposal link is no longer available.<br>Please contact <a href="mailto:info@greenhouseeventsuae.com">info@greenhouseeventsuae.com</a> for an updated link.</p>';
         }
@@ -55,7 +78,18 @@
                 document.title = p.title + " | Greenhouse Events Dubai";
                 document.getElementById("pTitle").textContent = p.title;
                 document.getElementById("pClient").textContent = p.client ? "Prepared for " + p.client : "";
-                main.innerHTML = p.slides.map(function (u, i) { return '<img src="' + esc(u) + '" alt="Slide ' + (i + 1) + '"' + (i > 1 ? ' loading="lazy"' : "") + ">"; }).join("");
+                main.innerHTML = p.slides.map(function (s, i) {
+                    var u = typeof s === "string" ? s : s.url, v = typeof s === "string" ? "" : safeVideo(s.video);
+                    return '<div class="pg"><img src="' + esc(u) + '" alt="Slide ' + (i + 1) + '"' + (i > 1 ? ' loading="lazy"' : "") + ">" +
+                        (v ? '<a class="vid" href="' + esc(v) + '" target="_blank" rel="noopener">&#9654; WATCH VIDEO</a>' : "") + "</div>";
+                }).join("");
+                main.addEventListener("click", function (e) {
+                    var a = e.target.closest(".vid"); if (!a) return;
+                    var em = embedUrl(a.getAttribute("href")); if (!em) return;
+                    e.preventDefault();
+                    document.getElementById("lbFrame").innerHTML = '<iframe src="' + esc(em) + '" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen title="Video"></iframe>';
+                    lb.hidden = false;
+                });
                 var btn = document.getElementById("dlBtn"); btn.hidden = false;
                 btn.addEventListener("click", function () {
                     Array.prototype.forEach.call(main.querySelectorAll("img"), function (im) { im.loading = "eager"; });

@@ -559,7 +559,8 @@
     app.appendChild(bar);
     fillProposalSelect($(".asTarget", bar), slideState.target);
     function load() {
-      return sb.from("slides").select("id,title,url,path,sort_order").eq("artist_id", artistId).order("sort_order").order("created_at")
+      var q = function (cols) { return sb.from("slides").select(cols).eq("artist_id", artistId).order("sort_order").order("created_at"); };
+      return q("id,title,url,path,sort_order,video_url").then(function (r) { return noVideoCol(r.error) ? q("id,title,url,path,sort_order") : r; })
         .then(function (r) { if (r.error) throw r.error; list = r.data; draw(); });
     }
     function draw() {
@@ -570,7 +571,7 @@
         return '<div class="slide' + (on ? " on" : "") + '"><button type="button" class="slide-pick" data-pick="' + x.id + '" aria-label="Select slide">' +
           '<img loading="lazy" src="' + esc(x.url) + '" alt=""><span class="tick">' + (on ? "&#10003;" : "") + "</span></button>" +
           '<div class="slide-meta"><a class="small" href="' + esc(x.url) + '" target="_blank" rel="noopener">View full size</a><span class="spacer"></span>' +
-          '<button type="button" class="linkbtn" data-unlink="' + x.id + '" title="Keep in library, remove from this act">Unlink</button></div></div>';
+          '<button type="button" class="linkbtn" data-unlink="' + x.id + '" title="Keep in library, remove from this act">Unlink</button>' + videoField(x) + '</div></div>';
       }).join("") : '<p class="muted">No slides for this act yet. Upload one below, or import your master deck from the Slides page.</p>';
       var n = Object.keys(picked).length;
       bar.hidden = !n; $(".asSelCount", bar).textContent = n + " selected";
@@ -650,7 +651,9 @@
       '<button class="btn primary" type="button" id="selAdd">Add to proposal</button><button class="btn" type="button" id="selClear">Clear</button></div>';
     var all = [];
     function load() {
-      return sb.from("slides").select("id,title,category,url,path,sort_order,created_at,artist_id,artists(name,slug)").order("sort_order").order("created_at").range(0, 4999)
+      var q = function (cols) { return sb.from("slides").select(cols).order("sort_order").order("created_at").range(0, 4999); };
+      return q("id,title,category,url,path,sort_order,created_at,artist_id,video_url,artists(name,slug)")
+        .then(function (r) { return noVideoCol(r.error) ? q("id,title,category,url,path,sort_order,created_at,artist_id,artists(name,slug)") : r; })
         .then(function (r) { if (r.error) throw r.error; all = r.data; draw(); });
     }
     function draw() {
@@ -665,7 +668,7 @@
         return '<div class="slide' + (on ? " on" : "") + '" data-id="' + x.id + '"><button type="button" class="slide-pick" data-pick="' + x.id + '" aria-label="Select slide">' +
           '<img loading="lazy" src="' + esc(x.url) + '" alt=""><span class="tick">' + (on ? "&#10003;" : "") + "</span></button>" +
           '<div class="slide-meta"><input type="text" value="' + esc(x.title) + '" data-title="' + x.id + '" aria-label="Slide title">' +
-          '<select data-cat="' + x.id + '">' + slideCatOptions(x.category, false) + "</select>" +
+          '<select data-cat="' + x.id + '">' + slideCatOptions(x.category, false) + "</select>" + videoField(x) +
           (x.artists ? '<a class="small artist-tag" href="#/artists/' + x.artist_id + '">' + esc(x.artists.name) + "</a>" : '<span class="small muted">No act linked</span>') +
           '<button type="button" class="linkbtn del" data-del="' + x.id + '" title="Delete slide">Delete</button></div></div>';
       }).join("") : '<p class="muted center">No slides yet. Upload your proposal slides to get started.</p>';
@@ -753,6 +756,7 @@
       }
     });
     grid.addEventListener("change", function (e) {
+      if (e.target.hasAttribute("data-video")) { saveVideo(e.target, all); return; }
       var t = e.target, id = t.getAttribute("data-title") || t.getAttribute("data-cat");
       if (!id) return;
       var patch = t.hasAttribute("data-title") ? { title: t.value.trim() || "Slide" } : { category: t.value || null };
@@ -798,7 +802,8 @@
     app.innerHTML = '<p class="muted center">Loading&hellip;</p>';
     Promise.all([
       sb.from("proposals").select("*").eq("id", id).maybeSingle(),
-      sb.from("proposal_slides").select("slide_id,position,slides(id,title,url,category)").eq("proposal_id", id).order("position")
+      sb.from("proposal_slides").select("slide_id,position,slides(id,title,url,category,video_url)").eq("proposal_id", id).order("position")
+        .then(function (r) { return noVideoCol(r.error) ? sb.from("proposal_slides").select("slide_id,position,slides(id,title,url,category)").eq("proposal_id", id).order("position") : r; })
     ]).then(function (res) {
       if (res[0].error) return fail(res[0].error);
       if (res[1].error) return fail(res[1].error);
@@ -819,7 +824,7 @@
         '<div class="linkrow"><input type="text" id="prLink" readonly value="' + esc(link) + '"><button class="btn" type="button" id="prCopy">Copy link</button></div></section>' +
         '<section class="panel"><h2>Slides <span class="muted small">' + items.length + " in this proposal</span></h2>" +
         (items.length ? '<div class="slide-grid order" id="prSlides">' + items.map(function (x, i) {
-          return '<div class="slide"><span class="num">' + (i + 1) + '</span><img loading="lazy" src="' + esc(x.url) + '" alt=""><div class="slide-meta"><span class="sub">' + esc(x.title) + "</span>" +
+          return '<div class="slide"><span class="num">' + (i + 1) + '</span><img loading="lazy" src="' + esc(x.url) + '" alt=""><div class="slide-meta"><span class="sub">' + (x.video_url ? '<span class="vid-badge" title="Has a video link">&#9654;</span> ' : "") + esc(x.title) + "</span>" +
             '<span class="tools"><button type="button" data-mv="-1" data-i="' + i + '"' + (i === 0 ? " disabled" : "") + ' title="Move earlier">&larr;</button>' +
             '<button type="button" data-mv="1" data-i="' + i + '"' + (i === items.length - 1 ? " disabled" : "") + ' title="Move later">&rarr;</button>' +
             '<button type="button" class="del" data-rm="' + i + '" title="Remove from proposal">&#10005;</button></span></div></div>';
@@ -839,7 +844,7 @@
         (navigator.clipboard ? navigator.clipboard.writeText(inp.value) : Promise.reject()).then(function () { toast("Link copied"); }, function () { document.execCommand("copy"); toast("Link copied"); });
         if (!$("#prShared").checked) toast("Copied. Switch the link on before sending it.", true);
       });
-      $("#pdfBtn").addEventListener("click", function () { printSlides(p.title, items.map(function (x) { return x.url; })); });
+      $("#pdfBtn").addEventListener("click", function () { printSlides(p.title, items.map(function (x) { return x.url; }), items.map(function (x) { return x.video_url; })); });
       $("#prDelete").addEventListener("click", function () {
         if (!confirm("Delete this proposal? Your slides stay in the library.")) return;
         sb.from("proposals").delete().eq("id", id).then(must).then(function () { toast("Proposal deleted"); location.hash = "#/proposals"; }).catch(fail);
@@ -858,14 +863,39 @@
   }
 
   // Opens the slides as landscape pages and the browser's Save as PDF dialog.
-  function printSlides(title, urls) {
+  // Until the video_url column exists, retry slide queries without it.
+  function noVideoCol(e) { return e && /video_url/.test(e.message || ""); }
+  function cleanVideo(v) {
+    v = (v || "").trim(); if (!v) return null;
+    if (!/^https?:\/\//i.test(v)) v = "https://" + v;
+    return /^https:\/\/(www\.|m\.)?(youtube\.com|youtu\.be|vimeo\.com)\//i.test(v) ? v : false;
+  }
+  function videoField(x) {
+    return '<label class="vid-field' + (x.video_url ? " has" : "") + '"><span>&#9654;</span><input type="url" placeholder="Paste YouTube link" value="' + esc(x.video_url || "") + '" data-video="' + x.id + '" aria-label="YouTube link"></label>';
+  }
+  function saveVideo(input, list) {
+    var id = input.getAttribute("data-video"), v = cleanVideo(input.value);
+    if (v === false) { toast("Please paste a YouTube or Vimeo link", true); return; }
+    sb.from("slides").update({ video_url: v }).eq("id", id).then(function (r) {
+      if (noVideoCol(r.error)) throw new Error("Run the add-slide-videos SQL in Supabase first, then try again.");
+      return must(r);
+    }).then(function () {
+      (list || []).forEach(function (x) { if (x.id === id) x.video_url = v; });
+      input.value = v || ""; input.parentNode.classList.toggle("has", !!v);
+      toast(v ? "Video link saved" : "Video link removed");
+    }).catch(fail);
+  }
+  function printSlides(title, urls, videos) {
+    videos = videos || [];
     if (!urls.length) { toast("Add some slides first", true); return; }
     var w = window.open("", "_blank");
     if (!w) { toast("Allow pop-ups for this site to download the PDF", true); return; }
     w.document.write('<!DOCTYPE html><html><head><meta charset="utf-8"><title>' + esc(title) + "</title><style>" +
       "@page{size:1920px 1080px;margin:0}html,body{margin:0;background:#111}img{display:block;width:100vw;height:auto;page-break-after:always;break-after:page}" +
-      "@media screen{img{max-width:1200px;margin:16px auto;width:90vw}}</style></head><body>" +
-      urls.map(function (u) { return '<img src="' + esc(u) + '" alt="">'; }).join("") + "</body></html>");
+      ".pg{position:relative;page-break-after:always;break-after:page}.pg img{page-break-after:auto;break-after:auto}" +
+      ".vid{position:absolute;left:2.2%;bottom:5%;background:linear-gradient(135deg,#f3e3a6,#c9a84c 55%,#9c7a2b);color:#1a1405;font:700 1.6vw Georgia,serif;letter-spacing:.1em;padding:.7vw 1.4vw;text-decoration:none;border-radius:2px;box-shadow:0 4px 14px rgba(0,0,0,.35)}" +
+      "@media screen{.pg{max-width:1200px;margin:16px auto;width:90vw}.pg img{width:100%}.vid{font-size:14px;padding:8px 14px}}</style></head><body>" +
+      urls.map(function (u, i) { return '<div class="pg"><img src="' + esc(u) + '" alt="">' + (videos[i] ? '<a class="vid" href="' + esc(videos[i]) + '" target="_blank" rel="noopener">&#9654; WATCH VIDEO</a>' : "") + "</div>"; }).join("") + "</body></html>");
     w.document.close();
     var imgs = w.document.images, left = imgs.length;
     function done() { if (--left <= 0) setTimeout(function () { w.focus(); w.print(); }, 300); }
