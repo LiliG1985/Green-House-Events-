@@ -39,6 +39,16 @@
     t.textContent = msg; t.className = "toast show" + (isErr ? " err" : "");
     clearTimeout(toastTimer); toastTimer = setTimeout(function () { t.className = "toast"; }, isErr ? 6000 : 2600);
   }
+  function showDuplicateNotice(added, names) {
+    var old = document.getElementById("dupNotice"); if (old) old.remove();
+    var box = document.createElement("div"); box.id = "dupNotice"; box.className = "dup-notice";
+    box.innerHTML = '<button class="dup-close" aria-label="Close">&times;</button>' +
+      '<strong>' + names.length + ' slide' + (names.length === 1 ? ' was' : 's were') + ' already uploaded</strong>' +
+      '<p>These were skipped, so nothing has been doubled up. ' + added + ' new slide' + (added === 1 ? ' was' : 's were') + ' added.</p>' +
+      '<ul>' + names.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join("") + '</ul>';
+    box.querySelector(".dup-close").onclick = function () { box.remove(); };
+    document.body.appendChild(box);
+  }
   function fail(err) { console.error(err); toast((err && err.message) || "Something went wrong", true); }
   function must(res) { if (res.error) throw res.error; return res.data; }
   function slugify(t) { return String(t || "").toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "artist"; }
@@ -680,7 +690,7 @@
     function upload(files) {
       files = Array.prototype.slice.call(files || []).filter(function (f) { return /^image\//.test(f.type); });
       if (!files.length) return;
-      var dz = $("#slideDrop"), n = 0, skipped = 0, base = all.length ? Math.max.apply(null, all.map(function (x) { return x.sort_order; })) : 0;
+      var dz = $("#slideDrop"), n = 0, skipped = 0, skippedNames = [], base = all.length ? Math.max.apply(null, all.map(function (x) { return x.sort_order; })) : 0;
       files.sort(function (a, b) { return a.name.localeCompare(b.name, undefined, { numeric: true }); });
       var catBySlug = {}; SLIDE_CATS.forEach(function (c) { catBySlug[slugify(c)] = c; });
       var havePath = {}; all.forEach(function (x) { if (x.path) havePath[x.path] = 1; });
@@ -696,7 +706,7 @@
             if (m) {
               var art = bySlug[m[3]];
               path = "deck-" + m[1] + ".jpg";
-              if (havePath[path]) { skipped++; return; }
+              if (havePath[path]) { skipped++; skippedNames.push((art ? art.name : (catBySlug[m[2]] || "Section") + " divider") + "  (" + f.name + ")"); return; }
               row.sort_order = parseInt(m[1], 10) * 10;
               row.category = catBySlug[m[2]] || null;
               row.artist_id = art ? art.id : null;
@@ -714,6 +724,7 @@
       }).catch(fail).then(function () {
         dz.textContent = "Drag slide images here (PNG or JPG exported from Canva)";
         if (n || skipped) toast(n + " slide" + (n === 1 ? "" : "s") + " uploaded" + (skipped ? ", " + skipped + " already in the library" : ""));
+        if (skipped) showDuplicateNotice(n, skippedNames);
         return load();
       });
     }
