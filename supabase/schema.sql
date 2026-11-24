@@ -254,6 +254,7 @@ create table if not exists public.slides (
   created_at timestamptz not null default now()
 );
 alter table public.slides add column if not exists video_url text;
+alter table public.slides add column if not exists design jsonb;
 create index if not exists slides_list_idx on public.slides (category, sort_order);
 
 create table if not exists public.proposals (

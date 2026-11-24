@@ -180,3 +180,15 @@ dl.facts dd { white-space: pre-wrap; word-break: break-word; }
 .vid-field.has span{color:#c00}
 .vid-field input{flex:1;padding:.3rem .45rem;font-size:.8rem}
 .vid-badge{color:#c00;font-size:.75rem}
+
+.se-wrap{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(300px,1fr);gap:1.5rem;align-items:start}
+.se-preview{position:sticky;top:1rem}
+.se-preview canvas{width:100%;height:auto;display:block;box-shadow:0 8px 30px rgba(0,0,0,.45);background:#222}
+.se-form{display:flex;flex-direction:column;gap:.9rem}
+.se-slot{border:1px solid rgba(201,168,76,.25);padding:.7rem .8rem;display:flex;flex-direction:column;gap:.45rem}
+.se-slot-head{display:flex;align-items:center;gap:.6rem}
+.se-slot-head strong{flex:1;font-size:.9rem}
+.se-range{display:flex;flex-direction:column;font-size:.78rem;opacity:.85}
+.se-range input{width:100%}
+.btn.small{padding:.35rem .7rem;font-size:.75rem}
+@media(max-width:900px){.se-wrap{grid-template-columns:1fr}.se-preview{position:static}}

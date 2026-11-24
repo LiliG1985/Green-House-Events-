@@ -146,6 +146,7 @@
     if (h[0] === "applications") return viewApplications();
     if (h[0] === "artists" && h[1] === "new") return viewArtist(null);
     if (h[0] === "artists" && h[1]) return viewArtist(h[1]);
+    if (h[0] === "slides" && h[1] === "edit" && h[2]) return viewSlideEdit(h[2]);
     if (h[0] === "slides") return viewSlides();
     if (h[0] === "proposals" && h[1]) return viewProposal(h[1]);
     if (h[0] === "proposals") return viewProposals();
@@ -601,6 +602,7 @@
         return '<div class="slide' + (on ? " on" : "") + '"><button type="button" class="slide-pick" data-pick="' + x.id + '" aria-label="Select slide">' +
           '<img loading="lazy" src="' + esc(x.url) + '" alt=""><span class="tick">' + (on ? "&#10003;" : "") + "</span></button>" +
           '<div class="slide-meta"><a class="small" href="' + esc(x.url) + '" target="_blank" rel="noopener">View full size</a><span class="spacer"></span>' +
+          '<a class="linkbtn" href="#/slides/edit/' + x.id + '?back=' + encodeURIComponent(location.hash) + '">Edit</a>' +
           '<button type="button" class="linkbtn" data-unlink="' + x.id + '" title="Keep in library, remove from this act">Unlink</button>' + videoField(x) + '</div></div>';
       }).join("") : '<p class="muted">No slides for this act yet. Upload one below, or import your master deck from the Slides page.</p>';
       var n = Object.keys(picked).length;
@@ -703,7 +705,7 @@
           '<div class="slide-meta"><input type="text" value="' + esc(x.title) + '" data-title="' + x.id + '" aria-label="Slide title">' +
           '<select data-cat="' + x.id + '">' + slideCatOptions(x.category, false) + "</select>" + videoField(x) +
           (x.artists ? '<a class="small artist-tag" href="#/artists/' + x.artist_id + '">' + esc(x.artists.name) + "</a>" : '<span class="small muted">No act linked</span>') +
-          '<button type="button" class="linkbtn del" data-del="' + x.id + '" title="Delete slide">Delete</button></div></div>';
+          '<a class="linkbtn" href="#/slides/edit/' + x.id + '">Edit</a><button type="button" class="linkbtn del" data-del="' + x.id + '" title="Delete slide">Delete</button></div></div>';
       }).join("") : '<p class="muted center">No slides yet. Upload your proposal slides to get started.</p>';
       drawSel();
     }
@@ -729,7 +731,7 @@
       var dz = $("#slideDrop"), n = 0, skipped = 0, skippedNames = [], base = all.length ? Math.max.apply(null, all.map(function (x) { return x.sort_order; })) : 0;
       files.sort(function (a, b) { return a.name.localeCompare(b.name, undefined, { numeric: true }); });
       var catBySlug = {}; SLIDE_CATS.forEach(function (c) { catBySlug[slugify(c)] = c; });
-      var havePath = {}; all.forEach(function (x) { if (x.path) havePath[x.path] = 1; });
+      var havePath = {}; all.forEach(function (x) { if (x.path) { havePath[x.path] = 1; havePath[x.path.replace(/-e[a-z0-9]+(\.jpg)$/i, "$1")] = 1; } });
       var needArtists = files.some(function (f) { return DECK_RE.test(f.name); });
       var artistsReady = needArtists ? sb.from("artists").select("id,slug,name").range(0, 4999).then(must) : Promise.resolve([]);
       artistsReady.then(function (arts) {
@@ -804,6 +806,17 @@
         slideState.selected = {}; location.hash = "#/proposals/" + pid;
       }).catch(function (e) { if (e) fail(e); });
     });
+  }
+
+  function viewSlideEdit(id) {
+    var back = new URLSearchParams(location.hash.split("?")[1] || "").get("back") || "#/slides";
+    var q = function (cols) { return sb.from("slides").select(cols).eq("id", id).maybeSingle(); };
+    q("id,title,url,path,category,artist_id,design").then(function (r) { return r.error && /design/.test(r.error.message || "") ? q("id,title,url,path,category,artist_id") : r; })
+      .then(function (r) {
+        if (r.error) throw r.error;
+        if (!r.data) { toast("Slide not found", true); location.hash = back; return; }
+        GHSlideEditor.open({ sb: sb, app: app, esc: esc, slide: r.data, bucket: SLIDE_BUCKET, back: back, toast: toast, fail: fail, must: must });
+      }).catch(fail);
   }
 
   // ---------- proposals ----------
