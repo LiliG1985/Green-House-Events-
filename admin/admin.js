@@ -594,6 +594,7 @@
       });
       chain.catch(fail).then(function () { dz.firstChild.textContent = "Click or drop slide images here to add them to this act"; return load(); });
     }
+    $("#asGrid").addEventListener("change", function (e) { if (e.target.hasAttribute("data-video")) saveVideo(e.target, list); });
     $("#asGrid").addEventListener("click", function (e) {
       var pk = e.target.closest("[data-pick]");
       if (pk) { var id = pk.getAttribute("data-pick"); if (picked[id]) delete picked[id]; else picked[id] = 1; draw(); return; }
@@ -870,20 +871,35 @@
     if (!/^https?:\/\//i.test(v)) v = "https://" + v;
     return /^https:\/\/(www\.|m\.)?(youtube\.com|youtu\.be|vimeo\.com)\//i.test(v) ? v : false;
   }
+  function videoList(v) { return String(v || "").split(/\s+/).filter(Boolean).slice(0, 3); }
   function videoField(x) {
-    return '<label class="vid-field' + (x.video_url ? " has" : "") + '"><span>&#9654;</span><input type="url" placeholder="Paste YouTube link" value="' + esc(x.video_url || "") + '" data-video="' + x.id + '" aria-label="YouTube link"></label>';
+    var v = videoList(x.video_url), h = '<div class="vid-fields" data-vids="' + x.id + '">';
+    for (var i = 0; i < 3; i++) {
+      h += '<label class="vid-field' + (v[i] ? " has" : "") + '"><span>&#9654;</span><input type="url" placeholder="' + (i ? "Video " + (i + 1) + " (optional)" : "Paste YouTube link") +
+        '" value="' + esc(v[i] || "") + '" data-video="' + x.id + '" aria-label="YouTube link ' + (i + 1) + '"></label>';
+    }
+    return h + "</div>";
   }
   function saveVideo(input, list) {
-    var id = input.getAttribute("data-video"), v = cleanVideo(input.value);
-    if (v === false) { toast("Please paste a YouTube or Vimeo link", true); return; }
+    var id = input.getAttribute("data-video"), box = input.closest("[data-vids]");
+    var inputs = Array.prototype.slice.call(box.querySelectorAll("[data-video]")), vals = [];
+    for (var i = 0; i < inputs.length; i++) {
+      var c = cleanVideo(inputs[i].value);
+      if (c === false) { toast("Please paste a YouTube or Vimeo link", true); return; }
+      if (c) vals.push(c);
+    }
+    var v = vals.length ? vals.join("\n") : null;
     sb.from("slides").update({ video_url: v }).eq("id", id).then(function (r) {
       if (noVideoCol(r.error)) throw new Error("Run the add-slide-videos SQL in Supabase first, then try again.");
       return must(r);
     }).then(function () {
       (list || []).forEach(function (x) { if (x.id === id) x.video_url = v; });
-      input.value = v || ""; input.parentNode.classList.toggle("has", !!v);
-      toast(v ? "Video link saved" : "Video link removed");
+      inputs.forEach(function (inp, i) { inp.value = vals[i] || ""; inp.parentNode.classList.toggle("has", !!vals[i]); });
+      toast(vals.length ? vals.length + " video link" + (vals.length > 1 ? "s" : "") + " saved" : "Video links removed");
     }).catch(fail);
+  }
+  function vidButtons(v) {
+    return v.length ? '<span class="vids">' + v.map(function (u, i) { return '<a class="vid" href="' + esc(u) + '" target="_blank" rel="noopener">&#9654; ' + (v.length > 1 ? "VIDEO " + (i + 1) : "WATCH VIDEO") + "</a>"; }).join("") + "</span>" : "";
   }
   function printSlides(title, urls, videos) {
     videos = videos || [];
@@ -893,9 +909,9 @@
     w.document.write('<!DOCTYPE html><html><head><meta charset="utf-8"><title>' + esc(title) + "</title><style>" +
       "@page{size:1920px 1080px;margin:0}html,body{margin:0;background:#111}img{display:block;width:100vw;height:auto;page-break-after:always;break-after:page}" +
       ".pg{position:relative;page-break-after:always;break-after:page}.pg img{page-break-after:auto;break-after:auto}" +
-      ".vid{position:absolute;left:2.2%;bottom:5%;background:linear-gradient(135deg,#f3e3a6,#c9a84c 55%,#9c7a2b);color:#1a1405;font:700 1.6vw Georgia,serif;letter-spacing:.1em;padding:.7vw 1.4vw;text-decoration:none;border-radius:2px;box-shadow:0 4px 14px rgba(0,0,0,.35)}" +
+      ".vids{position:absolute;left:2.2%;bottom:5%;display:flex;flex-direction:column;align-items:flex-start;gap:.5vw}.vid{background:linear-gradient(135deg,#f3e3a6,#c9a84c 55%,#9c7a2b);color:#1a1405;font:700 1.6vw Georgia,serif;letter-spacing:.1em;padding:.7vw 1.4vw;text-decoration:none;border-radius:2px;box-shadow:0 4px 14px rgba(0,0,0,.35)}" +
       "@media screen{.pg{max-width:1200px;margin:16px auto;width:90vw}.pg img{width:100%}.vid{font-size:14px;padding:8px 14px}}</style></head><body>" +
-      urls.map(function (u, i) { return '<div class="pg"><img src="' + esc(u) + '" alt="">' + (videos[i] ? '<a class="vid" href="' + esc(videos[i]) + '" target="_blank" rel="noopener">&#9654; WATCH VIDEO</a>' : "") + "</div>"; }).join("") + "</body></html>");
+      urls.map(function (u, i) { return '<div class="pg"><img src="' + esc(u) + '" alt="">' + vidButtons(videoList(videos[i])) + "</div>"; }).join("") + "</body></html>");
     w.document.close();
     var imgs = w.document.images, left = imgs.length;
     function done() { if (--left <= 0) setTimeout(function () { w.focus(); w.print(); }, 300); }

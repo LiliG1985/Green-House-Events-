@@ -19,7 +19,8 @@
         main { max-width: 1280px; margin: 0 auto; padding: 2rem 4vw 4rem; display: grid; gap: 1.6rem; }
         main img { width: 100%; height: auto; display: block; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .pg { position: relative; }
-        .vid { position: absolute; left: 2.2%; bottom: 5%; display: inline-flex; align-items: center; gap: 0.6em; background: var(--gold-metallic); color: #1a1405; font-family: 'Cinzel', serif; font-weight: 700; letter-spacing: 2px; font-size: clamp(0.6rem, 1.2vw, 1rem); padding: 0.75em 1.3em; text-decoration: none; box-shadow: 0 6px 18px rgba(0,0,0,0.45); }
+        .vids { position: absolute; left: 2.2%; bottom: 5%; display: flex; flex-direction: column; align-items: flex-start; gap: 0.5vw; }
+        .vid { display: inline-flex; align-items: center; gap: 0.6em; background: var(--gold-metallic); color: #1a1405; font-family: 'Cinzel', serif; font-weight: 700; letter-spacing: 2px; font-size: clamp(0.6rem, 1.2vw, 1rem); padding: 0.75em 1.3em; text-decoration: none; box-shadow: 0 6px 18px rgba(0,0,0,0.45); }
         .vid:hover { filter: brightness(1.08); }
         .lightbox { position: fixed; inset: 0; z-index: 50; background: rgba(0,0,0,0.88); display: flex; align-items: center; justify-content: center; padding: 4vw; }
         .lightbox[hidden] { display: none; }
@@ -79,9 +80,9 @@
                 document.getElementById("pTitle").textContent = p.title;
                 document.getElementById("pClient").textContent = p.client ? "Prepared for " + p.client : "";
                 main.innerHTML = p.slides.map(function (s, i) {
-                    var u = typeof s === "string" ? s : s.url, v = typeof s === "string" ? "" : safeVideo(s.video);
+                    var u = typeof s === "string" ? s : s.url, v = typeof s === "string" ? [] : String(s.video || "").split(/\s+/).map(safeVideo).filter(Boolean).slice(0, 3);
                     return '<div class="pg"><img src="' + esc(u) + '" alt="Slide ' + (i + 1) + '"' + (i > 1 ? ' loading="lazy"' : "") + ">" +
-                        (v ? '<a class="vid" href="' + esc(v) + '" target="_blank" rel="noopener">&#9654; WATCH VIDEO</a>' : "") + "</div>";
+                        (v.length ? '<span class="vids">' + v.map(function (u, k) { return '<a class="vid" href="' + esc(u) + '" target="_blank" rel="noopener">&#9654; ' + (v.length > 1 ? "VIDEO " + (k + 1) : "WATCH VIDEO") + "</a>"; }).join("") + "</span>" : "") + "</div>";
                 }).join("");
                 main.addEventListener("click", function (e) {
                     var a = e.target.closest(".vid"); if (!a) return;
