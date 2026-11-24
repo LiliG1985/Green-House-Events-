@@ -172,7 +172,7 @@
           var c = p.img;
           return toBlob(c, 0.9).then(function (blob) {
             var path = "src/" + slide.id + "-" + stamp + "-" + i + ".jpg";
-            return sb.storage.from(bucket).upload(path, blob, { contentType: "image/jpeg", cacheControl: "31536000", upsert: true }).then(o.must).then(function () {
+            return sb.storage.from(bucket).upload(path, blob, { contentType: "image/jpeg", cacheControl: "31536000", upsert: false }).then(o.must).then(function () {
               return { url: sb.storage.from(bucket).getPublicUrl(path).data.publicUrl, fx: p.fx, fy: p.fy, cut: !!p.cut };
             });
           });
@@ -180,7 +180,7 @@
         var newPath = (origin ? origin.replace(/\.jpg$/i, "") : slide.id) + "-e" + stamp + ".jpg";
         Promise.all(uploads).then(function (photos) {
           return toBlob(canvas, 0.92).then(function (blob) {
-            return sb.storage.from(bucket).upload(newPath, blob, { contentType: "image/jpeg", cacheControl: "31536000", upsert: true }).then(o.must);
+            return sb.storage.from(bucket).upload(newPath, blob, { contentType: "image/jpeg", cacheControl: "31536000", upsert: false }).then(o.must);
           }).then(function () {
             var design = { v: 1, type: st.type, title: st.title, bio: st.bio, photos: st.type === "divider" ? [] : photos, origin: origin };
             var row = { url: sb.storage.from(bucket).getPublicUrl(newPath).data.publicUrl, path: newPath, design: design };
