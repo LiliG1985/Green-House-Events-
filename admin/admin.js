@@ -870,7 +870,7 @@
       var items = res[1].data.filter(function (x) { return x.slides; }).map(function (x) { x.slides._price = x.price || ""; return x.slides; });
       var link = location.origin + "/proposal.html?t=" + p.share_token;
       app.innerHTML = '<div class="pagehead"><div><a href="#/proposals" class="small">&larr; All proposals</a><h1>' + esc(p.title) + "</h1></div>" +
-        '<div class="toolbar"><a class="btn" href="#/slides?add=' + p.id + '">+ Add slides</a><button class="btn primary" type="button" id="pdfBtn">Download PDF</button></div></div>' +
+        '<div class="toolbar"><button class="btn" type="button" id="prStd" title="Adds your Cover & Intro slides at the start and Closing slides at the end">+ Opening &amp; thank you pages</button><a class="btn" href="#/slides?add=' + p.id + '">+ Add slides</a><button class="btn primary" type="button" id="pdfBtn">Download PDF</button></div></div>' +
         '<section class="panel"><div class="grid3">' +
         '<label class="field">Proposal name<input type="text" id="prTitle" value="' + esc(p.title) + '"></label>' +
         '<label class="field">Client<input type="text" id="prClient" value="' + esc(p.client || "") + '"></label>' +
@@ -908,6 +908,24 @@
       $("#prDelete").addEventListener("click", function () {
         if (!confirm("Delete this proposal? Your slides stay in the library.")) return;
         sb.from("proposals").delete().eq("id", id).then(must).then(function () { toast("Proposal deleted"); location.hash = "#/proposals"; }).catch(fail);
+      });
+      function saveOrder() {
+        return sb.from("proposal_slides").delete().eq("proposal_id", id).then(must)
+          .then(function () { return items.length ? sb.from("proposal_slides").insert(items.map(function (x, i) { var row = { proposal_id: id, slide_id: x.id, position: i }; if (hasPrice) row.price = x._price || null; return row; })).then(must) : null; })
+          .then(function () { return sb.from("proposals").update({ updated_at: new Date().toISOString() }).eq("id", id); });
+      }
+      $("#prStd").addEventListener("click", function (e) {
+        var btn = e.target; btn.disabled = true;
+        sb.from("slides").select("id,title,url,category,video_url,sort_order").in("category", ["Cover & Intro", "Closing"]).order("sort_order").then(must).then(function (std) {
+          var have = {}; items.forEach(function (x) { have[x.id] = 1; });
+          var open = std.filter(function (s) { return s.category === "Cover & Intro" && !have[s.id]; }),
+              close = std.filter(function (s) { return s.category === "Closing" && !have[s.id]; });
+          if (!std.length) { toast("Upload your opening, client list and thank you slides to the Slides page first, under Cover & Intro and Closing.", true); return null; }
+          if (!open.length && !close.length) { toast("Those pages are already in this proposal"); return null; }
+          open.concat(close).forEach(function (s) { s._price = ""; });
+          items = open.concat(items, close);
+          return saveOrder().then(function () { toast((open.length + close.length) + " page" + (open.length + close.length === 1 ? "" : "s") + " added"); viewProposal(id); });
+        }).catch(fail).then(function () { btn.disabled = false; });
       });
       var grid = $("#prSlides");
       if (grid) grid.addEventListener("change", function (e) {
