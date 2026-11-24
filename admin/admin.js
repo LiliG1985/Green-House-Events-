@@ -9,6 +9,22 @@
     ["specialist", "Specialist Acts"], ["dancers", "Dancers"], ["mcs", "Emcees"], ["hostesses", "Hostesses & Promo Staff"],
     ["magicians", "Magicians & Mentalists"], ["kids", "Children's Entertainment"], ["ramadan", "Ramadan & Arabic"]
   ];
+  // Ready-made groups offered for each category (artists already in the database add their own groups too).
+  var GROUP_PRESETS = {
+    djs: ["Open Format", "House & Techno", "Arabic & Middle Eastern", "Afro & Latin", "DJ & Live Instrument"],
+    singers: ["Pop & Soul", "Jazz & Swing", "Opera & Classical", "Arabic Singers", "Latin Singers", "Acoustic", "Choirs"],
+    bands: ["Party Bands", "Jazz Bands", "Acoustic Duos & Trios", "Swing & Vintage", "Latin Bands", "Tribute Bands"],
+    instrumental: ["Saxophonists", "Violinists", "Pianists", "Guitarists", "Cellists & Harpists", "Percussionists", "Handpan", "Flutists", "Trumpet & Brass", "Classical Ensembles"],
+    specialist: ["Acrobats & Circus", "LED Performers", "Themed Roaming Characters", "Parades & Stilt Walkers", "Jugglers & Circus Skills", "Drummers", "Fire", "Laser Shows",
+      "Roaming & Specialty Musicians", "Sand Artists", "Speed Painters", "Live Painters", "Caricaturists", "Live Illustrators", "Calligraphers", "Silhouette Artists",
+      "Body & Face Painters", "Henna Artists", "Bubble Shows", "Comedians", "Hypnotists"],
+    dancers: ["Ballet & Contemporary", "Belly Dancers", "Latin & Salsa", "Bollywood", "Hip Hop & Street", "Cabaret & Showgirls", "Carnival & Samba", "Flamenco & Tango", "Cultural & Folk"],
+    mcs: ["Corporate Emcees", "Arabic & Bilingual", "Quiz Hosts", "Game Show & Bingo Hosts", "Comedians"],
+    hostesses: ["Event Hostesses", "Promo Staff", "Themed Hostesses", "Brand Ambassadors"],
+    magicians: ["Close-up Magic", "Stage Illusion", "Mentalists", "Hypnotists"],
+    kids: ["Magic Shows", "Face Painting", "Balloon Twisting", "Science Shows", "Characters", "Puppet & Bubble Shows", "Workshops & Crafts"],
+    ramadan: ["Arabic Bands & Duos", "Arabic Singers", "Oud", "Qanun", "Percussion", "Harp", "Violin", "Flute", "Live Artists", "Sand Artists", "Calligraphers", "Cultural Activations", "Cultural Dance"]
+  };
   var CAT_LABEL = {}; CATEGORIES.forEach(function (c) { CAT_LABEL[c[0]] = c[1]; });
   // Join Our Roster form category -> talent page section
   var APP_CAT = {
@@ -219,7 +235,15 @@
   }
 
   function drawArtist(id, a, p, photos, groups) {
-    var sgList = function (cat) { return Object.keys(groups[cat] || {}).sort().map(function (g) { return '<option value="' + esc(g) + '">'; }).join(""); };
+    var sgNames = function (cat) {
+      var all = {}; (GROUP_PRESETS[cat] || []).forEach(function (g) { all[g] = 1; }); Object.keys(groups[cat] || {}).forEach(function (g) { all[g] = 1; });
+      return Object.keys(all).sort(function (x, y) { return x.localeCompare(y); });
+    };
+    var sgOptions = function (cat, cur) {
+      var names = sgNames(cat); if (cur && names.indexOf(cur) < 0) names.push(cur);
+      return '<option value="">No group</option>' + names.map(function (g) { return '<option value="' + esc(g) + '"' + (g === cur ? " selected" : "") + ">" + esc(g) + "</option>"; }).join("") +
+        '<option value="__new">+ New group&hellip;</option>';
+    };
     app.innerHTML =
       '<div class="pagehead"><div><a href="#/artists" class="small">&larr; All artists</a><h1>' + (id ? esc(a.name) : "Add artist") + "</h1>" +
       (id ? '<span class="pill ' + (a.published ? "live" : "hidden") + '">' + (a.published ? "Live on website" : "Hidden") + "</span>" : "") + "</div></div>" +
@@ -229,7 +253,8 @@
       '<div class="grid2">' +
       '<label class="field">Name / act name<input type="text" id="aName" required value="' + esc(a.name) + '"></label>' +
       '<label class="field">Category<select id="aCategory">' + catOptions(a.category) + "</select></label>" +
-      '<label class="field">Group within category <span class="hint">Optional, e.g. Saxophonists, Oud, Laser Shows</span><input type="text" id="aSubgroup" list="sgList" value="' + esc(a.subgroup || "") + '"><datalist id="sgList">' + sgList(a.category) + "</datalist></label>" +
+      '<label class="field">Group within category <span class="hint">Shows as a heading on the website, e.g. Sand Artists</span><select id="aSubgroupSel">' + sgOptions(a.category, a.subgroup || "") + '</select>' +
+      '<input type="text" id="aSubgroup" placeholder="Type the new group name" value="' + esc(a.subgroup || "") + '" hidden></label>' +
       '<label class="field">Order <span class="hint">Lower numbers show first</span><input type="number" id="aOrder" value="' + esc(a.sort_order || 0) + '"></label>' +
       '<label class="field span2">Short description <span class="hint">Shown under the name, e.g. "Oud &amp; Vocals"</span><input type="text" id="aRole" value="' + esc(a.role || "") + '"></label>' +
       '<label class="field span2">Bio <span class="hint">One or two lines, shown when guests hover over the photo</span><textarea id="aBio">' + esc(a.bio || "") + "</textarea></label>" +
@@ -267,7 +292,12 @@
       '<a class="btn" href="#/artists">Cancel</a><span class="spacer"></span>' +
       (id ? '<button class="btn danger" type="button" id="deleteBtn">Delete artist</button>' : "") + "</div></form>";
 
-    $("#aCategory").addEventListener("change", function (e) { $("#sgList").innerHTML = sgList(e.target.value); });
+    var syncGroup = function () {
+      var s = $("#aSubgroupSel"), t = $("#aSubgroup");
+      if (s.value === "__new") { t.hidden = false; t.value = ""; t.focus(); } else { t.hidden = true; t.value = s.value; }
+    };
+    $("#aSubgroupSel").addEventListener("change", syncGroup);
+    $("#aCategory").addEventListener("change", function (e) { $("#aSubgroupSel").innerHTML = sgOptions(e.target.value, ""); syncGroup(); });
     $("#artistForm").addEventListener("submit", function (e) { e.preventDefault(); saveArtist(id, a); });
     if (id) {
       $("#deleteBtn").addEventListener("click", function () { deleteArtist(id, a.name, photos); });
