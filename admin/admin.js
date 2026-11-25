@@ -875,7 +875,8 @@
     return h + '<textarea data-pn maxlength="200" rows="2" placeholder="Note, e.g. 3 x 45 min sets, 7pm to 11pm" aria-label="Price note">' + esc(pr.note) + "</textarea></div>";
   }
   function noPriceCol(e) { return e && /price/.test(e.message || ""); }
-  function viewProposal(id) {
+  var propCompact = false;
+  function viewProposal(id, keepY) {
     var hasPrice = true;
     app.innerHTML = '<p class="muted center">Loading&hellip;</p>';
     Promise.all([
@@ -890,6 +891,7 @@
       if (!p) { app.innerHTML = '<p class="center muted">Proposal not found. <a href="#/proposals">Back</a></p>'; return; }
       var items = res[1].data.filter(function (x) { return x.slides; }).map(function (x) { x.slides._price = x.price || ""; return x.slides; });
       var link = location.origin + "/proposal.html?t=" + p.share_token;
+      var restoreY = function () { if (keepY != null) window.scrollTo(0, keepY); };
       app.innerHTML = '<div class="pagehead"><div><a href="#/proposals" class="small">&larr; All proposals</a><h1>' + esc(p.title) + "</h1></div>" +
         '<div class="toolbar"><button class="btn" type="button" id="prStd" title="Adds your Cover & Intro slides at the start and Closing slides at the end">+ Opening &amp; thank you pages</button><a class="btn" href="#/slides?add=' + p.id + '">+ Add slides</a><button class="btn primary" type="button" id="pdfBtn">Download PDF</button></div></div>' +
         '<section class="panel"><div class="grid3">' +
@@ -902,9 +904,12 @@
         '<p class="note">When the link is on, anyone you send it to can view and download this proposal. Switch it off at any time.</p>' +
         '<div class="linkrow"><input type="text" id="prLink" readonly value="' + esc(link) + '"><button class="btn" type="button" id="prCopy">Copy link</button></div></section>' +
         '<section class="panel"><h2>Slides <span class="muted small">' + items.length + " in this proposal</span></h2>" +
+        (items.length > 1 ? '<div class="order-help"><p class="note"><strong>To reorder:</strong> drag a slide by its picture and drop it where you want it, or type a new number in its corner.</p>' +
+          '<button type="button" class="btn small" id="prCompact">' + (propCompact ? "Show prices" : "Compact view for reordering") + "</button></div>" : "") +
         (items.length ? '<p class="note">Prices appear only on this proposal, its client link and its PDF. Add up to three per slide, each with an optional name such as Solo, Duo or Trio, plus a short note underneath (set times and so on). Leave them empty to show nothing.</p>' : "") +
-        (items.length ? '<div class="slide-grid order" id="prSlides">' + items.map(function (x, i) {
-          return '<div class="slide"><span class="num">' + (i + 1) + '</span><img loading="lazy" src="' + esc(x.url) + '" alt=""><div class="slide-meta"><span class="sub">' + (x.video_url ? '<span class="vid-badge" title="Has a video link">&#9654;</span> ' : "") + esc(x.title) + "</span>" +
+        (items.length ? '<div class="slide-grid order' + (propCompact ? " compact-order" : "") + '" id="prSlides">' + items.map(function (x, i) {
+          return '<div class="slide" data-card="' + i + '"><label class="num" title="Type a number to move this slide there"><input type="number" min="1" max="' + items.length + '" value="' + (i + 1) + '" data-pos="' + i + '" aria-label="Position"></label>' +
+            '<div class="drag-area" data-drag draggable="true" title="Drag to move"><img loading="lazy" src="' + esc(x.url) + '" alt="" draggable="false"><span class="drag-hint">&#10495; Drag</span></div><div class="slide-meta"><span class="sub">' + (x.video_url ? '<span class="vid-badge" title="Has a video link">&#9654;</span> ' : "") + esc(x.title) + "</span>" +
             priceFields(x._price, i) +
             '<span class="tools"><button type="button" data-mv="-1" data-i="' + i + '"' + (i === 0 ? " disabled" : "") + ' title="Move earlier">&larr;</button>' +
             '<button type="button" data-mv="1" data-i="' + i + '"' + (i === items.length - 1 ? " disabled" : "") + ' title="Move later">&rarr;</button>' +
@@ -962,15 +967,64 @@
         sb.from("proposal_slides").update({ price: stored }).eq("proposal_id", id).eq("slide_id", x.id).then(must)
           .then(function () { x._price = stored || ""; toast(e.target.hasAttribute("data-pn") ? (note ? "Note saved" : "Note removed") : rows.length ? rows.length + " price" + (rows.length > 1 ? "s" : "") + " saved" : (e.target.hasAttribute("data-pl") ? "Add a price next to the name" : "Prices removed")); }).catch(fail);
       });
+      var busy = false;
+      function moveTo(from, to) {
+        if (busy || from === to || to < 0 || to >= items.length) return;
+        busy = true; grid.classList.add("saving");
+        var m = items.splice(from, 1)[0]; items.splice(to, 0, m);
+        var y = window.scrollY;
+        saveOrder().then(function () { toast("Moved to " + (to + 1)); viewProposal(id, y); }).catch(function (err) { busy = false; fail(err); viewProposal(id, y); });
+      }
       if (grid) grid.addEventListener("click", function (e) {
-        var b = e.target.closest("button"); if (!b || b.disabled) return;
-        if (b.hasAttribute("data-rm")) items.splice(+b.getAttribute("data-rm"), 1);
-        else { var from = +b.getAttribute("data-i"), to = from + +b.getAttribute("data-mv"); var m = items.splice(from, 1)[0]; items.splice(to, 0, m); }
-        sb.from("proposal_slides").delete().eq("proposal_id", id).then(must)
-          .then(function () { return items.length ? sb.from("proposal_slides").insert(items.map(function (x, i) { var row = { proposal_id: id, slide_id: x.id, position: i }; if (hasPrice) row.price = x._price || null; return row; })).then(must) : null; })
-          .then(function () { return sb.from("proposals").update({ updated_at: new Date().toISOString() }).eq("id", id); })
-          .then(function () { viewProposal(id); }).catch(fail);
+        var b = e.target.closest("button"); if (!b || b.disabled || busy) return;
+        if (b.hasAttribute("data-rm")) {
+          busy = true; items.splice(+b.getAttribute("data-rm"), 1); var y = window.scrollY;
+          saveOrder().then(function () { viewProposal(id, y); }).catch(fail);
+        } else if (b.hasAttribute("data-mv")) { var from = +b.getAttribute("data-i"); moveTo(from, from + +b.getAttribute("data-mv")); }
       });
+      if (grid) grid.addEventListener("change", function (e) {
+        var inp = e.target.closest("[data-pos]"); if (!inp) return;
+        var to = Math.max(1, Math.min(items.length, parseInt(inp.value, 10) || 1)) - 1, from = +inp.getAttribute("data-pos");
+        if (to === from) { inp.value = from + 1; return; }
+        moveTo(from, to);
+      });
+      if (grid) grid.addEventListener("keydown", function (e) { if (e.key === "Enter" && e.target.hasAttribute("data-pos")) { e.preventDefault(); e.target.blur(); } });
+      // drag and drop
+      var dragFrom = -1, dropAt = -1, scrollTimer = null;
+      function clearMarks() { grid.querySelectorAll(".drop-before,.drop-after,.dragging").forEach(function (c) { c.classList.remove("drop-before", "drop-after", "dragging"); }); }
+      if (grid) {
+        grid.addEventListener("dragstart", function (e) {
+          var h = e.target.closest && e.target.closest("[data-drag]"), c = h && h.closest(".slide"); if (!c || busy) { e.preventDefault(); return; }
+          dragFrom = +c.getAttribute("data-card"); dropAt = -1;
+          e.dataTransfer.effectAllowed = "move"; try { e.dataTransfer.setData("text/plain", String(dragFrom)); } catch (err) {}
+          setTimeout(function () { c.classList.add("dragging"); }, 0);
+        });
+        grid.addEventListener("dragover", function (e) {
+          if (dragFrom < 0) return;
+          e.preventDefault(); e.dataTransfer.dropEffect = "move";
+          var edge = 90; clearInterval(scrollTimer); scrollTimer = null;
+          if (e.clientY < edge) scrollTimer = setInterval(function () { window.scrollBy(0, -18); }, 16);
+          else if (e.clientY > window.innerHeight - edge) scrollTimer = setInterval(function () { window.scrollBy(0, 18); }, 16);
+          var c = e.target.closest(".slide"); if (!c) return;
+          var r = c.getBoundingClientRect(), after = e.clientX > r.left + r.width / 2, i = +c.getAttribute("data-card");
+          grid.querySelectorAll(".drop-before,.drop-after").forEach(function (x) { x.classList.remove("drop-before", "drop-after"); });
+          c.classList.add(after ? "drop-after" : "drop-before");
+          dropAt = after ? i + 1 : i;
+        });
+        grid.addEventListener("drop", function (e) {
+          e.preventDefault(); clearInterval(scrollTimer);
+          var from = dragFrom, at = dropAt; dragFrom = -1; clearMarks();
+          if (from < 0 || at < 0) return;
+          moveTo(from, at > from ? at - 1 : at);
+        });
+        grid.addEventListener("dragend", function () { clearInterval(scrollTimer); dragFrom = -1; clearMarks(); });
+      }
+      var cb = $("#prCompact");
+      if (cb) cb.addEventListener("click", function () {
+        propCompact = !propCompact; grid.classList.toggle("compact-order", propCompact);
+        cb.textContent = propCompact ? "Show prices" : "Compact view for reordering";
+      });
+      restoreY();
     }).catch(fail);
   }
 
