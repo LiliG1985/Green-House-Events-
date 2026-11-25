@@ -270,7 +270,9 @@
         '<p class="note">This act&rsquo;s slides from your proposal deck. Tick slides, then add them to a proposal. ' +
         '<a class="btn small" href="#/slides/new/' + id + '">+ Create slide</a></p>' +
         '<div id="asGrid" class="slide-grid compact"><p class="muted">Loading&hellip;</p></div>' +
-        '<label class="dropzone" id="asDrop">Click or drop slide images here to add them to this act<input type="file" id="asInput" accept="image/*" multiple hidden></label></section>' : "") +
+        '<label class="dropzone" id="asDrop">Click or drop slide images here to add them to this act<input type="file" id="asInput" accept="image/*" multiple hidden></label></section>'
+        : '<section class="panel"><h2>Proposal slide</h2><p class="note">Make their slide in the Greenhouse style straight away. The artist is saved first, then the slide maker opens with their name and bio filled in, ready for you to add photos.</p>' +
+          '<button class="btn" type="button" id="saveSlideBtn">Create artist &amp; make their slide</button></section>') +
 
       '<section class="panel"><h2>Videos &amp; links</h2><p class="note">Every link is saved privately. Switch one on to show it on the website too.</p>' +
       '<div class="linkrow"><label class="field">YouTube / video links <span class="hint">One per line. The first one plays on the website.</span><textarea id="pVideos">' + esc(p.video_links || "") + "</textarea></label>" + sw("aShowVideos", a.show_videos, "Show on website") + "</div>" +
@@ -302,6 +304,7 @@
     $("#aSubgroupSel").addEventListener("change", syncGroup);
     $("#aCategory").addEventListener("change", function (e) { $("#aSubgroupSel").innerHTML = sgOptions(e.target.value, ""); syncGroup(); });
     $("#artistForm").addEventListener("submit", function (e) { e.preventDefault(); saveArtist(id, a); });
+    if (!id) $("#saveSlideBtn").addEventListener("click", function () { if ($("#artistForm").reportValidity()) saveArtist(null, a, true); });
     if (id) {
       $("#deleteBtn").addEventListener("click", function () { deleteArtist(id, a.name, photos); });
       drawPhotos(id, photos);
@@ -314,7 +317,7 @@
     }
   }
 
-  function saveArtist(id, a) {
+  function saveArtist(id, a, thenSlide) {
     var btn = $("#saveBtn"); btn.disabled = true; btn.textContent = "Saving...";
     var pub = {
       name: val("aName"), category: $("#aCategory").value, subgroup: val("aSubgroup"), role: val("aRole"), bio: val("aBio"),
@@ -338,6 +341,7 @@
       step = sb.from("artists").insert(pub).select("id").single().then(must).then(function (row) {
         priv.artist_id = row.id;
         return sb.from("artist_private").upsert(priv).then(must).then(function () {
+          if (thenSlide) { toast("Artist created. Now build their slide."); location.hash = "#/slides/new/" + row.id + "?back=" + encodeURIComponent("#/artists/" + row.id); return; }
           toast("Artist created. Now add photos, then use Create slide to make their proposal slide."); location.hash = "#/artists/" + row.id;
         });
       });
