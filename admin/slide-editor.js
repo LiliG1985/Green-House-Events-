@@ -108,9 +108,16 @@
 
   window.GHSlideEditor = {
     open: function (o) {
-      var sb = o.sb, app = o.app, esc = o.esc, slide = o.slide, bucket = o.bucket;
-      app.innerHTML = '<div class="pagehead"><div><a href="' + esc(o.back) + '" class="small">&larr; Back</a><h1>Edit slide</h1></div></div><p class="muted">Loading the slide&hellip;</p>';
-      var st = null, canvas, timer;
+      var sb = o.sb, app = o.app, esc = o.esc, slide = o.slide, bucket = o.bucket, cr = o.create || null, heading = cr ? "Create slide" : "Edit slide";
+      app.innerHTML = '<div class="pagehead"><div><a href="' + esc(o.back) + '" class="small">&larr; Back</a><h1>' + heading + '</h1></div></div><p class="muted">Loading&hellip;</p>';
+      var st = null, canvas, timer, picks = [];
+      if (cr) {
+        loadKit().then(function (k) {
+          st = { type: "artist", title: cr.title || "", bio: cr.bio || "", category: cr.category || "", photos: [null, null, null] };
+          picks = (cr.photos || []).slice(0, 12);
+          draw(k);
+        }).catch(function (e) { o.fail(e); location.hash = o.back; });
+      } else
       Promise.all([loadKit(), loadImg(slide.url + (slide.url.indexOf("?") < 0 ? "?" : "&") + "e=" + Date.now(), true)]).then(function (r) {
         var k = r[0], cur = r[1], d = slide.design || null, txt = (texts && texts[(d && d.origin) || slide.path]) || null;
         st = { type: (d && d.type) || (txt && txt.type) || "artist", title: (d && d.title) || (txt && txt.title) || slide.title || "", bio: (d && d.bio != null ? d.bio : (txt && txt.bio) || ""), photos: [] };
@@ -130,14 +137,18 @@
       }
       function draw(k) {
         var isDiv = st.type === "divider";
-        app.innerHTML = '<div class="pagehead"><div><a href="' + esc(o.back) + '" class="small">&larr; Back</a><h1>Edit slide</h1></div>' +
-          '<div class="toolbar"><a class="btn" href="' + esc(o.back) + '">Cancel</a><button class="btn primary" type="button" id="seSave">Save slide</button></div></div>' +
+        var catSel = cr ? '<label class="field">Slide category<select id="seCat"><option value="">No category</option>' + (cr.cats || []).map(function (c) { return "<option" + (c === st.category ? " selected" : "") + ">" + esc(c) + "</option>"; }).join("") + "</select></label>" : "";
+        var pickRow = cr && picks.length && !isDiv ? '<div class="se-picks"><span class="hint">Tap one of this act&rsquo;s photos to put it in the next empty spot</span><div>' +
+          picks.map(function (u, i) { return '<button type="button" data-pick-photo="' + i + '"><img src="' + esc(u) + '" alt=""></button>'; }).join("") + "</div></div>" : "";
+        app.innerHTML = '<div class="pagehead"><div><a href="' + esc(o.back) + '" class="small">&larr; Back</a><h1>' + heading + '</h1>' + (cr && cr.artistName ? '<p class="muted">For ' + esc(cr.artistName) + "</p>" : "") + "</div>" +
+          '<div class="toolbar"><a class="btn" href="' + esc(o.back) + '">Cancel</a><button class="btn primary" type="button" id="seSave">' + (cr ? "Create slide" : "Save slide") + "</button></div></div>" +
           '<div class="se-wrap"><div class="se-preview"><canvas id="seCanvas" width="' + W + '" height="' + H + '"></canvas><p class="note" id="seFit"></p></div>' +
           '<div class="se-form panel">' +
           '<label class="field">Slide type<select id="seType"><option value="artist"' + (isDiv ? "" : " selected") + '>Act slide (photos, name and bio)</option><option value="divider"' + (isDiv ? " selected" : "") + ">Section title (logo and heading)</option></select></label>" +
+          catSel +
           '<label class="field">' + (isDiv ? "Heading" : "Name") + '<input type="text" id="seTitle" value="' + esc(st.title) + '"></label>' +
           (isDiv ? "" : '<label class="field">Bio <span class="hint">About 60 to 90 words fits best</span><textarea id="seBio" rows="8">' + esc(st.bio) + "</textarea></label>" +
-            slot(0) + slot(1) + slot(2)) + "</div></div>";
+            pickRow + slot(0) + slot(1) + slot(2)) + "</div></div>";
         canvas = document.getElementById("seCanvas");
         var paint = function () { var res = render(canvas, st, k); var f = document.getElementById("seFit"); if (f) f.textContent = res && !res.fits ? "The bio is a little long, so some text may sit close to the bottom. Try shortening it." : ""; };
         paint();
@@ -160,7 +171,56 @@
         app.querySelectorAll("[data-remove]").forEach(function (b) {
           b.addEventListener("click", function () { var i = +b.getAttribute("data-remove"); st.photos[i] = null; st.photos = st.photos.filter(Boolean).concat([null, null, null]).slice(0, 3); draw(k); });
         });
-        document.getElementById("seSave").addEventListener("click", function () { save(this); });
+        var cs = document.getElementById("seCat"); if (cs) cs.addEventListener("change", function (ev) { st.category = ev.target.value; });
+        app.querySelectorAll("[data-pick-photo]").forEach(function (b) {
+          b.addEventListener("click", function () {
+            var empty = st.photos.indexOf(null); if (empty < 0) { o.toast("All three photo spots are full. Remove or replace one first.", true); return; }
+            b.disabled = true;
+            loadImg(picks[+b.getAttribute("data-pick-photo")], true).then(function (im) {
+              var c = document.createElement("canvas"), s = Math.min(1, 2000 / Math.max(im.width, im.height));
+              c.width = Math.round(im.width * s); c.height = Math.round(im.height * s); c.getContext("2d").drawImage(im, 0, 0, c.width, c.height);
+              st.photos[empty] = { img: c, fx: 0.5, fy: 0.35, fresh: true }; draw(k);
+            }).catch(function (err) { b.disabled = false; o.fail(err); });
+          });
+        });
+        document.getElementById("seSave").addEventListener("click", function () { if (cr) create(this); else save(this); });
+      }
+
+      function uploadPhotos(key, stamp) {
+        return Promise.all(st.photos.map(function (p, i) {
+          if (!p) return null;
+          return toBlob(p.img, 0.9).then(function (blob) {
+            var path = "src/" + key + "-" + stamp + "-" + i + ".jpg";
+            return sb.storage.from(bucket).upload(path, blob, { contentType: "image/jpeg", cacheControl: "31536000", upsert: false }).then(o.must).then(function () {
+              return { url: sb.storage.from(bucket).getPublicUrl(path).data.publicUrl, fx: p.fx, fy: p.fy, cut: false };
+            });
+          });
+        }));
+      }
+      function create(btn) {
+        var isDiv = st.type === "divider";
+        if (!st.title.trim()) { o.toast(isDiv ? "Add a heading first." : "Add the act's name first.", true); return; }
+        if (!isDiv && !st.photos.some(Boolean)) { o.toast("Add at least one photo first.", true); return; }
+        btn.disabled = true; btn.textContent = "Creating...";
+        var stamp = Date.now().toString(36), key = "new-" + stamp + Math.random().toString(36).slice(2, 7), path = key + ".jpg";
+        (isDiv ? Promise.resolve([]) : uploadPhotos(key, stamp)).then(function (photos) {
+          return toBlob(canvas, 0.92).then(function (blob) {
+            return sb.storage.from(bucket).upload(path, blob, { contentType: "image/jpeg", cacheControl: "31536000", upsert: false }).then(o.must);
+          }).then(function () {
+            var q = sb.from("slides").select("sort_order").order("sort_order", { ascending: false }).limit(1);
+            if (st.category) q = q.eq("category", st.category);
+            return q.then(function (r) { return ((r.data && r.data[0] && r.data[0].sort_order) || 0) + 1; });
+          }).then(function (order) {
+            var row = { title: st.title.trim(), category: st.category || null, artist_id: cr.artist_id || null, sort_order: order, path: path,
+              url: sb.storage.from(bucket).getPublicUrl(path).data.publicUrl,
+              design: { v: 1, type: st.type, title: st.title, bio: st.bio, photos: photos.filter(function () { return true; }), origin: path } };
+            return sb.from("slides").insert(row).then(function (r) {
+              if (r.error && /design/.test(r.error.message || "")) throw new Error("Run the slide-editor SQL in Supabase first, then try again.");
+              return o.must(r);
+            });
+          });
+        }).then(function () { o.toast("Slide created"); location.hash = o.back; })
+          .catch(function (err) { o.fail(err); btn.disabled = false; btn.textContent = "Create slide"; });
       }
 
       function save(btn) {

@@ -147,6 +147,7 @@
     if (h[0] === "artists" && h[1] === "new") return viewArtist(null);
     if (h[0] === "artists" && h[1]) return viewArtist(h[1]);
     if (h[0] === "slides" && h[1] === "edit" && h[2]) return viewSlideEdit(h[2]);
+    if (h[0] === "slides" && h[1] === "new") return viewSlideCreate(h[2] || null);
     if (h[0] === "slides") return viewSlides();
     if (h[0] === "proposals" && h[1]) return viewProposal(h[1]);
     if (h[0] === "proposals") return viewProposals();
@@ -266,7 +267,8 @@
           : '<p class="muted">Save the artist first, then add photos.</p>') + "</section>" +
 
       (id ? '<section class="panel"><h2>Proposal slides <span class="muted small" id="asCount"></span></h2>' +
-        '<p class="note">This act&rsquo;s slides from your proposal deck. Tick slides, then add them to a proposal.</p>' +
+        '<p class="note">This act&rsquo;s slides from your proposal deck. Tick slides, then add them to a proposal. ' +
+        '<a class="btn small" href="#/slides/new/' + id + '">+ Create slide</a></p>' +
         '<div id="asGrid" class="slide-grid compact"><p class="muted">Loading&hellip;</p></div>' +
         '<label class="dropzone" id="asDrop">Click or drop slide images here to add them to this act<input type="file" id="asInput" accept="image/*" multiple hidden></label></section>' : "") +
 
@@ -336,7 +338,7 @@
       step = sb.from("artists").insert(pub).select("id").single().then(must).then(function (row) {
         priv.artist_id = row.id;
         return sb.from("artist_private").upsert(priv).then(must).then(function () {
-          toast("Artist created. Now add photos."); location.hash = "#/artists/" + row.id;
+          toast("Artist created. Now add photos, then use Create slide to make their proposal slide."); location.hash = "#/artists/" + row.id;
         });
       });
     }
@@ -676,7 +678,7 @@
     var q = new URLSearchParams(location.hash.split("?")[1] || "");
     if (q.get("add")) slideState.target = q.get("add");
     app.innerHTML = '<div class="pagehead"><div><h1>Slides</h1><p class="muted">Your proposal slide library. Tick slides, then add them to a proposal.</p></div>' +
-      '<label class="btn primary" for="slideUpload">+ Upload slides<input type="file" id="slideUpload" accept="image/*" multiple hidden></label></div>' +
+      '<div class="toolbar"><a class="btn" href="#/slides/new">+ Create slide</a><label class="btn primary" for="slideUpload">+ Upload slides<input type="file" id="slideUpload" accept="image/*" multiple hidden></label></div></div>' +
       '<div class="toolbar"><input type="text" id="sQ" placeholder="Search slides or act names" value="' + esc(slideState.q) + '">' +
       '<select id="sCat">' + slideCatOptions(slideState.cat, true) + "</select>" +
       '<span class="count" id="sCount"></span></div>' +
@@ -817,6 +819,21 @@
         if (!r.data) { toast("Slide not found", true); location.hash = back; return; }
         GHSlideEditor.open({ sb: sb, app: app, esc: esc, slide: r.data, bucket: SLIDE_BUCKET, back: back, toast: toast, fail: fail, must: must });
       }).catch(fail);
+  }
+
+  var ART_TO_SLIDE_CAT = { djs: "DJs", singers: "Singers", bands: "Live Bands", instrumental: "Instrumentalists", specialist: "Specialist Acts", dancers: "Dancers",
+    mcs: "Emcees", hostesses: "Hostesses & Promo Staff", magicians: "Magicians", kids: "Children's", ramadan: "Ramadan & Arabic" };
+  function viewSlideCreate(artistId) {
+    var back = new URLSearchParams(location.hash.split("?")[1] || "").get("back") || (artistId ? "#/artists/" + artistId : "#/slides");
+    var open = function (cr) { cr.cats = SLIDE_CATS; GHSlideEditor.open({ sb: sb, app: app, esc: esc, slide: null, create: cr, bucket: SLIDE_BUCKET, back: back, toast: toast, fail: fail, must: must }); };
+    if (!artistId) { open({ category: slideState.cat || "" }); return; }
+    Promise.all([sb.from("artists").select("id,name,category,subgroup,bio").eq("id", artistId).maybeSingle(),
+      sb.from("artist_photos").select("url").eq("artist_id", artistId).order("position")]).then(function (r) {
+      if (r[0].error) throw r[0].error;
+      var x = r[0].data; if (!x) { toast("Artist not found", true); location.hash = back; return; }
+      var sub = (x.subgroup || "").toLowerCase(), cat = SLIDE_CATS.filter(function (c) { return c.toLowerCase() === sub; })[0] || ART_TO_SLIDE_CAT[x.category] || "";
+      open({ artist_id: x.id, artistName: x.name, title: x.name, bio: x.bio || "", category: cat, photos: (r[1].data || []).map(function (p) { return p.url; }) });
+    }).catch(fail);
   }
 
   // ---------- proposals ----------
