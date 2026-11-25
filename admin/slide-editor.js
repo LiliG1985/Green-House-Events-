@@ -130,7 +130,7 @@
         var p = st.photos[i], label = ["Main photo (left)", "Top photo 1", "Top photo 2"][i];
         return '<div class="se-slot" data-slot="' + i + '"><div class="se-slot-head"><strong>' + label + "</strong>" +
           '<label class="btn small">' + (p ? "Replace" : "Add photo") + '<input type="file" accept="image/*" hidden data-file="' + i + '"></label>' +
-          (p && i > 0 ? '<button type="button" class="linkbtn del" data-remove="' + i + '">Remove</button>' : "") + "</div>" +
+          (p ? '<button type="button" class="linkbtn del" data-remove="' + i + '">Remove</button>' : "") + "</div>" +
           (p && p.cut ? '<p class="note">Already cut to fit. Replace it to use a new photo and adjust the framing.</p>' : "") +
           (p && !p.cut ? '<label class="se-range">Left &harr; Right<input type="range" min="0" max="100" value="' + Math.round(p.fx * 100) + '" data-fx="' + i + '"></label>' +
             '<label class="se-range">Up &harr; Down<input type="range" min="0" max="100" value="' + Math.round(p.fy * 100) + '" data-fy="' + i + '"></label>' : "") + "</div>";
