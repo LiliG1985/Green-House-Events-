@@ -36,6 +36,7 @@
   }
 
   function card(a) {
+    if (a.role && a.role.length > 45 && !a.bio) { a = Object.assign({}, a, { bio: a.role, role: "" }); }
     var links = [];
     var firstVideo = a.pub_videos ? a.pub_videos.split(/\s+/).filter(Boolean)[0] : null;
     var audio = safeUrl(a.pub_audio), insta = safeUrl(a.pub_instagram), web = safeUrl(a.pub_website);

@@ -258,7 +258,7 @@
       '<label class="field">Group within category <span class="hint">Shows as a heading on the website, e.g. Sand Artists</span><select id="aSubgroupSel">' + sgOptions(a.category, a.subgroup || "") + '</select>' +
       '<input type="text" id="aSubgroup" placeholder="Type the new group name" value="' + esc(a.subgroup || "") + '" hidden></label>' +
       '<label class="field">Order <span class="hint">Lower numbers show first</span><input type="number" id="aOrder" value="' + esc(a.sort_order || 0) + '"></label>' +
-      '<label class="field span2">Short description <span class="hint">Shown under the name, e.g. "Oud &amp; Vocals"</span><input type="text" id="aRole" value="' + esc(a.role || "") + '"></label>' +
+      '<label class="field span2">Short description <span class="hint">A few words shown under the name, e.g. "Saxophonist" or "Oud &amp; Vocals". The longer description goes in Bio.</span><input type="text" id="aRole" maxlength="60" value="' + esc(a.role || "") + '"></label>' +
       '<label class="field span2">Bio <span class="hint">One or two lines, shown when guests hover over the photo</span><textarea id="aBio">' + esc(a.bio || "") + "</textarea></label>" +
       "</div></section>" +
 
@@ -325,6 +325,8 @@
       show_videos: checked("aShowVideos"), show_audio: checked("aShowAudio"),
       show_instagram: checked("aShowInstagram"), show_website: checked("aShowWebsite")
     };
+    // A sentence typed into the short description belongs in the hover bio.
+    if (pub.role && pub.role.length > 45 && !pub.bio) { pub.bio = pub.role; pub.role = null; $("#aBio").value = pub.bio; $("#aRole").value = ""; toast("Moved the long description into Bio so it shows on hover"); }
     var priv = {
       legal_name: val("pLegal"), email: val("pEmail"), phone: val("pPhone"), based_in: val("pBased"), languages: val("pLang"),
       rates: val("pRates"), notes: val("pNotes"), video_links: val("pVideos"), audio_link: val("pAudio"),
