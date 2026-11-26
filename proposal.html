@@ -19,19 +19,21 @@
         main { max-width: 1280px; margin: 0 auto; padding: 2rem 4vw 4rem; display: grid; gap: 1.6rem; }
         main img { width: 100%; height: auto; display: block; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .pg { position: relative; }
-        .vids { position: absolute; left: 2.2%; bottom: 5%; display: flex; flex-direction: column; align-items: flex-start; gap: 0.5vw; }
-        .vid { display: inline-flex; align-items: center; gap: 0.6em; background: var(--gold-metallic); color: #1a1405; font-family: 'Cinzel', serif; font-weight: 700; letter-spacing: 2px; font-size: clamp(0.6rem, 1.2vw, 1rem); padding: 0.75em 1.3em; text-decoration: none; box-shadow: 0 6px 18px rgba(0,0,0,0.45); }
-        .vid:hover { filter: brightness(1.08); }
-        .price { position: absolute; left: 2.2%; top: 3.9%; background: #081e16; border: 2px solid #c9a84c; padding: 0.35em 1.1em; box-shadow: 0 6px 18px rgba(0,0,0,0.45); display: grid; grid-template-columns: auto auto; column-gap: 0; align-items: stretch; font-size: clamp(0.6rem, 1.45vw, 1.2rem); }
-        .price .pl, .price .pa { padding: 0.4em 0; display: flex; align-items: center; }
-        .price .pa { justify-content: flex-end; }
-        .price .pl { padding-right: 1.6em; color: #c9a84c; font-family: 'Cinzel', serif; font-weight: 700; letter-spacing: 1.5px; font-size: 0.8em; text-transform: uppercase; }
-        .price .pa { color: #f5ecd2; font-weight: 700; text-align: right; letter-spacing: 0.5px; }
-        .price .pa.solo { grid-column: 1 / -1; }
-        .price .pr { display: contents; }
-        .price .pn { grid-column: 1 / -1; color: #d6cdb4; font-style: italic; font-size: 0.78em; line-height: 1.4; padding: 0.5em 0 0.55em; max-width: 26em; }
-        .price .pr + .pn { border-top: 1px solid rgba(201,168,76,0.35); }
-        .price .pr + .pr > span { border-top: 1px solid rgba(201,168,76,0.35); }
+        .pg { container-type: inline-size; }
+        .cap { --u: calc(100cqw / 1920); position: absolute; left: 0; bottom: 0; width: calc(var(--u) * 700); padding: calc(var(--u) * 190) calc(var(--u) * 46) calc(var(--u) * 40); box-sizing: border-box;
+               background: linear-gradient(to bottom, rgba(6,22,16,0) 0%, rgba(6,22,16,0.35) 35%, rgba(6,22,16,0.86) 100%); }
+        .vids { display: flex; flex-wrap: wrap; gap: calc(var(--u) * 10); }
+        .vids + .prices, .vids + .pnote { margin-top: calc(var(--u) * 22); }
+        .vid { display: inline-flex; align-items: center; gap: calc(var(--u) * 9); height: calc(var(--u) * 32); padding: 0 calc(var(--u) * 16); border: 1.4px solid #c9a84c; background: rgba(4,16,11,0.5);
+               color: #c9a84c; font-family: Helvetica, Arial, sans-serif; font-weight: 700; font-size: calc(var(--u) * 13); letter-spacing: calc(var(--u) * 2.2); text-decoration: none; text-transform: uppercase; }
+        .vid::before { content: ""; border-left: calc(var(--u) * 11) solid currentColor; border-top: calc(var(--u) * 6) solid transparent; border-bottom: calc(var(--u) * 6) solid transparent; }
+        .vid:hover { background: rgba(201,168,76,0.18); }
+        .prices::before { content: ""; display: block; width: calc(var(--u) * 56); height: 2px; background: #c9a84c; margin-bottom: calc(var(--u) * 12); }
+        .prow { display: flex; justify-content: space-between; align-items: baseline; height: calc(var(--u) * 44); line-height: calc(var(--u) * 44); }
+        .prow + .prow { border-top: 1px solid rgba(201,168,76,0.3); }
+        .prow .pl { color: #c9a84c; font-family: Helvetica, Arial, sans-serif; font-weight: 700; font-size: calc(var(--u) * 14); letter-spacing: calc(var(--u) * 3); text-transform: uppercase; }
+        .prow .pa { color: #f6efde; font-family: 'Times New Roman', Times, serif; font-size: calc(var(--u) * 25); }
+        .pnote { color: #e2d8be; font-family: 'Times New Roman', Times, serif; font-style: italic; font-size: calc(var(--u) * 21); line-height: 1.24; margin-top: calc(var(--u) * 8); }
         .lightbox { position: fixed; inset: 0; z-index: 50; background: rgba(0,0,0,0.88); display: flex; align-items: center; justify-content: center; padding: 4vw; }
         .lightbox[hidden] { display: none; }
         .lightbox .frame { width: min(1100px, 100%); aspect-ratio: 16 / 9; background: #000; }
@@ -46,7 +48,6 @@
             main { padding: 0; gap: 0; max-width: none; }
             main img { width: 100vw; box-shadow: none; }
             .pg { page-break-after: always; break-after: page; }
-            .vid { box-shadow: none; }
             .lightbox { display: none !important; }
         }
     </style>
@@ -62,7 +63,7 @@
 
     <script src="/js/supabase.js"></script>
     <script src="/js/gh-db.js"></script>
-    <script src="/js/proposal-pdf.js?v=4"></script>
+    <script src="/js/proposal-pdf.js?v=5"></script>
     <script>
     (function () {
         var token = new URLSearchParams(location.search).get("t") || "";
@@ -94,8 +95,10 @@
                     var u = typeof s === "string" ? s : s.url, v = typeof s === "string" ? [] : String(s.video || "").split(/\s+/).map(safeVideo).filter(Boolean).slice(0, 3);
                     var pp = typeof s === "string" ? { rows: [], note: "" } : GHPDF.parsePrice(s.price), pr = pp.rows;
                     return '<div class="pg"><img src="' + esc(u) + '" alt="Slide ' + (i + 1) + '"' + (i > 1 ? ' loading="lazy"' : "") + ">" +
-                        (pr.length || pp.note ? '<span class="price">' + pr.map(function (r, k) { return '<span class="pr">' + (r[0] ? '<span class="pl">' + esc(r[0]) + "</span>" : "") + '<span class="pa' + (r[0] ? "" : " solo") + '">' + esc(r[1]) + "</span></span>"; }).join("") + (pp.note ? '<span class="pn">' + esc(pp.note) + "</span>" : "") + "</span>" : "") +
-                        (v.length ? '<span class="vids">' + v.map(function (u, k) { return '<a class="vid" href="' + esc(u) + '" target="_blank" rel="noopener">&#9654; ' + (v.length > 1 ? "VIDEO " + (k + 1) : "WATCH VIDEO") + "</a>"; }).join("") + "</span>" : "") + "</div>";
+                        (pr.length || pp.note || v.length ? '<div class="cap">' +
+                          (v.length ? '<div class="vids">' + v.map(function (u, k) { return '<a class="vid" href="' + esc(u) + '" target="_blank" rel="noopener">' + (v.length > 1 ? "Video " + (k + 1) : "Watch video") + "</a>"; }).join("") + "</div>" : "") +
+                          (pr.length ? '<div class="prices">' + pr.map(function (r) { return '<div class="prow">' + (r[0] ? '<span class="pl">' + esc(r[0]) + '</span><span class="pa">' + esc(r[1]) + "</span>" : '<span class="pa">' + esc(r[1]) + "</span>") + "</div>"; }).join("") + "</div>" : "") +
+                          (pp.note ? '<div class="pnote">' + esc(pp.note) + "</div>" : "") + "</div>" : "") + "</div>";
                 }).join("");
                 main.addEventListener("click", function (e) {
                     var a = e.target.closest(".vid"); if (!a) return;

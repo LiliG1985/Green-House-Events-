@@ -1,5 +1,5 @@
 /* Builds a proposal PDF in the browser: one 1920x1080 page per slide, with
-   clickable gold video buttons. Works the same in Safari, Chrome and Edge. */
+   small clickable video links and prices along the foot of the main photo. Works the same in Safari, Chrome and Edge. */
 (function () {
   var W = 1920, H = 1080;
 
@@ -12,7 +12,7 @@
   }
 
   // Fetch an image and return it as a JPEG data URL at slide size.
-  function toJpeg(url) {
+  function toJpeg(url, fade) {
     return fetch(url, { mode: "cors" }).then(function (r) {
       if (!r.ok) throw new Error("Could not load a slide image");
       return r.blob();
@@ -24,27 +24,16 @@
           var g = c.getContext("2d"); g.fillStyle = "#fff"; g.fillRect(0, 0, W, H);
           var s = Math.max(W / img.width, H / img.height), w = img.width * s, h = img.height * s;
           g.drawImage(img, (W - w) / 2, (H - h) / 2, w, h);
+          if (fade) {
+            var gr = g.createLinearGradient(0, H - fade, 0, H);
+            gr.addColorStop(0, "rgba(6,22,16,0)"); gr.addColorStop(0.35, "rgba(6,22,16,0.35)"); gr.addColorStop(1, "rgba(6,22,16,0.86)");
+            g.fillStyle = gr; g.fillRect(0, H - fade, 700, fade);
+          }
           URL.revokeObjectURL(u); ok(c.toDataURL("image/jpeg", 0.9));
         };
         img.onerror = function () { URL.revokeObjectURL(u); bad(new Error("Could not read a slide image")); };
         img.src = u;
       });
-    });
-  }
-
-  function videoButtons(doc, videos) {
-    var bh = 62, gap = 12, x = 42, y = H - 54 - (bh * videos.length + gap * (videos.length - 1));
-    videos.forEach(function (url, i) {
-      var label = videos.length > 1 ? "VIDEO " + (i + 1) : "WATCH VIDEO";
-      doc.setFont("helvetica", "bold"); doc.setFontSize(26);
-      var tw = doc.getTextWidth(label), bw = tw + 104, by = y + i * (bh + gap);
-      doc.setFillColor(0, 0, 0); doc.setGState(new doc.GState({ opacity: 0.25 })); doc.rect(x + 4, by + 5, bw, bh, "F");
-      doc.setGState(new doc.GState({ opacity: 1 }));
-      doc.setFillColor(201, 168, 76); doc.rect(x, by, bw, bh, "F");
-      doc.setFillColor(243, 227, 166); doc.rect(x, by, bw, 6, "F");
-      doc.setFillColor(26, 20, 5); doc.triangle(x + 30, by + 19, x + 30, by + bh - 19, x + 54, by + bh / 2, "F");
-      doc.setTextColor(26, 20, 5); doc.text(label, x + 70, by + bh / 2 + 9);
-      doc.link(x, by, bw, bh, { url: url });
     });
   }
 
@@ -60,37 +49,52 @@
     return out;
   }
 
-  function priceTag(doc, pr) {
-    var rows = pr.rows, x = 42, y = 42, padX = 32, rowH = 54, gap = 28, labW = 0, amtW = 0;
-    rows.forEach(function (r) {
-      doc.setFont("helvetica", "bold"); doc.setFontSize(22); labW = Math.max(labW, r[0] ? doc.getTextWidth(r[0].toUpperCase()) : 0);
-      doc.setFontSize(30); amtW = Math.max(amtW, doc.getTextWidth(r[1]));
-    });
-    var bw = padX * 2 + labW + (labW ? gap : 0) + amtW, lines = [], noteH = 0;
-    if (pr.note) {
-      doc.setFont("helvetica", "italic"); doc.setFontSize(22);
-      var nw = Math.min(doc.getTextWidth(pr.note), 520);
-      bw = Math.max(bw, nw + padX * 2, rows.length ? 0 : 0);
-      lines = doc.splitTextToSize(pr.note, bw - padX * 2);
-      noteH = lines.length * 28 + (rows.length ? 18 : 10);
+  // A quiet caption at the foot of the main photo: small video links, then the
+  // prices (what each is for on the left, amount on the right) and a note.
+  var L = 46, R = 654, GOLD = [201, 168, 76], IVORY = [246, 239, 222];
+  function alpha(doc, a) { doc.setGState(new doc.GState({ opacity: a })); }
+  function layout(doc, pr, videos) {
+    var rows = pr.rows, lines = [];
+    if (pr.note) { doc.setFont("times", "italic"); doc.setFontSize(21); lines = doc.splitTextToSize(pr.note, R - L); }
+    var priceH = rows.length ? rows.length * 44 + 14 : 0, noteH = lines.length ? lines.length * 26 + (rows.length ? 8 : 0) : 0,
+        vidH = videos.length ? 32 + (priceH || noteH ? 22 : 0) : 0;
+    return { lines: lines, priceH: priceH, vidH: vidH, blockH: vidH + priceH + noteH };
+  }
+  function caption(doc, pr, videos, lay) {
+    var rows = pr.rows, rowH = 44, pillH = 32, lines = lay.lines, priceH = lay.priceH, vidH = lay.vidH, blockH = lay.blockH, bottom = H - 40, y;
+    y = bottom - blockH;
+    // video links
+    if (videos.length) {
+      var px = L;
+      videos.forEach(function (url, i) {
+        var label = videos.length > 1 ? "VIDEO " + (i + 1) : "WATCH VIDEO";
+        doc.setFont("helvetica", "bold"); doc.setFontSize(13);
+        var tw = doc.getTextWidth(label) + label.length * 2.2, bw = tw + 52;
+        alpha(doc, 0.5); doc.setFillColor(4, 16, 11); doc.rect(px, y, bw, pillH, "F"); alpha(doc, 1);
+        doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]); doc.setLineWidth(1.4); doc.rect(px, y, bw, pillH, "S");
+        doc.setFillColor(GOLD[0], GOLD[1], GOLD[2]); doc.triangle(px + 17, y + 10, px + 17, y + pillH - 10, px + 28, y + pillH / 2, "F");
+        doc.setTextColor(GOLD[0], GOLD[1], GOLD[2]); doc.text(label, px + 38, y + pillH / 2 + 4.6, { charSpace: 2.2 });
+        doc.link(px, y, bw, pillH, { url: url });
+        px += bw + 10;
+      });
+      y += vidH;
     }
-    var bh = rows.length * rowH + noteH + 22;
-    doc.setFillColor(0, 0, 0); doc.setGState(new doc.GState({ opacity: 0.3 })); doc.rect(x + 4, y + 5, bw, bh, "F");
-    doc.setGState(new doc.GState({ opacity: 1 }));
-    doc.setFillColor(8, 30, 22); doc.rect(x, y, bw, bh, "F");
-    doc.setDrawColor(201, 168, 76); doc.setLineWidth(3); doc.rect(x + 1.5, y + 1.5, bw - 3, bh - 3, "S");
-    rows.forEach(function (r, i) {
-      var by = y + 11 + i * rowH + rowH / 2;
-      if (i) { doc.setDrawColor(201, 168, 76); doc.setGState(new doc.GState({ opacity: 0.35 })); doc.setLineWidth(1); doc.line(x + padX, by - rowH / 2, x + bw - padX, by - rowH / 2); doc.setGState(new doc.GState({ opacity: 1 })); }
-      if (r[0]) { doc.setFont("helvetica", "bold"); doc.setFontSize(22); doc.setTextColor(201, 168, 76); doc.text(r[0].toUpperCase(), x + padX, by + 8); }
-      doc.setFont("helvetica", "bold"); doc.setFontSize(30); doc.setTextColor(245, 236, 210);
-      doc.text(r[1], x + bw - padX - doc.getTextWidth(r[1]), by + 10);
-    });
+    // prices
+    if (rows.length) {
+      doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]); doc.setLineWidth(2); doc.line(L, y, L + 56, y);
+      y += 14;
+      rows.forEach(function (r, i) {
+        var base = y + i * rowH + 29;
+        if (i) { alpha(doc, 0.3); doc.setLineWidth(1); doc.line(L, y + i * rowH, R, y + i * rowH); alpha(doc, 1); }
+        if (r[0]) { doc.setFont("helvetica", "bold"); doc.setFontSize(14); doc.setTextColor(GOLD[0], GOLD[1], GOLD[2]); doc.text(r[0].toUpperCase(), L, base - 1, { charSpace: 3 }); }
+        doc.setFont("times", "normal"); doc.setFontSize(25); doc.setTextColor(IVORY[0], IVORY[1], IVORY[2]);
+        if (r[0]) doc.text(r[1], R - doc.getTextWidth(r[1]), base); else doc.text(r[1], L, base);
+      });
+      y += priceH - 14 + 8;
+    }
     if (lines.length) {
-      var ny = y + 11 + rows.length * rowH;
-      if (rows.length) { doc.setDrawColor(201, 168, 76); doc.setGState(new doc.GState({ opacity: 0.35 })); doc.setLineWidth(1); doc.line(x + padX, ny, x + bw - padX, ny); doc.setGState(new doc.GState({ opacity: 1 })); }
-      doc.setFont("helvetica", "italic"); doc.setFontSize(22); doc.setTextColor(214, 205, 180);
-      lines.forEach(function (l, k) { doc.text(l, x + padX, ny + (rows.length ? 34 : 26) + k * 28); });
+      doc.setFont("times", "italic"); doc.setFontSize(21); doc.setTextColor(226, 216, 190);
+      lines.forEach(function (l, k) { doc.text(l, L, y + 20 + k * 26); });
     }
   }
 
@@ -105,11 +109,12 @@
         function next() {
           if (i >= slides.length) return Promise.resolve();
           var s = slides[i];
-          return toJpeg(s.url).then(function (data) {
+          var pr = parsePrice(s.price), vids = (s.videos || []).slice(0, 3), lay = layout(doc, pr, vids),
+              has = pr.rows.length || pr.note || vids.length;
+          return toJpeg(s.url, has ? lay.blockH + 190 : 0).then(function (data) {
             if (i > 0) doc.addPage([W, H], "landscape");
             doc.addImage(data, "JPEG", 0, 0, W, H, undefined, "FAST");
-            if (s.videos && s.videos.length) videoButtons(doc, s.videos.slice(0, 3));
-            var pr = parsePrice(s.price); if (pr.rows.length || pr.note) priceTag(doc, pr);
+            if (pr.rows.length || pr.note || vids.length) caption(doc, pr, vids, lay);
             i++; if (onProgress) onProgress(i, slides.length);
             return next();
           });
