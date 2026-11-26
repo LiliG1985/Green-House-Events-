@@ -1056,7 +1056,12 @@
   function cleanVideo(v) {
     v = (v || "").trim(); if (!v) return null;
     if (!/^https?:\/\//i.test(v)) v = "https://" + v;
-    return /^https:\/\/(www\.|m\.)?(youtube\.com|youtu\.be|vimeo\.com)\//i.test(v) ? v : false;
+    v = v.replace(/^http:\/\//i, "https://");
+    // Vimeo: turn editor, player and channel links into the plain watch link clients can open.
+    var vm = v.match(/^https:\/\/(?:www\.|player\.)?vimeo\.com\/(?:manage\/videos\/|video\/|channels\/[^\/]+\/|groups\/[^\/]+\/videos\/)?(\d{5,})(?:\/([0-9a-f]{6,}))?(?:[^?#]*)?(?:\?[^#]*?\bh=([0-9a-f]{6,}))?/i);
+    if (vm) return "https://vimeo.com/" + vm[1] + ((vm[2] || vm[3]) ? "/" + (vm[2] || vm[3]) : "");
+    if (/vimeo\.com/i.test(v)) return false;
+    return /^https:\/\/(www\.|m\.)?(youtube\.com|youtu\.be)\//i.test(v) ? v : false;
   }
   function videoList(v) { return String(v || "").split(/\s+/).filter(Boolean).slice(0, 3); }
   function videoField(x) {
@@ -1072,7 +1077,7 @@
     var inputs = Array.prototype.slice.call(box.querySelectorAll("[data-video]")), vals = [];
     for (var i = 0; i < inputs.length; i++) {
       var c = cleanVideo(inputs[i].value);
-      if (c === false) { toast("Please paste a YouTube or Vimeo link", true); return; }
+      if (c === false) { toast("Please paste a YouTube or Vimeo video link (on Vimeo, use Share \u2192 Copy link)", true); return; }
       if (c) vals.push(c);
     }
     var v = vals.length ? vals.join("\n") : null;
