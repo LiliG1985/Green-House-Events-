@@ -868,8 +868,8 @@
   function priceFields(stored, i) {
     var pr = GHPDF.parsePrice(stored), rows = pr.rows, h = '<div class="price-fields" data-prices="' + i + '" title="Only shown in this proposal"><span class="pf-head">Prices</span>';
     for (var k = 0; k < 3; k++) {
-      var r = rows[k] || ["", ""];
-      h += '<div class="price-row"><input type="text" maxlength="30" data-pl placeholder="' + ["Solo", "Duo", "Trio"][k] + '" value="' + esc(r[0]) + '" aria-label="Price name ' + (k + 1) + '">' +
+      var r = rows[k] || [["Solo", "Duo", "Trio"][k], ""], miss = r[1] && !r[0];
+      h += '<div class="price-row"><input type="text" maxlength="30" data-pl placeholder="What for? e.g. ' + ["Solo", "Duo", "Trio"][k] + '" value="' + esc(r[0]) + '" aria-label="What price ' + (k + 1) + ' is for"' + (miss ? ' class="need" title="Add what this price is for"' : "") + ">" +
         '<input type="text" maxlength="40" data-pa placeholder="' + (k ? "AED (optional)" : "e.g. AED 4,500 + VAT") + '" value="' + esc(r[1]) + '" aria-label="Price ' + (k + 1) + '"></div>';
     }
     return h + '<textarea data-pn maxlength="200" rows="2" placeholder="Note, e.g. 3 x 45 min sets, 7pm to 11pm" aria-label="Price note">' + esc(pr.note) + "</textarea></div>";
@@ -906,7 +906,7 @@
         '<section class="panel"><h2>Slides <span class="muted small">' + items.length + " in this proposal</span></h2>" +
         (items.length > 1 ? '<div class="order-help"><p class="note"><strong>To reorder:</strong> drag a slide by its picture and drop it where you want it, or type a new number in its corner.</p>' +
           '<button type="button" class="btn small" id="prCompact">' + (propCompact ? "Show prices" : "Compact view for reordering") + "</button></div>" : "") +
-        (items.length ? '<p class="note">Prices appear only on this proposal, its client link and its PDF. Add up to three per slide, each with an optional name such as Solo, Duo or Trio, plus a short note underneath (set times and so on). Leave them empty to show nothing.</p>' : "") +
+        (items.length ? '<p class="note">Prices appear only on this proposal, its client link and its PDF. Add up to three per slide. The left box says what each price is for (Solo, Duo, Trio, Band of 5&hellip;) and shows next to the price. Add a short note underneath for set times and so on. Leave them empty to show nothing.</p>' : "") +
         (items.length ? '<div class="slide-grid order' + (propCompact ? " compact-order" : "") + '" id="prSlides">' + items.map(function (x, i) {
           return '<div class="slide" data-card="' + i + '"><label class="num" title="Type a number to move this slide there"><input type="number" min="1" max="' + items.length + '" value="' + (i + 1) + '" data-pos="' + i + '" aria-label="Position"></label>' +
             '<div class="drag-area" data-drag draggable="true" title="Drag to move"><img loading="lazy" src="' + esc(x.url) + '" alt="" draggable="false"><span class="drag-hint">&#10495; Drag</span></div><div class="slide-meta"><span class="sub">' + (x.video_url ? '<span class="vid-badge" title="Has a video link">&#9654;</span> ' : "") + esc(x.title) + "</span>" +
@@ -956,6 +956,7 @@
       var grid = $("#prSlides");
       if (grid) grid.addEventListener("change", function (e) {
         var box = e.target.closest("[data-prices]"); if (!box) return;
+        box.querySelectorAll(".price-row").forEach(function (row) { var l = row.querySelector("[data-pl]"); l.classList.toggle("need", !l.value.trim() && !!row.querySelector("[data-pa]").value.trim()); });
         var x = items[+box.getAttribute("data-prices")], rows = [];
         box.querySelectorAll(".price-row").forEach(function (row) {
           var l = row.querySelector("[data-pl]").value.trim().slice(0, 30), v = row.querySelector("[data-pa]").value.trim().slice(0, 40);
