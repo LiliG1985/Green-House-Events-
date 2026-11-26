@@ -850,19 +850,33 @@
       sb.from("proposals").insert({ title: title.trim() }).select("id").single().then(must)
         .then(function (r) { location.hash = "#/proposals/" + r.id; }).catch(fail);
     });
-    sb.from("proposals").select("id,title,client,event_date,shared,updated_at,proposal_slides(count)").order("updated_at", { ascending: false }).range(0, 999)
+    var hasSent = true, cols = "id,title,client,event_date,shared,updated_at,proposal_slides(count)";
+    sb.from("proposals").select(cols + ",sent_at").order("updated_at", { ascending: false }).range(0, 999)
+      .then(function (r) { if (r.error && /sent_at/.test(r.error.message || "")) { hasSent = false; return sb.from("proposals").select(cols).order("updated_at", { ascending: false }).range(0, 999); } return r; })
       .then(function (r) {
         if (r.error) return fail(r.error);
         if (!r.data.length) { $("#propList").innerHTML = '<p class="muted center">No proposals yet.</p>'; return; }
-        $("#propList").innerHTML = '<table class="list"><thead><tr><th>Proposal</th><th class="hide-m">Client</th><th class="hide-m">Event date</th><th>Slides</th><th>Client link</th><th></th></tr></thead><tbody>' +
+        $("#propList").innerHTML = '<table class="list"><thead><tr><th>Proposal</th><th class="hide-m">Client</th><th class="hide-m">Event date</th><th>Slides</th><th>Client link</th><th>Sent</th><th></th></tr></thead><tbody>' +
           r.data.map(function (p) {
             var n = (p.proposal_slides && p.proposal_slides[0] && p.proposal_slides[0].count) || 0;
             return '<tr><td class="name"><a href="#/proposals/' + p.id + '">' + esc(p.title) + '</a><div class="sub">Edited ' + fmtDate(p.updated_at) + "</div></td>" +
               '<td class="hide-m sub">' + esc(p.client || "") + '</td><td class="hide-m sub">' + (p.event_date ? fmtDate(p.event_date) : "") + "</td>" +
               "<td>" + n + '</td><td><span class="pill ' + (p.shared ? "live" : "hidden") + '">' + (p.shared ? "On" : "Off") + "</span></td>" +
+              '<td><label class="sent-tick' + (p.sent_at ? " on" : "") + '"><input type="checkbox" data-sent="' + p.id + '"' + (p.sent_at ? " checked" : "") + '><span>' + (p.sent_at ? "Sent " + fmtDate(p.sent_at) : "Not sent") + "</span></label></td>" +
               '<td><a class="btn sm" href="#/proposals/' + p.id + '">Open</a></td></tr>';
           }).join("") + "</tbody></table>";
+        $("#propList").addEventListener("change", function (e) {
+          var cb = e.target.closest("[data-sent]"); if (!cb) return;
+          if (!hasSent) { cb.checked = !cb.checked; toast("Run the add-proposal-sent SQL in Supabase first, then try again.", true); return; }
+          markSent(cb.getAttribute("data-sent"), cb.checked).then(function (when) {
+            var lab = cb.closest(".sent-tick"); lab.classList.toggle("on", !!when); lab.querySelector("span").textContent = when ? "Sent " + fmtDate(when) : "Not sent";
+          }).catch(function (err) { cb.checked = !cb.checked; fail(err); });
+        });
       });
+  }
+  function markSent(id, on) {
+    var when = on ? new Date().toISOString() : null;
+    return sb.from("proposals").update({ sent_at: when }).eq("id", id).then(must).then(function () { toast(on ? "Marked as sent" : "Marked as not sent"); return when; });
   }
 
   function priceFields(stored, i) {
@@ -900,7 +914,7 @@
         '<label class="field">Event date<input type="date" id="prDate" value="' + esc(p.event_date || "") + '"></label>' +
         '<label class="field" style="grid-column:1/-1">Internal notes<textarea id="prNotes">' + esc(p.notes || "") + "</textarea></label></div>" +
         '<br><button class="btn primary" type="button" id="prSave">Save details</button></section>' +
-        '<section class="panel"><h2>Client link ' + sw("prShared", p.shared, "Link switched on") + "</h2>" +
+        '<section class="panel"><h2>Client link ' + sw("prShared", p.shared, "Link switched on") + ' <label class="sent-tick' + (p.sent_at ? " on" : "") + '"><input type="checkbox" id="prSent"' + (p.sent_at ? " checked" : "") + '><span>' + (p.sent_at ? "Sent " + fmtDate(p.sent_at) : "Mark as sent") + "</span></label></h2>" +
         '<p class="note">When the link is on, anyone you send it to can view and download this proposal. Switch it off at any time.</p>' +
         '<div class="linkrow"><input type="text" id="prLink" readonly value="' + esc(link) + '"><button class="btn" type="button" id="prCopy">Copy link</button></div></section>' +
         '<section class="panel"><h2>Slides <span class="muted small">' + items.length + " in this proposal</span></h2>" +
@@ -924,6 +938,13 @@
       $("#prShared").addEventListener("change", function (e) {
         sb.from("proposals").update({ shared: e.target.checked }).eq("id", id).then(must)
           .then(function () { toast(e.target.checked ? "Client link is on" : "Client link is off"); }).catch(fail);
+      });
+      $("#prSent").addEventListener("change", function (e) {
+        var cb = e.target;
+        if (!("sent_at" in p)) { cb.checked = !cb.checked; toast("Run the add-proposal-sent SQL in Supabase first, then try again.", true); return; }
+        markSent(id, cb.checked).then(function (when) {
+          p.sent_at = when; var lab = cb.closest(".sent-tick"); lab.classList.toggle("on", !!when); lab.querySelector("span").textContent = when ? "Sent " + fmtDate(when) : "Mark as sent";
+        }).catch(function (err) { cb.checked = !cb.checked; fail(err); });
       });
       $("#prCopy").addEventListener("click", function () {
         var inp = $("#prLink"); inp.select();

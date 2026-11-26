@@ -265,6 +265,7 @@ create table if not exists public.proposals (
   notes text,
   share_token text not null unique default encode(gen_random_bytes(16), 'hex'),
   shared boolean not null default false,
+  sent_at timestamptz,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
@@ -328,3 +329,4 @@ create policy "admins delete slides" on storage.objects for delete using (bucket
 -- ---------------------------------------------------------------------------
 
 alter table public.proposal_slides add column if not exists price text;
+alter table public.proposals add column if not exists sent_at timestamptz;
