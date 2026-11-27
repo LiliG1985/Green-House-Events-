@@ -426,8 +426,9 @@
   // ---------- applications ----------
   var appFilter = "new", appType = "";
   function viewApplications() {
-    app.innerHTML = '<div class="pagehead"><div><h1>Applications</h1><p class="muted">Performers and suppliers who applied through the Join Our Roster page. Suppliers stay private and are never added to the website.</p></div>' +
-      '<select id="appType" style="max-width:220px"><option value="">Performers and suppliers</option><option value="performer"' + (appType === "performer" ? " selected" : "") + '>Performers only</option><option value="supplier"' + (appType === "supplier" ? " selected" : "") + '>Suppliers only</option></select></div>' +
+    var opt = function (v, l) { return '<option value="' + v + '"' + (appType === v ? " selected" : "") + ">" + l + "</option>"; };
+    app.innerHTML = '<div class="pagehead"><div><h1>Applications</h1><p class="muted">Performers, freelance event crew and suppliers who applied through the Join Our Roster page. Crew and suppliers stay private and are never added to the website.</p></div>' +
+      '<select id="appType" style="max-width:240px">' + opt("", "Everyone") + opt("performer", "Performers only") + opt("crew", "Event crew only") + opt("supplier", "Suppliers only") + "</select></div>" +
       '<div class="tabs" id="appTabs"></div><div id="appList"><p class="muted">Loading&hellip;</p></div>';
     sb.from("applications").select("id,created_at,status,full_name,act_name,category,based_in,photos,applicant_type,company,service_type").order("created_at", { ascending: false }).range(0, 4999)
       .then(function (r) {
@@ -445,7 +446,7 @@
           $("#appList").innerHTML = '<div class="cards">' + rows.map(function (x) {
             return '<a class="card" href="#/applications/' + x.id + '"><div class="noimg" data-thumb="' + esc((x.photos && x.photos[0]) || "") + '">' + (x.photos && x.photos.length ? "" : "No photo") + "</div>" +
               "<div><h3>" + esc(x.applicant_type === "supplier" ? (x.company || x.full_name) : (x.act_name || x.full_name)) + '</h3><div class="sub">' +
-              (x.applicant_type === "supplier" ? "Supplier &middot; " + esc(x.service_type || "") : esc(x.category || "")) + (x.based_in ? " &middot; " + esc(x.based_in) : "") + "</div>" +
+              (x.applicant_type === "supplier" ? "Supplier &middot; " + esc(x.service_type || "") : x.applicant_type === "crew" ? "Event crew &middot; " + esc(x.service_type || "") : esc(x.category || "")) + (x.based_in ? " &middot; " + esc(x.based_in) : "") + "</div>" +
               '<div class="sub">' + fmtDate(x.created_at) + '</div><span class="pill ' + x.status + '">' + x.status + "</span></div></a>";
           }).join("") + "</div>";
           loadThumbs();
@@ -476,18 +477,24 @@
       if (r.error) return fail(r.error);
       var x = r.data;
       if (!x) { app.innerHTML = '<p class="center muted">Application not found. <a href="#/applications">Back</a></p>'; return; }
-      var isSup = x.applicant_type === "supplier";
-      var facts = (isSup ? [["Type", "Supplier / partner"], ["Company", x.company], ["Services", x.service_type], ["Contact name", x.full_name]]
+      var isSup = x.applicant_type === "supplier", isCrew = x.applicant_type === "crew", isPrivate = isSup || isCrew;
+      var facts = isCrew ? [["Type", "Freelance event crew"], ["Full name", x.full_name], ["Role", x.service_type], ["Experience", x.experience_years],
+          ["Availability", x.availability], ["UAE work status", x.visa_status], ["Email", x.email], ["Phone / WhatsApp", x.phone], ["Based in", x.based_in],
+          ["Key skills", x.skills], ["Languages", x.languages], ["LinkedIn", x.linkedin], ["Instagram / social", x.social], ["Portfolio", x.portfolio_link], ["Applied", fmtDate(x.created_at)]]
+        : (isSup ? [["Type", "Supplier / partner"], ["Company", x.company], ["Services", x.service_type], ["Contact name", x.full_name]]
                          : [["Full name", x.full_name], ["Act / stage name", x.act_name], ["Category", x.category]]).concat([["Email", x.email],
         ["Phone / WhatsApp", x.phone], ["Based in", x.based_in], ["Skills / genres", x.skills], ["Languages", x.languages],
         ["Instagram", x.social], ["Website", x.website], ["Portfolio", x.portfolio_link], ["Applied", fmtDate(x.created_at)]]).filter(function (f) { return !(isSup && /Skills|Languages/.test(f[0])); });
-      app.innerHTML = '<div class="pagehead"><div><a href="#/applications" class="small">&larr; All applications</a><h1>' + esc(isSup ? (x.company || x.full_name) : (x.act_name || x.full_name)) + '</h1><span class="pill ' + x.status + '">' + x.status + "</span>" + (isSup ? ' <span class="pill hidden">Supplier</span>' : "") + "</div>" +
-        '<div class="toolbar">' + (isSup ? '<span class="muted small">Suppliers stay private in the dashboard and are never added to the website.</span>'
+      var linkedin = x.linkedin && !/^https?:/i.test(x.linkedin) ? "https://" + x.linkedin.replace(/^\/+/, "") : x.linkedin;
+      facts = facts.map(function (f) { return f[0] === "LinkedIn" ? [f[0], linkedin] : f; });
+      app.innerHTML = '<div class="pagehead"><div><a href="#/applications" class="small">&larr; All applications</a><h1>' + esc(isSup ? (x.company || x.full_name) : (x.act_name || x.full_name)) + '</h1><span class="pill ' + x.status + '">' + x.status + "</span>" + (isSup ? ' <span class="pill hidden">Supplier</span>' : isCrew ? ' <span class="pill hidden">Event crew</span>' : "") + "</div>" +
+        '<div class="toolbar">' + (x.cv_path ? '<button class="btn primary" type="button" id="cvBtn">Open CV</button>' : "") + (isPrivate ? '<span class="muted small">' + (isCrew ? "Crew" : "Suppliers") + ' stay private in the dashboard and are never added to the website.</span>'
           : x.artist_id ? '<a class="btn primary" href="#/artists/' + x.artist_id + '">Open artist profile</a>' : '<button class="btn primary" id="convertBtn" type="button">Create artist profile</button>') + "</div></div>" +
-        '<section class="panel"><h2>Photos</h2><div class="photos" id="appPhotos">' + (x.photos && x.photos.length ? '<p class="muted">Loading photos&hellip;</p>' : '<p class="muted">No photos sent.</p>') + "</div></section>" +
+        '<section class="panel"><h2>Photos</h2><div class="photos" id="appPhotos">' + (x.photos && x.photos.length ? '<p class="muted">Loading photos&hellip;</p>' : '<p class="muted">No ' + (isCrew ? "photo" : "photos") + " sent.</p>") + "</div></section>" +
         '<section class="panel private"><h2>Details <span class="lock">Private</span></h2><dl class="facts">' +
         facts.map(function (f) { return "<dt>" + esc(f[0]) + "</dt><dd>" + (f[1] ? (f[0] === "Email" ? '<a href="mailto:' + esc(f[1]) + '">' + esc(f[1]) + "</a>" : linkify(f[1])) : '<span class="muted">-</span>') + "</dd>"; }).join("") +
-        "<dt>About</dt><dd>" + linkify(x.bio || "-") + "</dd><dt>" + (isSup ? "Portfolio links" : "Video links") + "</dt><dd>" + linkify(x.video_links || "-") + "</dd></dl></section>" +
+        "<dt>" + (isCrew ? "Experience &amp; past events" : "About") + "</dt><dd>" + linkify(x.bio || "-") + "</dd>" + (isCrew ? "" : "<dt>" + (isSup ? "Portfolio links" : "Video links") + "</dt><dd>" + linkify(x.video_links || "-") + "</dd>") +
+        (isCrew ? "<dt>CV</dt><dd>" + (x.cv_path ? '<a href="#" id="cvLink">Open CV (' + esc(x.cv_path.split(".").pop().toUpperCase()) + ")</a>" : '<span class="muted">No CV sent</span>') + "</dd>" : "") + "</dl></section>" +
         '<section class="panel"><h2>Review</h2><div class="grid2"><label class="field">Status<select id="apStatus">' +
         STATUSES.map(function (s) { return '<option value="' + s + '"' + (s === x.status ? " selected" : "") + ">" + s.charAt(0).toUpperCase() + s.slice(1) + "</option>"; }).join("") +
         '</select></label><span></span><label class="field span2">Internal notes<textarea id="apNotes">' + esc(x.admin_notes || "") + "</textarea></label></div></section>" +
@@ -501,13 +508,25 @@
           }).join("");
         });
       }
+      var openCv = function (e) {
+        if (e) e.preventDefault();
+        var w = window.open("", "_blank");
+        sb.storage.from(APP_BUCKET).createSignedUrls([x.cv_path], 600).then(function (s) {
+          var u = s.data && s.data[0] && s.data[0].signedUrl;
+          if (s.error || !u) { if (w) w.close(); return fail(s.error || new Error("CV not found")); }
+          if (w) w.location = u; else location.href = u;
+        });
+      };
+      if ($("#cvBtn")) $("#cvBtn").addEventListener("click", openCv);
+      if ($("#cvLink")) $("#cvLink").addEventListener("click", openCv);
       $("#apSave").addEventListener("click", function () {
         sb.from("applications").update({ status: $("#apStatus").value, admin_notes: val("apNotes") }).eq("id", id).then(must)
           .then(function () { toast("Review saved"); refreshBadge(); viewApplication(id); }).catch(fail);
       });
       $("#apDelete").addEventListener("click", function () {
-        if (!confirm("Delete this application and its photos? This can't be undone.")) return;
-        (x.photos && x.photos.length ? sb.storage.from(APP_BUCKET).remove(x.photos) : Promise.resolve())
+        if (!confirm("Delete this application and its files? This can't be undone.")) return;
+        var files = (x.photos || []).concat(x.cv_path ? [x.cv_path] : []);
+        (files.length ? sb.storage.from(APP_BUCKET).remove(files) : Promise.resolve())
           .then(function () { return sb.from("applications").delete().eq("id", id).then(must); })
           .then(function () { toast("Application deleted"); refreshBadge(); location.hash = "#/applications"; }).catch(fail);
       });

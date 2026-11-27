@@ -165,8 +165,13 @@ alter table public.applications add column if not exists service_type text;
 alter table public.applications add column if not exists portfolio_link text;
 alter table public.applications add column if not exists website text;
 alter table public.artist_private add column if not exists portfolio_link text;
+alter table public.applications add column if not exists cv_path text;
+alter table public.applications add column if not exists linkedin text;
+alter table public.applications add column if not exists experience_years text;
+alter table public.applications add column if not exists availability text;
+alter table public.applications add column if not exists visa_status text;
 alter table public.applications drop constraint if exists applications_applicant_type_check;
-alter table public.applications add constraint applications_applicant_type_check check (applicant_type in ('performer', 'supplier'));
+alter table public.applications add constraint applications_applicant_type_check check (applicant_type in ('performer', 'supplier', 'crew'));
 
 -- ---------------------------------------------------------------------------
 -- Row level security.
@@ -216,7 +221,7 @@ insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_typ
 values ('artists', 'artists', true, 15728640, array['image/jpeg', 'image/png', 'image/webp'])
 on conflict (id) do nothing;
 insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
-values ('applications', 'applications', false, 10485760, array['image/jpeg'])
+values ('applications', 'applications', false, 10485760, array['image/jpeg', 'application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'])
 on conflict (id) do nothing;
 
 drop policy if exists "admins upload artist photos" on storage.objects;
