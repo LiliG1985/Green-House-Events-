@@ -743,9 +743,9 @@
             performer: { title: "Apply To Perform With Us", bio: "About You / Your Act", photos: "Photos (up to 3)", social: "Instagram", portfolio: "Portfolio / EPK Link",
                          bioPh: "Your experience, notable venues and events, line-up options...", skills: "Instruments / Skills / Genres", skillsPh: "e.g. Oud & vocals, House & Afro House",
                          photoHint: "Clear, high-quality performance or portrait shots work best, without logos or watermarks." },
-            crew:      { title: "Join Our Event Crew", bio: "Experience & Past Events", photos: "Headshot (optional)", social: "Instagram / Other Social", portfolio: "Portfolio / Other Link",
+            crew:      { title: "Join Our Event Crew", bio: "Experience & Past Events", photos: "Headshot", social: "Instagram / Other Social", portfolio: "Portfolio / Other Link",
                          bioPh: "Recent roles, events and venues you've worked on, team sizes, the clients or agencies you've worked with...", skills: "Key Skills", skillsPh: "e.g. Show calling, run sheets, client handling, budgeting",
-                         photoHint: "A clear, professional photo of you." },
+                         photoHint: "A clear, professional photo of you. This is required." },
             supplier:  { title: "Partner With Us", bio: "About Your Company & Services", photos: "Photos Of Your Work (up to 3)", social: "Instagram", portfolio: "Portfolio / Company Profile Link",
                          bioPh: "What you offer, past events and venues, coverage across the UAE...", skills: "", skillsPh: "",
                          photoHint: "Photos of your setups, products or past events work best." }
@@ -767,6 +767,7 @@
             document.getElementById("photoHint").textContent = L.photoHint;
             document.getElementById("af-bio").placeholder = L.bioPh;
             fileInput.multiple = t !== "crew";
+            fileInput.required = t === "crew";
         }
         Array.prototype.forEach.call(form.elements.applicant_type, function (r) {
             r.addEventListener("change", function () { if (r.checked) setType(r.value); });

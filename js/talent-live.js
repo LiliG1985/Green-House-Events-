@@ -6,7 +6,7 @@
   if (!window.GHDB) return;
 
   var GROUP_IDS = {
-    "singers|Choirs": "choirs", "instrumental|Violinists": "violinists", "mcs|Quiz Hosts": "quiz-hosts", "instrumental|Guitarists": "guitarists", "instrumental|Cellists & Harpists": "cello-harp", "instrumental|Handpan": "handpan", "specialist|Themed Roaming Characters": "spec-characters", "specialist|LED Performers": "spec-led", "specialist|Parades & Stilt Walkers": "spec-parades", "specialist|Jugglers & Circus Skills": "spec-jugglers", "specialist|Drummers": "spec-drummers",
+    "singers|Choirs": "choirs", "instrumental|Violinists": "violinists", "mcs|Quiz Hosts": "quiz-hosts", "instrumental|Guitarists": "guitarists", "instrumental|Cellists & Harpists": "cello-harp", "instrumental|Cellists": "cello-harp", "instrumental|Harpists": "harpists", "instrumental|Handpan": "handpan", "specialist|Themed Roaming Characters": "spec-characters", "specialist|LED Performers": "spec-led", "specialist|Parades & Stilt Walkers": "spec-parades", "specialist|Jugglers & Circus Skills": "spec-jugglers", "specialist|Drummers": "spec-drummers",
     "specialist|Acrobats & Circus": "spec-aerial", "specialist|Roaming & Specialty Musicians": "spec-roaming",
     "specialist|Laser Shows": "spec-laser", "specialist|Fire": "spec-fire",
     "ramadan|Arabic Bands & Duos": "ram-bands", "ramadan|Oud": "ram-oud", "ramadan|Qanun": "ram-qanun",
@@ -114,6 +114,32 @@
     '.ram-video-box{position:relative;width:min(960px,100%);aspect-ratio:16/9;background:#000}.ram-video-box iframe{width:100%;height:100%;border:0}' +
     '.ram-video-close{position:absolute;top:-2.6rem;right:0;background:none;border:0;color:#fff;font-size:2.2rem;cursor:pointer;line-height:1}';
 
+  // Every harp act appears in its own Harpists group under Instrumentalists AND
+  // in the Harp group under Ramadan & Arabic, wherever it is filed in the dashboard.
+  function isHarp(a) {
+    return /^harp(ists?)?$/i.test(a.subgroup || "") || /harp/i.test(a.name || "") || /harp/i.test(a.role || "") || /harpist|harp-led/i.test(a.bio || "");
+  }
+  function placeHarps(byCat) {
+    var harps = []; Object.keys(byCat).forEach(function (c) { byCat[c].forEach(function (a) { if (isHarp(a)) harps.push(a); }); });
+    if (!harps.length) return;
+    [["instrumental", "Harpists", /^cellist/i], ["ramadan", "Harp", null]].forEach(function (spec) {
+      var cat = spec[0], group = spec[1], list = byCat[cat] = byCat[cat] || [];
+      // Anything already filed in this section under a harp group stays; the rest join it.
+      var anchorItems = list.filter(function (a) { return a.subgroup === group || (spec[2] && spec[2].test(a.subgroup || "")); });
+      var anchor = anchorItems.length ? Math.max.apply(null, anchorItems.map(function (a) { return a.sort_order || 0; })) : null;
+      var have = {}; list.forEach(function (a) { if (a.subgroup === group) have[a.id] = true; });
+      list.forEach(function (a, i) {
+        if (!have[a.id] && isHarp(a)) { list[i] = Object.assign({}, a, { subgroup: group, sort_order: anchor == null ? a.sort_order : anchor + 0.5 }); have[a.id] = true; }
+      });
+      harps.forEach(function (a) {
+        if (have[a.id]) return;
+        list.push(Object.assign({}, a, { category: cat, subgroup: group, sort_order: anchor == null ? 1e6 : anchor + 0.5 }));
+        have[a.id] = true;
+      });
+      list.sort(function (x, y) { return (x.sort_order || 0) - (y.sort_order || 0) || String(x.name).localeCompare(String(y.name)); });
+    });
+  }
+
   GHDB.client().then(function (sb) {
     if (!sb) return;
     return sb.from("artists")
@@ -123,6 +149,7 @@
         if (r.error || !r.data || !r.data.length) return;
         var byCat = {};
         r.data.forEach(function (a) { (byCat[a.category] = byCat[a.category] || []).push(a); });
+        placeHarps(byCat);
         var style = document.createElement("style"); style.textContent = css; document.head.appendChild(style);
         Array.prototype.forEach.call(document.querySelectorAll(".roster-list > .cat-section[id]"), function (section) {
           var items = byCat[section.id] || [];

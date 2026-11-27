@@ -14,7 +14,7 @@
     djs: ["Open Format", "House & Techno", "Arabic & Middle Eastern", "Afro & Latin", "DJ & Live Instrument"],
     singers: ["Pop & Soul", "Jazz & Swing", "Opera & Classical", "Arabic Singers", "Latin Singers", "Acoustic", "Choirs"],
     bands: ["Party Bands", "Jazz Bands", "Acoustic Duos & Trios", "Swing & Vintage", "Latin Bands", "Tribute Bands"],
-    instrumental: ["Saxophonists", "Violinists", "Pianists", "Guitarists", "Cellists & Harpists", "Percussionists", "Handpan", "Flutists", "Trumpet & Brass", "Classical Ensembles"],
+    instrumental: ["Saxophonists", "Violinists", "Pianists", "Guitarists", "Harpists", "Cellists", "Percussionists", "Handpan", "Flutists", "Trumpet & Brass", "Classical Ensembles"],
     specialist: ["Acrobats & Circus", "LED Performers", "Themed Roaming Characters", "Parades & Stilt Walkers", "Jugglers & Circus Skills", "Drummers", "Fire", "Laser Shows",
       "Roaming & Specialty Musicians", "Sand Artists", "Speed Painters", "Live Painters", "Caricaturists", "Live Illustrators", "Calligraphers", "Silhouette Artists",
       "Body & Face Painters", "Henna Artists", "Bubble Shows", "Comedians", "Hypnotists"],
