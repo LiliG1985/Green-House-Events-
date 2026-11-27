@@ -489,7 +489,7 @@
       var facts = isCrew ? [["Type", "Freelance event crew"], ["Full name", x.full_name], ["Role", x.service_type], ["Experience", x.experience_years],
           ["Availability", x.availability], ["UAE work status", x.visa_status], ["Email", x.email], ["Phone / WhatsApp", x.phone], ["Based in", x.based_in],
           ["Key skills", x.skills], ["Languages", x.languages], ["LinkedIn", x.linkedin], ["Instagram / social", x.social], ["Portfolio", x.portfolio_link], ["Applied", fmtDate(x.created_at)]]
-        : (isSup ? [["Type", "Supplier / partner"], ["Company", x.company], ["Stocks in-house", x.service_type ? x.service_type.split(/;\s*/).join("\n") : null], ["Also stocks", x.skills], ["Contact name", x.full_name]]
+        : (isSup ? [["Type", "Supplier / partner"], ["Company", x.company], ["Stocks in-house", x.service_type ? x.service_type.split(/;\s*/).join("\n") : null], ["Also offers (Other)", x.skills], ["Contact name", x.full_name]]
                          : [["Full name", x.full_name], ["Act / stage name", x.act_name], ["Category", x.category]]).concat([["Email", x.email],
         ["Phone / WhatsApp", x.phone], ["Based in", x.based_in], ["Skills / genres", x.skills], ["Languages", x.languages],
         ["Instagram", x.social], ["Website", x.website], ["Portfolio", x.portfolio_link], ["Applied", fmtDate(x.created_at)]]).filter(function (f) { return !(isSup && /Skills \/ genres|Languages/.test(f[0])); });

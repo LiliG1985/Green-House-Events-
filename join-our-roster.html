@@ -299,6 +299,9 @@
         #artistForm .svc-grid label { display: flex; margin: 0; gap: 0.5rem; align-items: flex-start; font-size: 0.86rem; color: var(--bg-deep); cursor: pointer; line-height: 1.35; text-transform: none; letter-spacing: 0; font-family: var(--sans); font-weight: 400; }
         #artistForm .svc-grid input { width: 1rem; height: 1rem; padding: 0; margin: 0.12rem 0 0; border: 0; background: none; box-shadow: none; accent-color: #C9A84C; flex: 0 0 auto; }
         #artistForm .svc-grid label > span { flex: 1; min-width: 0; }
+        .svc-other { padding: 0 1rem 1rem; display: flex; flex-direction: column; gap: 0.4rem; }
+        #artistForm .svc-other label { font-family: var(--sans); font-size: 0.86rem; letter-spacing: 0; text-transform: none; color: var(--bg-deep); font-weight: 600; }
+        #artistForm .svc-other textarea { min-height: 100px; }
         .svc-field.invalid .svc-group { border-color: #b3261e; }
         #artistForm [hidden] { display: none !important; }
         .type-switch { display: grid; grid-template-columns: 1fr 1fr 1fr; border: 1px solid rgba(201,168,76,0.55); }
@@ -479,7 +482,7 @@
 
                 <div class="form-field svc-field" data-for="supplier" hidden>
                     <label>What Your Company Stocks Or Provides In-House</label>
-                    <p class="svc-note">Tick everything that applies. Please only tick what your company owns, stocks or delivers in-house, not services you would subcontract.</p>
+                    <p class="svc-note">Tick everything that applies, and use Other to list anything that isn&rsquo;t here. Please only tick what your company owns, stocks or delivers in-house, not services you would subcontract.</p>
                     <details class="svc-group"><summary>Sound, Light &amp; Technical <span class="svc-count"></span></summary><div class="svc-grid">
                         <label><input type="checkbox" name="services" value="AV, Sound &amp; Lighting"><span>AV, Sound &amp; Lighting</span></label>
                         <label><input type="checkbox" name="services" value="LED Screens &amp; Video Walls"><span>LED Screens &amp; Video Walls</span></label>
@@ -566,13 +569,10 @@
                         <label><input type="checkbox" name="services" value="Event Permits &amp; Licensing"><span>Event Permits &amp; Licensing</span></label>
                         <label><input type="checkbox" name="services" value="Insurance"><span>Insurance</span></label>
                         <label><input type="checkbox" name="services" value="Ticketing &amp; Registration"><span>Ticketing &amp; Registration</span></label>
-                    </div></details>
+                    </div><div class="svc-other"><label for="af-extra">Anything else you offer in-house</label>
+                        <textarea id="af-extra" name="extra_services" rows="4" placeholder="List anything not covered above, one per line, e.g.&#10;Mirror and magic mirror hire&#10;Shisha service&#10;Fireworks"></textarea></div></details>
                 </div>
 
-                <div class="form-field" data-for="supplier" hidden>
-                    <label for="af-extra">Anything Else You Stock In-House</label>
-                    <input type="text" id="af-extra" name="extra_services" placeholder="Anything not in the list above">
-                </div>
 
                 <div class="form-row" data-for="crew" hidden>
                     <div class="form-field">
@@ -895,10 +895,10 @@
         form.addEventListener("submit", function (e) {
             e.preventDefault();
             if (form.botcheck && form.botcheck.checked) return;
-            if (current() === "supplier" && !svcPicked().length) {
+            if (current() === "supplier" && !svcPicked().length && !field("extra_services")) {
                 var sf = form.querySelector(".svc-field"); sf.classList.add("invalid"); sf.querySelector("details").open = true;
                 sf.scrollIntoView({ behavior: "smooth", block: "center" });
-                show("Please tick at least one thing your company provides in-house.", true); return;
+                show("Please tick at least one thing your company provides in-house, or list it under Other.", true); return;
             }
             submitBtn.disabled = true;
             submitBtn.textContent = "Sending...";
