@@ -151,6 +151,8 @@
     if (h[0] === "slides") return viewSlides();
     if (h[0] === "proposals" && h[1]) return viewProposal(h[1]);
     if (h[0] === "proposals") return viewProposals();
+    if (h[0] === "suppliers" && h[1]) return viewSupplier(h[1] === "new" ? null : h[1]);
+    if (h[0] === "suppliers") return viewSuppliers();
     if (h[0] === "crew" && h[1]) return viewCrewPerson(h[1] === "new" ? null : h[1]);
     if (h[0] === "crew") return viewCrew();
     if (h[0] === "password") return viewPassword();
@@ -496,7 +498,7 @@
       var linkedin = x.linkedin && !/^https?:/i.test(x.linkedin) ? "https://" + x.linkedin.replace(/^\/+/, "") : x.linkedin;
       facts = facts.map(function (f) { return f[0] === "LinkedIn" ? [f[0], linkedin] : f; });
       app.innerHTML = '<div class="pagehead"><div><a href="#/applications" class="small">&larr; All applications</a><h1>' + esc(isSup ? (x.company || x.full_name) : (x.act_name || x.full_name)) + '</h1><span class="pill ' + x.status + '">' + x.status + "</span>" + (isSup ? ' <span class="pill hidden">Supplier</span>' : isCrew ? ' <span class="pill hidden">Event crew</span>' : "") + "</div>" +
-        '<div class="toolbar">' + (x.cv_path ? '<button class="btn primary" type="button" id="cvBtn">Open CV</button>' : "") + (isCrew ? '<span id="crewLinkSlot"></span>' : "") + (isPrivate ? '<span class="muted small">' + (isCrew ? "Crew" : "Suppliers") + ' stay private in the dashboard and are never added to the website.</span>'
+        '<div class="toolbar">' + (x.cv_path ? '<button class="btn primary" type="button" id="cvBtn">Open CV</button>' : "") + (isPrivate ? '<span id="crewLinkSlot"></span>' : "") + (isPrivate ? '<span class="muted small">' + (isCrew ? "Crew" : "Suppliers") + ' stay private in the dashboard and are never added to the website.</span>'
           : x.artist_id ? '<a class="btn primary" href="#/artists/' + x.artist_id + '">Open artist profile</a>' : '<button class="btn primary" id="convertBtn" type="button">Create artist profile</button>') + "</div></div>" +
         '<section class="panel"><h2>Photos</h2><div class="photos" id="appPhotos">' + (x.photos && x.photos.length ? '<p class="muted">Loading photos&hellip;</p>' : '<p class="muted">No ' + (isCrew ? "photo" : "photos") + " sent.</p>") + "</div></section>" +
         '<section class="panel private"><h2>Details <span class="lock">Private</span></h2><dl class="facts">' +
@@ -539,6 +541,12 @@
           .then(function () { toast("Application deleted"); refreshBadge(); location.hash = "#/applications"; }).catch(fail);
       });
       var cb = $("#convertBtn"); if (cb) cb.addEventListener("click", function () { convert(x, cb); });
+      if (isSup) sb.from("suppliers").select("id").eq("application_id", x.id).limit(1).then(function (c) {
+        var slot = $("#crewLinkSlot"); if (!slot) return;
+        if (!c.error && c.data && c.data[0]) { slot.innerHTML = '<a class="btn primary" href="#/suppliers/' + c.data[0].id + '">Open on supplier list</a>'; return; }
+        slot.innerHTML = '<button class="btn primary" type="button" id="toSupBtn">Add to supplier list</button>';
+        $("#toSupBtn").addEventListener("click", function () { addSupplierFromApplication(x, this); });
+      });
       if (isCrew) sb.from("crew").select("id").eq("application_id", x.id).limit(1).then(function (c) {
         var slot = $("#crewLinkSlot"); if (!slot) return;
         if (!c.error && c.data && c.data[0]) { slot.innerHTML = '<a class="btn primary" href="#/crew/' + c.data[0].id + '">Open on crew roster</a>'; return; }
@@ -765,6 +773,148 @@
     }).then(function () { return x.status === "new" ? sb.from("applications").update({ status: "shortlisted" }).eq("id", x.id).then(must) : null; })
       .then(function () { refreshBadge(); toast("Added to the crew roster as Potential"); location.hash = "#/crew/" + cid; })
       .catch(function (e) { fail(e); btn.disabled = false; btn.textContent = "Add to crew roster"; });
+  }
+
+  // ---------- supplier list (private) ----------
+  var SUP_GROUPS = [["Sound, Light & Technical", ["AV, Sound & Lighting", "LED Screens & Video Walls", "Projection & Mapping", "Special Effects (CO2, confetti, pyro, fog)", "Lasers", "Power & Generators", "Rigging & Trussing", "Livestreaming & Broadcast"]], ["Staging & Structures", ["Staging & Platforms", "Tents, Marquees & Structures", "Flooring & Dance Floors", "Fencing, Barriers & Crowd Control", "Scaffolding & Grandstands"]], ["Decor & Styling", ["Decor & Event Styling", "Florals & Flower Walls", "Draping & Fabric", "Balloons & Balloon Art", "Backdrops & Photo Walls", "Props & Themed Decor", "Table Settings, Linen & Tableware", "Candles & Ambient Lighting", "Neon Signs", "Greenery & Plant Hire"]], ["Fabrication & Furniture", ["Fabrication & Set Building", "Exhibition Stands & Booths", "Furniture Rental", "Lounge & VIP Furniture", "Carpentry & Joinery"]], ["Food & Drink", ["Catering", "Beverage & Bar Services", "Coffee & Tea Carts", "Food Trucks", "Desserts, Cakes & Chocolatiers", "Ice Sculptures", "Mixologists & Live Stations"]], ["Gifts & Branding", ["Corporate Gifts & Giveaways", "Personalised & Luxury Gifts", "Merchandise", "Printing & Signage", "Branding & Vinyl Wrapping", "Invitations & Stationery", "Badges, Lanyards & Ticketing"]], ["Photo, Video & Activations", ["Photography", "Videography & Drone", "Photo Booths & 360 Booths", "Brand Activations & Experiential", "Games, VR & Interactive Tech", "Inflatables & Fun Fair Rides", "Kids Activities & Play Areas"]], ["People & Services", ["Event Staffing & Hostesses", "Security", "Cleaning & Waste Management", "Medical & First Aid", "Valet Parking", "Translators & Interpreters", "Hair, Makeup & Grooming", "Costumes & Wardrobe"]], ["Venues, Travel & Logistics", ["Venues", "Hotels & Accommodation", "Transport & Chauffeurs", "Logistics, Freight & Storage", "Portable Toilets & Site Facilities", "Desert & Outdoor Camps", "Yachts & Boats"]], ["Other", ["Event Permits & Licensing", "Insurance", "Ticketing & Registration"]]];
+  var SUP_STATUS = [["potential", "Potential"], ["approved", "Approved"], ["preferred", "Preferred"], ["inactive", "Inactive"], ["do_not_use", "Do not use"]];
+  var supState = { q: "", status: "all", service: "" };
+  function supLabel(s) { var f = SUP_STATUS.filter(function (c) { return c[0] === s; })[0]; return f ? f[1] : s; }
+  function svcList(s) { return String(s || "").split(/;\s*/).filter(Boolean); }
+  function noSupTable(e) { return e && /suppliers/.test(e.message || "") && /exist|schema cache|relation/i.test(e.message || ""); }
+  function supSetup() { app.innerHTML = '<div class="pagehead"><div><h1>Suppliers</h1></div></div><section class="panel"><p>Run the <strong>add-supplier-list</strong> SQL in Supabase first, then reload this page.</p></section>'; }
+
+  function viewSuppliers() {
+    app.innerHTML = '<div class="pagehead"><div><h1>Suppliers</h1><p class="muted">Your private supplier list. Only people signed in to this dashboard can see it; it never appears on the website.</p></div>' +
+      '<a class="btn primary" href="#/suppliers/new">+ Add supplier</a></div>' +
+      '<div class="tabs" id="supTabs"></div>' +
+      '<div class="toolbar"><input type="text" id="sQ" placeholder="Search company, contact, service or area" value="' + esc(supState.q) + '">' +
+      '<select id="sSvc"><option value="">All services</option>' + SUP_GROUPS.map(function (g) { return '<optgroup label="' + esc(g[0]) + '">' + g[1].map(function (s) { return "<option" + (s === supState.service ? " selected" : "") + ">" + esc(s) + "</option>"; }).join("") + "</optgroup>"; }).join("") + "</select>" +
+      '<span class="count" id="sCount"></span></div><div id="supWrap"><p class="muted">Loading&hellip;</p></div>';
+    sb.from("suppliers").select("id,company,contact_name,status,services,other_services,based_in,phone,email,rating,photo_path").order("company").range(0, 4999).then(function (r) {
+      if (noSupTable(r.error)) return supSetup();
+      if (r.error) return fail(r.error);
+      var all = r.data, urls = {};
+      function draw() {
+        var q = supState.q.toLowerCase();
+        var base = all.filter(function (p) {
+          if (supState.service && svcList(p.services).indexOf(supState.service) < 0) return false;
+          if (q && [p.company, p.contact_name, p.services, p.other_services, p.based_in].join(" ").toLowerCase().indexOf(q) < 0) return false;
+          return true;
+        });
+        $("#supTabs").innerHTML = [["all", "All"]].concat(SUP_STATUS).map(function (s) {
+          var n = s[0] === "all" ? base.length : base.filter(function (p) { return p.status === s[0]; }).length;
+          return '<button type="button" data-ss="' + s[0] + '" class="' + (supState.status === s[0] ? "on" : "") + '">' + s[1] + " (" + n + ")</button>";
+        }).join("");
+        var rows = base.filter(function (p) { return supState.status === "all" || p.status === supState.status; });
+        $("#sCount").textContent = rows.length + " supplier" + (rows.length === 1 ? "" : "s");
+        if (!rows.length) { $("#supWrap").innerHTML = '<p class="muted center">' + (all.length ? "No suppliers match." : "No suppliers yet. Add them here, or use Add to supplier list on a supplier application.") + "</p>"; return; }
+        $("#supWrap").innerHTML = '<table class="list"><thead><tr><th></th><th>Company</th><th>Services</th><th class="hide-m">Based in</th><th>Status</th><th></th></tr></thead><tbody>' +
+          rows.map(function (p) {
+            var wa = waLink(p.phone);
+            return "<tr><td>" + (p.photo_path ? '<img class="thumb" data-sphoto="' + esc(p.photo_path) + '" alt="">' : '<div class="thumb empty">No logo</div>') + "</td>" +
+              '<td class="name"><a href="#/suppliers/' + p.id + '">' + esc(p.company) + '</a><div class="sub">' + esc(p.contact_name || "") + (p.rating ? " &middot; " + "&#9733;".repeat(p.rating) : "") + "</div></td>" +
+              '<td class="sub">' + esc(shortList(p.services)) + (p.other_services ? (p.services ? " &middot; " : "") + "+ other" : "") + '</td><td class="hide-m sub">' + esc(p.based_in || "") + "</td>" +
+              '<td><span class="pill sup-' + p.status + '">' + supLabel(p.status) + "</span></td>" +
+              '<td class="nowrap">' + (wa ? '<a class="btn sm" href="' + esc(wa) + '" target="_blank" rel="noopener">WhatsApp</a> ' : "") + '<a class="btn sm" href="#/suppliers/' + p.id + '">Open</a></td></tr>';
+          }).join("") + "</tbody></table>";
+        $all("[data-sphoto]").forEach(function (img) { var u = urls[img.getAttribute("data-sphoto")]; if (u) img.src = u; });
+      }
+      draw();
+      signAll(all.map(function (p) { return p.photo_path; })).then(function (u) { urls = u; draw(); });
+      $("#supTabs").addEventListener("click", function (e) { var s = e.target.getAttribute("data-ss"); if (s) { supState.status = s; draw(); } });
+      $("#sQ").addEventListener("input", function (e) { supState.q = e.target.value; draw(); });
+      $("#sSvc").addEventListener("change", function (e) { supState.service = e.target.value; draw(); });
+    });
+  }
+
+  function viewSupplier(id) {
+    app.innerHTML = '<p class="muted center">Loading&hellip;</p>';
+    (id ? sb.from("suppliers").select("*").eq("id", id).maybeSingle() : Promise.resolve({ data: { status: "potential" } })).then(function (r) {
+      if (noSupTable(r.error)) return supSetup();
+      if (r.error) return fail(r.error);
+      var p = r.data; if (!p) { app.innerHTML = '<p class="center muted">Not found. <a href="#/suppliers">Back</a></p>'; return; }
+      var photoBlob = null, have = svcList(p.services);
+      var f = function (key, label, extra) { return '<label class="field' + (extra && extra.wide ? " span2" : "") + '">' + label + (extra && extra.hint ? ' <span class="hint">' + extra.hint + "</span>" : "") +
+        (extra && extra.area ? '<textarea id="s_' + key + '" rows="' + (extra.rows || 4) + '">' + esc(p[key] || "") + "</textarea>" : '<input type="' + ((extra && extra.type) || "text") + '" id="s_' + key + '" value="' + esc(p[key] || "") + '">') + "</label>"; };
+      var sel = function (key, label, opts) { return '<label class="field">' + label + '<select id="s_' + key + '">' + opts.map(function (o) { return '<option value="' + esc(o[0]) + '"' + (String(p[key] || "") === String(o[0]) ? " selected" : "") + ">" + esc(o[1]) + "</option>"; }).join("") + "</select></label>"; };
+      var extraKnown = have.filter(function (s) { return !SUP_GROUPS.some(function (g) { return g[1].indexOf(s) >= 0; }); });
+      var wa = waLink(p.phone);
+      app.innerHTML = '<div class="pagehead"><div><a href="#/suppliers" class="small">&larr; Suppliers</a><h1>' + esc(p.company || "Add supplier") + "</h1>" +
+        (id ? '<span class="pill sup-' + p.status + '">' + supLabel(p.status) + "</span>" : "") + "</div>" +
+        '<div class="toolbar">' + (p.email ? '<a class="btn" href="mailto:' + esc(p.email) + '">Email</a>' : "") + (wa ? '<a class="btn" href="' + esc(wa) + '" target="_blank" rel="noopener">WhatsApp</a>' : "") +
+        (p.application_id ? '<a class="btn" href="#/applications/' + p.application_id + '">Their application</a>' : "") + "</div></div>" +
+        '<div class="crew-top"><section class="panel crew-photo"><h2>Logo / photo</h2><div id="sPhotoBox" class="crew-photo-box sup-logo">' + (p.photo_path ? '<p class="muted">Loading&hellip;</p>' : '<p class="muted">None yet</p>') + "</div>" +
+        '<label class="btn small">' + (p.photo_path ? "Replace" : "Add") + '<input type="file" id="sPhoto" accept="image/*" hidden></label></section>' +
+        '<section class="panel private crew-main"><h2>Details <span class="lock">Private</span></h2><div class="grid2">' +
+        f("company", "Company") + f("contact_name", "Contact name") +
+        sel("status", "Status", SUP_STATUS) + sel("rating", "Your rating", [["", "Not rated"], ["5", "★★★★★ Excellent"], ["4", "★★★★ Very good"], ["3", "★★★ Good"], ["2", "★★ Fair"], ["1", "★ Poor"]]) +
+        f("phone", "Phone / WhatsApp") + f("email", "Email", { type: "email" }) +
+        f("based_in", "Based in / covers") + f("website", "Website") +
+        f("social", "Instagram / social") + f("portfolio_link", "Portfolio / company profile") +
+        f("pricing_notes", "Pricing notes", { area: true, wide: true, rows: 3, hint: "Private, e.g. rate card, minimum order, payment terms" }) +
+        f("notes", "Notes", { area: true, wide: true, rows: 5, hint: "Jobs done, quality, reliability, who to ask for..." }) +
+        "</div></section></div>" +
+        '<section class="panel"><h2>Stocks or provides in-house</h2><div class="sup-svcs">' +
+        SUP_GROUPS.map(function (g) {
+          var n = g[1].filter(function (s) { return have.indexOf(s) >= 0; }).length;
+          return '<details class="sup-group"' + (n ? " open" : "") + "><summary>" + esc(g[0]) + ' <span class="muted small">' + (n ? n + " ticked" : "") + "</span></summary><div class=\"sup-grid\">" +
+            g[1].map(function (s) { return '<label><input type="checkbox" data-svc value="' + esc(s) + '"' + (have.indexOf(s) >= 0 ? " checked" : "") + "> " + esc(s) + "</label>"; }).join("") + "</div></details>";
+        }).join("") + "</div>" +
+        '<label class="field" style="margin-top:1rem">Anything else they offer <span class="hint">One per line</span><textarea id="s_other_services" rows="4">' + esc([p.other_services || ""].concat(extraKnown).filter(Boolean).join("\n")) + "</textarea></label></section>" +
+        '<div class="actions"><button class="btn primary" type="button" id="sSave">' + (id ? "Save" : "Add to supplier list") + '</button><span class="spacer"></span>' + (id ? '<button class="btn danger" type="button" id="sDelete">Delete</button>' : "") + "</div>";
+
+      if (p.photo_path) signAll([p.photo_path]).then(function (u) { var s = u[p.photo_path]; $("#sPhotoBox").innerHTML = s ? '<img src="' + esc(s) + '" alt="">' : '<p class="muted">Unavailable</p>'; });
+      $("#sPhoto").addEventListener("change", function (e) {
+        var file = e.target.files[0]; if (!file) return;
+        GHDB.shrinkImage(file, 1600).then(function (b) { photoBlob = b; $("#sPhotoBox").innerHTML = '<img src="' + URL.createObjectURL(b) + '" alt="">'; toast("Ready. Click Save to keep it."); }).catch(fail);
+      });
+      $("#sSave").addEventListener("click", function () {
+        var btn = this, row = {};
+        ["company", "contact_name", "status", "phone", "email", "based_in", "website", "social", "portfolio_link", "pricing_notes", "notes", "other_services"].forEach(function (k) { row[k] = val("s_" + k); });
+        row.rating = val("s_rating") ? parseInt(val("s_rating"), 10) : null;
+        row.services = $all("[data-svc]").filter(function (c) { return c.checked; }).map(function (c) { return c.value; }).join("; ") || null;
+        if (!row.company) { toast("Add the company name first", true); return; }
+        row.status = row.status || "potential"; row.updated_at = new Date().toISOString();
+        btn.disabled = true; btn.textContent = "Saving...";
+        var sid, old = null;
+        (id ? sb.from("suppliers").update(row).eq("id", id).select("id").single() : sb.from("suppliers").insert(row).select("id").single()).then(must).then(function (res) {
+          sid = res.id;
+          if (!photoBlob) return null;
+          var path = "suppliers/" + sid + "/logo-" + Date.now().toString(36) + ".jpg";
+          return uploadBlob(APP_BUCKET, path, photoBlob).then(function () { old = p.photo_path; return sb.from("suppliers").update({ photo_path: path }).eq("id", sid).then(must); });
+        }).then(function () {
+          if (old && /^suppliers\//.test(old)) sb.storage.from(APP_BUCKET).remove([old]);
+          toast(id ? "Saved" : "Added to the supplier list");
+          if (id) viewSupplier(id); else location.hash = "#/suppliers/" + sid;
+        }).catch(function (e) { fail(e); btn.disabled = false; btn.textContent = id ? "Save" : "Add to supplier list"; });
+      });
+      if ($("#sDelete")) $("#sDelete").addEventListener("click", function () {
+        if (!confirm("Delete " + (p.company || "this supplier") + " from your list? This can't be undone.")) return;
+        (p.photo_path && /^suppliers\//.test(p.photo_path) ? sb.storage.from(APP_BUCKET).remove([p.photo_path]) : Promise.resolve())
+          .then(function () { return sb.from("suppliers").delete().eq("id", id).then(must); })
+          .then(function () { toast("Deleted"); location.hash = "#/suppliers"; }).catch(fail);
+      });
+    });
+  }
+
+  function addSupplierFromApplication(x, btn) {
+    btn.disabled = true; btn.textContent = "Adding...";
+    var sid;
+    sb.from("suppliers").insert({ company: x.company || x.full_name, contact_name: x.full_name, status: "potential", services: x.service_type, other_services: x.skills,
+      email: x.email, phone: x.phone, based_in: x.based_in, website: x.website, social: x.social, portfolio_link: x.portfolio_link || x.video_links || null, application_id: x.id,
+      notes: x.bio ? "From their application:\n" + x.bio : null }).select("id").single().then(function (r) {
+      if (noSupTable(r.error)) throw new Error("Run the add-supplier-list SQL in Supabase first, then try again.");
+      return must(r);
+    }).then(function (row) {
+      sid = row.id;
+      if (!(x.photos && x.photos[0])) return null;
+      var to = "suppliers/" + sid + "/logo.jpg";
+      return sb.storage.from(APP_BUCKET).download(x.photos[0]).then(must).then(function (blob) { return uploadBlob(APP_BUCKET, to, blob); })
+        .then(function () { return sb.from("suppliers").update({ photo_path: to }).eq("id", sid).then(must); });
+    }).then(function () { return x.status === "new" ? sb.from("applications").update({ status: "shortlisted" }).eq("id", x.id).then(must) : null; })
+      .then(function () { refreshBadge(); toast("Added to the supplier list as Potential"); location.hash = "#/suppliers/" + sid; })
+      .catch(function (e) { fail(e); btn.disabled = false; btn.textContent = "Add to supplier list"; });
   }
 
   // ---------- shared: add slides to a proposal ----------

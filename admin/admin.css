@@ -233,3 +233,12 @@ h2 .sent-tick { margin-left: 1.2rem; vertical-align: middle; }
 .crew-photo-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
 td.nowrap { white-space: nowrap; }
 @media (max-width: 800px) { .crew-top { grid-template-columns: 1fr; } }
+.pill.sup-potential { color: var(--gold); } .pill.sup-approved { color: var(--ok); } .pill.sup-preferred { color: #7fe0b0; } .pill.sup-inactive { color: var(--muted); } .pill.sup-do_not_use { color: var(--danger); }
+.sup-logo { aspect-ratio: 1 / 1; background: #fff; }
+.sup-logo img { object-fit: contain; }
+.sup-group { border: 1px solid var(--line); }
+.sup-group + .sup-group { border-top: 0; }
+.sup-group summary { cursor: pointer; padding: .6rem .9rem; font-weight: 600; }
+.sup-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: .3rem 1rem; padding: .2rem .9rem .8rem; }
+.sup-grid label { display: flex; gap: .5rem; align-items: flex-start; font-size: .85rem; cursor: pointer; }
+.sup-grid input { accent-color: #c9a84c; margin-top: .15rem; }
