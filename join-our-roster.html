@@ -286,6 +286,20 @@
         .roster-steps { list-style: none; counter-reset: st; display: grid; gap: 1.1rem; margin-top: 1.6rem; }
         .roster-steps li { counter-increment: st; display: flex; gap: 0.9rem; color: var(--white-off); font-size: 0.9rem; opacity: 0.9; line-height: 1.5; }
         .roster-steps li::before { content: "0" counter(st); font-family: var(--display); color: var(--gold-solid); font-size: 0.85rem; flex-shrink: 0; margin-top: 1px; }
+        .svc-note { font-size: 0.82rem; color: var(--bg-deep); opacity: 0.75; line-height: 1.5; margin: -0.1rem 0 0.4rem; }
+        .svc-group { border: 1px solid rgba(201,168,76,0.45); background: rgba(255,255,255,0.35); }
+        .svc-group + .svc-group { border-top: 0; }
+        .svc-group + .svc-group { margin-top: 0; }
+        .svc-group summary { cursor: pointer; padding: 0.75rem 1rem; font-family: var(--display); font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--bg-deep); list-style: none; display: flex; justify-content: space-between; align-items: center; }
+        .svc-group summary::-webkit-details-marker { display: none; }
+        .svc-group summary::after { content: "+"; font-size: 1rem; margin-left: 0.6rem; }
+        .svc-group[open] summary::after { content: "\2212"; }
+        .svc-count { margin-left: auto; font-family: var(--sans); letter-spacing: 0; text-transform: none; color: #7A5A16; font-weight: 700; }
+        .svc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 0.35rem 1rem; padding: 0.2rem 1rem 0.9rem; }
+        #artistForm .svc-grid label { display: flex; margin: 0; gap: 0.5rem; align-items: flex-start; font-size: 0.86rem; color: var(--bg-deep); cursor: pointer; line-height: 1.35; text-transform: none; letter-spacing: 0; font-family: var(--sans); font-weight: 400; }
+        #artistForm .svc-grid input { width: 1rem; height: 1rem; padding: 0; margin: 0.12rem 0 0; border: 0; background: none; box-shadow: none; accent-color: #C9A84C; flex: 0 0 auto; }
+        #artistForm .svc-grid label > span { flex: 1; min-width: 0; }
+        .svc-field.invalid .svc-group { border-color: #b3261e; }
         #artistForm [hidden] { display: none !important; }
         .type-switch { display: grid; grid-template-columns: 1fr 1fr 1fr; border: 1px solid rgba(201,168,76,0.55); }
         .type-switch label { cursor: pointer; }
@@ -461,105 +475,103 @@
                         <label for="af-company">Company Name</label>
                         <input type="text" id="af-company" name="company" placeholder="Your company">
                     </div>
-                    <div class="form-field">
-                        <label for="af-service">Main Service</label>
-                        <select id="af-service" name="service_type">
-                            <option value="" disabled selected>Choose one</option>
-                            <optgroup label="Sound, Light &amp; Technical">
-                                <option value="AV, Sound &amp; Lighting">AV, Sound &amp; Lighting</option>
-                                <option value="LED Screens &amp; Video Walls">LED Screens &amp; Video Walls</option>
-                                <option value="Projection &amp; Mapping">Projection &amp; Mapping</option>
-                                <option value="Special Effects (CO2, confetti, pyro, fog)">Special Effects (CO2, confetti, pyro, fog)</option>
-                                <option value="Lasers">Lasers</option>
-                                <option value="Power &amp; Generators">Power &amp; Generators</option>
-                                <option value="Rigging &amp; Trussing">Rigging &amp; Trussing</option>
-                                <option value="Livestreaming &amp; Broadcast">Livestreaming &amp; Broadcast</option>
-                            </optgroup>
-                            <optgroup label="Staging &amp; Structures">
-                                <option value="Staging &amp; Platforms">Staging &amp; Platforms</option>
-                                <option value="Tents, Marquees &amp; Structures">Tents, Marquees &amp; Structures</option>
-                                <option value="Flooring &amp; Dance Floors">Flooring &amp; Dance Floors</option>
-                                <option value="Fencing, Barriers &amp; Crowd Control">Fencing, Barriers &amp; Crowd Control</option>
-                                <option value="Scaffolding &amp; Grandstands">Scaffolding &amp; Grandstands</option>
-                            </optgroup>
-                            <optgroup label="Decor &amp; Styling">
-                                <option value="Decor &amp; Event Styling">Decor &amp; Event Styling</option>
-                                <option value="Florals &amp; Flower Walls">Florals &amp; Flower Walls</option>
-                                <option value="Draping &amp; Fabric">Draping &amp; Fabric</option>
-                                <option value="Balloons &amp; Balloon Art">Balloons &amp; Balloon Art</option>
-                                <option value="Backdrops &amp; Photo Walls">Backdrops &amp; Photo Walls</option>
-                                <option value="Props &amp; Themed Decor">Props &amp; Themed Decor</option>
-                                <option value="Table Settings, Linen &amp; Tableware">Table Settings, Linen &amp; Tableware</option>
-                                <option value="Candles &amp; Ambient Lighting">Candles &amp; Ambient Lighting</option>
-                                <option value="Neon Signs">Neon Signs</option>
-                                <option value="Greenery &amp; Plant Hire">Greenery &amp; Plant Hire</option>
-                            </optgroup>
-                            <optgroup label="Fabrication &amp; Furniture">
-                                <option value="Fabrication &amp; Set Building">Fabrication &amp; Set Building</option>
-                                <option value="Exhibition Stands &amp; Booths">Exhibition Stands &amp; Booths</option>
-                                <option value="Furniture Rental">Furniture Rental</option>
-                                <option value="Lounge &amp; VIP Furniture">Lounge &amp; VIP Furniture</option>
-                                <option value="Carpentry &amp; Joinery">Carpentry &amp; Joinery</option>
-                            </optgroup>
-                            <optgroup label="Food &amp; Drink">
-                                <option value="Catering">Catering</option>
-                                <option value="Beverage &amp; Bar Services">Beverage &amp; Bar Services</option>
-                                <option value="Coffee &amp; Tea Carts">Coffee &amp; Tea Carts</option>
-                                <option value="Food Trucks">Food Trucks</option>
-                                <option value="Desserts, Cakes &amp; Chocolatiers">Desserts, Cakes &amp; Chocolatiers</option>
-                                <option value="Ice Sculptures">Ice Sculptures</option>
-                                <option value="Mixologists &amp; Live Stations">Mixologists &amp; Live Stations</option>
-                            </optgroup>
-                            <optgroup label="Gifts &amp; Branding">
-                                <option value="Corporate Gifts &amp; Giveaways">Corporate Gifts &amp; Giveaways</option>
-                                <option value="Personalised &amp; Luxury Gifts">Personalised &amp; Luxury Gifts</option>
-                                <option value="Merchandise">Merchandise</option>
-                                <option value="Printing &amp; Signage">Printing &amp; Signage</option>
-                                <option value="Branding &amp; Vinyl Wrapping">Branding &amp; Vinyl Wrapping</option>
-                                <option value="Invitations &amp; Stationery">Invitations &amp; Stationery</option>
-                                <option value="Badges, Lanyards &amp; Ticketing">Badges, Lanyards &amp; Ticketing</option>
-                            </optgroup>
-                            <optgroup label="Photo, Video &amp; Activations">
-                                <option value="Photography">Photography</option>
-                                <option value="Videography &amp; Drone">Videography &amp; Drone</option>
-                                <option value="Photo Booths &amp; 360 Booths">Photo Booths &amp; 360 Booths</option>
-                                <option value="Brand Activations &amp; Experiential">Brand Activations &amp; Experiential</option>
-                                <option value="Games, VR &amp; Interactive Tech">Games, VR &amp; Interactive Tech</option>
-                                <option value="Inflatables &amp; Fun Fair Rides">Inflatables &amp; Fun Fair Rides</option>
-                                <option value="Kids Activities &amp; Play Areas">Kids Activities &amp; Play Areas</option>
-                            </optgroup>
-                            <optgroup label="People &amp; Services">
-                                <option value="Event Staffing &amp; Hostesses">Event Staffing &amp; Hostesses</option>
-                                <option value="Security">Security</option>
-                                <option value="Cleaning &amp; Waste Management">Cleaning &amp; Waste Management</option>
-                                <option value="Medical &amp; First Aid">Medical &amp; First Aid</option>
-                                <option value="Valet Parking">Valet Parking</option>
-                                <option value="Translators &amp; Interpreters">Translators &amp; Interpreters</option>
-                                <option value="Hair, Makeup &amp; Grooming">Hair, Makeup &amp; Grooming</option>
-                                <option value="Costumes &amp; Wardrobe">Costumes &amp; Wardrobe</option>
-                            </optgroup>
-                            <optgroup label="Venues, Travel &amp; Logistics">
-                                <option value="Venues">Venues</option>
-                                <option value="Hotels &amp; Accommodation">Hotels &amp; Accommodation</option>
-                                <option value="Transport &amp; Chauffeurs">Transport &amp; Chauffeurs</option>
-                                <option value="Logistics, Freight &amp; Storage">Logistics, Freight &amp; Storage</option>
-                                <option value="Portable Toilets &amp; Site Facilities">Portable Toilets &amp; Site Facilities</option>
-                                <option value="Desert &amp; Outdoor Camps">Desert &amp; Outdoor Camps</option>
-                                <option value="Yachts &amp; Boats">Yachts &amp; Boats</option>
-                            </optgroup>
-                            <optgroup label="Other">
-                                <option value="Event Permits &amp; Licensing">Event Permits &amp; Licensing</option>
-                                <option value="Insurance">Insurance</option>
-                                <option value="Ticketing &amp; Registration">Ticketing &amp; Registration</option>
-                                <option value="Other">Other</option>
-                            </optgroup>
-                        </select>
-                    </div>
+                </div>
+
+                <div class="form-field svc-field" data-for="supplier" hidden>
+                    <label>What Your Company Stocks Or Provides In-House</label>
+                    <p class="svc-note">Tick everything that applies. Please only tick what your company owns, stocks or delivers in-house, not services you would subcontract.</p>
+                    <details class="svc-group"><summary>Sound, Light &amp; Technical <span class="svc-count"></span></summary><div class="svc-grid">
+                        <label><input type="checkbox" name="services" value="AV, Sound &amp; Lighting"><span>AV, Sound &amp; Lighting</span></label>
+                        <label><input type="checkbox" name="services" value="LED Screens &amp; Video Walls"><span>LED Screens &amp; Video Walls</span></label>
+                        <label><input type="checkbox" name="services" value="Projection &amp; Mapping"><span>Projection &amp; Mapping</span></label>
+                        <label><input type="checkbox" name="services" value="Special Effects (CO2, confetti, pyro, fog)"><span>Special Effects (CO2, confetti, pyro, fog)</span></label>
+                        <label><input type="checkbox" name="services" value="Lasers"><span>Lasers</span></label>
+                        <label><input type="checkbox" name="services" value="Power &amp; Generators"><span>Power &amp; Generators</span></label>
+                        <label><input type="checkbox" name="services" value="Rigging &amp; Trussing"><span>Rigging &amp; Trussing</span></label>
+                        <label><input type="checkbox" name="services" value="Livestreaming &amp; Broadcast"><span>Livestreaming &amp; Broadcast</span></label>
+                    </div></details>
+                    <details class="svc-group"><summary>Staging &amp; Structures <span class="svc-count"></span></summary><div class="svc-grid">
+                        <label><input type="checkbox" name="services" value="Staging &amp; Platforms"><span>Staging &amp; Platforms</span></label>
+                        <label><input type="checkbox" name="services" value="Tents, Marquees &amp; Structures"><span>Tents, Marquees &amp; Structures</span></label>
+                        <label><input type="checkbox" name="services" value="Flooring &amp; Dance Floors"><span>Flooring &amp; Dance Floors</span></label>
+                        <label><input type="checkbox" name="services" value="Fencing, Barriers &amp; Crowd Control"><span>Fencing, Barriers &amp; Crowd Control</span></label>
+                        <label><input type="checkbox" name="services" value="Scaffolding &amp; Grandstands"><span>Scaffolding &amp; Grandstands</span></label>
+                    </div></details>
+                    <details class="svc-group"><summary>Decor &amp; Styling <span class="svc-count"></span></summary><div class="svc-grid">
+                        <label><input type="checkbox" name="services" value="Decor &amp; Event Styling"><span>Decor &amp; Event Styling</span></label>
+                        <label><input type="checkbox" name="services" value="Florals &amp; Flower Walls"><span>Florals &amp; Flower Walls</span></label>
+                        <label><input type="checkbox" name="services" value="Draping &amp; Fabric"><span>Draping &amp; Fabric</span></label>
+                        <label><input type="checkbox" name="services" value="Balloons &amp; Balloon Art"><span>Balloons &amp; Balloon Art</span></label>
+                        <label><input type="checkbox" name="services" value="Backdrops &amp; Photo Walls"><span>Backdrops &amp; Photo Walls</span></label>
+                        <label><input type="checkbox" name="services" value="Props &amp; Themed Decor"><span>Props &amp; Themed Decor</span></label>
+                        <label><input type="checkbox" name="services" value="Table Settings, Linen &amp; Tableware"><span>Table Settings, Linen &amp; Tableware</span></label>
+                        <label><input type="checkbox" name="services" value="Candles &amp; Ambient Lighting"><span>Candles &amp; Ambient Lighting</span></label>
+                        <label><input type="checkbox" name="services" value="Neon Signs"><span>Neon Signs</span></label>
+                        <label><input type="checkbox" name="services" value="Greenery &amp; Plant Hire"><span>Greenery &amp; Plant Hire</span></label>
+                    </div></details>
+                    <details class="svc-group"><summary>Fabrication &amp; Furniture <span class="svc-count"></span></summary><div class="svc-grid">
+                        <label><input type="checkbox" name="services" value="Fabrication &amp; Set Building"><span>Fabrication &amp; Set Building</span></label>
+                        <label><input type="checkbox" name="services" value="Exhibition Stands &amp; Booths"><span>Exhibition Stands &amp; Booths</span></label>
+                        <label><input type="checkbox" name="services" value="Furniture Rental"><span>Furniture Rental</span></label>
+                        <label><input type="checkbox" name="services" value="Lounge &amp; VIP Furniture"><span>Lounge &amp; VIP Furniture</span></label>
+                        <label><input type="checkbox" name="services" value="Carpentry &amp; Joinery"><span>Carpentry &amp; Joinery</span></label>
+                    </div></details>
+                    <details class="svc-group"><summary>Food &amp; Drink <span class="svc-count"></span></summary><div class="svc-grid">
+                        <label><input type="checkbox" name="services" value="Catering"><span>Catering</span></label>
+                        <label><input type="checkbox" name="services" value="Beverage &amp; Bar Services"><span>Beverage &amp; Bar Services</span></label>
+                        <label><input type="checkbox" name="services" value="Coffee &amp; Tea Carts"><span>Coffee &amp; Tea Carts</span></label>
+                        <label><input type="checkbox" name="services" value="Food Trucks"><span>Food Trucks</span></label>
+                        <label><input type="checkbox" name="services" value="Desserts, Cakes &amp; Chocolatiers"><span>Desserts, Cakes &amp; Chocolatiers</span></label>
+                        <label><input type="checkbox" name="services" value="Ice Sculptures"><span>Ice Sculptures</span></label>
+                        <label><input type="checkbox" name="services" value="Mixologists &amp; Live Stations"><span>Mixologists &amp; Live Stations</span></label>
+                    </div></details>
+                    <details class="svc-group"><summary>Gifts &amp; Branding <span class="svc-count"></span></summary><div class="svc-grid">
+                        <label><input type="checkbox" name="services" value="Corporate Gifts &amp; Giveaways"><span>Corporate Gifts &amp; Giveaways</span></label>
+                        <label><input type="checkbox" name="services" value="Personalised &amp; Luxury Gifts"><span>Personalised &amp; Luxury Gifts</span></label>
+                        <label><input type="checkbox" name="services" value="Merchandise"><span>Merchandise</span></label>
+                        <label><input type="checkbox" name="services" value="Printing &amp; Signage"><span>Printing &amp; Signage</span></label>
+                        <label><input type="checkbox" name="services" value="Branding &amp; Vinyl Wrapping"><span>Branding &amp; Vinyl Wrapping</span></label>
+                        <label><input type="checkbox" name="services" value="Invitations &amp; Stationery"><span>Invitations &amp; Stationery</span></label>
+                        <label><input type="checkbox" name="services" value="Badges, Lanyards &amp; Ticketing"><span>Badges, Lanyards &amp; Ticketing</span></label>
+                    </div></details>
+                    <details class="svc-group"><summary>Photo, Video &amp; Activations <span class="svc-count"></span></summary><div class="svc-grid">
+                        <label><input type="checkbox" name="services" value="Photography"><span>Photography</span></label>
+                        <label><input type="checkbox" name="services" value="Videography &amp; Drone"><span>Videography &amp; Drone</span></label>
+                        <label><input type="checkbox" name="services" value="Photo Booths &amp; 360 Booths"><span>Photo Booths &amp; 360 Booths</span></label>
+                        <label><input type="checkbox" name="services" value="Brand Activations &amp; Experiential"><span>Brand Activations &amp; Experiential</span></label>
+                        <label><input type="checkbox" name="services" value="Games, VR &amp; Interactive Tech"><span>Games, VR &amp; Interactive Tech</span></label>
+                        <label><input type="checkbox" name="services" value="Inflatables &amp; Fun Fair Rides"><span>Inflatables &amp; Fun Fair Rides</span></label>
+                        <label><input type="checkbox" name="services" value="Kids Activities &amp; Play Areas"><span>Kids Activities &amp; Play Areas</span></label>
+                    </div></details>
+                    <details class="svc-group"><summary>People &amp; Services <span class="svc-count"></span></summary><div class="svc-grid">
+                        <label><input type="checkbox" name="services" value="Event Staffing &amp; Hostesses"><span>Event Staffing &amp; Hostesses</span></label>
+                        <label><input type="checkbox" name="services" value="Security"><span>Security</span></label>
+                        <label><input type="checkbox" name="services" value="Cleaning &amp; Waste Management"><span>Cleaning &amp; Waste Management</span></label>
+                        <label><input type="checkbox" name="services" value="Medical &amp; First Aid"><span>Medical &amp; First Aid</span></label>
+                        <label><input type="checkbox" name="services" value="Valet Parking"><span>Valet Parking</span></label>
+                        <label><input type="checkbox" name="services" value="Translators &amp; Interpreters"><span>Translators &amp; Interpreters</span></label>
+                        <label><input type="checkbox" name="services" value="Hair, Makeup &amp; Grooming"><span>Hair, Makeup &amp; Grooming</span></label>
+                        <label><input type="checkbox" name="services" value="Costumes &amp; Wardrobe"><span>Costumes &amp; Wardrobe</span></label>
+                    </div></details>
+                    <details class="svc-group"><summary>Venues, Travel &amp; Logistics <span class="svc-count"></span></summary><div class="svc-grid">
+                        <label><input type="checkbox" name="services" value="Venues"><span>Venues</span></label>
+                        <label><input type="checkbox" name="services" value="Hotels &amp; Accommodation"><span>Hotels &amp; Accommodation</span></label>
+                        <label><input type="checkbox" name="services" value="Transport &amp; Chauffeurs"><span>Transport &amp; Chauffeurs</span></label>
+                        <label><input type="checkbox" name="services" value="Logistics, Freight &amp; Storage"><span>Logistics, Freight &amp; Storage</span></label>
+                        <label><input type="checkbox" name="services" value="Portable Toilets &amp; Site Facilities"><span>Portable Toilets &amp; Site Facilities</span></label>
+                        <label><input type="checkbox" name="services" value="Desert &amp; Outdoor Camps"><span>Desert &amp; Outdoor Camps</span></label>
+                        <label><input type="checkbox" name="services" value="Yachts &amp; Boats"><span>Yachts &amp; Boats</span></label>
+                    </div></details>
+                    <details class="svc-group"><summary>Other <span class="svc-count"></span></summary><div class="svc-grid">
+                        <label><input type="checkbox" name="services" value="Event Permits &amp; Licensing"><span>Event Permits &amp; Licensing</span></label>
+                        <label><input type="checkbox" name="services" value="Insurance"><span>Insurance</span></label>
+                        <label><input type="checkbox" name="services" value="Ticketing &amp; Registration"><span>Ticketing &amp; Registration</span></label>
+                    </div></details>
                 </div>
 
                 <div class="form-field" data-for="supplier" hidden>
-                    <label for="af-extra">Other Services You Offer</label>
-                    <input type="text" id="af-extra" name="extra_services" placeholder="e.g. Balloons, draping and flower walls">
+                    <label for="af-extra">Anything Else You Stock In-House</label>
+                    <input type="text" id="af-extra" name="extra_services" placeholder="Anything not in the list above">
                 </div>
 
                 <div class="form-row" data-for="crew" hidden>
@@ -830,7 +842,7 @@
                          bioPh: "What you offer, past events and venues, coverage across the UAE...", skills: "", skillsPh: "",
                          photoHint: "Photos of your setups, products or past events work best." }
         };
-        var REQUIRED = { performer: ["af-category"], crew: ["af-crewrole", "af-years", "af-cv"], supplier: ["af-company", "af-service"] };
+        var REQUIRED = { performer: ["af-category"], crew: ["af-crewrole", "af-years", "af-cv"], supplier: ["af-company"] };
         var cvInput = document.getElementById("af-cv");
         function current() { return form.querySelector('input[name="applicant_type"]:checked').value; }
         function setType(t) {
@@ -849,6 +861,14 @@
             fileInput.multiple = t !== "crew";
             fileInput.required = t === "crew";
         }
+        var svcBoxes = form.querySelectorAll('input[name="services"]');
+        function svcPicked() { return Array.prototype.filter.call(svcBoxes, function (b) { return b.checked; }).map(function (b) { return b.value; }); }
+        form.addEventListener("change", function (ev) {
+            if (ev.target.name !== "services") return;
+            var g = ev.target.closest(".svc-group"), n = g.querySelectorAll('input[name="services"]:checked').length;
+            g.querySelector(".svc-count").textContent = n ? n + " ticked" : "";
+            if (svcPicked().length) form.querySelector(".svc-field").classList.remove("invalid");
+        });
         Array.prototype.forEach.call(form.elements.applicant_type, function (r) {
             r.addEventListener("change", function () { if (r.checked) setType(r.value); });
         });
@@ -875,6 +895,11 @@
         form.addEventListener("submit", function (e) {
             e.preventDefault();
             if (form.botcheck && form.botcheck.checked) return;
+            if (current() === "supplier" && !svcPicked().length) {
+                var sf = form.querySelector(".svc-field"); sf.classList.add("invalid"); sf.querySelector("details").open = true;
+                sf.scrollIntoView({ behavior: "smooth", block: "center" });
+                show("Please tick at least one thing your company provides in-house.", true); return;
+            }
             submitBtn.disabled = true;
             submitBtn.textContent = "Sending...";
             statusEl.classList.remove("show", "error");
@@ -904,7 +929,7 @@
                     var sup = t === "supplier", crew = t === "crew";
                     var row = {
                         applicant_type: t,
-                        company: sup ? field("company") : null, service_type: sup ? field("service_type") : crew ? field("crew_role") : null,
+                        company: sup ? field("company") : null, service_type: sup ? svcPicked().join("; ") : crew ? field("crew_role") : null,
                         full_name: field("full_name"), act_name: t === "performer" ? field("act_name") : null, email: field("email"), phone: field("phone"),
                         category: t === "performer" ? field("category") : null, based_in: field("based_in"),
                         skills: sup ? field("extra_services") : field("skills"), languages: sup ? null : field("languages"),
@@ -919,6 +944,7 @@
                 show("Thank you! Your details have been sent to our team. We'll be in touch if there's a fit.");
                 var keep = current();
                 form.reset(); previews.innerHTML = ""; blobs = [];
+                Array.prototype.forEach.call(form.querySelectorAll(".svc-count"), function (c) { c.textContent = ""; });
                 form.querySelector('input[value="' + keep + '"]').checked = true; setType(keep);
             })
             .catch(function (err) {

@@ -452,7 +452,7 @@
           $("#appList").innerHTML = '<div class="cards">' + rows.map(function (x) {
             return '<a class="card" href="#/applications/' + x.id + '"><div class="noimg" data-thumb="' + esc((x.photos && x.photos[0]) || "") + '">' + (x.photos && x.photos.length ? "" : "No photo") + "</div>" +
               "<div><h3>" + esc(x.applicant_type === "supplier" ? (x.company || x.full_name) : (x.act_name || x.full_name)) + '</h3><div class="sub">' +
-              (x.applicant_type === "supplier" ? "Supplier &middot; " + esc(x.service_type || "") : x.applicant_type === "crew" ? "Event crew &middot; " + esc(x.service_type || "") : esc(x.category || "")) + (x.based_in ? " &middot; " + esc(x.based_in) : "") + "</div>" +
+              (x.applicant_type === "supplier" ? "Supplier &middot; " + esc(shortList(x.service_type)) : x.applicant_type === "crew" ? "Event crew &middot; " + esc(x.service_type || "") : esc(x.category || "")) + (x.based_in ? " &middot; " + esc(x.based_in) : "") + "</div>" +
               '<div class="sub">' + fmtDate(x.created_at) + '</div><span class="pill ' + x.status + '">' + x.status + "</span></div></a>";
           }).join("") + "</div>";
           loadThumbs();
@@ -464,6 +464,7 @@
       });
   }
   // Application photos are private; show them through short-lived signed links.
+  function shortList(s) { var l = String(s || "").split(/;\s*/).filter(Boolean); return l.length > 3 ? l.slice(0, 3).join(" · ") + " +" + (l.length - 3) + " more" : l.join(" · "); }
   function loadThumbs() {
     var els = $all("[data-thumb]").filter(function (el) { return el.getAttribute("data-thumb"); });
     if (!els.length) return;
@@ -488,7 +489,7 @@
       var facts = isCrew ? [["Type", "Freelance event crew"], ["Full name", x.full_name], ["Role", x.service_type], ["Experience", x.experience_years],
           ["Availability", x.availability], ["UAE work status", x.visa_status], ["Email", x.email], ["Phone / WhatsApp", x.phone], ["Based in", x.based_in],
           ["Key skills", x.skills], ["Languages", x.languages], ["LinkedIn", x.linkedin], ["Instagram / social", x.social], ["Portfolio", x.portfolio_link], ["Applied", fmtDate(x.created_at)]]
-        : (isSup ? [["Type", "Supplier / partner"], ["Company", x.company], ["Main service", x.service_type], ["Other services", x.skills], ["Contact name", x.full_name]]
+        : (isSup ? [["Type", "Supplier / partner"], ["Company", x.company], ["Stocks in-house", x.service_type ? x.service_type.split(/;\s*/).join("\n") : null], ["Also stocks", x.skills], ["Contact name", x.full_name]]
                          : [["Full name", x.full_name], ["Act / stage name", x.act_name], ["Category", x.category]]).concat([["Email", x.email],
         ["Phone / WhatsApp", x.phone], ["Based in", x.based_in], ["Skills / genres", x.skills], ["Languages", x.languages],
         ["Instagram", x.social], ["Website", x.website], ["Portfolio", x.portfolio_link], ["Applied", fmtDate(x.created_at)]]).filter(function (f) { return !(isSup && /Skills \/ genres|Languages/.test(f[0])); });
