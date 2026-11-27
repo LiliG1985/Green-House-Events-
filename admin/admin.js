@@ -151,6 +151,8 @@
     if (h[0] === "slides") return viewSlides();
     if (h[0] === "proposals" && h[1]) return viewProposal(h[1]);
     if (h[0] === "proposals") return viewProposals();
+    if (h[0] === "crew" && h[1]) return viewCrewPerson(h[1] === "new" ? null : h[1]);
+    if (h[0] === "crew") return viewCrew();
     if (h[0] === "password") return viewPassword();
     return viewArtists();
   }
@@ -424,18 +426,22 @@
   }
 
   // ---------- applications ----------
-  var appFilter = "new", appType = "";
+  var appFilter = "new", appType = "", appQ = "";
   function viewApplications() {
     var opt = function (v, l) { return '<option value="' + v + '"' + (appType === v ? " selected" : "") + ">" + l + "</option>"; };
     app.innerHTML = '<div class="pagehead"><div><h1>Applications</h1><p class="muted">Performers, freelance event crew and suppliers who applied through the Join Our Roster page. Crew and suppliers stay private and are never added to the website.</p></div>' +
       '<select id="appType" style="max-width:240px">' + opt("", "Everyone") + opt("performer", "Performers only") + opt("crew", "Event crew only") + opt("supplier", "Suppliers only") + "</select></div>" +
-      '<div class="tabs" id="appTabs"></div><div id="appList"><p class="muted">Loading&hellip;</p></div>';
-    sb.from("applications").select("id,created_at,status,full_name,act_name,category,based_in,photos,applicant_type,company,service_type").order("created_at", { ascending: false }).range(0, 4999)
+      '<div class="tabs" id="appTabs"></div><div class="toolbar"><input type="text" id="appQ" placeholder="Search name, company, service or area, e.g. balloons" value="' + esc(appQ) + '"></div><div id="appList"><p class="muted">Loading&hellip;</p></div>';
+    sb.from("applications").select("id,created_at,status,full_name,act_name,category,based_in,photos,applicant_type,company,service_type,skills").order("created_at", { ascending: false }).range(0, 4999)
       .then(function (r) {
         if (r.error) return fail(r.error);
         var everything = r.data, all, counts;
         function draw() {
-          all = everything.filter(function (x) { return !appType || (x.applicant_type || "performer") === appType; });
+          var aq = appQ.toLowerCase();
+          all = everything.filter(function (x) {
+            if (appType && (x.applicant_type || "performer") !== appType) return false;
+            return !aq || [x.full_name, x.act_name, x.company, x.service_type, x.category, x.skills, x.based_in].join(" ").toLowerCase().indexOf(aq) >= 0;
+          });
           counts = { all: all.length };
           STATUSES.forEach(function (s) { counts[s] = all.filter(function (x) { return x.status === s; }).length; });
           $("#appTabs").innerHTML = STATUSES.concat(["all"]).map(function (s) {
@@ -453,6 +459,7 @@
         }
         $("#appTabs").addEventListener("click", function (e) { var s = e.target.getAttribute("data-s"); if (s) { appFilter = s; draw(); } });
         $("#appType").addEventListener("change", function (e) { appType = e.target.value; draw(); });
+        $("#appQ").addEventListener("input", function (e) { appQ = e.target.value; draw(); });
         draw();
       });
   }
@@ -481,14 +488,14 @@
       var facts = isCrew ? [["Type", "Freelance event crew"], ["Full name", x.full_name], ["Role", x.service_type], ["Experience", x.experience_years],
           ["Availability", x.availability], ["UAE work status", x.visa_status], ["Email", x.email], ["Phone / WhatsApp", x.phone], ["Based in", x.based_in],
           ["Key skills", x.skills], ["Languages", x.languages], ["LinkedIn", x.linkedin], ["Instagram / social", x.social], ["Portfolio", x.portfolio_link], ["Applied", fmtDate(x.created_at)]]
-        : (isSup ? [["Type", "Supplier / partner"], ["Company", x.company], ["Services", x.service_type], ["Contact name", x.full_name]]
+        : (isSup ? [["Type", "Supplier / partner"], ["Company", x.company], ["Main service", x.service_type], ["Other services", x.skills], ["Contact name", x.full_name]]
                          : [["Full name", x.full_name], ["Act / stage name", x.act_name], ["Category", x.category]]).concat([["Email", x.email],
         ["Phone / WhatsApp", x.phone], ["Based in", x.based_in], ["Skills / genres", x.skills], ["Languages", x.languages],
-        ["Instagram", x.social], ["Website", x.website], ["Portfolio", x.portfolio_link], ["Applied", fmtDate(x.created_at)]]).filter(function (f) { return !(isSup && /Skills|Languages/.test(f[0])); });
+        ["Instagram", x.social], ["Website", x.website], ["Portfolio", x.portfolio_link], ["Applied", fmtDate(x.created_at)]]).filter(function (f) { return !(isSup && /Skills \/ genres|Languages/.test(f[0])); });
       var linkedin = x.linkedin && !/^https?:/i.test(x.linkedin) ? "https://" + x.linkedin.replace(/^\/+/, "") : x.linkedin;
       facts = facts.map(function (f) { return f[0] === "LinkedIn" ? [f[0], linkedin] : f; });
       app.innerHTML = '<div class="pagehead"><div><a href="#/applications" class="small">&larr; All applications</a><h1>' + esc(isSup ? (x.company || x.full_name) : (x.act_name || x.full_name)) + '</h1><span class="pill ' + x.status + '">' + x.status + "</span>" + (isSup ? ' <span class="pill hidden">Supplier</span>' : isCrew ? ' <span class="pill hidden">Event crew</span>' : "") + "</div>" +
-        '<div class="toolbar">' + (x.cv_path ? '<button class="btn primary" type="button" id="cvBtn">Open CV</button>' : "") + (isPrivate ? '<span class="muted small">' + (isCrew ? "Crew" : "Suppliers") + ' stay private in the dashboard and are never added to the website.</span>'
+        '<div class="toolbar">' + (x.cv_path ? '<button class="btn primary" type="button" id="cvBtn">Open CV</button>' : "") + (isCrew ? '<span id="crewLinkSlot"></span>' : "") + (isPrivate ? '<span class="muted small">' + (isCrew ? "Crew" : "Suppliers") + ' stay private in the dashboard and are never added to the website.</span>'
           : x.artist_id ? '<a class="btn primary" href="#/artists/' + x.artist_id + '">Open artist profile</a>' : '<button class="btn primary" id="convertBtn" type="button">Create artist profile</button>') + "</div></div>" +
         '<section class="panel"><h2>Photos</h2><div class="photos" id="appPhotos">' + (x.photos && x.photos.length ? '<p class="muted">Loading photos&hellip;</p>' : '<p class="muted">No ' + (isCrew ? "photo" : "photos") + " sent.</p>") + "</div></section>" +
         '<section class="panel private"><h2>Details <span class="lock">Private</span></h2><dl class="facts">' +
@@ -531,6 +538,12 @@
           .then(function () { toast("Application deleted"); refreshBadge(); location.hash = "#/applications"; }).catch(fail);
       });
       var cb = $("#convertBtn"); if (cb) cb.addEventListener("click", function () { convert(x, cb); });
+      if (isCrew) sb.from("crew").select("id").eq("application_id", x.id).limit(1).then(function (c) {
+        var slot = $("#crewLinkSlot"); if (!slot) return;
+        if (!c.error && c.data && c.data[0]) { slot.innerHTML = '<a class="btn primary" href="#/crew/' + c.data[0].id + '">Open on crew roster</a>'; return; }
+        slot.innerHTML = '<button class="btn primary" type="button" id="toCrewBtn">Add to crew roster</button>';
+        $("#toCrewBtn").addEventListener("click", function () { addCrewFromApplication(x, this); });
+      });
     });
   }
 
@@ -572,6 +585,185 @@
       .then(function () { return sb.from("applications").update({ status: "approved", artist_id: artistId }).eq("id", x.id).then(must); })
       .then(function () { refreshBadge(); toast("Profile created. It stays hidden until you switch it on."); location.hash = "#/artists/" + artistId; })
       .catch(function (e) { fail(e); btn.disabled = false; btn.textContent = "Create artist profile"; });
+  }
+
+  // ---------- crew & staffing roster (private) ----------
+  var CREW_STATUS = [["potential", "Potential"], ["active", "Active"], ["inactive", "Inactive"], ["do_not_use", "Do not use"]];
+  var CREW_ROLES = ["Stage Manager", "Project Manager", "Account Manager", "Production Manager", "Event Manager / Coordinator", "Show Caller", "Artist Liaison",
+    "Technical Manager", "Runner", "Hostess / Host", "Promotional Staff", "Waiter / Waitress", "Bartender", "Usher", "Security", "Driver", "Technician", "Other"];
+  var crewState = { q: "", status: "active", role: "", kind: "" };
+  function crewLabel(s) { var f = CREW_STATUS.filter(function (c) { return c[0] === s; })[0]; return f ? f[1] : s; }
+  function noCrewTable(e) { return e && /crew/.test(e.message || "") && /exist|schema cache|relation/i.test(e.message || ""); }
+  function crewSetup() { app.innerHTML = '<div class="pagehead"><div><h1>Crew &amp; Staff</h1></div></div><section class="panel"><p>Run the <strong>add-crew-roster</strong> SQL in Supabase first, then reload this page.</p></section>'; }
+  function signAll(paths) {
+    paths = paths.filter(Boolean);
+    if (!paths.length) return Promise.resolve({});
+    return sb.storage.from(APP_BUCKET).createSignedUrls(paths, 3600).then(function (r) {
+      var out = {}; (r.data || []).forEach(function (s, i) { if (s.signedUrl) out[paths[i]] = s.signedUrl; }); return out;
+    });
+  }
+  function waLink(p) { var d = String(p || "").replace(/[^\d]/g, ""); return d.length > 6 ? "https://wa.me/" + d : null; }
+
+  function viewCrew() {
+    app.innerHTML = '<div class="pagehead"><div><h1>Crew &amp; Staff</h1><p class="muted">Your private roster of freelancers and staff. Only people signed in to this dashboard can see it.</p></div>' +
+      '<a class="btn primary" href="#/crew/new">+ Add person</a></div>' +
+      '<div class="tabs" id="crewTabs"></div>' +
+      '<div class="toolbar"><input type="text" id="cQ" placeholder="Search name, role, skills, languages or area" value="' + esc(crewState.q) + '">' +
+      '<select id="cRole"><option value="">All roles</option></select>' +
+      '<select id="cKind"><option value="">Freelancers and staff</option><option value="freelancer"' + (crewState.kind === "freelancer" ? " selected" : "") + '>Freelancers</option><option value="staff"' + (crewState.kind === "staff" ? " selected" : "") + ">Staff</option></select>" +
+      '<span class="count" id="cCount"></span></div><div id="crewWrap"><p class="muted">Loading&hellip;</p></div>';
+    sb.from("crew").select("id,full_name,kind,status,role,based_in,phone,email,availability,languages,skills,rating,photo_path,updated_at").order("full_name").range(0, 4999).then(function (r) {
+      if (noCrewTable(r.error)) return crewSetup();
+      if (r.error) return fail(r.error);
+      var all = r.data, urls = {};
+      var roles = all.map(function (p) { return p.role; }).filter(Boolean).filter(function (v, i, s) { return s.indexOf(v) === i; }).sort();
+      $("#cRole").innerHTML = '<option value="">All roles</option>' + roles.map(function (x) { return "<option" + (x === crewState.role ? " selected" : "") + ">" + esc(x) + "</option>"; }).join("");
+      function draw() {
+        var q = crewState.q.toLowerCase();
+        var base = all.filter(function (p) {
+          if (crewState.role && p.role !== crewState.role) return false;
+          if (crewState.kind && p.kind !== crewState.kind) return false;
+          if (q && [p.full_name, p.role, p.skills, p.languages, p.based_in].join(" ").toLowerCase().indexOf(q) < 0) return false;
+          return true;
+        });
+        $("#crewTabs").innerHTML = CREW_STATUS.concat([["all", "All"]]).map(function (s) {
+          var n = s[0] === "all" ? base.length : base.filter(function (p) { return p.status === s[0]; }).length;
+          return '<button type="button" data-cs="' + s[0] + '" class="' + (crewState.status === s[0] ? "on" : "") + '">' + s[1] + " (" + n + ")</button>";
+        }).join("");
+        var rows = base.filter(function (p) { return crewState.status === "all" || p.status === crewState.status; });
+        $("#cCount").textContent = rows.length + " " + (rows.length === 1 ? "person" : "people");
+        if (!rows.length) { $("#crewWrap").innerHTML = '<p class="muted center">' + (all.length ? "Nobody matches." : "No one on the roster yet. Add people here, or use Add to crew roster on an event crew application.") + "</p>"; return; }
+        $("#crewWrap").innerHTML = '<table class="list"><thead><tr><th></th><th>Name</th><th>Role</th><th class="hide-m">Based in</th><th class="hide-m">Availability</th><th>Status</th><th></th></tr></thead><tbody>' +
+          rows.map(function (p) {
+            var wa = waLink(p.phone);
+            return "<tr><td>" + (p.photo_path ? '<img class="thumb" data-cphoto="' + esc(p.photo_path) + '" alt="">' : '<div class="thumb empty">No photo</div>') + "</td>" +
+              '<td class="name"><a href="#/crew/' + p.id + '">' + esc(p.full_name) + '</a><div class="sub">' + (p.kind === "staff" ? "Staff" : "Freelancer") + (p.rating ? " &middot; " + "&#9733;".repeat(p.rating) : "") + "</div></td>" +
+              "<td>" + esc(p.role || "") + '</td><td class="hide-m sub">' + esc(p.based_in || "") + '</td><td class="hide-m sub">' + esc(p.availability || "") + "</td>" +
+              '<td><span class="pill crew-' + p.status + '">' + crewLabel(p.status) + "</span></td>" +
+              '<td class="nowrap">' + (wa ? '<a class="btn sm" href="' + esc(wa) + '" target="_blank" rel="noopener">WhatsApp</a> ' : "") + '<a class="btn sm" href="#/crew/' + p.id + '">Open</a></td></tr>';
+          }).join("") + "</tbody></table>";
+        $all("[data-cphoto]").forEach(function (img) { var u = urls[img.getAttribute("data-cphoto")]; if (u) img.src = u; });
+      }
+      draw();
+      signAll(all.map(function (p) { return p.photo_path; })).then(function (u) { urls = u; draw(); });
+      $("#crewTabs").addEventListener("click", function (e) { var s = e.target.getAttribute("data-cs"); if (s) { crewState.status = s; draw(); } });
+      $("#cQ").addEventListener("input", function (e) { crewState.q = e.target.value; draw(); });
+      $("#cRole").addEventListener("change", function (e) { crewState.role = e.target.value; draw(); });
+      $("#cKind").addEventListener("change", function (e) { crewState.kind = e.target.value; draw(); });
+    });
+  }
+
+  function viewCrewPerson(id) {
+    app.innerHTML = '<p class="muted center">Loading&hellip;</p>';
+    (id ? sb.from("crew").select("*").eq("id", id).maybeSingle() : Promise.resolve({ data: { kind: "freelancer", status: "potential" } })).then(function (r) {
+      if (noCrewTable(r.error)) return crewSetup();
+      if (r.error) return fail(r.error);
+      var p = r.data; if (!p) { app.innerHTML = '<p class="center muted">Not found. <a href="#/crew">Back</a></p>'; return; }
+      var photoBlob = null, cvFile = null, removeCv = false;
+      var f = function (key, label, extra) { return '<label class="field' + (extra && extra.wide ? " span2" : "") + '">' + label + (extra && extra.hint ? ' <span class="hint">' + extra.hint + "</span>" : "") +
+        (extra && extra.area ? '<textarea id="c_' + key + '" rows="' + (extra.rows || 4) + '">' + esc(p[key] || "") + "</textarea>" : '<input type="' + ((extra && extra.type) || "text") + '" id="c_' + key + '" value="' + esc(p[key] || "") + '"' + (extra && extra.list ? ' list="' + extra.list + '"' : "") + ">") + "</label>"; };
+      var sel = function (key, label, opts) { return '<label class="field">' + label + '<select id="c_' + key + '">' + opts.map(function (o) { return '<option value="' + esc(o[0]) + '"' + (String(p[key] || "") === String(o[0]) ? " selected" : "") + ">" + esc(o[1]) + "</option>"; }).join("") + "</select></label>"; };
+      var wa = waLink(p.phone);
+      app.innerHTML = '<div class="pagehead"><div><a href="#/crew" class="small">&larr; Crew &amp; Staff</a><h1>' + esc(p.full_name || "Add person") + "</h1>" +
+        (id ? '<span class="pill crew-' + p.status + '">' + crewLabel(p.status) + "</span>" : "") + "</div>" +
+        '<div class="toolbar">' + (p.email ? '<a class="btn" href="mailto:' + esc(p.email) + '">Email</a>' : "") + (wa ? '<a class="btn" href="' + esc(wa) + '" target="_blank" rel="noopener">WhatsApp</a>' : "") +
+        (p.application_id ? '<a class="btn" href="#/applications/' + p.application_id + '">Their application</a>' : "") + "</div></div>" +
+        '<datalist id="crewRoles">' + CREW_ROLES.map(function (x) { return "<option>" + esc(x) + "</option>"; }).join("") + "</datalist>" +
+        '<div class="crew-top"><section class="panel crew-photo"><h2>Photo</h2><div id="cPhotoBox" class="crew-photo-box">' + (p.photo_path ? '<p class="muted">Loading&hellip;</p>' : '<p class="muted">No photo yet</p>') + "</div>" +
+        '<label class="btn small">' + (p.photo_path ? "Replace photo" : "Add photo") + '<input type="file" id="cPhoto" accept="image/*" hidden></label></section>' +
+        '<section class="panel private crew-main"><h2>Details <span class="lock">Private</span></h2><div class="grid2">' +
+        f("full_name", "Full name") + f("role", "Role", { list: "crewRoles" }) +
+        sel("kind", "Type", [["freelancer", "Freelancer"], ["staff", "Staff"]]) + sel("status", "Status", CREW_STATUS) +
+        f("phone", "Phone / WhatsApp") + f("email", "Email", { type: "email" }) +
+        f("based_in", "Based in") + f("languages", "Languages") +
+        f("experience_years", "Experience") + f("availability", "Availability") +
+        f("visa_status", "UAE work status") + f("day_rate", "Rate", { hint: "Private, e.g. AED 900 per day" }) +
+        f("skills", "Key skills", { wide: true }) +
+        f("linkedin", "LinkedIn") + f("social", "Instagram / social") + f("portfolio_link", "Portfolio / other link", { wide: true }) +
+        sel("rating", "Your rating", [["", "Not rated"], ["5", "★★★★★ Excellent"], ["4", "★★★★ Very good"], ["3", "★★★ Good"], ["2", "★★ Fair"], ["1", "★ Poor"]]) + "<span></span>" +
+        f("notes", "Notes", { area: true, wide: true, rows: 6, hint: "Events worked, feedback, who referred them..." }) +
+        "</div></section></div>" +
+        '<section class="panel"><h2>CV</h2><div id="cCvBox">' + (p.cv_path ? '<button class="btn" type="button" id="cCvOpen">Open CV (' + esc(p.cv_path.split(".").pop().toUpperCase()) + ")</button> " : '<span class="muted">No CV yet.</span> ') +
+        '<label class="btn small">' + (p.cv_path ? "Replace CV" : "Add CV") + '<input type="file" id="cCv" accept=".pdf,.doc,.docx" hidden></label>' + (p.cv_path ? ' <button class="btn small danger" type="button" id="cCvRm">Remove CV</button>' : "") + '<span class="muted small" id="cCvNote"></span></div></section>' +
+        '<div class="actions"><button class="btn primary" type="button" id="cSave">' + (id ? "Save" : "Add to roster") + '</button><span class="spacer"></span>' + (id ? '<button class="btn danger" type="button" id="cDelete">Delete</button>' : "") + "</div>";
+
+      if (p.photo_path) signAll([p.photo_path]).then(function (u) { var s = u[p.photo_path]; $("#cPhotoBox").innerHTML = s ? '<img src="' + esc(s) + '" alt="">' : '<p class="muted">Photo unavailable</p>'; });
+      $("#cPhoto").addEventListener("change", function (e) {
+        var file = e.target.files[0]; if (!file) return;
+        GHDB.shrinkImage(file, 1600).then(function (b) { photoBlob = b; $("#cPhotoBox").innerHTML = '<img src="' + URL.createObjectURL(b) + '" alt="">'; toast("Photo ready. Click Save to keep it."); }).catch(fail);
+      });
+      $("#cCv").addEventListener("change", function (e) {
+        var file = e.target.files[0]; if (!file) return;
+        if (!/\.(pdf|docx?)$/i.test(file.name)) { toast("Please choose a PDF or Word file", true); return; }
+        if (file.size > 10485760) { toast("That CV is over 10 MB", true); return; }
+        cvFile = file; removeCv = false; $("#cCvNote").textContent = " " + file.name + " ready. Click Save to keep it.";
+      });
+      if ($("#cCvRm")) $("#cCvRm").addEventListener("click", function () { removeCv = true; cvFile = null; $("#cCvNote").textContent = " CV will be removed when you save."; });
+      if ($("#cCvOpen")) $("#cCvOpen").addEventListener("click", function () {
+        var w = window.open("", "_blank");
+        signAll([p.cv_path]).then(function (u) { var s = u[p.cv_path]; if (!s) { if (w) w.close(); return toast("CV unavailable", true); } if (w) w.location = s; else location.href = s; });
+      });
+      $("#cSave").addEventListener("click", function () {
+        var btn = this, row = {};
+        ["full_name", "role", "kind", "status", "phone", "email", "based_in", "languages", "experience_years", "availability", "visa_status", "day_rate", "skills", "linkedin", "social", "portfolio_link", "notes"].forEach(function (k) { row[k] = val("c_" + k); });
+        row.rating = val("c_rating") ? parseInt(val("c_rating"), 10) : null;
+        if (!row.full_name) { toast("Add their name first", true); return; }
+        row.kind = row.kind || "freelancer"; row.status = row.status || "potential"; row.updated_at = new Date().toISOString();
+        btn.disabled = true; btn.textContent = "Saving...";
+        var save = id ? sb.from("crew").update(row).eq("id", id).select("id").single() : sb.from("crew").insert(row).select("id").single();
+        var cid, old = [];
+        save.then(must).then(function (res) {
+          cid = res.id; var stamp = Date.now().toString(36), upd = {}, chain = Promise.resolve();
+          if (photoBlob) chain = chain.then(function () { var path = "crew/" + cid + "/photo-" + stamp + ".jpg"; return uploadBlob(APP_BUCKET, path, photoBlob).then(function () { upd.photo_path = path; if (p.photo_path) old.push(p.photo_path); }); });
+          if (cvFile) chain = chain.then(function () {
+            var ext = cvFile.name.split(".").pop().toLowerCase(), path = "crew/" + cid + "/cv-" + stamp + "." + ext;
+            var type = ext === "pdf" ? "application/pdf" : ext === "doc" ? "application/msword" : "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+            return sb.storage.from(APP_BUCKET).upload(path, cvFile, { contentType: type, upsert: false }).then(must).then(function () { upd.cv_path = path; if (p.cv_path) old.push(p.cv_path); });
+          });
+          else if (removeCv && p.cv_path) { upd.cv_path = null; old.push(p.cv_path); }
+          return chain.then(function () { return Object.keys(upd).length ? sb.from("crew").update(upd).eq("id", cid).then(must) : null; });
+        }).then(function () {
+          old = old.filter(function (x) { return /^crew\//.test(x); });
+          if (old.length) sb.storage.from(APP_BUCKET).remove(old);
+          toast(id ? "Saved" : "Added to the roster");
+          if (id) viewCrewPerson(id); else location.hash = "#/crew/" + cid;
+        }).catch(function (e) { fail(e); btn.disabled = false; btn.textContent = id ? "Save" : "Add to roster"; });
+      });
+      if ($("#cDelete")) $("#cDelete").addEventListener("click", function () {
+        if (!confirm("Delete " + (p.full_name || "this person") + " from the roster, with their photo and CV? This can't be undone.")) return;
+        var files = [p.photo_path, p.cv_path].filter(function (x) { return x && /^crew\//.test(x); });
+        (files.length ? sb.storage.from(APP_BUCKET).remove(files) : Promise.resolve())
+          .then(function () { return sb.from("crew").delete().eq("id", id).then(must); })
+          .then(function () { toast("Deleted"); location.hash = "#/crew"; }).catch(fail);
+      });
+    });
+  }
+
+  // Copies an event crew application (with its headshot and CV) onto the private roster.
+  function addCrewFromApplication(x, btn) {
+    btn.disabled = true; btn.textContent = "Adding...";
+    var cid;
+    sb.from("crew").insert({ full_name: x.full_name, kind: "freelancer", status: "potential", role: x.service_type, experience_years: x.experience_years || null,
+      availability: x.availability || null, visa_status: x.visa_status || null, email: x.email, phone: x.phone, based_in: x.based_in, languages: x.languages,
+      skills: x.skills, linkedin: x.linkedin || null, social: x.social, portfolio_link: x.portfolio_link, application_id: x.id,
+      notes: x.bio ? "From their application:\n" + x.bio : null }).select("id").single().then(function (r) {
+      if (noCrewTable(r.error)) throw new Error("Run the add-crew-roster SQL in Supabase first, then try again.");
+      return must(r);
+    }).then(function (row) {
+      cid = row.id; var upd = {}, chain = Promise.resolve();
+      var copy = function (from, to, key) {
+        chain = chain.then(function () {
+          return sb.storage.from(APP_BUCKET).download(from).then(must).then(function (blob) {
+            return sb.storage.from(APP_BUCKET).upload(to, blob, { contentType: blob.type || "application/octet-stream", upsert: false }).then(must).then(function () { upd[key] = to; });
+          });
+        });
+      };
+      if (x.photos && x.photos[0]) copy(x.photos[0], "crew/" + cid + "/photo.jpg", "photo_path");
+      if (x.cv_path) copy(x.cv_path, "crew/" + cid + "/cv." + x.cv_path.split(".").pop(), "cv_path");
+      return chain.then(function () { return Object.keys(upd).length ? sb.from("crew").update(upd).eq("id", cid).then(must) : null; });
+    }).then(function () { return x.status === "new" ? sb.from("applications").update({ status: "shortlisted" }).eq("id", x.id).then(must) : null; })
+      .then(function () { refreshBadge(); toast("Added to the crew roster as Potential"); location.hash = "#/crew/" + cid; })
+      .catch(function (e) { fail(e); btn.disabled = false; btn.textContent = "Add to crew roster"; });
   }
 
   // ---------- shared: add slides to a proposal ----------

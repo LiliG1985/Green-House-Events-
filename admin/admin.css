@@ -226,3 +226,10 @@ dl.facts dd { white-space: pre-wrap; word-break: break-word; }
 .sent-tick input { width: 1.05rem; height: 1.05rem; accent-color: #c9a84c; margin: 0; cursor: pointer; }
 .sent-tick.on { color: var(--ok); font-weight: 600; }
 h2 .sent-tick { margin-left: 1.2rem; vertical-align: middle; }
+.pill.crew-potential { color: var(--gold); } .pill.crew-active { color: var(--ok); } .pill.crew-inactive { color: var(--muted); } .pill.crew-do_not_use { color: var(--danger); }
+.crew-top { display: grid; grid-template-columns: 260px 1fr; gap: 1.2rem; align-items: start; }
+.crew-top .panel { margin: 0 0 1.2rem; }
+.crew-photo-box { aspect-ratio: 3 / 4; background: #000; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; margin-bottom: .8rem; overflow: hidden; }
+.crew-photo-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+td.nowrap { white-space: nowrap; }
+@media (max-width: 800px) { .crew-top { grid-template-columns: 1fr; } }

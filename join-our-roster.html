@@ -462,24 +462,104 @@
                         <input type="text" id="af-company" name="company" placeholder="Your company">
                     </div>
                     <div class="form-field">
-                        <label for="af-service">Services</label>
+                        <label for="af-service">Main Service</label>
                         <select id="af-service" name="service_type">
                             <option value="" disabled selected>Choose one</option>
-                            <option value="AV, Sound &amp; Lighting">AV, Sound &amp; Lighting</option>
-                            <option value="Staging &amp; Structures">Staging &amp; Structures</option>
-                            <option value="Decor &amp; Florals">Decor &amp; Florals</option>
-                            <option value="Fabrication &amp; Set Building">Fabrication &amp; Set Building</option>
-                            <option value="Furniture Rental">Furniture Rental</option>
-                            <option value="Catering &amp; Beverage">Catering &amp; Beverage</option>
-                            <option value="Photography &amp; Video">Photography &amp; Video</option>
-                            <option value="Photo Booths &amp; Activations">Photo Booths &amp; Activations</option>
-                            <option value="Printing &amp; Signage">Printing &amp; Signage</option>
-                            <option value="Costumes &amp; Wardrobe">Costumes &amp; Wardrobe</option>
-                            <option value="Transport &amp; Logistics">Transport &amp; Logistics</option>
-                            <option value="Venue">Venue</option>
-                            <option value="Other">Other</option>
+                            <optgroup label="Sound, Light &amp; Technical">
+                                <option value="AV, Sound &amp; Lighting">AV, Sound &amp; Lighting</option>
+                                <option value="LED Screens &amp; Video Walls">LED Screens &amp; Video Walls</option>
+                                <option value="Projection &amp; Mapping">Projection &amp; Mapping</option>
+                                <option value="Special Effects (CO2, confetti, pyro, fog)">Special Effects (CO2, confetti, pyro, fog)</option>
+                                <option value="Lasers">Lasers</option>
+                                <option value="Power &amp; Generators">Power &amp; Generators</option>
+                                <option value="Rigging &amp; Trussing">Rigging &amp; Trussing</option>
+                                <option value="Livestreaming &amp; Broadcast">Livestreaming &amp; Broadcast</option>
+                            </optgroup>
+                            <optgroup label="Staging &amp; Structures">
+                                <option value="Staging &amp; Platforms">Staging &amp; Platforms</option>
+                                <option value="Tents, Marquees &amp; Structures">Tents, Marquees &amp; Structures</option>
+                                <option value="Flooring &amp; Dance Floors">Flooring &amp; Dance Floors</option>
+                                <option value="Fencing, Barriers &amp; Crowd Control">Fencing, Barriers &amp; Crowd Control</option>
+                                <option value="Scaffolding &amp; Grandstands">Scaffolding &amp; Grandstands</option>
+                            </optgroup>
+                            <optgroup label="Decor &amp; Styling">
+                                <option value="Decor &amp; Event Styling">Decor &amp; Event Styling</option>
+                                <option value="Florals &amp; Flower Walls">Florals &amp; Flower Walls</option>
+                                <option value="Draping &amp; Fabric">Draping &amp; Fabric</option>
+                                <option value="Balloons &amp; Balloon Art">Balloons &amp; Balloon Art</option>
+                                <option value="Backdrops &amp; Photo Walls">Backdrops &amp; Photo Walls</option>
+                                <option value="Props &amp; Themed Decor">Props &amp; Themed Decor</option>
+                                <option value="Table Settings, Linen &amp; Tableware">Table Settings, Linen &amp; Tableware</option>
+                                <option value="Candles &amp; Ambient Lighting">Candles &amp; Ambient Lighting</option>
+                                <option value="Neon Signs">Neon Signs</option>
+                                <option value="Greenery &amp; Plant Hire">Greenery &amp; Plant Hire</option>
+                            </optgroup>
+                            <optgroup label="Fabrication &amp; Furniture">
+                                <option value="Fabrication &amp; Set Building">Fabrication &amp; Set Building</option>
+                                <option value="Exhibition Stands &amp; Booths">Exhibition Stands &amp; Booths</option>
+                                <option value="Furniture Rental">Furniture Rental</option>
+                                <option value="Lounge &amp; VIP Furniture">Lounge &amp; VIP Furniture</option>
+                                <option value="Carpentry &amp; Joinery">Carpentry &amp; Joinery</option>
+                            </optgroup>
+                            <optgroup label="Food &amp; Drink">
+                                <option value="Catering">Catering</option>
+                                <option value="Beverage &amp; Bar Services">Beverage &amp; Bar Services</option>
+                                <option value="Coffee &amp; Tea Carts">Coffee &amp; Tea Carts</option>
+                                <option value="Food Trucks">Food Trucks</option>
+                                <option value="Desserts, Cakes &amp; Chocolatiers">Desserts, Cakes &amp; Chocolatiers</option>
+                                <option value="Ice Sculptures">Ice Sculptures</option>
+                                <option value="Mixologists &amp; Live Stations">Mixologists &amp; Live Stations</option>
+                            </optgroup>
+                            <optgroup label="Gifts &amp; Branding">
+                                <option value="Corporate Gifts &amp; Giveaways">Corporate Gifts &amp; Giveaways</option>
+                                <option value="Personalised &amp; Luxury Gifts">Personalised &amp; Luxury Gifts</option>
+                                <option value="Merchandise">Merchandise</option>
+                                <option value="Printing &amp; Signage">Printing &amp; Signage</option>
+                                <option value="Branding &amp; Vinyl Wrapping">Branding &amp; Vinyl Wrapping</option>
+                                <option value="Invitations &amp; Stationery">Invitations &amp; Stationery</option>
+                                <option value="Badges, Lanyards &amp; Ticketing">Badges, Lanyards &amp; Ticketing</option>
+                            </optgroup>
+                            <optgroup label="Photo, Video &amp; Activations">
+                                <option value="Photography">Photography</option>
+                                <option value="Videography &amp; Drone">Videography &amp; Drone</option>
+                                <option value="Photo Booths &amp; 360 Booths">Photo Booths &amp; 360 Booths</option>
+                                <option value="Brand Activations &amp; Experiential">Brand Activations &amp; Experiential</option>
+                                <option value="Games, VR &amp; Interactive Tech">Games, VR &amp; Interactive Tech</option>
+                                <option value="Inflatables &amp; Fun Fair Rides">Inflatables &amp; Fun Fair Rides</option>
+                                <option value="Kids Activities &amp; Play Areas">Kids Activities &amp; Play Areas</option>
+                            </optgroup>
+                            <optgroup label="People &amp; Services">
+                                <option value="Event Staffing &amp; Hostesses">Event Staffing &amp; Hostesses</option>
+                                <option value="Security">Security</option>
+                                <option value="Cleaning &amp; Waste Management">Cleaning &amp; Waste Management</option>
+                                <option value="Medical &amp; First Aid">Medical &amp; First Aid</option>
+                                <option value="Valet Parking">Valet Parking</option>
+                                <option value="Translators &amp; Interpreters">Translators &amp; Interpreters</option>
+                                <option value="Hair, Makeup &amp; Grooming">Hair, Makeup &amp; Grooming</option>
+                                <option value="Costumes &amp; Wardrobe">Costumes &amp; Wardrobe</option>
+                            </optgroup>
+                            <optgroup label="Venues, Travel &amp; Logistics">
+                                <option value="Venues">Venues</option>
+                                <option value="Hotels &amp; Accommodation">Hotels &amp; Accommodation</option>
+                                <option value="Transport &amp; Chauffeurs">Transport &amp; Chauffeurs</option>
+                                <option value="Logistics, Freight &amp; Storage">Logistics, Freight &amp; Storage</option>
+                                <option value="Portable Toilets &amp; Site Facilities">Portable Toilets &amp; Site Facilities</option>
+                                <option value="Desert &amp; Outdoor Camps">Desert &amp; Outdoor Camps</option>
+                                <option value="Yachts &amp; Boats">Yachts &amp; Boats</option>
+                            </optgroup>
+                            <optgroup label="Other">
+                                <option value="Event Permits &amp; Licensing">Event Permits &amp; Licensing</option>
+                                <option value="Insurance">Insurance</option>
+                                <option value="Ticketing &amp; Registration">Ticketing &amp; Registration</option>
+                                <option value="Other">Other</option>
+                            </optgroup>
                         </select>
                     </div>
+                </div>
+
+                <div class="form-field" data-for="supplier" hidden>
+                    <label for="af-extra">Other Services You Offer</label>
+                    <input type="text" id="af-extra" name="extra_services" placeholder="e.g. Balloons, draping and flower walls">
                 </div>
 
                 <div class="form-row" data-for="crew" hidden>
@@ -827,7 +907,7 @@
                         company: sup ? field("company") : null, service_type: sup ? field("service_type") : crew ? field("crew_role") : null,
                         full_name: field("full_name"), act_name: t === "performer" ? field("act_name") : null, email: field("email"), phone: field("phone"),
                         category: t === "performer" ? field("category") : null, based_in: field("based_in"),
-                        skills: sup ? null : field("skills"), languages: sup ? null : field("languages"),
+                        skills: sup ? field("extra_services") : field("skills"), languages: sup ? null : field("languages"),
                         bio: field("bio"), video_links: crew ? null : field("video_links"), social: field("social"),
                         portfolio_link: field("portfolio_link"), website: crew ? null : field("website"), photos: paths, consent: true
                     };
